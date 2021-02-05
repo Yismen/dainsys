@@ -30,7 +30,7 @@ abstract class TestCase extends BaseTestCase
     protected function disableExceptionHandling()
     {
         $this->oldExceptionHandler = $this->app->make(ExceptionHandler::class);
-        $this->app->instance(ExceptionHandler::class, new class () extends Handler
+        $this->app->instance(ExceptionHandler::class, new class() extends Handler
         {
             public function __construct()
             {
@@ -63,6 +63,14 @@ abstract class TestCase extends BaseTestCase
         $user->roles()->sync($role->id);
         $permission = create('App\Permission', ['name' => $permit]);
         $role->permissions()->sync($permission->id);
+
+        return $user;
+    }
+    protected function userWithRole($role)
+    {
+        $user = create('App\User');
+        $role = create('App\Role', ['name' => $role]);
+        $user->roles()->sync($role->id);
 
         return $user;
     }
