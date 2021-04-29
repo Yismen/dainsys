@@ -53,7 +53,7 @@ class SendPublishinglHourlyProductionReportCommand extends Command
         try {
             $this->initialBoot();
             $distro = $this->distroList();
-            
+
             $instance = now()->format('Ymd_His');
             $file_name = "Publishing Hourly Production Report {$instance}.xlsx";
 
@@ -63,17 +63,22 @@ class SendPublishinglHourlyProductionReportCommand extends Command
             ]));
 
             if (count($results->data) > 0) {
-                Excel::store(new HourlyProductionReportExport($results), $file_name);
+                Excel::store(
+                    new HourlyProductionReportExport($results),
+                    $file_name
+                );
 
                 Mail::send(
                     new CommandsBaseMail($distro, $file_name, "Publishing Hourly Production Report")
                 );
-            
+
                 $this->info("Publishing Hourly Production Report sent!");
+            } else {
+                $this->warn('No data for this date. Nothing sent');
             }
         } catch (\Throwable $th) {
             $this->notifyUsersAndLogError($th);
-            
+
             $this->error("Something went wrong");
         }
     }
@@ -92,7 +97,7 @@ class SendPublishinglHourlyProductionReportCommand extends Command
             now()->format('m/d/Y') :
             Carbon::parse($this->option('date'))->format('m/d/Y');
 
-            
+
         $this->date_from =  $this->option('from') == 'default' ?
             $this->date_to :
             Carbon::parse($this->option('from'))->format('m/d/Y');

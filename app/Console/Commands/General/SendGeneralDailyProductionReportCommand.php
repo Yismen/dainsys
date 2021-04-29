@@ -20,19 +20,29 @@ class SendGeneralDailyProductionReportCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'dainsys:general-rc-production-report {--date} {--from}';
-
+    protected $signature = 'dainsys:general-rc-production-report {--date=} {--from=} {--team=ECC}';
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Send a Daily Production report to General distro';
-
-    protected $date_from;
-
-    protected $date_to;
-
+    /**
+     * Initial range date
+     */
+    protected string $date_from;
+    /**
+     * Ending range date
+     */
+    protected string $date_to;
+    /**
+     * List of emails to send the report
+     */
+    protected array $distro;
+    /**
+     * Report subject name
+     */
+    protected string $mail_subject;
     /**
      * Create a new command instance.
      *
@@ -41,8 +51,13 @@ class SendGeneralDailyProductionReportCommand extends Command
     public function __construct()
     {
         parent::__construct();
-    }
 
+        $this->mail_subject = "General Daily Production Report";
+
+        $this->file_name = $this->mail_subject . now()->subDay()->format('Ymd_His') . ".xlsx";
+
+        $this->distro = $this->getDistroList();
+    }
     /**
      * Execute the console command.
      *
@@ -51,39 +66,58 @@ class SendGeneralDailyProductionReportCommand extends Command
     public function handle()
     {
         try {
-            $this->initialBoot();
-            $distro = $this->distroList();
-            $file_name = "General Daily Production Report " . now()->subDay()->format('Ymd_His') . ".xlsx";
-            $results = (new DailyProductionReportRepository([
-                'date_from' => $this->date_from,
-                'date_to' => $this->date_to
-            ]));
+            $this->init();
+
+            $results = (new DailyProductionReportRepository(
+                [
+                    'date_from' => $this->date_from,
+                    'date_to' => $this->date_to
+                ],
+                $team = "{$this->option('team')}%"
+            ));
 
             if (count($results->data) > 0) {
-                Excel::store(new DailyProductionReportExport($results), $file_name);
-
-                Mail::send(
-                    new CommandsBaseMail($distro, $file_name, "General Daily Production Report")
+                Excel::store(
+                    new DailyProductionReportExport(
+                        $results
+                    ),
+                    $this->file_name
                 );
 
-                $this->info("General RC Daily Production Report Sent!");
+                Mail::send(
+                    new CommandsBaseMail($this->distro, $this->file_name, $this->mail_subject)
+                );
+
+                $this->info("{$this->mail_subject} Sent!");
+            } else {
+                $this->warn('No data for this date. Nothing sent');
             }
         } catch (\Throwable $th) {
-            $this->notifyUsersAndLogError($th);
-
             $this->error("Something went wrong");
+
+            Log::debug($th);
+
+            $this->notifyUsersAndLogError($th);
         }
     }
-
-    protected function distroList()
+    /**
+     * Get the list of emails to receive the report
+     *
+     * @return array
+     */
+    protected function getDistroList(): array
     {
         $list = config('dainsys.workforce.distro') ??
             abort(404, "Invalid distro list. Set it up in the .env, separated by pipe (|).");
 
         return explode("|", $list);
     }
-
-    protected function initialBoot()
+    /**
+     * Initiate command variables
+     *
+     * @return void
+     */
+    protected function init()
     {
         $this->date_to = !$this->option('date') ?
             now()->subDay()->format('m/d/Y') :

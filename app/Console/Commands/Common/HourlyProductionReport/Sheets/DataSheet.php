@@ -16,7 +16,7 @@ class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateForm
     protected $data;
 
     protected $sheet;
-    
+
     protected $rows;
     protected $last_column;
 
@@ -24,7 +24,9 @@ class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateForm
 
     protected $title;
 
-    public function __construct(array $data, $sheetName, $title)
+    protected String $view;
+
+    public function __construct(array $data, $sheetName, $title, string $view = 'exports.data')
     {
         $this->data = $data;
 
@@ -32,11 +34,12 @@ class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateForm
         $this->last_column = "P";
         $this->sheetName = $sheetName;
         $this->title = $title;
+        $this->view = $view;
     }
 
     public function view(): View
     {
-        return view('exports.data', [
+        return view($this->view, [
             'data' => $this->data,
             'dataTitle' => $this->title,
         ]);
@@ -47,11 +50,11 @@ class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateForm
         return [
             AfterSheet::class => function (AfterSheet $event) {
                 $totalsRow = $this->rows + 1;
-                
+
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
-                
+
                 (new RangeFormarter($event, "A1:{$this->last_column}{$this->rows}"))
                     ->configurePage()
                     ->setColumnsWidth("B", "E")
@@ -61,13 +64,12 @@ class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateForm
                     ->applyNumberFormats("F3:H{$totalsRow}", '#,##0.00')
                     ->applyNumberFormats("L3:L{$totalsRow}", '#,##0.00')
                     ->applyNumberFormats("M3:{$this->last_column}{$totalsRow}", NumberFormat::FORMAT_PERCENTAGE_00)
-                    ->formatTotals("F{$totalsRow}:P{$totalsRow}")
-                ;
-   
+                    ->formatTotals("F{$totalsRow}:P{$totalsRow}");
+
                 $this->addSubTotals();
 
                 $this->sheet->freezePane('D3');
-                
+
                 $this->sheet->setAutoFilter("A2:{$this->last_column}{$this->rows}");
 
                 // Adjust DialGroup column width

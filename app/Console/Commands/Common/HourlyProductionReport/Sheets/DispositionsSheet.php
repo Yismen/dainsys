@@ -16,7 +16,7 @@ class DispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCalcu
     protected $data;
 
     protected $sheet;
-    
+
     protected $rows;
     protected $last_column;
 
@@ -24,7 +24,9 @@ class DispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCalcu
 
     protected $title;
 
-    public function __construct(array $data, $sheetName, $title)
+    protected $view;
+
+    public function __construct(array $data, $sheetName, $title, string $view = 'exports.dispositions')
     {
         $this->data = $data;
 
@@ -32,11 +34,12 @@ class DispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCalcu
         $this->last_column = "F";
         $this->sheetName = $sheetName;
         $this->title = $title;
+        $this->view = $view;
     }
 
     public function view(): View
     {
-        return view('exports.dispositions', [
+        return view($this->view, [
             'data' => $this->data,
             'dispositionsTitle' => $this->title,
         ]);
@@ -46,7 +49,7 @@ class DispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCalcu
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                
+
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
@@ -57,9 +60,8 @@ class DispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCalcu
                     ->formatHeaderRow("A2:{$this->last_column}2")
                     ->applyBorders("A3:{$this->last_column}{$this->rows}")
                     // ->applyNumberFormats("E2:G{$this->rows}", '#,##0.00')
-                    ->applyNumberFormats("{$this->last_column}2:{$this->last_column}{$this->rows}", NumberFormat::FORMAT_PERCENTAGE_00)
-                    ;
-                    
+                    ->applyNumberFormats("{$this->last_column}2:{$this->last_column}{$this->rows}", NumberFormat::FORMAT_PERCENTAGE_00);
+
                 $this->sheet->setAutoFilter("A2:{$this->last_column}{$this->rows}");
             }
         ];
