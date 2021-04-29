@@ -5,7 +5,7 @@ namespace App\Console\Commands\General\DailyProductionReport;
 use App\Console\Commands\General\GeneralDataSheet;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
-class DailyProductionReportExport implements WithMultipleSheets
+class GeneralDailyProductionReportExport implements WithMultipleSheets
 {
     // use CapillusCommandsTrait;
 

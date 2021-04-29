@@ -5,7 +5,7 @@ namespace App\Console\Commands\General\DailyProductionReport;
 use App\Connections\RingCentralConnection;
 use Illuminate\Support\Facades\DB;
 
-class DailyProductionReportRepository extends RingCentralConnection
+class GeneralDailyProductionReportRepository extends RingCentralConnection
 {
     public $data;
 
@@ -24,7 +24,7 @@ class DailyProductionReportRepository extends RingCentralConnection
         $this->data = $this->getData();
     }
 
-    private function getData()
+    public function getData()
     {
         return $this->connection()->select(
             DB::raw("

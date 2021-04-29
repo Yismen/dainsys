@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands\General;
 
-use App\Console\Commands\General\DailyProductionReport\DailyProductionReportExport;
-use App\Console\Commands\General\DailyProductionReport\DailyProductionReportRepository;
+use App\Console\Commands\General\DailyProductionReport\GeneralDailyProductionReportExport;
+use App\Console\Commands\General\DailyProductionReport\GeneralDailyProductionReportRepository;
 use App\Console\Commands\Traits\NotifyUsersOnFailedCommandsTrait;
 use App\Mail\CommandsBaseMail;
 use Carbon\Carbon;
@@ -68,7 +68,7 @@ class SendGeneralDailyProductionReportCommand extends Command
         try {
             $this->init();
 
-            $results = (new DailyProductionReportRepository(
+            $results = (new GeneralDailyProductionReportRepository(
                 [
                     'date_from' => $this->date_from,
                     'date_to' => $this->date_to
@@ -78,7 +78,7 @@ class SendGeneralDailyProductionReportCommand extends Command
 
             if (count($results->data) > 0) {
                 Excel::store(
-                    new DailyProductionReportExport(
+                    new GeneralDailyProductionReportExport(
                         $results
                     ),
                     $this->file_name
@@ -88,7 +88,7 @@ class SendGeneralDailyProductionReportCommand extends Command
                     new CommandsBaseMail($this->distro, $this->file_name, $this->mail_subject)
                 );
 
-                $this->info("{$this->mail_subject} Sent!");
+                $this->line("{$this->mail_subject} Sent!");
             } else {
                 $this->warn('No data for this date. Nothing sent');
             }
