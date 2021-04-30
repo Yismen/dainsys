@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands\Political;
 
-use App\Console\Commands\Traits\NotifyUsersOnFailedCommandsTrait;
+use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;

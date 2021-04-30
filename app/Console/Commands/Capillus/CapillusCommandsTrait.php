@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands\Capillus;
 
-use App\Console\Commands\Traits\NotifyUsersOnFailedCommandsTrait;
+use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
 use Exception;
 
 trait CapillusCommandsTrait

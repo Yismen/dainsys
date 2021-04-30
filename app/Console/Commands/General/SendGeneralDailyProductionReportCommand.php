@@ -4,7 +4,7 @@ namespace App\Console\Commands\General;
 
 use App\Console\Commands\General\DailyProductionReport\GeneralDailyProductionReportExport;
 use App\Console\Commands\General\DailyProductionReport\GeneralDailyProductionReportRepository;
-use App\Console\Commands\Traits\NotifyUsersOnFailedCommandsTrait;
+use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
 use App\Mail\CommandsBaseMail;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
