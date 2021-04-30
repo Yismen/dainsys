@@ -13,30 +13,16 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-
-        \App\Console\Commands\Because\BecauseFlashReportCommand::class,
-        \App\Console\Commands\Because\PullDailyPerformanceDataCommand::class,
-        \App\Console\Commands\Because\SendDailyPerformanceReportCommand::class,
-
-        \App\Console\Commands\Capillus\SendFlashReportCommand::class,
-        \App\Console\Commands\Capillus\SendCapillusLeadsReportCommand::class,
-        \App\Console\Commands\Capillus\PullDailyPerformanceDataCommand::class,
-        \App\Console\Commands\Capillus\SendDailyPerformanceReportCommand::class,
-        \App\Console\Commands\Capillus\SendAgentCallDataDumpReport::class,
-        \App\Console\Commands\Capillus\SendAgentReportCommand::class,
-        \App\Console\Commands\Capillus\SendCapillusCallTypeCommand::class,
-
         \App\Console\Commands\Political\SendPoliticalFlashReportCommand::class,
-        \App\Console\Commands\Political\SendPoliticallHourlyProductionReportCommand::class,
+        \App\Console\Commands\Political\SendPoliticalHourlyProductionReportCommand::class,
 
-        \App\Console\Commands\Publishing\SendPublishinglHourlyProductionReportCommand::class,
+        \App\Console\Commands\Publishing\SendPublishingHourlyProductionReportCommand::class,
 
         \App\Console\Commands\General\SendGeneralDailyProductionReportCommand::class,
 
-        \App\Console\Commands\Wow\SendWowDailyReportCommand::class,
+        // \App\Console\Commands\Wow\SendWowDailyReportCommand::class,
 
         \App\Console\Commands\EmployeesHired::class,
-
         \App\Console\Commands\EmployeesTerminated::class,
         \App\Console\Commands\FeedSchedulesTable::class,
         \App\Console\Commands\FeedShiftsTableCommand::class,
@@ -68,36 +54,10 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('dainsys:general-rc-production-report --team=ECC')->dailyAt('05:25')->timezone('America/New_York');
 
-        // $schedule->command('dainsys:capillus-send-flash-report')->twiceDaily(0, 3)->timezone('America/New_York');
-        // $schedule->command('dainsys:capillus-send-flash-report')->twiceDaily(6, 9)->timezone('America/New_York');
-        // $schedule->command('dainsys:capillus-send-flash-report')->twiceDaily(12, 15)->timezone('America/New_York');
-        // $schedule->command('dainsys:capillus-send-flash-report')->twiceDaily(18, 21)->timezone('America/New_York');
-
-
-        // $schedule->command('dainsys:capillus-send-agent-report')->dailyAt('05:55')->timezone('America/New_York');
-
-        // $schedule->command('dainsys:capillus-pull-daily-performance-data')->dailyAt('05:45')->timezone('America/New_York');
-        // $schedule->command('dainsys:capillus-send-daily-performance-report')->dailyAt('06:00')->timezone('America/New_York');
-
-        // $schedule->command('dainsys:capillus-send-agent-call-data-dump-report')->dailyAt('06:10')->timezone('America/New_York');
-
-        // $schedule->command('dainsys:capillus-send-daily-leads-report')->dailyAt('03:00')->timezone('America/New_York');
-
-        // $schedule->command('dainsys:capillus-send-calls-type-report')->dailyAt('03:30')->timezone('America/New_York');
-
-        // $schedule->command('dainsys:because-send-flash-report')->twiceDaily(0, 3)->timezone('America/New_York');
-        // $schedule->command('dainsys:because-send-flash-report')->twiceDaily(6, 9)->timezone('America/New_York');
-        // $schedule->command('dainsys:because-send-flash-report')->twiceDaily(12, 15)->timezone('America/New_York');
-        // $schedule->command('dainsys:because-send-flash-report')->twiceDaily(18, 21)->timezone('America/New_York');
-        // $schedule->command('dainsys:because-pull-daily-performance-data')->dailyAt('06:35')->timezone('America/New_York');
-        // $schedule->command('dainsys:because-send-daily-performance-report')->dailyAt('06:55')->timezone('America/New_York');
-
         $schedule->command('dainsys:political-send-hourly-flash')->hourly()->timezone('America/New_York');
         $schedule->command('dainsys:political-send-hourly-production-report')->hourlyAt(59)->timezone('America/New_York');
 
         $schedule->command('dainsys:publishing-send-hourly-production-report')->hourlyAt(58)->timezone('America/New_York');
-
-        // $schedule->command('dainsys:wow-daily-report')->dailyAt('07:00')->timezone('America/New_York');
 
         $schedule->command('backup:run')->dailyAt('21:15')->timezone('America/New_York');
         $schedule->command('backup:clean')->dailyAt('22:15')->timezone('America/New_York');
