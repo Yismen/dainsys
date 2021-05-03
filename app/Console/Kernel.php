@@ -19,6 +19,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\Publishing\SendPublishingHourlyProductionReportCommand::class,
 
         \App\Console\Commands\General\SendGeneralDailyProductionReportCommand::class,
+        \App\Console\Commands\General\SendGeneralDailyRawReportCommand::class,
 
         // \App\Console\Commands\Wow\SendWowDailyReportCommand::class,
 
@@ -53,6 +54,7 @@ class Kernel extends ConsoleKernel
 
 
         $schedule->command('dainsys:general-rc-production-report --team=ECC')->dailyAt('05:25')->timezone('America/New_York');
+        $schedule->command('dainsys:general-rc-raw-report --team=ECC')->dailyAt('05:45')->timezone('America/New_York');
 
         $schedule->command('dainsys:political-send-hourly-flash')->hourly()->timezone('America/New_York');
         $schedule->command('dainsys:political-send-hourly-production-report')->hourlyAt(59)->timezone('America/New_York');

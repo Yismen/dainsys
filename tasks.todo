@@ -1,4 +1,8 @@
 Tasks:
+  ✔ Create Session raw report @done (5/3/2021, 3:54:22 PM)
+    ✔ Create a command @done (5/3/2021, 3:54:18 PM)
+    ✔ Schedule the command for daily @done (5/3/2021, 3:54:28 PM)
+    ✔ Send to specific distro @done (5/3/2021, 3:54:26 PM)
   ✔ Users @done (3/21/2019, 3:03:10 PM)
     ✔ Has many permissions thru Roles @done (3/21/2019, 3:03:11 PM)
     ✔ Has many roles @done (3/21/2019, 3:03:11 PM)
