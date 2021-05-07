@@ -16,4 +16,16 @@ interface HourlyProductionReportInterface
      * @return object
      */
     public function getDispositions(): object;
+    /**
+     * Fake the data to avoid api call
+     *
+     * @return object
+     */
+    public function getFakedData(): array;
+    /**
+     * Fake the dispositions to avoid api call
+     *
+     * @return object
+     */
+    public function getFakedDispositions(): array;
 }
