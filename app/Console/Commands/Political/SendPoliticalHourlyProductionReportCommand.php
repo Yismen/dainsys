@@ -23,6 +23,10 @@ class SendPoliticalHourlyProductionReportCommand extends Command
      * @var string
      */
     protected $description = 'Send a Hourly Production report to Political distro';
+    /**
+     * The config path to the distribution list;
+     */
+    protected string $distro_config_path = 'dainsys.political.distro';
 
     /**
      * Create a new command instance.

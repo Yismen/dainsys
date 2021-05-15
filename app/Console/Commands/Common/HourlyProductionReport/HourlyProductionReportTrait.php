@@ -101,7 +101,7 @@ trait HourlyProductionReportTrait
      */
     protected function getDistroList(): array
     {
-        $list = config('dainsys.publishing.distro') ??
+        $list = config($this->distro_config_path) ??
             abort(404, "Invalid distro list. Set it up in the .env, separated by pipe (|).");
 
         return explode("|", $list);

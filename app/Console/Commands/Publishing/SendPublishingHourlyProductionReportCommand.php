@@ -23,6 +23,10 @@ class SendPublishingHourlyProductionReportCommand extends Command
      * @var string
      */
     protected $description = 'Send a Hourly Production report to Publishing distro';
+    /**
+     * The config path to the distribution list;
+     */
+    protected string $distro_config_path = 'dainsys.publishing.distro';
 
     /**
      * Create a new command instance.
