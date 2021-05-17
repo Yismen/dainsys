@@ -11,6 +11,7 @@
             <th>Dial Group</th>
             <th>Login Time</th>
             <th>Work Time</th>
+            <th>Lunch Time</th>
         </tr>
 
         @foreach ($data as $row)
@@ -23,6 +24,7 @@
                 <td>{{ $row->dial_group }}</td>
                 <td>{{ $row->login_time }}</td>
                 <td>{{ $row->work_time }}</td>
+                <td>{{ $row->lunch_time }}</td>
             </tr>
         @endforeach
     </tbody>
