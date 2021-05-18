@@ -13,12 +13,13 @@
     
     [ -d {{ $releaseFolder }} ] || mkdir {{ $releaseFolder }}
     cp -rvfp {{ $projectFolder . "/*" }} {{ $releaseFolder }}
-    {{-- cp -rvfp {{ $projectFolder . "/.env" }} {{ $releaseFolder }} --}}
-    {{-- chmod -R 775 {{ $releaseFolder.'/storage' }} --}}
-    {{-- chmod -R 775 {{ $releaseFolder.'/bootstrap/cache' }} --}}
+    cp -rvfp {{ $projectFolder . "/.env" }} {{ $releaseFolder }} 
+    sudo chown -R :www-data {{ $releaseFolder }} 
+    sudo chmod -R 775 {{ $releaseFolder.'/storage' }}
+    sudo chmod -R 775 {{ $releaseFolder.'/bootstrap/cache' }}
 
     {{-- cd {{ $releaseFolder }} --}}
-    {{-- php artisan optimize --}}
+    {{-- php artisan optimize
 
     ln -sfn {{ $releaseFolder }} {{ $serverLink }}
     
