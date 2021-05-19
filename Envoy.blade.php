@@ -8,7 +8,7 @@
     $branch = 'master';
 @endsetup
 
-@task('deploy', ['on' => 'web2'])    
+@task('deploy', ['on' => 'web'])    
     ln -sfn {{ $projectFolder }} {{ $serverLink }}
     
     [ -d {{ $releaseFolder }} ] || mkdir {{ $releaseFolder }}
