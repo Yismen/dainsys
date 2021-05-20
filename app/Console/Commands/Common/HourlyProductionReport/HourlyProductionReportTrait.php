@@ -81,7 +81,10 @@ trait HourlyProductionReportTrait
 
         if (count($this->repo->data) > 0) {
             Excel::store(
-                new HourlyProductionReportExport($this->repo),
+                new HourlyProductionReportExport(
+                    $this->repo,
+                    $this->client
+                ),
                 $file_name
             );
 

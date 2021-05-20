@@ -28,6 +28,8 @@ class SendPoliticalHourlyProductionReportCommand extends Command
      */
     protected string $distro_config_path = 'dainsys.political.distro';
 
+    protected string $client = 'Political';
+
     /**
      * Create a new command instance.
      *

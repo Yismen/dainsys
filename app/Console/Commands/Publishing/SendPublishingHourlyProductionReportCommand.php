@@ -28,6 +28,8 @@ class SendPublishingHourlyProductionReportCommand extends Command
      */
     protected string $distro_config_path = 'dainsys.publishing.distro';
 
+    protected string $client = 'Publishing';
+
     /**
      * Create a new command instance.
      *
