@@ -31,7 +31,6 @@ class OvernightHourController extends Controller
      */
     public function index(OvernightHourRepo $overnight_repo)
     {
-
         if (!request()->ajax()) {
             $employees = $overnight_repo->employees()->get();
 
@@ -50,7 +49,8 @@ class OvernightHourController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { }
+    {
+    }
 
     /**
      * Store a newly created resource in storage.

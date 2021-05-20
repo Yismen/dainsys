@@ -26,7 +26,7 @@
 
         <div class="form-group">
             <div class="col-sm-10 col-sm-offset-2">
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit" class="btn btn-primary">Import File</button>
             </div>
         </div>
 
