@@ -75,19 +75,21 @@ class PerformanceRepository
 
     public function datatables()
     {
-        return $this->performance
+        return Performance::query()
             ->with(
-                ['campaign.project', 'supervisor', 'employee' => function ($query) {
-                    return $query->with('supervisor', 'termination');
-                }]
+                [
+                    'campaign.project',
+                    'supervisor',
+                    'employee'
+                ]
             );
     }
 
     protected function baseQeury()
     {
         return Performance::filter(request()->all())
-        ->select(
-            DB::raw('
+            ->select(
+                DB::raw('
                 sum(revenue) as revenue,
                 sum(login_time) as login_time,
                 sum(revenue) / sum(login_time) as rph,
@@ -97,7 +99,7 @@ class PerformanceRepository
                 sum(production_time) / sum(login_time) as efficiency,
                 sum(sph_goal * production_time) / sum(production_time) as sph_goal
             ')
-        )
-        ->orderBy('date');
+            )
+            ->orderBy('date');
     }
 }

@@ -81,7 +81,6 @@
                     }},
                     {data: 'file_name', name: 'file_name'},                    
                     {data: 'campaign.project', name: 'campaign.project.name', orderable: false, render: function(data, type, full) {
-                        // console.table(data,full)
                         return data.name
                     }},
                     {data: 'created_at', name: 'created_at', render: function(data, type, full) {
