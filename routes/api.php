@@ -48,7 +48,9 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/blackhawk/de/management', 'Blackhawk\DE\ManagementController@dashboardData');
 
     Route::get('holidays', 'Api\HolidayController@index');
-    
+
+    Route::get('overnight_hours', 'Api\OvernightHourController@index'); // use get request to limit search date=date||months=0||days=0
+
     // Route::get('notifications/unread', 'Api\NotificationsController@unread');
     // Route::post('notifications/mark-all-as-read', 'Api\NotificationsController@markAllAsRead');
     // Route::get('notifications/show/{notification}', 'Api\NotificationsController@show');

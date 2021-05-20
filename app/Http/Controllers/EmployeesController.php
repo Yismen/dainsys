@@ -139,10 +139,10 @@ class EmployeesController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'hire_date' => 'required|date',
-            'personal_id' => 'required_if:passport,|nullable|digits:11|unique:employees,personal_id,'.$employee->id,
-            'passport' => 'required_if:personal_id,|nullable|size:10|unique:employees,passport,'.$employee->id,
+            'personal_id' => 'required_if:passport,|nullable|digits:11|unique:employees,personal_id,' . $employee->id,
+            'passport' => 'required_if:personal_id,|nullable|size:10|unique:employees,passport,' . $employee->id,
             'date_of_birth' => 'required|date',
-            'cellphone_number' => 'required|digits:10|unique:employees,cellphone_number,'.$employee->id,
+            'cellphone_number' => 'required|digits:10|unique:employees,cellphone_number,' . $employee->id,
             'secondary_phone' => 'nullable|digits:10',
             'gender_id' => 'required|exists:genders,id',
             'site_id' => 'required|exists:sites,id',
@@ -178,38 +178,38 @@ class EmployeesController extends Controller
     {
         return DataTables::of(
             Employee::query()
-            ->with([
-                'position.department',
-                'position.payment_type',
-                'project',
-                'termination',
-                'punch',
-                'site'
-            ])
+                ->with([
+                    'position.department',
+                    'position.payment_type',
+                    'project',
+                    'termination',
+                    'punch',
+                    'site'
+                ])
         )->filterColumn('status', function ($query, $keyword) {
             $method = $this->getScope($keyword);
 
             $query->$method();
         }, true)
-        ->editColumn('hire_date', function ($query) {
-            return $query->hire_date->format('d-M-Y');
-        })
-        ->editColumn('status', function ($query) {
-            return $query->active ? 'Active' : 'Inactive';
-        })
-        ->addColumn('edit', function ($query) {
-            return route('admin.employees.edit', $query->id);
-        })
-        ->toJson(true);
+            ->editColumn('hire_date', function ($query) {
+                return $query->hire_date->format('d-M-Y');
+            })
+            ->editColumn('status', function ($query) {
+                return $query->active ? 'Active' : 'Inactive';
+            })
+            ->addColumn('edit', function ($query) {
+                return route('admin.employees.edit', $query->id);
+            })
+            ->toJson(true);
     }
 
     protected function getScope($keyword)
-    {        
-        if(Str::startsWith($keyword, "active")) {
+    {
+        if (Str::startsWith($keyword, "active")) {
             return "actives";
-        }   
+        }
 
-        if(Str::startsWith($keyword, "inactive")) {
+        if (Str::startsWith($keyword, "inactive")) {
             return "inactives";
         }
 

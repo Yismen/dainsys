@@ -2,11 +2,12 @@
 
 namespace App;
 
-use Carbon\Carbon;
 use App\DainsysModel as Model;
+use App\ModelFilters\FilterableTrait;
 
 class OvernightHour extends Model
 {
+    use FilterableTrait;
     /**
      * Convert fields to Carbon Intances
      */
