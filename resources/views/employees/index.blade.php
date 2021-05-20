@@ -132,11 +132,11 @@
                         
                         return `${position}, ${project}, @ ${site}`;
                     }},
-                    {data: 'project', name: 'project.name', orderable: false, visible:false, render: function(data, type, full) {
-                        return data.name
+                    {data: 'project', name: 'project.name', orderable: false, visible:true, render: function(data, type, full) {
+                        return data ? data.name : '';
                     }},
                     {data: 'site', name: 'site.name', orderable: false, visible:false, render: function(data, type, full) {
-                        return data.name
+                        return data ? data.name : '';
                     }},
                     {data: 'personal_id', name: 'personal_id', render: function(data, type, full) {
                         return data ? data : full.passport
