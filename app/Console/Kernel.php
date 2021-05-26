@@ -30,6 +30,8 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\MigrationStatus::class,
         \App\Console\Commands\UpdateSlugs::class,
         \App\Console\Commands\DainsysInit::class,
+
+        \App\Console\Commands\Inbound\SendDailySummaryCommand::class
     ];
 
     /**
