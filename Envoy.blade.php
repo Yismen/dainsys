@@ -17,6 +17,8 @@
 @endtask
 
 @task('copy-project-to-release-folder', ['on' => 'web'])  
+    ln -sfn {{ $projectFolder }} {{ $serverLink }}
+
     [ -d {{ $releaseFolder }} ] || mkdir {{ $releaseFolder }}
     cd {{ $releaseFolder }}
     {{-- cp -rvfp {{ $projectFolder . "/*" }} {{ $releaseFolder }} --}}
@@ -25,6 +27,13 @@
     chown -R :www-data {{ $releaseFolder }}
     chmod -R 775 {{ $releaseFolder.'/storage' }}
     chmod -R 775 {{ $releaseFolder.'/bootstrap/cache' }}
+    
+    composer install --no-dev -o -n
+    php artisan migrate --force
+    npm install && npm run production
+    php artisan dainsys:laravel-logs laravel- --clear --keep=8
+    php artisan cache:clear
+    php artisan optimize
     
     ln -sfn {{ $releaseFolder }} {{ $serverLink }}
 @endtask
@@ -36,14 +45,21 @@
     git pull origin {{ $branch }} --force
     git checkout {{ $branch }}
 
-    ln -sfn {{ $projectFolder }} {{ $serverLink }}
-@endtask
-
-@after
     composer install --no-dev -o -n
     php artisan migrate --force
     npm install && npm run production
     php artisan dainsys:laravel-logs laravel- --clear --keep=8
     php artisan cache:clear
     php artisan optimize
-@endafter
+
+    ln -sfn {{ $projectFolder }} {{ $serverLink }}
+@endtask
+
+{{-- @after
+    composer install --no-dev -o -n
+    php artisan migrate --force
+    npm install && npm run production
+    php artisan dainsys:laravel-logs laravel- --clear --keep=8
+    php artisan cache:clear
+    php artisan optimize
+@endafter --}}
