@@ -10,6 +10,7 @@
 @story('deploy')
     update-locally
     copy-project-to-release-folder
+    deploy-to-production-folder
 @endstory
 
 @task('update-locally', ['on' => 'local'])
