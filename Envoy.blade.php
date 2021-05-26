@@ -9,17 +9,21 @@
 @endsetup
 
 @task('deploy', ['on' => 'web'])    
-    ln -sfn {{ $projectFolder }} {{ $serverLink }}
     
+    cd {{ $releaseFolder }}
+    {{-- ln -sfn {{ $projectFolder }} {{ $serverLink }} --}}
+
     [ -d {{ $releaseFolder }} ] || mkdir {{ $releaseFolder }}
-    cp -rvfp {{ $projectFolder . "/*" }} {{ $releaseFolder }}
-    {{-- cp -rvfp {{ $projectFolder . "/.env" }} {{ $releaseFolder }} --}}
+    {{-- cp -rvfp {{ $projectFolder . "/*" }} {{ $releaseFolder }} --}}
+    cp -rvfp {{ $projectFolder }}/[^node_modules][^vendor]* {{ $releaseFolder }}
+    cp -rvfp {{ $projectFolder . "/.env" }} {{ $releaseFolder }}
     chmod -R 775 {{ $releaseFolder.'/storage' }}
     chmod -R 775 {{ $releaseFolder.'/bootstrap/cache' }}
+    composer install --no-dev -o -n
 
-    {{-- cd {{ $releaseFolder }} --}}
     php artisan optimize
-
+    npm install && npm run production
+    
     ln -sfn {{ $releaseFolder }} {{ $serverLink }}
     
     cd {{ $projectFolder }}
@@ -28,8 +32,7 @@
     git checkout {{ $branch }}
     composer install --no-dev -o -n
     php artisan migrate --force
-    npm install
-    npm run production
+    npm install && npm run production
     php artisan dainsys:laravel-logs laravel- --clear --keep=8
     php artisan cache:clear
     php artisan optimize
