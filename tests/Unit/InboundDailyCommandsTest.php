@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Console\Commands\General\DailyProductionReport\GeneralDailyProductionReportRepository;
+use App\Console\Commands\Inbound\Support\InboundDataRepository;
 use App\Console\Commands\Inbound\Support\InboundSummaryExport;
 use App\Console\Commands\Inbound\Support\InboundSummaryRepository;
 use App\Mail\CommandsBaseMail;
@@ -18,9 +19,12 @@ class InboundDailyCommandsTest extends TestCase
     /** @test */
     public function daily_summary_command_exists()
     {
+        Excel::fake();
+        Mail::fake();
+
         $this->artisan('inbound:send-daily-summary')
             ->assertExitCode(0)
-            ->expectsOutput("Daily Inbound Summary Sent");
+            ->expectsOutput("Kipany Inbound Daily Report sent!");
     }
 
     /** @test */
@@ -38,13 +42,15 @@ class InboundDailyCommandsTest extends TestCase
     }
 
     /** @test */
-    public function repository_returns_data()
-    {
-        // $repo = new InboundSummaryRepository('2021-05-25', '2021-05-25');
-        // $repo->getByGates();
+    // public function repository_returns_data()
+    // {
+    // Excel::fake();
+    // Mail::fake();
+    // $repo = new InboundSummaryRepository('2021-05-25', '2021-05-25');
+    // $repo->getByGates();
 
-        // $this->assertCount(2, $repo->data);;
-    }
+    // $this->assertCount(2, $repo->data);;
+    // }
 
     /** @test */
     public function excel_file_is_stored()
@@ -53,10 +59,20 @@ class InboundDailyCommandsTest extends TestCase
 
         $subject = "Fake Name";
         $file_name = "{$subject}.xlsx";
+        $repo['data'] = InboundDataRepository::getData(
+            '2021-05-25',
+            '2021-05-25',
+            $fields = [
+                'by_employee',
+                'dispositions_by_gate',
+                'dispositions_by_employee',
+                'hours_data',
+            ]
+        );
 
         Excel::store(
             new InboundSummaryExport(
-                new InboundSummaryRepository('2021-05-25', '2021-05-25')
+                $repo['data']
             ),
             $file_name
         );
@@ -76,9 +92,20 @@ class InboundDailyCommandsTest extends TestCase
         $file_name = "{$subject}.xlsx";
         $recipient = 'someone@fake.email';
 
+        $repo['data'] = InboundDataRepository::getData(
+            '2021-05-25',
+            '2021-05-25',
+            $fields = [
+                'by_employee',
+                'dispositions_by_gate',
+                'dispositions_by_employee',
+                'hours_data',
+            ]
+        );
+
         Excel::store(
             new InboundSummaryExport(
-                new InboundSummaryRepository('2021-05-25', '2021-05-25')
+                $repo['data']
             ),
             $file_name
         );
