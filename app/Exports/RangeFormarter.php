@@ -40,7 +40,7 @@ class RangeFormarter
         return $this;
     }
 
-    
+
 
     public function setColumnsWidth(string $from_column, string $to_column)
     {
@@ -56,7 +56,7 @@ class RangeFormarter
     {
         $this->sheet->getStyle($range)
             ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
-            
+
         $this->sheet
             ->getStyle($range)
             ->applyFromArray([
@@ -91,7 +91,7 @@ class RangeFormarter
     {
         $this->sheet->getStyle($range)
             ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-            
+
         $this->sheet
             ->getStyle($range)
             ->applyFromArray([
@@ -123,11 +123,11 @@ class RangeFormarter
         return $this;
     }
 
-    public function formatHeaderRow(string $range, $header_row = 2)
+    public function formatHeaderRow(string $range, $header_row = 2, $row_height = 32)
     {
         $this->sheet->getStyle($range)->getAlignment()->setWrapText(true);
 
-        $this->sheet->getRowDimension($header_row)->setRowHeight(32);
+        $this->sheet->getRowDimension($header_row)->setRowHeight($row_height);
 
         $this->sheet->getStyle($range)
             ->applyFromArray([

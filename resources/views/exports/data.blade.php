@@ -22,7 +22,7 @@
 
         @foreach ($data as $row)
             <tr>
-                 <td>{{ $row->Team }}</td>
+                <td>{{ $row->Team }}</td>
                 <td>{{ $row->dial_group }}</td>
                 <td>{{ $row->agent_name }}</td>
                 <td>{{ $row->date_from }}</td>
