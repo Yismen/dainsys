@@ -30,10 +30,12 @@ class InboundSummaryExport implements WithMultipleSheets
         $sheets = [];
 
         foreach ($this->repo['data'] as $key => $value) {
-            $class_name = Str::studly($key);
-            $sheetClass = "\\App\\Console\\Commands\\Inbound\\Sheets\\{$class_name}";
+            if (count($value) > 0) {
+                $class_name = Str::studly($key);
+                $sheetClass = "\\App\\Console\\Commands\\Inbound\\Sheets\\{$class_name}";
 
-            $sheets[] = new $sheetClass($value, $class_name);
+                $sheets[] = new $sheetClass($value, $class_name);
+            };
         }
 
         return $sheets;

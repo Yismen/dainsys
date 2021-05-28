@@ -22,14 +22,14 @@ class SendDailySummaryCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'inbound:send-daily-summary {--date} {--from}';
+    protected $signature = 'inbound:send-daily-summary {--date=} {--from=}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Send ';
+    protected $description = 'Send a daily summary report for Kipany inbound calls';
     /**
      * The config path to the distribution list;
      */
@@ -48,19 +48,17 @@ class SendDailySummaryCommand extends Command
     public function __construct()
     {
         parent::__construct();
-
-        // $this->mail_subject = "Political Hourly Production Report";
-
-        // $this->campaign_name_prefix = 'POL';
-
-        // $this->distro = $this->getDistroList();
     }
 
+    /**
+     * Handle the command
+     *
+     * @return void
+     */
     public function handle()
     {
-        $this->info('Daily Inbound Summary Sent');
         $date = now()->subDay();
-        $mail_subject = 'Kipany Daily Report';
+        $mail_subject = 'Kipany Inbound Daily Report';
         $file_name = $mail_subject . " " . now()->format('Ymd_His') . ".xlsx";
         $distro = $this->getDistroList();
 
@@ -80,25 +78,28 @@ class SendDailySummaryCommand extends Command
                 'by_employee',
                 'dispositions_by_gate',
                 'dispositions_by_employee',
-                // 'hours_data',
+                'hours_data',
             ]
         );
 
-        Excel::store(
-            new InboundSummaryExport(
-                $repo,
-                $this->client
-            ),
-            $file_name
-        );
+        if ($this->hasAnyData((array) $repo['data'])) {
+            Excel::store(
+                new InboundSummaryExport(
+                    $repo,
+                    $this->client
+                ),
+                $file_name
+            );
 
-        Mail::send(
-            new CommandsBaseMail($distro, $file_name, $mail_subject)
-        );
+            Mail::send(
+                new CommandsBaseMail($distro, $file_name, $mail_subject)
+            );
 
-        $this->report_message = "{$mail_subject} sent!";
+            $this->info("{$mail_subject} sent!");
+        } else {
+            $this->warn('No data for this date. Nothing sent.');
+        }
     }
-
 
     /**
      * Get the distribution list from the config and explode it into an array
@@ -111,5 +112,22 @@ class SendDailySummaryCommand extends Command
             abort(404, "Invalid distro list. Set it up in the .env, separated by pipe (|).");
 
         return explode("|", $list);
+    }
+
+    /**
+     * Check if any of the data arrays have at least one row.
+     *
+     * @param array $data
+     * @return boolean
+     */
+    protected function hasAnyData(array $data): bool
+    {
+        foreach ($data as $value) {
+            if (count($value) > 0 || !empty($value)) {
+                return true;
+            };
+        }
+
+        return false;
     }
 }
