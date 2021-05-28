@@ -22,7 +22,7 @@
                 <td>{{ $row->gate_name }}</td>
                 <td>{{ $row->agent_disposition }}</td>
                 <td>{{ $row->total_calls > 0 ? $row->duration_time * 3600 / $row->total_calls : 0 }}</td>
-                <td>{{ $row->total_calls > 0 ? $row->duration_time * 3600 / $row->total_calls : 0 }}</td>
+                <td>{{ $row->total_calls > 0 ? $row->agent_duration_time * 3600 / $row->total_calls : 0 }}</td>
                 <td>{{ $row->total_calls > 0 ? $row->queue_time * 3600 / $row->total_calls : 0 }}</td>
                 <td>{{ $row->total_calls > 0 ? $row->wrap_time * 3600 / $row->total_calls : 0 }}</td>
                 <td>{{ $row->total_calls > 0 ? $row->on_hold_time * 3600 / $row->total_calls : 0 }}</td>

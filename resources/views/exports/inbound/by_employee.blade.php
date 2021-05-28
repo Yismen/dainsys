@@ -24,7 +24,7 @@
                 <td>{{ $row->agent_group_name }}</td>
                 <td>{{ trim("{$row->agent_fname} {$row->agent_lname}") }}</td>
                 <td>{{ $row->total_calls > 0 ? $row->duration_time * 3600 / $row->total_calls : 0 }}</td>
-                <td>{{ $row->total_calls > 0 ? $row->duration_time * 3600 / $row->total_calls : 0 }}</td>
+                <td>{{ $row->total_calls > 0 ? $row->agent_duration_time * 3600 / $row->total_calls : 0 }}</td>
                 <td>{{ $row->total_calls > 0 ? $row->queue_time * 3600 / $row->total_calls : 0 }}</td>
                 <td>{{ $row->total_calls > 0 ? $row->wrap_time * 3600 / $row->total_calls : 0 }}</td>
                 <td>{{ $row->total_calls > 0 ? $row->on_hold_time * 3600 / $row->total_calls : 0 }}</td>
