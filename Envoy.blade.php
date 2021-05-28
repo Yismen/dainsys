@@ -30,8 +30,8 @@
     chmod -R 775 {{ $releaseFolder.'/bootstrap/cache' }}
     
     composer install --no-dev -o -n
-    php artisan migrate --force
-    npm install && npm run production
+    {{-- php artisan migrate --force --}}
+    {{-- npm install && npm run production --}}
     php artisan dainsys:laravel-logs laravel- --clear --keep=8
     php artisan cache:clear
     php artisan optimize
