@@ -68,10 +68,10 @@ return [
 
     'capillus' => [
         /**
-        * Capillus Distro List
-        *
-        * This must be set in the env and have to be separated by the pipe symbol (|)
-        */
+         * Capillus Distro List
+         *
+         * This must be set in the env and have to be separated by the pipe symbol (|)
+         */
         'distro' => env('CAPILLUS_FLASH_DISTRO'),
 
         /**
@@ -85,10 +85,10 @@ return [
 
     'because' => [
         /**
-        * Capillus Distro List
-        *
-        * This must be set in the env and have to be separated by the pipe symbol (|)
-        */
+         * Capillus Distro List
+         *
+         * This must be set in the env and have to be separated by the pipe symbol (|)
+         */
         'distro' => env('BECAUSE_FLASH_DISTRO'),
 
         /**
@@ -109,11 +109,15 @@ return [
     ],
 
     'workforce' => [
-        'distro' => env('WORKFORCE_FLASH_DISTRO', 'yjorge@eccocorpbpo.com|workforce.support@eccocorpbpo.com'),
+        'distro' => env('WORKFORCE_FLASH_DISTRO'),
     ],
 
     'wow' => [
         'distro' => env('WOW_MAILING_DISTRO'),
+    ],
+
+    'inbound' => [
+        'distro' => env('INBOUND_MAILING_DISTRO'),
     ],
 
     'dashboards' => [
