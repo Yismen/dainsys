@@ -63,6 +63,8 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('dainsys:publishing-send-hourly-production-report')->hourlyAt(58)->timezone('America/New_York');
 
+        $schedule->command('inbound:send-daily-summary')->dailyAt('06:20')->timezone('America/New_York');
+
         $schedule->command('backup:run')->dailyAt('21:15')->timezone('America/New_York');
         $schedule->command('backup:clean')->dailyAt('22:15')->timezone('America/New_York');
     }
