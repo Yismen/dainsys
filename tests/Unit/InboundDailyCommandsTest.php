@@ -2,14 +2,10 @@
 
 namespace Tests\Unit;
 
-use App\Console\Commands\General\DailyProductionReport\GeneralDailyProductionReportRepository;
 use App\Console\Commands\Inbound\Support\InboundDataRepository;
 use App\Console\Commands\Inbound\Support\InboundSummaryExport;
-use App\Console\Commands\Inbound\Support\InboundSummaryRepository;
 use App\Mail\CommandsBaseMail;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -63,10 +59,10 @@ class InboundDailyCommandsTest extends TestCase
             '2021-05-25',
             '2021-05-25',
             $fields = [
-                'by_employee',
-                'dispositions_by_gate',
-                'dispositions_by_employee',
-                'hours_data',
+                \App\Console\Commands\Inbound\Support\DataParsers\ByEmployee::class,
+                \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByGate::class,
+                \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByEmployee::class,
+                \App\Console\Commands\Inbound\Support\DataParsers\HoursData::class,
             ]
         );
 
@@ -96,10 +92,10 @@ class InboundDailyCommandsTest extends TestCase
             '2021-05-25',
             '2021-05-25',
             $fields = [
-                'by_employee',
-                'dispositions_by_gate',
-                'dispositions_by_employee',
-                'hours_data',
+                \App\Console\Commands\Inbound\Support\DataParsers\ByEmployee::class,
+                \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByGate::class,
+                \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByEmployee::class,
+                \App\Console\Commands\Inbound\Support\DataParsers\HoursData::class,
             ]
         );
 
