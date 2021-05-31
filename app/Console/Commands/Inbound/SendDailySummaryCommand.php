@@ -2,21 +2,18 @@
 
 namespace App\Console\Commands\Inbound;
 
-use App\Console\Commands\Common\HourlyProductionReport\HourlyProductionReportTrait;
 use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
 use App\Console\Commands\Inbound\Support\InboundDataRepository;
 use App\Console\Commands\Inbound\Support\InboundSummaryExport;
-use App\Console\Commands\Inbound\Support\InboundSummaryRepository;
 use App\Mail\CommandsBaseMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
-use phpDocumentor\Reflection\Types\This;
 
 class SendDailySummaryCommand extends Command
 {
     use NotifyUsersOnFailedCommandsTrait;
-    // use HourlyProductionReportTrait;
+
     /**
      * The name and signature of the console command.
      *
@@ -74,11 +71,11 @@ class SendDailySummaryCommand extends Command
         $repo['data'] = InboundDataRepository::getData(
             $this->date_from,
             $this->date_to,
-            $fields = [
-                'by_employee',
-                'dispositions_by_gate',
-                'dispositions_by_employee',
-                'hours_data',
+            $data_parsers = [
+                \App\Console\Commands\Inbound\Support\DataParsers\ByEmployee::class,
+                \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByGate::class,
+                \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByEmployee::class,
+                \App\Console\Commands\Inbound\Support\DataParsers\HoursData::class,
             ]
         );
 

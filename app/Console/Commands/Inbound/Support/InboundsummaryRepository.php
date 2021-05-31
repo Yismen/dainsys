@@ -20,7 +20,7 @@ class InboundSummaryRepository extends RingCentralConnection implements InboundS
 
     protected string $agent_group_name;
 
-    public function __construct($date_from, $date_to, $gate = '%', $agent_group_name = 'ECC%')
+    public function __construct($date_from, $date_to, $agent_group_name = 'ECC%', $gate = '%')
     {
         $this->date_from = $date_from;
         $this->date_to = $date_to;

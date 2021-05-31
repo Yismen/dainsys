@@ -105,7 +105,7 @@ class ModuleActionsTest extends TestCase
 
         $collection = Holiday::sinceManyMonthsAgo($months - 1)->get();
 
-        $this->assertFalse($collection->contains('name', $holiday->name));
+        $this->assertTrue($collection->contains('name', $holiday->name));
     }
 
     /** @test */
