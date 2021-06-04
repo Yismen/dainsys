@@ -62,12 +62,12 @@
                 let dTable = $('#performances-table').DataTable({
                     "processing": true,
                     "serverSide": true,
-                    "searchDelay": 2000,
+                    searchDelay: 2000,
                     // "scrollY": "600px",
                     // "scrollCollapse": true,
                     "pageLength": 15,
                     "lengthMenu": [ [15, 30, 75], [15, 30, 75] ],
-                    "searching": { "regex": true },
+                    "search": { "regex": true },
                     "language": {
                         "processing": "<i class='fa fa-spinner'></i> Loading, Please wait!"
                     },

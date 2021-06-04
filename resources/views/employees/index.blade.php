@@ -93,7 +93,7 @@
                 // "scrollCollapse": true,
                 "pageLength": 25,
                 "lengthMenu": [ [25, 100, 200, -1], [25, 100, 200, "All"] ],
-                "searching": { "regex": true },
+                "search": { "regex": true },
                 "createdRow": function( row, data, dataIndex){
                     if(! data.active){
                         $(row).addClass('danger');
