@@ -80,7 +80,7 @@ class PerformanceRepository
                 [
                     'campaign.project',
                     'supervisor',
-                    'employee'
+                    'employee.termination'
                 ]
             );
     }

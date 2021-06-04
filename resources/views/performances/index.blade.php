@@ -62,7 +62,7 @@
                 let dTable = $('#performances-table').DataTable({
                     "processing": true,
                     "serverSide": true,
-                    "searchDelay": 1000,
+                    "searchDelay": 1500,
                     // "scrollY": "600px",
                     // "scrollCollapse": true,
                     "pageLength": 25,
