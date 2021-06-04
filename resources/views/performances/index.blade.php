@@ -62,11 +62,11 @@
                 let dTable = $('#performances-table').DataTable({
                     "processing": true,
                     "serverSide": true,
-                    "searchDelay": 1500,
+                    "searchDelay": 2000,
                     // "scrollY": "600px",
                     // "scrollCollapse": true,
-                    "pageLength": 25,
-                    "lengthMenu": [ [25, 100, 200], [25, 100, 200] ],
+                    "pageLength": 15,
+                    "lengthMenu": [ [15, 30, 75], [15, 30, 75] ],
                     "searching": { "regex": true },
                     "language": {
                         "processing": "<i class='fa fa-spinner'></i> Loading, Please wait!"
@@ -83,13 +83,13 @@
                         {data: 'employee', name: 'employee.first_name', orderable:false, render: function(data, type, full){                           
                             return '<a href="/admin/performances/' + full.id +'" title="Performance Details">' + (data.full_name) + '</a>'
                         }},
-                        {data: 'employee', name: 'employee.second_first_name', orderable:false, visible:false, render: function(data, type, full){                           
+                        {data: 'employee', name: 'employee.second_first_name', visible:false, render: function(data, type, full){                           
                             return '<a href="/admin/performances/' + full.id +'" title="Performance Details">' + (data.full_name) + '</a>'
                         }},
-                        {data: 'employee', name: 'employee.last_name', orderable:false, visible:false, render: function(data, type, full){                           
+                        {data: 'employee', name: 'employee.last_name', visible:false, render: function(data, type, full){                           
                             return '<a href="/admin/performances/' + full.id +'" title="Performance Details">' + (data.full_name) + '</a>'
                         }},
-                        {data: 'employee', name: 'employee.second_last_name', orderable:false, visible:false, render: function(data, type, full){                           
+                        {data: 'employee', name: 'employee.second_last_name', visible:false, render: function(data, type, full){                           
                             return '<a href="/admin/performances/' + full.id +'" title="Performance Details">' + (data.full_name) + '</a>'
                         }},
                         {data: 'supervisor', name: 'supervisor.name', orderable:false, render: function(data, type, full) {
@@ -101,10 +101,10 @@
                         {data: 'campaign', name: 'campaign.name', orderable:false, render: function(data, type, full) {
                             return full.campaign ? full.campaign.name : null;
                         }},
-                        {data: 'login_time', name: 'login_time', searchable: false},
-                        {data: 'production_time', name: 'production_time', searchable: false},
-                        {data: 'transactions', name: 'transactions', searchable: false},
-                        {data: 'revenue', name: 'revenue', searchable: false},
+                        {data: 'login_time', name: 'login_time', searchable: false, orderable:false},
+                        {data: 'production_time', name: 'production_time', searchable: false, orderable:false},
+                        {data: 'transactions', name: 'transactions', searchable: false, orderable:false},
+                        {data: 'revenue', name: 'revenue', searchable: false, orderable:false},
                         {data: 'date', name: 'edit', searchable: "false", orderable: false, render: function(data, type, full) {
                             return '<a href="/admin/performances/'+full.id+'/edit"><i class="fa fa-pencil"></i> Edit</a>'
                         }},
