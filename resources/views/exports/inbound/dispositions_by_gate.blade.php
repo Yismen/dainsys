@@ -14,6 +14,7 @@
             <th>Average Wait Secs</th>
             <th>Sum Total Calls</th>
             <th>Sum Total Sales</th>
+            <th>Conversion Rate</th>
         </tr>
 
         @foreach ($data as $row)
@@ -29,6 +30,7 @@
                 <td>{{ $row->total_calls > 0 ? $row->wait_time * 3600 / $row->total_calls : 0 }}</td>
                 <td>{{ $row->total_calls }}</td>
                 <td>{{ $row->total_sales }}</td>
+                <td>{{ $row->total_calls > 0 ? number_format($row->total_sales / $row->total_calls, 2) : 0 }}</td>
             </tr>
         @endforeach
     </tbody>
