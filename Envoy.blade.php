@@ -46,6 +46,10 @@
     git pull origin {{ $branch }} --force
     git checkout {{ $branch }}
 
+    chown -R :www-data {{ $projectFolder }}
+    chmod -R 775 {{ $projectFolder.'/storage' }}
+    chmod -R 775 {{ $projectFolder.'/bootstrap/cache' }}
+
     composer install --no-dev -o -n
     php artisan migrate --force
     npm install && npm run production
