@@ -98,12 +98,11 @@ class ModuleActionsTest extends TestCase
     {
         $months = 6;
         $date = Carbon::now()->subMonths($months)->startOfMonth();
-        $this->disableExceptionHandling();
         $holiday = create('App\Holiday', ['date' => $date]); // create a holiday $months old
 
         $this->assertDatabaseHas('holidays', ['name' => $holiday->name]);
 
-        $collection = Holiday::sinceManyMonthsAgo($months - 1)->get();
+        $collection = Holiday::sinceManyMonthsAgo($months)->get();
 
         $this->assertTrue($collection->contains('name', $holiday->name));
     }
