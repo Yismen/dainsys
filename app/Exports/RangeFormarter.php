@@ -52,6 +52,25 @@ class RangeFormarter
         return $this;
     }
 
+    /**
+     * Set auto size columns
+     *
+     * @param string $from_column
+     * @param $to_column, if null asumes $from_column
+     * @return void
+     */
+    public function setAutoSizeRange(string $from_column, $to_column = null)
+    {
+        $to_column = $to_column ?: $from_column;
+
+        foreach (range($from_column, $to_column) as $col) {
+            $this->sheet->getColumnDimension($col)
+                ->setAutoSize(true);
+        }
+
+        return $this;
+    }
+
     public function formatTitle(string $range)
     {
         $this->sheet->getStyle($range)
