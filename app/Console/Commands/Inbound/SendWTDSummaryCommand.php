@@ -19,7 +19,7 @@ class SendWTDSummaryCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'inbound:send-wtd-summary {--date=} {--from=}';
+    protected $signature = 'inbound:send-wtd-summary {--date=}';
 
     /**
      * The console command description.
@@ -54,7 +54,7 @@ class SendWTDSummaryCommand extends Command
      */
     public function handle()
     {
-        $date = now()->subDay();
+        $date = now();
         $mail_subject = 'Kipany Inbound WTD Report';
         $file_name = $mail_subject . " " . now()->format('Ymd_His') . ".xlsx";
         $distro = $this->getDistroList();
@@ -62,15 +62,9 @@ class SendWTDSummaryCommand extends Command
 
         $this->date_to = $this->option('date') ?
             $date->copy()->parse($this->option('date'))->format('m/d/Y') :
-            $date->copy()->format('m/d/Y');
+            $date->copy()->subDay()->format('m/d/Y');
 
-
-        $this->date_from = $this->option('from') ?
-            $date->copy()->parse($this->option('from'))->startOfWeek()->format('m/d/Y') :
-            $date->copy()->parse($this->date_from)->startOfWeek()->format('m/d/Y');
-
-        // dd("From: " . $this->date_from, "To: " . $this->date_to);
-        // work needs to be done here t o allow weekly range
+        $this->date_from = $date->copy()->parse($this->date_to)->startOfWeek()->format('m/d/Y');
 
         $repo['data'] = InboundDataRepository::getData(
             $this->date_from,
