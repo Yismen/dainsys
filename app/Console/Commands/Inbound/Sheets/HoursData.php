@@ -67,7 +67,7 @@ class HoursData implements FromView, WithTitle, WithEvents, WithPreCalculateForm
 
                 $this->addSubTotals();
 
-                $this->sheet->freezePane('G3');
+                $this->sheet->freezePane('A3');
 
                 $this->sheet->setAutoFilter("A2:{$this->last_column}{$this->rows}");
 

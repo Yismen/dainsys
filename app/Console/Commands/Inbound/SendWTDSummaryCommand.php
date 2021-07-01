@@ -70,10 +70,10 @@ class SendWTDSummaryCommand extends Command
             $this->date_from,
             $this->date_to,
             $data_parsers = [
-                // \App\Console\Commands\Inbound\Support\DataParsers\ByEmployee::class,
+                \App\Console\Commands\Inbound\Support\DataParsers\WTDHoursData::class,
+                \App\Console\Commands\Inbound\Support\DataParsers\WTDCalls::class,
                 // \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByGate::class,
                 // \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByEmployee::class,
-                \App\Console\Commands\Inbound\Support\DataParsers\WTDHoursData::class,
             ]
         );
 
@@ -81,7 +81,9 @@ class SendWTDSummaryCommand extends Command
             Excel::store(
                 new InboundSummaryExport(
                     $repo,
-                    $this->client
+                    $this->client,
+                    $this->date_from,
+                    $this->date_to
                 ),
                 $file_name
             );

@@ -16,10 +16,16 @@ class InboundSummaryExport implements WithMultipleSheets
      */
     protected string $client;
 
-    public function __construct($repo, string $client = 'Kipany')
+    protected $date_from;
+
+    protected $date_to;
+
+    public function __construct($repo, string $client = 'Kipany', $date_from = null, $date_to = null)
     {
         $this->repo = $repo;
         $this->client = $client;
+        $this->date_from = $date_from;
+        $this->date_to = $date_to;
     }
 
     /**
@@ -34,7 +40,7 @@ class InboundSummaryExport implements WithMultipleSheets
                 $class_name = Str::studly($key);
                 $sheetClass = "\\App\\Console\\Commands\\Inbound\\Sheets\\{$class_name}";
 
-                $sheets[] = new $sheetClass($value, $class_name);
+                $sheets[] = new $sheetClass($value, $class_name, $this->date_from, $this->date_to);
             };
         }
 

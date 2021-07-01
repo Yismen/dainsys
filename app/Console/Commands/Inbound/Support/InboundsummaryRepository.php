@@ -14,7 +14,7 @@ class InboundSummaryRepository extends RingCentralConnection implements InboundS
 
     public $date_from;
 
-    protected $date_to;
+    public $date_to;
 
     protected $gate_statement;
 

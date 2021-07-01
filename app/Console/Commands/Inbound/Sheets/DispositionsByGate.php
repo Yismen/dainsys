@@ -9,7 +9,7 @@ class DispositionsByGate extends BaseDispositionsSheet
 {
     protected $last_column = 'L';
 
-    protected $freeze_pane_cell = 'D3';
+    protected $freeze_pane_cell = 'A3';
     protected $auto_fit_column_start = 'B';
     protected $auto_fit_column_end = 'C';
     protected $avg_column_start = 'D';

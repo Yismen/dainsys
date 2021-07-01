@@ -6,7 +6,7 @@ class ByEmployee extends BaseDispositionsSheet
 {
     protected $last_column = 'M';
 
-    protected $freeze_pane_cell = 'D3';
+    protected $freeze_pane_cell = 'A3';
     protected $auto_fit_column_start = 'B';
     protected $auto_fit_column_end = 'D';
     protected $avg_column_start = 'E';

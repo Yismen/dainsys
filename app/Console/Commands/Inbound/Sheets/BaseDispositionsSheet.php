@@ -33,15 +33,25 @@ abstract class BaseDispositionsSheet implements FromView, WithTitle, WithEvents,
 
     protected $title_line;
 
-    protected String $view;
+    protected $view;
 
-    public function __construct(array $data)
+    protected $date_from;
+
+    protected $date_to;
+
+    protected $sheet_name;
+
+    public function __construct(array $data, $sheet_name = null,  $date_from = null, $date_to = null)
     {
         $this->data = $data;
+        $this->date_from = $date_from;
+        $this->date_to = $date_to;
+
         $this->rows = count($this->data) + 2;
-        $this->sheetName = Str::of(\class_basename($this))->snake()->replace('_', ' ')->title();
-        $this->title_line = "Inbound {$this->sheetName} Report";
-        $this->view = 'exports.inbound.' . Str::of(\class_basename($this))->snake();
+        $this->sheetName = $sheet_name ?: Str::of(\class_basename($this))->snake()->replace('_', ' ')->title();
+        $this->title_line = "Inbound {$this->sheetName} Report" . ($this->date_from && $this->date_to ? ", from {$this->date_from} to {$this->date_to}" : '');
+        $this->view = $this->view ?: 'exports.inbound.' . Str::of(\class_basename($this))->snake();
+        $this->sheet_name = $sheet_name;
     }
 
     public function view(): View
