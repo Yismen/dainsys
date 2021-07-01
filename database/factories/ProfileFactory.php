@@ -7,7 +7,7 @@ $factory->define(App\Profile::class, function (Faker $faker) {
         'user_id' => factory(App\User::class)->create(),
         'gender' => 'male',
         'bio' => $faker->paragraph,
-        'phone' => $faker->phoneNumber,
+        'phone' => $faker->phoneNumber(),
         'education' => $faker->paragraph,
         'skills' => $faker->paragraph,
         'work' => $faker->sentence,

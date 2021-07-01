@@ -4,16 +4,16 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Employee::class, function (Faker $faker) {
     return [
-        'first_name' => $faker->firstName,
-        'second_first_name' => $faker->firstName,
-        'last_name' => $faker->lastName,
-        'second_last_name' => $faker->lastName,
+        'first_name' => $faker->firstName(),
+        'second_first_name' => $faker->firstName(),
+        'last_name' => $faker->lastName(),
+        'second_last_name' => $faker->lastName(),
         'hire_date' => $faker->date(),
         'personal_id' => $faker->unique()->numberBetween(10000000000, 99999999999),
         'passport' => '',
         'date_of_birth' => $faker->date(),
         'cellphone_number' => $faker->unique()->numberBetween(8091000001, 8099999999),
-        // 'secondary_phone' => $faker->phoneNumber,
+        // 'secondary_phone' => $faker->phoneNumber(),
         'position_id' => factory(App\Position::class),
         'site_id' => factory(App\Site::class),
         'project_id' => factory(App\Project::class),

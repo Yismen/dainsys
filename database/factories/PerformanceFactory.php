@@ -5,15 +5,13 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Performance::class, function (Faker $faker) {
     $date = Carbon::now();
-    $employee = factory(App\Employee::class)->create();
-    $campaign = factory(App\Campaign::class)->create();
 
     return [
-        'unique_id' => "{$date->format('Y-m-d')}-{$employee->id}-{$campaign->id}",
+        'unique_id' => "{$date->format('Y-m-d')}-{$faker->randomDigitNotZero()}-{$faker->randomDigitNotZero()}",
         'date' => $date->format('Y-m-d'),
-        'employee_id' => $employee->id,
-        'name' => $employee->fullName,
-        'campaign_id' => $campaign->id,
+        'employee_id' => factory(App\Employee::class),
+        'name' => $faker->name(),
+        'campaign_id' => factory(App\Campaign::class),
         'supervisor_id' => factory(App\Supervisor::class),
         'sph_goal' => 10,
         'login_time' => 8,
