@@ -57,7 +57,7 @@ class RangeFormarter
      *
      * @param string $from_column
      * @param $to_column, if null asumes $from_column
-     * @return void
+     * @return $this
      */
     public function setAutoSizeRange(string $from_column, $to_column = null)
     {
