@@ -1,4 +1,4 @@
-<h4>{{ $dataTitle }}</h4>
+<h4>{{ $title }}</h4>
 <table>
     <tbody>
         <tr>
@@ -6,7 +6,10 @@
             @foreach ($dates as $date)
             <th>{{ $date }}</th>                
             @endforeach
-            <th>Total</th>
+            <th>PTD Hours</th>
+            <th>PTD Calls</th>
+            <th>PTD Sales</th>
+            <th>PTD Conversion</th>
         </tr>
 
         @foreach ($names as $name)
@@ -14,7 +17,7 @@
                 <td>{{ $name }}</td>
                 @foreach ($dates as $date)
                     @php
-                        $name_collection =  $data->filter(function ($item) use ($date, $name) {
+                        $name_collection =  $hours_data->filter(function ($item) use ($date, $name) {
                             return $item->agent_name == $name;
                         });
 
@@ -25,6 +28,16 @@
                     <td>{{ $row->login_time ?? 0  }}</td>
                 @endforeach
                 <td>{{ $name_collection ? $name_collection->sum('login_time') : 0 }}</td>
+                @php
+                    $agent_calls_data = $calls_data->first(fn ($item) => $item->agent_name == $name);
+
+                    $calls = $agent_calls_data->total_calls ?? 0;
+                    $sales = $agent_calls_data->total_sales ?? 0;
+
+                @endphp                
+                <td>{{ $calls }}</td>
+                <td>{{ $sales }}</td>
+                <td>{{ $calls > 0 ? number_format($sales / $calls, 2) : 0 }}</td> 
             </tr>
         @endforeach
     </tbody>

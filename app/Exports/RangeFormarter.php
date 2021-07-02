@@ -71,6 +71,18 @@ class RangeFormarter
         return $this;
     }
 
+
+
+    public function setColumnsRangeWidth(string $from_column, string $to_column, int $width = 11)
+    {
+        foreach (range($from_column, $to_column) as $col) {
+            $this->sheet->getColumnDimension($col)->setWidth($width);
+        }
+
+        return $this;
+    }
+
+
     public function formatTitle(string $range)
     {
         $this->sheet->getStyle($range)

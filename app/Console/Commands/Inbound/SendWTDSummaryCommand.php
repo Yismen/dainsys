@@ -4,7 +4,7 @@ namespace App\Console\Commands\Inbound;
 
 use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
 use App\Console\Commands\Inbound\Support\InboundDataRepository;
-use App\Console\Commands\Inbound\Support\InboundSummaryExport;
+use App\Console\Commands\Inbound\Support\InboundPeriodSummaryExport;
 use App\Mail\CommandsBaseMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
@@ -70,18 +70,17 @@ class SendWTDSummaryCommand extends Command
             $this->date_from,
             $this->date_to,
             $data_parsers = [
-                \App\Console\Commands\Inbound\Support\DataParsers\WTDHoursData::class,
-                \App\Console\Commands\Inbound\Support\DataParsers\WTDCalls::class,
-                // \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByGate::class,
-                // \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByEmployee::class,
+                \App\Console\Commands\Inbound\Support\DataParsers\Periods\PeriodHoursParser::class,
+                \App\Console\Commands\Inbound\Support\DataParsers\Periods\PeriodCallsParser::class,
             ]
         );
 
         if ($this->hasAnyData((array) $repo['data'])) {
             Excel::store(
-                new InboundSummaryExport(
+                new InboundPeriodSummaryExport(
                     $repo,
                     $this->client,
+                    $period_name = 'WTD',
                     $this->date_from,
                     $this->date_to
                 ),
