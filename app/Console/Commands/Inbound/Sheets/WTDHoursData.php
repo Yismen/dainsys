@@ -74,7 +74,7 @@ class WTDHoursData implements FromView, WithTitle, WithEvents, WithPreCalculateF
                 $this->addSubTotals();
 
 
-                $this->sheet->freezePane('J3');
+                $this->sheet->freezePane('B3');
 
                 $this->sheet->setAutoFilter("A2:{$this->last_column}{$this->rows}");
 
