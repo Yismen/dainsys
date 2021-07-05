@@ -44,6 +44,8 @@ class DainsysInit extends Command
                 ->askForNpm()
                 ->askForMigration()
                 ->askForSeeders();
+
+            $this->info("Project initialized. Happy codding!");
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -61,6 +63,7 @@ class DainsysInit extends Command
     {
         if ($this->confirm('Do you want to instal NODE NPM dependencies?')) {
             shell_exec('npm isntall');
+            shell_exec('npm run production');
         }
         return $this;
     }
