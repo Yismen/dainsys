@@ -37,6 +37,12 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
 
     protected $date_to;
 
+    protected $totals_row;
+    protected $total_hours_column;
+    protected $total_calls_column;
+    protected $total_sales_column;
+    protected $first_column;
+
     public function __construct(array $data, string $client, string $period_name, $date_from, $date_to)
     {
         $this->data = $data;
@@ -45,14 +51,25 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
         $this->date_to = $date_to;
         $this->sheetName = "{$period_name} Inbound Report";
         $this->hours_data = collect($this->data['period_hours_parser']);
+
         $this->calls_data = collect($this->data['period_calls_parser']);
+        $this->first_hours_column = 'B';
         $this->working_range = range("A", "M");
 
         $this->dates = $this->hours_data->pluck('Report Date')->unique()->sort();
-        $this->names = $this->hours_data->pluck('agent_name')->unique()->sort();
+        $this->names = $this->hours_data->pluck('agent_name')->unique()->sort()->filter(function ($name) {
+            $calls = ($this->calls_data->first(fn ($item) => $item->agent_name == $name));
+            return $calls->total_calls ?? 0 > 0;
+        });
+
         $this->rows = $this->names->count() + 2;
         $this->view = 'exports.inbound.periods.report';
         $this->last_column = $this->working_range[$this->dates->count() + 4];
+
+        $this->totals_row = $this->rows + 1;
+        $this->total_hours_column = $this->working_range[$this->dates->count() + 1];
+        $this->total_calls_column = $this->working_range[$this->dates->count() + 2];
+        $this->total_sales_column = $this->working_range[$this->dates->count() + 3];
     }
 
     public function view(): View
@@ -71,11 +88,6 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                $totalsRow = $this->rows + 1;
-                $total_hours_column = $this->working_range[$this->dates->count() + 1];
-                $calls_column = $this->working_range[$this->dates->count() + 2];
-                $sales_column = $this->working_range[$this->dates->count() + 3];
-                $totalsRow = $this->rows + 1;
 
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
@@ -88,10 +100,12 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
                     ->formatTitle("A1:E1")
                     ->formatHeaderRow("A2:{$this->last_column}2")
                     ->applyBorders("A3:{$this->last_column}{$this->rows}")
-                    ->applyNumberFormats("A3:{$total_hours_column}{$totalsRow}", '_(* #,##0.00_);_(* (#,##0.00);_(* "-"??_);_(@_)')
-                    ->applyNumberFormats("{$calls_column}3:{$sales_column}{$totalsRow}", '_(* #,##0_);_(* (#,##0);_(* "-"??_);_(@_)')
-                    ->applyNumberFormats("{$this->last_column}3:{$this->last_column}{$totalsRow}", '_(* #,##0%_);_(* (#,##0%);_(* "-"??_);_(@_)')
-                    ->formatTotals("B{$totalsRow}:{$this->last_column}{$totalsRow}")
+                    ->applyNumberFormats("A3:{$this->total_hours_column}{$this->totals_row}", '_(* #,##0.00_);_(* (#,##0.00);_(* "-"??_);_(@_)')
+                    ->applyNumberFormats("{$this->total_calls_column}3:{$this->total_sales_column}{$this->totals_row}", '_(* #,##0_);_(* (#,##0);_(* "-"??_);_(@_)')
+                    ->applyNumberFormats("{$this->last_column}3:{$this->last_column}{$this->totals_row}", '_(* #,##0%_);_(* (#,##0%);_(* "-"??_);_(@_)')
+                    ->formatTotals("B{$this->totals_row}:{$this->last_column}{$this->totals_row}")
+                    ->applyFontBoldToRange("{$this->total_hours_column}3:{$this->last_column}{$this->rows}")
+                    ->applyBgToRange("{$this->total_hours_column}3:{$this->last_column}{$this->rows}", 'F8F7FF')
                     ->setColumnsRangeWidth("B", $this->last_column, 12);
 
 
@@ -111,14 +125,17 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
 
     protected function addSubTotals()
     {
-        $totalsRow = ($this->rows + 1);
-        $first_hours_column = 'B';
-
-        foreach (range($first_hours_column, $this->last_column) as $letter) {
+        // Sums
+        foreach (range($this->first_hours_column, $this->total_sales_column) as $letter) {
             $this->sheet->setCellValue(
-                "{$letter}{$totalsRow}",
+                "{$letter}{$this->totals_row}",
                 "=SUBTOTAL(9, {$letter}3:{$letter}{$this->rows})"
             );
         }
+        // Conversion Rate
+        $this->sheet->setCellValue(
+            "{$this->last_column}{$this->totals_row}",
+            "={$this->total_sales_column}{$this->totals_row}/{$this->total_calls_column}{$this->totals_row}"
+        );
     }
 }

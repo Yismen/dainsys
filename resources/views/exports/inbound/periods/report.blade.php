@@ -13,10 +13,18 @@
         </tr>
 
         @foreach ($names as $name)
+            @php
+                
+                $agent_calls_data = $calls_data->first(fn ($item) => $item->agent_name == $name);
+
+                $calls = $agent_calls_data->total_calls ?? 0;
+                $sales = $agent_calls_data->total_sales ?? 0;
+            @endphp
             <tr>
                 <td>{{ $name }}</td>
                 @foreach ($dates as $date)
                     @php
+
                         $name_collection =  $hours_data->filter(function ($item) use ($date, $name) {
                             return $item->agent_name == $name;
                         });
@@ -27,14 +35,7 @@
                     @endphp
                     <td>{{ $row->login_time ?? 0  }}</td>
                 @endforeach
-                <td>{{ $name_collection ? $name_collection->sum('login_time') : 0 }}</td>
-                @php
-                    $agent_calls_data = $calls_data->first(fn ($item) => $item->agent_name == $name);
-
-                    $calls = $agent_calls_data->total_calls ?? 0;
-                    $sales = $agent_calls_data->total_sales ?? 0;
-
-                @endphp                
+                <td>{{ $name_collection ? $name_collection->sum('login_time') : 0 }}</td>             
                 <td>{{ $calls }}</td>
                 <td>{{ $sales }}</td>
                 <td>{{ $calls > 0 ? number_format($sales / $calls, 2) : 0 }}</td> 
