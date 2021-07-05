@@ -118,6 +118,37 @@ class RangeFormarter
         return $this;
     }
 
+
+    public function applyFontBoldToRange(string $range)
+    {
+        $this->sheet
+            ->getStyle($range)
+            ->applyFromArray([
+                'font' => [
+                    'bold' => true
+                ]
+            ]);
+
+        return $this;
+    }
+
+
+    public function applyBgToRange(string $range, string $color)
+    {
+        $this->sheet
+            ->getStyle($range)
+            ->applyFromArray([
+                'fill' => [
+                    'fillType' => Fill::FILL_SOLID,
+                    'color' => [
+                        'rgb' => $color,
+                    ],
+                ],
+            ]);
+
+        return $this;
+    }
+
     public function formatTotals(string $range)
     {
         $this->sheet->getStyle($range)
