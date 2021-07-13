@@ -44,14 +44,14 @@ class HourlyProductionReportExport implements WithMultipleSheets
         $sheets[] = new DataSheet(
             $this->repo->data,
             "{$this->client} Production Report",
-            "{$this->client} Hourly Production Report",
+            "{$this->client} Production Report",
             $this->data_view
         );
 
         $sheets[] = new DispositionsSheet(
             $this->repo->dispositions,
             "{$this->client} Dispositions",
-            "{$this->client} Hourly Dispositions Report",
+            "{$this->client} Dispositions Report",
             $this->disposition_view
         );
 

@@ -120,6 +120,10 @@ return [
         'distro' => env('INBOUND_MAILING_DISTRO'),
     ],
 
+    'ooma' => [
+        'distro' => env('OOMA_MAILING_DISTRO'),
+    ],
+
     'dashboards' => [
         'roles_hierarchy' => [
             'admin' => 'AdminDashboardController',
