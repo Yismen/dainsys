@@ -25,11 +25,12 @@
     {{-- cp -rvfp {{ $projectFolder . "/*" }} {{ $releaseFolder }} --}}
     cp -rvfp {{ $projectFolder }}/[^node_modules][^vendor]* {{ $releaseFolder }}
     cp -rvfp {{ $projectFolder . "/.env" }} {{ $releaseFolder }}
+
+    
+    composer install --no-dev -o -n
     chown -R :www-data {{ $releaseFolder }}
     chmod -R 775 {{ $releaseFolder.'/storage' }}
     chmod -R 775 {{ $releaseFolder.'/bootstrap/cache' }}
-    
-    composer install --no-dev -o -n
     {{-- php artisan migrate --force --}}
     {{-- npm install && npm run production --}}
     php artisan dainsys:laravel-logs laravel- --clear --keep=8
