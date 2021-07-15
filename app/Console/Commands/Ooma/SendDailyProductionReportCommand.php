@@ -23,7 +23,7 @@ class SendDailyProductionReportCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Send a Production report to Omma distro';
+    protected $description = 'Send a Production report to Oomadistro';
     /**
      * The config path to the distribution list;
      */
@@ -40,7 +40,7 @@ class SendDailyProductionReportCommand extends Command
     {
         parent::__construct();
 
-        $this->mail_subject = "Omma Daily Production Report";
+        $this->mail_subject = "OomaDaily Production Report";
 
         $this->campaign_name_prefix = '%INT%OOM%';
 
