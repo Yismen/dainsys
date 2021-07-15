@@ -35,6 +35,8 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\Inbound\SendWTDSummaryCommand::class,
 
         \App\Console\Commands\Ooma\SendDailyProductionReportCommand::class,
+
+        \App\Console\Commands\InactivateEmployeesForSiteCommand::class
     ];
 
     /**

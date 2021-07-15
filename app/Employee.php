@@ -268,15 +268,22 @@ class Employee extends Model
             return $query->where('termination_date', '>=', '2012-02-09');
         }])->get();
     }
-
-    public function inactivate(Carbon $carbon)
+    /**
+     * Inactivate the current employee
+     *
+     * @param Carbon $carbon
+     * @param TerminationType $termination_type
+     * @param TerminationReason $termination_eason
+     * @param string $comments
+     * @return void
+     */
+    public function inactivate(Carbon $carbon, TerminationType $termination_type, TerminationReason $termination_eason, string $comments = null)
     {
-        ///// under construction
-        return $this->termination()->save([
+        return $this->termination()->updateOrCreate([
             'termination_date' => $carbon->now(),
-            'termination_type_id' => $carbon->now(),
-            'termination_reason_id' => $carbon->now(),
-            'can_be_rehired' => $carbon->now(),
+            'termination_type_id' => $termination_type->id,
+            'termination_reason_id' => $termination_eason->id,
+            'comments' => $comments,
         ]);
     }
 
