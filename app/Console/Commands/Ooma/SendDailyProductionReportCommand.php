@@ -23,13 +23,13 @@ class SendDailyProductionReportCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Send a Production report to Oomadistro';
+    protected $description = 'Send a Production report to Ooma distro';
     /**
      * The config path to the distribution list;
      */
     protected string $distro_config_path = 'dainsys.ooma.distro';
 
-    protected string $client = 'Omma';
+    protected string $client = 'Ooma';
 
     /**
      * Create a new command instance.
@@ -40,7 +40,7 @@ class SendDailyProductionReportCommand extends Command
     {
         parent::__construct();
 
-        $this->mail_subject = "OomaDaily Production Report";
+        $this->mail_subject = "Ooma Daily Production Report";
 
         $this->campaign_name_prefix = '%INT%OOM%';
 
