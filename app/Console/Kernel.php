@@ -54,10 +54,18 @@ class Kernel extends ConsoleKernel
         $schedule->command('dainsys:feed-schedules --days=15 --since-days-ago=0')->dailyAt('15:10')
             ->timezone('America/New_York');
 
-        $schedule->command('dainsys:employees-hired --months=1')->weeklyOn(2, '15:58')->timezone('America/New_York');
-        $schedule->command('dainsys:employees-hired --months=1')->weeklyOn(5, '15:58')->timezone('America/New_York');
-        $schedule->command('dainsys:employees-terminated --months=1')->weeklyOn(2, '15:59')->timezone('America/New_York');
-        $schedule->command('dainsys:employees-terminated --months=1')->weeklyOn(5, '15:59')->timezone('America/New_York');
+        $schedule->command('dainsys:employees-hired --months=2 --site=santiago-hq')
+            ->weeklyOn(2, '15:58')
+            ->timezone('America/New_York');
+        $schedule->command('dainsys:employees-hired --months=2 --site=santiago-hq')
+            ->weeklyOn(5, '15:58')
+            ->timezone('America/New_York');
+        $schedule->command('dainsys:employees-terminated --months=2 --site=santiago-hq')
+            ->weeklyOn(2, '15:59')
+            ->timezone('America/New_York');
+        $schedule->command('dainsys:employees-terminated --months=2 --site=santiago-hq')
+            ->weeklyOn(5, '15:59')
+            ->timezone('America/New_York');
 
 
         $schedule->command('dainsys:general-rc-production-report --team=ECC')->dailyAt('05:25')->timezone('America/New_York');

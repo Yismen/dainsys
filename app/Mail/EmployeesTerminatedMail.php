@@ -15,14 +15,16 @@ class EmployeesTerminatedMail extends EmployeesBaseMail
     /**
      * Create a new message instance.
      */
-    public function __construct(int $months)
+    protected $site;
+
+    public function __construct(int $months, $site = '%')
     {
         $this->months = (int) $months;
 
         $this->markdown = 'emails.employees-terminated';
-
-        $months = $months + 1;
-        $this->title = "Employees Terminated Last " . $months . " Months";
+        $this->site = $site;
+        
+        $this->title = "Employees Terminated " . ($months > 1 ? "Last {$months} Months" : "This Month");
 
         $this->employees = $this->getEmployees();
     }
@@ -33,9 +35,16 @@ class EmployeesTerminatedMail extends EmployeesBaseMail
 
         return Termination::orderBy('termination_date', 'DESC')
             ->where('termination_date', '>=', $startOfMonth)
-            ->with(['terminationType', 'terminationReason', 'employee' => function ($query) {
-                return $query->with('site');
-            }])
+            ->whereHas('employee', function ($query) {
+                $query->whereHas('site', function ($query) {
+                    $query->where('name', 'like', $this->site);
+                });
+            })
+            ->with([
+                'terminationType',
+                'terminationReason',
+                'employee'
+            ])
             ->get();
     }
 }
