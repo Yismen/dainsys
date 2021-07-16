@@ -9,6 +9,7 @@
 @endsetup
 @story('deploy')
     update-locally
+    {{-- ensure-folder-exists --}}
     copy-project-to-release-folder
     deploy-to-production-folder
 @endstory
@@ -16,23 +17,21 @@
 @task('update-locally', ['on' => 'local'])
     git push
 @endtask
-
+@task('ensure-folder-exists')    
+    [ -d {{ $projectFolder }} ] || mkdir {{ $projectFolder }}
+@endtask
 @task('copy-project-to-release-folder', ['on' => 'web'])  
     ln -sfn {{ $projectFolder }} {{ $serverLink }}
 
     [ -d {{ $releaseFolder }} ] || mkdir {{ $releaseFolder }}
     cd {{ $releaseFolder }}
-    {{-- cp -rvfp {{ $projectFolder . "/*" }} {{ $releaseFolder }} --}}
-    cp -rvfp {{ $projectFolder }}/[^node_modules][^vendor]* {{ $releaseFolder }}
-    cp -rvfp {{ $projectFolder . "/.env" }} {{ $releaseFolder }}
-
+    rsync -avr --exclude=/node_modules --exclude=/vendor --exclude=/.git {{ $projectFolder.'/' }} {{ $releaseFolder }}
     
     composer install --no-dev -o -n
     chown -R :www-data {{ $releaseFolder }}
     chmod -R 775 {{ $releaseFolder.'/storage' }}
     chmod -R 775 {{ $releaseFolder.'/bootstrap/cache' }}
-    {{-- php artisan migrate --force --}}
-    {{-- npm install && npm run production --}}
+
     php artisan dainsys:laravel-logs laravel- --clear --keep=8
     php artisan cache:clear
     php artisan optimize
@@ -41,7 +40,6 @@
 @endtask
 
 @task('deploy-to-production-folder', ['on' => 'web'])
-    {{-- [ -d {{ $projectFolder }} ] || mkdir {{ $projectFolder }} --}}
     cd {{ $projectFolder }}
     git reset --hard
     git pull origin {{ $branch }} --force
@@ -53,7 +51,7 @@
 
     composer install --no-dev -o -n
     php artisan migrate --force
-    {{-- npm install && npm run production --}}
+    
     php artisan dainsys:laravel-logs laravel- --clear --keep=8
     php artisan cache:clear
     php artisan optimize
