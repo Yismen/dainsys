@@ -240,7 +240,7 @@ class RangeFormarter
         return $this;
     }
 
-    public function applyNumberFormats($range, $format)
+    public function applyNumberFormats($range, $format = '_(* #,##0.00_);_(* (#,##0.00);_(* "-"??_);_(@_)')
     {
         $this->sheet->getStyle($range)->getNumberFormat()->setFormatCode($format);
 
