@@ -9,7 +9,6 @@ use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithPreCalculateFormulas;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Events\AfterSheet;
-use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
 class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
 {
@@ -61,9 +60,9 @@ class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateForm
                     ->formatTitle("A1:D1")
                     ->formatHeaderRow("A2:{$this->last_column}2")
                     ->applyBorders("A3:{$this->last_column}{$this->rows}")
-                    ->applyNumberFormats("F3:H{$totalsRow}", '#,##0.00')
-                    ->applyNumberFormats("L3:L{$totalsRow}", '#,##0.00')
-                    ->applyNumberFormats("M3:{$this->last_column}{$totalsRow}", NumberFormat::FORMAT_PERCENTAGE_00)
+                    ->applyNumberFormats("F3:H{$totalsRow}")
+                    ->applyNumberFormats("L3:L{$totalsRow}")
+                    ->applyNumberFormats("M3:{$this->last_column}{$totalsRow}", '_(* #,##0.00%_);_(* (#,##0.00%);_(* "-"??_);_(@_)')
                     ->formatTotals("F{$totalsRow}:P{$totalsRow}");
 
                 $this->addSubTotals();
