@@ -46,22 +46,4 @@ class SendDailyProductionReportCommand extends Command
 
         $this->distro = $this->getDistroList();
     }
-    /**
-     * Initialize dates and other variables which can't be initialized from the constructor
-     *
-     * @return object
-     */
-    protected function bootOptionVariables(): object
-    {
-        $this->date_to = $this->option('date') == 'default' ?
-            now()->subDay()->format('m/d/Y') :
-            Carbon::parse($this->option('date'))->format('m/d/Y');
-
-
-        $this->date_from =  $this->option('from') == 'default' ?
-            $this->date_to :
-            Carbon::parse($this->option('from'))->format('m/d/Y');
-
-        return $this;
-    }
 }
