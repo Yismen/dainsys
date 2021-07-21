@@ -17,6 +17,8 @@ class PoliticalFlashRepository extends RingCentralConnection implements Politica
 
     protected $date_to;
 
+    protected $team = 'ECC%';
+
     public function __construct(array $options)
     {
         $this->date_from = $options['date_from'];
@@ -35,11 +37,12 @@ class PoliticalFlashRepository extends RingCentralConnection implements Politica
     {
         return $this->connection()->select(
             DB::raw("
-                declare @fromDate as smalldatetime, @toDate as smalldatetime, @campaign as varchar(50)
+                declare @fromDate as smalldatetime, @toDate as smalldatetime, @campaign as varchar(50), @team as varchar(50)
                 set @fromDate = '{$this->date_from}'
-                set @toDate = '{$this->date_to}'
+                set @toDate = '{$this->date_to}' 
+                set @team = '{$this->team}' 
                 
-                exec [sp_POL_Campaign_Hours_Total] @fromDate, @toDate
+                exec [sp_POL_Campaign_Hours_Total] @fromDate, @toDate, @team
             ")
         );
     }

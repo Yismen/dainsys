@@ -50,12 +50,13 @@ class HourlyProductionReportRepository extends RingCentralConnection implements 
             $this->getFakedDispositions() :
             $this->connection()->select(
                 DB::raw("        
-            declare @fromDate as smalldatetime, @toDate as smalldatetime, @campaign as varchar(50)
-            set @fromDate = '{$this->date_from}'
-            set @toDate = '{$this->date_to}'
-            set @campaign = '{$this->campaign}%'
-            
-            exec [sp_Dispositions_Summary] @fromDate, @toDate, @campaign
+                declare @fromDate as smalldatetime, @toDate as smalldatetime, @campaign as varchar(50), @team as varchar(50)
+                set @fromDate = '{$this->date_from}'
+                set @toDate = '{$this->date_to}'
+                set @campaign = '{$this->campaign}%'                
+                set @team = '{$this->team}%'
+                
+                exec [sp_Dispositions_Summary] @fromDate, @toDate, @campaign, @team
             ")
             );
 

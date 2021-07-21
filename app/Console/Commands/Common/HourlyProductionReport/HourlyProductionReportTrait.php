@@ -72,7 +72,8 @@ trait HourlyProductionReportTrait
         $this->repo = new HourlyProductionReportRepository(
             $this->date_from,
             $this->date_to,
-            $this->campaign_name_prefix
+            $this->campaign_name_prefix,
+            $team = 'ECC%'
         );
 
         $this->repo
