@@ -61,6 +61,7 @@ class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateForm
                     ->formatHeaderRow("A2:{$this->last_column}2")
                     ->applyBorders("A3:{$this->last_column}{$this->rows}")
                     ->applyNumberFormats("F3:H{$totalsRow}")
+                    ->applyNumberFormats("I3:K{$totalsRow}", '_(* #,##0_);_(* (#,##0);_(* "-"??_);_(@_)')
                     ->applyNumberFormats("L3:L{$totalsRow}")
                     ->applyNumberFormats("M3:{$this->last_column}{$totalsRow}", '_(* #,##0.00%_);_(* (#,##0.00%);_(* "-"??_);_(@_)')
                     ->formatTotals("F{$totalsRow}:P{$totalsRow}");
