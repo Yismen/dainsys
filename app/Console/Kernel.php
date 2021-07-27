@@ -12,32 +12,19 @@ class Kernel extends ConsoleKernel
      *
      * @var array
      */
-    protected $commands = [
-        \App\Console\Commands\Political\SendPoliticalFlashReportCommand::class,
-        \App\Console\Commands\Political\SendPoliticalHourlyProductionReportCommand::class,
+    protected $commands = [];
 
-        \App\Console\Commands\Publishing\SendPublishingHourlyProductionReportCommand::class,
+    /**
+     * Register the commands for the application.
+     *
+     * @return void
+     */
+    protected function commands()
+    {
+        $this->load(__DIR__ . '/Commands');
 
-        \App\Console\Commands\General\SendGeneralDailyProductionReportCommand::class,
-        \App\Console\Commands\General\SendGeneralDailyRawReportCommand::class,
-
-        // \App\Console\Commands\Wow\SendWowDailyReportCommand::class,
-
-        \App\Console\Commands\EmployeesHired::class,
-        \App\Console\Commands\EmployeesTerminated::class,
-        \App\Console\Commands\FeedSchedulesTable::class,
-        \App\Console\Commands\FeedShiftsTableCommand::class,
-        \App\Console\Commands\MigrationStatus::class,
-        \App\Console\Commands\UpdateSlugs::class,
-        \App\Console\Commands\DainsysInit::class,
-
-        \App\Console\Commands\Inbound\SendDailySummaryCommand::class,
-        \App\Console\Commands\Inbound\SendWTDSummaryCommand::class,
-
-        \App\Console\Commands\Ooma\SendDailyProductionReportCommand::class,
-
-        \App\Console\Commands\InactivateEmployeesForSiteCommand::class
-    ];
+        require base_path('routes/console.php');
+    }
 
     /**
      * Define the application's command schedule.
@@ -83,17 +70,5 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('backup:run')->dailyAt('21:15')->timezone('America/New_York');
         $schedule->command('backup:clean')->dailyAt('22:15')->timezone('America/New_York');
-    }
-
-    /**
-     * Register the commands for the application.
-     *
-     * @return void
-     */
-    protected function commands()
-    {
-        // $this->load(__DIR__.'/Commands');
-
-        require base_path('routes/console.php');
     }
 }
