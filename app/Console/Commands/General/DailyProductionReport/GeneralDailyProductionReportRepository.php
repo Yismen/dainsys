@@ -26,8 +26,10 @@ class GeneralDailyProductionReportRepository extends RingCentralConnection
 
     public function getData()
     {
-        return $this->connection()->select(
-            DB::raw("
+        return $this->dispositions = \config('app.env') == 'testing' ?
+            true :
+            $this->connection()->select(
+                DB::raw("
                 declare @fromDate as smalldatetime, @toDate as smalldatetime, @campaign as varchar(50), @team_group as varchar(50) = '%'
                 set @fromDate = '{$this->date_from}'
                 set @toDate = '{$this->date_to}'
@@ -36,6 +38,6 @@ class GeneralDailyProductionReportRepository extends RingCentralConnection
                 
                 exec [sp_Hours_Summary] @fromDate, @toDate, @campaign, @team_group
             ")
-        );
+            );
     }
 }

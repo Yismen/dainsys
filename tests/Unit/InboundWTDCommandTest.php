@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Console\Commands\Inbound\Support\DataParsers\Periods\PeriodHoursParser;
 use App\Console\Commands\Inbound\Support\InboundDataRepository;
 use App\Console\Commands\Inbound\Support\InboundSummaryExport;
 use App\Mail\CommandsBaseMail;
@@ -62,7 +63,8 @@ class InboundWTDCommandTest extends TestCase
                 // \App\Console\Commands\Inbound\Support\DataParsers\ByEmployee::class,
                 // \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByGate::class,
                 // \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByEmployee::class,
-                \App\Console\Commands\Inbound\Support\DataParsers\WTDHoursData::class,
+                // \App\Console\Commands\Inbound\Support\DataParsers\WTDHoursData::class,
+                PeriodHoursParser::class
             ]
         );
 
@@ -96,7 +98,8 @@ class InboundWTDCommandTest extends TestCase
                 // \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByGate::class,
                 // \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByEmployee::class,
                 // \App\Console\Commands\Inbound\Support\DataParsers\HoursData::class,
-                \App\Console\Commands\Inbound\Support\DataParsers\WTDHoursData::class,
+                // \App\Console\Commands\Inbound\Support\DataParsers\WTDHoursData::class,
+                PeriodHoursParser::class
             ]
         );
 
