@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands\RingCentralReports\Exports\Sheets;
 
-use App\Console\Commands\RingCentralReports\Support\Connections\ConnectionContract;
-use App\Console\Commands\RingCentralReports\Support\Connections\RingCentralConnection;
+use App\Console\Commands\RingCentralReports\Exports\Support\Connections\ConnectionContract;
+use App\Console\Commands\RingCentralReports\Exports\Support\Connections\RingCentralConnection;
 use App\Exports\RangeFormarter;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\DB;

@@ -6,11 +6,6 @@ use App\Console\Commands\RingCentralReports\Exports\BaseRingCentralExports;
 
 class ProductionReportExport extends BaseRingCentralExports
 {
-    protected array $sheets = [
-        \App\Console\Commands\RingCentralReports\Exports\Sheets\ProductionSheet::class,
-        \App\Console\Commands\RingCentralReports\Exports\Sheets\DispositionsSheet::class,
-    ];
-
     /**
      * @return array
      */

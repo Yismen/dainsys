@@ -3,7 +3,7 @@
 namespace App\Console\Commands\RingCentralReports\Commands\Ooma;
 
 use App\Console\Commands\RingCentralReports\Commands\BaseProductionReportCommand;
-use App\Console\Commands\RingCentralReports\Exports\Support\ProductionReportExport;
+use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SendOomaProductionReportCommand extends BaseProductionReportCommand
@@ -30,6 +30,10 @@ class SendOomaProductionReportCommand extends BaseProductionReportCommand
         $file_name = $this->getFileName($client_name, $dates_range);
 
         $report = new ProductionReportExport(
+            $sheets = [
+                \App\Console\Commands\RingCentralReports\Exports\Sheets\ProductionSheet::class,
+                \App\Console\Commands\RingCentralReports\Exports\Sheets\DispositionsSheet::class,
+            ],
             $client_name,
             $campaign_name = '%INT%OOM%',
             $dates_range,

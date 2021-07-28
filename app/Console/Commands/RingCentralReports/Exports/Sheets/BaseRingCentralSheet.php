@@ -3,7 +3,7 @@
 namespace App\Console\Commands\RingCentralReports\Exports\Sheets;
 
 use App\Console\Commands\RingCentralReports\Exports\RingCentralExportsContract;
-use App\Console\Commands\RingCentralReports\Support\Connections\ConnectionContract;
+use App\Console\Commands\RingCentralReports\Exports\Support\Connections\ConnectionContract;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithPreCalculateFormulas;

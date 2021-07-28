@@ -30,6 +30,10 @@ class SendPublishingProductionReportCommand extends BaseProductionReportCommand
         $file_name = $this->getFileName($client_name, $dates_range);
 
         $report = new ProductionReportExport(
+            $sheets = [
+                \App\Console\Commands\RingCentralReports\Exports\Sheets\ProductionSheet::class,
+                \App\Console\Commands\RingCentralReports\Exports\Sheets\DispositionsSheet::class,
+            ],
             $client_name,
             $campaign_name = 'PUB%',
             $dates_range,
