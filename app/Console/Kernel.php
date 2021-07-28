@@ -66,7 +66,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('inbound:send-daily-summary')->dailyAt('06:20')->timezone('America/New_York');
         $schedule->command('inbound:send-wtd-summary')->dailyAt('06:30')->timezone('America/New_York');
 
-        $schedule->command('ooma:send-daily-production-report')->dailyAt('20:00')->timezone('America/New_York');
+        $schedule->command('ooma:send-production-report')->dailyAt('20:00')->timezone('America/New_York');
 
         $schedule->command('backup:run')->dailyAt('21:15')->timezone('America/New_York');
         $schedule->command('backup:clean')->dailyAt('22:15')->timezone('America/New_York');
