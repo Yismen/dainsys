@@ -6,7 +6,7 @@ use App\Console\Commands\RingCentralReports\Commands\BaseProductionReportCommand
 use App\Console\Commands\RingCentralReports\Exports\Support\ProductionReportExport;
 use Maatwebsite\Excel\Facades\Excel;
 
-class SendProductionReportCommand extends BaseProductionReportCommand
+class SendOomaProductionReportCommand extends BaseProductionReportCommand
 {
     /**
      * The name and signature of the console command.
@@ -27,7 +27,7 @@ class SendProductionReportCommand extends BaseProductionReportCommand
     {
         $dates_range = $this->getDatesRange();
         $client_name = 'Ooma';
-        $file_name = "{$client_name} Production Report {$dates_range['from_date']}_{$dates_range['to_date']}.xlsx";
+        $file_name = $this->getFileName($client_name, $dates_range);
 
         $report = new ProductionReportExport(
             $client_name,

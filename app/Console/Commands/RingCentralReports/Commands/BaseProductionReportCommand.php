@@ -50,4 +50,11 @@ abstract class BaseProductionReportCommand extends Command
             'to_date' => $to_date->format('Y-m-d')
         ];
     }
+
+    protected function getFileName(string $client_name, array $dates_range): string
+    {
+        $now = now()->format('His');
+
+        return "{$client_name} Production Report {$dates_range['from_date']}_{$dates_range['to_date']} {$now}.xlsx";
+    }
 }

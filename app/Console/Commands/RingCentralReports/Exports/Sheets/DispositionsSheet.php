@@ -92,7 +92,7 @@ class DispositionsSheet extends BaseRingCentralSheet
 
     public function addSubTotals(int $totals_row, int $rows, Sheet $sheet_object)
     {
-        foreach (range('E', 'F') as $letter) {
+        foreach (range('E', 'E') as $letter) {
             $sheet_object->setCellValue(
                 "{$letter}{$totals_row}",
                 "=SUBTOTAL(9, {$letter}3:{$letter}{$rows})"

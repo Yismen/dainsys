@@ -61,7 +61,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('dainsys:political-send-hourly-flash')->hourly()->timezone('America/New_York');
         $schedule->command('dainsys:political-send-hourly-production-report')->hourlyAt(59)->timezone('America/New_York');
 
-        $schedule->command('dainsys:publishing-send-hourly-production-report')->hourlyAt(58)->timezone('America/New_York');
+        $schedule->command('publishing:send-production-report')->hourlyAt(58)->timezone('America/New_York');
 
         $schedule->command('inbound:send-daily-summary')->dailyAt('06:20')->timezone('America/New_York');
         $schedule->command('inbound:send-wtd-summary')->dailyAt('06:30')->timezone('America/New_York');
