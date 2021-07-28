@@ -40,6 +40,19 @@ class RangeFormarter
         return $this;
     }
 
+    public function setAutoFilter(string $range)
+    {
+        $this->sheet->setAutoFilter($range);
+
+        return $this;
+    }
+
+    public function freezePane(string $cell, $topLeftCell = null)
+    {
+        $this->sheet->freezePane($cell, $topLeftCell);
+
+        return $this;
+    }
 
 
     public function setColumnsWidth(string $from_column, string $to_column)
