@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\RingCentralReports\Exports\Support;
+namespace App\Console\Commands\RingCentralReports\Exports;
 
 use App\Console\Commands\RingCentralReports\Exports\BaseRingCentralExports;
 

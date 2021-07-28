@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\RingCentralReports\Support\Connections;
+namespace App\Console\Commands\RingCentralReports\Exports\Support\Connections;
 
 use Illuminate\Support\Facades\DB;
 

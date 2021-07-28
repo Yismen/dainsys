@@ -3,7 +3,7 @@
 namespace App\Console\Commands\RingCentralReports\Commands\Political;
 
 use App\Console\Commands\RingCentralReports\Commands\BaseProductionReportCommand;
-use App\Console\Commands\RingCentralReports\Exports\Support\ProductionReportExport;
+use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SendPoliticalProductionReportCommand extends BaseProductionReportCommand
