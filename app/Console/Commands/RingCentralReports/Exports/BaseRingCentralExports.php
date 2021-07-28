@@ -2,10 +2,14 @@
 
 namespace App\Console\Commands\RingCentralReports\Exports;
 
+use App\Console\Commands\RingCentralReports\Exports\Support\Mails\BaseRingCentralMails;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 abstract class BaseRingCentralExports implements RingCentralExportsContract, WithMultipleSheets
 {
+    public bool $has_data = false;
+
     public string $client_name;
 
     public string $campaign_name;
@@ -25,8 +29,14 @@ abstract class BaseRingCentralExports implements RingCentralExportsContract, Wit
         $this->team = $team;
     }
 
-    public function send(array $distro, $mailable)
+    public function send(string $file_name)
     {
-        dd($this);
+        if ($this->has_data) {
+            Mail::send(new BaseRingCentralMails(
+                $this->distro_array,
+                $file_name,
+                "{$this->client_name} Production Report"
+            ));
+        };
     }
 }

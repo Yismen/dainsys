@@ -21,7 +21,7 @@ class ProductionSheet extends BaseRingCentralSheet
                     declare @fromDate as smalldatetime, @toDate as smalldatetime, @campaign as varchar(50), @team as varchar(50) = '%'
                     set @fromDate = '{$this->exporter->dates_range['from_date']}'
                     set @toDate = '{$this->exporter->dates_range['to_date']}'
-                    set @campaign = '{$this->exporter->client_name}'
+                    set @campaign = '{$this->exporter->campaign_name}'
                     set @team = '{$this->exporter->team}'
                     
                     exec [sp_Hours_Summary] @fromDate, @toDate, @campaign, @team
@@ -37,6 +37,10 @@ class ProductionSheet extends BaseRingCentralSheet
 
         $this->data = $this->getData(new RingCentralConnection());
 
+        if (count($this->data) > 0) {
+            $this->exporter->has_data = true;
+        }
+
         return view(
             "exports.reports.ring_central.{$class_name}",
             [
@@ -50,7 +54,7 @@ class ProductionSheet extends BaseRingCentralSheet
      */
     public function title(): string
     {
-        return "{$this->exporter->campaign_name} Production Report";
+        return "{$this->exporter->client_name} Production Report";
     }
     /**
      * @return array
