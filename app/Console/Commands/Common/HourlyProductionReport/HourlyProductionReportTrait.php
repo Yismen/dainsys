@@ -84,7 +84,9 @@ trait HourlyProductionReportTrait
             Excel::store(
                 new HourlyProductionReportExport(
                     $this->repo,
-                    $this->client
+                    $this->client,
+                    $this->getDataView(),
+                    $this->getDispositionsView()
                 ),
                 $file_name
             );
@@ -127,5 +129,15 @@ trait HourlyProductionReportTrait
             Carbon::parse($this->option('from'))->format('m/d/Y');
 
         return $this;
+    }
+
+    protected function getDataView()
+    {
+        return 'exports.data';
+    }
+
+    protected function getDispositionsView()
+    {
+        return 'exports.dispositions';
     }
 }

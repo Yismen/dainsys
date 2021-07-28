@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\PayrollPeriods;
+namespace Tests\Unit\PayrollPeriods;
 
 use App\Utilities\PayrollPeriods\DailyPayrollPeriod;
 use App\Utilities\PayrollPeriods\PayrollPeriodContract;

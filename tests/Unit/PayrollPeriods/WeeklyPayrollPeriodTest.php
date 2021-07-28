@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\PayrollPeriods;
+namespace Tests\Unit\PayrollPeriods;
 
 use App\Utilities\PayrollPeriods\WeeklyPayrollPeriod;
 use App\Utilities\PayrollPeriods\PayrollPeriodContract;
@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 
-class WeeklyParyollPeriodTest extends TestCase
+class WeeklyPayrollPeriodTest extends TestCase
 {
     use WithFaker;
 
