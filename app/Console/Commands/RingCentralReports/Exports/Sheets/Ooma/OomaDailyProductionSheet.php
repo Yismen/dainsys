@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 
 class OomaDailyProductionSheet extends BaseOomaProductionSheet
 {
+    protected $page_title = 'Daily';
+
     /**
      * @return View
      */

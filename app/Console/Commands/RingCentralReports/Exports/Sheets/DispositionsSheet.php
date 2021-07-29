@@ -40,7 +40,7 @@ class DispositionsSheet extends BaseRingCentralSheet
      */
     public function title(): string
     {
-        return "{$this->exporter->client_name} Dispositions";
+        return "Dispositions";
     }
 
     public function getData(ConnectionContract $connection, string $date_from, string $date_to): array

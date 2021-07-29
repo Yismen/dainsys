@@ -10,7 +10,7 @@
             <th>Login Time</th>
             <th>Work Time</th>
             <th>Talk Time</th>
-            <th>Hours Efficiency</th>
+            {{-- <th>Hours Efficiency</th> --}}
             <th>Talk Time Ratio</th>
             <th>Total Calls</th>
             <th>Proposal Sent / Email Sent</th>
@@ -32,7 +32,7 @@
                 <td>{{ $row->login_time }}</td>
                 <td>{{ $row->work_time }}</td>
                 <td>{{ $row->talk_time + $row->pending_dispo_time }}</td>
-                <td>{{ $row->login_time > 0 ? $row->work_time / $row->login_time : 0 }}</td>
+                {{-- <td>{{ $row->login_time > 0 ? $row->work_time / $row->login_time : 0 }}</td> --}}
                 <td>{{ 
                     $row->work_time > 0 ? 
                     ($row->talk_time + $row->pending_dispo_time) / $row->work_time 

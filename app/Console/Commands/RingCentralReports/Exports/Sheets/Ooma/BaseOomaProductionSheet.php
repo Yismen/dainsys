@@ -65,7 +65,7 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
                 $rows = count($this->data) + 2;
                 $totals_row = $rows + 1;
                 $sheet = $event->sheet->getDelegate();
-                $last_column = 'M';
+                $last_column = 'L';
 
                 $this->addSubTotals($totals_row, $rows, $event->sheet);
 
@@ -75,15 +75,15 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
                 $formarter->configurePage()
                     ->formatTitle("A1:D1")
                     ->formatHeaderRow("A2:{$last_column}2", 2, 45)
-                    ->setColumnsRangeWidth('A', 'A', 19)
-                    ->setAutoSizeRange("B", "E")
-                    ->setColumnsRangeWidth('F', 'M', 11)
                     ->freezePane('A3')
                     ->setAutoFilter("A2:{$last_column}{$rows}")
+                    ->setColumnsRangeWidth('A', 'A', 19)
                     ->applyBorders("A3:{$last_column}{$rows}")
+                    ->setAutoSizeRange("B", "E")
+                    ->setColumnsRangeWidth('F', $last_column, 11)
                     ->applyNumberFormats("F3:H{$totals_row}")
-                    ->applyNumberFormats("I3:J{$totals_row}", '_(* #,##0.0%_);_(* (#,##0.0%);_(* "-"??_);_(@_)')
-                    ->applyNumberFormats("K3:M{$totals_row}", '_(* #,##0_);_(* (#,##0);_(* "-"??_);_(@_)')
+                    ->applyNumberFormats("I3:I{$totals_row}", '_(* #,##0.0%_);_(* (#,##0.0%);_(* "-"??_);_(@_)')
+                    ->applyNumberFormats("J3:{$last_column}{$totals_row}", '_(* #,##0_);_(* (#,##0);_(* "-"??_);_(@_)')
                     ->formatTotals("F{$totals_row}:{$last_column}{$totals_row}");
             }
         ];
@@ -94,7 +94,7 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
         $loginTimeColumn = 'F';
         $workTimeColumn = 'G';
         $talkTimeColumn = 'H';
-        $callsColumn = 'K';
+        $callsColumn = 'J';
 
 
         foreach (range($loginTimeColumn, $talkTimeColumn) as $letter) {
@@ -104,20 +104,14 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
             );
         }
 
-        // Hours Efficiency Rate
-        $sheet_object->setCellValue(
-            "I{$totals_row}",
-            "=IFERROR({$workTimeColumn}{$totals_row}/{$loginTimeColumn}{$totals_row},0)"
-        );
-
         // Talk Time Rate
         $sheet_object->setCellValue(
-            "J{$totals_row}",
+            "I{$totals_row}",
             "=IFERROR({$talkTimeColumn}{$totals_row}/{$workTimeColumn}{$totals_row},0)"
         );
 
 
-        foreach (range($callsColumn, "M") as $letter) {
+        foreach (range($callsColumn, "L") as $letter) {
             $sheet_object->setCellValue(
                 "{$letter}{$totals_row}",
                 "=SUBTOTAL(9, {$letter}3:{$letter}{$rows})"
@@ -129,13 +123,11 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
      */
     public function title(): string
     {
-        $class_name = Str::of(class_basename($this))
+        return $this->page_title ?? Str::of(class_basename($this))
             ->kebab()
             ->replace('-', ' ')
             ->words(2, '')
             ->title();
-
-        return "{$class_name}";
     }
 
     protected function parseView(string $date_from, string $date_to): View

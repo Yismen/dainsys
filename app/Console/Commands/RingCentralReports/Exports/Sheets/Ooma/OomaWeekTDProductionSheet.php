@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 
 class OomaWeekTDProductionSheet extends BaseOomaProductionSheet
 {
+    protected $page_title = 'WTD';
     /**
      * @return View
      */

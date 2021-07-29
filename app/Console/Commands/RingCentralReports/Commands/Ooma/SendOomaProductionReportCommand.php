@@ -37,7 +37,7 @@ class SendOomaProductionReportCommand extends BaseProductionReportCommand
                 \App\Console\Commands\RingCentralReports\Exports\Sheets\DispositionsSheet::class,
             ],
             $client_name,
-            $campaign_name = '%INT%OOM%',
+            $campaign_name = 'INT - OOM - OOM_Out',
             $dates_range,
             $distro_array = $this->getDistroList('dainsys.ooma.distro'),
             $team = 'ECC%'

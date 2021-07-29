@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 
 class OomaMonthTDProductionSheet extends BaseOomaProductionSheet
 {
+    protected $page_title = 'MTD';
     /**
      * @return View
      */
