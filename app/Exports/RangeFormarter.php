@@ -217,7 +217,7 @@ class RangeFormarter
                 ],
                 'alignment' => [
                     'horizontal' => Alignment::HORIZONTAL_CENTER,
-                    'vertical' => Alignment::VERTICAL_CENTER,
+                    'vertical' => Alignment::VERTICAL_TOP,
                 ],
                 'borders' => [
                     'outline' => [

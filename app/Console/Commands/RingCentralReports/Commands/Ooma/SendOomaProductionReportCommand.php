@@ -13,14 +13,14 @@ class SendOomaProductionReportCommand extends BaseProductionReportCommand
      *
      * @var string
      */
-    protected $signature = 'ooma:send-production-report {--date=} {--from_date=}';
+    protected $signature = 'ooma:send-production-report {--date=}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Send a roduction report to Ooma distro';
+    protected $description = 'Send a roduction report to Ooma distro, including a daily, wtd and mtd data, along with the daily dispositions';
 
 
     public function handle()
@@ -31,7 +31,9 @@ class SendOomaProductionReportCommand extends BaseProductionReportCommand
 
         $report = new ProductionReportExport(
             $sheets = [
-                \App\Console\Commands\RingCentralReports\Exports\Sheets\ProductionSheet::class,
+                \App\Console\Commands\RingCentralReports\Exports\Sheets\Ooma\OomaDailyProductionSheet::class,
+                \App\Console\Commands\RingCentralReports\Exports\Sheets\Ooma\OomaWeekTDProductionSheet::class,
+                \App\Console\Commands\RingCentralReports\Exports\Sheets\Ooma\OomaMonthTDProductionSheet::class,
                 \App\Console\Commands\RingCentralReports\Exports\Sheets\DispositionsSheet::class,
             ],
             $client_name,
@@ -46,5 +48,26 @@ class SendOomaProductionReportCommand extends BaseProductionReportCommand
         $report->send($file_name);
 
         $this->info("{$client_name} Production Report Sent!");
+    }
+
+    /**
+     * Replace default method
+     *
+     * @return array
+     */
+    protected function getDatesRange(): array
+    {
+        $date = now();
+
+        $to_date = $this->option('date') ?
+            $date->copy()->parse($this->option('date')) : // parse given date
+            $date->copy(); // use today's date
+
+        $from_date = $to_date;
+
+        return [
+            'from_date' => $from_date->format('Y-m-d'),
+            'to_date' => $to_date->format('Y-m-d')
+        ];
     }
 }

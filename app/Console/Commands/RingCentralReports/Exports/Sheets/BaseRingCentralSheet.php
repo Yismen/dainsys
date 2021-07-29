@@ -19,7 +19,7 @@ abstract class BaseRingCentralSheet implements FromView, WithTitle, WithPreCalcu
         $this->exporter = $exporter;
     }
 
-    abstract function getData(ConnectionContract $connection): array;
+    abstract function getData(ConnectionContract $connection, string $date_from, string $date_to): array;
 
     abstract function addSubTotals(int $totals_row, int $rows, Sheet $sheet_object);
 }

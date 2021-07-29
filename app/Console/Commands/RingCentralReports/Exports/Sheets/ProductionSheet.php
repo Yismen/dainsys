@@ -13,14 +13,14 @@ use Maatwebsite\Excel\Sheet;
 
 class ProductionSheet extends BaseRingCentralSheet
 {
-    public function getData(ConnectionContract $connection): array
+    public function getData(ConnectionContract $connection, string $date_from, string $date_to): array
     {
         return $connection->connect()
             ->select(
                 DB::raw("
                     declare @fromDate as smalldatetime, @toDate as smalldatetime, @campaign as varchar(50), @team as varchar(50) = '%'
-                    set @fromDate = '{$this->exporter->dates_range['from_date']}'
-                    set @toDate = '{$this->exporter->dates_range['to_date']}'
+                    set @fromDate = '{$date_from}'
+                    set @toDate = '{$date_to}'
                     set @campaign = '{$this->exporter->campaign_name}'
                     set @team = '{$this->exporter->team}'
                     
@@ -35,7 +35,7 @@ class ProductionSheet extends BaseRingCentralSheet
     {
         $class_name = Str::snake(class_basename($this));
 
-        $this->data = $this->getData(new RingCentralConnection());
+        $this->data = $this->getData(new RingCentralConnection(), $this->exporter->dates_range['from_date'], $this->exporter->dates_range['to_date']);
 
         if (count($this->data) > 0) {
             $this->exporter->has_data = true;
