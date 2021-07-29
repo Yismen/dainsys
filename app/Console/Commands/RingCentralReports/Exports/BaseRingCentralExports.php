@@ -22,7 +22,9 @@ abstract class BaseRingCentralExports implements RingCentralExportsContract, Wit
 
     public array $sheets;
 
-    public function __construct(array $sheets, string $client_name, string $campaign_name, array $dates_range, array $distro_array, string $team = 'ECC%')
+    public string $subject_sufix;
+
+    public function __construct(array $sheets, string $client_name, string $campaign_name, array $dates_range, array $distro_array, string $team = 'ECC%', string $subject_sufix = 'Production Report')
     {
         $this->sheets = $sheets;
         $this->client_name = $client_name;
@@ -30,6 +32,7 @@ abstract class BaseRingCentralExports implements RingCentralExportsContract, Wit
         $this->dates_range = $dates_range;
         $this->distro_array = $distro_array;
         $this->team = $team;
+        $this->subject_sufix = $subject_sufix;
     }
 
     public function send(string $file_name)
@@ -38,7 +41,7 @@ abstract class BaseRingCentralExports implements RingCentralExportsContract, Wit
             Mail::send(new BaseRingCentralMails(
                 $this->distro_array,
                 $file_name,
-                "{$this->client_name} Production Report"
+                "{$this->client_name} {$this->subject_sufix}"
             ));
         };
     }

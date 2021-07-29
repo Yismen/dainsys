@@ -38,7 +38,8 @@ class SendPoliticalProductionReportCommand extends BaseProductionReportCommand
             $campaign_name = 'POL%',
             $dates_range,
             $distro_array = $this->getDistroList('dainsys.political.distro'),
-            $team = 'ECC%'
+            $team = 'ECC%',
+            $subject_sufix = 'Hourly Production Report'
         );
 
         Excel::store($report, $file_name);
