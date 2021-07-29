@@ -35,19 +35,18 @@ class FlashReportExport implements WithMultipleSheets
 
         $dispositions = collect($this->repo->dispositions)->groupBy('campaign_name');
         $answersCollection = collect($this->repo->answers)->groupBy('campaign_name');
-        
+
         foreach ($dispositions as $name => $disposition) {
             $answers = $answersCollection->get($name);
-            
+
             $answers = (new DropNullColumnsOnFlashDispositions())
                 ->handle($answers->all())
                 ->padKeys('num_leads')
-                ->data
-                ;
-                
+                ->data;
+
             $sheets[] = new FlashCampaignsSheet($disposition, $answers, $name);
         }
-        
+
         return $sheets;
     }
 }

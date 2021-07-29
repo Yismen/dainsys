@@ -34,7 +34,7 @@ class SendOomaProductionReportCommand extends BaseProductionReportCommand
                 \App\Console\Commands\RingCentralReports\Exports\Sheets\Ooma\OomaDailyProductionSheet::class,
                 \App\Console\Commands\RingCentralReports\Exports\Sheets\Ooma\OomaWeekTDProductionSheet::class,
                 \App\Console\Commands\RingCentralReports\Exports\Sheets\Ooma\OomaMonthTDProductionSheet::class,
-                \App\Console\Commands\RingCentralReports\Exports\Sheets\DispositionsSheet::class,
+                \App\Console\Commands\RingCentralReports\Exports\Sheets\Ooma\OomaDispositionsSheet::class,
             ],
             $client_name,
             $campaign_name = 'INT - OOM - OOM_Out',
