@@ -15,7 +15,15 @@ use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
 class OomaDispositionsSheet extends DispositionsSheet
 {
+
     protected $program_start_date = '2021-07-07';
+    /**
+     * Report this sheet if it has data. For some sheets it make no sense to send a report
+     * if they are the only one with data.
+     *
+     * @var boolean
+     */
+    protected $reportable = true;
     /**
      * @return View
      */
@@ -26,7 +34,7 @@ class OomaDispositionsSheet extends DispositionsSheet
         $period_td = $this->getData(new RingCentralConnection(), $this->program_start_date, $this->exporter->dates_range['to_date']);
         $this->data = $this->getData(new RingCentralConnection(), $this->exporter->dates_range['from_date'], $this->exporter->dates_range['to_date']);
 
-        if (count($this->data) > 0) {
+        if (count($this->data) > 0 && $this->reportable == true) {
             $this->exporter->has_data = true;
         }
 

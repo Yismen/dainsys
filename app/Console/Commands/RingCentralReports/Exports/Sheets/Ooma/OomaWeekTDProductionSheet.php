@@ -11,6 +11,13 @@ class OomaWeekTDProductionSheet extends BaseOomaProductionSheet
 {
     protected $page_title = 'WTD';
     /**
+     * Report this sheet if it has data. For some sheets it make no sense to send a report
+     * if they are the only one with data.
+     *
+     * @var boolean
+     */
+    protected $reportable = false;
+    /**
      * @return View
      */
     public function view(): View

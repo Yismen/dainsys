@@ -9,6 +9,13 @@ use Illuminate\Support\Str;
 class OomaDailyProductionSheet extends BaseOomaProductionSheet
 {
     protected $page_title = 'Daily';
+    /**
+     * Report this sheet if it has data. For some sheets it make no sense to send a report
+     * if they are the only one with data.
+     *
+     * @var boolean
+     */
+    protected $reportable = true;
 
     /**
      * @return View
