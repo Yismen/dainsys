@@ -72,7 +72,7 @@ return [
          *
          * This must be set in the env and have to be separated by the pipe symbol (|)
          */
-        'distro' => env('CAPILLUS_FLASH_DISTRO'),
+        'distro' => env('CAPILLUS_FLASH_DISTRO', 'yismen.jorge@gmail.com'),
 
         /**
          * Capillus Campaigns List
@@ -89,7 +89,7 @@ return [
          *
          * This must be set in the env and have to be separated by the pipe symbol (|)
          */
-        'distro' => env('BECAUSE_FLASH_DISTRO'),
+        'distro' => env('BECAUSE_FLASH_DISTRO', 'yismen.jorge@gmail.com'),
 
         /**
          * Capillus Campaigns List
@@ -101,27 +101,28 @@ return [
     ],
 
     'political' => [
-        'distro' => env('POLITICAL_FLASH_DISTRO'),
+        'distro' => env('POLITICAL_FLASH_DISTRO', 'yismen.jorge@gmail.com'),
     ],
 
     'publishing' => [
-        'distro' => env('PUBLISHING_FLASH_DISTRO'),
+        'distro' => env('PUBLISHING_FLASH_DISTRO', 'yismen.jorge@gmail.com'),
     ],
 
     'workforce' => [
-        'distro' => env('WORKFORCE_FLASH_DISTRO'),
+        'distro' => env('WORKFORCE_FLASH_DISTRO', 'yismen.jorge@gmail.com'),
     ],
 
     'wow' => [
-        'distro' => env('WOW_MAILING_DISTRO'),
+        'distro' => env('WOW_MAILING_DISTRO', 'yismen.jorge@gmail.com'),
     ],
 
     'inbound' => [
-        'distro' => env('INBOUND_MAILING_DISTRO'),
+        'distro' => env('INBOUND_MAILING_DISTRO', 'yismen.jorge@gmail.com'),
     ],
 
     'ooma' => [
-        'distro' => env('OOMA_MAILING_DISTRO'),
+        'distro' => env('OOMA_MAILING_DISTRO', 'yismen.jorge@gmail.com'),
+        'internal_distro' => env('OOMA_INTERNAL_MAILING_DISTRO', 'yismen.jorge@gmail.com'),
     ],
 
     'dashboards' => [

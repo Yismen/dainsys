@@ -31,6 +31,8 @@
     chown -R :www-data {{ $releaseFolder }}
     chmod -R 775 {{ $releaseFolder.'/storage' }}
     chmod -R 775 {{ $releaseFolder.'/bootstrap/cache' }}
+    php artisan cache:clear
+    php artisan optimize:clear
 
     php artisan dainsys:laravel-logs laravel- --clear --keep=8
     php artisan cache:clear
@@ -48,6 +50,9 @@
     chown -R :www-data {{ $projectFolder }}
     chmod -R 775 {{ $projectFolder.'/storage' }}
     chmod -R 775 {{ $projectFolder.'/bootstrap/cache' }}
+    
+    php artisan cache:clear
+    php artisan optimize:clear
 
     composer install --no-dev -o -n
     php artisan migrate --force
