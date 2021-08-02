@@ -86,9 +86,8 @@ class OomaMonthTDCallsSheet extends DispositionsSheet
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                $rows = count($this->data) + 2;
+                $rows = count($this->data) + 1;
                 $last_column = 'S';
-
 
                 $formarter = new RangeFormarter($event, "A1:{$last_column}{$rows}");
 
