@@ -197,12 +197,38 @@ class RangeFormarter
 
         return $this;
     }
+    /**
+     * Set Height Row. 
+     *
+     * @param integer $row
+     * @param integer $height. -1 for Auto
+     * @return object
+     */
+    public function setRowHeight(int $row, int $height = 12)
+    {
+        $this->sheet->getRowDimension($row)->setRowHeight($height);
 
-    public function formatHeaderRow(string $range, $header_row = 2, $row_height = 32)
+        return $this;
+    }
+    /**
+     * Set Height Row. 
+     *
+     * @param integer $row
+     * @param integer $height. -1 for Auto
+     * @return object
+     */
+    public function setMultipleRowsHeight(int $from_row, int $to_row, int $height = 12)
+    {
+        foreach (range($from_row, $to_row) as $row) {
+            $this->sheet->getRowDimension($row)->setRowHeight($height);
+        }
+
+        return $this;
+    }
+
+    public function formatHeaderRow(string $range, int $row_height = 45)
     {
         $this->sheet->getStyle($range)->getAlignment()->setWrapText(true);
-
-        $this->sheet->getRowDimension($header_row)->setRowHeight($row_height);
 
         $this->sheet->getStyle($range)
             ->applyFromArray([
@@ -230,6 +256,13 @@ class RangeFormarter
                     ]
                 ]
             ]);
+
+        // Set auto height
+        preg_match_all('!\d+!', $range, $rows);
+
+        foreach (range($rows[0][0], $rows[0][1] ?? $rows[0][0]) as $row) {
+            $this->sheet->getRowDimension((int)$row)->setRowHeight($row_height);
+        }
 
         return $this;
     }
