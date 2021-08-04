@@ -74,7 +74,8 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
 
                 $formarter->configurePage()
                     ->formatTitle("A1:D1")
-                    ->formatHeaderRow("A2:{$last_column}2", 2, 45)
+                    ->formatHeaderRow("A2:{$last_column}2")
+                    ->setRowHeight(2, 45)
                     ->freezePane('A3')
                     ->setAutoFilter("A2:{$last_column}{$rows}")
                     ->setColumnsRangeWidth('A', 'A', 19)

@@ -3,6 +3,7 @@
         <tr>
             <th>Call Date</th>
             <th>Call Time</th>
+            <th>Dial Group</th>
             <th>Lead Phone</th>
             <th>Agent Name</th>
             <th>Title</th>
@@ -15,16 +16,20 @@
             <th>City</th>
             <th>State</th>
             <th>Zip</th>
-            <th>Aux Data 2</th>
             <th>Disposition</th>
             <th>Notes</th>
             <th>Recording URL</th>
-            <th>Dial Group</th>
+            <th>Aux Data 1</th>
+            <th>Aux Data 2</th>
+            <th>Aux Data 3</th>
+            <th>Aux Data 4</th>
+            <th>Aux Data 5</th>
         </tr>
         @foreach ($data as $row)
             <tr>
                 <td>{{ $row->call_date }}</td>
                 <td>{{ now()->parse($row->call_time)->format('H:i:s') }}</td>
+                <td>{{ $row->dial_group_name }}</td>
                 <td>{{ $row->lead_phone }}</td>
                 <td>{{ $row->agent_name }}</td>
                 <td>{{ $row->title }}</td>
@@ -37,11 +42,14 @@
                 <td>{{ $row->city }}</td>
                 <td>{{ $row->state }}</td>
                 <td>{{ $row->zip }}</td>
-                <td>{{ $row->aux_data2 }}</td>
                 <td>{{ $row->agent_disposition }}</td>
                 <td>{{ $row->notes }}</td>
                 <td>{{ $row->recording_url }}</td>
-                <td>{{ $row->dial_group_name }}</td>
+                <td>{{ $row->aux_data1 }}</td>
+                <td>{{ $row->aux_data2 }}</td>
+                <td>{{ $row->aux_data3 }}</td>
+                <td>{{ $row->aux_data4 }}</td>
+                <td>{{ $row->aux_data5 }}</td>
             </tr>
         @endforeach
     </tbody>

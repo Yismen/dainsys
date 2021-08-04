@@ -52,6 +52,9 @@ class OomaMonthTDCallsSheet extends DispositionsSheet
                     SELECT 
                         CONVERT(DATE, call_start) as call_date
                         , CONVERT(TIME, call_start) AS call_time
+                        , agent_disposition
+                        , agent_notes as notes
+                        , dial_group_name
                         , lead_phone
                         , TRIM(agent_first_name) + ' ' + TRIM(agent_last_name) AS agent_name 
                         , UPPER(TRIM(title)) AS title
@@ -64,11 +67,12 @@ class OomaMonthTDCallsSheet extends DispositionsSheet
                         , city
                         , state
                         , zip
+                        , aux_data1
                         , aux_data2
-                        , agent_disposition
-                        , agent_notes as notes
+                        , aux_data3
+                        , aux_data4
+                        , aux_data5
                         , recording_url
-                        , dial_group_name
                     FROM DIALER_RESULT_DOWNLOAD
                     WHERE 
                         CONVERT(DATE, call_start) BETWEEN '{$date_from}' and '{$date_to}'
@@ -87,15 +91,16 @@ class OomaMonthTDCallsSheet extends DispositionsSheet
         return [
             AfterSheet::class => function (AfterSheet $event) {
                 $rows = count($this->data) + 1;
-                $last_column = 'S';
+                $last_column = 'W';
 
                 $formarter = new RangeFormarter($event, "A1:{$last_column}{$rows}");
 
                 $formarter->configurePage(PageSetup::ORIENTATION_PORTRAIT)
                     ->setColumnsRangeWidth("A", "B", 11)
                     ->setColumnsRangeWidth("C", $last_column, 13)
-                    ->setAutoFilter("A1:{$last_column}{$rows}")
                     ->formatHeaderRow("A1:{$last_column}1")
+                    ->setRowHeight(1, 32)
+                    ->setAutoFilter("A1:{$last_column}{$rows}")
                     ->freezePane('A2');
             }
         ];
