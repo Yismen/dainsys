@@ -40,7 +40,8 @@ class SendOomaProductionReportCommand extends BaseProductionReportCommand
             $campaign_name = 'INT - OOM - OOM_Out',
             $dates_range,
             $distro_array = $this->getDistroList('dainsys.ooma.distro'),
-            $team = 'ECC%',
+            $team = '%',
+            // $team = 'ECC%',
             $subject_sufix = 'Daily Production Report'
         );
 
