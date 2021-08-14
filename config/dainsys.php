@@ -102,6 +102,7 @@ return [
 
     'political' => [
         'distro' => env('POLITICAL_FLASH_DISTRO', 'yismen.jorge@gmail.com'),
+        'text_distro' => env('POLITICAL_TEXT_CAMPAIGN_DISTRO', 'yismen.jorge@gmail.com'),
     ],
 
     'publishing' => [
