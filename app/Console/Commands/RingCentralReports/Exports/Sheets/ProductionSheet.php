@@ -46,7 +46,7 @@ class ProductionSheet extends BaseRingCentralSheet
             if (!Cache::has($cache_key)) {
                 Cache::put($cache_key, 'some', now()->addHours(24));
 
-                $this->data_is_new = true;
+                $this->exporter->data_is_new = true;
             }
         }
 
