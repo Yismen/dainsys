@@ -10,6 +10,8 @@ abstract class BaseRingCentralExports implements RingCentralExportsContract, Wit
 {
     public bool $has_data = false;
 
+    public bool $data_is_new = false;
+
     public string $client_name;
 
     public string $campaign_name;
@@ -37,7 +39,7 @@ abstract class BaseRingCentralExports implements RingCentralExportsContract, Wit
 
     public function send(string $file_name)
     {
-        if ($this->has_data) {
+        if ($this->has_data && $this->data_is_new) {
             Mail::send(new BaseRingCentralMails(
                 $this->distro_array,
                 $file_name,

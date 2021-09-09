@@ -6,6 +6,7 @@ use App\Console\Commands\RingCentralReports\Exports\Support\Connections\Connecti
 use App\Console\Commands\RingCentralReports\Exports\Support\Connections\RingCentralConnection;
 use App\Exports\RangeFormarter;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Events\AfterSheet;
@@ -39,6 +40,14 @@ class ProductionSheet extends BaseRingCentralSheet
 
         if (count($this->data) > 0) {
             $this->exporter->has_data = true;
+
+            $cache_key =  $this->exporter->dates_range['from_date'] . $this->exporter->dates_range['to_date'] . collect($this->data)->sum('login_time');
+
+            if (!Cache::has($cache_key)) {
+                Cache::put($cache_key, 'some', now()->addHours(24));
+
+                $this->data_is_new = true;
+            }
         }
 
         return view(

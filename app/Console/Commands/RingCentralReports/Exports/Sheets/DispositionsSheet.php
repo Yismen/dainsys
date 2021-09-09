@@ -20,7 +20,6 @@ class DispositionsSheet extends BaseRingCentralSheet
     public function view(): View
     {
         $class_name = Str::snake(class_basename($this));
-
         $this->data = $this->getData(new RingCentralConnection(), $this->exporter->dates_range['from_date'], $this->exporter->dates_range['to_date']);
 
         if (count($this->data) > 0) {

@@ -35,7 +35,7 @@ abstract class BaseProductionReportCommand extends Command
      */
     protected function getDatesRange(): array
     {
-        $date = now();
+        $date = now(); // today
 
         $to_date = $this->option('date') ?
             $date->copy()->parse($this->option('date')) : // parse given date
