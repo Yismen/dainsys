@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\RingCentralReports\Commands\Publishing;
+namespace App\Console\Commands\RingCentralReports\Commands\DMR;
 
 use App\Console\Commands\RingCentralReports\Commands\BaseProductionReportCommand;
 use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
