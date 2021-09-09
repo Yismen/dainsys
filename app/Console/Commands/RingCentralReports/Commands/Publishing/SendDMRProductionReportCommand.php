@@ -6,7 +6,7 @@ use App\Console\Commands\RingCentralReports\Commands\BaseProductionReportCommand
 use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
 use Maatwebsite\Excel\Facades\Excel;
 
-class SendDMRProductionReport extends BaseProductionReportCommand
+class SendDMRProductionReportCommand extends BaseProductionReportCommand
 {
     /**
      * The name and signature of the console command.
