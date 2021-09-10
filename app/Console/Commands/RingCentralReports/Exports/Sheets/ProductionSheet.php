@@ -41,10 +41,12 @@ class ProductionSheet extends BaseRingCentralSheet
         if (count($this->data) > 0) {
             $this->exporter->has_data = true;
 
-            $cache_key =  $this->exporter->dates_range['from_date'] . $this->exporter->dates_range['to_date'] . collect($this->data)->sum('login_time');
+            $cache_key =  $this->exporter->campaign_name . $this->exporter->team .  $this->exporter->dates_range['from_date'] . $this->exporter->dates_range['to_date'] . collect($this->data)->sum('login_time');
 
             if (!Cache::has($cache_key)) {
-                Cache::put($cache_key, 'some', now()->addHours(24));
+                Cache::put($cache_key, 'some', now()->addHours(3));
+
+                info("Cache-key: " . $cache_key);
 
                 $this->exporter->data_is_new = true;
             }
