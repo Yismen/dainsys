@@ -49,6 +49,15 @@ Route::middleware('auth:api')->group(function () {
 
     Route::get('holidays', 'Api\HolidayController@index');
 
+    Route::get('dashboards/human_resources/head_counts', 'Api\Dashboards\HumanResourcesController@head_counts');
+    Route::get('dashboards/human_resources/attritions', 'Api\Dashboards\HumanResourcesController@attritions');
+    Route::get('dashboards/human_resources/hc_by_project', 'Api\Dashboards\HumanResourcesController@hc_by_project');
+    Route::get('dashboards/human_resources/hc_by_gender', 'Api\Dashboards\HumanResourcesController@hc_by_gender');
+    Route::get('dashboards/human_resources/hc_by_department', 'Api\Dashboards\HumanResourcesController@hc_by_department');
+
+    Route::get('dashboards/production/mtd_stats', 'Api\Dashboards\ProductionController@mtd_stats');
+    Route::get('dashboards/production/monthly_stats', 'Api\Dashboards\ProductionController@monthly_stats');
+
     Route::get('overnight_hours', 'Api\OvernightHourController@index'); // use get request to limit search date=date||months=0||days=0
 
     // Route::get('notifications/unread', 'Api\NotificationsController@unread');
