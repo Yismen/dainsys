@@ -54,7 +54,6 @@ Route::middleware('auth:api')->group(function () {
     Route::get('dashboards/human_resources/hc_by_project', 'Api\Dashboards\HumanResourcesController@hc_by_project');
     Route::get('dashboards/human_resources/hc_by_gender', 'Api\Dashboards\HumanResourcesController@hc_by_gender');
     Route::get('dashboards/human_resources/hc_by_department', 'Api\Dashboards\HumanResourcesController@hc_by_department');
-
     Route::get('dashboards/production/mtd_stats', 'Api\Dashboards\ProductionController@mtd_stats');
     Route::get('dashboards/production/monthly_stats', 'Api\Dashboards\ProductionController@monthly_stats');
 
