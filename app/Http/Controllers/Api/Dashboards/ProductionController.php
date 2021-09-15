@@ -36,6 +36,6 @@ class ProductionController extends Controller
 
         $mtdData = $performance_repo->monthToDateData();
 
-        return $data = $performance_repo->monthlyManyMonths(12);
+        return $data = $performance_repo->monthlyManyMonths(11);
     }
 }

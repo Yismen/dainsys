@@ -21,7 +21,7 @@ class OwnerRepository
 
         $performance_repo = new PerformanceRepository();
 
-        $data = $performance_repo->monthlyManyMonths(12);
+        $data = $performance_repo->monthlyManyMonths(11);
 
         $mtdData = $performance_repo->monthToDateData();
 
