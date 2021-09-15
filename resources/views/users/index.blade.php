@@ -36,6 +36,12 @@ the users configurations and setting.']) @section('content')
                                     <span class="info-box-number">{{ $users->count() }}</span>
                                 </div>
                             </div>
+                        </div>                        
+
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="{{ route('admin.users.inactive-users') }}" class="text-danger">Manage Inactive Users +</a>
+                            </div>
                         </div>
                     @endif
                 </div>
@@ -49,7 +55,7 @@ the users configurations and setting.']) @section('content')
                         </a>
                     </h3>
                     <div class="row">
-                        <div class="form-group">
+                        <div class="col-12 form-group">
                             Search: <input type="text" id="js-search">
                         </div>
                     </div>
@@ -58,7 +64,6 @@ the users configurations and setting.']) @section('content')
                             @include('partials._users')
                         </div>
                     </div>
-
                 </div>
             </div>
             {{-- /.row --}}

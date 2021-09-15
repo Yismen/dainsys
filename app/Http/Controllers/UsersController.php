@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
-use App\Events\EditUserSettings;
-use App\Events\CreateUserSettings;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cache;
 
 class UsersController extends Controller
@@ -149,5 +146,34 @@ class UsersController extends Controller
 
         return redirect()->route('admin.users.index')
             ->withWarning("User $user->name has been removed!!!");
+    }
+
+    public function inactives()
+    {
+        $users = User::query()
+            ->onlyTrashed()
+            ->with('roles')
+            ->get();
+
+        return view('users.inactives', compact('users'));
+    }
+
+    /**
+     * Activate the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function restore($id)
+    {
+        Cache::flush();
+
+        $user = User::withTrashed()->find($id);
+
+
+        $user->restore();
+
+        return redirect()->route('admin.users.inactive-users')
+            ->withWarning("User $user->name has been restored!!!");
     }
 }
