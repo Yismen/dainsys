@@ -70,7 +70,7 @@ class UsersController extends Controller
             'username' => 'required|unique:users,username',
         ]);
 
-        \Cache::flush();
+        Cache::flush();
 
         $password = $user->createUser($request);
 
@@ -117,7 +117,7 @@ class UsersController extends Controller
             'username' => 'required|unique:users,username,' . $user->id,
         ]);
 
-        \Cache::flush();
+        Cache::flush();
 
         $user->updateUser($request);
 
@@ -143,7 +143,7 @@ class UsersController extends Controller
                 ->withDanger('Super users can not be removed.');
         }
 
-        \Cache::flush();
+        Cache::flush();
 
         $user->delete();
 

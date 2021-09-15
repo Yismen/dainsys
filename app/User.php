@@ -11,17 +11,17 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Cache;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Builder;
 use App\Http\Traits\Mutators\UserMutators;
 use App\Http\Traits\Accessors\UserAccessors;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use App\Http\Traits\Relationships\UserRelationships;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Str;
 
 class User extends Authenticatable implements CanResetPassword
 {
-    use HasApiTokens, HasRoles,  UserAccessors, UserRelationships, UserMutators, Notifiable, Trackable;
+    use HasApiTokens, HasRoles,  UserAccessors, UserRelationships, UserMutators, Notifiable, Trackable, SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
