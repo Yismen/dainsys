@@ -47,14 +47,14 @@
     git pull origin {{ $branch }} --force
     git checkout {{ $branch }}
 
+    composer install --no-dev -o -n
+
     chown -R :www-data {{ $projectFolder }}
     chmod -R 775 {{ $projectFolder.'/storage' }}
     chmod -R 775 {{ $projectFolder.'/bootstrap/cache' }}
     
     php artisan cache:clear
     php artisan optimize:clear
-
-    composer install --no-dev -o -n
     php artisan migrate --force
     
     php artisan dainsys:laravel-logs laravel- --clear --keep=8
