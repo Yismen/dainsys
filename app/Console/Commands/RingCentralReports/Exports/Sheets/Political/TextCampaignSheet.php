@@ -6,6 +6,7 @@ use App\Console\Commands\RingCentralReports\Exports\Sheets\BaseRingCentralSheet;
 use App\Console\Commands\RingCentralReports\Exports\Support\Connections\ConnectionContract;
 use App\Console\Commands\RingCentralReports\Exports\Support\Connections\RingCentralConnection;
 use App\Exports\RangeFormarter;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -58,6 +59,16 @@ class TextCampaignSheet extends BaseRingCentralSheet
 
         if (count($this->data) > 0) {
             $this->exporter->has_data = true;
+
+            $cache_key =  $this->exporter->campaign_name . $this->exporter->team .  $this->exporter->dates_range['from_date'] . $this->exporter->dates_range['to_date'] . collect($this->data)->sum('login_time');
+
+            if (!Cache::has($cache_key)) {
+                Cache::put($cache_key, 'some', now()->addHours(3));
+
+                info("Cache-key: " . $cache_key);
+
+                $this->exporter->data_is_new = true;
+            }
         }
 
         return view(
