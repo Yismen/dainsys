@@ -18,7 +18,7 @@
                          
                 <div class="col-lg-12">
                     <div class="box box-primary">
-                        <div class="box-header">HC / Attrition</div>
+                        <div class="box-header">{{ __('HC / Attrition') }}</div>
                         <div class="box-body no-padding">
                             <bar-base-chart
                             :labels="{{ collect($attrition_monthly['labels']) }}"

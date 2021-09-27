@@ -12,7 +12,7 @@
 
         <div class="box-footer">
             <a href="{{ $link_route }}" title="{{ $title }} Details">
-                Details
+                {{ __('Detail') }}s
                 <i class="fa fa-arrow-right"></i>
             </a>
         </div>
