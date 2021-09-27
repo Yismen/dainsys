@@ -1,5 +1,5 @@
 @inject('layout', 'App\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'AFP', 'page_description'=>'Details'])
+@extends('layouts.'.$layout->app(), ['page_header'=>'AFP', 'page_description'=>__('Details')])
 
 @section('content')
     <div class="container-fluid">
@@ -8,9 +8,9 @@
                 <div class="box box-primary pad">
                     <div class="box-header with-border">
                         <h4>
-                            Details for AFP {{ $afp->name }}
+                            {{ __('Details') }} - {{ $afp->name }}
                             <a href="{{ route('admin.afps.index') }}" class="pull-right">
-                                <i class="fa fa-home"></i> Back to list
+                                <i class="fa fa-home"></i> {{ __('List') }}
                             </a>
                         </h4>
                     </div>
@@ -20,27 +20,26 @@
                             <span class="info-box-icon bg-green"><i class="fa fa-star"></i></span>
 
                             <div class="info-box-content">
-                                <span class="info-box-text">
+                                <p class="info-box-text">
                                     {{ $afp->name }}
                                     <a href="{{ route('admin.afps.edit', $afp->id) }}"><i class="fa fa-pencil"></i></a>
-                                </span>
+                                </p>
 
-                                <strong>ID: </strong> {{ $afp->id }} <br>
-
-                                Employees: <span class="info-box-number">{{ count($afp->employees) }}</span>
+                                <p class="m-0">ID: <strong> {{ $afp->id }}</strong></p>
+                                <p class="m-0">{{ __('Employees') }}: <strong> {{ count($afp->employees) }}</strong></p>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
 
                         @if(count($afp->employees))
                             <div class="table-responsive">
-                                Employees
+                                <strong>{{ __('Employees') }}</strong>
                                 <table class="table table-condensed table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Name</th>
-                                            <th>Photo</th>
+                                            <th>{{ __('Name') }}</th>
+                                            <th>{{ __('Photo') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>

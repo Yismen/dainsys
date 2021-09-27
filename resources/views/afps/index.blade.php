@@ -1,5 +1,5 @@
 @inject('layout', 'App\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'AFPs', 'page_description'=>'AFPs list!'])
+@extends('layouts.'.$layout->app(), ['page_header'=>'AFPs', 'page_description'=>__('List').' AFPs!'])
 
 @section('content')
     <div class="container-fluid">
@@ -8,15 +8,15 @@
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">
                     <h3>
-                        AFPs List
-                        <a href="/admin/afps/create" class="pull-right"><i class="fa fa-plus"></i> Add</a>
+                        {{ __('List') }} AFPs
+                        <a href="/admin/afps/create" class="pull-right"><i class="fa fa-plus"></i> {{ __('Add') }}</a>
                     </h3>
 
                     @if ($free_employees->count() > 0)
                         <div class="box box-danger">
                             <div class="box-header">
                                 <h4>
-                                    List of Employees Not Assigned to Any AFPs
+                                    {{ __('List of Employees Not Assigned to') }} AFPs
                                     <span class="badge bg-yellow">{{ $free_employees->count() }}</span>
                                 </h4>
                             </div>
