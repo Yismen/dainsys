@@ -1,5 +1,5 @@
 @inject('layout', 'App\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Ars', 'page_description'=>'Details'])
+@extends('layouts.'.$layout->app(), ['page_header'=>'ARS', 'page_description'=>__('Details')])
 
 @section('content')
     <div class="container-fluid">
@@ -8,9 +8,9 @@
                 <div class="box box-primary pad">
                     <div class="box-header with-border">
                         <h4>
-                            Details for ARS {{ $ars->name }}
+                            {{ __('Details') }} - {{ $ars->name }}
                             <a href="{{ route('admin.arss.index') }}" class="pull-right">
-                                <i class="fa fa-home"></i> Back to list
+                                <i class="fa fa-home"></i> {{ __('List') }}
                             </a>
                         </h4>
                     </div>
@@ -20,27 +20,31 @@
                             <span class="info-box-icon bg-green"><i class="fa fa-star"></i></span>
 
                             <div class="info-box-content">
-                                <span class="info-box-text">
+                                <p class="info-box-text m-0">
                                     {{ $ars->name }}
-                                    <a href="{{ route('admin.arss.edit', $ars->id) }}"><i class="fa fa-pencil"></i></a>
-                                </span>
+                                        <a href="{{ route('admin.arss.edit', $ars->id) }}"><i class="fa fa-pencil"></i></a>
+                                </p>
 
-                                <strong>ID: </strong> {{ $ars->id }} <br>
+                                <p class="m-0">
+                                    ID: <strong> {{ $ars->id }} </strong>
+                                </p>
 
-                                Employees: <span class="info-box-number">{{ count($ars->employees) }}</span>
+                                <p class="m-0">
+                                    {{ __('Employees') }}: <strong class="">{{ count($ars->employees) }}</strong>
+                                </p>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
 
                         @if(count($ars->employees))
                             <div class="table-responsive">
-                                Employees
+                                {{ __('Employees') }}
                                 <table class="table table-condensed table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Name</th>
-                                            <th>Photo</th>
+                                            <th>{{ __('Name') }}</th>
+                                            <th>{{ __('Photo') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>

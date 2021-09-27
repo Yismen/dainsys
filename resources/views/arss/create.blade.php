@@ -1,5 +1,5 @@
 @inject('layout', 'App\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Ars', 'page_description'=>'Create a new ars.'])
+@extends('layouts.'.$layout->app(), ['page_header'=>'Ars', 'page_description'=>__('Add'). ' ARS'])
 
 @section('content')
     <div class="col-sm-8 col-sm-offset-2">
@@ -7,9 +7,9 @@
 
             <div class="box-header with-border">
                 <h4>
-                    Add a new ARS
+                    {{ __('Add') }} ARS
                     <a href="{{ route('admin.arss.index') }}" class="pull-right">
-                        <i class="fa fa-home"></i> List
+                        <i class="fa fa-home"></i> {{ __('List') }}
                     </a>
                 </h4>
             </div>
@@ -22,8 +22,8 @@
                 </div>
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">SUBMIT</button>
-                    <button type="reset" class="btn btn-default">CANCEL</button>
+                    <button type="submit" class="btn btn-primary text-uppercase">{{ __('Create') }}</button>
+                    <button type="reset" class="btn btn-default">{{ __('Cancel') }}</button>
                 </div>
             {!! Form::close() !!}
 
