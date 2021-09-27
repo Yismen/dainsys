@@ -1,5 +1,5 @@
 @inject('layout', 'App\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Birthdays', 'page_description'=>"Birthdays"])
+@extends('layouts.'.$layout->app(), ['page_header'=>__('Birthday')."s", 'page_description'=>__('Birthday') ."s"])
 
 @section('content')
     @php
@@ -18,9 +18,9 @@
                             <table class="table table-condensed table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Date / Age</th>
-                                        <th>Photo</th>
+                                        <th>{{ __('Name') }}</th>
+                                        <th>{{ __('Date') }} / {{ __('Age') }}</th>
+                                        <th>{{ __('Photo') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -38,7 +38,7 @@
                                             </td>
                                             <td>
                                                 {{ $employee->date_of_birth->format('M-d-Y') }}/
-                                                {{ $employee->date_of_birth->age }} Years Old.
+                                                {{ $employee->date_of_birth->age }} {{ __('Year') }}s.
                                             </td>
                                             <td>
                                                 @if (file_exists($employee->photo))
