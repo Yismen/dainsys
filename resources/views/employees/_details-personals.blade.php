@@ -32,7 +32,7 @@
         <table class="table table-condensed table-bordered table-hover">
             <tbody>
                 <tr>
-                    <th>Personal Id / Passport: </th>
+                    <th>{{ __('Personal Id') }} / {{ __('Passport') }}: </th>
                     <td>
                         @if (filled($employee->personal_id))
                             {{ $employee->personal_id }}
@@ -43,7 +43,7 @@
                 </tr>
 
                 <tr>
-                    <th>Gender: </th>
+                    <th>{{ __('Gender') }}: </th>
                     <td>
                         @if ($employee->gender)
                             <i class="fa fa-{{ $employee->gender && $employee->gender->name == 'Male' ? 'male' : 'female' }}"></i>
@@ -53,7 +53,7 @@
                 </tr>
 
                 <tr>
-                    <th>Phone Numbers: </th>
+                    <th>{{ __('Phone Number') }}: </th>
                     <td>
                         {{ $employee->cellphone_number }}
                         @if (filled($employee->secondary_number))
@@ -63,7 +63,7 @@
                 </tr>
 
                 <tr>
-                    <th>Address: </th>
+                    <th>{{ __('Address') }}: </th>
                     <td>
                         @if ($employee->address)
                             {{ $employee->address->street_address }},
@@ -74,29 +74,29 @@
                 </tr>
 
                 <tr>
-                    <th>Nationality: </th>
+                    <th>{{ __('Nationality') }}: </th>
                     <td>
                         {{ optional($employee->nationality)->name }}
                     </td>
                 </tr>
 
                 <tr>
-                    <th>Birthday / Age: </th>
+                    <th>{{ __('Birthday') }} / {{ __('Age') }}: </th>
                     <td>
                         {{ Carbon\Carbon::parse($employee->date_of_birth)->format('M-d-Y') }},
-                        {{ Carbon\Carbon::parse($employee->date_of_birth)->age }} Years
+                        {{ Carbon\Carbon::parse($employee->date_of_birth)->age }} {{ __('Years') }}
                     </td>
                 </tr>
 
                 <tr>
-                    <th>Marital Status: </th>
+                    <th>{{ __('Marital Status') }}: </th>
                     <td>
                         {{ optional($employee->marital)->name }}
                     </td>
                 </tr>
 
                 <tr>
-                    <th>Has Kids?: </th>
+                    <th>{{ __('Has Kids') }}?: </th>
                     <td>
                         {{ $employee->has_kids ? 'Yes' : 'No' }}
                     </td>

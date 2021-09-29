@@ -7,14 +7,14 @@
                 @keydown="form.error.clear($event.target.name)">
 
                 <div class="box-header with-border">
-                    <h4>{{ employee.full_name }}' is Inactive. Reactivate?</h4>
+                    <h4>{{ employee.full_name }}' está inactivo. Quiere reactivarlo?</h4>
                 </div>
 
                 <div class="box-body">
                     <div class="row">
                         <div class="col-sm-8">
                             <div class="form-group">
-                                <label for="input" class="col-sm-4 control-label">Reactivation Date:</label>
+                                <label for="input" class="col-sm-4 control-label">Fecha Reactivación:</label>
                                 <div class="col-sm-8">
                                 <date-picker input-class="form-control input-sm"
                                     v-model="form.fields.hire_date"
@@ -28,8 +28,8 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <div class="col-sm-10 col-sm-offset-2">
-                                    <button type="submit" class="btn btn-danger">
-                                        REACTIVATE
+                                    <button type="submit" class="btn btn-danger text-uppercase">
+                                        Reactivar
                                     </button>
                                 </div>
                             </div>

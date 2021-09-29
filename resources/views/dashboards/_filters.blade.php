@@ -1,6 +1,6 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default" 
     style="position: fixed; z-index: 1020; right: 35%; top: 10%;">
-    Filter Results <i class="fa fa-caret-down"></i>
+    {{ __('Filter') }} {{ __('Result') }}s <i class="fa fa-caret-down"></i>
 </button>
 
 <div class="modal fade" id="modal-default" style="display: none;">
@@ -12,7 +12,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                     <h4 class="modal-title">
-                        Select Filters
+                        {{ __('Select') }} {{ __('Filter') }}s
                         <a href="{{ $clear_route ?? '/'.request()->route()->uri }}" class="btn btn-xs btn-danger pull-right" style="margin-right: 10px">Clear</a>
                     </h4>
                     
@@ -22,9 +22,9 @@
                     <div class="row">
                         <div class="col-xs-6 col-lg-4">
                             <div class=form-group>
-                                <label for="">Site</label>
+                                <label for="">{{ __('Site') }}</label>
                                 <select name="site[]" id="" class="form-control" multiple size="10">
-                                    <option value="%">All</option>
+                                    <option value="%">{{ __('All') }}</option>
                                     @foreach ($sites as $site)
                                     <option value="{{ $site->name }}"
                                         {{ in_array($site->name, old('site', [])) ? 'selected' : '' }}
@@ -36,7 +36,7 @@
                         {{-- /.col --}}
                         <div class="col-xs-6 col-lg-4">
                             <div class="form-group">
-                                <label for="">Project</label>
+                                <label for="">{{ __('Project') }}</label>
                                 <select name="project[]" id="" class="form-control" multiple size="10">
                                     <option value="%">All</option>
                                     @foreach ($projects as $project)

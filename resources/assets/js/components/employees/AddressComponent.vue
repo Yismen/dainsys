@@ -6,7 +6,7 @@
             @change="form.error.clear($event.target.name)"
             >
 
-            <div class="box-header with-border"><h4>Address:</h4></div>
+            <div class="box-header with-border"><h4>Dirección:</h4></div>
 
             <div class="box-body">
 
@@ -22,7 +22,7 @@
                 </div> <!-- ./Sector -->
 
                 <div class="form-group" :class="{'has-error': form.error.has('street_address')}">
-                    <label for="input" class="col-xs-4 col-sm-12 col-md-4">Street Address:</label>
+                    <label for="input" class="col-xs-4 col-sm-12 col-md-4">Calle:</label>
                     <div class="col-xs-8 col-sm-12 col-md-8">
                         <input type="text" id="street_address"
                         name="street_address" class="form-control"
@@ -32,7 +32,7 @@
                 </div> <!-- ./Street Address -->
 
                 <div class="form-group" :class="{'has-error': form.error.has('city')}">
-                    <label for="input" class="col-xs-4 col-sm-12 col-md-4">City:</label>
+                    <label for="input" class="col-xs-4 col-sm-12 col-md-4">Ciudad:</label>
                     <div class="col-xs-8 col-sm-12 col-md-8">
                         <input type="text" id="city"
                         name="city" class="form-control"
@@ -44,8 +44,8 @@
             <div class="box-footer">
                 <div class="form-group">
                     <div class="col-sm-10 col-sm-offset-2">
-                        <button type="submit" class="btn btn-primary">
-                            SAVE ADDRESS
+                        <button type="submit" class="btn btn-primary text-uppercase">
+                            Salvar
                         </button>
                     </div>
                 </div>

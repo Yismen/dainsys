@@ -4,17 +4,17 @@
 @if ($terminations->count() > 0)
     <hr>
     <h4>
-        Employee Past Terminations 
+         @lang('Past Terminations')
         <span class="badge bg-red">{{ $terminations->count() }} </span>:
     </h4>
     
     <table class="table table-condensed table-hover" >
         <thead>
             <tr>
-                <th>Date:</th>
-                <th>Type:</th>
-                <th>Reason:</th>
-                <th>Comments:</th>
+                <th>@lang('Date'):</th>
+                <th>@lang('Type'):</th>
+                <th>@lang('Reason'):</th>
+                <th>@lang('Comments'):</th>
             </tr>
         </thead>
         <tbody>

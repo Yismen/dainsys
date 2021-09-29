@@ -7,7 +7,7 @@
             @change="form.error.clear($event.target.name)"
         >
             <div class="box-header with-border">
-                <h4>General Information</h4>
+                <h4>Información General</h4>
             </div>
 
             <div class="box-body">
@@ -15,7 +15,7 @@
 
                     <div class="col-lg-6">
                         <div class="form-group" :class="{'has-error': form.error.has('first_name')}">
-                            <label for="first_name" class="col-sm-4 control-label">First Name:</label>
+                            <label for="first_name" class="col-sm-4 control-label">Primer Nombre:</label>
                             <div class="col-sm-8">
                                 <input type="text" id="first_name"
                                     name="first_name" class="form-control input-sm"
@@ -28,7 +28,7 @@
 
                     <div class="col-lg-6">
                         <div class="form-group" :class="{'has-error': form.error.has('second_first_name')}">
-                            <label for="second_first_name" class="col-sm-4 control-label">Second First Name:</label>
+                            <label for="second_first_name" class="col-sm-4 control-label">Segundo Nombre:</label>
                             <div class="col-sm-8">
                                 <input type="text" id="second_first_name"
                                     name="second_first_name" class="form-control input-sm"
@@ -45,7 +45,7 @@
 
                     <div class="col-lg-6">
                         <div class="form-group" :class="{'has-error': form.error.has('last_name')}">
-                            <label for="last_name" class="col-sm-4 control-label">Last Name:</label>
+                            <label for="last_name" class="col-sm-4 control-label">Primer Apellido:</label>
                             <div class="col-sm-8">
                                 <input type="text" id="last_name"
                                     name="last_name" class="form-control input-sm"
@@ -58,7 +58,7 @@
 
                     <div class="col-lg-6">
                         <div class="form-group" :class="{'has-error': form.error.has('second_last_name')}">
-                            <label for="second_last_name" class="col-sm-4 control-label">Second Last Name:</label>
+                            <label for="second_last_name" class="col-sm-4 control-label">Segundo Apellido:</label>
                             <div class="col-sm-8">
                                 <input type="text" id="second_last_name"
                                     name="second_last_name" class="form-control input-sm"
@@ -74,7 +74,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group" :class="{'has-error': form.error.has('personal_id')}">
-                            <label for="personal_id" class="col-sm-4 control-label">Personal ID:</label>
+                            <label for="personal_id" class="col-sm-4 control-label">Cédula:</label>
                             <div class="col-sm-8">
                                 <input type="text" id="personal_id"
                                     name="personal_id" class="form-control input-sm"
@@ -87,7 +87,7 @@
 
                     <div class="col-lg-6">
                         <div class="form-group" :class="{'has-error': form.error.has('passport')}">
-                            <label for="passport" class="col-sm-4 control-label">Or Passport:</label>
+                            <label for="passport" class="col-sm-4 control-label">O Pasaporte:</label>
                             <div class="col-sm-8">
                                 <input type="text" id="passport"
                                     name="passport" class="form-control input-sm"
@@ -102,7 +102,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group" :class="{'has-error': form.error.has('hire_date')}">
-                            <label for="hire_date" class="col-sm-4 control-label">Hire Date:</label>
+                            <label for="hire_date" class="col-sm-4 control-label">Fecha Entrada:</label>
                             <div class="col-sm-8">
                                 <date-picker input-class="form-control input-sm"
                                     v-model="form.fields.hire_date"
@@ -117,7 +117,7 @@
 
                     <div class="col-lg-6">
                         <div class="form-group" :class="{'has-error': form.error.has('date_of_birth')}">
-                            <label for="date_of_birth" class="col-sm-4 control-label">Date of Birth:</label>
+                            <label for="date_of_birth" class="col-sm-4 control-label">Fecha Nacimiento:</label>
                             <div class="col-sm-8">
                                 <date-picker input-class="form-control input-sm"
                                     name="date_of_birth"
@@ -134,7 +134,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group" :class="{'has-error': form.error.has('cellphone_number')}">
-                            <label for="cellphone_number" class="col-sm-4 control-label">Cellphone Number:</label>
+                            <label for="cellphone_number" class="col-sm-4 control-label">Celular:</label>
                             <div class="col-sm-8">
                                 <input type="text" id="cellphone_number"
                                     name="cellphone_number" class="form-control input-sm"
@@ -147,7 +147,7 @@
 
                     <div class="col-lg-6">
                         <div class="form-group" :class="{'has-error': form.error.has('secondary_phone')}">
-                            <label for="secondary_phone" class="col-sm-4 control-label">Secondary Phone #:</label>
+                            <label for="secondary_phone" class="col-sm-4 control-label">Otro Teléfono:</label>
                             <div class="col-sm-8">
                                 <input type="text" id="secondary_phone"
                                     name="secondary_phone" class="form-control input-sm"
@@ -162,7 +162,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group" :class="{'has-error': form.error.has('position_id')}">
-                            <label for="position_id" class="col-sm-4 control-label">Position:</label>
+                            <label for="position_id" class="col-sm-4 control-label">Posición:</label>
                             <div class="col-sm-8">
                                 <div class="input-group">
                                     <select class="form-control"
@@ -194,7 +194,7 @@
 
                     <div class="col-lg-6">
                         <div class="form-group" :class="{'has-error': form.error.has('gender_id')}">
-                            <label for="gender_id" class="col-sm-4 control-label">Gender:</label>
+                            <label for="gender_id" class="col-sm-4 control-label">Sexo:</label>
                             <div class="col-sm-8">
                                 <select name="gender_id"
                                     id="gender_id"
@@ -215,7 +215,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group" :class="{'has-error': form.error.has('site_id')}">
-                            <label for="site_id" class="col-sm-4 control-label">Site:</label>
+                            <label for="site_id" class="col-sm-4 control-label">Localidad:</label>
                             <div class="col-sm-8">
                                 <select
                                     name="site_id"
@@ -234,7 +234,7 @@
                     <!-- ./Site-->
                     <div class="col-lg-6">
                         <div class="form-group" :class="{'has-error': form.error.has('project_id')}">
-                            <label for="project_id" class="col-sm-4 control-label">Project:</label>
+                            <label for="project_id" class="col-sm-4 control-label">Proyecto:</label>
                             <div class="col-sm-8">
                                 <select
                                     name="project_id"
@@ -255,7 +255,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group" :class="{'has-error': form.error.has('marital_id')}">
-                            <label for="marital_id" class="col-sm-4 control-label">Marital Status:</label>
+                            <label for="marital_id" class="col-sm-4 control-label">Estado Civil:</label>
                             <div class="col-sm-8">
                                 <select
                                     name="marital_id"
@@ -274,12 +274,12 @@
 
                     <div class="col-lg-6">
                         <div class="form-group" :class="{'has-error': form.error.has('has_kids')}">
-                            <label for="has_kids" class="col-sm-4 control-label">Has Kids?:</label>
+                            <label for="has_kids" class="col-sm-4 control-label">Tiene Hijos?:</label>
                             <div class="col-sm-8">
                                 <div class="radio">
                                     <label>
                                         <input type="radio" :value="1" v-model="form.fields.has_kids">
-                                        Yes
+                                        Sí
                                     </label>
                                     <label>
                                         <input type="radio" :value="0" v-model="form.fields.has_kids">
@@ -296,8 +296,8 @@
             <div class="box-footer">
                 <div class="form-group">
                     <div class="col-sm-10 col-sm-offset-2">
-                        <button type="submit" class="btn btn-success">
-                            UPDATE
+                        <button type="submit" class="btn btn-success text-uppercase">
+                            Actualizar
                         </button>
                     </div>
                 </div>

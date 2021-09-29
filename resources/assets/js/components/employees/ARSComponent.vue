@@ -19,7 +19,7 @@
                                 <option v-for="ars in ars_list" :value="ars.id" :key="ars.id">{{ ars.name }}</option>
                             </select>
                             <a href="#" @click.prevent="$modal.show('create-ars')" class="input-group-addon">
-                                <i class="fa fa-plus"></i> Add
+                                <i class="fa fa-plus"></i> Agregar
                             </a>
                         </div>
                         <span class="text-danger" v-if="form.error.has('ars_id')">{{ form.error.get('ars_id') }}</span>
@@ -31,7 +31,7 @@
                 <div class="form-group">
                     <div class="col-sm-10 col-sm-offset-2">
                         <button type="submit" class="btn btn-primary">
-                            Save ARS
+                            Salvar ARS
                         </button>
                     </div>
                 </div>

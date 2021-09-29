@@ -7,9 +7,9 @@
 
             <div class="box-header with-border">
                 <h4>
-                    Edit AFP {{ $afp->name }}
+                    {{ __('Edit') }} AFP - {{ $afp->name }}
                     <a href="{{ route('admin.afps.index') }}" class="pull-right">
-                        <i class="fa fa-home"></i> List
+                        <i class="fa fa-home"></i> {{ __('List') }}
                     </a>
                 </h4>
             </div>
@@ -24,7 +24,7 @@
 
                 <div class="box-footer">
                     <div class="col-sm-10 col-sm-offset-2">
-                        <button type="submit" class="btn btn-warning">UPDATE</button>
+                        <button type="submit" class="btn btn-warning text-uppercase">{{ __('Update') }}</button>
                     </div>
                 </div>
             {!! Form::close() !!}

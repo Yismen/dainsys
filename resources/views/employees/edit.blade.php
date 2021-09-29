@@ -1,5 +1,5 @@
 @inject('layout', 'App\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Employees', 'page_description'=>"Edit data for employee $employee->full_name."])
+@extends('layouts.'.$layout->app(), ['page_header'=>'Employees', 'page_description'=>"Editar información de empleado $employee->full_name."])
 
 @section('content')
 	<div class="container-fluid">

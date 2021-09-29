@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 Route::group(['middleware' => 'authorize:view-human-resources-dashboard'], function () {
 
     Route::get('human_resources/employees/dgt3', 'HumanResources\DGT3Controller@dgt3');

@@ -160,4 +160,72 @@ Tasks:
   ☐ Add sub totals results
     ☐ Publishing
     ☐ Political
+  ☐ Add Spanish Translation
+    ✔ AFPs @done (9/27/2021, 3:54:51 PM)
+    ✔ ARSs @done (9/27/2021, 4:38:17 PM)
+    ✔ Human Resources @done (9/27/2021, 3:57:11 PM)
+    ✔ Dashboard Human Resources @done (9/27/2021, 3:58:35 PM)
+    ☐ menus (translate all menu items)
+    ☐ attendance_codes
+    ☐ attendances
+    ☐ auth
+    ☐ banks
+    ☐ campaigns
+    ☐ cards
+    ☐ clients
+    ☐ components
+    ☐ contacts
+    ☐ dashboards
+    ☐ departments
+    ☐ downtime_reasons
+    ☐ downtimes
+    ☐ emails
+    ✔ employees @done (9/29/2021, 10:20:10 AM)
+    ☐ errors
+    ☐ escalations_admin
+    ☐ escalations_hours
+    ☐ escalations_records
+    ☐ escalations_records_api
+    ☐ escalclients
+    ☐ exports
+    ☐ holidays
+    ☐ hours
+    ☐ hours-import
+    ☐ imports
+    ☐ layouts
+    ☐ login_names
+    ☐ menus
+    ☐ messages
+    ☐ nationalities
+    ☐ notes
+    ☐ overnight-hours
+    ☐ partials
+    ☐ passwords
+    ☐ payment_frequencies
+    ☐ payment_types
+    ☐ payrolls
+    ☐ payrolls_summary
+    ☐ performances
+    ☐ performances_import
+    ☐ positions
+    ☐ profiles
+    ☐ projects
+    ☐ punches
+    ☐ quality
+    ☐ revenue_types
+    ☐ roles
+    ☐ schedules
+    ☐ shifts
+    ☐ site
+    ☐ sites
+    ☐ site_messages
+    ☐ supervisors
+    ☐ supervisor_users
+    ☐ tasks
+    ☐ termination_reasons
+    ☐ termination_types
+    ☐ universals
+    ☐ users
+    ☐ vips
+    ☐ welcome.blade
 Archive:

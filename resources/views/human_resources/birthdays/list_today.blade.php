@@ -1,5 +1,5 @@
 @if (count($birthdays['today']) > 0)
-    <p>The following employees have birthday today!</p>
+    <p>{{ __('The following employees are on birthday') }}!</p>
     @foreach ($birthdays['today'] as $employee)
         <div class="box box-widget widget-user-2">
             <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -17,6 +17,6 @@
     @endforeach
 @else
     <div class="alert alert-default">
-        <strong>No Birthdays today!</strong> None of your peers have birthdays today...
+        <strong>{{ __('No Birthdays today') }}!</strong> {{ __('None of your peers have birthdays today') }}...
     </div>
 @endif

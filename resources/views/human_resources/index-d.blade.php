@@ -1,12 +1,12 @@
 @inject('layout', 'App\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Human Resources', 'page_description'=>"Dashboard."])
+@extends('layouts.'.$layout->app(), ['page_header'=>__('Human Resource'), 'page_description'=>"Dashboard."])
 
 @section('content')
     <div class="container-fluid">
         <div class="row">
             {{-- / Birthdays --}}
             <div class="col-sm-4">
-                <h4>Birthdays</h4>
+                <h4>{{ __('Birthday') }}s</h4>
                 <div class="row animated-delayed">
                     <div class="col-sm-12">
                         @include('human_resources.birthdays.list_today')

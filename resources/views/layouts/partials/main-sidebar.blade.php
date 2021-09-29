@@ -81,14 +81,14 @@
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-link"></i>
-                            <span>{{ personName($role->name) }}</span>
+                            <span>{{ __(personName($role->name)) }}</span>
                             <i class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
                                 @foreach ($role->menus as $menu)
                                     <li>
                                         <a href="{{ url($menu->name) }}">
                                             <i class="{{ filled($menu->icon) ? $menu->icon : 'fa fa-circle-o' }} text-red">
-                                            </i> {{ $menu->display_name }}
+                                            </i> {{ __($menu->display_name) }}
                                         </a>
                                     </li>
                                 @endforeach

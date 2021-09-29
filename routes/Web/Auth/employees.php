@@ -1,8 +1,8 @@
 <?php
 
-// Route::get('api/employees', 'EmployeesController@index')->name('employees.list');
+use Illuminate\Support\Facades\Route;
 
-Route::resource('employees', 'EmployeesController');
+Route::get('api/employees', 'EmployeesController@index')->name('employees.list');
 
 Route::get('employees/export_to_excel/{status}', 'Employee\ExportController@toExcel')
     ->name('employees.export_to_excel');
@@ -44,3 +44,5 @@ Route::put('employees/{employee}/supervisor', 'Employee\SupervisorController@upd
 
 Route::post('employees/{employee}/nationality', 'Employee\NationalityController@update')
     ->name('employees.update-nationality');
+
+Route::resource('employees', 'EmployeesController');

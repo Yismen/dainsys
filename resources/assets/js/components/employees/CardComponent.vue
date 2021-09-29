@@ -6,12 +6,12 @@
             @change="updated">
 
             <div class="box-header with-border">
-                <h4>Access Card #:</h4>
+                <h4># Tarjeta de Acceso:</h4>
             </div>
 
             <div class="box-body">
                 <div class="form-group" :class="{'has-error': form.error.has('card')}">
-                    <label for="input" class="col-xs-3 col-md-12 col-lg-3">Card:</label>
+                    <label for="input" class="col-xs-3 col-md-12 col-lg-3">Id Tarjeta:</label>
                     <div class="col-xs-9 col-md-12 col-lg-9">
                         <input type="text" class="form-control"
                          id="card" name="card"
@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <div class="col-sm-10 col-sm-offset-2">
                         <button type="submit" class="btn btn-primary">
-                            Save Card
+                            Salvar Tarjeta
                         </button>
                     </div>
                 </div>

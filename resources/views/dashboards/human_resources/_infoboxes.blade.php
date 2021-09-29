@@ -4,7 +4,7 @@
         'color' => 'bg-blue-active',
         'icon' => 'fa fa-users',
     ]) 
-        Employees 
+        {{ __('Employee') }}s 
     @endcomponent
 </div>
 {{-- /.info-box --}}
@@ -14,7 +14,7 @@
         'color' => 'bg-yellow-active',
         'icon' => 'fa fa-chain-broken',
     ]) 
-        MTD Attrition 
+        {{ __('Attrition') }} MTD
     @endcomponent
 </div>
 {{-- /.info-box --}}
@@ -24,7 +24,7 @@
         'color' => 'bg-green-active',
         'icon' => 'fa fa-link',
     ]) 
-        MTD Hires 
+        {{ __('Hires') }} MTD
     @endcomponent
 </div>
 {{-- /.info-box --}}
@@ -34,7 +34,7 @@
         'color' => 'bg-red-active',
         'icon' => 'fa fa-chain-broken',
     ]) 
-        MTD Terminations 
+        {{ __('Termination') }}s MTD 
     @endcomponent
 </div>
 {{-- /.info-box --}}

@@ -6,12 +6,12 @@
             @change="updated">
 
             <div class="box-header with-border">
-                <h4>Social Security Info:</h4>
+                <h4>Informacion Seguridad Social:</h4>
             </div>
 
             <div class="box-body">
                 <div class="form-group" :class="{'has-error': form.error.has('number')}">
-                    <label for="number" class="col-xs-3 col-md-12 col-lg-3">Social Sec. Number:</label>
+                    <label for="number" class="col-xs-3 col-md-12 col-lg-3">Número Seguridad Social:</label>
                     <div class="col-xs-9 col-md-12 col-lg-9">
                         <input type="text" class=" form-control"
                         id="number" name="number"
@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <div class="col-sm-10 col-sm-offset-2">
                         <button type="submit" class="btn btn-primary">
-                            Save Social Security
+                            Salvar Seguridad Social
                         </button>
                     </div>
                 </div>

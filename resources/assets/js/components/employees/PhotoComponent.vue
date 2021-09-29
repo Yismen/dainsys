@@ -23,7 +23,7 @@
 
                         <div class="box-body">
                             <div class="form-group" :class="{'has-error': form.error.has('photo')}">
-                                <label for="input" class="col-sm-2 control-label">Photo:</label>
+                                <label for="input" class="col-sm-2 control-label">Foto:</label>
                                 <div class="col-sm-10">
                                     <input type="file" id="photo"
                                         name="photo" class="form-control"
@@ -36,8 +36,8 @@
                         <div class="box-footer">
                             <div class="form-group">
                                 <div class="col-sm-10 col-sm-offset-2">
-                                    <button type="submit" class="btn btn-success">
-                                        UPDATE PHOTO
+                                    <button type="submit" class="btn btn-success text-uppercase">
+                                        Actualizar Foto
                                     </button>
                                 </div>
                             </div>
