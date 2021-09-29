@@ -1,5 +1,5 @@
 @inject('layout', 'App\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Employees', 'page_description'=>'List of active employees.'])
+@extends('layouts.'.$layout->app(), ['page_header'=>__('Employees'), 'page_description'=>__('List')])
 
 @section('content')
     <div class="container-fluids">
@@ -9,14 +9,14 @@
                     <div class="box-header with-border">
 
                         <div class="col-sm-6">
-                            <h3>Employees List</h3>
+                            <h3>@lang('List') @lang('Employees')</h3>
                         </div>
 
                         <div class="col-sm-6">
                             <!-- Single button -->
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-file-excel-o"></i> Download Excel <span class="caret"></span>
+                                    <i class="fa fa-file-excel-o"></i> Descargar Excel <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li>
@@ -32,14 +32,14 @@
                                     <li role="separator" class="divider"></li>
                                     <li>
                                         <a href="{{ route('admin.employees.export_to_excel', 'all') }}" class="">
-                                            <i class="fa fa-download"></i> All
+                                            <i class="fa fa-download"></i> @lang('All')
                                         </a>
                                     </li>
                                 </ul>
                             </div>
 
                             <a href="{{ route('admin.employees.create') }}" class="pull-right">
-                                <i class="fa fa-plus"></i> Create
+                                <i class="fa fa-plus"></i> @lang('Create')
                             </a>
 
                         </div>
@@ -51,22 +51,22 @@
                             <table class="table table-hover table-condensed table-bordered" id="employees-table">
                                 <thead>
                                     <tr>
-                                        <th> ID:</th>
-                                        <th>Name:</th>
-                                        <th>Second First Name:</th>
-                                        <th>Last Name:</th>
-                                        <th>Second Last Name:</th>
-                                        <th>Hire Date</th>
-                                        <th>Status</th>
-                                        <th>Position:</th> 
-                                        <th>Project:</th> 
-                                        <th>Site:</th> 
-                                        <th class="col-xs-1">Personal ID / Passport:</th>
-                                        <th>Passport:</th>
-                                        <th class="col-xs-1">Punch ID:</th>
-                                        <th>Cell Phone:</th>
+                                        <th>ID:</th>
+                                        <th>@lang('First Name'):</th>
+                                        <th>@lang('Second') @lang('First name'):</th>
+                                        <th>@lang('Last Name'):</th>
+                                        <th>@lang('Second') @lang('Last Name'):</th>
+                                        <th>@lang('Hire Date')</th>
+                                        <th>@lang('Status')</th>
+                                        <th>@lang('Position'):</th> 
+                                        <th>@lang('Project'):</th> 
+                                        <th>@lang('Site'):</th> 
+                                        <th class="col-xs-1">@lang('Personal Id') / @lang('Passport'):</th>
+                                        <th>@lang('Passport'):</th>
+                                        <th class="col-xs-1">@lang('Punch Id'):</th>
+                                        <th>@lang('Cell Phone'):</th>
                                         <th>Other Phone:</th>
-                                        <th>Edit:</th>
+                                        <th>@lang('Edit'):</th>
 
                                     </tr>
                                 </thead>

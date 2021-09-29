@@ -3,7 +3,7 @@
 <table class="table table-condensed table-bordered table-hover">
     <tbody>
         <tr>
-            <th>Hired On: </th>
+            <th>{{ __('Hired On') }}: </th>
             <td>
                 {{ $employee->hire_date->format('M-d-Y') }},
                 {{ $employee->hire_date->diffForHumans() }}
@@ -11,35 +11,35 @@
         </tr>
 
         <tr>
-            <th>Site: </th>
+            <th>{{ __('Site') }}: </th>
             <td>
                 {{ optional($employee->site)->name }}
             </td>
         </tr>
 
         <tr>
-            <th>Department: </th>
+            <th>{{ __('Department') }}: </th>
             <td>
                 {{ $employee->position && $employee->position->department ? $employee->position->department->name : '' }}
             </td>
         </tr>
 
         <tr>
-            <th>Project: </th>
+            <th>{{ __('Project') }}: </th>
             <td>
                 {{ optional($employee->project)->name }}
             </td>
         </tr>
 
         <tr>
-            <th>Position: </th>
+            <th>{{ __('Position') }}: </th>
             <td>
                 {{ optional($employee->position)->name }}
             </td>
         </tr>
 
         <tr>
-            <th>Salary: </th>
+            <th>{{ __('Salary') }}: </th>
             <td>
                 @if ($employee->position)
                     {{ $employee->position->payment_type ? $employee->position->payment_type->name : ''  }},
@@ -51,7 +51,7 @@
         </tr>
 
         <tr>
-            <th>Supervisor: </th>
+            <th>{{ __('Supervisor') }}: </th>
             <td>
                 {{ optional($employee->supervisor)->name }}
             </td>
@@ -61,7 +61,7 @@
             <tr>
                 <th colspan="2">
                     <i class="fa fa-globe"></i> 
-                    This Agent is Universal
+                    {{ __('This is an Universal Agent') }}
                 </th>
             </tr>
         @endif
@@ -70,27 +70,27 @@
             <tr>
                 <th colspan="2">
                     <i class="fa fa-superpowers"></i> 
-                    This employee is VIP
+                    {{ __('This is a VIP Agent') }}
                 </th>
             </tr>
         @endif
 
         <tr>
-            <th>Sec. Card #: </th>
+            <th>{{ __('Sec. Card #') }}: </th>
             <td>
                 {{ optional($employee->card)->card }}
             </td>
         </tr>
 
         <tr>
-            <th>Punch Id: </th>
+            <th>{{ __('Punch Id') }}: </th>
             <td>
                 {{ optional($employee->punch)->punch }}
             </td>
         </tr>
 
         <tr>
-            <th>Login Names: </th>
+            <th>{{ __('Login Names') }}: </th>
             <td>
                 @if ($employee->loginNames->count() > 0)
                     <ul>

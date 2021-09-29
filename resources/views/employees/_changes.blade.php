@@ -3,7 +3,7 @@
         <table class="table table-condensed table-hover table-bordered">
             <thead>
                 <tr>
-                    <th>Changes (Latest {{ $employee->changes->count() }})</th>
+                    <th>{{ __('Changes') }} ({{ __('Latest') }} {{ $employee->changes->count() }})</th>
                 </tr>
             </thead>
             <tbody>
@@ -13,13 +13,13 @@
                             @php
                                 $after = json_decode($change->after);
                             @endphp
-                            On {{ $change->updated_at->format('d/M/Y') }}, {{ $change->user->name }} Changed:
+                            {{ __('On Date') }} {{ $change->updated_at->format('d/M/Y') }}, {{ optional($change->user)->name }} {{ __('Changed') }}:
                             <ul>
                                 @foreach (json_decode($change->before) as $key => $value)
                                 <li>
-                                    Field {{ $key }}, 
-                                    from <span class="text-blue">{{ $value }}</span> 
-                                    to <span class="text-green">{{ collect($after->$key)->first() }}</span>
+                                    {{ __('Field') }} {{ $key }}, 
+                                    {{ __('From') }} <span class="text-blue">{{ $value }}</span> 
+                                    {{ __('To') }} <span class="text-green">{{ collect($after->$key)->first() }}</span>
                                 </li>
                                 @endforeach
                             </ul>

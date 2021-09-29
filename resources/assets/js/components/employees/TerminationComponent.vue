@@ -2,7 +2,7 @@
     <div class="_Termination" >
 
         <div class="box-header with-border bg-disabled" :class="[isActive ? 'bg-green' : 'bg-yellow']">
-            <h4>Current Status is {{ employee.status }}</h4>
+            <h4>Estado actual es {{ employee.status }}</h4>
         </div>
 
         <div class="box box-info">
@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group" :class="{'has-error': form.error.has('termination_date')}">
-                                <label for="input" class="">Date:</label>
+                                <label for="input" class="">Fecha:</label>
                                 <date-picker input-class="form-control input-sm"
                                     v-model="form.fields.termination_date"
                                     @updated="updateTerminationDate"
@@ -28,7 +28,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group" :class="{'has-error': form.error.has('termination_type_id')}">
-                                <label for="input" class="">Termination Type:</label>
+                                <label for="input" class="">Tipo de Salida:</label>
                                 <div class="">
                                     <select name="termination_type_id" id="termination_type_id" class="form-control input-sm" v-model="form.fields.termination_type_id">
                                         <option v-for="type in employee.termination_type_list" :value="type.id" :key="type.id">
@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group" :class="{'has-error': form.error.has('termination_reason_id')}">
-                                <label for="input" class="">Termination Reason:</label>
+                                <label for="input" class="">Motivo Salida:</label>
                                 <div class="">
                                     <select name="termination_reason_id" id="termination_reason_id" class="form-control input-sm"
                                         v-model="form.fields.termination_reason_id">
@@ -60,18 +60,18 @@
                         <!-- ./Termination Reason-->
                         <div class="col-sm-6">
                             <div class="form-group" :class="{'has-error': form.error.has('can_be_rehired')}">
-                                <label for="input" class="">Can be Re-hired?:</label>
+                                <label for="input" class="">Recontratar?:</label>
                                 <div class="pad"
                                      :class="[! form.fields.can_be_rehired ? 'bg-warning' :'bg-success']"
                                 >
                                     <div class="radio">
                                         <label class="text-success">
                                             <input type="radio" name="can_be_rehired" :value="true" v-model="form.fields.can_be_rehired">
-                                            Yes, for sure.
+                                            Sí, se puede.
                                         </label>
                                         <label class="text-warning">
                                             <input type="radio" name="can_be_rehired" :value="false" v-model="form.fields.can_be_rehired">
-                                            No, don't do it.
+                                            No, no lo haga.
                                         </label>
                                     </div>
                                     <span class="text-danger" v-if="form.error.has('can_be_rehired')">{{ form.error.get('can_be_rehired') }}</span>
@@ -84,7 +84,7 @@
                     <div class="row">
                         <div class="col-sm-6" :class="{'has-error': form.error.has('comments')}">
                             <div class="form-group" v-if="reasonIsOther">
-                                <label for="input" class="">Comments:</label>
+                                <label for="input" class="">Comentarios:</label>
                                 <div class="">
                                     <textarea
                                         id="comments"
@@ -101,10 +101,10 @@
                             <div class="form-group">
                                 <div class=" col-sm-offset-2">
                                     <button type="submit" class="btn btn-danger" v-if="isActive">
-                                        TERMINATE
+                                        TERMINAR
                                     </button>
                                     <button type="submit" class="btn btn-warning" v-else>
-                                        UPDATE TERMINATION INFO
+                                        ACTUALIZAR INFORMACION DE SALIDA
                                     </button>
                                 </div>
                             </div>

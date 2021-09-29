@@ -2,7 +2,7 @@
 <table class="table table-condensed table-bordered table-hover">
     <tbody>
         <tr>
-            <th>Social #: </th>
+            <th>{{ __('Social #') }}: </th>
             <td>
                 {{ optional($employee->social_security)->number }}
             </td>
@@ -23,7 +23,7 @@
         </tr>
 
         <tr>
-            <th>Bank Info: </th>
+            <th>{{ __('Bank Info') }}: </th>
             <td>
                 {{ 
                     optional($employee->bankAccount)->account_number 

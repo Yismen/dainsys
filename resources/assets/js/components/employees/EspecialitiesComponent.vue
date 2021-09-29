@@ -1,7 +1,7 @@
 <template>
     <div class="_Supervisor well">
         <div class="box-header with-border">
-            <h4>Especialities:</h4>
+            <h4>Especialidades:</h4>
         </div>
 
         <div class="box-body">
@@ -14,7 +14,7 @@
                         <input type="radio" name="isVip" id=""                             
                             @change="updateVip"
                             value="1" :checked="employee.is_vip"
-                        > Yes
+                        > Sí
                     </label>
                     <label class="radio-inline">
                         <input type="radio" name="isVip" id="" 
@@ -33,7 +33,7 @@
                     <label class="radio-inline">
                         <input type="radio" name="isUniversal" id="" value="1" 
                             @change="updateUniversal"
-                            :checked="employee.is_universal" > Yes
+                            :checked="employee.is_universal" > Sí
                     </label>
                     <label class="radio-inline">
                         <input type="radio" name="isUniversal" id="" value="0" 

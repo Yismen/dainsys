@@ -19,7 +19,7 @@
                                 <option v-for="afp in afp_list" :value="afp.id" :key="afp.id">{{ afp.name }}</option>
                             </select>
                             <a href="#" @click.prevent="$modal.show('create-afp')" class="input-group-addon">
-                                <i class="fa fa-plus"></i> Add
+                                <i class="fa fa-plus"></i> Agregar
                             </a>
                         </div>
                         <span class="text-danger" v-if="form.error.has('afp_id')">{{ form.error.get('afp_id') }}</span>
@@ -31,7 +31,7 @@
                 <div class="form-group">
                     <div class="col-sm-10 col-sm-offset-2">
                         <button type="submit" class="btn btn-primary">
-                            Save AFP
+                            Salvar AFP
                         </button>
                     </div>
                 </div>

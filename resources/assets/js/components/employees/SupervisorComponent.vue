@@ -7,7 +7,7 @@
         >
 
             <div class="box-header with-border">
-                <h4>Supervisor Info:</h4>
+                <h4>Información Supervisor:</h4>
             </div>
 
             <div class="box-body" :class="{'has-error': form.error.has('supervisor_id')}">
@@ -24,7 +24,7 @@
                                 </option>
                             </select>
                             <a href="#" @click.prevent="$modal.show('create-supervisor')" class="input-group-addon">
-                                <i class="fa fa-plus"></i> Add
+                                <i class="fa fa-plus"></i> Agregar
                             </a>
                         </div>
                         <span class="text-danger" v-if="form.error.has('supervisor_id')">{{ form.error.get('supervisor_id') }}</span>
@@ -35,8 +35,8 @@
             <div class="box-footer">
                 <div class="form-group">
                     <div class="col-sm-10 col-sm-offset-2">
-                        <button type="submit" class="btn btn-primary">
-                            Save Supervisor
+                        <button type="submit" class="btn btn-primary text-uppercase">
+                            Salvar Supervisor
                         </button>
                     </div>
                 </div>

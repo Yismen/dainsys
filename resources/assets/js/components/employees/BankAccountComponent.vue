@@ -6,20 +6,20 @@
             @keyup="updated">
 
         <div class="box-header with-border">
-            <h4>Bank Account Info:</h4>
+            <h4>Información Cuenta Banco:</h4>
         </div>
 
         <div class="box-body">
             <div class="col-md-6">
                 <div class="form-group" :class="{'has-error': form.error.has('bank_id')}">
-                    <label for="input" class="col-xs-3 col-md-12 col-lg-3">Bank:</label>
+                    <label for="input" class="col-xs-3 col-md-12 col-lg-3">Banco:</label>
                     <div class="col-xs-9 col-md-12 col-lg-9">
                         <div class="input-group">
                             <select name="bank_id" id="bank_id" class="form-control" v-model="form.fields.bank_id">
                                 <option v-for="bank in banks_list" :value="bank.id" :key="bank.id">{{ bank.name }}</option>
                             </select>
                             <a href="#" @click.prevent="$modal.show('create-bank')" class="input-group-addon">
-                                <i class="fa fa-plus"></i> Add
+                                <i class="fa fa-plus"></i> Agregar
                             </a>
                         </div>
                         <span class="text-danger" v-if="form.error.has('bank_id')">{{ form.error.get('bank_id') }}</span>
@@ -29,7 +29,7 @@
 
             <div class="col-md-6">
                 <div class="form-group" :class="{'has-error': form.error.has('bank_id')}">
-                    <label for="input" class="col-xs-3 col-md-12 col-lg-3">Account Number:</label>
+                    <label for="input" class="col-xs-3 col-md-12 col-lg-3"># De Cuenta:</label>
                     <div class="col-xs-9 col-md-12 col-lg-9">
                         <input type="text" class="form-control"
                          id="account_number" name="account_number"
@@ -45,7 +45,7 @@
             <div class="form-group">
                 <div class="col-sm-10 col-sm-offset-2">
                     <button type="submit" class="btn btn-primary">
-                        Save Bank Account
+                        Salvar Cuenta
                     </button>
                 </div>
             </div>

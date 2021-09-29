@@ -6,26 +6,26 @@
             @change="updated">
 
             <div class="box-header with-border">
-                <h4>Punch Id:</h4>
+                <h4>ID Ponche:</h4>
             </div>
 
             <div class="box-body">
                 <div class="form-group" :class="{'has-error': form.error.has('punch')}">
-                    <label for="input" class="col-xs-3 col-md-12 col-lg-3">Punch:</label>
+                    <label for="input" class="col-xs-3 col-md-12 col-lg-3">Ponche:</label>
                     <div class="col-xs-9 col-md-12 col-lg-9">
                         <input type="text" class="form-control"
                          id="punch" name="punch"
                         v-model="form.fields.punch">
                         <span class="text-danger" v-if="form.error.has('punch')">{{ form.error.get('punch') }}</span>
                     </div>
-                </div> <!-- ./Punch -->
+                </div> <!-- ./Ponche -->
             </div>
 
             <div class="box-footer">
                 <div class="form-group">
                     <div class="col-sm-10 col-sm-offset-2">
-                        <button type="submit" class="btn btn-primary">
-                            Save Punch
+                        <button type="submit" class="btn btn-primary text-uppercase">
+                            Salvar Ponche
                         </button>
                     </div>
                 </div>

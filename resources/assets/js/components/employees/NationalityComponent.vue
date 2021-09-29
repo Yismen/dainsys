@@ -7,12 +7,12 @@
         >
 
             <div class="box-header with-border">
-                <h4>Nationality:</h4>
+                <h4>Nacionalidad:</h4>
             </div>
 
             <div class="box-body">
                 <div class="form-group" :class="{'has-error': form.error.has('nationality_id')}">
-                    <label for="nationality_id" class="col-xs-3 col-md-12 col-lg-3">Nationality:</label>
+                    <label for="nationality_id" class="col-xs-3 col-md-12 col-lg-3">Nacionalidad:</label>
                     <div class="col-xs-9 col-md-12 col-lg-9">
                         <div class="input-group">
                             <select name="nationality" id="nationality"
@@ -24,7 +24,7 @@
                                 </option>
                             </select>
                             <a href="#" @click.prevent="$modal.show('create-nationality')" class="input-group-addon">
-                                <i class="fa fa-plus"></i> Add
+                                <i class="fa fa-plus"></i> Agregar
                             </a>
                         </div>
                         <span class="text-danger" v-if="form.error.has('nationality_id')">{{ form.error.get('nationality_id') }}</span>
@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <div class="col-sm-10 col-sm-offset-2">
                         <button type="submit" class="btn btn-primary">
-                            Save Nationality
+                            Salvar Nacionalidad
                         </button>
                     </div>
                 </div>

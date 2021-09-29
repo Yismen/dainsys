@@ -5,15 +5,15 @@
 		<thead>
 			<tr>
 				<!-- <th>#:</th> -->
-				<th>Employee ID:</th>
-				<th>First Name:</th>
-				<th>Last Name:</th>
-				<th>Hire Date:</th>
-				<th>Position:</th>
-				<th>Personal ID:</th>
-				<th>Cell Phone:</th>
+				<th>{{ __('Employee') }} ID:</th>
+				<th>{{ __('First Name') }}:</th>
+				<th>{{ __('Last Name') }}:</th>
+				<th>{{ __('Hire Date') }}:</th>
+				<th>{{ __('Position') }}:</th>
+				<th>{{ __('Personal Id') }}:</th>
+				<th>{{ __('Cell Phone') }}:</th>
 				<th>
-					<a href="{{ route('admin.employees.create') }}" class="">Insert
+					<a href="{{ route('admin.employees.create') }}" class="">{{ __('Insert') }}
 						<i class="fa fa-plus"></i>
 					</a>
 				</th>
@@ -35,7 +35,7 @@
 						<td>{{ $employee->cellphone_number }}</td>
 						<td>																
 							<a href="{{ route('admin.employees.edit', $employee->id) }}" class="">
-								Edit <i class="fa fa-edit"></i>
+								{{ __('Edit') }} <i class="fa fa-edit"></i>
 							</a>
 						</td>
 					</tr>

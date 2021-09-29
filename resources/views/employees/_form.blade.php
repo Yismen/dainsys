@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-sm-6">
 		<div class="form-group {{ $errors->has('first_name') ? 'has-error' : null }}">
-			{!! Form::label('first_name', 'First Name:', ['class'=>'']) !!}
+			{!! Form::label('first_name', __('First Name').':', ['class'=>'']) !!}
 			{!! Form::input('text', 'first_name', null, ['class'=>'form-control input-sm', 'placeholder'=>'First Name']) !!}
 			{!! $errors->first('first_name', '<span class="text-danger">:message</span>') !!}
 		</div>

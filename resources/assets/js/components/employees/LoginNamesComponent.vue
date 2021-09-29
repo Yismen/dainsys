@@ -7,7 +7,7 @@
             >
 
             <div class="box-header with-border">
-                <h4>List of Login Names Assigned:</h4>
+                <h4>Listado de Login Names Asignados:</h4>
             </div>
 
             <div class="box-body">
@@ -23,7 +23,7 @@
                                     >
 
                                     <span class="input-group-btn">
-                                        <button class="btn btn-primary" type="submit">CREATE</button>
+                                        <button class="btn btn-primary" type="submit text-uppercase">Crear</button>
                                     </span>
 
                                 </div>
@@ -43,15 +43,15 @@
                 <thead>
                     <tr>
                         <th>Login Name</th>
-                        <th>Actions</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(login, index) in login_names" :key="login.id">
                         <td>{{ login.login }}</td>
                         <td class="col-sm-2">
-                            <a href="#"@click.prevent="updateLogin(index, login)">
-                                <i class="fa fa-edit"></i> Edit
+                            <a href="#" @click.prevent="updateLogin(index, login)">
+                                <i class="fa fa-edit"></i> Editar
                             </a>
                         </td>
                     </tr>
