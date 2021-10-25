@@ -179,7 +179,7 @@ class AfpTest extends TestCase
 
         $this->actingAs($this->userWithPermission('edit-afps'))
             ->get(route('admin.afps.edit', $afp->id))
-            ->assertSee('Edit AFP '.$afp->name);
+            ->assertSee('Edit AFP - ' . $afp->name);
     }
 
     /** @test */
