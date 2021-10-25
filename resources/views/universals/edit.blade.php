@@ -8,7 +8,7 @@
 				<div class="box box-warning">
 					<div class="box-header">
 						<h4>
-							Edit Universal {{ $universal->employee->full_name }}
+							@lang('Edit') Universal {{ $universal->employee->full_name }}
 
 							<a href="{{ route('admin.universals.index') }}" class="pull-right" title="Back to List">
 								<i class="fa fa-home"></i>

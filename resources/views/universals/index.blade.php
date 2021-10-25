@@ -1,5 +1,5 @@
 @inject('layout', 'App\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Universal', 'page_description'=>'List of Universals of production.'])
+@extends('layouts.'.$layout->app(), ['page_header'=>'Universal', 'page_description'=>  __("List")])
 
 @section('content')
 <div class="container-fluid">
