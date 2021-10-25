@@ -186,7 +186,7 @@ class ArsTest extends TestCase
         $employee->save();
 
         $this->get(route('admin.arss.edit', $ars->id))
-            ->assertSee('Edit ARS ' . $ars->name);
+            ->assertSee('Edit ARS - ' . $ars->name);
     }
 
     /** @test */
