@@ -54,13 +54,10 @@ class Kernel extends ConsoleKernel
             ->weeklyOn(5, '15:59')
             ->timezone('America/New_York');
 
-
         $schedule->command('dainsys:general-rc-production-report --team=ECC')->dailyAt('05:25')->timezone('America/New_York');
         $schedule->command('dainsys:general-rc-raw-report --team=ECC')->dailyAt('05:45')->timezone('America/New_York');
 
         $schedule->command('publishing:send-production-report')->hourlyAt(58)->timezone('America/New_York');
-
-        $schedule->command('dmr:send-hourly-report')->hourlyAt(59)->timezone('America/New_York');
 
         $schedule->command('dainsys:political-send-hourly-flash')->hourly()->timezone('America/New_York');
         $schedule->command('political:send-production-report')->hourlyAt(59)->timezone('America/New_York');
@@ -69,6 +66,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('inbound:send-daily-summary')->dailyAt('06:20')->timezone('America/New_York');
         $schedule->command('inbound:send-wtd-summary')->dailyAt('06:30')->timezone('America/New_York');
 
+        // $schedule->command('dmr:send-hourly-report')->hourlyAt(59)->timezone('America/New_York');
         // $schedule->command('ooma:send-production-report')->dailyAt('20:05')->timezone('America/New_York');
         // $schedule->command('ooma:send-mtd-calls-report')->dailyAt('20:15')->timezone('America/New_York');
 
