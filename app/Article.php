@@ -29,7 +29,7 @@ class Article extends Model
      */
     protected $dates = ['published_at'];
 
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [

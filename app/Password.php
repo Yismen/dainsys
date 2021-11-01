@@ -14,7 +14,7 @@ class Password extends Model
      */
     protected $fillable = ['slug', 'title', 'url', 'username', 'password'];
 
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [

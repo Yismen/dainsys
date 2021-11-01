@@ -11,7 +11,7 @@ class PaymentFrequency extends Model
 
     protected $fillable = ['name', 'slug'];
 
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [
