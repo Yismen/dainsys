@@ -53,16 +53,16 @@ class DainsysInit extends Command
 
     protected function askForComposer()
     {
-        if ($this->confirm('Do you want to instal COMPOSER dependencies?')) {
-            shell_exec('composer isntall');
+        if ($this->confirm('Do you want to install COMPOSER dependencies?')) {
+            shell_exec('composer install');
         }
         return $this;
     }
 
     protected function askForNpm()
     {
-        if ($this->confirm('Do you want to instal NODE NPM dependencies?')) {
-            shell_exec('npm isntall');
+        if ($this->confirm('Do you want to install NODE NPM dependencies?')) {
+            shell_exec('npm install');
             shell_exec('npm run production');
         }
         return $this;
