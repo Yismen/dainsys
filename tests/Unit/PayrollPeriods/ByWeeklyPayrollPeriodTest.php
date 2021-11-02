@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 
-class ByWeeklyParyollPeriodTest extends TestCase
+class ByWeeklyPayrollPeriodTest extends TestCase
 {
     use WithFaker;
 
