@@ -23,18 +23,18 @@ class DMRHourlyReportTest extends TestCase
     }
 
     /** @test */
-    public function daily_summary_command_executes()
-    {
-        Excel::fake();
-        Mail::fake();
-        $subject = "Fake Name";
-        $file_name = "{$subject}.xlsx";
-        $this->artisan('dmr:send-hourly-report');
+    // public function daily_summary_command_executes()
+    // {
+    // Excel::fake();
+    // Mail::fake();
+    // $subject = "Fake Name";
+    // $file_name = "{$subject}.xlsx";
+    // $this->artisan('dmr:send-hourly-report');
 
-        // Mail::assertSent(
-        //     CommandsBaseMail::class
-        // );
-    }
+    // Mail::assertSent(
+    //     CommandsBaseMail::class
+    // );
+    // }
 
     /** @test */
     // public function repository_returns_data()
