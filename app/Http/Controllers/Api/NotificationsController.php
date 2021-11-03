@@ -19,16 +19,18 @@ class NotificationsController extends Controller
     {
         foreach (auth()->user()->unreadNotifications as $notification) {
             $notification->markAsRead();
-        }        
-        
+        }
+
         Cache::flush();
-        
+
         return auth()->user()->unreadNotifications()->get();
     }
 
     public function show(Notification $notification)
     {
         $notification->markAsRead();
+
+        Cache::flush();
 
         return $notification;
     }
