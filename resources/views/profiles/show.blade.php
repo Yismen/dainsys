@@ -53,7 +53,7 @@
 						<i class="fa fa-book margin-r-5"></i> Skills
 					</strong>
 					<p class="">
-						@if (optional($profile)->skillsObject && count($profile->skillsObject) > 0)
+						@if (optional($profile)->skillsObject)
 							@foreach ($profile->skillsObject as $skill)
 								<span class="label label-success">{{ trim($skill) }}</span>
 							@endforeach
