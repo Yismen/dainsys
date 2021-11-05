@@ -1,7 +1,9 @@
 <?php
 
 use App\Menu;
+use App\Role;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Cache;
 
 class MenusTableSeeder extends Seeder
 {
@@ -21,5 +23,14 @@ class MenusTableSeeder extends Seeder
         Menu::create(['name' => 'admin/menus', 'display_name' => 'Menus', 'description' => '', 'icon' => 'fa fa-bars']);
         Menu::create(['name' => 'admin/employees', 'display_name' => 'Employees', 'description' => '', 'icon' => 'fa fa-users']);
         Menu::create(['name' => 'admin/positions', 'display_name' => 'Positions', 'description' => '']);
+
+        // Attach all menus to admin Role 
+        $admin = Role::where('name', 'admin')->first();
+
+        if ($admin) {
+            $admin->menus()->sync(Menu::pluck('id'));
+
+            Cache::flush();
+        }
     }
 }
