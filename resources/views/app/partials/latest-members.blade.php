@@ -16,7 +16,7 @@
                         </a>
                     </h5>
 
-                    <p class="text-center help-block" style="font-size: 10px;">{{ strtoupper($profile->created_at->diffForHumans()) }}</p>
+                    <p class="text-center help-block" style="font-size: 10px;">{{ strtoupper(optional($profile->created_at)->diffForHumans()) }}</p>
 
                 </div>
                 @endforeach
