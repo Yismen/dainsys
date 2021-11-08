@@ -56,20 +56,21 @@ class EmployeeController extends Controller
         return Employee::with([
             'afp',
             'ars',
+            'bankAccount',
             'gender',
             'marital',
             'nationality',
-            'project',
             'position.department',
             'position.payment_type',
+            'project',
             'punch',
             'site',
             'supervisor',
             'termination',
-            'vip',
-            'universal'
+            'universal',
+            'vip'
         ])
-        ->sorted()
-        ->filter(request()->all());
+            ->sorted()
+            ->filter(request()->all());
     }
 }
