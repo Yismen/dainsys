@@ -33,7 +33,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('telescope:prune --hours=24')->dailyAt('06:40')->timezone('America/New_York');
+        $schedule->command('telescope:prune --hours=72')->dailyAt('06:40')->timezone('America/New_York');
 
         $schedule->command('dainsys:laravel-logs laravel- --clear --keep=8')->dailyAt('04:00')->timezone('America/New_York');
 
