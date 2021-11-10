@@ -56,6 +56,13 @@ abstract class TestCase extends BaseTestCase
         return $this;
     }
 
+    protected function user(array $attributes = [])
+    {
+        $user = create('App\User', $attributes);
+
+        return $user;
+    }
+
     protected function userWithPermission($permit)
     {
         $user = create('App\User');
@@ -66,6 +73,7 @@ abstract class TestCase extends BaseTestCase
 
         return $user;
     }
+
     protected function userWithRole($role)
     {
         $user = create('App\User');
