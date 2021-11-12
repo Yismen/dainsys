@@ -1,49 +1,30 @@
-@inject('layout', 'App\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Banks', 'page_description'=>'Banks Management'])
+<x-view page_header="{{ __('Banks') }}" page_description="{{ __('Banks') }} {{ __('Management') }}">
+    @include('banks.create')
 
-@section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
-                @include('banks.create')
-                <div class="box box-primary">
-                    
-                    <div class="box-header with-border"><h3>Banks List</h3></div>
+    <x-box type="primary">
+        <x-slot name="header">
+            <h3>Banks List</h3>    
+        </x-slot>
 
-                    <div class="box-body">
-
-
-                        <div class="table-responsive">
-                            <table class="table table-condensed table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th class="col-xs-2">
-                                            Edit
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($banks as $bank)
-                                        <tr>
-                                            <td>{{ $bank->name }}</td>
-                                            <td>
-                                                <a href="/admin/banks/{{ $bank->id }}/edit"><i class="fa fa-edit"></i> Edit</a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="box-footer"></div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
-@push('scripts')
-
-@endpush
+        <x-table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th class="col-xs-2">
+                        Edit
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($banks as $bank)
+                <tr>
+                    <td>{{ $bank->name }}</td>
+                    <td>
+                        <a href="/admin/banks/{{ $bank->id }}/edit"><i class="fa fa-edit"></i> Edit</a>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </x-table>
+    </x-box>
+</x-view>
