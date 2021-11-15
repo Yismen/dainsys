@@ -6,7 +6,7 @@
         </div>
 
         <div class="box box-info">
-            <form class="" role="form"
+            <form class="" role="form" method="post"
                 @submit.prevent="terminate"
                 autocomplete="off"
                 @keydown="form.error.clear($event.target.name)"
@@ -162,7 +162,7 @@
             this.form.fields.termination_date = date
         },
         terminate() {
-            this.form.post('/admin/employees/' + this.employee.id + '/terminate/')
+            this.form.post(`/admin/employees/${this.employee.id}/terminate`)
                 .then(response => {
                     this.$store.dispatch('employee/set', response.data)
                 })
