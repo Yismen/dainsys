@@ -48,6 +48,7 @@ class EmployeesResource extends JsonResource
             "account_number" => optional($this->bankAccount)->account_number,
             "is_vip" => $this->isVip,
             "is_universal" => $this->isUniversal,
+            "termination_date" => optional(optional($this->termination)->termination_date)->format('Y-m-d'),
         ];
     }
 }
