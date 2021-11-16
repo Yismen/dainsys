@@ -109,7 +109,7 @@ class ProjectsController extends Controller
 
         $project->update($request->only(['name', 'client_id']));
 
-        return redirect()->route('admin.projects.index', $project->id)
+        return redirect()->route('admin.projects.index')
             ->withWarning("Project $project->name has been updated");
     }
 
