@@ -14,8 +14,8 @@ abstract class TestCase extends BaseTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        DB::statement('PRAGMA foreign_keys=on;');
-        $this->withExceptionHandling();
+        // DB::statement('PRAGMA foreign_keys=on;');
+        // $this->withExceptionHandling();
     }
 
     protected function signIn($user = null)
