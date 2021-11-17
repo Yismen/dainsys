@@ -35,7 +35,7 @@ class ModuleActionsTest extends TestCase
         $department = make(Department::class)->toArray();
 
         $this->actingAs($this->userWithPermission('create-departments'))
-            ->post(route('admin.departments.store', $department))
+            ->post(route('admin.departments.store'), $department)
             ->assertRedirect()
             ->assertLocation(route('admin.departments.index'));
 
