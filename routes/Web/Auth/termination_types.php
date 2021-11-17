@@ -1,3 +1,3 @@
 <?php
 
-Route::resource('termination_types', 'TerminationTypeController');
+Route::resource('termination_types', 'TerminationTypeController')->except(['destroy']);
