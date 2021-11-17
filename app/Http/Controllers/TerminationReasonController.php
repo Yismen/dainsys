@@ -50,7 +50,7 @@ class TerminationReasonController extends Controller
         );
 
         return redirect()->route('admin.termination_reasons.index')
-                    ->withSuccess("Termination Reason $termination_reason->reason created!");
+            ->withSuccess("Termination Reason $termination_reason->reason created!");
     }
 
     /**
@@ -90,16 +90,5 @@ class TerminationReasonController extends Controller
 
         return redirect()->route('admin.termination_reasons.index')
             ->withWarning("Termination reason $termination_reason->reason Updated!");
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  TerminationReason $termination_reason
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(TerminationReason $termination_reason)
-    {
-        //
     }
 }
