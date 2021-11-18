@@ -40,13 +40,4 @@ class AuthorizationTest extends TestCase
         $response->put(route('admin.employees.update', $employee->id))
             ->assertForbidden();
     }
-
-    public function testUnuthorizedUsersCantDestroyEmployee()
-    {
-        $employee = create('App\Employee');
-        $response = $this->actingAs($this->userWithPermission('wrong-permission'));
-
-        $response->delete(route('admin.employees.destroy', $employee->id))
-            ->assertForbidden();
-    }
 }

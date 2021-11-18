@@ -49,13 +49,4 @@ class AuthenticationTest extends TestCase
             ->assertStatus(302)
             ->assertRedirect(route('login'));
     }
-
-    public function testGuestCantDestroyEmployee()
-    {
-        $employee = create('App\Employee');
-
-        $this->delete(route('admin.employees.destroy', $employee->id))
-            ->assertStatus(302)
-            ->assertRedirect(route('login'));
-    }
 }
