@@ -11,10 +11,10 @@ class RevenueTypesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('authorize:view-revenue_types|edit-revenue_types|create-revenue_types', ['only' => ['index', 'show']]);
-        $this->middleware('authorize:edit-revenue_types', ['only' => ['edit', 'update']]);
-        $this->middleware('authorize:create-revenue_types', ['only' => ['create', 'store']]);
-        $this->middleware('authorize:destroy-revenue_types', ['only' => ['destroy']]);
+        $this->middleware('authorize:view-revenue-types|edit-revenue-types|create-revenue-types', ['only' => ['index', 'show']]);
+        $this->middleware('authorize:edit-revenue-types', ['only' => ['edit', 'update']]);
+        $this->middleware('authorize:create-revenue-types', ['only' => ['create', 'store']]);
+        $this->middleware('authorize:destroy-revenue-types', ['only' => ['destroy']]);
     }
 
     /**
@@ -89,7 +89,7 @@ class RevenueTypesController extends Controller
     public function update(RevenueType $revenue_type, Request $request)
     {
         $this->validate($request, [
-            'name' =>'required|min:3|unique:revenue_types,name,' . $revenue_type->id
+            'name' => 'required|min:3|unique:revenue_types,name,' . $revenue_type->id
         ]);
 
         $revenue_type->update($request->only([

@@ -7,11 +7,11 @@ use App\Role;
 use App\User;
 use App\Permission;
 use Illuminate\Http\Request;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
 class RolesController extends Controller
 {
-    public function __construct(User $user, Menu $menu, Permission $permission)
+    public function __construct()
     {
         $this->middleware('authorize:view-roles|edit-roles|create-roles', ['only' => ['index', 'show']]);
         $this->middleware('authorize:edit-roles', ['only' => ['edit', 'update']]);
@@ -50,12 +50,12 @@ class RolesController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|unique:roles,name',
-            'users' => 'required',
+            'users' => 'required|array',
         ]);
 
         $role = $role->createRole($request);
 
-        \Cache::flush();
+        Cache::flush();
 
         return redirect()->route('admin.roles.index')
             ->withSuccess("Role $role->display_name has bee created.");
@@ -92,13 +92,13 @@ class RolesController extends Controller
     public function update(Role $role, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'users' => 'required',
+            'name' => 'required|unique:roles,name,' . $role->id . ',name',
+            'users' => 'required|array',
         ]);
 
         $role->updateRole($request);
 
-        \Cache::flush();
+        Cache::flush();
 
         return redirect()->route('admin.roles.show', $role->name)
             ->withSuccess("Role $role->display_name has bee update.");
@@ -114,7 +114,7 @@ class RolesController extends Controller
     {
         $role->delete();
 
-        \Cache::flush();
+        Cache::flush();
 
         return redirect()->route('admin.roles.index')
             ->withWarning("Role $role->name has been removed!!!");

@@ -32,19 +32,19 @@ class PermissionsController extends Controller
 
         return DataTables::of(
             Permission::query()
-            ->with([
-                'roles'
-            ])
+                ->with([
+                    'roles'
+                ])
         )
-        ->addColumn('delete', function ($query) {
-            return "
+            ->addColumn('delete', function ($query) {
+                return "
                 <delete-request-button
                 url='{route('admin.permissions.destroy', $query->name)}'
                 redirect-url='{route('admin.permissions.index')}'
             ></delete-request-button>
             ";
-        })
-        ->toJson(true);
+            })
+            ->toJson(true);
     }
 
     /**
@@ -67,7 +67,7 @@ class PermissionsController extends Controller
         $this->validate($request, [
             'resource' => 'required|min:3|unique:permissions,resource',
             'actions' => 'required_without:not_resource|array',
-            'roles' => 'array|exists:roles,id',
+            'roles' => 'sometimes|array|exists:roles,id',
         ]);
 
         $permission->createPermission($request);
@@ -109,7 +109,7 @@ class PermissionsController extends Controller
     public function update(Permission $permission, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:3|unique:permissions,resource,'.$permission->id,
+            'name' => 'required|min:3|unique:permissions,resource,' . $permission->id,
             'roles' => 'array|exists:roles,id',
         ]);
 

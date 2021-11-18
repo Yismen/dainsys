@@ -45,4 +45,4 @@ Route::put('employees/{employee}/supervisor', 'Employee\SupervisorController@upd
 Route::post('employees/{employee}/nationality', 'Employee\NationalityController@update')
     ->name('employees.update-nationality');
 
-Route::resource('employees', 'EmployeesController');
+Route::resource('employees', 'EmployeesController')->except(['destroy']);

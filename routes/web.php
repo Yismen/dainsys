@@ -21,9 +21,9 @@ Auth::routes(['register' => false]);
  */
 Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
     Route::group(['middleware' => 'auth'], function () {
-        Route::get('/', 'HomeController@admin');
+        Route::get('/', 'AdminController@admin');
 
-        Route::get('/mark-all-notifications-as-read', 'HomeController@markAllNotificationsAsReadForUser')
+        Route::get('/mark-all-notifications-as-read', 'AdminController@markAllNotificationsAsReadForUser')
             ->name('mark-all-notifications-as-read');
 
         foreach (File::allFiles(__DIR__ . '/Web/Auth') as $partial) {

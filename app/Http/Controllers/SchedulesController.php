@@ -31,7 +31,8 @@ class SchedulesController extends Controller
         if (!request()->ajax()) {
             $employees_missing_schedule = Employee::actives()
                 ->whereDoesntHave(
-                    'schedules', function ($query) {
+                    'schedules',
+                    function ($query) {
                         return $query->whereDate('date', '>=', Carbon::now()->subDays(10));
                     }
                 )
@@ -46,9 +47,9 @@ class SchedulesController extends Controller
         $schedules = Schedule::whereHas('employee', function ($query) {
             return $query->actives();
         })
-        ->with('employee')
-        ->whereDate('date', '>=', Carbon::now()->subDays(10))
-        ->orderBy('slug');
+            ->with('employee')
+            ->whereDate('date', '>=', Carbon::now()->subDays(10))
+            ->orderBy('slug');
 
         return DataTables::of($schedules)
             ->orderColumn('employee', 'slug $1')
@@ -77,7 +78,7 @@ class SchedulesController extends Controller
         $validated = $this->validate($request, [
             'employee_id' => 'required|exists:employees,id',
             'date' => 'required|date',
-            'days' => 'nullable|numeric|min:1|max:30',
+            'hours' => 'nullable|numeric|min:0|max:14',
         ]);
 
         $schedule = (new Schedule())->createNew($validated);
@@ -122,7 +123,9 @@ class SchedulesController extends Controller
     public function update(Request $request, Schedule $schedule)
     {
         $this->validate($request, [
-            'hours' => 'required|numeric|min:0|max:14',
+            'employee_id' => 'required|exists:employees,id',
+            'date' => 'required|date',
+            'hours' => 'nullable|numeric|min:0|max:14',
         ]);
 
         $schedule = $schedule->update($request->only('hours'));
@@ -141,5 +144,7 @@ class SchedulesController extends Controller
     public function destroy(Schedule $schedule)
     {
         $schedule->delete();
+
+        return redirect()->route('admin.schedules.index');
     }
 }

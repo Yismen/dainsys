@@ -53,7 +53,7 @@ class TerminationTypeController extends Controller
         );
 
         return redirect()->route('admin.termination_types.index')
-                    ->withSuccess("Termination Type $termination_type->name created!");
+            ->withSuccess("Termination Type $termination_type->name created!");
     }
 
     /**
@@ -97,16 +97,5 @@ class TerminationTypeController extends Controller
 
         return redirect()->route('admin.termination_types.index')
             ->withWarning("Termination name $termination_type->name Updated!");
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  TerminationType $termination_type
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(TerminationType $termination_type)
-    {
-        //
     }
 }
