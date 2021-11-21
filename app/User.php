@@ -81,8 +81,8 @@ class User extends Authenticatable implements CanResetPassword
             'email' => $request->email,
             'username' => $request->username,
             'password' => Hash::make($new_password),
-            'is_active' => $request->is_active,
-            'is_admin' => $request->is_admin
+            'is_active' => $request->is_active ?? true,
+            'is_admin' => $request->is_admin ?? false,
         ]);
 
         $user->roles()->sync((array) $request->input('roles'));

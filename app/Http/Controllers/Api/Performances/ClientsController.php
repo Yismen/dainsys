@@ -8,7 +8,7 @@ use App\Http\Resources\ClientResource;
 
 class ClientsController extends Controller
 {
-    public function list()
+    public function __invoke()
     {
         $projects = Client::get();
 

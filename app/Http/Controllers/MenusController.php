@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Menu;
+use Illuminate\Support\Facades\Cache;
 
 class MenusController extends Controller
 {
@@ -49,12 +50,12 @@ class MenusController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:menus',
             'display_name' => 'required|unique:menus,display_name',
-            'roles' => 'required|array'
+            'roles' => 'sometimes|required|array'
         ]);
 
         $menu = $menu->addMenu($request);
 
-        \Cache::flush();
+        Cache::flush();
 
         return redirect()->route('admin.menus.index')
             ->withSuccess("Menu $menu->display_name has bee created.");
@@ -93,7 +94,7 @@ class MenusController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:menus,name,' . $menu->id,
             'display_name' => 'required|unique:menus,display_name,' . $menu->id . ',id',
-            'roles' => 'required|array'
+            'roles' => 'sometimes|required|array'
         ]);
 
         $menu->updateMenu($request);

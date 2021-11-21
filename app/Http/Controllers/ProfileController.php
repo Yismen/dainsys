@@ -175,7 +175,7 @@ class ProfileController extends Controller
         $this->validate(request(), [
             'photo' => 'image|max:4000',
             'gender' => 'required',
-            'name' => 'required|max:70',
+            'name' => 'sometimes|required|max:70',
             'bio' => 'max:4500',
             'phone' => 'max:50',
             'education' => 'max:1500',

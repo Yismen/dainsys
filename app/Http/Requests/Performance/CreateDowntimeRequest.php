@@ -24,7 +24,7 @@ class CreateDowntimeRequest extends FormRequest
     public function rules()
     {
         return [
-            'date' => 'required|date|',
+            'date' => 'required|date',
             'employee_id' => 'required|exists:employees,id',
             'campaign_id' => 'required|exists:campaigns,id',
             'login_time' => 'required|numeric|min:0|max:14',

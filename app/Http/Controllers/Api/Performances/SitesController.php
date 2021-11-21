@@ -8,7 +8,7 @@ use App\Http\Resources\SiteResource;
 
 class SitesController extends Controller
 {
-    public function list()
+    public function __invoke()
     {
         $campaigns = Site::get();
 

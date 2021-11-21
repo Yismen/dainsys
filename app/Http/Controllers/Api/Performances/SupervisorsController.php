@@ -8,7 +8,7 @@ use App\Http\Resources\SupervisorsResource;
 
 class SupervisorsController extends Controller
 {
-    public function list()
+    public function __invoke()
     {
         $supervisors = Supervisor::orderBy('name')->get();
 
