@@ -35,7 +35,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('telescope:prune --hours=72')->dailyAt('06:40')->timezone('America/New_York');
 
-        $schedule->command('dainsys:laravel-logs laravel- --clear --keep=8')->dailyAt('04:00')->timezone('America/New_York');
+        // $schedule->command('dainsys:laravel-logs laravel- --clear --keep=8')->dailyAt('04:00')->timezone('America/New_York');
 
         $schedule->command('dainsys:feed-shifts --hours=7.5 --saturday=1')->dailyAt('14:59')->timezone('America/New_York');
         $schedule->command('dainsys:feed-schedules --days=15 --since-days-ago=0')->dailyAt('15:10')
