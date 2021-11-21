@@ -8,7 +8,7 @@ use App\Http\Resources\CampaignResource;
 
 class CampaignsController extends Controller
 {
-    public function list()
+    public function __invoke()
     {
         $campaigns = Campaign::with([
             'project',

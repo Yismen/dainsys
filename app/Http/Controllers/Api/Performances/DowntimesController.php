@@ -10,13 +10,6 @@ use App\Http\Resources\DowntimeReasonsResource;
 
 class DowntimesController extends Controller
 {
-    public function reasons()
-    {
-        $downtime_reasons = DowntimeReason::get();
-
-        return DowntimeReasonsResource::collection($downtime_reasons);
-    }
-
     public function employees()
     {
         $projects = Employee::with('supervisor')
@@ -25,7 +18,7 @@ class DowntimesController extends Controller
             ->orderBy('last_name')
             ->orderBy('second_last_name')
             ->recents()
-                ->get();
+            ->get();
 
         return EmployeeResource::collection($projects);
     }

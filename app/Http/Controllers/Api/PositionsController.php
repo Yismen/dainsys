@@ -13,14 +13,6 @@ use App\Http\Controllers\Controller;
 
 class PositionsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('role:system-administrator');
-        $this->middleware('authorize:view-positions|edit-positions|create-positions', ['only' => ['index', 'show']]);
-        $this->middleware('authorize:edit-positions', ['only' => ['edit', 'update']]);
-        $this->middleware('authorize:create-positions', ['only' => ['create', 'store']]);
-        $this->middleware('authorize:destroy-positions', ['only' => ['destroy']]);
-    }
 
     /**
      * Display a listing of the resource.

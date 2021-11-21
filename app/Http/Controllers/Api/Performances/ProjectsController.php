@@ -8,7 +8,7 @@ use App\Http\Resources\ProjectResource;
 
 class ProjectsController extends Controller
 {
-    public function list()
+    public function __invoke()
     {
         $projects = Project::with('client')->get();
 
