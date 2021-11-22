@@ -2,7 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 
+//should not be here...
 Route::get('api/employees', 'EmployeesController@index')->name('employees.list');
+
+Route::post('employees/{employee}/address', 'Employee\AddressController@update')
+    ->name('employees.update-address');
+
+Route::put('employees/{employee}/ars', 'Employee\ARSController@assign')
+    ->name('employees.update-ars');
+
+Route::put('employees/{employee}/afp', 'Employee\AFPController@assign')
+    ->name('employees.update-afp');
+
+Route::put('employees/{employee}/supervisor', 'Employee\SupervisorController@assign')
+    ->name('employees.update-supervisor');
 
 Route::get('employees/export_to_excel/{status}', 'Employee\ExportController@toExcel')
     ->name('employees.export_to_excel');
@@ -15,9 +28,6 @@ Route::post('employees/{employee}/reactivate', 'Employee\TerminationController@r
 Route::post('employees/{employee}/terminate', 'Employee\TerminationController@terminate')
     ->name('employees.terminate');
 
-Route::post('employees/{employee}/address', 'Employee\AddressController@update')
-    ->name('employees.update-address');
-
 Route::post('employees/{employee}/card', 'Employee\CardController@update')
     ->name('employees.update-card');
 
@@ -27,20 +37,11 @@ Route::post('employees/{employee}/punch', 'Employee\PunchController@update')
 Route::post('employees/{employee}/photo', 'Employee\PhotoController@update')
     ->name('employees.update-photo');
 
-Route::put('employees/{employee}/ars', 'Employee\ARSController@assign')
-    ->name('employees.update-ars');
-
-Route::put('employees/{employee}/afp', 'Employee\AFPController@assign')
-    ->name('employees.update-afp');
-
 Route::put('employees/{employee}/bank-account', 'Employee\BankAccountController@update')
     ->name('employees.update-bank-account');
 
 Route::post('employees/{employee}/social-security', 'Employee\SocialSecurityController@update')
     ->name('employees.update-social-security');
-
-Route::put('employees/{employee}/supervisor', 'Employee\SupervisorController@update')
-    ->name('employees.update-supervisor');
 
 Route::post('employees/{employee}/nationality', 'Employee\NationalityController@update')
     ->name('employees.update-nationality');
