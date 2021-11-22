@@ -3,7 +3,7 @@
 namespace App\Http\Traits\Accessors;
 
 use App\Role;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
 trait UserAccessors
 {

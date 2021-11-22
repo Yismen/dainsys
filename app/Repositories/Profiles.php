@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Profile;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
 class Profiles
 {

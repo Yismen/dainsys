@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 
 class SettingController extends Controller
 {
@@ -28,7 +29,7 @@ class SettingController extends Controller
             $user->settings()->update($settings);
         }
 
-        \Cache::flush();
+        Cache::flush();
 
         return back();
     }
@@ -42,7 +43,7 @@ class SettingController extends Controller
             'collapse' => 'boolean',
         ]);
 
-        \Cache::flush();
+        Cache::flush();
 
         return $request->all();
 
@@ -63,7 +64,7 @@ class SettingController extends Controller
             event(new EditUserSettings($user)) :
             event(new CreateUserSettings($user));
 
-        \Cache::flush();
+        Cache::flush();
 
         Cache::forget('user-navbar');
     }

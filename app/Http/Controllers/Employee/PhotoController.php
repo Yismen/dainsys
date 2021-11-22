@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Employee;
 
-use Cache;
+use Illuminate\Support\Facades\Cache;
 use Storage;
 use App\Employee;
 use Illuminate\Http\Request;

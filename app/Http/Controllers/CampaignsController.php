@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Campaign;
 use Illuminate\Http\Request;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 use Yajra\DataTables\DataTables;
 
 class CampaignsController extends Controller
