@@ -30,7 +30,7 @@ Route::post('employees/{employee}/photo', 'Employee\PhotoController@update')
 Route::put('employees/{employee}/ars', 'Employee\ARSController@update')
     ->name('employees.update-ars');
 
-Route::put('employees/{employee}/afp', 'Employee\AFPController@update')
+Route::put('employees/{employee}/afp', 'Employee\AFPController@assign')
     ->name('employees.update-afp');
 
 Route::put('employees/{employee}/bank-account', 'Employee\BankAccountController@update')
