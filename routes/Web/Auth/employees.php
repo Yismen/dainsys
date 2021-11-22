@@ -27,7 +27,7 @@ Route::post('employees/{employee}/punch', 'Employee\PunchController@update')
 Route::post('employees/{employee}/photo', 'Employee\PhotoController@update')
     ->name('employees.update-photo');
 
-Route::put('employees/{employee}/ars', 'Employee\ARSController@update')
+Route::put('employees/{employee}/ars', 'Employee\ARSController@assign')
     ->name('employees.update-ars');
 
 Route::put('employees/{employee}/afp', 'Employee\AFPController@assign')

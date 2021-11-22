@@ -16,7 +16,7 @@ class ARSController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Employee $employee, Request $request)
+    public function assign(Employee $employee, Request $request)
     {
         $this->validate($request, [
             'ars_id' => 'required|exists:arss,id',
