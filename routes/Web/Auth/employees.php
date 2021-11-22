@@ -17,6 +17,9 @@ Route::put('employees/{employee}/afp', 'Employee\AFPController@assign')
 Route::put('employees/{employee}/supervisor', 'Employee\SupervisorController@assign')
     ->name('employees.update-supervisor');
 
+Route::post('employees/{employee}/card', 'Employee\CardController@update')
+    ->name('employees.update-card');
+
 Route::get('employees/export_to_excel/{status}', 'Employee\ExportController@toExcel')
     ->name('employees.export_to_excel');
 
@@ -27,9 +30,6 @@ Route::post('employees/{employee}/reactivate', 'Employee\TerminationController@r
     ->name('employees.reactivate');
 Route::post('employees/{employee}/terminate', 'Employee\TerminationController@terminate')
     ->name('employees.terminate');
-
-Route::post('employees/{employee}/card', 'Employee\CardController@update')
-    ->name('employees.update-card');
 
 Route::post('employees/{employee}/punch', 'Employee\PunchController@update')
     ->name('employees.update-punch');
