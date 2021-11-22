@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 class NationalityController extends Controller
 {
-    public function update(Employee $employee, Request $request)
+    public function assign(Employee $employee, Request $request)
     {
         $this->validate($request, [
             'nationality_id' => 'required|exists:nationalities,id',

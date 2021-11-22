@@ -1,0 +1,47 @@
+<?php
+
+namespace Tests\Feature\Employee;
+
+use App\Nationality;
+use App\Employee;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Arr;
+use Tests\TestCase;
+
+class NationalityTest extends TestCase
+{
+    use RefreshDatabase;
+
+    /** @test */
+    public function employee_nationality_is_assigned()
+    {
+        $this->withoutExceptionHandling();
+        $employee = create(Employee::class);
+        $nationality = create(Nationality::class);
+
+        $response = $this
+            ->actingAs($this->user())
+            ->post(route('admin.employees.update-nationality', $employee->id), ['nationality_id' => $nationality->id]);
+
+        $response->assertOk();
+        $this->assertDatabaseHas('employees', [
+            'id' => $employee->id,
+            'nationality_id' => $nationality->id,
+        ]);
+    }
+
+    /** @test */
+    public function employee_nationality_data_is_validated()
+    {
+        $nationality = create(Nationality::class);
+        $employee = create(Employee::class);
+
+        $response = $this
+            ->actingAs($this->user())
+            ->post(route('admin.employees.update-nationality', $employee->id), ['nationality_id' => '']);
+
+        $response->assertRedirect()
+            ->assertInvalid(['nationality_id']);
+    }
+}
