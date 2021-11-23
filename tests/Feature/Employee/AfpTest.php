@@ -16,7 +16,6 @@ class AfpTest extends TestCase
     /** @test */
     public function employee_afp_is_assigned()
     {
-        $this->withoutExceptionHandling();
         $employee = create(Employee::class);
         $afp = create(Afp::class);
 

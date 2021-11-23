@@ -55,7 +55,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_update_downtime()
     {
-        $this->withoutExceptionHandling();
         $downtime = create(Downtime::class);
         $employee2 = create(Employee::class);
 

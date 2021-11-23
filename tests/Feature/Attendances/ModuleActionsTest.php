@@ -39,7 +39,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function it_list_all_employees_assigned_to_an_user_and_not_other_uers()
     {
-        $this->withoutExceptionHandling();
         $user1 = $this->userWithPermission('view-attendances');
         $user2 = create(User::class);
         $this->be($user1);

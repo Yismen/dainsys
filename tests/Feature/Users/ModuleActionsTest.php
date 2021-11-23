@@ -29,7 +29,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_store_user()
     {
-        $this->withoutExceptionHandling();
         $user = make(User::class)->toArray();
         $user['password'] = 'password';
         $user['username'] = 'username';

@@ -16,7 +16,6 @@ class NationalityTest extends TestCase
     /** @test */
     public function employee_nationality_is_assigned()
     {
-        $this->withoutExceptionHandling();
         $employee = create(Employee::class);
         $nationality = create(Nationality::class);
 

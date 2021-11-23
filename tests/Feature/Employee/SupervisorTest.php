@@ -16,7 +16,6 @@ class SupervisorTest extends TestCase
     /** @test */
     public function employee_supervisor_is_assigned()
     {
-        $this->withoutExceptionHandling();
         $employee = create(Employee::class);
         $supervisor = create(Supervisor::class);
 

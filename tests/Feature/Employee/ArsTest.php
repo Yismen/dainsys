@@ -16,7 +16,6 @@ class ArsTest extends TestCase
     /** @test */
     public function employee_ars_is_assigned()
     {
-        $this->withoutExceptionHandling();
         $employee = create(Employee::class);
         $ars = create(Ars::class);
 
