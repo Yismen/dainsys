@@ -24,8 +24,8 @@ Route::middleware('auth:api')->group(function () {
     Route::resource('departments', 'DepartmentsController');
     Route::resource('nationalities', 'NationalitiesController')->only('store');
     Route::resource('payment_frequencies', 'PaymentFrequenciesController');
-    Route::post('employees/{employee}/vip', 'Employee\VIPController@update');
-    Route::post('employees/{employee}/universal', 'Employee\UniversalController@update');
+    Route::post('employees/{employee}/vip', 'Employee\VIPController@update')->name('api.employee.vip');
+    Route::post('employees/{employee}/universal', 'Employee\UniversalController@update')->name('api.employee.universal');
 
     Route::get('employees', 'Api\EmployeeController@index');
     Route::get('employees/all', 'Api\EmployeeController@index');
