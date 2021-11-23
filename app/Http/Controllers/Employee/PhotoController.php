@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Employee;
 
 use Illuminate\Support\Facades\Cache;
-use Storage;
+
 use App\Employee;
 use Illuminate\Http\Request;
 use App\Repositories\ImageMaker;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
 {
