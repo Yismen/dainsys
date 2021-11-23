@@ -26,10 +26,11 @@ Route::get('employees/export_to_excel/{status}', 'Employee\ExportController@toEx
 Route::post('employees/{employee}/login_names', 'Employee\LoginNameController@store')
     ->name('employees.login.create');
 
-Route::post('employees/{employee}/reactivate', 'Employee\TerminationController@reactivate')
-    ->name('employees.reactivate');
+
 Route::post('employees/{employee}/terminate', 'Employee\TerminationController@terminate')
     ->name('employees.terminate');
+Route::post('employees/{employee}/reactivate', 'Employee\TerminationController@reactivate')
+    ->name('employees.reactivate');
 
 Route::post('employees/{employee}/punch', 'Employee\PunchController@update')
     ->name('employees.update-punch');
