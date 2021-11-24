@@ -16,14 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->group(function () {
     Route::get('/user', 'Api\UserController@index');
     // Route::resource('employee', 'Api\EmployeeController')->except(['create', 'edit']);
-    Route::resource('positions', 'PositionsController')->only(['index', 'create', 'store']);
-    Route::resource('arss', 'ArsController')->only(['index', 'store']);
-    Route::resource('afps', 'AfpsController')->only(['index', 'store']);
-    Route::resource('banks', 'BanksController')->only(['index', 'store']);
-    Route::resource('supervisors', 'SupervisorsController')->only(['index', 'store']);
-    Route::resource('departments', 'DepartmentsController');
-    Route::resource('nationalities', 'NationalitiesController')->only('store');
-    Route::resource('payment_frequencies', 'PaymentFrequenciesController');
+    Route::resource('positions', 'PositionsController')->only(['index', 'create', 'store']); // Should these be removed?
+    Route::resource('arss', 'ArsController')->only(['index', 'store']); // Should these be removed?
+    Route::resource('afps', 'AfpsController')->only(['index', 'store']); // Should these be removed?
+    Route::resource('banks', 'BanksController')->only(['index', 'store']); // Should these be removed?
+    Route::resource('supervisors', 'SupervisorsController')->only(['index', 'store']); // Should these be removed?
+    Route::resource('departments', 'DepartmentsController'); // Should these be removed?
+    Route::resource('nationalities', 'NationalitiesController')->only('store'); // Should these be removed?
+    Route::resource('payment_frequencies', 'PaymentFrequenciesController'); // Should these be removed?
     Route::post('employees/{employee}/vip', 'Employee\VIPController@update')->name('api.employee.vip');
     Route::post('employees/{employee}/universal', 'Employee\UniversalController@update')->name('api.employee.universal');
 
