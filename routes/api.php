@@ -39,7 +39,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('performances/supervisors', 'Api\Performances\SupervisorsController');
     Route::get('performances/downtime_reasons', 'Api\Performances\DowntimeReasonsController');
     Route::get('performances/employees', 'Api\Performances\DowntimesController@employees');
-    Route::get('performances/downtimes', 'Api\Performances\PerformancesController@downtimes');
+    Route::get('performances/downtimes', 'Api\Performances\DowntimesController@index');
     Route::get('performances/login_names', 'Api\Performances\EmployeesController@loginNames');
     Route::get('performances/schedules', 'Api\Performances\EmployeesController@schedules');
     Route::get('performances/supervisors/actives', 'Api\Performances\SupervisorsController@actives');
