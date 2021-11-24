@@ -3,8 +3,8 @@
 namespace Tests\Feature\Api;
 
 use App\Employee;
+use App\Termination;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Laravel\Passport\Passport;
 use Tests\TestCase;
 
@@ -60,6 +60,58 @@ class EmployeeControllerTest extends TestCase
                         "termination_date",
                     ]
                 ]
+            ]);
+    }
+
+    /** @test */
+    public function it_returns_all_employees()
+    {
+        factory(Employee::class, 5)->create();
+        Passport::actingAs($this->user());
+
+        $response = $this->json('GET', '/api/employees/all');
+
+        $response->assertOk()
+            ->assertJsonCount(5, 'data');
+    }
+
+    /** @test */
+    public function it_returns_active_employees_only()
+    {
+        factory(Employee::class, 2)->create();
+        factory(Termination::class, 2)->create();
+        Passport::actingAs($this->user());
+
+        $response = $this->json('GET', '/api/employees/actives');
+
+        $this->assertDatabaseCount('employees', 4);
+
+        $response->assertOk()
+            ->assertJsonCount(2, 'data');
+    }
+
+    /** @test */
+    public function it_returns_recent_employees_only()
+    {
+        $recent = factory(Employee::class)->create(['hire_date' => now()]);
+        $not_recent = factory(Termination::class)
+            ->create()
+            ->employee;
+        $not_recent->update(['hire_date' => now()->subYears(5)]);
+        Passport::actingAs($this->user());
+
+        $response = $this->json('GET', '/api/employees/recents');
+
+        $this->assertDatabaseCount('employees', 2);
+        $response->assertOk()
+            ->assertJsonCount(1, 'data')
+            ->assertJsonFragment([
+                'first_name' => $recent->first_name,
+                'first_name' => $recent->first_name
+            ])
+            ->assertJsonMissing([
+                'first_name' => $not_recent->first_name,
+                'last_name' => $not_recent->last_name
             ]);
     }
 }
