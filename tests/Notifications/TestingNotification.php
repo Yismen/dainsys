@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Notifications;
+namespace Tests\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class UserCreatedNotification extends Notification
+class TestingNotification extends Notification
 {
     use Queueable;
 
@@ -28,21 +28,7 @@ class UserCreatedNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail', 'database'];
-    }
-
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
-    {
-        return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Log In', '/admin/login')
-            ->line('Thank you for using our application!');
+        return ['database'];
     }
 
     /**

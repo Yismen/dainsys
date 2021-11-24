@@ -12,7 +12,6 @@ class NationalityTest extends TestCase
 {
     use RefreshDatabase;
 
-
     /** @test */
     public function a_nationality_can_be_created()
     {
