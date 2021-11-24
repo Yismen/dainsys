@@ -256,7 +256,7 @@ class Employee extends Model
         $date = Carbon::parse($date)->format('Y-m-d');
 
         return $this->where('hire_date', '<=', $date)
-            ->with(['termination' => function ($query) {
+            ->with(['termination' => function ($query) use ($date) {
                 return $query->where('termination_date', '>=', $date);
             }])
             ->get();
