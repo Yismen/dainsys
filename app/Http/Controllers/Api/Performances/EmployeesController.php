@@ -12,15 +12,6 @@ use App\Http\Resources\LoginNameResource;
 
 class EmployeesController extends Controller
 {
-    public function loginNames()
-    {
-        $login_names = LoginName::with([
-            'employee.supervisor',
-        ])
-        ->get();
-
-        return LoginNameResource::collection($login_names);
-    }
 
     public function schedules(Request $request)
     {
