@@ -31,4 +31,18 @@ class SupervisorsControllerTest extends TestCase
                 ]
             ]);
     }
+
+    /** @test */
+    public function it_returns_active_supervisors_only()
+    {
+        $active_supervisor = factory(Supervisor::class)->create(['active' => true]);
+        $inactive_supervisor = factory(Supervisor::class)->create(['active' => false]);
+        Passport::actingAs($this->user());
+
+        $response = $this->json('GET', '/api/performances/supervisors/actives');
+
+        $response->assertOk()
+            ->assertJsonFragment(['name' => $active_supervisor->name])
+            ->assertJsonMissing(['name' => $inactive_supervisor->name]);
+    }
 }
