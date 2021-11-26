@@ -18,7 +18,7 @@ class CampaignsControllerTest extends TestCase
         factory(Campaign::class)->create();
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/performances/campaigns');
+        $response = $this->get('/api/performances/campaigns');
 
         $response->assertOk()
             ->assertJsonStructure([

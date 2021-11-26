@@ -18,7 +18,7 @@ class HolidaysControllerTest extends TestCase
         factory(Holiday::class, 3)->create(['date' => now()]);
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/holidays');
+        $response = $this->get('/api/holidays');
 
         $response->assertOk()
             ->assertJsonStructure([

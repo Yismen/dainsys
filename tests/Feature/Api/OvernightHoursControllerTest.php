@@ -18,7 +18,7 @@ class OvernightHoursControllerTest extends TestCase
         factory(OvernightHour::class, 5)->create();
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/overnight_hours');
+        $response = $this->get('/api/overnight_hours');
 
         $response->assertJsonCount(5, 'data');
 

@@ -18,7 +18,7 @@ class EmployeeUniversalTest extends TestCase
         $employee = factory(Employee::class)->create();
         Passport::actingAs($this->user());
 
-        $response = $this->json('POST', route('api.employee.universal', $employee->id), ['is_universal' => true]);
+        $response = $this->post(route('api.employee.universal', $employee->id), ['is_universal' => true]);
 
         $response->assertOk();
 
@@ -32,7 +32,7 @@ class EmployeeUniversalTest extends TestCase
         $employee = $universal->employee;
         Passport::actingAs($this->user());
 
-        $response = $this->json('POST', route('api.employee.universal', $employee->id), ['is_universal' => false]);
+        $response = $this->post(route('api.employee.universal', $employee->id), ['is_universal' => false]);
 
         $response->assertOk();
 
@@ -46,7 +46,7 @@ class EmployeeUniversalTest extends TestCase
         $employee = $universal->employee;
         Passport::actingAs($this->user());
 
-        $response = $this->json('POST', route('api.employee.universal', $employee->id), [])
+        $response = $this->post(route('api.employee.universal', $employee->id), [])
             ->assertInvalid(['is_universal']);
     }
 }

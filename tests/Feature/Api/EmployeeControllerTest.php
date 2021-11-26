@@ -18,7 +18,7 @@ class EmployeeControllerTest extends TestCase
         factory(Employee::class)->create();
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/employees');
+        $response = $this->get('/api/employees');
 
         $response->assertOk()
             ->assertJsonStructure([
@@ -69,7 +69,7 @@ class EmployeeControllerTest extends TestCase
         factory(Employee::class, 5)->create();
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/employees/all');
+        $response = $this->get('/api/employees/all');
 
         $response->assertOk()
             ->assertJsonCount(5, 'data');
@@ -82,7 +82,7 @@ class EmployeeControllerTest extends TestCase
         factory(Termination::class, 2)->create();
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/employees/actives');
+        $response = $this->get('/api/employees/actives');
 
         $this->assertDatabaseCount('employees', 4);
 
@@ -100,7 +100,7 @@ class EmployeeControllerTest extends TestCase
         $not_recent->update(['hire_date' => now()->subYears(5)]);
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/employees/recents');
+        $response = $this->get('/api/employees/recents');
 
         $this->assertDatabaseCount('employees', 2);
         $response->assertOk()

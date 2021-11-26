@@ -18,7 +18,7 @@ class SupervisorsControllerTest extends TestCase
         factory(Supervisor::class)->create();
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/performances/supervisors');
+        $response = $this->get('/api/performances/supervisors');
 
         $response->assertOk()
             ->assertJsonStructure([
@@ -39,7 +39,7 @@ class SupervisorsControllerTest extends TestCase
         $inactive_supervisor = factory(Supervisor::class)->create(['active' => false]);
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/performances/supervisors/actives');
+        $response = $this->get('/api/performances/supervisors/actives');
 
         $response->assertOk()
             ->assertJsonFragment(['name' => $active_supervisor->name])

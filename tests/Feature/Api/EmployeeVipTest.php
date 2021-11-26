@@ -18,7 +18,7 @@ class EmployeeVipTest extends TestCase
         $employee = factory(Employee::class)->create();
         Passport::actingAs($this->user());
 
-        $response = $this->json('POST', route('api.employee.vip', $employee->id), ['is_vip' => true]);
+        $response = $this->post(route('api.employee.vip', $employee->id), ['is_vip' => true]);
 
         $response->assertOk();
 
@@ -32,7 +32,7 @@ class EmployeeVipTest extends TestCase
         $employee = $vip->employee;
         Passport::actingAs($this->user());
 
-        $response = $this->json('POST', route('api.employee.vip', $employee->id), ['is_vip' => false]);
+        $response = $this->post(route('api.employee.vip', $employee->id), ['is_vip' => false]);
 
         $response->assertOk();
 
@@ -46,7 +46,7 @@ class EmployeeVipTest extends TestCase
         $employee = $vip->employee;
         Passport::actingAs($this->user());
 
-        $response = $this->json('POST', route('api.employee.vip', $employee->id), [])
+        $response = $this->post(route('api.employee.vip', $employee->id), [])
             ->assertInvalid(['is_vip']);
     }
 }

@@ -15,15 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/user', 'Api\UserController@index');
-    // Route::resource('employee', 'Api\EmployeeController')->except(['create', 'edit']);
-    Route::resource('positions', 'PositionsController')->only(['index', 'create', 'store']); // Should these be removed?
-    Route::resource('arss', 'ArsController')->only(['index', 'store']); // Should these be removed?
-    Route::resource('afps', 'AfpsController')->only(['index', 'store']); // Should these be removed?
-    Route::resource('banks', 'BanksController')->only(['index', 'store']); // Should these be removed?
-    Route::resource('supervisors', 'SupervisorsController')->only(['index', 'store']); // Should these be removed?
-    Route::resource('departments', 'DepartmentsController'); // Should these be removed?
-    Route::resource('nationalities', 'NationalitiesController')->only('store'); // Should these be removed?
-    Route::resource('payment_frequencies', 'PaymentFrequenciesController'); // Should these be removed?
+    Route::resource('afps', 'Api\AfpsController')->only(['store']);
+    Route::resource('arss', 'Api\ArssController')->only(['store']);
+    Route::resource('banks', 'Api\BanksController')->only(['store']);
+    Route::resource('positions', 'Api\PositionsController')->only(['store']);
+    Route::resource('supervisors', 'Api\SupervisorsController')->only(['store']);
+    Route::resource('departments', 'Api\DepartmentsController')->only('store');
+    Route::resource('payment_frequencies', 'Api\PaymentFrequenciesController')->only(['store']);
+    Route::resource('nationalities', 'Api\NationalitiesController')->only('store');
     Route::post('employees/{employee}/vip', 'Employee\VIPController@update')->name('api.employee.vip');
     Route::post('employees/{employee}/universal', 'Employee\UniversalController@update')->name('api.employee.universal');
 

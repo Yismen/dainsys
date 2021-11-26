@@ -18,7 +18,7 @@ class DowntimesControllerTest extends TestCase
         $downtimes = factory(Downtime::class, 3)->create(['date' => now()]);
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/performances/downtimes');
+        $response = $this->get('/api/performances/downtimes');
 
         $response->assertOk()
             ->assertJsonCount(3, 'data')
@@ -46,7 +46,7 @@ class DowntimesControllerTest extends TestCase
         $old_downtimes = factory(Downtime::class, 3)->create(['date' => now()->subMonths(4)]);
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/performances/downtimes?months=2');
+        $response = $this->get('/api/performances/downtimes?months=2');
 
         $response->assertOk()
             ->assertJsonCount(3, 'data')

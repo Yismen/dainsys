@@ -19,7 +19,7 @@ class LoginNamesControllerTest extends TestCase
         factory(LoginName::class, 3)->create();
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/performances/login_names');
+        $response = $this->get('/api/performances/login_names');
 
         $response->assertOk()
             ->assertJsonStructure([
@@ -43,7 +43,7 @@ class LoginNamesControllerTest extends TestCase
         create(LoginName::class, ['employee_id' => $old_employee->id]);
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/performances/login_names?recents=true');
+        $response = $this->get('/api/performances/login_names?recents=true');
 
         $response->assertOk()
             ->assertJsonFragment(['employee_name' => $recent_employee->full_name])

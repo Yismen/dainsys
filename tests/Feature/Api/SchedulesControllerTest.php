@@ -19,7 +19,7 @@ class SchedulesControllerTest extends TestCase
         factory(Schedule::class, 3)->create(['date' => now()->subDay()]);
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/performances/schedules');
+        $response = $this->get('/api/performances/schedules');
 
         $response->assertOk()
             ->assertJsonStructure([
@@ -42,7 +42,7 @@ class SchedulesControllerTest extends TestCase
         $old_schedule = create(Schedule::class, ['date' => now()->subDays(25)]);
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/performances/schedules?daysago=20');
+        $response = $this->get('/api/performances/schedules?daysago=20');
 
         $response->assertOk()
             ->assertJsonFragment(['employee_name' => $recent_schedule->employee->full_name])
