@@ -89,20 +89,25 @@ class NotificationTest extends TestCase
     }
 
     /** @test */
-    // public function it_returns_one_notification_and_mark_it_as_read()
-    // {
-    //     $user = $this->user();
-    //     $user->notify(new TestingNotification());
+    public function it_returns_one_notification_and_mark_it_as_read()
+    {
+        $user = $this->user();
+        $user->notify(new TestingNotification());
 
-    //     Passport::actingAs($user);
+        Passport::actingAs($user);
 
-    //     $notification = Notification::first();
+        $notification = Notification::first();
+        $this->assertEquals(1, Notification::whereNull('read_at')->count());
 
-    //     $response = $this->get('/api/notifications/show/' . $notification->id);
-    //     dd("asdfdf");
+        $response = $this->get('/api/notifications/show/' . $notification->id);
 
-    //     // $response->assertJsonCount(3)
-    //     //     ->assertJsonFragment(['foo' => json_decode($unread_notifications->first()->data)->foo])
-    //     //     ->assertJsonMissing(['foo' => json_decode($read_notifications->first()->data)->foo]);
-    // }
+        $response->assertOk()
+            ->assertJsonStructure([
+                'type',
+                'notifiable_type',
+                'notifiable_id',
+                'data',
+            ]);
+        $this->assertEquals(0, Notification::whereNull('read_at')->count());
+    }
 }
