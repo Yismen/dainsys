@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 //should not be here...
-Route::get('api/employees', 'EmployeesController@index')->name('employees.list');
 
 Route::post('employees/{employee}/address', 'Employee\AddressController@update')
     ->name('employees.update-address');
