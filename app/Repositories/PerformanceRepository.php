@@ -18,9 +18,12 @@ class PerformanceRepository
     public function monthlyManyMonths(int $months = 12)
     {
         $start_of_month = Carbon::now()->subMonths($months)->startOfMonth();
+        $dateClause = env('DB_CONNECTION') === 'sqlite' ?
+            'strftime("%Y-%b", date)' :
+            'DATE_FORMAT(date, "%Y-%b")';
 
         return $this->baseQeury()
-            ->addSelect(DB::raw('DATE_FORMAT(date, "%Y-%b") as month'))
+            ->addSelect(DB::raw($dateClause . ' as month'))
             ->groupBy('month')
             ->whereDate('date', '>=', $start_of_month)
             ->whereDate('date', '<', now()->today())
@@ -29,9 +32,12 @@ class PerformanceRepository
     public function weeklyManyWeeks(int $weeks = 12)
     {
         $start_of_week = Carbon::now()->subWeeks($weeks)->startOfWeek();
+        $dateClause = env('DB_CONNECTION') === 'sqlite' ?
+            'strftime("%Y-%w", date)' :
+            'DATE_FORMAT(date, "%Y-%w")';
 
         return $this->baseQeury()
-            ->addSelect(DB::raw('DATE_FORMAT(date, "%Y-%w") as week'))
+            ->addSelect(DB::raw($dateClause . ' as week'))
             ->groupBy('week')
             ->whereDate('date', '>=', $start_of_week)
             ->whereDate('date', '<', now()->today())

@@ -5,6 +5,7 @@ namespace App\Traits;
 use App\Campaign;
 use App\DowntimeReason;
 use App\Employee;
+use App\Source;
 use App\Supervisor;
 use Carbon\Carbon;
 
