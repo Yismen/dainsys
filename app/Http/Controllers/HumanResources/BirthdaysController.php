@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\HumanResources;
 
+use App\Http\Controllers\Controller;
 use App\Repositories\BirthdaysRepository;
 
-class HumanResourcesController extends Controller
+class birthdaysController extends Controller
 {
-
     public function birthdaysThisMonth()
     {
         $employees = BirthdaysRepository::thisMonth()->get();
