@@ -31,7 +31,7 @@ class DashboardController extends Controller
         // }
 
         $this->roles_hierarchy = config('dainsys.dashboards.roles_hierarchy');
-        
+
         foreach ($this->roles_hierarchy as $role => $class) {
             if (auth()->user()->hasRole($role)) {
                 return $this->renderRoleController($role, $class);
