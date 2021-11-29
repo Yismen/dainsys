@@ -10,6 +10,11 @@ use Carbon\Carbon;
 
 class CodeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('authorize:view-attendances');
+    }
+
     public function show(Request $request, $code)
     {
         $repo = new AttendanceCodesRepository($code);

@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
 
 class DateController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('authorize:view-attendances');
+    }
+
     public function show(Request $request, $date)
     {
         $repo = new AttendanceDatesRepository(Carbon::parse($date));
