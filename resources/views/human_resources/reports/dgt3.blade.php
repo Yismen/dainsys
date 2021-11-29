@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        @if (isset($results))    
+        @isset ($results) 
             @if ($results->count() > 0)
                 @include('human_resources.reports.dgt3_results', ['results' => $results])
             @else

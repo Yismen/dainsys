@@ -34,12 +34,12 @@
                             @foreach ($results as $employee)
                                 <tr>
                                     <td>{{ $employee->full_name }}</td>
-                                    <td>{{ $employee->personal_id or $employee->passport }}</td>
-                                    <td>{{ $employee->socialSecurity->number or null}}</td>
+                                    <td>{{ $employee->personal_id ?: $employee->passport }}</td>
+                                    <td>{{ $employee->social_security->number ?? null}}</td>
                                     <td>{{ $employee->date_of_birth->format('d/m/Y') }}</td>
-                                    <td>{{ $employee->isOfGender('Masculine', 'X') }}</td>
-                                    <td>{{ $employee->isOfGender('femenine', 'X') }}</td>
-                                    {{-- <td>{{ $employee->isFemenine() ? 'x' : null }}</td> --}}
+                                    <td>{{ $employee->isOfGender('masculine', 'X') }}</td>
+                                    {{-- <td>{{ $employee->isOfGender('femenine', 'X') }}</td> --}}
+                                    <td>{{ $employee->isFemenine() ? 'x' : null }}</td>
                                     <td>Dominicano / "Verificar si es extrangero"</td>
                                     <td>{{ $employee->hire_date->format('d/m/Y') }}</td>
                                     <td>{{ $employee->position->name or "AGENTE CALL CENTER" }}</td>

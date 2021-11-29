@@ -118,15 +118,14 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
         ->except('show');
 
     Route::group(['middleware' => 'authorize:view-human-resources-dashboard'], function () {
-        Route::get('human_resources/employees/dgt3', 'HumanResources\DGT3Controller@dgt3');
-        Route::get('human_resources/employees/dgt3_to_excel/{year}', 'HumanResources\DGT3Controller@dgt3ToExcel');
-        Route::post('human_resources/employees/dgt3', 'HumanResources\DGT3Controller@handleDgt3');
+        Route::get('human_resources/employees/dgt3', 'HumanResources\DGT3Controller@dgt3')->name('human_resources.dgt3.index');
+        Route::post('human_resources/employees/dgt3', 'HumanResources\DGT3Controller@handleDgt3')->name('human_resources.dgt3.show');
+        Route::get('human_resources/employees/dgt3_to_excel/{year}', 'HumanResources\DGT3Controller@dgt3ToExcel')->name('human_resources.dgt3.download');
 
-        Route::get('human_resources/employees/dgt4', 'HumanResources\DGT4Controller@dgt4');
-        Route::post('human_resources/employees/dgt4', 'HumanResources\DGT4Controller@handleDgt4');
-        Route::get('human_resources/employees/dgt4_to_excel/{year}/{month}', 'HumanResources\DGT4Controller@dgt4ToExcel');
-
-        Route::get('human_resources/employees/dgt4_to_excel/{year}', 'HumanResources\DGT4Controller@dgt3ToExcel');
+        Route::get('human_resources/employees/dgt4', 'HumanResources\DGT4Controller@dgt4')->name('human_resources.dgt4.index');
+        Route::post('human_resources/employees/dgt4', 'HumanResources\DGT4Controller@handleDgt4')->name('human_resources.dgt4.show');
+        Route::get('human_resources/employees/dgt4_to_excel/{year}/{month}', 'HumanResources\DGT4Controller@dgt4ToExcel')->name('human_resources.dgt4.month.download');
+        Route::get('human_resources/employees/dgt4_to_excel/{year}', 'HumanResources\DGT4Controller@dgt3ToExcel')->name('human_resources.dgt4.download');
 
         Route::get('human_resources/birthdays/this_month', 'HumanResources\BirthdaysController@birthdaysThisMonth')->name('birthdays_this_month');
         Route::get('human_resources/birthdays/next_month', 'HumanResources\BirthdaysController@birthdaysNextMonth')->name('birthdays_next_month');
