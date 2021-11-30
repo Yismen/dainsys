@@ -125,4 +125,33 @@ class ModuleActionsTest extends TestCase
         $this->assertDatabaseHas('users', $attributes)
             ->assertNotSoftDeleted('users', $attributes);
     }
+
+    /** @test */
+    public function it_shows_inactive_users()
+    {
+        $user = $this->userWithPermission('destroy-users');
+        $inactive_user = create(User::class);
+        $inactive_user->delete();
+
+        $this->actingAs($user)
+            ->get(route('admin.users.inactive-users'))
+            ->assertOk()
+            ->assertViewIs('users.inactives')
+            ->assertSee($inactive_user->name);
+    }
+
+    /** @test */
+    public function it_restore_inactive_users()
+    {
+        $user = $this->userWithPermission('destroy-users');
+        $inactive_user = create(User::class);
+        $inactive_user->delete();
+        $attributes = Arr::only($inactive_user->toArray(), ['name', 'email']);
+
+        $this->actingAs($user)
+            ->post(route('admin.users.inactive-users.restore', $inactive_user->id))
+            ->assertRedirect(route('admin.users.inactive-users'));
+
+        $this->assertNotSoftDeleted('users', $attributes);
+    }
 }

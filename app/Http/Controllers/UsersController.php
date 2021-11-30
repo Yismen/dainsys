@@ -170,7 +170,6 @@ class UsersController extends Controller
 
         $user = User::withTrashed()->find($id);
 
-
         $user->restore();
 
         return redirect()->route('admin.users.inactive-users')
