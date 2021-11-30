@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
                 <div class="box box-primary pad">
-                    {!! Form::open(['route'=>['admin.users.change'], 'method'=>'POST', 'class'=>'form-horizontal', 'role'=>'form', 'autocomplete'=>"off"]) !!}  
+                    {!! Form::open(['route'=>['admin.users.change-password'], 'method'=>'POST', 'class'=>'form-horizontal', 'role'=>'form', 'autocomplete'=>"off"]) !!}  
                         <legend>Reset your password</legend>
                     
                         <!-- Your Old Password -->
