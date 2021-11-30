@@ -154,8 +154,6 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::resource('overnight_hours', 'OvernightHourController')
         ->except('show');
 
-    Route::get('users/search', 'Partials\UserController');
-
     Route::resource('payment_frequencies', 'PaymentFrequenciesController');
 
     Route::bind('payment_type', function ($id) {
@@ -267,6 +265,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 
     Route::resource('universals', 'UniversalController')
         ->except('create', 'show');
+
+    Route::get('users/search', 'Partials\UserController');
 
     Route::get('users/reset', 'User\PasswordController@reset')->name('users.reset');
     Route::post('users/reset', 'User\PasswordController@change')->name('users.change');

@@ -78,6 +78,51 @@ class ModuleActionsTest extends TestCase
             ->assertRedirect()
             ->assertLocation(route('admin.users.index'));
 
-        $this->assertDatabaseMissing('users', $user->toArray());
+        $this->assertDatabaseMissing('users', $user->toArray())
+            ->assertSoftDeleted('users', Arr::only($user->toArray(), ['name', 'email']));
+    }
+
+    /** @test */
+    public function users_can_not_destroy_their_own_user()
+    {
+        $user = $this->userWithPermission('destroy-users');
+        $attributes = Arr::only($user->toArray(), ['name', 'email']);
+
+        $this->actingAs($user)
+            ->delete(route('admin.users.destroy', $user->id))
+            ->assertRedirect(route('admin.users.edit', $user->id));
+
+        $this->assertDatabaseHas('users', $attributes)
+            ->assertNotSoftDeleted('users', $attributes);
+    }
+
+    /** @test */
+    public function is_admin_user_can_not_deleted_or_inactivated()
+    {
+        $user = $this->userWithPermission('destroy-users');
+        $admin_user = $this->user(['is_admin' => true]);
+        $attributes = Arr::only($admin_user->toArray(), ['name', 'email']);
+
+        $this->actingAs($user)
+            ->delete(route('admin.users.destroy', $admin_user->id))
+            ->assertRedirect(route('admin.users.edit', $admin_user->id));
+
+        $this->assertDatabaseHas('users', $attributes)
+            ->assertNotSoftDeleted('users', $attributes);
+    }
+
+    /** @test */
+    public function users_with_admin_role_can_not_deleted_or_inactivated()
+    {
+        $user = $this->userWithPermission('destroy-users');
+        $admin_user = $this->userWithRole('admin');
+        $attributes = Arr::only($admin_user->toArray(), ['name', 'email']);
+
+        $this->actingAs($user)
+            ->delete(route('admin.users.destroy', $admin_user->id))
+            ->assertRedirect(route('admin.users.edit', $admin_user->id));
+
+        $this->assertDatabaseHas('users', $attributes)
+            ->assertNotSoftDeleted('users', $attributes);
     }
 }
