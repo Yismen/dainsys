@@ -266,7 +266,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::resource('universals', 'UniversalController')
         ->except('create', 'show');
 
-    Route::get('users/search', 'Partials\UserController');
+    Route::get('users/search', 'Partials\UserController')->name('users.search');
 
     Route::get('users/reset_passord', 'User\PasswordController@reset')->name('users.reset-password');
     Route::post('users/reset_passord', 'User\PasswordController@change')->name('users.change-password');
