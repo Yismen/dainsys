@@ -146,7 +146,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 
     Route::resource('menus', 'MenusController');
 
-    Route::post('nationalities/employees', 'NationalitiesController@assignEmployees');
+    Route::post('nationalities/employees', 'NationalitiesController@assignEmployees')->name('nationalities.assign-employees');
     Route::resource('nationalities', 'NationalitiesController');
 
     Route::post('import_overnight_hours', 'ImportOvernightHourController@store')
