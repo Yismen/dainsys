@@ -18,7 +18,7 @@ class LoginNamesController extends Controller
         $this->middleware('authorize:edit-login-names', ['only' => ['edit', 'update']]);
         $this->middleware('authorize:create-login-names', ['only' => ['create', 'store']]);
         $this->middleware('authorize:destroy-login-names', ['only' => ['destroy']]);
-        $this->middleware('authorize:export-login-names-to-excel', ['only' => ['toExcel']]);
+        $this->middleware('authorize:export-login-names-to-excel', ['only' => ['toExcel', 'employeesToExcel']]);
     }
 
     /**
@@ -104,7 +104,7 @@ class LoginNamesController extends Controller
     public function update(LoginName $login, Request $request)
     {
         $this->validate($request, [
-            'login' => 'required|min:2|unique:login_names,login,'.$login->id,
+            'login' => 'required|min:2|unique:login_names,login,' . $login->id,
             'employee_id' => 'sometimes|required|exists:employees,id',
         ]);
 
