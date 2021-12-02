@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('date_calc', ['as' => 'date_calc.index', 'uses' => 'DateCalcController@index']);
-Route::get('date_calc/from_today', ['as' => 'date_calc.diff_from_today', 'uses' => 'DateCalcController@diffFromToday']);
-Route::get('date_calc/range_diff', ['as' => 'date_calc.range_diff', 'uses' => 'DateCalcController@rangeDiff']);
+// Route::get('date_calc', ['as' => 'date_calc.index', 'uses' => 'DateCalcController@index']);
+// Route::get('date_calc/from_today', ['as' => 'date_calc.diff_from_today', 'uses' => 'DateCalcController@diffFromToday']);
+// Route::get('date_calc/range_diff', ['as' => 'date_calc.range_diff', 'uses' => 'DateCalcController@rangeDiff']);
 
 Route::get('/', 'HomeController@welcome');
 Auth::routes(['register' => false]);
@@ -34,11 +34,11 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 
     Route::resource('banks', 'BanksController')->except(['show', 'create']);
 
-    Route::get('bhcs_manager', 'BlackHawkCS\ManagementController@index');
-    Route::get('blackhawk_cs/api/dashboard/management', 'BlackHawkCS\ManagementController@dashboard');
-    Route::get('bhcs_supervisor', 'BlackHawkCS\SupervisorController@index');
-    Route::get('blackhawk_cs/api/dashboard/supervisor', 'BlackHawkCS\SupervisorController@dashboard');
-    Route::get('/blackhawk/de', 'Blackhawk\DE\ManagementController@dashboard');
+    // Route::get('bhcs_manager', 'BlackHawkCS\ManagementController@index');
+    // Route::get('blackhawk_cs/api/dashboard/management', 'BlackHawkCS\ManagementController@dashboard');
+    // Route::get('bhcs_supervisor', 'BlackHawkCS\SupervisorController@index');
+    // Route::get('blackhawk_cs/api/dashboard/supervisor', 'BlackHawkCS\SupervisorController@dashboard');
+    // Route::get('/blackhawk/de', 'Blackhawk\DE\ManagementController@dashboard');
 
     Route::resource('campaigns', 'CampaignsController');
 
@@ -89,31 +89,6 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
         ->name('employees.update-nationality');
     Route::resource('employees', 'EmployeesController')->except(['destroy']);
 
-    Route::resource('escalations_clients', 'EscalClientsController');
-    Route::resource('escalations_records', 'EscalRecordsController', ['except' => ['show']]);
-    Route::get('api/escalations_records/clients', 'EscalRecordsController@getClients');
-    Route::post('escalations_records/search', 'EscalRecordsController@search');
-    Route::post('api/escalations_records/search', 'EscalRecordsController@search');
-    Route::resource('api/escalations_records_api', 'EscalRecordsController', ['except' => ['show']]);
-    Route::get('escalations_admin', 'EscalationsAdminController@index');
-    Route::post('escalations_admin/api', 'EscalationsAdminController@index_ajax');
-    Route::get('escalations_admin/by_date', 'EscalationsAdminController@getByDate');
-    Route::get('escalations_admin/by_range', 'EscalationsAdminController@getByRange');
-    Route::post('escalations_admin/by_date', 'EscalationsAdminController@postByDate');
-    Route::post('escalations_admin/by_range', 'EscalationsAdminController@postByRange');
-    Route::get('escalations_admin/search', 'EscalationsAdminController@search');
-    Route::post('escalations_admin/search', 'EscalationsAdminController@handleSearch');
-    Route::get('escalations_admin/random', 'EscalationsAdminController@random');
-    Route::post('escalations_admin/random', 'EscalationsAdminController@handleRandom');
-    Route::get('escalations_admin/bbbs', 'EscalationsAdminController@bbbs');
-    Route::post('escalations_admin/bbbs', 'EscalationsAdminController@handleBBBs');
-    Route::get('escalations_admin/bbbs_range', 'EscalationsAdminController@bbbs');
-    Route::post('escalations_admin/bbbs_range', 'EscalationsAdminController@handleBBBsRange');
-    Route::get('escalations_hours/by_date', 'EscalationsHoursController@byDate')->name('escalations_hours.byDate');
-    Route::post('escalations_hours/search', 'EscalationsHoursController@search')->name('escalations_hours.search');
-    Route::get('escalations_hours/create/{user_id}/{client_id}/{records}', 'EscalationsHoursController@create')->name('escalations_hours.create');
-    Route::resource('escalations_hours', 'EscalationsHoursController', ['except' => 'create']);
-
     Route::resource('holidays', 'HolidayController')
         ->except('show');
 
@@ -132,13 +107,13 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
         Route::get('human_resources/birthdays/last_month', 'HumanResources\BirthdaysController@birthdaysLastMonth')->name('birthdays_last_month');
     });
 
-    Route::get('imports', 'ImportsController@home'); // Remove
+    // Route::get('imports', 'ImportsController@home'); // Remove
 
-    Route::get('imports/employees', 'ImportsController@employees');
-    Route::post('imports/employees', ['as' => 'admin.imports.employees', 'uses' => 'ImportsController@handleImportEmployees']);
+    // Route::get('imports/employees', 'ImportsController@employees');
+    // Route::post('imports/employees', ['as' => 'admin.imports.employees', 'uses' => 'ImportsController@handleImportEmployees']);
 
-    Route::get('imports/performances', 'ImportsController@performances');
-    Route::post('imports/performances', ['as' => 'admin.imports.performances', 'uses' => 'ImportsController@importPerformances']);
+    // Route::get('imports/performances', 'ImportsController@performances');
+    // Route::post('imports/performances', ['as' => 'admin.imports.performances', 'uses' => 'ImportsController@importPerformances']);
 
     Route::get('login_names/to-excel/all', 'LoginNamesController@toExcel')->name('login_names.to-excel.all');
     Route::get('login_names/to-excel/all-employees', 'LoginNamesController@employeesToExcel')->name('login_names.to-excel.all-employees');
@@ -234,7 +209,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 
     Route::resource('punches', 'PunchesController');
 
-    Route::resource('quality_scores', 'Quality\ScoreController');
+    // Route::resource('quality_scores', 'Quality\ScoreController');
 
     Route::resource('revenue_types', 'RevenueTypesController');
 
@@ -274,7 +249,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::get('users/force_reset/{user}', 'User\PasswordController@force_reset')->name('users.force_reset');
     Route::post('users/force_reset/{user}', 'User\PasswordController@force_change')->name('users.force_change');
 
-    // Route::post('users/update_settings/{user}', 'User\SettingController@updateSettings')->name('users.update_settings');
+
     Route::post('users/settings', 'User\SettingController@update')->name('users.settings');
 
     Route::get('users/inactive-users', 'UsersController@inactives')->name('users.inactive-users');

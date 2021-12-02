@@ -7,7 +7,6 @@ use App\Task;
 use App\Message;
 use App\Profile;
 use App\Password;
-use App\EscalRecord;
 use App\UserSetting;
 use App\Contact;
 use App\Supervisor;
@@ -37,16 +36,6 @@ trait UserRelationships
     public function passwords()
     {
         return $this->hasMany(Password::class);
-    }
-
-    /**
-     * A User can have many escalations records
-     *
-     * @return relationship
-     */
-    public function escalationsRecords()
-    {
-        return $this->hasMany(EscalRecord::class);
     }
 
     /**
@@ -92,7 +81,7 @@ trait UserRelationships
 
     public function employees()
     {
-        return $this->supervisors()->map(function($item, $key) {
+        return $this->supervisors()->map(function ($item, $key) {
             return $item->employees;
         })->collapse();
     }
