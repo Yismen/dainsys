@@ -5,7 +5,7 @@ namespace App\Http\Controllers\HumanResources;
 use App\Http\Controllers\Controller;
 use App\Repositories\BirthdaysRepository;
 
-class birthdaysController extends Controller
+class BirthdaysController extends Controller
 {
     public function birthdaysThisMonth()
     {
