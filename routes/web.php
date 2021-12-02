@@ -3,18 +3,11 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('date_calc', ['as' => 'date_calc.index', 'uses' => 'DateCalcController@index']);
-// Route::get('date_calc/from_today', ['as' => 'date_calc.diff_from_today', 'uses' => 'DateCalcController@diffFromToday']);
-// Route::get('date_calc/range_diff', ['as' => 'date_calc.range_diff', 'uses' => 'DateCalcController@rangeDiff']);
-
 Route::get('/', 'HomeController@welcome');
 Auth::routes(['register' => false]);
 
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'AdminController@admin');
-
-    Route::get('/mark-all-notifications-as-read', 'AdminController@markAllNotificationsAsReadForUser')
-        ->name('mark-all-notifications-as-read');
 
     Route::post('afps/employees', 'AfpsController@assignEmployees');
     Route::resource('afps', 'AfpsController');
@@ -34,12 +27,6 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 
     Route::resource('banks', 'BanksController')->except(['show', 'create']);
 
-    // Route::get('bhcs_manager', 'BlackHawkCS\ManagementController@index');
-    // Route::get('blackhawk_cs/api/dashboard/management', 'BlackHawkCS\ManagementController@dashboard');
-    // Route::get('bhcs_supervisor', 'BlackHawkCS\SupervisorController@index');
-    // Route::get('blackhawk_cs/api/dashboard/supervisor', 'BlackHawkCS\SupervisorController@dashboard');
-    // Route::get('/blackhawk/de', 'Blackhawk\DE\ManagementController@dashboard');
-
     Route::resource('campaigns', 'CampaignsController');
 
     Route::resource('cards', 'CardsController');
@@ -56,6 +43,9 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::get('dashboards/default', 'Dashboards\DefaultDashboardController@index')->name('default_dashboard');
 
     Route::resource('departments', 'DepartmentsController');
+
+    Route::resource('downtimes', 'DowntimeController')
+        ->except('show');
 
     Route::resource('downtime_reasons', 'DowntimeReasonsController');
 
@@ -92,28 +82,25 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::resource('holidays', 'HolidayController')
         ->except('show');
 
-    Route::group(['middleware' => 'authorize:view-human-resources-dashboard'], function () {
-        Route::get('human_resources/employees/dgt3', 'HumanResources\DGT3Controller@dgt3')->name('human_resources.dgt3.index');
-        Route::post('human_resources/employees/dgt3', 'HumanResources\DGT3Controller@handleDgt3')->name('human_resources.dgt3.show');
-        Route::get('human_resources/employees/dgt3_to_excel/{year}', 'HumanResources\DGT3Controller@dgt3ToExcel')->name('human_resources.dgt3.download');
+    Route::group(['prefix' => 'human_resources', 'middleware' => 'authorize:view-human-resources-dashboard'], function () {
+        Route::get('employees/dgt3', 'HumanResources\DGT3Controller@dgt3')->name('human_resources.dgt3.index');
+        Route::post('employees/dgt3', 'HumanResources\DGT3Controller@handleDgt3')->name('human_resources.dgt3.show');
+        Route::get('employees/dgt3_to_excel/{year}', 'HumanResources\DGT3Controller@dgt3ToExcel')->name('human_resources.dgt3.download');
 
-        Route::get('human_resources/employees/dgt4', 'HumanResources\DGT4Controller@dgt4')->name('human_resources.dgt4.index');
-        Route::post('human_resources/employees/dgt4', 'HumanResources\DGT4Controller@handleDgt4')->name('human_resources.dgt4.show');
-        Route::get('human_resources/employees/dgt4_to_excel/{year}/{month}', 'HumanResources\DGT4Controller@dgt4ToExcel')->name('human_resources.dgt4.month.download');
-        Route::get('human_resources/employees/dgt4_to_excel/{year}', 'HumanResources\DGT4Controller@dgt3ToExcel')->name('human_resources.dgt4.download');
+        Route::get('employees/dgt4', 'HumanResources\DGT4Controller@dgt4')->name('human_resources.dgt4.index');
+        Route::post('employees/dgt4', 'HumanResources\DGT4Controller@handleDgt4')->name('human_resources.dgt4.show');
+        Route::get('employees/dgt4_to_excel/{year}/{month}', 'HumanResources\DGT4Controller@dgt4ToExcel')->name('human_resources.dgt4.month.download');
+        Route::get('employees/dgt4_to_excel/{year}', 'HumanResources\DGT4Controller@dgt3ToExcel')->name('human_resources.dgt4.download');
 
-        Route::get('human_resources/birthdays/this_month', 'HumanResources\BirthdaysController@birthdaysThisMonth')->name('birthdays_this_month');
-        Route::get('human_resources/birthdays/next_month', 'HumanResources\BirthdaysController@birthdaysNextMonth')->name('birthdays_next_month');
-        Route::get('human_resources/birthdays/last_month', 'HumanResources\BirthdaysController@birthdaysLastMonth')->name('birthdays_last_month');
+        Route::get('birthdays/this_month', 'HumanResources\BirthdaysController@birthdaysThisMonth')->name('birthdays_this_month');
+        Route::get('birthdays/next_month', 'HumanResources\BirthdaysController@birthdaysNextMonth')->name('birthdays_next_month');
+        Route::get('birthdays/last_month', 'HumanResources\BirthdaysController@birthdaysLastMonth')->name('birthdays_last_month');
     });
 
-    // Route::get('imports', 'ImportsController@home'); // Remove
-
-    // Route::get('imports/employees', 'ImportsController@employees');
-    // Route::post('imports/employees', ['as' => 'admin.imports.employees', 'uses' => 'ImportsController@handleImportEmployees']);
-
-    // Route::get('imports/performances', 'ImportsController@performances');
-    // Route::post('imports/performances', ['as' => 'admin.imports.performances', 'uses' => 'ImportsController@importPerformances']);
+    Route::post('import_overnight_hours', 'ImportOvernightHourController@store')
+        ->name('import_overnight_hours.store');
+    Route::resource('overnight_hours', 'OvernightHourController')
+        ->except('show');
 
     Route::get('login_names/to-excel/all', 'LoginNamesController@toExcel')->name('login_names.to-excel.all');
     Route::get('login_names/to-excel/all-employees', 'LoginNamesController@employeesToExcel')->name('login_names.to-excel.all-employees');
@@ -124,79 +111,17 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::post('nationalities/employees', 'NationalitiesController@assignEmployees')->name('nationalities.assign-employees');
     Route::resource('nationalities', 'NationalitiesController');
 
-    Route::post('import_overnight_hours', 'ImportOvernightHourController@store')
-        ->name('import_overnight_hours.store');
-    Route::resource('overnight_hours', 'OvernightHourController')
-        ->except('show');
-
     Route::resource('payment_frequencies', 'PaymentFrequenciesController');
 
-    Route::bind('payment_type', function ($id) {
-        return App\PaymentType::whereId($id)
-            ->firstOrFail();
-    });
-
     Route::resource('payment_types', 'PaymentTypesController');
-
-    Route::resource('payroll-additional-concepts', 'PayrollAdditionalConceptsController', ['except' => ['show', 'destroy']]);
-
-    Route::get('/payroll-additionals/by-date/{date}', 'PayrollAdditionalsController@byDate')->name('payroll-additionals.by-date');
-    Route::get('/payroll-additionals/import', 'PayrollAdditionalsController@import')->name('payroll-additionals.import');
-    Route::post('/payroll-additionals/import', 'PayrollAdditionalsController@handleImport')->name('payroll-additionals.handle-import');
-    Route::get('/payroll-additionals/date/{date}/employee/{employee_id}', 'PayrollAdditionalsController@details')->name('payroll-additionals.details');
-
-    Route::resource('payroll-additionals', 'PayrollAdditionalsController');
-
-    Route::resource('payroll-discount-concepts', 'PayrollDiscountConceptsController', ['except' => ['show', 'destroy']]);
-
-    Route::get('/payroll-discounts/by-date/{date}', 'PayrollDiscountsController@byDate')->name('payroll-discounts.by-date');
-    Route::get('/payroll-discounts/import', 'PayrollDiscountsController@import')->name('payroll-discounts.import');
-    Route::post('/payroll-discounts/import', 'PayrollDiscountsController@handleImport')->name('payroll-discounts.handle-import');
-    Route::get('/payroll-discounts/date/{date}/employee/{employee_id}', 'PayrollDiscountsController@details')->name('payroll-discounts.details');
-
-    Route::resource('payroll-discounts', 'PayrollDiscountsController');
-
-    Route::resource('payroll-incentive-concepts', 'PayrollIncentiveConceptsController', ['except' => ['show', 'destroy']]);
-
-    Route::get('/payroll-incentives/by-date/{date}', 'PayrollIncentivesController@byDate')->name('payroll-incentives.by-date');
-    Route::get('/payroll-incentives/import', 'PayrollIncentivesController@import')->name('payroll-incentives.import');
-    Route::post('/payroll-incentives/import', 'PayrollIncentivesController@handleImport')->name('payroll-incentives.handle-import');
-    Route::get('/payroll-incentives/date/{date}/employee/{employee_id}', 'PayrollIncentivesController@details')->name('payroll-incentives.details');
-
-    Route::resource('payroll-incentives', 'PayrollIncentivesController');
-
-    Route::get('payrolls/import_from_excel', 'Payroll\SummaryController@importDataFromExcel');
-    Route::post('payrolls/import_from_excel', 'Payroll\SummaryController@postImportDataFromExcel');
-    Route::get('payrolls/by_payroll_id/{payroll_id}', 'Payroll\SummaryController@byPayrollID')->name('payrolls.by_payroll_id');
-
-    Route::get('payrolls/generate', 'Payroll\GenerateController@generate')->name('payrol.generate');
-    Route::post('payrolls/generate', 'Payroll\GenerateController@handleGenerate');
-
-    Route::get('payrolls/prepare', 'Payroll\GenerateController@prepare');
-    Route::post('payrolls/filter-positions-by-department', 'Payroll\GenerateController@filterPositionsByDepartment');
-
-    Route::post('payrolls/generate/filter', 'Payroll\GenerateController@filter');
-    Route::post('payrolls/close', 'Payroll\GenerateController@close');
-
-    Route::resource('payrolls', 'Payroll\PayrollController');
-
-    Route::get('payrolls_summary/import_from_excel', 'Payroll\SummaryController@importDataFromExcel');
-    Route::post('payrolls_summary/import_from_excel', 'Payroll\SummaryController@postImportDataFromExcel');
-    Route::get('payrolls_summary/by_payroll_id/{payroll_id}', 'Payroll\SummaryController@byPayrollID')->name('admin.payrolls_summary.by_payroll_id');
-    Route::resource('payrolls_summary', 'Payroll\SummaryController', [
-        'except' => ['edit', 'create']
-    ]);
 
     Route::get('performances_import/by_date/{perf_date}', 'PerformanceImportController@show')->name('performances_import.by_date');
     Route::get('/performances_import/mass_delete', 'PerformanceImportController@confirmDestroy');
     Route::resource('performances_import', 'PerformanceImportController')->except(['show', 'edit', 'update']);
-    // Route::get('performances/by_date/{perf_date}', 'PerformanceController@byDate')->name('performances.by_date');
-    // Route::delete('performances/mass_delete', 'PerformanceController@wantsMassDelete')->name('performances.mass_delete');
+
     Route::resource('performances', 'PerformanceController')
         ->except('create', 'store');
 
-    Route::resource('downtimes', 'DowntimeController')
-        ->except('show');
     Route::resource('permissions', 'PermissionsController');
 
     Route::resource('positions', 'PositionsController');
@@ -209,8 +134,6 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 
     Route::resource('punches', 'PunchesController');
 
-    // Route::resource('quality_scores', 'Quality\ScoreController');
-
     Route::resource('revenue_types', 'RevenueTypesController');
 
     Route::resource('roles', 'RolesController');
@@ -220,13 +143,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::resource('shifts', 'ShiftsController');
 
     Route::post('sites/employees', 'SitesController@assignEmployees');
-
     Route::resource('sites', 'SitesController');
-    // Route::bind('social_security', function($id){
-    //     return App\SocialSecurity::findOrFail($id);
-    // });
-
-    // Route::resource('social_securitie', 'SocialSecurityController');
 
     Route::resource('supervisor_users', 'SupervisorUserController');
 

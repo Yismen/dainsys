@@ -150,6 +150,11 @@ class RouteServiceProvider extends ServiceProvider
             }])->findOrFail($id);
         });
 
+        Route::bind('payment_type', function ($id) {
+            return \App\PaymentType::whereId($id)
+                ->firstOrFail();
+        });
+
         Route::bind('performance', function ($id) {
             return \App\Performance::with('employee.supervisor', 'campaign.project', 'supervisor', 'downtimeReason')
                 ->orderBy('date')
