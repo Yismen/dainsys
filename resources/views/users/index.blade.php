@@ -103,7 +103,7 @@ the users configurations and setting.']) @section('content')
         (function() {
             document.getElementById('js-search')
                 .addEventListener('input', _.debounce(function(e) {
-                    fetch(`/admin/users/search?q=${e.target.value}`)
+                    fetch(`{{ route('admin.users.search') }}?q=${e.target.value}`)
                         .then(response => response.text())
                         .then(html => document.getElementById('js-results').innerHTML = html)
                 }, 700))

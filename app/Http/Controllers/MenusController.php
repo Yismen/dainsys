@@ -99,7 +99,7 @@ class MenusController extends Controller
 
         $menu->updateMenu($request);
 
-        \Cache::flush();
+        Cache::flush();
 
         return redirect()->route('admin.menus.show', $menu->id)
             ->withSuccess("Menu $menu->display_name has been updated.");
@@ -115,7 +115,7 @@ class MenusController extends Controller
     {
         $menu->removeMenu();
 
-        \Cache::flush();
+        Cache::flush();
 
         return redirect()->route('admin.menus.index')
             ->withWarning("Menu collection [$menu->display_name] has been removed!");

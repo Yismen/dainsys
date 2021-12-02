@@ -18,7 +18,7 @@ class DowntimeReasonsControllerTest extends TestCase
         $downtime = factory(DowntimeReason::class)->create();
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/performances/downtime_reasons');
+        $response = $this->get('/api/performances/downtime_reasons');
 
         $response->assertOk()
             ->assertJsonStructure([

@@ -18,7 +18,7 @@ class SitesControllerTest extends TestCase
         factory(Site::class)->create();
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/performances/sites');
+        $response = $this->get('/api/performances/sites');
 
         $response->assertOk()
             ->assertJsonStructure([

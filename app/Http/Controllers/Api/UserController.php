@@ -8,57 +8,24 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Authenticated User
+     * 
+     * Return information of the authenticated user
+     * 
+     * @response 200 {
+     *      "id": 1,
+     *      "name": "Yismen Jorge",
+     *      "email": "yismen.jorge@gmail.com",
+     *      "is_active": 1,
+     *      "is_admin": 1,
+     *      "username": "yjorge",
+     *      "created_at": "2021-11-19T15:09:09.000000Z",
+     *      "updated_at": "2021-11-19T15:09:09.000000Z",
+     *      "deleted_at": null
+     *  }
      */
     public function index(Request $request)
     {
         return $request->user();
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

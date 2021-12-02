@@ -34,12 +34,12 @@
 						<div class="form-group">
 							<div class="col-sm-10 col-sm-offset-2">
 
-								<form action="{{ url('/admin/users', $user->id) }}" method="POST" class="" style="display: inline-block;">
+								<form action="{{ url('/admin/users', $user->id) }}" method="POST" class="inactivate-user" style="display: inline-block;">
 								    {!! csrf_field() !!}
 								    {!! method_field('DELETE') !!}
 								
 								    <button type="submit" id="delete-user" class="btn btn-danger"  name="deleteBtn">
-								        <i class="fa fa-btn fa-trash"></i> Delete User
+								        <i class="fa fa-btn fa-trash"></i> Delete/Inactivate User
 								    </button>
 								</form>
 
@@ -61,5 +61,15 @@
 @stop
 
 @push('scripts')
-	
+	<script>
+		const form = document.querySelector('.inactivate-user');
+		form.addEventListener('submit', (el) => {
+			el.preventDefault();
+			const confirmation = confirm('This action will inactivate this user, preventing it from accessing anything in your application. Are you sure you want to continue?');
+
+			if (confirmation) {
+				el.target.submit();
+			}
+		})
+	</script>
 @endpush

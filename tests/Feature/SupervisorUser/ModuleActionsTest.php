@@ -53,7 +53,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function it_lists_all_supervisors_without_users()
     {
-        $this->withoutExceptionHandling();
         $supervisors = create(Supervisor::class, [], 2);
 
         $this->actingAs($this->userWithPermission('view-supervisor-users'))
@@ -140,7 +139,6 @@ class ModuleActionsTest extends TestCase
             'supervisor_id' => $supervisor->id,
         ];
 
-        $this->withoutExceptionHandling();
 
         $this->actingAs($this->userWithPermission('destroy-supervisor-users'))
             ->delete(route('admin.supervisor_users.destroy', $supervisor_user->id))

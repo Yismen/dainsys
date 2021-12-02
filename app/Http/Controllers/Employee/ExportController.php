@@ -9,6 +9,10 @@ use App\Exports\Employees as EmployeesExport;
 
 class ExportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('authorize:view-employees');
+    }
     /**
      * Allows to export employees to excel by status
      *

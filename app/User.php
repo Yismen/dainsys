@@ -146,4 +146,9 @@ class User extends Authenticatable implements CanResetPassword
 
         $score = auth()->user()->scores()->create($request->all());
     }
+
+    public function isAdmin()
+    {
+        return $this->is_admin === true || $this->hasAnyRole('admin', 'Admin', 'Administrador', 'administrador');
+    }
 }

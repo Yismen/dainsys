@@ -28,7 +28,7 @@ class UserCreatedNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -40,9 +40,9 @@ class UserCreatedNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Log In', '/admin/login')
-                    ->line('Thank you for using our application!');
+            ->line('The introduction to the notification.')
+            ->action('Log In', '/admin/login')
+            ->line('Thank you for using our application!');
     }
 
     /**

@@ -14,9 +14,12 @@ class BirthdaysRepository
 {
     protected function query()
     {
+        $orderClause = env('DB_CONNECTION') === 'sqlite' ?
+            'strftime("%d", date_of_birth) ASC' :
+            'Day(date_of_birth) ASC';
+
         return Employee::actives()->filter(request()->all())
-            ->orderByRaw('Day(date_of_birth) ASC')
-        ;
+            ->orderByRaw($orderClause);
     }
 
     public static function today()
@@ -26,8 +29,7 @@ class BirthdaysRepository
 
         return $static->query()
             ->whereMonth('date_of_birth', $date->month)
-            ->whereDay('date_of_birth', $date->day)
-            ;
+            ->whereDay('date_of_birth', $date->day);
     }
 
     public static function thisMonth()
@@ -36,8 +38,7 @@ class BirthdaysRepository
         $date = now();
 
         return $static->query()
-            ->whereMonth('date_of_birth', $date->month)
-            ;
+            ->whereMonth('date_of_birth', $date->month);
     }
 
     public static function lastMonth()
@@ -46,8 +47,7 @@ class BirthdaysRepository
         $date = now()->subMonth();
 
         return $static->query()
-            ->whereMonth('date_of_birth', $date->month)
-            ;
+            ->whereMonth('date_of_birth', $date->month);
     }
 
     public static function nextMonth()
@@ -56,7 +56,6 @@ class BirthdaysRepository
         $date = now()->addMonth();
 
         return $static->query()
-            ->whereMonth('date_of_birth', $date->month)
-            ;
+            ->whereMonth('date_of_birth', $date->month);
     }
 }

@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\Cache;
 class AFPController extends Controller
 {
     /**
-      * Update the specified resource in storage.
-      *
-      * @param  \Illuminate\Http\Request  $request
-      * @param  int  $id
-      * @return \Illuminate\Http\Response
-      */
-    public function update(Request $request, Employee $employee)
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function assign(Request $request, Employee $employee)
     {
         $this->validate($request, [
             'afp_id' => 'required|exists:afps,id',

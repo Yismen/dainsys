@@ -86,9 +86,10 @@ class DowntimeController extends Controller
      */
     public function update(UpdateDowntimeRequest $request, Downtime $downtime)
     {
+        // dd($request->all());
         $downtime->update($request->all());
 
-        return redirect()->back()
+        return redirect()->route('admin.downtimes.edit', $downtime->id)
             ->withSuccess('Updated! ' . $downtime->name);
     }
 

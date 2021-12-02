@@ -23,7 +23,7 @@ class UpdateDowntimeRequest extends FormRequest
      */
     public function rules()
     {
-        return [            
+        return [
             'date' => 'required|date|',
             'employee_id' => 'required|exists:employees,id',
             'campaign_id' => 'required|exists:campaigns,id',

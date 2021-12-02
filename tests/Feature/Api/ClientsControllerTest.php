@@ -18,7 +18,7 @@ class ClientsControllerTest extends TestCase
         factory(Client::class)->create();
         Passport::actingAs($this->user());
 
-        $response = $this->json('GET', '/api/performances/clients');
+        $response = $this->get('/api/performances/clients');
 
         $response->assertOk()
             ->assertJsonStructure([

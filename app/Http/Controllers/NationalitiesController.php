@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Cache;
+use Illuminate\Support\Facades\Cache;
 use App\Employee;
 use App\Nationality;
 use Illuminate\Http\Request;
@@ -15,7 +15,7 @@ class NationalitiesController extends Controller
         $this->middleware('authorize:edit-nationalities', ['only' => ['edit', 'update']]);
         $this->middleware('authorize:create-nationalities', ['only' => ['create', 'store']]);
         $this->middleware('authorize:destroy-nationalities', ['only' => ['destroy']]);
-        $this->middleware('authorize:assign-nationalities-employees', ['only' => ['reAssign']]);
+        $this->middleware('authorize:assign-nationalities-employees', ['only' => ['assignEmployees']]);
     }
 
     /**
@@ -171,7 +171,7 @@ class NationalitiesController extends Controller
     protected function validateRequest(Request $request, Nationality $nationality)
     {
         $this->validate($request, [
-            'name' => 'required|min:3|unique:nationalities,name,'.$nationality->id,
+            'name' => 'required|min:3|unique:nationalities,name,' . $nationality->id,
         ]);
     }
 }

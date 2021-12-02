@@ -27,7 +27,7 @@
         </div>
         <div id="control-sidebar-theme-demo-options-tab" class="tab-pane active">
             <h4 class="control-sidebar-heading">Layout Options</h4>
-            {!! Form::model($settings, ['route'=>['admin.users.settings', $user->id], 'method'=>'PUT']) !!}
+            {!! Form::model($settings, ['route'=>['admin.users.settings']]) !!}
                 {{--  /Default Route  --}}
                 <div class="form-group">
                     <label>Layouts</label>
