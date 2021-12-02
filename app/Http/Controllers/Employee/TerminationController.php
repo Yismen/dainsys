@@ -40,7 +40,7 @@ class TerminationController extends Controller
             'hire_date' => 'required|date',
         ]);
 
-        $employee->termination->delete();
+        $employee->termination()->delete();
         $employee->update($request->only(['hire_date']));
 
         Cache::forget('empleados');

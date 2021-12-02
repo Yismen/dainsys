@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Employee;
 
-use Cache;
+use Illuminate\Support\Facades\Cache;
 use App\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class SupervisorController extends Controller
 {
-    public function update(Employee $employee, Request $request)
+    public function assign(Employee $employee, Request $request)
     {
         $this->validate($request, [
             'supervisor_id' => 'required|exists:supervisors,id',

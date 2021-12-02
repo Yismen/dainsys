@@ -24,7 +24,7 @@ class PasswordController extends Controller
 
         $user = User::whereEmail(
             auth()->user()->email
-            )
+        )
             ->first();
 
         if (Hash::check($request->old_password, $user->password)) {
@@ -40,18 +40,22 @@ class PasswordController extends Controller
 
     public function force_reset(User $user)
     {
+        abort_if(!auth()->user()->isAdmin(), 401, 'Unauthorized');
+
         return view('users.force_reset', compact('user'));
     }
 
     public function force_change(User $user, Request $request)
     {
+        abort_if(!auth()->user()->isAdmin(), 401, 'Unauthorized');
+
         if ($user->id === auth()->user()->id) {
             return redirect()->back()->withErrors(['error' => 'You are not allowed to change your own password here!']);
         }
 
         $new_password = $user->forceChangePassword($request);
 
-        return redirect("/admin/users/force_reset/{$user->id}")
+        return redirect(route('admin.users.force_reset', $user->id))
             ->with('important')
             ->withNewPassword($new_password)
             ->withWarning("Password {$new_password} is the new password for this user. Please advise to update inmediately!");

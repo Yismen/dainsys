@@ -15,17 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/user', 'Api\UserController@index');
-    Route::resource('employee', 'Api\EmployeeController')->except(['create', 'edit']);
-    Route::resource('positions', 'PositionsController')->only(['index', 'create', 'store']);
-    Route::resource('arss', 'ArsController')->only(['index', 'store']);
-    Route::resource('afps', 'AfpsController')->only(['index', 'store']);
-    Route::resource('banks', 'BanksController')->only(['index', 'store']);
-    Route::resource('supervisors', 'SupervisorsController')->only(['index', 'store']);
-    Route::resource('departments', 'DepartmentsController');
-    Route::resource('nationalities', 'NationalitiesController')->only('store');
-    Route::resource('payment_frequencies', 'PaymentFrequenciesController');
-    Route::post('employees/{employee}/vip', 'Employee\VIPController@update');
-    Route::post('employees/{employee}/universal', 'Employee\UniversalController@update');
+    Route::resource('afps', 'Api\AfpsController')->only(['store']);
+    Route::resource('arss', 'Api\ArssController')->only(['store']);
+    Route::resource('banks', 'Api\BanksController')->only(['store']);
+    Route::resource('positions', 'Api\PositionsController')->only(['store']);
+    Route::resource('supervisors', 'Api\SupervisorsController')->only(['store']);
+    Route::resource('departments', 'Api\DepartmentsController')->only('store');
+    Route::resource('payment_frequencies', 'Api\PaymentFrequenciesController')->only(['store']);
+    Route::resource('nationalities', 'Api\NationalitiesController')->only('store');
+    Route::post('employees/{employee}/vip', 'Employee\VIPController@update')->name('api.employee.vip');
+    Route::post('employees/{employee}/universal', 'Employee\UniversalController@update')->name('api.employee.universal');
 
     Route::get('employees', 'Api\EmployeeController@index');
     Route::get('employees/all', 'Api\EmployeeController@index');
@@ -38,14 +37,14 @@ Route::middleware('auth:api')->group(function () {
     Route::get('performances/sites', 'Api\Performances\SitesController');
     Route::get('performances/supervisors', 'Api\Performances\SupervisorsController');
     Route::get('performances/downtime_reasons', 'Api\Performances\DowntimeReasonsController');
-    Route::get('performances/employees', 'Api\Performances\DowntimesController@employees');
-    Route::get('performances/downtimes', 'Api\Performances\PerformancesController@downtimes');
-    Route::get('performances/login_names', 'Api\Performances\EmployeesController@loginNames');
-    Route::get('performances/schedules', 'Api\Performances\EmployeesController@schedules');
+    Route::get('performances/employees', 'Api\Performances\EmployeesController');
+    Route::get('performances/downtimes', 'Api\Performances\DowntimesController');
+    Route::get('performances/login_names', 'Api\Performances\LoginNamesController');
+    Route::get('performances/schedules', 'Api\Performances\SchedulesController');
     Route::get('performances/supervisors/actives', 'Api\Performances\SupervisorsController@actives');
 
     Route::get('performances/performance_data/last/{many}/months', 'Api\Performances\PerformancesController@data');
-    Route::get('/blackhawk/de/management', 'Blackhawk\DE\ManagementController@dashboardData');
+    // Route::get('/blackhawk/de/management', 'Blackhawk\DE\ManagementController@dashboardData');
 
     Route::get('holidays', 'Api\HolidayController@index');
 
@@ -59,7 +58,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::get('overnight_hours', 'Api\OvernightHourController@index'); // use get request to limit search date=date||months=0||days=0
 
-    // Route::get('notifications/unread', 'Api\NotificationsController@unread');
-    // Route::post('notifications/mark-all-as-read', 'Api\NotificationsController@markAllAsRead');
-    // Route::get('notifications/show/{notification}', 'Api\NotificationsController@show');
+    Route::get('notifications/unread', 'Api\NotificationsController@unread');
+    Route::post('notifications/mark-all-as-read', 'Api\NotificationsController@markAllAsRead');
+    Route::get('notifications/show/{notification}', 'Api\NotificationsController@show');
 });

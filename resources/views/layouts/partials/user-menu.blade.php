@@ -49,7 +49,7 @@
             </a>
           </div> --}}
           <div class="col-xs-4 text-center pull-right">
-            <a href="/admin/users/reset" title="Change Password">
+            <a href="{{ route('admin.users.reset-password') }}" title="Change Password">
               <i class="fa fa-key"></i> Pass
             </a>
           </div>

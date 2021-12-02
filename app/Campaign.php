@@ -8,24 +8,6 @@ class Campaign extends Model
 {
     protected $fillable = ['name', 'project_id', 'source_id', 'revenue_type_id', 'sph_goal', 'revenue_rate'];
 
-    public function getProjectListAttribute()
-    {
-        return Project::
-            orderBy('name')->get();
-    }
-
-    public function getSourceListAttribute()
-    {
-        return Source::
-            orderBy('name')->get();
-    }
-
-    public function getRevenueTypeListAttribute()
-    {
-        return RevenueType::
-            orderBy('name')->get();
-    }
-
     public function project()
     {
         return $this->belongsTo(Project::class);
@@ -44,5 +26,20 @@ class Campaign extends Model
     public function performances()
     {
         return $this->hasMany(Performance::class);
+    }
+
+    public function getProjectListAttribute()
+    {
+        return Project::orderBy('name')->get();
+    }
+
+    public function getSourceListAttribute()
+    {
+        return Source::orderBy('name')->get();
+    }
+
+    public function getRevenueTypeListAttribute()
+    {
+        return RevenueType::orderBy('name')->get();
     }
 }

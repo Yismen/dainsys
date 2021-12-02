@@ -10,7 +10,7 @@ use App\Repositories\ProjectRepository;
 use App\Repositories\SiteRepository;
 
 class DefaultDashboardController extends DashboardAbstractController
-{    
+{
     /**
      * Handle the incoming request.
      *

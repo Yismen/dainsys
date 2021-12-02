@@ -38,6 +38,7 @@ class ModuleActionsTest extends TestCase
             ->assertRedirect()
             ->assertLocation(route('admin.downtimes.create'));
 
+
         $this->assertDatabaseHas('performances', $downtime);
     }
 
@@ -57,15 +58,18 @@ class ModuleActionsTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $downtime = create(Downtime::class);
-        $employee2 = create(Employee::class);
+        $changed_employee = create(Employee::class);
 
         $data_array = [
-            'employee_id' => $employee2->id,
+            'employee_id' => $changed_employee->id,
+            'reported_by' => create(Supervisor::class)->name
         ];
 
-        $this->actingAs($this->userWithPermission('edit-downtimes'))
+        $response = $this->actingAs($this->userWithPermission('edit-downtimes'))
             ->put(route('admin.downtimes.update', $downtime->id), array_merge($downtime->toArray(), $data_array))
-            ->assertRedirect();
+            ->assertRedirect(route('admin.downtimes.edit', $downtime->id));
+
+        $response->assertValid(['employee_id']);
 
         $this->assertDatabaseHas('performances', $data_array);
     }

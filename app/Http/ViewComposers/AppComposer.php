@@ -2,14 +2,9 @@
 
 namespace App\Http\ViewComposers;
 
-use App\Site;
-use App\User;
-use App\Profile;
-use App\Project;
-use App\Employee;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
-use App\Repositories\HumanResources\Birthdays\BirthdaysToday;
+use Illuminate\Support\Facades\Cache;
 
 class AppComposer
 {
@@ -36,7 +31,7 @@ class AppComposer
     private function user()
     {
         if (Auth::check()) {
-            return \Cache::rememberForEver('user-'.Auth::user()->id, function () {
+            return Cache::rememberForEver('user-' . Auth::user()->id, function () {
                 return Auth::user()
                     ->load([
                         'settings',

@@ -2,142 +2,68 @@
 
 namespace App\Http\Controllers\Api;
 
-// use App\Http\Request;
 use App\Position;
-use App\Department;
-use App\PaymentType;
-use App\PaymentFrequency;
 use Illuminate\Http\Request;
-use App\Rules\PositionUnique;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PositionResource;
+use App\Rules\PositionUnique;
+use Carbon\Carbon;
 
 class PositionsController extends Controller
 {
-
     /**
-     * Display a listing of the resource.
+     * Store Positions
+     * 
+     * Save a Position model to database.
+     * 
+     * @bodyParam name string required The name of the Position
+     * @bodyParam department_id numeric required The department_id of the Position
+     * @bodyParam payment_type_id numeric required The payment_type_id of the Position
+     * @bodyParam payment_frequency_id numeric required The payment_frequency_id of the Position
+     * @bodyParam salary numeric required The salary of the Position
      *
-     * @return Response
-     */
-    public function index(Position $positions, Request $request)
-    {
-        return $positions
-            ->orderBy('department_id')
-            ->orderBy('name')
-            ->with('department')
-            ->withCount(['employees' => function ($query) {
-                return $query->actives();
-            }])
-            ->with('payment_type')
-            ->with('payment_frequency')
-            ->paginate(50);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        return response([
-            'departments' => Department::all(),
-            'payment_types' => PaymentType::all(),
-            'payment_frequencies' => PaymentFrequency::all()
-        ]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
+     * @response 201 {
+     *      "name": "Asdfasdf",
+     *      "department_id": 1,
+     *      "payment_type_id": 1,
+     *      "payment_frequency_id": 1,
+     *      "salary": 150,
+     *      "updated_at": "2021-12-01T19:18:45.000000Z",
+     *      "created_at": "2021-12-01T19:18:45.000000Z",
+     *      "id": 14,
+     *      "name_and_department": "Administration-Asdfasdf",
+     *      "pay_per_hours": 150,
+     *      "department": {
+     *          "id": 1,
+     *          "name": "Administration",
+     *          "created_at": "2021-11-19T15:09:20.000000Z",
+     *          "updated_at": "2021-11-19T15:09:20.000000Z"
+     *      },
+     *      "payment_type": {
+     *          "id": 1,
+     *          "name": "By Hours",
+     *          "slug": "by-hours",
+     *          "created_at": "2021-11-19T15:09:42.000000Z",
+     *          "updated_at": "2021-11-19T15:09:42.000000Z"
+     *      }
+     *  }
      */
     public function store(Position $position, Request $request)
     {
-        $this->validateRequest($request, $position);
-
-        $position = $this->createPosition($position, $request);
-
-        return redirect()->route('admin.positions.index')
-            ->withSuccess("Position $position->name has been created!");
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show(Position $position)
-    {
-        return view('positions.show', compact('position'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit(Position $position)
-    {
-        return view('positions.edit', compact('position'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update(Position $position, Request $request)
-    {
-        $this->validateRequest($request, $position);
-
-        $position->update($request->all());
-
-        return redirect()->route('admin.positions.index')
-            ->withSuccess("Position $position->name updated!");
-
-        // return redirect()->route('admin.positions.show', $position->id)
-        // 	->withSuccess("Position $position->name has been ubdated!!");
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy(Position $position, Request $request)
-    {
-        $position->delete();
-
-        return redirect()->route('admin.positions.index')
-            ->withWarning("Position $position->name has been removed!");
-    }
-
-    protected function validateRequest($request, $position)
-    {
-        $this->validate($request, [
+        $this->validate(request(), [
             'name' => [
                 'required',
                 'min:2',
-                new PositionUnique($position, $request)
+                new PositionUnique($position, $request),
             ],
             'department_id' => 'required|exists:departments,id',
             'payment_type_id' => 'required|exists:payment_types,id',
             'payment_frequency_id' => 'required|exists:payment_frequencies,id',
-            'salary' => 'required|numeric|min:0|max:500000',
+            'salary' => 'required|numeric|min:45|max:500000',
         ]);
 
-        return $this;
-    }
+        $afp = Position::create(request()->all());
 
-    protected function createPosition($position, $request)
-    {
-        $position->create($request->all());
-
-        return $position;
+        return response()->json($afp, 201);
     }
 }

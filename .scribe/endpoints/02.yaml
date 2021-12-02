@@ -1,0 +1,563 @@
+name: Performances
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/performances/clients
+    metadata:
+      title: 'Performances Clients'
+      description: 'Collection of clients information'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 1,
+                       "name": "Miss Ericka Medhurst",
+                       "contact_name": "Roel Harvey",
+                       "main_phone": "(954) 631-9605",
+                       "email": "toy.raquel@hotmail.com",
+                       "secondary_phone": "+14408935480",
+                       "account_number": "929-384-1946"
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/performances/projects
+    metadata:
+      title: 'Performances Projects'
+      description: 'Collection of performances data for many months back.'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 1,
+                       "name": "Administracion",
+                       "client": null
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/performances/campaigns
+    metadata:
+      title: 'Performances Campaigns'
+      description: 'Collection of camaigns information'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 1,
+                       "name": "asdfasfas-downtimes",
+                       "project_id": 1,
+                       "source_id": 5,
+                       "revenue_type_id": 1,
+                       "sph_goal": 24,
+                       "rate": 40
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/performances/sites
+    metadata:
+      title: 'Performances Sites'
+      description: 'Collection of employees'' sites.'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 1,
+                       "name": "Yismen Jorge",
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/performances/supervisors
+    metadata:
+      title: 'Performances Supervisors'
+      description: 'Collection of employees'' supervisors.'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 1,
+                       "name": "Yismen Jorge",
+                       "active": 1,
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/performances/downtime_reasons
+    metadata:
+      title: 'Performances Downtime Reasons'
+      description: 'Collection of downtime reasons'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 1,
+                       "name": "Falta De Trabajo"
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/performances/employees
+    metadata:
+      title: 'Performances Employees'
+      description: 'Collection of employees formated for downtimes'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      site:
+        name: site
+        description: 'Limit results to specific site. Example ?site=%Santiago%'
+        required: false
+        example: molestias
+        type: string
+      project:
+        name: project
+        description: 'Limit results to specific project. Example ?project=%Santiago%'
+        required: false
+        example: tenetur
+        type: string
+      department:
+        name: department
+        description: 'Limit results to specific department. Example ?department=%Santiago%'
+        required: false
+        example: numquam
+        type: string
+      position:
+        name: position
+        description: 'Limit results to specific position. Example ?position=%Santiago%'
+        required: false
+        example: deserunt
+        type: string
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                      "id": 10011,
+                      "full_name": "Charley Gregory Considine Balistreri",
+                      "supervisor_id": 12,
+                      "site_id": 13,
+                      "punch": "00005"
+                  }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/performances/downtimes
+    metadata:
+      title: 'Performances Downtimes'
+      description: 'Collection of dowtimes'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      campaign:
+        name: campaign
+        description: 'Limit results to specific campaign. Example ?campaign=%Santiago%'
+        required: false
+        example: explicabo
+        type: string
+      source:
+        name: source
+        description: 'Limit results to specific source. Example ?source=%Santiago%'
+        required: false
+        example: corporis
+        type: string
+      employee:
+        name: employee
+        description: 'Limit results to specific employee. Example ?employee=%Santiago%'
+        required: false
+        example: sit
+        type: string
+      supervisor:
+        name: supervisor
+        description: 'Limit results to specific supervisor. Example ?supervisor=%Santiago%'
+        required: false
+        example: in
+        type: string
+      supervisor_employee:
+        name: supervisor_employee
+        description: 'Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%'
+        required: false
+        example: ab
+        type: string
+      project_campaign:
+        name: project_campaign
+        description: 'Limit results to specific project_campaign. Example ?project_campaign=%Santiago%'
+        required: false
+        example: magnam
+        type: string
+      project_employee:
+        name: project_employee
+        description: 'Limit results to specific project_employee. Example ?project_employee=%Santiago%'
+        required: false
+        example: corporis
+        type: string
+      site:
+        name: site
+        description: 'Limit results to specific site. Example ?site=%Santiago%'
+        required: false
+        example: minima
+        type: string
+      client:
+        name: client
+        description: 'Limit results to specific client. Example ?client=%Pub%'
+        required: false
+        example: qui
+        type: string
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                        "unique_id": "unique-id-1-dsf-3",
+                        "date": "2021-05-17",
+                        "employee_id": 50001,
+                        "campaign": "Some Campaign",
+                        "project_performance": "Some Project",
+                        "employee_name": "Some Employee",
+                        "login_time": 8.21,
+                        "downtime_reason": "falta de Trabajo",
+                        "reported_by": "Yismen Jorge",
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/performances/login_names
+    metadata:
+      title: 'Performances Login Names'
+      description: 'Return a collection of login names.'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      recents:
+        name: recents
+        description: 'optional When present, only login names for employees labeled as recents will be included. Default is true. Example ?recents=true'
+        required: false
+        example: quis
+        type: string
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+           "employee_id": 10001,
+           "employee_name": Yismen Jorge,
+           "login": yjorge,
+           "supervisor_id": 1
+          }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/performances/schedules
+    metadata:
+      title: 'Performances Schedules'
+      description: 'Collection of employees'' schedules, filtered by many days ago.'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      daysago:
+        name: daysago
+        description: 'The amount of days to filter back. Default 90. Example daysago=45'
+        required: false
+        example: 2
+        type: integer
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "employee_id": 50001,
+                       "employee_name": "Yismen Jorge",
+                       "supervisor": "Supervisor Name",
+                       "date": "2021-05-19",
+                       "hours": 5.75,
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/performances/supervisors/actives
+    metadata:
+      title: 'Performances Active Supervisors'
+      description: 'Collection of employees'' Actives supervisors.'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 1,
+                       "name": "Yismen Jorge",
+                       "active": 1,
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/performances/performance_data/last/{many}/months'
+    metadata:
+      title: 'Performances Data'
+      description: 'Collection of performances data for many months back.'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      many:
+        name: many
+        description: 'The amount of months back to filter data. Example /performances/performance_data/last/3/months'
+        required: false
+        example: 3
+        type: integer
+    queryParameters:
+      campaign:
+        name: campaign
+        description: 'Filter data by campaign name. Example ?campaign=%POL-%.'
+        required: false
+        example: explicabo
+        type: string
+      employee:
+        name: employee
+        description: 'Filter data by employee name. Example ?employee=%Yismen Jore%.'
+        required: false
+        example: voluptates
+        type: string
+      supervisor:
+        name: supervisor
+        description: 'Filter data by supervisor name. Example ?supervisor=%Yismen Jore%.'
+        required: false
+        example: tempore
+        type: string
+      project_campaign:
+        name: project_campaign
+        description: 'Filter data by project_campaign name. Example ?project_campaign=%blackhawk%.'
+        required: false
+        example: consequatur
+        type: string
+      project_employee:
+        name: project_employee
+        description: 'Filter data by project_employee name. Example ?project_campaign=%blackhawk%.'
+        required: false
+        example: reprehenderit
+        type: string
+      site:
+        name: site
+        description: 'Filter data by site name. Example ?site=%Santiago HQ%.'
+        required: false
+        example: sed
+        type: string
+      source:
+        name: source
+        description: 'Filter data by source name. Example ?source=%Santiago HQ%.'
+        required: false
+        example: voluptatem
+        type: string
+      client:
+        name: client
+        description: 'Filter data by client name. Example ?client=%blackhawk%.'
+        required: false
+        example: nobis
+        type: string
+      supervisor_employee:
+        name: supervisor_employee
+        description: 'Filter data by supervisor_employee name. Example ?supervisor_employee=%Yismen Jore%.'
+        required: false
+        example: quis
+        type: string
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "unique_id": "2021-11-01-10007-1",
+                       "away_time": 0,
+                       "billable_hours": 0,
+                       "break_time": 0,
+                       "calls": 0,
+                       "campaign_sph_goal": 0,
+                       "campaign": "asdfasfas-downtimes",
+                       "cc_sales": 0,
+                       "client": null,
+                       "contacts": 0,
+                       "date": "2021-11-01",
+                       "department": "Sarah Schmeler",
+                       "dontime_reason": "Falta De Trabajo",
+                       "employee_id": 10007,
+                       "employee_name": "Dorcas Iliana Turner Robel",
+                       "first_name": "Dorcas",
+                       "hire_date": "2004-08-04",
+                       "last_name": "Turner",
+                       "login_time": 8,
+                       "lunch_time": 0,
+                       "off_hook_time": 0,
+                       "pending_dispo_time": 0,
+                       "production_time": 0,
+                       "project_employee": "Jaycee Kris",
+                       "project_performance": "Administracion",
+                       "punch_id": null,
+                       "reported_by": "Bianka Quitzon",
+                       "revenue": 0,
+                       "salary": 125,
+                       "sales": 0,
+                       "second_first_name": "Iliana",
+                       "second_last_name": "Robel",
+                       "site": "Anabel Hammes",
+                       "source": "Data Entry",
+                       "status": "Active",
+                       "supervisor_employee": "Kiley Kirlin",
+                       "supervisor_performance": "Kiley Kirlin",
+                       "talk_time": 0,
+                       "training_time": 0,
+                       "upsales": 0
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []

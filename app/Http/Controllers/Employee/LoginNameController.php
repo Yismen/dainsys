@@ -21,6 +21,6 @@ class LoginNameController extends Controller
         Cache::forget('employees');
         Cache::forget('login-names');
 
-        return $newlogin;
+        return response($newlogin);
     }
 }

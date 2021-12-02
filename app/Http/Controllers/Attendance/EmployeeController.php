@@ -11,6 +11,11 @@ use Carbon\Carbon;
 
 class EmployeeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('authorize:view-attendances');
+    }
+
     public function show(Request $request, Employee $employee)
     {
         $repo = new AttendanceEmployeesRepository($employee->id);

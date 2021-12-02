@@ -135,7 +135,7 @@ class UsersController extends Controller
                 ->withDanger('It is not allowed to remove your own user.');
         }
 
-        if ($user->is_admin) {
+        if ($user->is_admin || $user->hasAnyRole('admin')) {
             return redirect()->route('admin.users.edit', $user->id)
                 ->withDanger('Super users can not be removed.');
         }
@@ -169,7 +169,6 @@ class UsersController extends Controller
         Cache::flush();
 
         $user = User::withTrashed()->find($id);
-
 
         $user->restore();
 

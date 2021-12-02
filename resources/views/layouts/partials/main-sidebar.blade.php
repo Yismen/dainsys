@@ -61,6 +61,9 @@
                         <a href="{{ route('date_calc.index') }}"><i class="fa fa-circle-o text-red"></i> Date Diff
                             Calculator</a>
                     </li>
+                    <li>
+                        <a href="/docs" target="__new"><i class="fa fa-circle-o text-red"></i> API Documentation</a>
+                    </li>
                 </ul>
 
             </li>
