@@ -12,16 +12,30 @@ use App\Http\Resources\LoginNameResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Collection;
 
+/**
+ * @group Performances
+ */
 class SchedulesController extends Controller
 {
 
     /**
-     * Retunrs a collection of employees' schedules, filtered by many days ago.
+     * Performances Schedules
      * 
-     * @queryParam daysago int. The amount of days to filter back. Default 90. Example daysago=45
-     *
-     * @param Request $request
-     * @return \Illuminate\Support\JsonResource
+     * Collection of employees' schedules, filtered by many days ago.
+     * 
+     * @queryParam daysago int The amount of days to filter back. Default 90. Example daysago=45    
+     *  
+     * @response 200 {
+     *      "data": [
+     *          {
+     *              "employee_id": 50001,
+     *              "employee_name": "Yismen Jorge",
+     *              "supervisor": "Supervisor Name",
+     *              "date": "2021-05-19",
+     *              "hours": 5.75,
+     *          }
+     *      ]
+     *  }
      */
     public function __invoke(): JsonResource
     {

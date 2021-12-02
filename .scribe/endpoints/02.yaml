@@ -204,25 +204,25 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: ut
+        example: molestias
         type: string
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Santiago%'
         required: false
-        example: inventore
+        example: tenetur
         type: string
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Santiago%'
         required: false
-        example: odio
+        example: numquam
         type: string
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Santiago%'
         required: false
-        example: et
+        example: deserunt
         type: string
     bodyParameters: []
     responses:
@@ -260,49 +260,49 @@ endpoints:
         name: campaign
         description: 'Limit results to specific campaign. Example ?campaign=%Santiago%'
         required: false
-        example: dolorem
+        example: explicabo
         type: string
       source:
         name: source
         description: 'Limit results to specific source. Example ?source=%Santiago%'
         required: false
-        example: ab
+        example: corporis
         type: string
       employee:
         name: employee
         description: 'Limit results to specific employee. Example ?employee=%Santiago%'
         required: false
-        example: asperiores
+        example: sit
         type: string
       supervisor:
         name: supervisor
         description: 'Limit results to specific supervisor. Example ?supervisor=%Santiago%'
         required: false
-        example: quibusdam
+        example: in
         type: string
       supervisor_employee:
         name: supervisor_employee
         description: 'Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%'
         required: false
-        example: sapiente
+        example: ab
         type: string
       project_campaign:
         name: project_campaign
         description: 'Limit results to specific project_campaign. Example ?project_campaign=%Santiago%'
         required: false
-        example: sed
+        example: magnam
         type: string
       project_employee:
         name: project_employee
         description: 'Limit results to specific project_employee. Example ?project_employee=%Santiago%'
         required: false
-        example: et
+        example: corporis
         type: string
       site:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: ratione
+        example: minima
         type: string
       client:
         name: client
@@ -348,9 +348,9 @@ endpoints:
     queryParameters:
       recents:
         name: recents
-        description: 'optional. When present, only login names for employees labeled as recents will be included. Default is true. Example ?recents=true'
+        description: 'optional When present, only login names for employees labeled as recents will be included. Default is true. Example ?recents=true'
         required: false
-        example: voluptas
+        example: quis
         type: string
     bodyParameters: []
     responses:
@@ -381,10 +381,10 @@ endpoints:
     queryParameters:
       daysago:
         name: daysago
-        description: 'int. The amount of days to filter back. Default 90. Example daysago=45'
+        description: 'The amount of days to filter back. Default 90. Example daysago=45'
         required: false
-        example: et
-        type: string
+        example: 2
+        type: integer
     bodyParameters: []
     responses:
       -
@@ -448,64 +448,64 @@ endpoints:
     urlParameters:
       many:
         name: many
-        description: 'The amount of months back to filter data. Example=Example /performances/performance_data/last/{many}/months'
+        description: 'The amount of months back to filter data. Example /performances/performance_data/last/3/months'
         required: false
-        example: 20
+        example: 3
         type: integer
     queryParameters:
       campaign:
         name: campaign
-        description: 'Filter data by campaign name. Example /performances/performance_data/last/{many}/months?campaign=%POL-%.'
+        description: 'Filter data by campaign name. Example ?campaign=%POL-%.'
         required: false
-        example: inventore
+        example: explicabo
         type: string
       employee:
         name: employee
-        description: 'Filter data by employee name. Example /performances/performance_data/last/{many}/months?employee=%Yismen Jore%.'
+        description: 'Filter data by employee name. Example ?employee=%Yismen Jore%.'
         required: false
-        example: impedit
+        example: voluptates
         type: string
       supervisor:
         name: supervisor
-        description: 'Filter data by supervisor name. Example /performances/performance_data/last/{many}/months?supervisor=%Yismen Jore%.'
+        description: 'Filter data by supervisor name. Example ?supervisor=%Yismen Jore%.'
         required: false
-        example: atque
+        example: tempore
         type: string
       project_campaign:
         name: project_campaign
-        description: 'Filter data by project_campaign name. Example /performances/performance_data/last/{many}/months?project_campaign=%blackhawk%.'
+        description: 'Filter data by project_campaign name. Example ?project_campaign=%blackhawk%.'
         required: false
-        example: veritatis
+        example: consequatur
         type: string
       project_employee:
         name: project_employee
-        description: 'Filter data by project_employee name. Example /performances/performance_data/last/{many}/months?project_campaign=%blackhawk%.'
+        description: 'Filter data by project_employee name. Example ?project_campaign=%blackhawk%.'
         required: false
-        example: dicta
+        example: reprehenderit
         type: string
       site:
         name: site
-        description: 'Filter data by site name. Example /performances/performance_data/last/{many}/months?site=%Santiago HQ%.'
+        description: 'Filter data by site name. Example ?site=%Santiago HQ%.'
         required: false
-        example: veritatis
+        example: sed
         type: string
       source:
         name: source
-        description: 'Filter data by source name. Example /performances/performance_data/last/{many}/months?source=%Santiago HQ%.'
+        description: 'Filter data by source name. Example ?source=%Santiago HQ%.'
         required: false
-        example: dolore
+        example: voluptatem
         type: string
       client:
         name: client
-        description: 'Filter data by client name. Example /performances/performance_data/last/{many}/months?client=%blackhawk%.'
+        description: 'Filter data by client name. Example ?client=%blackhawk%.'
         required: false
-        example: minima
+        example: nobis
         type: string
       supervisor_employee:
         name: supervisor_employee
-        description: 'Filter data by supervisor_employee name. Example /performances/performance_data/last/{many}/months?supervisor_employee=%Yismen Jore%.'
+        description: 'Filter data by supervisor_employee name. Example ?supervisor_employee=%Yismen Jore%.'
         required: false
-        example: error
+        example: quis
         type: string
     bodyParameters: []
     responses:

@@ -37,14 +37,14 @@ Route::middleware('auth:api')->group(function () {
     Route::get('performances/sites', 'Api\Performances\SitesController');
     Route::get('performances/supervisors', 'Api\Performances\SupervisorsController');
     Route::get('performances/downtime_reasons', 'Api\Performances\DowntimeReasonsController');
-    Route::get('performances/employees', 'Api\Performances\DowntimesController@employees');
-    Route::get('performances/downtimes', 'Api\Performances\DowntimesController@index');
+    Route::get('performances/employees', 'Api\Performances\EmployeesController');
+    Route::get('performances/downtimes', 'Api\Performances\DowntimesController');
     Route::get('performances/login_names', 'Api\Performances\LoginNamesController');
     Route::get('performances/schedules', 'Api\Performances\SchedulesController');
     Route::get('performances/supervisors/actives', 'Api\Performances\SupervisorsController@actives');
 
     Route::get('performances/performance_data/last/{many}/months', 'Api\Performances\PerformancesController@data');
-    Route::get('/blackhawk/de/management', 'Blackhawk\DE\ManagementController@dashboardData');
+    // Route::get('/blackhawk/de/management', 'Blackhawk\DE\ManagementController@dashboardData');
 
     Route::get('holidays', 'Api\HolidayController@index');
 

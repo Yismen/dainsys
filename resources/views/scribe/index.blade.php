@@ -220,7 +220,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 <pre><code class="language-yaml">http://localhost:8000</code></pre>
 
         <h1>Authenticating requests</h1>
-<p>Authenticate requests to this API's endpoints by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer your-token"</code></strong>.</p>
+<p>To authenticate requests, include an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer your-token"</code></strong>.</p>
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
 <p>You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.</p>
 
@@ -241,7 +241,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/dashboards/human_resources/head_counts?site=odio&amp;project=suscipit&amp;department=dolor&amp;position=earum" \
+    --get "http://localhost:8000/api/dashboards/human_resources/head_counts?site=atque&amp;project=nesciunt&amp;department=pariatur&amp;position=voluptatem" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -252,10 +252,10 @@ You can switch the language used with the tabs at the top right (or from the nav
 );
 
 const params = {
-    "site": "odio",
-    "project": "suscipit",
-    "department": "dolor",
-    "position": "earum",
+    "site": "atque",
+    "project": "nesciunt",
+    "department": "pariatur",
+    "position": "voluptatem",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -331,7 +331,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-human_resources-head_counts"
-               value="odio"
+               value="atque"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -341,7 +341,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-dashboards-human_resources-head_counts"
-               value="suscipit"
+               value="nesciunt"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -351,7 +351,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-dashboards-human_resources-head_counts"
-               value="dolor"
+               value="pariatur"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -361,7 +361,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-dashboards-human_resources-head_counts"
-               value="earum"
+               value="voluptatem"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -381,7 +381,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/dashboards/human_resources/attritions?site=repellat&amp;project=voluptatem&amp;department=voluptatem&amp;position=error" \
+    --get "http://localhost:8000/api/dashboards/human_resources/attritions?site=qui&amp;project=itaque&amp;department=blanditiis&amp;position=officia" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -392,10 +392,10 @@ fetch(url, {
 );
 
 const params = {
-    "site": "repellat",
-    "project": "voluptatem",
-    "department": "voluptatem",
-    "position": "error",
+    "site": "qui",
+    "project": "itaque",
+    "department": "blanditiis",
+    "position": "officia",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -479,7 +479,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-human_resources-attritions"
-               value="repellat"
+               value="qui"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -489,7 +489,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-dashboards-human_resources-attritions"
-               value="voluptatem"
+               value="itaque"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -499,7 +499,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-dashboards-human_resources-attritions"
-               value="voluptatem"
+               value="blanditiis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -509,7 +509,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-dashboards-human_resources-attritions"
-               value="error"
+               value="officia"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -529,7 +529,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/dashboards/human_resources/hc_by_project?site=sit&amp;project=atque&amp;department=deserunt&amp;position=et" \
+    --get "http://localhost:8000/api/dashboards/human_resources/hc_by_project?site=architecto&amp;project=aliquid&amp;department=delectus&amp;position=omnis" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -540,10 +540,10 @@ fetch(url, {
 );
 
 const params = {
-    "site": "sit",
-    "project": "atque",
-    "department": "deserunt",
-    "position": "et",
+    "site": "architecto",
+    "project": "aliquid",
+    "department": "delectus",
+    "position": "omnis",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -623,7 +623,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_project"
-               value="sit"
+               value="architecto"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -633,7 +633,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_project"
-               value="atque"
+               value="aliquid"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -643,7 +643,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_project"
-               value="deserunt"
+               value="delectus"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -653,7 +653,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_project"
-               value="et"
+               value="omnis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -673,7 +673,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/dashboards/human_resources/hc_by_gender?site=aut&amp;project=non&amp;department=at&amp;position=sunt" \
+    --get "http://localhost:8000/api/dashboards/human_resources/hc_by_gender?site=ea&amp;project=et&amp;department=nesciunt&amp;position=ratione" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -684,10 +684,10 @@ fetch(url, {
 );
 
 const params = {
-    "site": "aut",
-    "project": "non",
-    "department": "at",
-    "position": "sunt",
+    "site": "ea",
+    "project": "et",
+    "department": "nesciunt",
+    "position": "ratione",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -766,7 +766,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_gender"
-               value="aut"
+               value="ea"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -776,7 +776,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_gender"
-               value="non"
+               value="et"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -786,7 +786,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_gender"
-               value="at"
+               value="nesciunt"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -796,7 +796,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_gender"
-               value="sunt"
+               value="ratione"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -816,7 +816,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/dashboards/human_resources/hc_by_department?site=qui&amp;project=veniam&amp;department=ut&amp;position=neque" \
+    --get "http://localhost:8000/api/dashboards/human_resources/hc_by_department?site=qui&amp;project=ea&amp;department=voluptatem&amp;position=quis" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -828,9 +828,9 @@ fetch(url, {
 
 const params = {
     "site": "qui",
-    "project": "veniam",
-    "department": "ut",
-    "position": "neque",
+    "project": "ea",
+    "department": "voluptatem",
+    "position": "quis",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -919,7 +919,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_department"
-               value="veniam"
+               value="ea"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -929,7 +929,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_department"
-               value="ut"
+               value="voluptatem"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -939,7 +939,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_department"
-               value="neque"
+               value="quis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -959,7 +959,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/dashboards/production/mtd_stats?campaign=excepturi&amp;source=ut&amp;employee=corrupti&amp;supervisor=laudantium&amp;supervisor_employee=exercitationem&amp;project_campaign=est&amp;project_employee=eos&amp;site=numquam&amp;client=rerum" \
+    --get "http://localhost:8000/api/dashboards/production/mtd_stats?campaign=consequatur&amp;source=quo&amp;employee=ratione&amp;supervisor=architecto&amp;supervisor_employee=dicta&amp;project_campaign=omnis&amp;project_employee=distinctio&amp;site=mollitia&amp;client=corrupti" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -970,15 +970,15 @@ fetch(url, {
 );
 
 const params = {
-    "campaign": "excepturi",
-    "source": "ut",
-    "employee": "corrupti",
-    "supervisor": "laudantium",
-    "supervisor_employee": "exercitationem",
-    "project_campaign": "est",
-    "project_employee": "eos",
-    "site": "numquam",
-    "client": "rerum",
+    "campaign": "consequatur",
+    "source": "quo",
+    "employee": "ratione",
+    "supervisor": "architecto",
+    "supervisor_employee": "dicta",
+    "project_campaign": "omnis",
+    "project_employee": "distinctio",
+    "site": "mollitia",
+    "client": "corrupti",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -1053,7 +1053,7 @@ fetch(url, {
                 <input type="text"
                name="campaign"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="excepturi"
+               value="consequatur"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific campaign. Example ?campaign=%Santiago%</p>
@@ -1063,7 +1063,7 @@ fetch(url, {
                 <input type="text"
                name="source"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="ut"
+               value="quo"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific source. Example ?source=%Santiago%</p>
@@ -1073,7 +1073,7 @@ fetch(url, {
                 <input type="text"
                name="employee"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="corrupti"
+               value="ratione"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific employee. Example ?employee=%Santiago%</p>
@@ -1083,7 +1083,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="laudantium"
+               value="architecto"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor. Example ?supervisor=%Santiago%</p>
@@ -1093,7 +1093,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor_employee"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="exercitationem"
+               value="dicta"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%</p>
@@ -1103,7 +1103,7 @@ fetch(url, {
                 <input type="text"
                name="project_campaign"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="est"
+               value="omnis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_campaign. Example ?project_campaign=%Santiago%</p>
@@ -1113,7 +1113,7 @@ fetch(url, {
                 <input type="text"
                name="project_employee"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="eos"
+               value="distinctio"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_employee. Example ?project_employee=%Santiago%</p>
@@ -1123,7 +1123,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="numquam"
+               value="mollitia"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -1133,7 +1133,7 @@ fetch(url, {
                 <input type="text"
                name="client"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="rerum"
+               value="corrupti"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific client. Example ?client=%Pub%</p>
@@ -1153,7 +1153,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/dashboards/production/monthly_stats?campaign=eum&amp;source=qui&amp;employee=accusamus&amp;supervisor=ut&amp;supervisor_employee=eaque&amp;project_campaign=voluptatum&amp;project_employee=placeat&amp;site=et&amp;client=impedit" \
+    --get "http://localhost:8000/api/dashboards/production/monthly_stats?campaign=sed&amp;source=excepturi&amp;employee=doloremque&amp;supervisor=ut&amp;supervisor_employee=dolore&amp;project_campaign=et&amp;project_employee=nesciunt&amp;site=omnis&amp;client=possimus" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -1164,15 +1164,15 @@ fetch(url, {
 );
 
 const params = {
-    "campaign": "eum",
-    "source": "qui",
-    "employee": "accusamus",
+    "campaign": "sed",
+    "source": "excepturi",
+    "employee": "doloremque",
     "supervisor": "ut",
-    "supervisor_employee": "eaque",
-    "project_campaign": "voluptatum",
-    "project_employee": "placeat",
-    "site": "et",
-    "client": "impedit",
+    "supervisor_employee": "dolore",
+    "project_campaign": "et",
+    "project_employee": "nesciunt",
+    "site": "omnis",
+    "client": "possimus",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -1255,7 +1255,7 @@ fetch(url, {
                 <input type="text"
                name="campaign"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="eum"
+               value="sed"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific campaign. Example ?campaign=%Santiago%</p>
@@ -1265,7 +1265,7 @@ fetch(url, {
                 <input type="text"
                name="source"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="qui"
+               value="excepturi"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific source. Example ?source=%Santiago%</p>
@@ -1275,7 +1275,7 @@ fetch(url, {
                 <input type="text"
                name="employee"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="accusamus"
+               value="doloremque"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific employee. Example ?employee=%Santiago%</p>
@@ -1295,7 +1295,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor_employee"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="eaque"
+               value="dolore"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%</p>
@@ -1305,7 +1305,7 @@ fetch(url, {
                 <input type="text"
                name="project_campaign"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="voluptatum"
+               value="et"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_campaign. Example ?project_campaign=%Santiago%</p>
@@ -1315,7 +1315,7 @@ fetch(url, {
                 <input type="text"
                name="project_employee"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="placeat"
+               value="nesciunt"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_employee. Example ?project_employee=%Santiago%</p>
@@ -1325,7 +1325,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="et"
+               value="omnis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -1335,7 +1335,7 @@ fetch(url, {
                 <input type="text"
                name="client"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="impedit"
+               value="possimus"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific client. Example ?client=%Pub%</p>
@@ -1458,7 +1458,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"et\"
+    \"name\": \"laboriosam\"
 }"
 </code></pre></div>
 
@@ -1474,7 +1474,7 @@ const headers = {
 };
 
 let body = {
-    "name": "et"
+    "name": "laboriosam"
 };
 
 fetch(url, {
@@ -1545,7 +1545,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-afps"
-               value="et"
+               value="laboriosam"
                data-component="body" hidden>
     <br>
 <p>The name of the Afp</p>
@@ -1569,7 +1569,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"accusamus\"
+    \"name\": \"voluptatibus\"
 }"
 </code></pre></div>
 
@@ -1585,7 +1585,7 @@ const headers = {
 };
 
 let body = {
-    "name": "accusamus"
+    "name": "voluptatibus"
 };
 
 fetch(url, {
@@ -1656,7 +1656,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-arss"
-               value="accusamus"
+               value="voluptatibus"
                data-component="body" hidden>
     <br>
 <p>The name of the Ars</p>
@@ -1680,7 +1680,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"ducimus\"
+    \"name\": \"doloremque\"
 }"
 </code></pre></div>
 
@@ -1696,7 +1696,7 @@ const headers = {
 };
 
 let body = {
-    "name": "ducimus"
+    "name": "doloremque"
 };
 
 fetch(url, {
@@ -1763,7 +1763,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-banks"
-               value="ducimus"
+               value="doloremque"
                data-component="body" hidden>
     <br>
 <p>The name of the Banks</p>
@@ -1787,11 +1787,11 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"velit\",
-    \"department_id\": \"cumque\",
-    \"payment_type_id\": \"nobis\",
-    \"payment_frequency_id\": \"dolorem\",
-    \"salary\": \"debitis\"
+    \"name\": \"possimus\",
+    \"department_id\": \"qui\",
+    \"payment_type_id\": \"at\",
+    \"payment_frequency_id\": \"illum\",
+    \"salary\": \"enim\"
 }"
 </code></pre></div>
 
@@ -1807,11 +1807,11 @@ const headers = {
 };
 
 let body = {
-    "name": "velit",
-    "department_id": "cumque",
-    "payment_type_id": "nobis",
-    "payment_frequency_id": "dolorem",
-    "salary": "debitis"
+    "name": "possimus",
+    "department_id": "qui",
+    "payment_type_id": "at",
+    "payment_frequency_id": "illum",
+    "salary": "enim"
 };
 
 fetch(url, {
@@ -1900,7 +1900,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-positions"
-               value="velit"
+               value="possimus"
                data-component="body" hidden>
     <br>
 <p>The name of the Position</p>
@@ -1910,7 +1910,7 @@ fetch(url, {
                 <input type="text"
                name="department_id"
                data-endpoint="POSTapi-positions"
-               value="cumque"
+               value="qui"
                data-component="body" hidden>
     <br>
 <p>The department_id of the Position</p>
@@ -1920,7 +1920,7 @@ fetch(url, {
                 <input type="text"
                name="payment_type_id"
                data-endpoint="POSTapi-positions"
-               value="nobis"
+               value="at"
                data-component="body" hidden>
     <br>
 <p>The payment_type_id of the Position</p>
@@ -1930,7 +1930,7 @@ fetch(url, {
                 <input type="text"
                name="payment_frequency_id"
                data-endpoint="POSTapi-positions"
-               value="dolorem"
+               value="illum"
                data-component="body" hidden>
     <br>
 <p>The payment_frequency_id of the Position</p>
@@ -1940,7 +1940,7 @@ fetch(url, {
                 <input type="text"
                name="salary"
                data-endpoint="POSTapi-positions"
-               value="debitis"
+               value="enim"
                data-component="body" hidden>
     <br>
 <p>The salary of the Position</p>
@@ -1964,7 +1964,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"dolorem\"
+    \"name\": \"neque\"
 }"
 </code></pre></div>
 
@@ -1980,7 +1980,7 @@ const headers = {
 };
 
 let body = {
-    "name": "dolorem"
+    "name": "neque"
 };
 
 fetch(url, {
@@ -2050,7 +2050,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-supervisors"
-               value="dolorem"
+               value="neque"
                data-component="body" hidden>
     <br>
 <p>The name of the Supervisor</p>
@@ -2074,7 +2074,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"sed\"
+    \"name\": \"rerum\"
 }"
 </code></pre></div>
 
@@ -2090,7 +2090,7 @@ const headers = {
 };
 
 let body = {
-    "name": "sed"
+    "name": "rerum"
 };
 
 fetch(url, {
@@ -2160,7 +2160,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-departments"
-               value="sed"
+               value="rerum"
                data-component="body" hidden>
     <br>
 <p>The name of the Department</p>
@@ -2184,7 +2184,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"porro\"
+    \"name\": \"ullam\"
 }"
 </code></pre></div>
 
@@ -2200,7 +2200,7 @@ const headers = {
 };
 
 let body = {
-    "name": "porro"
+    "name": "ullam"
 };
 
 fetch(url, {
@@ -2270,7 +2270,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-payment_frequencies"
-               value="porro"
+               value="ullam"
                data-component="body" hidden>
     <br>
 <p>The name of the Payment Frequency</p>
@@ -2294,7 +2294,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"dolorum\"
+    \"name\": \"illo\"
 }"
 </code></pre></div>
 
@@ -2310,7 +2310,7 @@ const headers = {
 };
 
 let body = {
-    "name": "dolorum"
+    "name": "illo"
 };
 
 fetch(url, {
@@ -2377,7 +2377,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-nationalities"
-               value="dolorum"
+               value="illo"
                data-component="body" hidden>
     <br>
 <p>The name of the Nationality     *</p>
@@ -2397,18 +2397,18 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/employees/7/vip" \
+    "http://localhost:8000/api/employees/13/vip" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"is_vip\": true
+    \"is_vip\": false
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/employees/7/vip"
+    "http://localhost:8000/api/employees/13/vip"
 );
 
 const headers = {
@@ -2417,7 +2417,7 @@ const headers = {
 };
 
 let body = {
-    "is_vip": true
+    "is_vip": false
 };
 
 fetch(url, {
@@ -2517,7 +2517,7 @@ fetch(url, {
                 <input type="number"
                name="employee"
                data-endpoint="POSTapi-employees--employee--vip"
-               value="7"
+               value="13"
                data-component="url" hidden>
     <br>
 
@@ -2559,7 +2559,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/employees/6/universal" \
+    "http://localhost:8000/api/employees/1/universal" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -2570,7 +2570,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/employees/6/universal"
+    "http://localhost:8000/api/employees/1/universal"
 );
 
 const headers = {
@@ -2679,7 +2679,7 @@ fetch(url, {
                 <input type="number"
                name="employee"
                data-endpoint="POSTapi-employees--employee--universal"
-               value="6"
+               value="1"
                data-component="url" hidden>
     <br>
 
@@ -2721,7 +2721,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/employees?site=voluptatem&amp;project=sit&amp;department=aut&amp;position=fugiat" \
+    --get "http://localhost:8000/api/employees?site=voluptatem&amp;project=et&amp;department=saepe&amp;position=eaque" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -2733,9 +2733,9 @@ fetch(url, {
 
 const params = {
     "site": "voluptatem",
-    "project": "sit",
-    "department": "aut",
-    "position": "fugiat",
+    "project": "et",
+    "department": "saepe",
+    "position": "eaque",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -2855,7 +2855,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-employees"
-               value="sit"
+               value="et"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -2865,7 +2865,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-employees"
-               value="aut"
+               value="saepe"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -2875,7 +2875,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-employees"
-               value="fugiat"
+               value="eaque"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -2895,7 +2895,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/employees/all?site=autem&amp;project=minus&amp;department=ea&amp;position=quo" \
+    --get "http://localhost:8000/api/employees/all?site=eaque&amp;project=itaque&amp;department=et&amp;position=quia" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -2906,10 +2906,10 @@ fetch(url, {
 );
 
 const params = {
-    "site": "autem",
-    "project": "minus",
-    "department": "ea",
-    "position": "quo",
+    "site": "eaque",
+    "project": "itaque",
+    "department": "et",
+    "position": "quia",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -3019,7 +3019,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-employees-all"
-               value="autem"
+               value="eaque"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -3029,7 +3029,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-employees-all"
-               value="minus"
+               value="itaque"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -3039,7 +3039,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-employees-all"
-               value="ea"
+               value="et"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -3049,7 +3049,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-employees-all"
-               value="quo"
+               value="quia"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -3069,7 +3069,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/employees/actives?site=impedit&amp;project=magnam&amp;department=sapiente&amp;position=sint" \
+    --get "http://localhost:8000/api/employees/actives?site=omnis&amp;project=officia&amp;department=rem&amp;position=ab" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -3080,10 +3080,10 @@ fetch(url, {
 );
 
 const params = {
-    "site": "impedit",
-    "project": "magnam",
-    "department": "sapiente",
-    "position": "sint",
+    "site": "omnis",
+    "project": "officia",
+    "department": "rem",
+    "position": "ab",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -3193,7 +3193,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-employees-actives"
-               value="impedit"
+               value="omnis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -3203,7 +3203,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-employees-actives"
-               value="magnam"
+               value="officia"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -3213,7 +3213,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-employees-actives"
-               value="sapiente"
+               value="rem"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -3223,7 +3223,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-employees-actives"
-               value="sint"
+               value="ab"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -3243,7 +3243,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/employees/recents?site=et&amp;project=ut&amp;department=voluptas&amp;position=illum" \
+    --get "http://localhost:8000/api/employees/recents?site=necessitatibus&amp;project=veniam&amp;department=consequatur&amp;position=fugiat" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -3254,10 +3254,10 @@ fetch(url, {
 );
 
 const params = {
-    "site": "et",
-    "project": "ut",
-    "department": "voluptas",
-    "position": "illum",
+    "site": "necessitatibus",
+    "project": "veniam",
+    "department": "consequatur",
+    "position": "fugiat",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -3367,7 +3367,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-employees-recents"
-               value="et"
+               value="necessitatibus"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -3377,7 +3377,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-employees-recents"
-               value="ut"
+               value="veniam"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -3387,7 +3387,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-employees-recents"
-               value="voluptas"
+               value="consequatur"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -3397,7 +3397,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-employees-recents"
-               value="illum"
+               value="fugiat"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -3417,7 +3417,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/holidays?year=atque" \
+    --get "http://localhost:8000/api/holidays?year=et" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -3428,7 +3428,7 @@ fetch(url, {
 );
 
 const params = {
-    "year": "atque",
+    "year": "et",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -3507,7 +3507,7 @@ fetch(url, {
                 <input type="text"
                name="year"
                data-endpoint="GETapi-holidays"
-               value="atque"
+               value="et"
                data-component="query" hidden>
     <br>
 <p>Limit the results to a specific year. Default to previous year. Example ?year=2021.</p>
@@ -3527,7 +3527,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/overnight_hours?date=non&amp;months=8&amp;days=13" \
+    --get "http://localhost:8000/api/overnight_hours?date=consequatur&amp;months=12&amp;days=20" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -3538,9 +3538,9 @@ fetch(url, {
 );
 
 const params = {
-    "date": "non",
-    "months": "8",
-    "days": "13",
+    "date": "consequatur",
+    "months": "12",
+    "days": "20",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -3620,7 +3620,7 @@ fetch(url, {
                 <input type="text"
                name="date"
                data-endpoint="GETapi-overnight_hours"
-               value="non"
+               value="consequatur"
                data-component="query" hidden>
     <br>
 <p>Limit the results ot a specific date. Example ?date=2021-11-24.</p>
@@ -3630,7 +3630,7 @@ fetch(url, {
                 <input type="number"
                name="months"
                data-endpoint="GETapi-overnight_hours"
-               value="8"
+               value="12"
                data-component="query" hidden>
     <br>
 <p>Defines how many months back should the data limited to. Example ?months=2 will get data between current date and last two months.</p>
@@ -3640,7 +3640,7 @@ fetch(url, {
                 <input type="number"
                name="days"
                data-endpoint="GETapi-overnight_hours"
-               value="13"
+               value="20"
                data-component="query" hidden>
     <br>
 <p>Defines how many days back should the data limited to. Example ?days=2 will get data between current date and last two days.</p>
@@ -3660,7 +3660,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/notifications/unread?max_items=5" \
+    --get "http://localhost:8000/api/notifications/unread?max_items=2" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -3671,7 +3671,7 @@ fetch(url, {
 );
 
 const params = {
-    "max_items": "5",
+    "max_items": "2",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -3753,7 +3753,7 @@ fetch(url, {
                 <input type="number"
                name="max_items"
                data-endpoint="GETapi-notifications-unread"
-               value="5"
+               value="2"
                data-component="query" hidden>
     <br>
 <p>Max amount of notifications to take. Default is 25.</p>
@@ -3773,7 +3773,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/notifications/mark-all-as-read?max_items=8" \
+    "http://localhost:8000/api/notifications/mark-all-as-read?max_items=15" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -3784,7 +3784,7 @@ fetch(url, {
 );
 
 const params = {
-    "max_items": "8",
+    "max_items": "15",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -3866,7 +3866,7 @@ fetch(url, {
                 <input type="number"
                name="max_items"
                data-endpoint="POSTapi-notifications-mark-all-as-read"
-               value="8"
+               value="15"
                data-component="query" hidden>
     <br>
 <p>Max amount of notifications to mark as read. Default is 25. This will also affect the amount of
@@ -3887,14 +3887,14 @@ unread notifications to return. Also, this will return the next batch of unread 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/notifications/show/consequatur" \
+    --get "http://localhost:8000/api/notifications/show/illo" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/notifications/show/consequatur"
+    "http://localhost:8000/api/notifications/show/illo"
 );
 
 const headers = {
@@ -3972,7 +3972,7 @@ fetch(url, {
                 <input type="text"
                name="notification"
                data-endpoint="GETapi-notifications-show--notification-"
-               value="consequatur"
+               value="illo"
                data-component="url" hidden>
     <br>
 <p>Uuid of the stored notification</p>
@@ -4560,7 +4560,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/performances/employees?site=ut&amp;project=inventore&amp;department=odio&amp;position=et" \
+    --get "http://localhost:8000/api/performances/employees?site=molestias&amp;project=tenetur&amp;department=numquam&amp;position=deserunt" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -4571,10 +4571,10 @@ fetch(url, {
 );
 
 const params = {
-    "site": "ut",
-    "project": "inventore",
-    "department": "odio",
-    "position": "et",
+    "site": "molestias",
+    "project": "tenetur",
+    "department": "numquam",
+    "position": "deserunt",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -4655,7 +4655,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-performances-employees"
-               value="ut"
+               value="molestias"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -4665,7 +4665,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-performances-employees"
-               value="inventore"
+               value="tenetur"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Santiago%</p>
@@ -4675,7 +4675,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-performances-employees"
-               value="odio"
+               value="numquam"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Santiago%</p>
@@ -4685,7 +4685,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-performances-employees"
-               value="et"
+               value="deserunt"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Santiago%</p>
@@ -4705,7 +4705,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/performances/downtimes?campaign=dolorem&amp;source=ab&amp;employee=asperiores&amp;supervisor=quibusdam&amp;supervisor_employee=sapiente&amp;project_campaign=sed&amp;project_employee=et&amp;site=ratione&amp;client=qui" \
+    --get "http://localhost:8000/api/performances/downtimes?campaign=explicabo&amp;source=corporis&amp;employee=sit&amp;supervisor=in&amp;supervisor_employee=ab&amp;project_campaign=magnam&amp;project_employee=corporis&amp;site=minima&amp;client=qui" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -4716,14 +4716,14 @@ fetch(url, {
 );
 
 const params = {
-    "campaign": "dolorem",
-    "source": "ab",
-    "employee": "asperiores",
-    "supervisor": "quibusdam",
-    "supervisor_employee": "sapiente",
-    "project_campaign": "sed",
-    "project_employee": "et",
-    "site": "ratione",
+    "campaign": "explicabo",
+    "source": "corporis",
+    "employee": "sit",
+    "supervisor": "in",
+    "supervisor_employee": "ab",
+    "project_campaign": "magnam",
+    "project_employee": "corporis",
+    "site": "minima",
     "client": "qui",
 };
 Object.keys(params)
@@ -4809,7 +4809,7 @@ fetch(url, {
                 <input type="text"
                name="campaign"
                data-endpoint="GETapi-performances-downtimes"
-               value="dolorem"
+               value="explicabo"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific campaign. Example ?campaign=%Santiago%</p>
@@ -4819,7 +4819,7 @@ fetch(url, {
                 <input type="text"
                name="source"
                data-endpoint="GETapi-performances-downtimes"
-               value="ab"
+               value="corporis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific source. Example ?source=%Santiago%</p>
@@ -4829,7 +4829,7 @@ fetch(url, {
                 <input type="text"
                name="employee"
                data-endpoint="GETapi-performances-downtimes"
-               value="asperiores"
+               value="sit"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific employee. Example ?employee=%Santiago%</p>
@@ -4839,7 +4839,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor"
                data-endpoint="GETapi-performances-downtimes"
-               value="quibusdam"
+               value="in"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor. Example ?supervisor=%Santiago%</p>
@@ -4849,7 +4849,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor_employee"
                data-endpoint="GETapi-performances-downtimes"
-               value="sapiente"
+               value="ab"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%</p>
@@ -4859,7 +4859,7 @@ fetch(url, {
                 <input type="text"
                name="project_campaign"
                data-endpoint="GETapi-performances-downtimes"
-               value="sed"
+               value="magnam"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_campaign. Example ?project_campaign=%Santiago%</p>
@@ -4869,7 +4869,7 @@ fetch(url, {
                 <input type="text"
                name="project_employee"
                data-endpoint="GETapi-performances-downtimes"
-               value="et"
+               value="corporis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_employee. Example ?project_employee=%Santiago%</p>
@@ -4879,7 +4879,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-performances-downtimes"
-               value="ratione"
+               value="minima"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -4909,7 +4909,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/performances/login_names?recents=voluptas" \
+    --get "http://localhost:8000/api/performances/login_names?recents=quis" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -4920,7 +4920,7 @@ fetch(url, {
 );
 
 const params = {
-    "recents": "voluptas",
+    "recents": "quis",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -4996,10 +4996,10 @@ fetch(url, {
                 <input type="text"
                name="recents"
                data-endpoint="GETapi-performances-login_names"
-               value="voluptas"
+               value="quis"
                data-component="query" hidden>
     <br>
-<p>optional. When present, only login names for employees labeled as recents will be included. Default is true. Example ?recents=true</p>
+<p>optional When present, only login names for employees labeled as recents will be included. Default is true. Example ?recents=true</p>
             </p>
                 </form>
 
@@ -5016,7 +5016,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/performances/schedules?daysago=et" \
+    --get "http://localhost:8000/api/performances/schedules?daysago=2" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -5027,7 +5027,7 @@ fetch(url, {
 );
 
 const params = {
-    "daysago": "et",
+    "daysago": "2",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -5104,14 +5104,14 @@ fetch(url, {
         </p>
                         <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
-                <b><code>daysago</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
-                <input type="text"
+                <b><code>daysago</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
                name="daysago"
                data-endpoint="GETapi-performances-schedules"
-               value="et"
+               value="2"
                data-component="query" hidden>
     <br>
-<p>int. The amount of days to filter back. Default 90. Example daysago=45</p>
+<p>The amount of days to filter back. Default 90. Example daysago=45</p>
             </p>
                 </form>
 
@@ -5221,26 +5221,26 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/performances/performance_data/last/20/months?campaign=inventore&amp;employee=impedit&amp;supervisor=atque&amp;project_campaign=veritatis&amp;project_employee=dicta&amp;site=veritatis&amp;source=dolore&amp;client=minima&amp;supervisor_employee=error" \
+    --get "http://localhost:8000/api/performances/performance_data/last/3/months?campaign=explicabo&amp;employee=voluptates&amp;supervisor=tempore&amp;project_campaign=consequatur&amp;project_employee=reprehenderit&amp;site=sed&amp;source=voluptatem&amp;client=nobis&amp;supervisor_employee=quis" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/performances/performance_data/last/20/months"
+    "http://localhost:8000/api/performances/performance_data/last/3/months"
 );
 
 const params = {
-    "campaign": "inventore",
-    "employee": "impedit",
-    "supervisor": "atque",
-    "project_campaign": "veritatis",
-    "project_employee": "dicta",
-    "site": "veritatis",
-    "source": "dolore",
-    "client": "minima",
-    "supervisor_employee": "error",
+    "campaign": "explicabo",
+    "employee": "voluptates",
+    "supervisor": "tempore",
+    "project_campaign": "consequatur",
+    "project_employee": "reprehenderit",
+    "site": "sed",
+    "source": "voluptatem",
+    "client": "nobis",
+    "supervisor_employee": "quis",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -5356,10 +5356,10 @@ fetch(url, {
                 <input type="number"
                name="many"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="20"
+               value="3"
                data-component="url" hidden>
     <br>
-<p>The amount of months back to filter data. Example=Example /performances/performance_data/last/{many}/months</p>
+<p>The amount of months back to filter data. Example /performances/performance_data/last/3/months</p>
             </p>
                         <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
@@ -5367,90 +5367,90 @@ fetch(url, {
                 <input type="text"
                name="campaign"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="inventore"
+               value="explicabo"
                data-component="query" hidden>
     <br>
-<p>Filter data by campaign name. Example /performances/performance_data/last/{many}/months?campaign=%POL-%.</p>
+<p>Filter data by campaign name. Example ?campaign=%POL-%.</p>
             </p>
                     <p>
                 <b><code>employee</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="employee"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="impedit"
+               value="voluptates"
                data-component="query" hidden>
     <br>
-<p>Filter data by employee name. Example /performances/performance_data/last/{many}/months?employee=%Yismen Jore%.</p>
+<p>Filter data by employee name. Example ?employee=%Yismen Jore%.</p>
             </p>
                     <p>
                 <b><code>supervisor</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="supervisor"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="atque"
+               value="tempore"
                data-component="query" hidden>
     <br>
-<p>Filter data by supervisor name. Example /performances/performance_data/last/{many}/months?supervisor=%Yismen Jore%.</p>
+<p>Filter data by supervisor name. Example ?supervisor=%Yismen Jore%.</p>
             </p>
                     <p>
                 <b><code>project_campaign</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="project_campaign"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="veritatis"
+               value="consequatur"
                data-component="query" hidden>
     <br>
-<p>Filter data by project_campaign name. Example /performances/performance_data/last/{many}/months?project_campaign=%blackhawk%.</p>
+<p>Filter data by project_campaign name. Example ?project_campaign=%blackhawk%.</p>
             </p>
                     <p>
                 <b><code>project_employee</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="project_employee"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="dicta"
+               value="reprehenderit"
                data-component="query" hidden>
     <br>
-<p>Filter data by project_employee name. Example /performances/performance_data/last/{many}/months?project_campaign=%blackhawk%.</p>
+<p>Filter data by project_employee name. Example ?project_campaign=%blackhawk%.</p>
             </p>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="site"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="veritatis"
+               value="sed"
                data-component="query" hidden>
     <br>
-<p>Filter data by site name. Example /performances/performance_data/last/{many}/months?site=%Santiago HQ%.</p>
+<p>Filter data by site name. Example ?site=%Santiago HQ%.</p>
             </p>
                     <p>
                 <b><code>source</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="source"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="dolore"
+               value="voluptatem"
                data-component="query" hidden>
     <br>
-<p>Filter data by source name. Example /performances/performance_data/last/{many}/months?source=%Santiago HQ%.</p>
+<p>Filter data by source name. Example ?source=%Santiago HQ%.</p>
             </p>
                     <p>
                 <b><code>client</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="client"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="minima"
+               value="nobis"
                data-component="query" hidden>
     <br>
-<p>Filter data by client name. Example /performances/performance_data/last/{many}/months?client=%blackhawk%.</p>
+<p>Filter data by client name. Example ?client=%blackhawk%.</p>
             </p>
                     <p>
                 <b><code>supervisor_employee</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="supervisor_employee"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="error"
+               value="quis"
                data-component="query" hidden>
     <br>
-<p>Filter data by supervisor_employee name. Example /performances/performance_data/last/{many}/months?supervisor_employee=%Yismen Jore%.</p>
+<p>Filter data by supervisor_employee name. Example ?supervisor_employee=%Yismen Jore%.</p>
             </p>
                 </form>
 

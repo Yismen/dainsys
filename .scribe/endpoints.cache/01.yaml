@@ -53,7 +53,7 @@ endpoints:
         name: name
         description: 'The name of the Afp'
         required: true
-        example: et
+        example: laboriosam
         type: string
     responses:
       -
@@ -87,7 +87,7 @@ endpoints:
         name: name
         description: 'The name of the Ars'
         required: true
-        example: accusamus
+        example: voluptatibus
         type: string
     responses:
       -
@@ -121,7 +121,7 @@ endpoints:
         name: name
         description: 'The name of the Banks'
         required: true
-        example: ducimus
+        example: doloremque
         type: string
     responses:
       -
@@ -151,31 +151,31 @@ endpoints:
         name: name
         description: 'The name of the Position'
         required: true
-        example: velit
+        example: possimus
         type: string
       department_id:
         name: department_id
         description: 'The department_id of the Position'
         required: true
-        example: cumque
+        example: qui
         type: numeric
       payment_type_id:
         name: payment_type_id
         description: 'The payment_type_id of the Position'
         required: true
-        example: nobis
+        example: at
         type: numeric
       payment_frequency_id:
         name: payment_frequency_id
         description: 'The payment_frequency_id of the Position'
         required: true
-        example: dolorem
+        example: illum
         type: numeric
       salary:
         name: salary
         description: 'The salary of the Position'
         required: true
-        example: debitis
+        example: enim
         type: numeric
     responses:
       -
@@ -227,7 +227,7 @@ endpoints:
         name: name
         description: 'The name of the Supervisor'
         required: true
-        example: dolorem
+        example: neque
         type: string
     responses:
       -
@@ -260,7 +260,7 @@ endpoints:
         name: name
         description: 'The name of the Department'
         required: true
-        example: sed
+        example: rerum
         type: string
     responses:
       -
@@ -293,7 +293,7 @@ endpoints:
         name: name
         description: 'The name of the Payment Frequency'
         required: true
-        example: porro
+        example: ullam
         type: string
     responses:
       -
@@ -326,7 +326,7 @@ endpoints:
         name: name
         description: 'The name of the Nationality     *'
         required: true
-        example: dolorum
+        example: illo
         type: string
     responses:
       -
@@ -354,7 +354,7 @@ endpoints:
         name: employee
         description: ''
         required: true
-        example: 7
+        example: 13
         type: integer
     queryParameters: []
     bodyParameters:
@@ -362,7 +362,7 @@ endpoints:
         name: is_vip
         description: 'Indicates if the employee should be added to or removed from the Vip list'
         required: true
-        example: true
+        example: false
         type: boolean
     responses:
       -
@@ -423,7 +423,7 @@ endpoints:
         name: employee
         description: ''
         required: true
-        example: 6
+        example: 1
         type: integer
     queryParameters: []
     bodyParameters:
@@ -499,19 +499,19 @@ endpoints:
         name: project
         description: 'Limit results to specific project. Example ?project=%Pub%'
         required: false
-        example: sit
+        example: et
         type: string
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Product%'
         required: false
-        example: aut
+        example: saepe
         type: string
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Agente%'
         required: false
-        example: fugiat
+        example: eaque
         type: string
     bodyParameters: []
     responses:
@@ -578,25 +578,25 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: autem
+        example: eaque
         type: string
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Pub%'
         required: false
-        example: minus
+        example: itaque
         type: string
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Product%'
         required: false
-        example: ea
+        example: et
         type: string
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Agente%'
         required: false
-        example: quo
+        example: quia
         type: string
     bodyParameters: []
     responses:
@@ -663,25 +663,25 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: impedit
+        example: omnis
         type: string
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Pub%'
         required: false
-        example: magnam
+        example: officia
         type: string
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Product%'
         required: false
-        example: sapiente
+        example: rem
         type: string
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Agente%'
         required: false
-        example: sint
+        example: ab
         type: string
     bodyParameters: []
     responses:
@@ -748,25 +748,25 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: et
+        example: necessitatibus
         type: string
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Pub%'
         required: false
-        example: ut
+        example: veniam
         type: string
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Product%'
         required: false
-        example: voluptas
+        example: consequatur
         type: string
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Agente%'
         required: false
-        example: illum
+        example: fugiat
         type: string
     bodyParameters: []
     responses:
@@ -833,7 +833,7 @@ endpoints:
         name: year
         description: 'Limit the results to a specific year. Default to previous year. Example ?year=2021.'
         required: false
-        example: atque
+        example: et
         type: string
     bodyParameters: []
     responses:
@@ -869,19 +869,19 @@ endpoints:
         name: date
         description: 'Limit the results ot a specific date. Example ?date=2021-11-24.'
         required: false
-        example: non
+        example: consequatur
         type: string
       months:
         name: months
         description: 'Defines how many months back should the data limited to. Example ?months=2 will get data between current date and last two months.'
         required: false
-        example: 8
+        example: 12
         type: integer
       days:
         name: days
         description: 'Defines how many days back should the data limited to. Example ?days=2 will get data between current date and last two days.'
         required: false
-        example: 13
+        example: 20
         type: integer
     bodyParameters: []
     responses:
@@ -918,7 +918,7 @@ endpoints:
         name: max_items
         description: 'Max amount of notifications to take. Default is 25.'
         required: false
-        example: 5
+        example: 2
         type: integer
     bodyParameters: []
     responses:
@@ -959,7 +959,7 @@ endpoints:
           Max amount of notifications to mark as read. Default is 25. This will also affect the amount of
           unread notifications to return. Also, this will return the next batch of unread notifications for the authenticated user.
         required: false
-        example: 8
+        example: 15
         type: integer
     bodyParameters: []
     responses:
@@ -997,7 +997,7 @@ endpoints:
         name: notification
         description: 'Uuid of the stored notification'
         required: false
-        example: consequatur
+        example: illo
         type: string
     queryParameters: []
     bodyParameters: []
