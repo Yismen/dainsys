@@ -8,8 +8,9 @@ endpoints:
     metadata:
       title: 'Authenticated User'
       description: 'Return information of the authenticated user'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer gVEda81c453heak6PfD6bvZ'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -40,8 +41,9 @@ endpoints:
     metadata:
       title: 'Store Afps'
       description: 'Save a Afp model to database.'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer 6kP3b51dhVfEgDa4acvZ6e8'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -51,7 +53,7 @@ endpoints:
         name: name
         description: 'The name of the Afp'
         required: true
-        example: laboriosam
+        example: accusantium
         type: string
     responses:
       -
@@ -74,8 +76,9 @@ endpoints:
     metadata:
       title: 'Store Ars'
       description: 'Save a Ars model to database.'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer 3gef6EP1DaVchvb8Z6k5a4d'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -85,7 +88,7 @@ endpoints:
         name: name
         description: 'The name of the Ars'
         required: true
-        example: voluptatibus
+        example: fuga
         type: string
     responses:
       -
@@ -108,8 +111,9 @@ endpoints:
     metadata:
       title: 'Store Banks'
       description: 'Save a Banks model to database.'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer vPhd5Vk46b1ZDEf8c6agea3'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -119,7 +123,7 @@ endpoints:
         name: name
         description: 'The name of the Banks'
         required: true
-        example: doloremque
+        example: voluptatem
         type: string
     responses:
       -
@@ -138,8 +142,9 @@ endpoints:
     metadata:
       title: 'Store Positions'
       description: 'Save a Position model to database.'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer 4PaZ8Vv1ED56haebckdg3f6'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -149,31 +154,31 @@ endpoints:
         name: name
         description: 'The name of the Position'
         required: true
-        example: possimus
+        example: fugiat
         type: string
       department_id:
         name: department_id
         description: 'The department_id of the Position'
         required: true
-        example: qui
+        example: voluptas
         type: numeric
       payment_type_id:
         name: payment_type_id
         description: 'The payment_type_id of the Position'
         required: true
-        example: at
+        example: rerum
         type: numeric
       payment_frequency_id:
         name: payment_frequency_id
         description: 'The payment_frequency_id of the Position'
         required: true
-        example: illum
+        example: aspernatur
         type: numeric
       salary:
         name: salary
         description: 'The salary of the Position'
         required: true
-        example: enim
+        example: et
         type: numeric
     responses:
       -
@@ -214,8 +219,9 @@ endpoints:
     metadata:
       title: 'Store Supervisors'
       description: 'Save a Supervisor model to database.'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer k8634PcD1Edvb6eahfV5Zag'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -225,7 +231,7 @@ endpoints:
         name: name
         description: 'The name of the Supervisor'
         required: true
-        example: neque
+        example: quo
         type: string
     responses:
       -
@@ -247,8 +253,9 @@ endpoints:
     metadata:
       title: 'Store Departmens'
       description: 'Save a Department model to database.'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer 8hvZgE3kcea6df5PVDa4b61'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -258,7 +265,7 @@ endpoints:
         name: name
         description: 'The name of the Department'
         required: true
-        example: rerum
+        example: voluptatem
         type: string
     responses:
       -
@@ -280,8 +287,9 @@ endpoints:
     metadata:
       title: 'Store Payment Frequencies'
       description: 'Save a Payment Frequency model to database.'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer P4vb86DVakda63g5ZhcE1ef'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -291,7 +299,7 @@ endpoints:
         name: name
         description: 'The name of the Payment Frequency'
         required: true
-        example: ullam
+        example: ratione
         type: string
     responses:
       -
@@ -313,8 +321,9 @@ endpoints:
     metadata:
       title: 'Store Nationalities'
       description: 'Save a Nationality model to database.'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer a5g3haP14vkEdVfbecZ866D'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -324,7 +333,7 @@ endpoints:
         name: name
         description: 'The name of the Nationality     *'
         required: true
-        example: illo
+        example: cum
         type: string
     responses:
       -
@@ -343,8 +352,9 @@ endpoints:
     metadata:
       title: 'Update VIP'
       description: 'Update VIP information for a given employee.'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer 6PfcaDda68b51Z4eghvEV3k'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -352,7 +362,7 @@ endpoints:
         name: employee
         description: ''
         required: true
-        example: 13
+        example: 8
         type: integer
     queryParameters: []
     bodyParameters:
@@ -360,7 +370,7 @@ endpoints:
         name: is_vip
         description: 'Indicates if the employee should be added to or removed from the Vip list'
         required: true
-        example: false
+        example: true
         type: boolean
     responses:
       -
@@ -412,8 +422,9 @@ endpoints:
     metadata:
       title: 'Update Universal'
       description: 'Update Universal information for a given employee.'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer befvEh64V38DZP15d6kaagc'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -421,7 +432,7 @@ endpoints:
         name: employee
         description: ''
         required: true
-        example: 1
+        example: 12
         type: integer
     queryParameters: []
     bodyParameters:
@@ -481,8 +492,9 @@ endpoints:
     metadata:
       title: 'Employees All'
       description: 'Collection of employees registered.'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer 5VPfcdg6DZa6hve1Eb4a38k'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -491,25 +503,25 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: voluptatem
+        example: veritatis
         type: string
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Pub%'
         required: false
-        example: et
+        example: in
         type: string
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Product%'
         required: false
-        example: saepe
+        example: sit
         type: string
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Agente%'
         required: false
-        example: eaque
+        example: quos
         type: string
     bodyParameters: []
     responses:
@@ -566,8 +578,9 @@ endpoints:
     metadata:
       title: 'Employees All'
       description: 'Collection of employees registered.'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer g53kh4ZEab61fcvV6eaP8Dd'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -576,25 +589,25 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: eaque
+        example: aut
         type: string
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Pub%'
         required: false
-        example: itaque
+        example: autem
         type: string
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Product%'
         required: false
-        example: et
+        example: cum
         type: string
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Agente%'
         required: false
-        example: quia
+        example: commodi
         type: string
     bodyParameters: []
     responses:
@@ -651,8 +664,9 @@ endpoints:
     metadata:
       title: 'Employees Actives'
       description: 'Collection of employees actives. This is any employee without a termination.'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer v83Zb6g45fEkac6DdaPeh1V'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -661,25 +675,25 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: omnis
+        example: porro
         type: string
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Pub%'
         required: false
-        example: officia
+        example: eveniet
         type: string
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Product%'
         required: false
-        example: rem
+        example: quis
         type: string
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Agente%'
         required: false
-        example: ab
+        example: sunt
         type: string
     bodyParameters: []
     responses:
@@ -736,8 +750,9 @@ endpoints:
     metadata:
       title: 'Employees Recents'
       description: 'Collection of recent employees. Recents are all active imployees plus any inactive employee with a termination date greater than 30 days ago.'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer E4cVe5D3kaZv61ha86bfPdg'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -746,25 +761,25 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: necessitatibus
+        example: illo
         type: string
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Pub%'
         required: false
-        example: veniam
+        example: ut
         type: string
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Product%'
         required: false
-        example: consequatur
+        example: ea
         type: string
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Agente%'
         required: false
-        example: fugiat
+        example: magnam
         type: string
     bodyParameters: []
     responses:
@@ -821,8 +836,9 @@ endpoints:
     metadata:
       title: 'Holidays Dates'
       description: 'Collection of holidays. If year is not especified in the query string, it will return all holidays for previous year, current year and futuristic holidays.'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer b1Dea65hE64ZPafdc8kg3Vv'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -831,7 +847,7 @@ endpoints:
         name: year
         description: 'Limit the results to a specific year. Default to previous year. Example ?year=2021.'
         required: false
-        example: et
+        example: vel
         type: string
     bodyParameters: []
     responses:
@@ -857,8 +873,9 @@ endpoints:
     metadata:
       title: 'Overnight Hours'
       description: 'Collection of all the overnight hours'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer fgad6a1c4835vEPZDe6kVhb'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -873,13 +890,13 @@ endpoints:
         name: months
         description: 'Defines how many months back should the data limited to. Example ?months=2 will get data between current date and last two months.'
         required: false
-        example: 12
+        example: 4
         type: integer
       days:
         name: days
         description: 'Defines how many days back should the data limited to. Example ?days=2 will get data between current date and last two days.'
         required: false
-        example: 20
+        example: 2
         type: integer
     bodyParameters: []
     responses:
@@ -906,8 +923,9 @@ endpoints:
     metadata:
       title: 'Notifications Unread'
       description: 'Return a list of unread notifications for the authenticated user.'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer Z6ckdv3ae46a5DPEbgVh81f'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -916,7 +934,7 @@ endpoints:
         name: max_items
         description: 'Max amount of notifications to take. Default is 25.'
         required: false
-        example: 2
+        example: 5
         type: integer
     bodyParameters: []
     responses:
@@ -945,8 +963,9 @@ endpoints:
     metadata:
       title: 'Notifications Mark all as Read'
       description: 'Cleans the unread notifications for the user'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer 366DaZfcdeEhg5a1Pv4kVb8'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -957,7 +976,7 @@ endpoints:
           Max amount of notifications to mark as read. Default is 25. This will also affect the amount of
           unread notifications to return. Also, this will return the next batch of unread notifications for the authenticated user.
         required: false
-        example: 15
+        example: 17
         type: integer
     bodyParameters: []
     responses:
@@ -986,8 +1005,9 @@ endpoints:
     metadata:
       title: 'Notification Details'
       description: 'Show details for a user notification. This will also mark the given notification as read.'
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer Ea5eg6Z8chd4kDP6b3Vv1fa'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -995,7 +1015,7 @@ endpoints:
         name: notification
         description: 'Uuid of the stored notification'
         required: false
-        example: illo
+        example: voluptatem
         type: string
     queryParameters: []
     bodyParameters: []

@@ -10,203 +10,53 @@
 
     <link rel="stylesheet" href="{{ asset("vendor/scribe/css/theme-default.style.css") }}" media="screen">
     <link rel="stylesheet" href="{{ asset("vendor/scribe/css/theme-default.print.css") }}" media="print">
-
-    <script src="//cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+    <script src="{{ asset("vendor/scribe/js/theme-default-3.16.0.js") }}"></script>
 
     <link rel="stylesheet"
           href="//unpkg.com/@highlightjs/cdn-assets@10.7.2/styles/obsidian.min.css">
     <script src="//unpkg.com/@highlightjs/cdn-assets@10.7.2/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
-
-    <style id="language-style">
-        /* starts out as display none and is replaced with js later  */
-                    body .content .bash-example code { display: none; }
-                    body .content .javascript-example code { display: none; }
-            </style>
-
+    <script src="//cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
     <script>
         var baseUrl = "http://localhost:8000";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
-    <script src="{{ asset("vendor/scribe/js/tryitout-3.17.0.js") }}"></script>
-
-    <script src="{{ asset("vendor/scribe/js/theme-default-3.17.0.js") }}"></script>
+    <script src="{{ asset("vendor/scribe/js/tryitout-3.16.0.js") }}"></script>
 
 </head>
 
 <body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
-
 <a href="#" id="nav-button">
-    <span>
+      <span>
         MENU
         <img src="{{ asset("vendor/scribe/images/navbar.png") }}" alt="navbar-image" />
-    </span>
+      </span>
 </a>
 <div class="tocify-wrapper">
-            <img src="/var/www/html/public/images/logo.png" alt="logo" class="logo" style="padding-top: 10px;" width="230px"/>
-    
-            <div class="lang-selector">
+        <img src="images/logo.png" alt="logo" class="logo" style="padding-top: 10px;" width="230px"/>
+                <div class="lang-selector">
                             <a href="#" data-language-name="bash">bash</a>
                             <a href="#" data-language-name="javascript">javascript</a>
                     </div>
-    
-    <div class="search">
+        <div class="search">
         <input type="text" class="search" id="input-search" placeholder="Search">
     </div>
+    <ul class="search-results"></ul>
 
-    <div id="toc">
-                    <ul id="tocify-header-0" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="dashboards">
-                    <a href="#dashboards">Dashboards</a>
-                </li>
-                                    <ul id="tocify-subheader-dashboards" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="dashboards-GETapi-dashboards-human_resources-head_counts">
-                        <a href="#dashboards-GETapi-dashboards-human_resources-head_counts">Dashboards Human Resources Head Counts</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="dashboards-GETapi-dashboards-human_resources-attritions">
-                        <a href="#dashboards-GETapi-dashboards-human_resources-attritions">Dashboards Human Resources Month Attritions</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="dashboards-GETapi-dashboards-human_resources-hc_by_project">
-                        <a href="#dashboards-GETapi-dashboards-human_resources-hc_by_project">Dashboards Human Resources Head Counts by Projects</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="dashboards-GETapi-dashboards-human_resources-hc_by_gender">
-                        <a href="#dashboards-GETapi-dashboards-human_resources-hc_by_gender">Dashboards Human Resources Head Counts by Gender</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="dashboards-GETapi-dashboards-human_resources-hc_by_department">
-                        <a href="#dashboards-GETapi-dashboards-human_resources-hc_by_department">Dashboards Human Resources Head Counts by Departments</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="dashboards-GETapi-dashboards-production-mtd_stats">
-                        <a href="#dashboards-GETapi-dashboards-production-mtd_stats">Dashboards Production Month To Date Stats</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="dashboards-GETapi-dashboards-production-monthly_stats">
-                        <a href="#dashboards-GETapi-dashboards-production-monthly_stats">Dashboards Production Monthly Stats</a>
-                    </li>
-                                                    </ul>
-                            </ul>
-                    <ul id="tocify-header-1" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="endpoints">
-                    <a href="#endpoints">Endpoints</a>
-                </li>
-                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-user">
-                        <a href="#endpoints-GETapi-user">Authenticated User</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-afps">
-                        <a href="#endpoints-POSTapi-afps">Store Afps</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-arss">
-                        <a href="#endpoints-POSTapi-arss">Store Ars</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-banks">
-                        <a href="#endpoints-POSTapi-banks">Store Banks</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-positions">
-                        <a href="#endpoints-POSTapi-positions">Store Positions</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-supervisors">
-                        <a href="#endpoints-POSTapi-supervisors">Store Supervisors</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-departments">
-                        <a href="#endpoints-POSTapi-departments">Store Departmens</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-payment_frequencies">
-                        <a href="#endpoints-POSTapi-payment_frequencies">Store Payment Frequencies</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-nationalities">
-                        <a href="#endpoints-POSTapi-nationalities">Store Nationalities</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-employees--employee--vip">
-                        <a href="#endpoints-POSTapi-employees--employee--vip">Update VIP</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-employees--employee--universal">
-                        <a href="#endpoints-POSTapi-employees--employee--universal">Update Universal</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-employees">
-                        <a href="#endpoints-GETapi-employees">Employees All</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-employees-all">
-                        <a href="#endpoints-GETapi-employees-all">Employees All</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-employees-actives">
-                        <a href="#endpoints-GETapi-employees-actives">Employees Actives</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-employees-recents">
-                        <a href="#endpoints-GETapi-employees-recents">Employees Recents</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-holidays">
-                        <a href="#endpoints-GETapi-holidays">Holidays Dates</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-overnight_hours">
-                        <a href="#endpoints-GETapi-overnight_hours">Overnight Hours</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-notifications-unread">
-                        <a href="#endpoints-GETapi-notifications-unread">Notifications Unread</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-notifications-mark-all-as-read">
-                        <a href="#endpoints-POSTapi-notifications-mark-all-as-read">Notifications Mark all as Read</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-notifications-show--notification-">
-                        <a href="#endpoints-GETapi-notifications-show--notification-">Notification Details</a>
-                    </li>
-                                                    </ul>
-                            </ul>
-                    <ul id="tocify-header-2" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="performances">
-                    <a href="#performances">Performances</a>
-                </li>
-                                    <ul id="tocify-subheader-performances" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="performances-GETapi-performances-clients">
-                        <a href="#performances-GETapi-performances-clients">Performances Clients</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="performances-GETapi-performances-projects">
-                        <a href="#performances-GETapi-performances-projects">Performances Projects</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="performances-GETapi-performances-campaigns">
-                        <a href="#performances-GETapi-performances-campaigns">Performances Campaigns</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="performances-GETapi-performances-sites">
-                        <a href="#performances-GETapi-performances-sites">Performances Sites</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="performances-GETapi-performances-supervisors">
-                        <a href="#performances-GETapi-performances-supervisors">Performances Supervisors</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="performances-GETapi-performances-downtime_reasons">
-                        <a href="#performances-GETapi-performances-downtime_reasons">Performances Downtime Reasons</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="performances-GETapi-performances-employees">
-                        <a href="#performances-GETapi-performances-employees">Performances Employees</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="performances-GETapi-performances-downtimes">
-                        <a href="#performances-GETapi-performances-downtimes">Performances Downtimes</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="performances-GETapi-performances-login_names">
-                        <a href="#performances-GETapi-performances-login_names">Performances Login Names</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="performances-GETapi-performances-schedules">
-                        <a href="#performances-GETapi-performances-schedules">Performances Schedules</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="performances-GETapi-performances-supervisors-actives">
-                        <a href="#performances-GETapi-performances-supervisors-actives">Performances Active Supervisors</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="performances-GETapi-performances-performance_data-last--many--months">
-                        <a href="#performances-GETapi-performances-performance_data-last--many--months">Performances Data</a>
-                    </li>
-                                                    </ul>
-                            </ul>
-            </div>
+    <ul id="toc">
+    </ul>
 
             <ul class="toc-footer" id="toc-footer">
                             <li><a href="{{ route("scribe.postman") }}">View Postman collection</a></li>
                             <li><a href="{{ route("scribe.openapi") }}">View OpenAPI spec</a></li>
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
-        <ul class="toc-footer" id="last-updated">
-        <li>Last updated: December 1 2021</li>
-    </ul>
+            <ul class="toc-footer" id="last-updated">
+            <li>Last updated: December 1 2021</li>
+        </ul>
 </div>
-
 <div class="page-wrapper">
     <div class="dark-box"></div>
     <div class="content">
@@ -231,6 +81,7 @@ You can switch the language used with the tabs at the top right (or from the nav
             <h2 id="dashboards-GETapi-dashboards-human_resources-head_counts">Dashboards Human Resources Head Counts</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Head Counts data for human resources dashboard</p>
@@ -239,28 +90,27 @@ You can switch the language used with the tabs at the top right (or from the nav
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/dashboards/human_resources/head_counts?site=atque&amp;project=nesciunt&amp;department=pariatur&amp;position=voluptatem" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/dashboards/human_resources/head_counts?site=voluptates&amp;project=a&amp;department=in&amp;position=iusto" \
+    --header "Authorization: Bearer faZ1vV6h5k48cba3gEPdD6e" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/dashboards/human_resources/head_counts"
 );
 
 const params = {
-    "site": "atque",
-    "project": "nesciunt",
-    "department": "pariatur",
-    "position": "voluptatem",
+    "site": "voluptates",
+    "project": "a",
+    "department": "in",
+    "position": "iusto",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer faZ1vV6h5k48cba3gEPdD6e",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -268,8 +118,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-dashboards-human_resources-head_counts">
@@ -298,10 +147,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-dashboards-human_resources-head_counts" data-method="GET"
       data-path="api/dashboards/human_resources/head_counts"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer faZ1vV6h5k48cba3gEPdD6e","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-dashboards-human_resources-head_counts', this);">
     <h3>
@@ -314,7 +163,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-dashboards-human_resources-head_counts"
-                    onclick="cancelTryOut('GETapi-dashboards-human_resources-head_counts');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-dashboards-human_resources-head_counts');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -325,13 +174,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/dashboards/human_resources/head_counts</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-dashboards-human_resources-head_counts" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-dashboards-human_resources-head_counts"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-human_resources-head_counts"
-               value="atque"
+               value="voluptates"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -341,7 +198,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-dashboards-human_resources-head_counts"
-               value="nesciunt"
+               value="a"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -351,7 +208,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-dashboards-human_resources-head_counts"
-               value="pariatur"
+               value="in"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -361,7 +218,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-dashboards-human_resources-head_counts"
-               value="voluptatem"
+               value="iusto"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -371,6 +228,7 @@ fetch(url, {
             <h2 id="dashboards-GETapi-dashboards-human_resources-attritions">Dashboards Human Resources Month Attritions</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of attritions by months, including the last 12 months for human resources dashboard</p>
@@ -379,28 +237,27 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/dashboards/human_resources/attritions?site=qui&amp;project=itaque&amp;department=blanditiis&amp;position=officia" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/dashboards/human_resources/attritions?site=qui&amp;project=est&amp;department=placeat&amp;position=nihil" \
+    --header "Authorization: Bearer bvd486PZha1f6ae5ED3cgkV" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/dashboards/human_resources/attritions"
 );
 
 const params = {
     "site": "qui",
-    "project": "itaque",
-    "department": "blanditiis",
-    "position": "officia",
+    "project": "est",
+    "department": "placeat",
+    "position": "nihil",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer bvd486PZha1f6ae5ED3cgkV",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -408,8 +265,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-dashboards-human_resources-attritions">
@@ -446,10 +302,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-dashboards-human_resources-attritions" data-method="GET"
       data-path="api/dashboards/human_resources/attritions"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer bvd486PZha1f6ae5ED3cgkV","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-dashboards-human_resources-attritions', this);">
     <h3>
@@ -462,7 +318,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-dashboards-human_resources-attritions"
-                    onclick="cancelTryOut('GETapi-dashboards-human_resources-attritions');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-dashboards-human_resources-attritions');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -473,7 +329,15 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/dashboards/human_resources/attritions</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-dashboards-human_resources-attritions" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-dashboards-human_resources-attritions"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -489,7 +353,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-dashboards-human_resources-attritions"
-               value="itaque"
+               value="est"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -499,7 +363,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-dashboards-human_resources-attritions"
-               value="blanditiis"
+               value="placeat"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -509,7 +373,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-dashboards-human_resources-attritions"
-               value="officia"
+               value="nihil"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -519,6 +383,7 @@ fetch(url, {
             <h2 id="dashboards-GETapi-dashboards-human_resources-hc_by_project">Dashboards Human Resources Head Counts by Projects</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of head counts grouped by projects for human resources dashboard</p>
@@ -527,28 +392,27 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/dashboards/human_resources/hc_by_project?site=architecto&amp;project=aliquid&amp;department=delectus&amp;position=omnis" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/dashboards/human_resources/hc_by_project?site=fuga&amp;project=qui&amp;department=in&amp;position=cupiditate" \
+    --header "Authorization: Bearer VfDPbkah6v54E6ecaZd831g" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/dashboards/human_resources/hc_by_project"
 );
 
 const params = {
-    "site": "architecto",
-    "project": "aliquid",
-    "department": "delectus",
-    "position": "omnis",
+    "site": "fuga",
+    "project": "qui",
+    "department": "in",
+    "position": "cupiditate",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer VfDPbkah6v54E6ecaZd831g",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -556,8 +420,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-dashboards-human_resources-hc_by_project">
@@ -590,10 +453,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-dashboards-human_resources-hc_by_project" data-method="GET"
       data-path="api/dashboards/human_resources/hc_by_project"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer VfDPbkah6v54E6ecaZd831g","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-dashboards-human_resources-hc_by_project', this);">
     <h3>
@@ -606,7 +469,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-dashboards-human_resources-hc_by_project"
-                    onclick="cancelTryOut('GETapi-dashboards-human_resources-hc_by_project');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-dashboards-human_resources-hc_by_project');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -617,13 +480,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/dashboards/human_resources/hc_by_project</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-dashboards-human_resources-hc_by_project" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-dashboards-human_resources-hc_by_project"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_project"
-               value="architecto"
+               value="fuga"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -633,7 +504,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_project"
-               value="aliquid"
+               value="qui"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -643,7 +514,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_project"
-               value="delectus"
+               value="in"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -653,7 +524,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_project"
-               value="omnis"
+               value="cupiditate"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -663,6 +534,7 @@ fetch(url, {
             <h2 id="dashboards-GETapi-dashboards-human_resources-hc_by_gender">Dashboards Human Resources Head Counts by Gender</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of head count data grouped by gender for human resources dashboard</p>
@@ -671,28 +543,27 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/dashboards/human_resources/hc_by_gender?site=ea&amp;project=et&amp;department=nesciunt&amp;position=ratione" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/dashboards/human_resources/hc_by_gender?site=quod&amp;project=qui&amp;department=omnis&amp;position=est" \
+    --header "Authorization: Bearer 3PhVvE6Z1abD654fa8gkdec" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/dashboards/human_resources/hc_by_gender"
 );
 
 const params = {
-    "site": "ea",
-    "project": "et",
-    "department": "nesciunt",
-    "position": "ratione",
+    "site": "quod",
+    "project": "qui",
+    "department": "omnis",
+    "position": "est",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer 3PhVvE6Z1abD654fa8gkdec",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -700,8 +571,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-dashboards-human_resources-hc_by_gender">
@@ -733,10 +603,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-dashboards-human_resources-hc_by_gender" data-method="GET"
       data-path="api/dashboards/human_resources/hc_by_gender"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 3PhVvE6Z1abD654fa8gkdec","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-dashboards-human_resources-hc_by_gender', this);">
     <h3>
@@ -749,7 +619,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-dashboards-human_resources-hc_by_gender"
-                    onclick="cancelTryOut('GETapi-dashboards-human_resources-hc_by_gender');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-dashboards-human_resources-hc_by_gender');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -760,13 +630,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/dashboards/human_resources/hc_by_gender</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-dashboards-human_resources-hc_by_gender" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-dashboards-human_resources-hc_by_gender"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_gender"
-               value="ea"
+               value="quod"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -776,7 +654,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_gender"
-               value="et"
+               value="qui"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -786,7 +664,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_gender"
-               value="nesciunt"
+               value="omnis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -796,7 +674,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_gender"
-               value="ratione"
+               value="est"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -806,6 +684,7 @@ fetch(url, {
             <h2 id="dashboards-GETapi-dashboards-human_resources-hc_by_department">Dashboards Human Resources Head Counts by Departments</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of head count data grouped by department for human resources dashboard</p>
@@ -814,28 +693,27 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/dashboards/human_resources/hc_by_department?site=qui&amp;project=ea&amp;department=voluptatem&amp;position=quis" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/dashboards/human_resources/hc_by_department?site=dolorem&amp;project=sit&amp;department=earum&amp;position=quae" \
+    --header "Authorization: Bearer V54d8fP3DcEgb66aZakvhe1" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/dashboards/human_resources/hc_by_department"
 );
 
 const params = {
-    "site": "qui",
-    "project": "ea",
-    "department": "voluptatem",
-    "position": "quis",
+    "site": "dolorem",
+    "project": "sit",
+    "department": "earum",
+    "position": "quae",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer V54d8fP3DcEgb66aZakvhe1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -843,8 +721,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-dashboards-human_resources-hc_by_department">
@@ -876,10 +753,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-dashboards-human_resources-hc_by_department" data-method="GET"
       data-path="api/dashboards/human_resources/hc_by_department"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer V54d8fP3DcEgb66aZakvhe1","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-dashboards-human_resources-hc_by_department', this);">
     <h3>
@@ -892,7 +769,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-dashboards-human_resources-hc_by_department"
-                    onclick="cancelTryOut('GETapi-dashboards-human_resources-hc_by_department');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-dashboards-human_resources-hc_by_department');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -903,13 +780,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/dashboards/human_resources/hc_by_department</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-dashboards-human_resources-hc_by_department" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-dashboards-human_resources-hc_by_department"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_department"
-               value="qui"
+               value="dolorem"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -919,7 +804,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_department"
-               value="ea"
+               value="sit"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -929,7 +814,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_department"
-               value="voluptatem"
+               value="earum"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -939,7 +824,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_department"
-               value="quis"
+               value="quae"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -949,6 +834,7 @@ fetch(url, {
             <h2 id="dashboards-GETapi-dashboards-production-mtd_stats">Dashboards Production Month To Date Stats</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Production MTD stats for production dashboard</p>
@@ -957,33 +843,32 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/dashboards/production/mtd_stats?campaign=consequatur&amp;source=quo&amp;employee=ratione&amp;supervisor=architecto&amp;supervisor_employee=dicta&amp;project_campaign=omnis&amp;project_employee=distinctio&amp;site=mollitia&amp;client=corrupti" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/dashboards/production/mtd_stats?campaign=ullam&amp;source=distinctio&amp;employee=vitae&amp;supervisor=tenetur&amp;supervisor_employee=aut&amp;project_campaign=consequatur&amp;project_employee=assumenda&amp;site=est&amp;client=eum" \
+    --header "Authorization: Bearer 866dvhDEVe15ZaPfkg4cab3" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/dashboards/production/mtd_stats"
 );
 
 const params = {
-    "campaign": "consequatur",
-    "source": "quo",
-    "employee": "ratione",
-    "supervisor": "architecto",
-    "supervisor_employee": "dicta",
-    "project_campaign": "omnis",
-    "project_employee": "distinctio",
-    "site": "mollitia",
-    "client": "corrupti",
+    "campaign": "ullam",
+    "source": "distinctio",
+    "employee": "vitae",
+    "supervisor": "tenetur",
+    "supervisor_employee": "aut",
+    "project_campaign": "consequatur",
+    "project_employee": "assumenda",
+    "site": "est",
+    "client": "eum",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer 866dvhDEVe15ZaPfkg4cab3",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -991,8 +876,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-dashboards-production-mtd_stats">
@@ -1020,10 +904,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-dashboards-production-mtd_stats" data-method="GET"
       data-path="api/dashboards/production/mtd_stats"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 866dvhDEVe15ZaPfkg4cab3","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-dashboards-production-mtd_stats', this);">
     <h3>
@@ -1036,7 +920,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-dashboards-production-mtd_stats"
-                    onclick="cancelTryOut('GETapi-dashboards-production-mtd_stats');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-dashboards-production-mtd_stats');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -1047,13 +931,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/dashboards/production/mtd_stats</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-dashboards-production-mtd_stats" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-dashboards-production-mtd_stats"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>campaign</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="campaign"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="consequatur"
+               value="ullam"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific campaign. Example ?campaign=%Santiago%</p>
@@ -1063,7 +955,7 @@ fetch(url, {
                 <input type="text"
                name="source"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="quo"
+               value="distinctio"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific source. Example ?source=%Santiago%</p>
@@ -1073,7 +965,7 @@ fetch(url, {
                 <input type="text"
                name="employee"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="ratione"
+               value="vitae"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific employee. Example ?employee=%Santiago%</p>
@@ -1083,7 +975,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="architecto"
+               value="tenetur"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor. Example ?supervisor=%Santiago%</p>
@@ -1093,7 +985,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor_employee"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="dicta"
+               value="aut"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%</p>
@@ -1103,7 +995,7 @@ fetch(url, {
                 <input type="text"
                name="project_campaign"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="omnis"
+               value="consequatur"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_campaign. Example ?project_campaign=%Santiago%</p>
@@ -1113,7 +1005,7 @@ fetch(url, {
                 <input type="text"
                name="project_employee"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="distinctio"
+               value="assumenda"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_employee. Example ?project_employee=%Santiago%</p>
@@ -1123,7 +1015,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="mollitia"
+               value="est"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -1133,7 +1025,7 @@ fetch(url, {
                 <input type="text"
                name="client"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="corrupti"
+               value="eum"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific client. Example ?client=%Pub%</p>
@@ -1143,6 +1035,7 @@ fetch(url, {
             <h2 id="dashboards-GETapi-dashboards-production-monthly_stats">Dashboards Production Monthly Stats</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Production Monthly stats for production dashboard</p>
@@ -1151,33 +1044,32 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/dashboards/production/monthly_stats?campaign=sed&amp;source=excepturi&amp;employee=doloremque&amp;supervisor=ut&amp;supervisor_employee=dolore&amp;project_campaign=et&amp;project_employee=nesciunt&amp;site=omnis&amp;client=possimus" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/dashboards/production/monthly_stats?campaign=provident&amp;source=eos&amp;employee=dolores&amp;supervisor=et&amp;supervisor_employee=sit&amp;project_campaign=perferendis&amp;project_employee=error&amp;site=amet&amp;client=qui" \
+    --header "Authorization: Bearer 3kbdv48EafPV65aegZDh1c6" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/dashboards/production/monthly_stats"
 );
 
 const params = {
-    "campaign": "sed",
-    "source": "excepturi",
-    "employee": "doloremque",
-    "supervisor": "ut",
-    "supervisor_employee": "dolore",
-    "project_campaign": "et",
-    "project_employee": "nesciunt",
-    "site": "omnis",
-    "client": "possimus",
+    "campaign": "provident",
+    "source": "eos",
+    "employee": "dolores",
+    "supervisor": "et",
+    "supervisor_employee": "sit",
+    "project_campaign": "perferendis",
+    "project_employee": "error",
+    "site": "amet",
+    "client": "qui",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer 3kbdv48EafPV65aegZDh1c6",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1185,8 +1077,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-dashboards-production-monthly_stats">
@@ -1222,10 +1113,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-dashboards-production-monthly_stats" data-method="GET"
       data-path="api/dashboards/production/monthly_stats"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 3kbdv48EafPV65aegZDh1c6","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-dashboards-production-monthly_stats', this);">
     <h3>
@@ -1238,7 +1129,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-dashboards-production-monthly_stats"
-                    onclick="cancelTryOut('GETapi-dashboards-production-monthly_stats');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-dashboards-production-monthly_stats');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -1249,13 +1140,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/dashboards/production/monthly_stats</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-dashboards-production-monthly_stats" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-dashboards-production-monthly_stats"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>campaign</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="campaign"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="sed"
+               value="provident"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific campaign. Example ?campaign=%Santiago%</p>
@@ -1265,7 +1164,7 @@ fetch(url, {
                 <input type="text"
                name="source"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="excepturi"
+               value="eos"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific source. Example ?source=%Santiago%</p>
@@ -1275,7 +1174,7 @@ fetch(url, {
                 <input type="text"
                name="employee"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="doloremque"
+               value="dolores"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific employee. Example ?employee=%Santiago%</p>
@@ -1285,7 +1184,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="ut"
+               value="et"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor. Example ?supervisor=%Santiago%</p>
@@ -1295,7 +1194,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor_employee"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="dolore"
+               value="sit"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%</p>
@@ -1305,7 +1204,7 @@ fetch(url, {
                 <input type="text"
                name="project_campaign"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="et"
+               value="perferendis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_campaign. Example ?project_campaign=%Santiago%</p>
@@ -1315,7 +1214,7 @@ fetch(url, {
                 <input type="text"
                name="project_employee"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="nesciunt"
+               value="error"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_employee. Example ?project_employee=%Santiago%</p>
@@ -1325,7 +1224,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="omnis"
+               value="amet"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -1335,7 +1234,7 @@ fetch(url, {
                 <input type="text"
                name="client"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="possimus"
+               value="qui"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific client. Example ?client=%Pub%</p>
@@ -1349,6 +1248,7 @@ fetch(url, {
             <h2 id="endpoints-GETapi-user">Authenticated User</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Return information of the authenticated user</p>
@@ -1357,19 +1257,18 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
+<pre><code class="language-bash">curl --request GET \
     --get "http://localhost:8000/api/user" \
+    --header "Authorization: Bearer gVEda81c453heak6PfD6bvZ" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/user"
 );
 
 const headers = {
+    "Authorization": "Bearer gVEda81c453heak6PfD6bvZ",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1377,8 +1276,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-user">
@@ -1412,10 +1310,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-user" data-method="GET"
       data-path="api/user"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer gVEda81c453heak6PfD6bvZ","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-user', this);">
     <h3>
@@ -1428,7 +1326,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-user"
-                    onclick="cancelTryOut('GETapi-user');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-user');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -1439,11 +1337,20 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/user</code></b>
         </p>
-                    </form>
+                <p>
+            <label id="auth-GETapi-user" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-user"
+                                                                data-component="header"></label>
+        </p>
+                </form>
 
             <h2 id="endpoints-POSTapi-afps">Store Afps</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Save a Afp model to database.</p>
@@ -1452,37 +1359,35 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
+<pre><code class="language-bash">curl --request POST \
     "http://localhost:8000/api/afps" \
+    --header "Authorization: Bearer 6kP3b51dhVfEgDa4acvZ6e8" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"laboriosam\"
+    \"name\": \"accusantium\"
 }"
-</code></pre></div>
+</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/afps"
 );
 
 const headers = {
+    "Authorization": "Bearer 6kP3b51dhVfEgDa4acvZ6e8",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "laboriosam"
+    "name": "accusantium"
 };
 
 fetch(url, {
     method: "POST",
     headers,
     body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-POSTapi-afps">
@@ -1512,10 +1417,10 @@ fetch(url, {
 </span>
 <form id="form-POSTapi-afps" data-method="POST"
       data-path="api/afps"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 6kP3b51dhVfEgDa4acvZ6e8","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-afps', this);">
     <h3>
@@ -1528,7 +1433,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-POSTapi-afps"
-                    onclick="cancelTryOut('POSTapi-afps');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('POSTapi-afps');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -1539,13 +1444,21 @@ fetch(url, {
             <small class="badge badge-black">POST</small>
             <b><code>api/afps</code></b>
         </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                <p>
+            <label id="auth-POSTapi-afps" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-afps"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <p>
             <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-afps"
-               value="laboriosam"
+               value="accusantium"
                data-component="body" hidden>
     <br>
 <p>The name of the Afp</p>
@@ -1555,6 +1468,7 @@ fetch(url, {
             <h2 id="endpoints-POSTapi-arss">Store Ars</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Save a Ars model to database.</p>
@@ -1563,37 +1477,35 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
+<pre><code class="language-bash">curl --request POST \
     "http://localhost:8000/api/arss" \
+    --header "Authorization: Bearer 3gef6EP1DaVchvb8Z6k5a4d" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"voluptatibus\"
+    \"name\": \"fuga\"
 }"
-</code></pre></div>
+</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/arss"
 );
 
 const headers = {
+    "Authorization": "Bearer 3gef6EP1DaVchvb8Z6k5a4d",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "voluptatibus"
+    "name": "fuga"
 };
 
 fetch(url, {
     method: "POST",
     headers,
     body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-POSTapi-arss">
@@ -1623,10 +1535,10 @@ fetch(url, {
 </span>
 <form id="form-POSTapi-arss" data-method="POST"
       data-path="api/arss"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 3gef6EP1DaVchvb8Z6k5a4d","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-arss', this);">
     <h3>
@@ -1639,7 +1551,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-POSTapi-arss"
-                    onclick="cancelTryOut('POSTapi-arss');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('POSTapi-arss');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -1650,13 +1562,21 @@ fetch(url, {
             <small class="badge badge-black">POST</small>
             <b><code>api/arss</code></b>
         </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                <p>
+            <label id="auth-POSTapi-arss" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-arss"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <p>
             <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-arss"
-               value="voluptatibus"
+               value="fuga"
                data-component="body" hidden>
     <br>
 <p>The name of the Ars</p>
@@ -1666,6 +1586,7 @@ fetch(url, {
             <h2 id="endpoints-POSTapi-banks">Store Banks</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Save a Banks model to database.</p>
@@ -1674,37 +1595,35 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
+<pre><code class="language-bash">curl --request POST \
     "http://localhost:8000/api/banks" \
+    --header "Authorization: Bearer vPhd5Vk46b1ZDEf8c6agea3" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"doloremque\"
+    \"name\": \"voluptatem\"
 }"
-</code></pre></div>
+</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/banks"
 );
 
 const headers = {
+    "Authorization": "Bearer vPhd5Vk46b1ZDEf8c6agea3",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "doloremque"
+    "name": "voluptatem"
 };
 
 fetch(url, {
     method: "POST",
     headers,
     body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-POSTapi-banks">
@@ -1730,10 +1649,10 @@ fetch(url, {
 </span>
 <form id="form-POSTapi-banks" data-method="POST"
       data-path="api/banks"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer vPhd5Vk46b1ZDEf8c6agea3","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-banks', this);">
     <h3>
@@ -1746,7 +1665,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-POSTapi-banks"
-                    onclick="cancelTryOut('POSTapi-banks');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('POSTapi-banks');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -1757,13 +1676,21 @@ fetch(url, {
             <small class="badge badge-black">POST</small>
             <b><code>api/banks</code></b>
         </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                <p>
+            <label id="auth-POSTapi-banks" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-banks"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <p>
             <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-banks"
-               value="doloremque"
+               value="voluptatem"
                data-component="body" hidden>
     <br>
 <p>The name of the Banks</p>
@@ -1773,6 +1700,7 @@ fetch(url, {
             <h2 id="endpoints-POSTapi-positions">Store Positions</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Save a Position model to database.</p>
@@ -1781,45 +1709,43 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
+<pre><code class="language-bash">curl --request POST \
     "http://localhost:8000/api/positions" \
+    --header "Authorization: Bearer 4PaZ8Vv1ED56haebckdg3f6" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"possimus\",
-    \"department_id\": \"qui\",
-    \"payment_type_id\": \"at\",
-    \"payment_frequency_id\": \"illum\",
-    \"salary\": \"enim\"
+    \"name\": \"fugiat\",
+    \"department_id\": \"voluptas\",
+    \"payment_type_id\": \"rerum\",
+    \"payment_frequency_id\": \"aspernatur\",
+    \"salary\": \"et\"
 }"
-</code></pre></div>
+</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/positions"
 );
 
 const headers = {
+    "Authorization": "Bearer 4PaZ8Vv1ED56haebckdg3f6",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "possimus",
-    "department_id": "qui",
-    "payment_type_id": "at",
-    "payment_frequency_id": "illum",
-    "salary": "enim"
+    "name": "fugiat",
+    "department_id": "voluptas",
+    "payment_type_id": "rerum",
+    "payment_frequency_id": "aspernatur",
+    "salary": "et"
 };
 
 fetch(url, {
     method: "POST",
     headers,
     body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-POSTapi-positions">
@@ -1867,10 +1793,10 @@ fetch(url, {
 </span>
 <form id="form-POSTapi-positions" data-method="POST"
       data-path="api/positions"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 4PaZ8Vv1ED56haebckdg3f6","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-positions', this);">
     <h3>
@@ -1883,7 +1809,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-POSTapi-positions"
-                    onclick="cancelTryOut('POSTapi-positions');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('POSTapi-positions');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -1894,13 +1820,21 @@ fetch(url, {
             <small class="badge badge-black">POST</small>
             <b><code>api/positions</code></b>
         </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                <p>
+            <label id="auth-POSTapi-positions" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-positions"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <p>
             <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-positions"
-               value="possimus"
+               value="fugiat"
                data-component="body" hidden>
     <br>
 <p>The name of the Position</p>
@@ -1910,7 +1844,7 @@ fetch(url, {
                 <input type="text"
                name="department_id"
                data-endpoint="POSTapi-positions"
-               value="qui"
+               value="voluptas"
                data-component="body" hidden>
     <br>
 <p>The department_id of the Position</p>
@@ -1920,7 +1854,7 @@ fetch(url, {
                 <input type="text"
                name="payment_type_id"
                data-endpoint="POSTapi-positions"
-               value="at"
+               value="rerum"
                data-component="body" hidden>
     <br>
 <p>The payment_type_id of the Position</p>
@@ -1930,7 +1864,7 @@ fetch(url, {
                 <input type="text"
                name="payment_frequency_id"
                data-endpoint="POSTapi-positions"
-               value="illum"
+               value="aspernatur"
                data-component="body" hidden>
     <br>
 <p>The payment_frequency_id of the Position</p>
@@ -1940,7 +1874,7 @@ fetch(url, {
                 <input type="text"
                name="salary"
                data-endpoint="POSTapi-positions"
-               value="enim"
+               value="et"
                data-component="body" hidden>
     <br>
 <p>The salary of the Position</p>
@@ -1950,6 +1884,7 @@ fetch(url, {
             <h2 id="endpoints-POSTapi-supervisors">Store Supervisors</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Save a Supervisor model to database.</p>
@@ -1958,37 +1893,35 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
+<pre><code class="language-bash">curl --request POST \
     "http://localhost:8000/api/supervisors" \
+    --header "Authorization: Bearer k8634PcD1Edvb6eahfV5Zag" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"neque\"
+    \"name\": \"quo\"
 }"
-</code></pre></div>
+</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/supervisors"
 );
 
 const headers = {
+    "Authorization": "Bearer k8634PcD1Edvb6eahfV5Zag",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "neque"
+    "name": "quo"
 };
 
 fetch(url, {
     method: "POST",
     headers,
     body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-POSTapi-supervisors">
@@ -2017,10 +1950,10 @@ fetch(url, {
 </span>
 <form id="form-POSTapi-supervisors" data-method="POST"
       data-path="api/supervisors"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer k8634PcD1Edvb6eahfV5Zag","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-supervisors', this);">
     <h3>
@@ -2033,7 +1966,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-POSTapi-supervisors"
-                    onclick="cancelTryOut('POSTapi-supervisors');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('POSTapi-supervisors');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -2044,13 +1977,21 @@ fetch(url, {
             <small class="badge badge-black">POST</small>
             <b><code>api/supervisors</code></b>
         </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                <p>
+            <label id="auth-POSTapi-supervisors" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-supervisors"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <p>
             <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-supervisors"
-               value="neque"
+               value="quo"
                data-component="body" hidden>
     <br>
 <p>The name of the Supervisor</p>
@@ -2060,6 +2001,7 @@ fetch(url, {
             <h2 id="endpoints-POSTapi-departments">Store Departmens</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Save a Department model to database.</p>
@@ -2068,37 +2010,35 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
+<pre><code class="language-bash">curl --request POST \
     "http://localhost:8000/api/departments" \
+    --header "Authorization: Bearer 8hvZgE3kcea6df5PVDa4b61" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"rerum\"
+    \"name\": \"voluptatem\"
 }"
-</code></pre></div>
+</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/departments"
 );
 
 const headers = {
+    "Authorization": "Bearer 8hvZgE3kcea6df5PVDa4b61",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "rerum"
+    "name": "voluptatem"
 };
 
 fetch(url, {
     method: "POST",
     headers,
     body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-POSTapi-departments">
@@ -2127,10 +2067,10 @@ fetch(url, {
 </span>
 <form id="form-POSTapi-departments" data-method="POST"
       data-path="api/departments"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 8hvZgE3kcea6df5PVDa4b61","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-departments', this);">
     <h3>
@@ -2143,7 +2083,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-POSTapi-departments"
-                    onclick="cancelTryOut('POSTapi-departments');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('POSTapi-departments');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -2154,13 +2094,21 @@ fetch(url, {
             <small class="badge badge-black">POST</small>
             <b><code>api/departments</code></b>
         </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                <p>
+            <label id="auth-POSTapi-departments" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-departments"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <p>
             <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-departments"
-               value="rerum"
+               value="voluptatem"
                data-component="body" hidden>
     <br>
 <p>The name of the Department</p>
@@ -2170,6 +2118,7 @@ fetch(url, {
             <h2 id="endpoints-POSTapi-payment_frequencies">Store Payment Frequencies</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Save a Payment Frequency model to database.</p>
@@ -2178,37 +2127,35 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
+<pre><code class="language-bash">curl --request POST \
     "http://localhost:8000/api/payment_frequencies" \
+    --header "Authorization: Bearer P4vb86DVakda63g5ZhcE1ef" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"ullam\"
+    \"name\": \"ratione\"
 }"
-</code></pre></div>
+</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/payment_frequencies"
 );
 
 const headers = {
+    "Authorization": "Bearer P4vb86DVakda63g5ZhcE1ef",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "ullam"
+    "name": "ratione"
 };
 
 fetch(url, {
     method: "POST",
     headers,
     body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-POSTapi-payment_frequencies">
@@ -2237,10 +2184,10 @@ fetch(url, {
 </span>
 <form id="form-POSTapi-payment_frequencies" data-method="POST"
       data-path="api/payment_frequencies"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer P4vb86DVakda63g5ZhcE1ef","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-payment_frequencies', this);">
     <h3>
@@ -2253,7 +2200,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-POSTapi-payment_frequencies"
-                    onclick="cancelTryOut('POSTapi-payment_frequencies');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('POSTapi-payment_frequencies');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -2264,13 +2211,21 @@ fetch(url, {
             <small class="badge badge-black">POST</small>
             <b><code>api/payment_frequencies</code></b>
         </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                <p>
+            <label id="auth-POSTapi-payment_frequencies" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-payment_frequencies"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <p>
             <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-payment_frequencies"
-               value="ullam"
+               value="ratione"
                data-component="body" hidden>
     <br>
 <p>The name of the Payment Frequency</p>
@@ -2280,6 +2235,7 @@ fetch(url, {
             <h2 id="endpoints-POSTapi-nationalities">Store Nationalities</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Save a Nationality model to database.</p>
@@ -2288,37 +2244,35 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
+<pre><code class="language-bash">curl --request POST \
     "http://localhost:8000/api/nationalities" \
+    --header "Authorization: Bearer a5g3haP14vkEdVfbecZ866D" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"illo\"
+    \"name\": \"cum\"
 }"
-</code></pre></div>
+</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/nationalities"
 );
 
 const headers = {
+    "Authorization": "Bearer a5g3haP14vkEdVfbecZ866D",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "illo"
+    "name": "cum"
 };
 
 fetch(url, {
     method: "POST",
     headers,
     body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-POSTapi-nationalities">
@@ -2344,10 +2298,10 @@ fetch(url, {
 </span>
 <form id="form-POSTapi-nationalities" data-method="POST"
       data-path="api/nationalities"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer a5g3haP14vkEdVfbecZ866D","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-nationalities', this);">
     <h3>
@@ -2360,7 +2314,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-POSTapi-nationalities"
-                    onclick="cancelTryOut('POSTapi-nationalities');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('POSTapi-nationalities');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -2371,13 +2325,21 @@ fetch(url, {
             <small class="badge badge-black">POST</small>
             <b><code>api/nationalities</code></b>
         </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                <p>
+            <label id="auth-POSTapi-nationalities" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-nationalities"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <p>
             <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-nationalities"
-               value="illo"
+               value="cum"
                data-component="body" hidden>
     <br>
 <p>The name of the Nationality     *</p>
@@ -2387,6 +2349,7 @@ fetch(url, {
             <h2 id="endpoints-POSTapi-employees--employee--vip">Update VIP</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Update VIP information for a given employee.</p>
@@ -2395,37 +2358,35 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/employees/13/vip" \
+<pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/employees/8/vip" \
+    --header "Authorization: Bearer 6PfcaDda68b51Z4eghvEV3k" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"is_vip\": false
+    \"is_vip\": true
 }"
-</code></pre></div>
+</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/employees/13/vip"
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/employees/8/vip"
 );
 
 const headers = {
+    "Authorization": "Bearer 6PfcaDda68b51Z4eghvEV3k",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "is_vip": false
+    "is_vip": true
 };
 
 fetch(url, {
     method: "POST",
     headers,
     body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-POSTapi-employees--employee--vip">
@@ -2484,10 +2445,10 @@ fetch(url, {
 </span>
 <form id="form-POSTapi-employees--employee--vip" data-method="POST"
       data-path="api/employees/{employee}/vip"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 6PfcaDda68b51Z4eghvEV3k","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-employees--employee--vip', this);">
     <h3>
@@ -2500,7 +2461,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-POSTapi-employees--employee--vip"
-                    onclick="cancelTryOut('POSTapi-employees--employee--vip');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('POSTapi-employees--employee--vip');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -2511,13 +2472,21 @@ fetch(url, {
             <small class="badge badge-black">POST</small>
             <b><code>api/employees/{employee}/vip</code></b>
         </p>
-                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                <p>
+            <label id="auth-POSTapi-employees--employee--vip" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-employees--employee--vip"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <p>
                 <b><code>employee</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
                 <input type="number"
                name="employee"
                data-endpoint="POSTapi-employees--employee--vip"
-               value="13"
+               value="8"
                data-component="url" hidden>
     <br>
 
@@ -2549,6 +2518,7 @@ fetch(url, {
             <h2 id="endpoints-POSTapi-employees--employee--universal">Update Universal</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Update Universal information for a given employee.</p>
@@ -2557,23 +2527,22 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/employees/1/universal" \
+<pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/employees/12/universal" \
+    --header "Authorization: Bearer befvEh64V38DZP15d6kaagc" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"is_vip\": false
 }"
-</code></pre></div>
+</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/employees/1/universal"
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/employees/12/universal"
 );
 
 const headers = {
+    "Authorization": "Bearer befvEh64V38DZP15d6kaagc",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -2586,8 +2555,7 @@ fetch(url, {
     method: "POST",
     headers,
     body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-POSTapi-employees--employee--universal">
@@ -2646,10 +2614,10 @@ fetch(url, {
 </span>
 <form id="form-POSTapi-employees--employee--universal" data-method="POST"
       data-path="api/employees/{employee}/universal"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer befvEh64V38DZP15d6kaagc","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-employees--employee--universal', this);">
     <h3>
@@ -2662,7 +2630,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-POSTapi-employees--employee--universal"
-                    onclick="cancelTryOut('POSTapi-employees--employee--universal');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('POSTapi-employees--employee--universal');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -2673,13 +2641,21 @@ fetch(url, {
             <small class="badge badge-black">POST</small>
             <b><code>api/employees/{employee}/universal</code></b>
         </p>
-                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                <p>
+            <label id="auth-POSTapi-employees--employee--universal" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-employees--employee--universal"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <p>
                 <b><code>employee</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
                 <input type="number"
                name="employee"
                data-endpoint="POSTapi-employees--employee--universal"
-               value="1"
+               value="12"
                data-component="url" hidden>
     <br>
 
@@ -2711,6 +2687,7 @@ fetch(url, {
             <h2 id="endpoints-GETapi-employees">Employees All</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of employees registered.</p>
@@ -2719,28 +2696,27 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/employees?site=voluptatem&amp;project=et&amp;department=saepe&amp;position=eaque" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/employees?site=veritatis&amp;project=in&amp;department=sit&amp;position=quos" \
+    --header "Authorization: Bearer 5VPfcdg6DZa6hve1Eb4a38k" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/employees"
 );
 
 const params = {
-    "site": "voluptatem",
-    "project": "et",
-    "department": "saepe",
-    "position": "eaque",
+    "site": "veritatis",
+    "project": "in",
+    "department": "sit",
+    "position": "quos",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer 5VPfcdg6DZa6hve1Eb4a38k",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -2748,8 +2724,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-employees">
@@ -2812,10 +2787,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-employees" data-method="GET"
       data-path="api/employees"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 5VPfcdg6DZa6hve1Eb4a38k","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-employees', this);">
     <h3>
@@ -2828,7 +2803,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-employees"
-                    onclick="cancelTryOut('GETapi-employees');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-employees');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -2839,13 +2814,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/employees</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-employees" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-employees"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="site"
                data-endpoint="GETapi-employees"
-               value="voluptatem"
+               value="veritatis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -2855,7 +2838,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-employees"
-               value="et"
+               value="in"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -2865,7 +2848,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-employees"
-               value="saepe"
+               value="sit"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -2875,7 +2858,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-employees"
-               value="eaque"
+               value="quos"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -2885,6 +2868,7 @@ fetch(url, {
             <h2 id="endpoints-GETapi-employees-all">Employees All</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of employees registered.</p>
@@ -2893,28 +2877,27 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/employees/all?site=eaque&amp;project=itaque&amp;department=et&amp;position=quia" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/employees/all?site=aut&amp;project=autem&amp;department=cum&amp;position=commodi" \
+    --header "Authorization: Bearer g53kh4ZEab61fcvV6eaP8Dd" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/employees/all"
 );
 
 const params = {
-    "site": "eaque",
-    "project": "itaque",
-    "department": "et",
-    "position": "quia",
+    "site": "aut",
+    "project": "autem",
+    "department": "cum",
+    "position": "commodi",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer g53kh4ZEab61fcvV6eaP8Dd",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -2922,8 +2905,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-employees-all">
@@ -2986,10 +2968,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-employees-all" data-method="GET"
       data-path="api/employees/all"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer g53kh4ZEab61fcvV6eaP8Dd","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-employees-all', this);">
     <h3>
@@ -3002,7 +2984,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-employees-all"
-                    onclick="cancelTryOut('GETapi-employees-all');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-employees-all');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -3013,13 +2995,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/employees/all</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-employees-all" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-employees-all"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="site"
                data-endpoint="GETapi-employees-all"
-               value="eaque"
+               value="aut"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -3029,7 +3019,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-employees-all"
-               value="itaque"
+               value="autem"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -3039,7 +3029,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-employees-all"
-               value="et"
+               value="cum"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -3049,7 +3039,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-employees-all"
-               value="quia"
+               value="commodi"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -3059,6 +3049,7 @@ fetch(url, {
             <h2 id="endpoints-GETapi-employees-actives">Employees Actives</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of employees actives. This is any employee without a termination.</p>
@@ -3067,28 +3058,27 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/employees/actives?site=omnis&amp;project=officia&amp;department=rem&amp;position=ab" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/employees/actives?site=porro&amp;project=eveniet&amp;department=quis&amp;position=sunt" \
+    --header "Authorization: Bearer v83Zb6g45fEkac6DdaPeh1V" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/employees/actives"
 );
 
 const params = {
-    "site": "omnis",
-    "project": "officia",
-    "department": "rem",
-    "position": "ab",
+    "site": "porro",
+    "project": "eveniet",
+    "department": "quis",
+    "position": "sunt",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer v83Zb6g45fEkac6DdaPeh1V",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -3096,8 +3086,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-employees-actives">
@@ -3160,10 +3149,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-employees-actives" data-method="GET"
       data-path="api/employees/actives"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer v83Zb6g45fEkac6DdaPeh1V","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-employees-actives', this);">
     <h3>
@@ -3176,7 +3165,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-employees-actives"
-                    onclick="cancelTryOut('GETapi-employees-actives');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-employees-actives');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -3187,13 +3176,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/employees/actives</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-employees-actives" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-employees-actives"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="site"
                data-endpoint="GETapi-employees-actives"
-               value="omnis"
+               value="porro"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -3203,7 +3200,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-employees-actives"
-               value="officia"
+               value="eveniet"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -3213,7 +3210,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-employees-actives"
-               value="rem"
+               value="quis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -3223,7 +3220,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-employees-actives"
-               value="ab"
+               value="sunt"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -3233,6 +3230,7 @@ fetch(url, {
             <h2 id="endpoints-GETapi-employees-recents">Employees Recents</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of recent employees. Recents are all active imployees plus any inactive employee with a termination date greater than 30 days ago.</p>
@@ -3241,28 +3239,27 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/employees/recents?site=necessitatibus&amp;project=veniam&amp;department=consequatur&amp;position=fugiat" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/employees/recents?site=illo&amp;project=ut&amp;department=ea&amp;position=magnam" \
+    --header "Authorization: Bearer E4cVe5D3kaZv61ha86bfPdg" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/employees/recents"
 );
 
 const params = {
-    "site": "necessitatibus",
-    "project": "veniam",
-    "department": "consequatur",
-    "position": "fugiat",
+    "site": "illo",
+    "project": "ut",
+    "department": "ea",
+    "position": "magnam",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer E4cVe5D3kaZv61ha86bfPdg",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -3270,8 +3267,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-employees-recents">
@@ -3334,10 +3330,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-employees-recents" data-method="GET"
       data-path="api/employees/recents"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer E4cVe5D3kaZv61ha86bfPdg","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-employees-recents', this);">
     <h3>
@@ -3350,7 +3346,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-employees-recents"
-                    onclick="cancelTryOut('GETapi-employees-recents');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-employees-recents');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -3361,13 +3357,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/employees/recents</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-employees-recents" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-employees-recents"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="site"
                data-endpoint="GETapi-employees-recents"
-               value="necessitatibus"
+               value="illo"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -3377,7 +3381,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-employees-recents"
-               value="veniam"
+               value="ut"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -3387,7 +3391,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-employees-recents"
-               value="consequatur"
+               value="ea"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -3397,7 +3401,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-employees-recents"
-               value="fugiat"
+               value="magnam"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -3407,6 +3411,7 @@ fetch(url, {
             <h2 id="endpoints-GETapi-holidays">Holidays Dates</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of holidays. If year is not especified in the query string, it will return all holidays for previous year, current year and futuristic holidays.</p>
@@ -3415,25 +3420,24 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/holidays?year=et" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/holidays?year=vel" \
+    --header "Authorization: Bearer b1Dea65hE64ZPafdc8kg3Vv" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/holidays"
 );
 
 const params = {
-    "year": "et",
+    "year": "vel",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer b1Dea65hE64ZPafdc8kg3Vv",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -3441,8 +3445,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-holidays">
@@ -3474,10 +3477,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-holidays" data-method="GET"
       data-path="api/holidays"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer b1Dea65hE64ZPafdc8kg3Vv","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-holidays', this);">
     <h3>
@@ -3490,7 +3493,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-holidays"
-                    onclick="cancelTryOut('GETapi-holidays');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-holidays');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -3501,13 +3504,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/holidays</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-holidays" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-holidays"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>year</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="year"
                data-endpoint="GETapi-holidays"
-               value="et"
+               value="vel"
                data-component="query" hidden>
     <br>
 <p>Limit the results to a specific year. Default to previous year. Example ?year=2021.</p>
@@ -3517,6 +3528,7 @@ fetch(url, {
             <h2 id="endpoints-GETapi-overnight_hours">Overnight Hours</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of all the overnight hours</p>
@@ -3525,27 +3537,26 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/overnight_hours?date=consequatur&amp;months=12&amp;days=20" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/overnight_hours?date=consequatur&amp;months=4&amp;days=2" \
+    --header "Authorization: Bearer fgad6a1c4835vEPZDe6kVhb" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/overnight_hours"
 );
 
 const params = {
     "date": "consequatur",
-    "months": "12",
-    "days": "20",
+    "months": "4",
+    "days": "2",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer fgad6a1c4835vEPZDe6kVhb",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -3553,8 +3564,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-overnight_hours">
@@ -3587,10 +3597,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-overnight_hours" data-method="GET"
       data-path="api/overnight_hours"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer fgad6a1c4835vEPZDe6kVhb","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-overnight_hours', this);">
     <h3>
@@ -3603,7 +3613,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-overnight_hours"
-                    onclick="cancelTryOut('GETapi-overnight_hours');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-overnight_hours');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -3614,7 +3624,15 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/overnight_hours</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-overnight_hours" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-overnight_hours"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>date</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -3630,7 +3648,7 @@ fetch(url, {
                 <input type="number"
                name="months"
                data-endpoint="GETapi-overnight_hours"
-               value="12"
+               value="4"
                data-component="query" hidden>
     <br>
 <p>Defines how many months back should the data limited to. Example ?months=2 will get data between current date and last two months.</p>
@@ -3640,7 +3658,7 @@ fetch(url, {
                 <input type="number"
                name="days"
                data-endpoint="GETapi-overnight_hours"
-               value="20"
+               value="2"
                data-component="query" hidden>
     <br>
 <p>Defines how many days back should the data limited to. Example ?days=2 will get data between current date and last two days.</p>
@@ -3650,6 +3668,7 @@ fetch(url, {
             <h2 id="endpoints-GETapi-notifications-unread">Notifications Unread</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Return a list of unread notifications for the authenticated user.</p>
@@ -3658,25 +3677,24 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/notifications/unread?max_items=2" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/notifications/unread?max_items=5" \
+    --header "Authorization: Bearer Z6ckdv3ae46a5DPEbgVh81f" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/notifications/unread"
 );
 
 const params = {
-    "max_items": "2",
+    "max_items": "5",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer Z6ckdv3ae46a5DPEbgVh81f",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -3684,8 +3702,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-notifications-unread">
@@ -3720,10 +3737,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-notifications-unread" data-method="GET"
       data-path="api/notifications/unread"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer Z6ckdv3ae46a5DPEbgVh81f","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-notifications-unread', this);">
     <h3>
@@ -3736,7 +3753,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-notifications-unread"
-                    onclick="cancelTryOut('GETapi-notifications-unread');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-notifications-unread');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -3747,13 +3764,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/notifications/unread</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-notifications-unread" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-notifications-unread"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>max_items</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
                 <input type="number"
                name="max_items"
                data-endpoint="GETapi-notifications-unread"
-               value="2"
+               value="5"
                data-component="query" hidden>
     <br>
 <p>Max amount of notifications to take. Default is 25.</p>
@@ -3763,6 +3788,7 @@ fetch(url, {
             <h2 id="endpoints-POSTapi-notifications-mark-all-as-read">Notifications Mark all as Read</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Cleans the unread notifications for the user</p>
@@ -3771,25 +3797,24 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/notifications/mark-all-as-read?max_items=15" \
+<pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/notifications/mark-all-as-read?max_items=17" \
+    --header "Authorization: Bearer 366DaZfcdeEhg5a1Pv4kVb8" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/notifications/mark-all-as-read"
 );
 
 const params = {
-    "max_items": "15",
+    "max_items": "17",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer 366DaZfcdeEhg5a1Pv4kVb8",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -3797,8 +3822,7 @@ const headers = {
 fetch(url, {
     method: "POST",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-POSTapi-notifications-mark-all-as-read">
@@ -3833,10 +3857,10 @@ fetch(url, {
 </span>
 <form id="form-POSTapi-notifications-mark-all-as-read" data-method="POST"
       data-path="api/notifications/mark-all-as-read"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 366DaZfcdeEhg5a1Pv4kVb8","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-notifications-mark-all-as-read', this);">
     <h3>
@@ -3849,7 +3873,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-POSTapi-notifications-mark-all-as-read"
-                    onclick="cancelTryOut('POSTapi-notifications-mark-all-as-read');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('POSTapi-notifications-mark-all-as-read');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -3860,13 +3884,21 @@ fetch(url, {
             <small class="badge badge-black">POST</small>
             <b><code>api/notifications/mark-all-as-read</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-POSTapi-notifications-mark-all-as-read" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-notifications-mark-all-as-read"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>max_items</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
                 <input type="number"
                name="max_items"
                data-endpoint="POSTapi-notifications-mark-all-as-read"
-               value="15"
+               value="17"
                data-component="query" hidden>
     <br>
 <p>Max amount of notifications to mark as read. Default is 25. This will also affect the amount of
@@ -3877,6 +3909,7 @@ unread notifications to return. Also, this will return the next batch of unread 
             <h2 id="endpoints-GETapi-notifications-show--notification-">Notification Details</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Show details for a user notification. This will also mark the given notification as read.</p>
@@ -3885,19 +3918,18 @@ unread notifications to return. Also, this will return the next batch of unread 
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/notifications/show/illo" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/notifications/show/voluptatem" \
+    --header "Authorization: Bearer Ea5eg6Z8chd4kDP6b3Vv1fa" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/notifications/show/illo"
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/notifications/show/voluptatem"
 );
 
 const headers = {
+    "Authorization": "Bearer Ea5eg6Z8chd4kDP6b3Vv1fa",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -3905,8 +3937,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-notifications-show--notification-">
@@ -3939,10 +3970,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-notifications-show--notification-" data-method="GET"
       data-path="api/notifications/show/{notification}"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer Ea5eg6Z8chd4kDP6b3Vv1fa","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-notifications-show--notification-', this);">
     <h3>
@@ -3955,7 +3986,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-notifications-show--notification-"
-                    onclick="cancelTryOut('GETapi-notifications-show--notification-');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-notifications-show--notification-');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -3966,13 +3997,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/notifications/show/{notification}</code></b>
         </p>
-                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-notifications-show--notification-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-notifications-show--notification-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <p>
                 <b><code>notification</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="notification"
                data-endpoint="GETapi-notifications-show--notification-"
-               value="illo"
+               value="voluptatem"
                data-component="url" hidden>
     <br>
 <p>Uuid of the stored notification</p>
@@ -3986,6 +4025,7 @@ fetch(url, {
             <h2 id="performances-GETapi-performances-clients">Performances Clients</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of clients information</p>
@@ -3994,19 +4034,18 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
+<pre><code class="language-bash">curl --request GET \
     --get "http://localhost:8000/api/performances/clients" \
+    --header "Authorization: Bearer 3vVD646Zeck1EahgbaP8d5f" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/performances/clients"
 );
 
 const headers = {
+    "Authorization": "Bearer 3vVD646Zeck1EahgbaP8d5f",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4014,8 +4053,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-performances-clients">
@@ -4051,10 +4089,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-performances-clients" data-method="GET"
       data-path="api/performances/clients"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 3vVD646Zeck1EahgbaP8d5f","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-clients', this);">
     <h3>
@@ -4067,7 +4105,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-performances-clients"
-                    onclick="cancelTryOut('GETapi-performances-clients');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-performances-clients');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -4078,11 +4116,20 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/performances/clients</code></b>
         </p>
-                    </form>
+                <p>
+            <label id="auth-GETapi-performances-clients" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-performances-clients"
+                                                                data-component="header"></label>
+        </p>
+                </form>
 
             <h2 id="performances-GETapi-performances-projects">Performances Projects</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of performances data for many months back.</p>
@@ -4091,19 +4138,18 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
+<pre><code class="language-bash">curl --request GET \
     --get "http://localhost:8000/api/performances/projects" \
+    --header "Authorization: Bearer kP4v6Dahcb5Eg6efZV83da1" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/performances/projects"
 );
 
 const headers = {
+    "Authorization": "Bearer kP4v6Dahcb5Eg6efZV83da1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4111,8 +4157,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-performances-projects">
@@ -4144,10 +4189,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-performances-projects" data-method="GET"
       data-path="api/performances/projects"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer kP4v6Dahcb5Eg6efZV83da1","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-projects', this);">
     <h3>
@@ -4160,7 +4205,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-performances-projects"
-                    onclick="cancelTryOut('GETapi-performances-projects');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-performances-projects');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -4171,11 +4216,20 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/performances/projects</code></b>
         </p>
-                    </form>
+                <p>
+            <label id="auth-GETapi-performances-projects" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-performances-projects"
+                                                                data-component="header"></label>
+        </p>
+                </form>
 
             <h2 id="performances-GETapi-performances-campaigns">Performances Campaigns</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of camaigns information</p>
@@ -4184,19 +4238,18 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
+<pre><code class="language-bash">curl --request GET \
     --get "http://localhost:8000/api/performances/campaigns" \
+    --header "Authorization: Bearer ve5agPd4Ec13Df86kbaZ6Vh" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/performances/campaigns"
 );
 
 const headers = {
+    "Authorization": "Bearer ve5agPd4Ec13Df86kbaZ6Vh",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4204,8 +4257,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-performances-campaigns">
@@ -4241,10 +4293,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-performances-campaigns" data-method="GET"
       data-path="api/performances/campaigns"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer ve5agPd4Ec13Df86kbaZ6Vh","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-campaigns', this);">
     <h3>
@@ -4257,7 +4309,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-performances-campaigns"
-                    onclick="cancelTryOut('GETapi-performances-campaigns');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-performances-campaigns');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -4268,11 +4320,20 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/performances/campaigns</code></b>
         </p>
-                    </form>
+                <p>
+            <label id="auth-GETapi-performances-campaigns" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-performances-campaigns"
+                                                                data-component="header"></label>
+        </p>
+                </form>
 
             <h2 id="performances-GETapi-performances-sites">Performances Sites</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of employees' sites.</p>
@@ -4281,19 +4342,18 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
+<pre><code class="language-bash">curl --request GET \
     --get "http://localhost:8000/api/performances/sites" \
+    --header "Authorization: Bearer e6g4ac35aZD1v8dEhkPf6bV" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/performances/sites"
 );
 
 const headers = {
+    "Authorization": "Bearer e6g4ac35aZD1v8dEhkPf6bV",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4301,8 +4361,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-performances-sites">
@@ -4333,10 +4392,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-performances-sites" data-method="GET"
       data-path="api/performances/sites"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer e6g4ac35aZD1v8dEhkPf6bV","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-sites', this);">
     <h3>
@@ -4349,7 +4408,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-performances-sites"
-                    onclick="cancelTryOut('GETapi-performances-sites');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-performances-sites');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -4360,11 +4419,20 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/performances/sites</code></b>
         </p>
-                    </form>
+                <p>
+            <label id="auth-GETapi-performances-sites" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-performances-sites"
+                                                                data-component="header"></label>
+        </p>
+                </form>
 
             <h2 id="performances-GETapi-performances-supervisors">Performances Supervisors</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of employees' supervisors.</p>
@@ -4373,19 +4441,18 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
+<pre><code class="language-bash">curl --request GET \
     --get "http://localhost:8000/api/performances/supervisors" \
+    --header "Authorization: Bearer P4adfvgV56c1aDe63bkEZ8h" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/performances/supervisors"
 );
 
 const headers = {
+    "Authorization": "Bearer P4adfvgV56c1aDe63bkEZ8h",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4393,8 +4460,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-performances-supervisors">
@@ -4426,10 +4492,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-performances-supervisors" data-method="GET"
       data-path="api/performances/supervisors"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer P4adfvgV56c1aDe63bkEZ8h","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-supervisors', this);">
     <h3>
@@ -4442,7 +4508,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-performances-supervisors"
-                    onclick="cancelTryOut('GETapi-performances-supervisors');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-performances-supervisors');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -4453,11 +4519,20 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/performances/supervisors</code></b>
         </p>
-                    </form>
+                <p>
+            <label id="auth-GETapi-performances-supervisors" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-performances-supervisors"
+                                                                data-component="header"></label>
+        </p>
+                </form>
 
             <h2 id="performances-GETapi-performances-downtime_reasons">Performances Downtime Reasons</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of downtime reasons</p>
@@ -4466,19 +4541,18 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
+<pre><code class="language-bash">curl --request GET \
     --get "http://localhost:8000/api/performances/downtime_reasons" \
+    --header "Authorization: Bearer vfdah6ka34cPZ8EeD651gVb" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/performances/downtime_reasons"
 );
 
 const headers = {
+    "Authorization": "Bearer vfdah6ka34cPZ8EeD651gVb",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4486,8 +4560,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-performances-downtime_reasons">
@@ -4518,10 +4591,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-performances-downtime_reasons" data-method="GET"
       data-path="api/performances/downtime_reasons"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer vfdah6ka34cPZ8EeD651gVb","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-downtime_reasons', this);">
     <h3>
@@ -4534,7 +4607,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-performances-downtime_reasons"
-                    onclick="cancelTryOut('GETapi-performances-downtime_reasons');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-performances-downtime_reasons');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -4545,11 +4618,20 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/performances/downtime_reasons</code></b>
         </p>
-                    </form>
+                <p>
+            <label id="auth-GETapi-performances-downtime_reasons" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-performances-downtime_reasons"
+                                                                data-component="header"></label>
+        </p>
+                </form>
 
             <h2 id="performances-GETapi-performances-employees">Performances Employees</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of employees formated for downtimes</p>
@@ -4558,28 +4640,27 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/performances/employees?site=molestias&amp;project=tenetur&amp;department=numquam&amp;position=deserunt" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/performances/employees?site=sed&amp;project=non&amp;department=ex&amp;position=non" \
+    --header "Authorization: Bearer c4vk68aZPegEbh3fVd61aD5" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/performances/employees"
 );
 
 const params = {
-    "site": "molestias",
-    "project": "tenetur",
-    "department": "numquam",
-    "position": "deserunt",
+    "site": "sed",
+    "project": "non",
+    "department": "ex",
+    "position": "non",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer c4vk68aZPegEbh3fVd61aD5",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4587,8 +4668,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-performances-employees">
@@ -4622,10 +4702,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-performances-employees" data-method="GET"
       data-path="api/performances/employees"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer c4vk68aZPegEbh3fVd61aD5","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-employees', this);">
     <h3>
@@ -4638,7 +4718,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-performances-employees"
-                    onclick="cancelTryOut('GETapi-performances-employees');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-performances-employees');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -4649,13 +4729,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/performances/employees</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-performances-employees" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-performances-employees"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="site"
                data-endpoint="GETapi-performances-employees"
-               value="molestias"
+               value="sed"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -4665,7 +4753,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-performances-employees"
-               value="tenetur"
+               value="non"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Santiago%</p>
@@ -4675,7 +4763,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-performances-employees"
-               value="numquam"
+               value="ex"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Santiago%</p>
@@ -4685,7 +4773,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-performances-employees"
-               value="deserunt"
+               value="non"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Santiago%</p>
@@ -4695,6 +4783,7 @@ fetch(url, {
             <h2 id="performances-GETapi-performances-downtimes">Performances Downtimes</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of dowtimes</p>
@@ -4703,33 +4792,32 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/performances/downtimes?campaign=explicabo&amp;source=corporis&amp;employee=sit&amp;supervisor=in&amp;supervisor_employee=ab&amp;project_campaign=magnam&amp;project_employee=corporis&amp;site=minima&amp;client=qui" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/performances/downtimes?campaign=alias&amp;source=mollitia&amp;employee=optio&amp;supervisor=nihil&amp;supervisor_employee=aut&amp;project_campaign=eveniet&amp;project_employee=quos&amp;site=repudiandae&amp;client=id" \
+    --header "Authorization: Bearer V84agEaZc3fD516ebh6kPdv" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/performances/downtimes"
 );
 
 const params = {
-    "campaign": "explicabo",
-    "source": "corporis",
-    "employee": "sit",
-    "supervisor": "in",
-    "supervisor_employee": "ab",
-    "project_campaign": "magnam",
-    "project_employee": "corporis",
-    "site": "minima",
-    "client": "qui",
+    "campaign": "alias",
+    "source": "mollitia",
+    "employee": "optio",
+    "supervisor": "nihil",
+    "supervisor_employee": "aut",
+    "project_campaign": "eveniet",
+    "project_employee": "quos",
+    "site": "repudiandae",
+    "client": "id",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer V84agEaZc3fD516ebh6kPdv",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4737,8 +4825,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-performances-downtimes">
@@ -4776,10 +4863,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-performances-downtimes" data-method="GET"
       data-path="api/performances/downtimes"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer V84agEaZc3fD516ebh6kPdv","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-downtimes', this);">
     <h3>
@@ -4792,7 +4879,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-performances-downtimes"
-                    onclick="cancelTryOut('GETapi-performances-downtimes');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-performances-downtimes');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -4803,13 +4890,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/performances/downtimes</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-performances-downtimes" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-performances-downtimes"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>campaign</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="campaign"
                data-endpoint="GETapi-performances-downtimes"
-               value="explicabo"
+               value="alias"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific campaign. Example ?campaign=%Santiago%</p>
@@ -4819,7 +4914,7 @@ fetch(url, {
                 <input type="text"
                name="source"
                data-endpoint="GETapi-performances-downtimes"
-               value="corporis"
+               value="mollitia"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific source. Example ?source=%Santiago%</p>
@@ -4829,7 +4924,7 @@ fetch(url, {
                 <input type="text"
                name="employee"
                data-endpoint="GETapi-performances-downtimes"
-               value="sit"
+               value="optio"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific employee. Example ?employee=%Santiago%</p>
@@ -4839,7 +4934,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor"
                data-endpoint="GETapi-performances-downtimes"
-               value="in"
+               value="nihil"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor. Example ?supervisor=%Santiago%</p>
@@ -4849,7 +4944,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor_employee"
                data-endpoint="GETapi-performances-downtimes"
-               value="ab"
+               value="aut"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%</p>
@@ -4859,7 +4954,7 @@ fetch(url, {
                 <input type="text"
                name="project_campaign"
                data-endpoint="GETapi-performances-downtimes"
-               value="magnam"
+               value="eveniet"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_campaign. Example ?project_campaign=%Santiago%</p>
@@ -4869,7 +4964,7 @@ fetch(url, {
                 <input type="text"
                name="project_employee"
                data-endpoint="GETapi-performances-downtimes"
-               value="corporis"
+               value="quos"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_employee. Example ?project_employee=%Santiago%</p>
@@ -4879,7 +4974,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-performances-downtimes"
-               value="minima"
+               value="repudiandae"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -4889,7 +4984,7 @@ fetch(url, {
                 <input type="text"
                name="client"
                data-endpoint="GETapi-performances-downtimes"
-               value="qui"
+               value="id"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific client. Example ?client=%Pub%</p>
@@ -4899,6 +4994,7 @@ fetch(url, {
             <h2 id="performances-GETapi-performances-login_names">Performances Login Names</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Return a collection of login names.</p>
@@ -4907,25 +5003,24 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/performances/login_names?recents=quis" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/performances/login_names?recents=minima" \
+    --header "Authorization: Bearer PfZEDcVvh6a415b6k3gda8e" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/performances/login_names"
 );
 
 const params = {
-    "recents": "quis",
+    "recents": "minima",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer PfZEDcVvh6a415b6k3gda8e",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4933,8 +5028,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-performances-login_names">
@@ -4963,10 +5057,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-performances-login_names" data-method="GET"
       data-path="api/performances/login_names"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer PfZEDcVvh6a415b6k3gda8e","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-login_names', this);">
     <h3>
@@ -4979,7 +5073,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-performances-login_names"
-                    onclick="cancelTryOut('GETapi-performances-login_names');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-performances-login_names');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -4990,13 +5084,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/performances/login_names</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-performances-login_names" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-performances-login_names"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>recents</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="recents"
                data-endpoint="GETapi-performances-login_names"
-               value="quis"
+               value="minima"
                data-component="query" hidden>
     <br>
 <p>optional When present, only login names for employees labeled as recents will be included. Default is true. Example ?recents=true</p>
@@ -5006,6 +5108,7 @@ fetch(url, {
             <h2 id="performances-GETapi-performances-schedules">Performances Schedules</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of employees' schedules, filtered by many days ago.</p>
@@ -5014,25 +5117,24 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/performances/schedules?daysago=2" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/performances/schedules?daysago=15" \
+    --header "Authorization: Bearer ZafhEV635gc186b4PeavdkD" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/performances/schedules"
 );
 
 const params = {
-    "daysago": "2",
+    "daysago": "15",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer ZafhEV635gc186b4PeavdkD",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -5040,8 +5142,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-performances-schedules">
@@ -5075,10 +5176,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-performances-schedules" data-method="GET"
       data-path="api/performances/schedules"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer ZafhEV635gc186b4PeavdkD","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-schedules', this);">
     <h3>
@@ -5091,7 +5192,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-performances-schedules"
-                    onclick="cancelTryOut('GETapi-performances-schedules');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-performances-schedules');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -5102,13 +5203,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/performances/schedules</code></b>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-performances-schedules" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-performances-schedules"
+                                                                data-component="header"></label>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>daysago</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
                 <input type="number"
                name="daysago"
                data-endpoint="GETapi-performances-schedules"
-               value="2"
+               value="15"
                data-component="query" hidden>
     <br>
 <p>The amount of days to filter back. Default 90. Example daysago=45</p>
@@ -5118,6 +5227,7 @@ fetch(url, {
             <h2 id="performances-GETapi-performances-supervisors-actives">Performances Active Supervisors</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of employees' Actives supervisors.</p>
@@ -5126,19 +5236,18 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
+<pre><code class="language-bash">curl --request GET \
     --get "http://localhost:8000/api/performances/supervisors/actives" \
+    --header "Authorization: Bearer abhc8v5dgZEk166De3Va4fP" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+<pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/performances/supervisors/actives"
 );
 
 const headers = {
+    "Authorization": "Bearer abhc8v5dgZEk166De3Va4fP",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -5146,8 +5255,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-performances-supervisors-actives">
@@ -5179,10 +5287,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-performances-supervisors-actives" data-method="GET"
       data-path="api/performances/supervisors/actives"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer abhc8v5dgZEk166De3Va4fP","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-supervisors-actives', this);">
     <h3>
@@ -5195,7 +5303,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-performances-supervisors-actives"
-                    onclick="cancelTryOut('GETapi-performances-supervisors-actives');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-performances-supervisors-actives');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -5206,11 +5314,20 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/performances/supervisors/actives</code></b>
         </p>
-                    </form>
+                <p>
+            <label id="auth-GETapi-performances-supervisors-actives" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-performances-supervisors-actives"
+                                                                data-component="header"></label>
+        </p>
+                </form>
 
             <h2 id="performances-GETapi-performances-performance_data-last--many--months">Performances Data</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Collection of performances data for many months back.</p>
@@ -5219,33 +5336,32 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/performances/performance_data/last/3/months?campaign=explicabo&amp;employee=voluptates&amp;supervisor=tempore&amp;project_campaign=consequatur&amp;project_employee=reprehenderit&amp;site=sed&amp;source=voluptatem&amp;client=nobis&amp;supervisor_employee=quis" \
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/performances/performance_data/last/16/months?campaign=numquam&amp;employee=asperiores&amp;supervisor=autem&amp;project_campaign=recusandae&amp;project_employee=dignissimos&amp;site=laboriosam&amp;source=porro&amp;client=delectus&amp;supervisor_employee=et" \
+    --header "Authorization: Bearer c8gE3dZb5vfhPV41kaeDa66" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/performances/performance_data/last/3/months"
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/performances/performance_data/last/16/months"
 );
 
 const params = {
-    "campaign": "explicabo",
-    "employee": "voluptates",
-    "supervisor": "tempore",
-    "project_campaign": "consequatur",
-    "project_employee": "reprehenderit",
-    "site": "sed",
-    "source": "voluptatem",
-    "client": "nobis",
-    "supervisor_employee": "quis",
+    "campaign": "numquam",
+    "employee": "asperiores",
+    "supervisor": "autem",
+    "project_campaign": "recusandae",
+    "project_employee": "dignissimos",
+    "site": "laboriosam",
+    "source": "porro",
+    "client": "delectus",
+    "supervisor_employee": "et",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer c8gE3dZb5vfhPV41kaeDa66",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -5253,8 +5369,7 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
+}).then(response =&gt; response.json());</code></pre>
 </span>
 
 <span id="example-responses-GETapi-performances-performance_data-last--many--months">
@@ -5323,10 +5438,10 @@ fetch(url, {
 </span>
 <form id="form-GETapi-performances-performance_data-last--many--months" data-method="GET"
       data-path="api/performances/performance_data/last/{many}/months"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer c8gE3dZb5vfhPV41kaeDa66","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-performance_data-last--many--months', this);">
     <h3>
@@ -5339,7 +5454,7 @@ fetch(url, {
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-canceltryout-GETapi-performances-performance_data-last--many--months"
-                    onclick="cancelTryOut('GETapi-performances-performance_data-last--many--months');" hidden>Cancel 🛑
+                    onclick="cancelTryOut('GETapi-performances-performance_data-last--many--months');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
@@ -5350,13 +5465,21 @@ fetch(url, {
             <small class="badge badge-green">GET</small>
             <b><code>api/performances/performance_data/last/{many}/months</code></b>
         </p>
-                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                <p>
+            <label id="auth-GETapi-performances-performance_data-last--many--months" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-performances-performance_data-last--many--months"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <p>
                 <b><code>many</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
                 <input type="number"
                name="many"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="3"
+               value="16"
                data-component="url" hidden>
     <br>
 <p>The amount of months back to filter data. Example /performances/performance_data/last/3/months</p>
@@ -5367,7 +5490,7 @@ fetch(url, {
                 <input type="text"
                name="campaign"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="explicabo"
+               value="numquam"
                data-component="query" hidden>
     <br>
 <p>Filter data by campaign name. Example ?campaign=%POL-%.</p>
@@ -5377,7 +5500,7 @@ fetch(url, {
                 <input type="text"
                name="employee"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="voluptates"
+               value="asperiores"
                data-component="query" hidden>
     <br>
 <p>Filter data by employee name. Example ?employee=%Yismen Jore%.</p>
@@ -5387,7 +5510,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="tempore"
+               value="autem"
                data-component="query" hidden>
     <br>
 <p>Filter data by supervisor name. Example ?supervisor=%Yismen Jore%.</p>
@@ -5397,7 +5520,7 @@ fetch(url, {
                 <input type="text"
                name="project_campaign"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="consequatur"
+               value="recusandae"
                data-component="query" hidden>
     <br>
 <p>Filter data by project_campaign name. Example ?project_campaign=%blackhawk%.</p>
@@ -5407,7 +5530,7 @@ fetch(url, {
                 <input type="text"
                name="project_employee"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="reprehenderit"
+               value="dignissimos"
                data-component="query" hidden>
     <br>
 <p>Filter data by project_employee name. Example ?project_campaign=%blackhawk%.</p>
@@ -5417,7 +5540,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="sed"
+               value="laboriosam"
                data-component="query" hidden>
     <br>
 <p>Filter data by site name. Example ?site=%Santiago HQ%.</p>
@@ -5427,7 +5550,7 @@ fetch(url, {
                 <input type="text"
                name="source"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="voluptatem"
+               value="porro"
                data-component="query" hidden>
     <br>
 <p>Filter data by source name. Example ?source=%Santiago HQ%.</p>
@@ -5437,7 +5560,7 @@ fetch(url, {
                 <input type="text"
                name="client"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="nobis"
+               value="delectus"
                data-component="query" hidden>
     <br>
 <p>Filter data by client name. Example ?client=%blackhawk%.</p>
@@ -5447,7 +5570,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor_employee"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="quis"
+               value="et"
                data-component="query" hidden>
     <br>
 <p>Filter data by supervisor_employee name. Example ?supervisor_employee=%Yismen Jore%.</p>
@@ -5460,10 +5583,16 @@ fetch(url, {
     </div>
     <div class="dark-box">
                     <div class="lang-selector">
-                                    <button type="button" class="lang-button" data-language-name="bash">bash</button>
-                                    <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                                    <a href="#" data-language-name="bash">bash</a>
+                                    <a href="#" data-language-name="javascript">javascript</a>
                             </div>
             </div>
 </div>
+<script>
+    $(function () {
+        var exampleLanguages = ["bash","javascript"];
+        setupLanguages(exampleLanguages);
+    });
+</script>
 </body>
 </html>

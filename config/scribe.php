@@ -210,7 +210,7 @@ return [
          * Set this to true if your API should be authenticated by default. If so, you must also set `enabled` (above) to true.
          * You can then use @unauthenticated or @authenticated on individual endpoints to change their status from the default.
          */
-        'default' => false,
+        'default' => true,
 
         /*
          * Where is the auth value meant to be sent in a request?
@@ -312,7 +312,7 @@ INTRO,
      * - 'logo' => 'img/logo.png' // for `laravel` type
      *
      */
-    'logo' => public_path('images/logo.png'),
+    'logo' => 'images/logo.png',
 
     /*
      * If you would like the package to generate the same example values for parameters on each run,
