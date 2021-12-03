@@ -139,21 +139,6 @@ trait EmployeeRelationships
         return $this->hasMany('App\OvernightHour');
     }
 
-    public function payrollAdditionals()
-    {
-        return $this->hasMany('App\PayrollAdditional');
-    }
-
-    public function payrollDiscounts()
-    {
-        return $this->hasMany('App\PayrollDiscount');
-    }
-
-    public function payrollIncentives()
-    {
-        return $this->hasMany('App\PayrollIncentive');
-    }
-
     public function universal()
     {
         return $this->hasOne('App\Universal');

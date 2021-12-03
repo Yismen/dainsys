@@ -4,7 +4,7 @@ namespace Tests\Feature\HumanResources;
 
 use App\Employee;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Maatwebsite\Excel\Facades\Excel;
 use Tests\TestCase;
 
 class DGT4ControllerTest extends TestCase
@@ -100,19 +100,19 @@ class DGT4ControllerTest extends TestCase
     }
 
     /** @test */
-    // public function it_downloads_dgt4_report()
-    // {
-    //     $employee_hired_this_year = factory(Employee::class)->create(['hire_date' => now()]);
-    //     $employee_hired_last_year = factory(Employee::class)->create(['hire_date' => now()->subYear()]);
-    //     $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
+    public function it_downloads_dgt4_report()
+    {
+        $this->withoutExceptionHandling();
+        Excel::fake();
+        $employee_hired_this_year = factory(Employee::class)->create(['hire_date' => now()]);
+        $employee_hired_last_year = factory(Employee::class)->create(['hire_date' => now()->subYear()]);
+        $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
 
-    //     $this->get(route('admin.human_resources.dgt4.download', [
-    //         'year' => now()->year
-    //     ]))
-    //         ->assertOk()
-    //         ->assertViewIs('human_resources.reports.dgt4')
-    //         ->assertSee($employee_hired_this_year->full_name)
-    //         // ->assertDontSee($employee_hired_last_year->full_name)
-    //     ;
-    // }
+        $this->get(route('admin.human_resources.dgt4.download', [
+            'year' => now()->year,
+        ]))
+            ->assertOk();
+
+        Excel::assertDownloaded('DGT4-' . now()->year . '.xlsx');
+    }
 }

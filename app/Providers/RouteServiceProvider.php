@@ -26,9 +26,9 @@ class RouteServiceProvider extends ServiceProvider
         Route::bind('afp', function ($id) {
             return \App\Afp::with(['employees' => function ($query) {
                 return $query->actives()
-                        ->sorted();
+                    ->sorted();
             }])
-            ->findOrFail($id);
+                ->findOrFail($id);
         });
 
         Route::bind('arss', function ($id) {
@@ -36,12 +36,12 @@ class RouteServiceProvider extends ServiceProvider
                 return $query->actives()
                     ->sorted();
             }])
-            ->findOrFail($id);
+                ->findOrFail($id);
         });
 
         Route::bind('attendance', function ($id) {
             return \App\Attendance::with(['employee', 'user', 'attendance_code'])
-            ->findOrFail($id);
+                ->findOrFail($id);
         });
 
         Route::bind('campaign', function ($id) {
@@ -74,72 +74,47 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::bind('employee', function ($id) {
             return \App\Employee::whereId($id)
-            ->with('address')
-            ->with('afp')
-            ->with('ars')
-            ->with('bankAccount.bank')
-            ->with('socialSecurity')
-            ->with('card')
-            ->with('gender')
-            ->with('loginNames')
-            ->with('marital')
-            ->with('nationality')
-            ->with('punch')
-            ->with('position')
-            ->with('project')
-            ->with(['termination' => function ($query) {
-                return $query->with(['terminationType', 'terminationReason']);
-            }])
-            ->with('supervisor')
-            ->with('site')
-            ->with('changes')
+                ->with('address')
+                ->with('afp')
+                ->with('ars')
+                ->with('bankAccount.bank')
+                ->with('socialSecurity')
+                ->with('card')
+                ->with('gender')
+                ->with('loginNames')
+                ->with('marital')
+                ->with('nationality')
+                ->with('punch')
+                ->with('position')
+                ->with('project')
+                ->with(['termination' => function ($query) {
+                    return $query->with(['terminationType', 'terminationReason']);
+                }])
+                ->with('supervisor')
+                ->with('site')
+                ->with('changes')
 
-            ->firstOrFail()
-            ->append([
-                'ars_list',
-                'afp_list',
-                'banks_list',
-                'departments_list',
-                'genders_list',
-                'has_kids_list',
-                'maritals_list',
-                'positions_list',
-                'projects_list',
-                'payment_types_list',
-                'payment_frequencies_list',
-                'nationalities_list',
-                'sites_list',
-                'supervisors_list',
-                'termination_type_list',
-                'termination_reason_list',
-                'is_universal',
-                'is_vip',
+                ->firstOrFail()
+                ->append([
+                    'ars_list',
+                    'afp_list',
+                    'banks_list',
+                    'departments_list',
+                    'genders_list',
+                    'has_kids_list',
+                    'maritals_list',
+                    'positions_list',
+                    'projects_list',
+                    'payment_types_list',
+                    'payment_frequencies_list',
+                    'nationalities_list',
+                    'sites_list',
+                    'supervisors_list',
+                    'termination_type_list',
+                    'termination_reason_list',
+                    'is_universal',
+                    'is_vip',
                 ]);
-        });
-
-        Route::bind('escalations_client', function ($slug) {
-            return \App\EscalClient::whereSlug($slug)
-                // ->with('user')
-                ->firstOrFail();
-        });
-
-        Route::bind('escalations_hour', function ($id) {
-            return \App\EscalationHour::with('user')
-                ->with('client')
-                ->findOrFail($id);
-        });
-
-        Route::bind('escalations_record', function ($id) {
-            return \App\EscalRecord::with('user')
-                ->with('escal_client')
-                ->findOrFail($id);
-        });
-
-        Route::bind('api/escalations_record', function ($tracking) {
-            return \App\EscalRecord::whereTracking($tracking)
-                ->with('user')
-                ->with('escal_client')
-                ->firstOrFail();
         });
 
         Route::bind('hour', function ($id) {
@@ -175,32 +150,9 @@ class RouteServiceProvider extends ServiceProvider
             }])->findOrFail($id);
         });
 
-        Route::bind('note', function ($slug) {
-            return \App\Note::whereSlug($slug)->firstOrFail();
-        });
-
-        Route::bind('payroll-additional', function ($id) {
-            return \App\PayrollAdditional::whereId($id)
-                ->with('employee')
+        Route::bind('payment_type', function ($id) {
+            return \App\PaymentType::whereId($id)
                 ->firstOrFail();
-        });
-
-        Route::bind('payroll-discount', function ($id) {
-            return \App\PayrollDiscount::whereId($id)
-                ->with('employee')
-                ->firstOrFail();
-        });
-
-        Route::bind('payroll-incentive', function ($id) {
-            return \App\PayrollIncentive::whereId($id)
-                ->with('employee')
-                ->firstOrFail();
-        });
-
-        Route::bind('payrolls_summary', function ($id) {
-            return \App\PayrollSummary::with('employee.bankAccount')
-                ->with('employee.position.department')
-                ->findOrFail($id);
         });
 
         Route::bind('performance', function ($id) {
@@ -211,8 +163,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('permission', function ($name) {
-            return \App\Permission::
-                whereName($name)
+            return \App\Permission::whereName($name)
                 ->with('roles')
                 ->firstOrFail()->append('roles-list');
         });
@@ -235,7 +186,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::bind('project', function ($id) {
             return \App\Project::with(['employees' => function ($query) {
                 return $query->actives()
-                        ->sorted();
+                    ->sorted();
             }])
                 ->findOrFail($id);
         });
@@ -244,11 +195,6 @@ class RouteServiceProvider extends ServiceProvider
             return \App\Punch::wherePunch($punches)
                 ->with('employee')
                 ->firstOrFail();
-        });
-
-        Route::bind('quality_score', function ($id) {
-            return \App\QualityScore::with('auditor', 'client', 'employee')
-                ->findOrFail($id);
         });
 
         Route::bind('role', function ($role) {
@@ -285,9 +231,9 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::bind('user', function ($id) {
             return \App\User::whereId($id)
-            ->with('roles.permissions')
-            ->with('settings')
-            ->firstOrFail()->append('roles-list');
+                ->with('roles.permissions')
+                ->with('settings')
+                ->firstOrFail()->append('roles-list');
         });
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\HumanResources;
 
+use App\Exports\DGT4Export;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\HumanResources\Employees\Reports;
@@ -19,7 +20,7 @@ class DGT4Controller extends Controller
         $this->validate($request, [
             'year' => 'required|integer',
             'month' => 'required|integer|between:1,12',
-            ]);
+        ]);
 
         $results = $report->dgt4($request->year, $request->month)->get();
 
@@ -28,16 +29,12 @@ class DGT4Controller extends Controller
         return view('human_resources.reports.dgt4', compact('results'));
     }
 
-    public function dgt4ToExcel(Request $request, Reports $report)
+    public function excel(Request $request, Reports $report)
     {
-        $results = $report->dgt4($request->year, $request->month)->get();
+        $file_name = 'DGT4-' . request('year') . '.xlsx';
 
         $request->flash();
 
-        Excel::create('DGT4-' . $request->year, function ($excel) use ($results) {
-            $excel->sheet('DGT4', function ($sheet) use ($results) {
-                $sheet->loadView('human_resources.reports.dgt4_results', compact('results'));
-            });
-        })->download('xlsx');
+        return Excel::download(DGT4Export::class, $file_name);
     }
 }

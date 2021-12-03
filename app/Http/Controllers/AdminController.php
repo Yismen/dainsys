@@ -20,15 +20,4 @@ class AdminController extends Controller
 
         return redirect()->route('admin.dashboards');
     }
-
-    public function markAllNotificationsAsReadForUser()
-    {
-
-        foreach (auth()->user()->unreadNotifications as $notification) {
-            $notification->markAsRead();
-        }
-
-        Cache::flush();
-        return redirect()->back();
-    }
 }
