@@ -101,16 +101,18 @@ class PerformanceImportController extends Controller
      */
     public function destroy()
     {
-        $performances = PerformanceImport::where('date', request('date'));
+        $has_file_name = request('file_name') && request('file_name') !== 'null';
 
-        $performances = request('file_name') && request('file_name') !== 'null' ?
-            $performances->where('file_name', request('file_name')) : $performances->whereNull('file_name');
+        $performances = PerformanceImport::query()
+            ->where('date', request('date'))
+            ->when($has_file_name, function ($query) {
+                $query->where('file_name', request('file_name'));
+            }, function ($query) {
+                $query->whereNull('file_name');
+            })
+            ->get();
 
-        $performances = $performances->get();
-
-        foreach ($performances as $performance) {
-            $performance->delete();
-        }
+        $performances->each->delete();
 
         return ['status' => 'sucess', 'message' => 'Performances Deleted', 'data' => $performances];
     }

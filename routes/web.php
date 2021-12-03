@@ -116,8 +116,10 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::resource('payment_types', 'PaymentTypesController');
 
     Route::get('performances_import/by_date/{perf_date}', 'PerformanceImportController@show')->name('performances_import.by_date');
-    Route::get('/performances_import/mass_delete', 'PerformanceImportController@confirmDestroy');
-    Route::resource('performances_import', 'PerformanceImportController')->except(['show', 'edit', 'update']);
+    Route::get('/performances_import/mass_delete', 'PerformanceImportController@confirmDestroy')->name('performances_import.confirm_destroy');
+    Route::resource('performances_import', 'PerformanceImportController')
+        ->except(['show', 'edit', 'update'])
+        ->names('performances_import');
 
     Route::resource('performances', 'PerformanceController')
         ->except('create', 'store');

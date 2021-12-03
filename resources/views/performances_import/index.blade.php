@@ -1,5 +1,5 @@
 @inject('layout', 'App\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Import Perforces Data', 'page_description'=>'description'])
+@extends('layouts.'.$layout->app(), ['page_header'=>'Import Performances Data', 'page_description'=>'description'])
 
 @section('content')
     <div class="container-fluid">
