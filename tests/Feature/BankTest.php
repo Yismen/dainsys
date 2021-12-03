@@ -82,7 +82,6 @@ class BankTest extends TestCase
     /** @test */
     public function it_requires_a_name_to_create_a_bank()
     {
-
         $this->actingAs($this->userWithPermission('create-banks'))
             ->post(route('admin.banks.store'), $this->formAttributes(['name' => '']))
             ->assertSessionHasErrors('name');
@@ -110,7 +109,7 @@ class BankTest extends TestCase
 
         $this->actingAs($this->userWithPermission('edit-banks'))
             ->get(route('admin.banks.edit', $bank->id))
-            ->assertSee('Edit Bank '.$bank->name);
+            ->assertSee('Edit Bank ' . $bank->name);
     }
 
     /** @test */

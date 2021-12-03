@@ -26,7 +26,7 @@ class Supervisor extends Model
 
     public function getStatusAttribute()
     {
-        return $this->active ? "Active" : "Inactive";
+        return $this->active ? 'Active' : 'Inactive';
     }
 
     public function setNameAttribute($name)

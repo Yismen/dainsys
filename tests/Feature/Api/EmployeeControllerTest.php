@@ -24,42 +24,42 @@ class EmployeeControllerTest extends TestCase
             ->assertJsonStructure([
                 'data' => [
                     '*' => [
-                        "id",
-                        "first_name",
-                        "second_first_name",
-                        "last_name",
-                        "second_last_name",
-                        "full_name",
-                        "hire_date",
-                        "personal_id",
-                        "passport",
-                        "date_of_birth",
-                        "cellphone_number",
-                        "secondary_phone",
-                        "site",
-                        "project",
-                        "position",
-                        "salary",
-                        "salary_type",
-                        "pay_per_hours",
-                        "department",
-                        "supervisor",
-                        "gender",
-                        "marital",
-                        "ars",
-                        "afp",
-                        "nationality",
-                        "has_kids",
-                        "photo",
-                        "active",
-                        "status",
-                        "punch",
-                        "account_number",
-                        "is_vip",
-                        "is_universal",
-                        "termination_date",
-                    ]
-                ]
+                        'id',
+                        'first_name',
+                        'second_first_name',
+                        'last_name',
+                        'second_last_name',
+                        'full_name',
+                        'hire_date',
+                        'personal_id',
+                        'passport',
+                        'date_of_birth',
+                        'cellphone_number',
+                        'secondary_phone',
+                        'site',
+                        'project',
+                        'position',
+                        'salary',
+                        'salary_type',
+                        'pay_per_hours',
+                        'department',
+                        'supervisor',
+                        'gender',
+                        'marital',
+                        'ars',
+                        'afp',
+                        'nationality',
+                        'has_kids',
+                        'photo',
+                        'active',
+                        'status',
+                        'punch',
+                        'account_number',
+                        'is_vip',
+                        'is_universal',
+                        'termination_date',
+                    ],
+                ],
             ]);
     }
 
@@ -107,11 +107,11 @@ class EmployeeControllerTest extends TestCase
             ->assertJsonCount(1, 'data')
             ->assertJsonFragment([
                 'first_name' => $recent->first_name,
-                'first_name' => $recent->first_name
+                'first_name' => $recent->first_name,
             ])
             ->assertJsonMissing([
                 'first_name' => $not_recent->first_name,
-                'last_name' => $not_recent->last_name
+                'last_name' => $not_recent->last_name,
             ]);
     }
 }

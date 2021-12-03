@@ -24,7 +24,6 @@ abstract class PoliticalMailBase extends Mailable
         $this->temporary_mail_attachment = $filename;
         $this->report_name = $report_name;
 
-        
         foreach ($distro as $recipient) {
             $this->to($recipient);
         }
@@ -47,7 +46,7 @@ abstract class PoliticalMailBase extends Mailable
         return array_merge([
             'from' => 'yjorge@eccocorpbpo.com',
             'bcc' => 'yjorge@eccocorpbpo.com',
-            'view' => 'emails.political'
+            'view' => 'emails.political',
         ], $defaults);
     }
 }

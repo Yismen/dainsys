@@ -16,6 +16,6 @@ class BecauseFlashMail extends BecauseBaseMail
             ->bcc('yjorge@eccocorpbpo.com')
             ->view('emails.capillus')
             ->attachFromStorage($this->temporary_mail_attachment)
-            ->subject("KNYC.E Flash Report - Because");
+            ->subject('KNYC.E Flash Report - Because');
     }
 }

@@ -5,7 +5,6 @@ namespace Tests\Feature\Supervisors;
 use App\Supervisor;
 use App\SupervisorUser;
 use App\User;
-use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -24,7 +23,7 @@ class FormValidationTest extends TestCase
         $supervisor_user = SupervisorUser::where('user_id', $user->id)
             ->where('supervisor_id', $supervisor->id)
             ->first()->toArray();
-        
+
         $this->actingAs($this->userWithPermission('create-supervisor-users'))
             ->post(route('admin.supervisor_users.store'), array_merge($supervisor_user, ['supervisor_id' => '']))
             ->assertSessionHasErrors('supervisor_id');
@@ -43,9 +42,9 @@ class FormValidationTest extends TestCase
         $supervisor_user = SupervisorUser::where('user_id', $user->id)
             ->where('supervisor_id', $supervisor->id)
             ->first()->toArray();
-        
+
         $this->actingAs($this->userWithPermission('create-supervisor-users'))
-            ->post(route('admin.supervisor_users.store'),  ['supervisor_id' => 120])
+            ->post(route('admin.supervisor_users.store'), ['supervisor_id' => 120])
             ->assertSessionHasErrors('supervisor_id');
 
         $this->actingAs($this->userWithPermission('edit-supervisor-users'))
@@ -62,7 +61,7 @@ class FormValidationTest extends TestCase
         $supervisor_user = SupervisorUser::where('user_id', $user->id)
             ->where('supervisor_id', $supervisor->id)
             ->first()->toArray();
-        
+
         $this->actingAs($this->userWithPermission('create-supervisor-users'))
             ->post(route('admin.supervisor_users.store'), array_merge($supervisor_user, ['user_id' => '']))
             ->assertSessionHasErrors('user_id');
@@ -81,9 +80,9 @@ class FormValidationTest extends TestCase
         $supervisor_user = SupervisorUser::where('user_id', $user->id)
             ->where('supervisor_id', $supervisor->id)
             ->first()->toArray();
-        
+
         $this->actingAs($this->userWithPermission('create-supervisor-users'))
-            ->post(route('admin.supervisor_users.store'),  ['user_id' => 120])
+            ->post(route('admin.supervisor_users.store'), ['user_id' => 120])
             ->assertSessionHasErrors('user_id');
 
         $this->actingAs($this->userWithPermission('edit-supervisor-users'))

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Employee;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\Employees as EmployeesExport;
@@ -13,6 +12,7 @@ class ExportController extends Controller
     {
         $this->middleware('authorize:view-employees');
     }
+
     /**
      * Allows to export employees to excel by status
      *

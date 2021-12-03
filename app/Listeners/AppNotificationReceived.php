@@ -5,7 +5,6 @@ namespace App\Listeners;
 use App\Events\UserAppNotificationSent;
 use Illuminate\Notifications\Events\NotificationSent;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Log;
 
 class AppNotificationReceived
 {
@@ -16,7 +15,6 @@ class AppNotificationReceived
      */
     public function __construct()
     {
-        //
     }
 
     /**

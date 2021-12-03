@@ -21,7 +21,7 @@ class CapillusCallsTypeResultsSheet implements FromView, WithTitle, WithEvents, 
     public function __construct($report_data)
     {
         $this->report_data = $report_data;
-        
+
         $this->count = count($this->report_data);
         $this->count = $this->count > 0 ? $this->count : 1;
     }
@@ -29,20 +29,19 @@ class CapillusCallsTypeResultsSheet implements FromView, WithTitle, WithEvents, 
     public function view(): View
     {
         return view('exports.capillus.calltype.results', [
-            'data' => $this->report_data
+            'data' => $this->report_data,
         ]);
     }
 
     public function title(): string
     {
-        return "Fax Calls";
+        return 'Fax Calls';
     }
 
     public function registerEvents(): array
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
@@ -52,7 +51,7 @@ class CapillusCallsTypeResultsSheet implements FromView, WithTitle, WithEvents, 
 
                 $this->sheet->setAutoFilter("A1:K{$this->count}");
                 $this->sheet->freezePane('D2');
-            }
+            },
         ];
     }
 
@@ -61,7 +60,7 @@ class CapillusCallsTypeResultsSheet implements FromView, WithTitle, WithEvents, 
         $this->sheet->getDefaultColumnDimension()->setWidth(10);
 
         $this->sheet->getRowDimension('1')->setRowHeight(32);
-                    
+
         foreach (range(1, 11) as $col) {
             $this->sheet->getColumnDimensionByColumn($col)
                 ->setAutoSize(true);

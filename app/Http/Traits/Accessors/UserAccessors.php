@@ -3,11 +3,9 @@
 namespace App\Http\Traits\Accessors;
 
 use App\Role;
-use Illuminate\Support\Facades\Cache;
 
 trait UserAccessors
 {
-
     public function getActiveListAttribute()
     {
         return ['1' => 'Active User', '0' => 'Inactive'];

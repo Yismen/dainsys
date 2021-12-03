@@ -18,7 +18,7 @@ class LoginNameResource extends JsonResource
             'employee_id' => $this->employee_id,
             'employee_name' => optional($this->employee)->full_name,
             'login' => $this->login,
-            'supervisor_id' => optional($this->employee->supervisor)->id
+            'supervisor_id' => optional($this->employee->supervisor)->id,
         ];
     }
 }

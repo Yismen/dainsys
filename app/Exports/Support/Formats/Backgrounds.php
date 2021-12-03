@@ -2,8 +2,6 @@
 
 namespace App\Exports\Support\Formats;
 
-use PhpOffice\PhpSpreadsheet\Style\Border;
-
 class Backgrounds
 {
     public static function apply(
@@ -17,8 +15,8 @@ class Backgrounds
                 'fillType' => $type,
                 'color' => [
                     'rgb' => $color,
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 }

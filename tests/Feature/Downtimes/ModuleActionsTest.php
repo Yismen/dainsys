@@ -3,11 +3,8 @@
 namespace Tests\Feature\Downtimes;
 
 use App\Downtime;
-use App\DowntimeCode;
 use App\Employee;
 use App\Supervisor;
-use App\User;
-use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -38,7 +35,6 @@ class ModuleActionsTest extends TestCase
             ->assertRedirect()
             ->assertLocation(route('admin.downtimes.create'));
 
-
         $this->assertDatabaseHas('performances', $downtime);
     }
 
@@ -61,7 +57,7 @@ class ModuleActionsTest extends TestCase
 
         $data_array = [
             'employee_id' => $changed_employee->id,
-            'reported_by' => create(Supervisor::class)->name
+            'reported_by' => create(Supervisor::class)->name,
         ];
 
         $response = $this->actingAs($this->userWithPermission('edit-downtimes'))

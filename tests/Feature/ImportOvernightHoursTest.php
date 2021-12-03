@@ -2,9 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Employee;
-use App\OvernightHour;
-use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -19,7 +16,6 @@ class ImportOvernightHoursTest extends TestCase
     /** Authentication: Prevent access to unauthenticated users */
     public function testGuestCantAccess()
     {
-
         $this->get(route('admin.overnight_hours.index'))->assertRedirect('/login');
         $this->get(route('admin.overnight_hours.create'))->assertRedirect('/login');
     }

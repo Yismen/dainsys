@@ -48,6 +48,7 @@ class TextCampaignSheet extends BaseRingCentralSheet
 
         return $data;
     }
+
     /**
      * @return View
      */
@@ -60,12 +61,12 @@ class TextCampaignSheet extends BaseRingCentralSheet
         if (count($this->data) > 0) {
             $this->exporter->has_data = true;
 
-            $cache_key =  $this->exporter->campaign_name . $this->exporter->team .  $this->exporter->dates_range['from_date'] . $this->exporter->dates_range['to_date'] . collect($this->data)->sum('login_time');
+            $cache_key = $this->exporter->campaign_name . $this->exporter->team . $this->exporter->dates_range['from_date'] . $this->exporter->dates_range['to_date'] . collect($this->data)->sum('login_time');
 
             if (!Cache::has($cache_key)) {
                 Cache::put($cache_key, 'some', now()->addHours(3));
 
-                info("Cache-key: " . $cache_key);
+                info('Cache-key: ' . $cache_key);
 
                 $this->exporter->data_is_new = true;
             }
@@ -79,6 +80,7 @@ class TextCampaignSheet extends BaseRingCentralSheet
             ]
         );
     }
+
     /**
      * @return string
      */
@@ -86,6 +88,7 @@ class TextCampaignSheet extends BaseRingCentralSheet
     {
         return "{$this->exporter->client_name} Hours";
     }
+
     /**
      * @return array
      */
@@ -100,12 +103,11 @@ class TextCampaignSheet extends BaseRingCentralSheet
 
                 $this->addSubTotals($totals_row, $rows, $event->sheet);
 
-
                 $formarter = new RangeFormarter($event, "A1:{$last_column}{$rows}");
 
                 $formarter->configurePage()
-                    ->formatTitle("A1:D1")
-                    ->setAutoSizeRange("B", "E")
+                    ->formatTitle('A1:D1')
+                    ->setAutoSizeRange('B', 'E')
                     ->freezePane('A3')
                     ->setAutoFilter("A2:{$last_column}{$rows}")
                     ->formatHeaderRow("A2:{$last_column}2")
@@ -113,7 +115,7 @@ class TextCampaignSheet extends BaseRingCentralSheet
                     ->applyBorders("A3:{$last_column}{$rows}")
                     ->applyNumberFormats("E3:E{$totals_row}", '_(* #,##0.00_);_(* (#,##0.00);_(* "-"??_);_(@_)')
                     ->formatTotals("E{$totals_row}:E{$totals_row}");
-            }
+            },
         ];
     }
 

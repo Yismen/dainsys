@@ -19,7 +19,7 @@ class OvernightHourResource extends JsonResource
             'date' => $this->date->format('Y-m-d'),
             'employee_id' => $this->employee_id,
             'name' => \optional($this->employee)->full_name,
-            'hours' => $this->hours
+            'hours' => $this->hours,
         ];
     }
 }

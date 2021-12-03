@@ -48,6 +48,7 @@ class PositionUnique implements Rule
         if (!$exists || optional($this->position)->id == $exists->id) {
             return true;
         }
+
         return false;
     }
 

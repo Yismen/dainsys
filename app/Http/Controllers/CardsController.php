@@ -49,8 +49,8 @@ class CardsController extends Controller
     public function store(Card $card, Request $request)
     {
         $this->validate($request, [
-            'card' => "required|digits_between:5,8|unique:cards,card",
-            'employee_id' => "required|exists:employees,id|unique:cards,employee_id",
+            'card' => 'required|digits_between:5,8|unique:cards,card',
+            'employee_id' => 'required|exists:employees,id|unique:cards,employee_id',
         ]);
 
         $card = $card->create($request->only('card', 'employee_id'));

@@ -3,7 +3,6 @@
 namespace Tests\Feature\Api;
 
 use App\Holiday;
-use App\Termination;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
 use Tests\TestCase;
@@ -24,11 +23,11 @@ class HolidaysControllerTest extends TestCase
             ->assertJsonStructure([
                 'data' => [
                     '*' => [
-                        "date",
-                        "name",
-                        "description",
-                    ]
-                ]
+                        'date',
+                        'name',
+                        'description',
+                    ],
+                ],
             ]);
     }
 

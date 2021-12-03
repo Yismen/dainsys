@@ -25,11 +25,11 @@ class UpdateHolidayRequest extends FormRequest
     public function rules()
     {
         $exists = Holiday::whereDate('date', request('date'))->first();
-        $id =  $exists ? $exists->id : null;
+        $id = $exists ? $exists->id : null;
 
         return [
             'date' => 'required|date|unique:holidays,date,' . $id . ',id',
-            'name' => 'required|min:4|max:150'
+            'name' => 'required|min:4|max:150',
         ];
     }
 }

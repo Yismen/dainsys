@@ -202,7 +202,7 @@ class OvernightHoursTest extends TestCase
             ->assertRedirect(route('admin.overnight_hours.index'));
 
         $this->assertDatabaseMissing('overnight_hours', [
-            'id' => $hour->id
+            'id' => $hour->id,
         ]);
     }
 }

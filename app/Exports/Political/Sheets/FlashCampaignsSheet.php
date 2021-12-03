@@ -2,7 +2,6 @@
 
 namespace App\Exports\Political\Sheets;
 
-use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithEvents;
@@ -17,7 +16,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
 {
     protected $sheet;
-    
+
     protected $rowsDispo;
     protected $rowsAnswers;
 
@@ -45,7 +44,7 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
         return view('exports.political.campaigns', [
             'dispositions' => $this->dispositions,
             'answers' => $this->answers,
-            'campaign' => $this->campaign
+            'campaign' => $this->campaign,
         ]);
     }
 
@@ -53,14 +52,13 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
                 $this->configurePage()
                     ->setColumnsWidth()
                     ;
-                    
+
                 $this->sheet->freezePane('A2');
                 $this->sheet->getStyle("A3:B{$this->rowsDispo}")->applyFromArray([
                     'borders' => [
@@ -71,8 +69,8 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
                         'inside' => [
                             'borderStyle' => Border::BORDER_THIN,
                             'color' => ['rgb' => '000000'],
-                        ]
-                    ]
+                        ],
+                    ],
                 ]);
 
                 $this->sheet->getStyle("A{$this->answersStart()}:{$this->answersLastColumn}{$this->answersEnd()}")->applyFromArray([
@@ -84,10 +82,10 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
                         'inside' => [
                             'borderStyle' => Border::BORDER_THIN,
                             'color' => ['rgb' => '000000'],
-                        ]
-                    ]
+                        ],
+                    ],
                 ]);
-            }
+            },
         ];
     }
 
@@ -110,11 +108,9 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
     {
         $range = [];
         $firstLetter = 'A';
-        for($i = 1 ; $i <= 200; $i++){
-            
+        for ($i = 1 ; $i <= 200; $i++) {
             $range[] = $firstLetter++;
         }
-
 
         $col = collect($this->answers)->first();
 
@@ -157,7 +153,7 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
     {
         return [
             'font' => [
-                'bold' => true
+                'bold' => true,
             ],
             'fill' => [
                 'fillType' => Fill::FILL_SOLID,
@@ -166,7 +162,7 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
                 ],
             ],
             'alignment' => [
-                'horizontal' => Alignment::HORIZONTAL_LEFT
+                'horizontal' => Alignment::HORIZONTAL_LEFT,
             ],
             'borders' => [
                 'outline' => [
@@ -176,8 +172,8 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
                 'inside' => [
                     'borderStyle' => Border::BORDER_THIN,
                     'color' => ['rgb' => '000000'],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

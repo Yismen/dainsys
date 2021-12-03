@@ -34,7 +34,7 @@ trait NotifyUsersOnFailedCommandsTrait
 
             foreach ($users as $user) {
                 $user->notify(new UserAppNotification(
-                    "Command failed!",
+                    'Command failed!',
                     "Command {$class_name} failed at ! {$time} with exception {$th->getMessage()}"
                 ));
             }

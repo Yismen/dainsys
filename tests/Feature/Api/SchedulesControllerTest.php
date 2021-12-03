@@ -2,9 +2,7 @@
 
 namespace Tests\Feature\Api;
 
-use App\Employee;
 use App\Schedule;
-use App\Termination;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
 use Tests\TestCase;
@@ -25,13 +23,13 @@ class SchedulesControllerTest extends TestCase
             ->assertJsonStructure([
                 'data' => [
                     '*' => [
-                        "employee_id",
-                        "employee_name",
-                        "supervisor",
-                        "date",
-                        "hours",
-                    ]
-                ]
+                        'employee_id',
+                        'employee_name',
+                        'supervisor',
+                        'date',
+                        'hours',
+                    ],
+                ],
             ]);
     }
 

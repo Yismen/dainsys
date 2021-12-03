@@ -9,11 +9,12 @@ use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 class CapillusAgentExport implements WithMultipleSheets
 {
     use CapillusCommandsTrait;
-    
+
     public function __construct(Carbon $date)
     {
         $this->date = $date;
     }
+
     /**
      * @return array
      */
@@ -21,7 +22,7 @@ class CapillusAgentExport implements WithMultipleSheets
     {
         $sheets = [];
 
-        $periods =  [
+        $periods = [
             'pd',
             'wtd',
             'mtd',
@@ -31,7 +32,7 @@ class CapillusAgentExport implements WithMultipleSheets
         foreach ($periods as $period) {
             $sheets[] = new CapillusAgentReportExport(['date' => $this->date, 'period' => $period]);
         }
-        
+
         return $sheets;
     }
 }

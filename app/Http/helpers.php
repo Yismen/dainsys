@@ -20,7 +20,7 @@ function deleteForm($route, $resource, $options = null)
 {
     $defaults = [
         'btn-type' => 'btn-danger',
-        'btn-text' => ' Delete'
+        'btn-text' => ' Delete',
     ];
 
     if ($options) {
@@ -49,7 +49,7 @@ function deleteFormLink($route, $resource, $options = null)
 {
     $defaults = [
         'btn-type' => 'btn-link',
-        'btn-text' => ''
+        'btn-text' => '',
     ];
 
     if ($options) {
@@ -65,5 +65,6 @@ function deleteFormLink($route, $resource, $options = null)
     $form .= '<i class="fa fa-btn fa-remove"></i>' . $defaults['btn-text'];
     $form .= '</span>';
     $form .= '</button>';
+
     return $form .= '</form>';
 }

@@ -14,7 +14,7 @@ class AuthenticationTest extends TestCase
     public function testGuestCantViewPunchs()
     {
         $punch = create('App\Punch');
-        
+
         $this->get(route('admin.punches.index'))
             ->assertStatus(302)
             ->assertRedirect(route('login'));
@@ -27,7 +27,7 @@ class AuthenticationTest extends TestCase
     public function testGuestCantCreatePunchs()
     {
         $punch = create('App\Punch');
-        
+
         $this->get(route('admin.punches.create'))
             ->assertStatus(302)
             ->assertRedirect(route('login'));
@@ -40,11 +40,11 @@ class AuthenticationTest extends TestCase
     public function testGuestCantUpdatePunch()
     {
         $punch = create('App\Punch');
-        
+
         $this->get(route('admin.punches.edit', $punch->punch))
             ->assertStatus(302)
             ->assertRedirect(route('login'));
-            
+
         $this->put(route('admin.punches.update', $punch->punch), $punch->toArray())
             ->assertStatus(302)
             ->assertRedirect(route('login'));
@@ -53,7 +53,7 @@ class AuthenticationTest extends TestCase
     public function testGuestCantDestroyPunch()
     {
         $punch = create('App\Punch');
-        
+
         $this->delete(route('admin.punches.destroy', $punch->punch))
             ->assertStatus(302)
             ->assertRedirect(route('login'));

@@ -4,7 +4,6 @@ namespace Tests\Feature\Api;
 
 use App\Campaign;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Laravel\Passport\Passport;
 use Tests\TestCase;
 
@@ -31,8 +30,8 @@ class CampaignsControllerTest extends TestCase
                         'revenue_type_id',
                         'sph_goal',
                         'rate',
-                    ]
-                ]
+                    ],
+                ],
             ]);
     }
 }

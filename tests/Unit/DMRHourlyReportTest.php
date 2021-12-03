@@ -11,7 +11,6 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class DMRHourlyReportTest extends TestCase
 {
-
     /** @test */
     public function daily_summary_command_exists()
     {
@@ -52,7 +51,7 @@ class DMRHourlyReportTest extends TestCase
     {
         Excel::fake();
 
-        $subject = "Fake Name";
+        $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
         $repo['data'] = InboundDataRepository::getData(
             '2021-05-25',
@@ -83,7 +82,7 @@ class DMRHourlyReportTest extends TestCase
         Excel::fake();
         Mail::fake();
 
-        $subject = "Fake Name";
+        $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
         $recipient = 'someone@fake.email';
 

@@ -3,9 +3,6 @@
 namespace Tests\Feature\Nationalities;
 
 use App\Nationality;
-use App\Employee;
-use App\User;
-use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -14,7 +11,6 @@ class FormValidationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
-
 
     /** @test */
     public function name_field_is_required()

@@ -18,14 +18,14 @@ class CampaignsController extends Controller
     }
 
     public function index()
-    {        
+    {
         if (!request()->ajax()) {
             return view('campaigns.index');
         }
 
         return DataTables::of(
             Campaign::with(['project', 'source', 'revenueType'])
-            )
+        )
             ->toJson(true);
     }
 
@@ -53,7 +53,7 @@ class CampaignsController extends Controller
         $campaign = Campaign::create($request->only(['name', 'project_id', 'source_id', 'revenue_type_id', 'sph_goal', 'revenue_rate']));
 
         return redirect()->route('admin.campaigns.index')
-            ->withSuccess('Campaign '. $campaign->name . ' has been created!');
+            ->withSuccess('Campaign ' . $campaign->name . ' has been created!');
     }
 
     public function show(Campaign $campaign)
@@ -88,7 +88,6 @@ class CampaignsController extends Controller
         Cache::forget('campaigns');
 
         return redirect()->route('admin.campaigns.index')
-            ->withSuccess('Campaign '. $campaign->name . ' has been updated!');
-
+            ->withSuccess('Campaign ' . $campaign->name . ' has been updated!');
     }
 }

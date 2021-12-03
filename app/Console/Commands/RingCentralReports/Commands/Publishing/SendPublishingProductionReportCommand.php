@@ -22,7 +22,6 @@ class SendPublishingProductionReportCommand extends BaseProductionReportCommand
      */
     protected $description = 'Send a roduction report to Publishing distro';
 
-
     public function handle()
     {
         $dates_range = $this->getDatesRange();

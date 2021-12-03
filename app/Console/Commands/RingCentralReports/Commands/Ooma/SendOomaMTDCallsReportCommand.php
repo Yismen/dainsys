@@ -22,7 +22,6 @@ class SendOomaMTDCallsReportCommand extends BaseProductionReportCommand
      */
     protected $description = 'Send a roduction report to Ooma Internal distro with all calls MTD for OOMA';
 
-
     public function handle()
     {
         $dates_range = $this->getDatesRange();
@@ -65,7 +64,7 @@ class SendOomaMTDCallsReportCommand extends BaseProductionReportCommand
 
         return [
             'from_date' => $from_date->format('Y-m-d'),
-            'to_date' => $to_date->format('Y-m-d')
+            'to_date' => $to_date->format('Y-m-d'),
         ];
     }
 }

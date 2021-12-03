@@ -41,6 +41,6 @@ class EmployeesHired extends Command
 
         Mail::send(new EmployeesHiredMail($months, $this->option('site')));
 
-        $this->info("Employees hired email sent!");
+        $this->info('Employees hired email sent!');
     }
 }

@@ -9,7 +9,6 @@ use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithPreCalculateFormulas;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Events\AfterSheet;
-use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use Illuminate\Support\Str;
 
 class HoursData implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
@@ -32,7 +31,7 @@ class HoursData implements FromView, WithTitle, WithEvents, WithPreCalculateForm
         $this->data = $data;
 
         $this->rows = count($this->data) + 2;
-        $this->last_column = "D";
+        $this->last_column = 'D';
         $this->sheetName = Str::of(\class_basename($this))->snake()->replace('_', ' ')->title();
         $this->title = "Inbound {$this->sheetName} Report";
         $this->view = 'exports.inbound.' . Str::of(\class_basename($this))->snake();
@@ -55,11 +54,10 @@ class HoursData implements FromView, WithTitle, WithEvents, WithPreCalculateForm
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
-
                 (new RangeFormarter($event, "A1:{$this->last_column}{$this->rows}"))
                     ->configurePage()
-                    ->setColumnsWidth("B", "C")
-                    ->formatTitle("A1:D1")
+                    ->setColumnsWidth('B', 'C')
+                    ->formatTitle('A1:D1')
                     ->formatHeaderRow("A2:{$this->last_column}2")
                     ->applyBorders("A3:{$this->last_column}{$this->rows}")
                     ->applyNumberFormats("D3:D{$totalsRow}", '#,##0.00')
@@ -73,7 +71,7 @@ class HoursData implements FromView, WithTitle, WithEvents, WithPreCalculateForm
 
                 // Adjust DialGroup column width
                 $this->sheet->getColumnDimension('A')->setWidth(10);
-            }
+            },
         ];
     }
 

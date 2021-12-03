@@ -140,7 +140,6 @@ class ArsTest extends TestCase
     /** @test */
     public function it_requires_a_name_to_create_a_ars()
     {
-
         $this->actingAs($this->userWithPermission('create-arss'))
             ->post(route('admin.arss.store'), $this->formAttributes(['name' => '']))
             ->assertSessionHasErrors('name');

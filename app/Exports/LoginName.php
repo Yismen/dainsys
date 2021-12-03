@@ -11,10 +11,9 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
 class LoginName implements FromView, WithTitle, ShouldAutoSize
 {
-
     public function view(): View
     {
-        $employees = Cache::rememberForever('login-names', function() {
+        $employees = Cache::rememberForever('login-names', function () {
             return Employee::select('id', 'first_name', 'second_first_name', 'last_name', 'second_last_name')
             ->orderBy('first_name')->with(['loginNames', 'supervisor'])->whereHas('loginNames')->get();
         });
@@ -24,6 +23,6 @@ class LoginName implements FromView, WithTitle, ShouldAutoSize
 
     public function title(): string
     {
-        return "Login Names";
+        return 'Login Names';
     }
 }

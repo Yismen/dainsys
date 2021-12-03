@@ -23,9 +23,9 @@ class CapillusLeadsExport implements FromView, WithTitle, WithEvents, WithPreCal
     protected $count;
 
     public function __construct($report_data)
-    {        
+    {
         $this->report_data = $report_data;
-        
+
         $this->count = count($this->report_data);
         $this->count = $this->count > 0 ? $this->count : 1;
     }
@@ -34,20 +34,19 @@ class CapillusLeadsExport implements FromView, WithTitle, WithEvents, WithPreCal
     {
         return view('exports.capillus.leads-report', [
             'data' => $this->report_data,
-            'title' => $this->sheet
+            'title' => $this->sheet,
         ]);
     }
 
     public function title(): string
     {
-        return "Capillus Leads";
+        return 'Capillus Leads';
     }
 
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function(AfterSheet $event) {  
-                
+            AfterSheet::class => function (AfterSheet $event) {
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
@@ -56,40 +55,40 @@ class CapillusLeadsExport implements FromView, WithTitle, WithEvents, WithPreCal
                     // ->formatDateColumn()
                     ->formatTimecolumns()
                     ->setColumnsWidth()
-                    ;     
+                    ;
 
                 $this->sheet->setAutoFilter("A1:O{$this->count}");
                 $this->sheet->freezePane('E2');
-            }
+            },
         ];
-    }  
+    }
 
     public function getCsvSettings(): array
     {
         return [
-            'delimiter'              => ',',
-            'enclosure'              => '',
-            'line_ending'            => PHP_EOL,
-            'use_bom'                => false,
+            'delimiter' => ',',
+            'enclosure' => '',
+            'line_ending' => PHP_EOL,
+            'use_bom' => false,
             'include_separator_line' => false,
-            'excel_compatibility'    => false,
+            'excel_compatibility' => false,
         ];
     }
 
     protected function setColumnsWidth()
-    {    
+    {
         $this->sheet->getDefaultColumnDimension()->setWidth(10);
 
-        $this->sheet->getRowDimension('1')->setRowHeight(32); 
-                    
-        foreach (range(1, 15) as $col) { 
+        $this->sheet->getRowDimension('1')->setRowHeight(32);
+
+        foreach (range(1, 15) as $col) {
             $this->sheet->getColumnDimensionByColumn($col)
                 ->setAutoSize(true);
         }
-        
+
         // $this->sheet->getColumnDimension('D')
         //     ->setWidth(23);
-            
+
         // $this->sheet->getColumnDimension('F')
         //     ->setWidth(23);
 
@@ -118,7 +117,7 @@ class CapillusLeadsExport implements FromView, WithTitle, WithEvents, WithPreCal
         $this->sheet->getStyle("A1:A{$this->count}")
             ->getNumberFormat()
             ->setFormatCode('mm/dd/yyyy');
-        
+
         return $this;
     }
 
@@ -129,17 +128,17 @@ class CapillusLeadsExport implements FromView, WithTitle, WithEvents, WithPreCal
                 'fillType' => Fill::FILL_SOLID,
                 'color' => [
                     'rgb' => 'E7E6E6',
-                ]
+                ],
             ],
             'borders' => [
                 'bottom' => [
                     'borderStyle' => Border::BORDER_HAIR,
                     'color' => ['rgb' => '000000'],
-                ]
+                ],
             ],
             'font' => [
                 'bold' => true,
-            ]
+            ],
         ];
 
         $this->sheet
@@ -155,10 +154,10 @@ class CapillusLeadsExport implements FromView, WithTitle, WithEvents, WithPreCal
     {
         $this->sheet->getStyle("B1:B{$this->count}")->getNumberFormat()
             ->setFormatCode(NumberFormat::FORMAT_DATE_TIME2);
-            
+
         // $this->sheet->getStyle("I1:M{$this->count}")->getNumberFormat()
         //     ->setFormatCode(NumberFormat::FORMAT_DATE_TIME4);
-        
+
         return $this;
     }
 }

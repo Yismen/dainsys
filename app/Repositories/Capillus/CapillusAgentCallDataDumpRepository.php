@@ -39,9 +39,8 @@ class CapillusAgentCallDataDumpRepository extends RingCentralConnection
         $this->data = $this->getData();
     }
 
-    protected function getData() 
-    {     
-
+    protected function getData()
+    {
         return $this->connection()->select(
             DB::raw("
                 declare @startDate as smalldatetime, 

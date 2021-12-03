@@ -38,7 +38,7 @@ class ModuleActionsTest extends TestCase
         $this->assertDatabaseHas('holidays', [
             'date' => Carbon::parse($holiday['date']),
             'name' => $holiday['name'],
-            'description' => $holiday['description']
+            'description' => $holiday['description'],
         ]);
     }
 
@@ -65,7 +65,7 @@ class ModuleActionsTest extends TestCase
         $updated = [
             'name' => 'Updated Name',
             'date' => Carbon::now(),
-            'description' => 'Changed Description'
+            'description' => 'Changed Description',
         ];
 
         $response = $this->actingAs($this->userWithPermission('edit-holidays'));
@@ -86,7 +86,7 @@ class ModuleActionsTest extends TestCase
             ->assertRedirect(route('admin.holidays.index'));
 
         $this->assertDatabaseMissing('holidays', [
-            'id' => $holiday->id
+            'id' => $holiday->id,
         ]);
     }
 

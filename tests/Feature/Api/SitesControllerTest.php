@@ -4,7 +4,6 @@ namespace Tests\Feature\Api;
 
 use App\Site;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Laravel\Passport\Passport;
 use Tests\TestCase;
 
@@ -26,8 +25,8 @@ class SitesControllerTest extends TestCase
                     '*' => [
                         'id',
                         'name',
-                    ]
-                ]
+                    ],
+                ],
             ]);
     }
 }

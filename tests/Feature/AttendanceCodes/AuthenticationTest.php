@@ -14,7 +14,7 @@ class AuthenticationTest extends TestCase
     public function testGuestCantViewAttendanceCodes()
     {
         $attendance_code = create('App\AttendanceCode');
-        
+
         $this->get(route('admin.attendance_codes.index'))->assertRedirect('/login');
     }
 

@@ -4,7 +4,6 @@ namespace Tests\Feature\Api;
 
 use App\Project;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Laravel\Passport\Passport;
 use Tests\TestCase;
 
@@ -27,8 +26,8 @@ class ProjectsControllerTest extends TestCase
                         'id',
                         'name',
                         'client',
-                    ]
-                ]
+                    ],
+                ],
             ]);
     }
 }

@@ -6,10 +6,11 @@ trait InboundSummaryDataParserTrait
 {
     protected function getGateStatement($gate)
     {
-        $statement = "gate_name ";
+        $statement = 'gate_name ';
 
         if (\gettype($gate) === 'array') {
             $toString = implode(',', $gate);
+
             return "{$statement} IN '{$toString}'";
         }
 
@@ -45,7 +46,7 @@ trait InboundSummaryDataParserTrait
                 'agent_fname',
                 'agent_lname',
                 'agent_username',
-                'agent_disposition'
+                'agent_disposition',
             ];
         }
 

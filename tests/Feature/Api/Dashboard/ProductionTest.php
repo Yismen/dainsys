@@ -22,16 +22,16 @@ class ProductionTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonStructure([
                 '*' => [
-                    "revenue",
-                    "login_time",
-                    "rph",
-                    "sales",
-                    "production_time",
-                    "sph",
-                    "efficiency",
-                    "sph_goal",
-                    "month",
-                ]
+                    'revenue',
+                    'login_time',
+                    'rph',
+                    'sales',
+                    'production_time',
+                    'sph',
+                    'efficiency',
+                    'sph_goal',
+                    'month',
+                ],
             ]);
     }
 
@@ -45,9 +45,9 @@ class ProductionTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJsonStructure([
-                "revenue_mtd",
-                "login_hours_mtd",
-                "production_hours_mtd",
+                'revenue_mtd',
+                'login_hours_mtd',
+                'production_hours_mtd',
             ]);
     }
 }

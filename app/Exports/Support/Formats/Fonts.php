@@ -2,8 +2,6 @@
 
 namespace App\Exports\Support\Formats;
 
-use PhpOffice\PhpSpreadsheet\Style\Border;
-
 class Fonts
 {
     public static function apply(
@@ -19,13 +17,13 @@ class Fonts
                 'bold' => $bold,
                 'size' => 8,
                 'color' => [
-                    'rgb' => $color
+                    'rgb' => $color,
                 ],
                 'alightment' => [
                     'horizontal' => $horizontalAlightment,
                     'vertical' => $verticalAlightment,
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 }

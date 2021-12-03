@@ -2,10 +2,8 @@
 
 namespace App\Repositories\Attendances;
 
-use App\Attendance;
 use App\AttendanceCode;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Cache;
 
 class AttendanceEmployeesRepository
 {
@@ -20,17 +18,16 @@ class AttendanceEmployeesRepository
         $this->employee = $employee;
     }
 
-
     public function data()
     {
         return AttendanceCode::query()
-            ->whereHas('attendances', function($query) {
+            ->whereHas('attendances', function ($query) {
                 $query->where('employee_id', $this->employee)
-                        ->whereDate('date', '>=',Carbon::now()->subMonths(2)->startOfMonth() );
+                        ->whereDate('date', '>=', Carbon::now()->subMonths(2)->startOfMonth());
             })
-            ->with(['attendances' => function($query) {
+            ->with(['attendances' => function ($query) {
                 $query->where('employee_id', $this->employee)
-                ->whereDate('date', '>=',Carbon::now()->subMonths(2)->startOfMonth() );
+                ->whereDate('date', '>=', Carbon::now()->subMonths(2)->startOfMonth());
             }])
             ->get()
             ;

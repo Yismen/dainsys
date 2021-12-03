@@ -13,7 +13,7 @@ abstract class BaseModelFilter extends ModelFilter
      * @var array
      */
     public $relations = [];
-    
+
     /**
      * Apply filter to the $query builder
      *
@@ -27,7 +27,7 @@ abstract class BaseModelFilter extends ModelFilter
         return $this->whereHas($relationship, function ($query) use ($request, $quey_field) {
             if (is_array($request)) {
                 $query->where($quey_field, 'like', $request[0]);
-                for ($i=1; $i < count($request); $i++) {
+                for ($i = 1; $i < count($request); $i++) {
                     $query->orWhere($quey_field, 'like', $request[$i]);
                 }
             } else {

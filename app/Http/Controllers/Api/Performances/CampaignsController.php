@@ -11,12 +11,11 @@ use App\Http\Resources\CampaignResource;
  */
 class CampaignsController extends Controller
 {
-
     /**
      * Performances Campaigns
-     * 
+     *
      * Collection of camaigns information
-     * 
+     *
      * @response 200 {
      *      "data": [
      *          {

@@ -35,7 +35,7 @@ class Employees implements FromQuery, WithTitle, ShouldAutoSize, WithColumnForma
             ->orderBy('first_name')
             ->with([
                 'punch', 'address', 'gender', 'marital', 'nationality',
-                'site', 'project', 'position', 'bankAccount', 'termination'
+                'site', 'project', 'position', 'bankAccount', 'termination',
             ])
             ->$status();
     }
@@ -61,7 +61,7 @@ class Employees implements FromQuery, WithTitle, ShouldAutoSize, WithColumnForma
             substr($employee->cellphone_number, 0, 3),
             substr($employee->cellphone_number, -7),
             null == $employee->address ? '' :
-                $employee->address->street_address.', '.$employee->address->sector.', '.$employee->address->city,
+                $employee->address->street_address . ', ' . $employee->address->sector . ', ' . $employee->address->city,
             substr(optional($employee->gender)->name, 0, 1),
             optional($employee->marital)->name,
             optional($employee->nationality)->name,
@@ -74,8 +74,8 @@ class Employees implements FromQuery, WithTitle, ShouldAutoSize, WithColumnForma
             optional($employee->position)->pay_per_hours,
             optional($employee->bankAccount)->account_number,
             $employee->status,
-            $employee->termination ? Date::dateTimeToExcel( $employee->termination->termination_date) : '',
-            optional(optional($employee->termination)->terminationType)->name
+            $employee->termination ? Date::dateTimeToExcel($employee->termination->termination_date) : '',
+            optional(optional($employee->termination)->terminationType)->name,
         ];
     }
 

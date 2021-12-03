@@ -4,7 +4,6 @@ namespace App\Exports;
 
 use App\Employee;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Cache;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
@@ -22,6 +21,6 @@ class LoginNameEployees implements FromView, WithTitle, ShouldAutoSize
 
     public function title(): string
     {
-        return "Login Names";
+        return 'Login Names';
     }
 }

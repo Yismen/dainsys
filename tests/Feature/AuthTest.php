@@ -4,8 +4,6 @@ namespace Tests\Feature;
 
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
@@ -97,7 +95,7 @@ class AuthTest extends TestCase
     public function it_validates_request_before_seding_email_to_reset_password()
     {
         $attributes = [
-            'email' => ''
+            'email' => '',
         ];
 
         $response = $this->post('/password/email', $attributes);
@@ -105,7 +103,7 @@ class AuthTest extends TestCase
         $response->assertInvalid(array_keys($attributes));
 
         $attributes = [
-            'email' => 'notAnEmail'
+            'email' => 'notAnEmail',
         ];
 
         $response = $this->post('/password/email', $attributes);
@@ -113,7 +111,7 @@ class AuthTest extends TestCase
         $response->assertInvalid(array_keys($attributes));
 
         $attributes = [
-            'email' => 'this.email@not.exists'
+            'email' => 'this.email@not.exists',
         ];
 
         $response = $this->post('/password/email', $attributes);

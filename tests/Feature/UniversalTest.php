@@ -123,7 +123,6 @@ class UniversalTest extends TestCase
     /** @test */
     public function it_requires_a_date_to_create_a_universal()
     {
-
         $this->actingAs($this->userWithPermission('create-universals'))
             ->post(route('admin.universals.store'), $this->formAttributes(['since' => '']))
             ->assertSessionHasErrors('since');

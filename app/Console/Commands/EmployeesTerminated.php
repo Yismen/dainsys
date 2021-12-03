@@ -41,6 +41,6 @@ class EmployeesTerminated extends Command
 
         Mail::send(new EmployeesTerminatedMail($months, $this->option('site')));
 
-        $this->info("Employees terminated email sent!");
+        $this->info('Employees terminated email sent!');
     }
 }

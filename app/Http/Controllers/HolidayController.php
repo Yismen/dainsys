@@ -42,7 +42,6 @@ class HolidayController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -67,7 +66,6 @@ class HolidayController extends Controller
      */
     public function show(Holiday $holiday)
     {
-        //
     }
 
     /**
@@ -105,7 +103,7 @@ class HolidayController extends Controller
     public function destroy(Holiday $holiday)
     {
         $holiday->delete();
-        
+
         return redirect()->route('admin.holidays.index')
             ->withWarning("Holiday for {$holiday->date} deleted!");
     }

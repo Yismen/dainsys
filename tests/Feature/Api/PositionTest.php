@@ -4,7 +4,6 @@ namespace Tests\Feature\Api;
 
 use App\Position;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Arr;
 use Laravel\Passport\Passport;
 use Tests\TestCase;

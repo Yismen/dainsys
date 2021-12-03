@@ -56,7 +56,7 @@ class PaymentTypesController extends Controller
     public function store(PaymentType $payment_type, Request $request)
     {
         $this->validate($request, [
-            'name' => "required|unique:payment_types"
+            'name' => 'required|unique:payment_types',
         ]);
 
         $payment_type = $payment_type->create($request->only(['name']));
@@ -92,7 +92,7 @@ class PaymentTypesController extends Controller
     public function update(PaymentType $payment_type, Request $request)
     {
         $this->validate($request, [
-            'name' => "required|unique:payment_types,name,$payment_type->id,id"
+            'name' => "required|unique:payment_types,name,$payment_type->id,id",
         ]);
 
         $payment_type->update($request->only(['name']));

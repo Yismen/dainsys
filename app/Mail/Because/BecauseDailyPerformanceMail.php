@@ -16,6 +16,6 @@ class BecauseDailyPerformanceMail extends BecauseMailBase
             ->bcc('yjorge@eccocorpbpo.com')
             ->view('emails.capillus')
             ->attachFromStorage($this->temporary_mail_attachment)
-            ->subject("Kipany - Because Daily Performance Report");
+            ->subject('Kipany - Because Daily Performance Report');
     }
 }

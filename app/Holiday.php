@@ -11,19 +11,23 @@ class Holiday extends Model
 
     protected $fillable = ['date', 'name', 'description'];
 
-    public function getNameAttribute($name){
+    public function getNameAttribute($name)
+    {
         return ucwords($name);
     }
 
-    public function setNameAttribute($name){
+    public function setNameAttribute($name)
+    {
         return $this->attributes['name'] = ucwords($name);
     }
 
-    public function getDescriptionAttribute($description){
+    public function getDescriptionAttribute($description)
+    {
         return ucfirst($description);
     }
 
-    public function setDescriptionAttribute($description){
+    public function setDescriptionAttribute($description)
+    {
         return $this->attributes['description'] = ucfirst($description);
     }
 

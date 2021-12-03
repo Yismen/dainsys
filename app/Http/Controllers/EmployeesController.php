@@ -172,7 +172,7 @@ class EmployeesController extends Controller
                     'project',
                     'termination',
                     'punch',
-                    'site'
+                    'site',
                 ])
         )->filterColumn('status', function ($query, $keyword) {
             $method = $this->getScope($keyword);
@@ -193,14 +193,14 @@ class EmployeesController extends Controller
 
     protected function getScope($keyword)
     {
-        if (Str::startsWith($keyword, "active")) {
-            return "actives";
+        if (Str::startsWith($keyword, 'active')) {
+            return 'actives';
         }
 
-        if (Str::startsWith($keyword, "inactive")) {
-            return "inactives";
+        if (Str::startsWith($keyword, 'inactive')) {
+            return 'inactives';
         }
 
-        return "all";
+        return 'all';
     }
 }

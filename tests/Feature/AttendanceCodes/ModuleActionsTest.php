@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\AttendanceCodes;
 
-use App\AttendanceCode;
-use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -35,7 +33,7 @@ class ModuleActionsTest extends TestCase
 
         $this->assertDatabaseHas('attendance_codes', [
             'name' => $attendance_code['name'],
-            'color' => $attendance_code['color']
+            'color' => $attendance_code['color'],
         ]);
     }
 
@@ -64,7 +62,7 @@ class ModuleActionsTest extends TestCase
         $updated = [
             'name' => 'Updated Name',
             'color' => '#F4f4f4',
-            'absence' => !$attendance_code->absence
+            'absence' => !$attendance_code->absence,
         ];
 
         $response = $this->actingAs($this->userWithPermission('edit-attendance-codes'));

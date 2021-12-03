@@ -106,7 +106,7 @@ class ModuleActionsTest extends TestCase
             'employee_id' => $employee->id,
             'date' => Carbon::now()->subDays(5),
             'code_id' => $code->id,
-            'comments' => 'Updated Comment!'
+            'comments' => 'Updated Comment!',
         ];
 
         $this->actingAs($this->userWithPermission('edit-attendances'))
@@ -119,7 +119,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_destroy_attendance()
     {
-
         $attendance = create(Attendance::class);
 
         $this->actingAs($this->userWithPermission('destroy-attendances'))

@@ -3,7 +3,7 @@
 namespace App\Mail\Political;
 
 class PoliticalFlashMail extends PoliticalMailBase
-{    
+{
     /**
      * Build the message.
      *
@@ -11,6 +11,6 @@ class PoliticalFlashMail extends PoliticalMailBase
      */
     public function build()
     {
-        return $this->defaultBuild("Political Hourly Flash");
+        return $this->defaultBuild('Political Hourly Flash');
     }
 }

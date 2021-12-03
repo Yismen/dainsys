@@ -25,7 +25,7 @@ class CreateHolidayRequest extends FormRequest
     {
         return [
             'date' => 'required|date|unique:holidays',
-            'name' => 'required|min:4|max:150'
+            'name' => 'required|min:4|max:150',
         ];
     }
 }

@@ -28,7 +28,7 @@ class CampaignUpdateTest extends TestCase
 
         $this->actingAs($this->userWithPermission('edit-campaigns'))
             ->get(route('admin.campaigns.edit', $campaign->id))
-            ->assertSee('Edit Campaign '.$campaign->name);
+            ->assertSee('Edit Campaign ' . $campaign->name);
     }
 
     /** @test */

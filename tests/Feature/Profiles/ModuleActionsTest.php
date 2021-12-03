@@ -3,11 +3,6 @@
 namespace Tests\Feature\Profiles;
 
 use App\Profile;
-use App\ProfileCode;
-use App\Employee;
-use App\Supervisor;
-use App\User;
-use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

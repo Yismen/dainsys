@@ -33,9 +33,6 @@ class Department extends Model
         return $this->hasManyThrough(Employee::class, Position::class);
     }
 
-    /**
-     *
-     */
     public function performances()
     {
         return $this->hasManyThrough(Performance::class, Employee::class, 'id', 'employee_id');

@@ -25,7 +25,7 @@ class DepartmentsController extends Controller
      */
     public function index(Department $departments, Request $request)
     {
-        $departments = Cache::rememberForever('departments', function() {
+        $departments = Cache::rememberForever('departments', function () {
             return Department::orderBy('name')->get();
         });
 
@@ -50,7 +50,7 @@ class DepartmentsController extends Controller
     public function store(Request $request, Department $department)
     {
         $this->validate($request, [
-            'name' => 'required|unique:departments,name'
+            'name' => 'required|unique:departments,name',
         ]);
 
         $department = $department->create($request->only('name'));
@@ -97,7 +97,7 @@ class DepartmentsController extends Controller
     public function update(Request $request, Department $department)
     {
         $this->validate($request, [
-            'name' => "required|unique:departments,name,$department->id,id"
+            'name' => "required|unique:departments,name,$department->id,id",
         ]);
 
         Cache::forget('departments');

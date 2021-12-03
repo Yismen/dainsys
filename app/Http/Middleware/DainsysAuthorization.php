@@ -3,8 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Auth;
 
 class DainsysAuthorization
 {
@@ -30,19 +28,19 @@ class DainsysAuthorization
 
     protected function parsePermissions($permissions)
     {
-        return explode("|", $permissions);
+        return explode('|', $permissions);
     }
 
     protected function guardAgainstUnauthenticated()
     {
-        if (! auth()->check()) {
+        if (!auth()->check()) {
             abort(401, 'Unauthenticated');
         }
     }
 
     protected function guardAgainstUnauthorizedUsers($request, $permissions)
     {
-        if (! $request->user()->hasAnyPermission(
+        if (!$request->user()->hasAnyPermission(
             $this->parsePermissions($permissions)
         )) {
             session()->flash('danger', 'Unauthorized! Permissions Needed: ' . $permissions);

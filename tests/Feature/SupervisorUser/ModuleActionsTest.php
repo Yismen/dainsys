@@ -5,7 +5,6 @@ namespace Tests\Feature\SupervisorUsers;
 use App\Supervisor;
 use App\SupervisorUser;
 use App\User;
-use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -29,7 +28,7 @@ class ModuleActionsTest extends TestCase
     {
         $users = create(User::class, [], 3);
         $supervisor = create(Supervisor::class)->toArray();
-        $supervisors[] =  $supervisor['id'];
+        $supervisors[] = $supervisor['id'];
 
         $users->first()->supervisors()->sync((array) $supervisors);
 
@@ -138,7 +137,6 @@ class ModuleActionsTest extends TestCase
             'user_id' => $user->id,
             'supervisor_id' => $supervisor->id,
         ];
-
 
         $this->actingAs($this->userWithPermission('destroy-supervisor-users'))
             ->delete(route('admin.supervisor_users.destroy', $supervisor_user->id))

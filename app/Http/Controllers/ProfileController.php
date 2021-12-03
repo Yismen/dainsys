@@ -6,7 +6,6 @@ use App\User;
 use App\Profile;
 use Illuminate\Http\Request;
 use App\Repositories\Profiles;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use App\Repositories\ImageMaker;
 
@@ -71,7 +70,7 @@ class ProfileController extends Controller
         if ($request->ajax()) {
             return response()->json([
                 'success' => 1,
-                'data' => $user
+                'data' => $user,
             ]);
         }
 
@@ -130,7 +129,7 @@ class ProfileController extends Controller
         if ($request->ajax()) {
             return response()->json([
                 'success' => 1,
-                'data' => $user
+                'data' => $user,
             ]);
         }
 
@@ -146,7 +145,6 @@ class ProfileController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 
     /**
@@ -158,6 +156,7 @@ class ProfileController extends Controller
             if ($user->profile) {
                 return $user->profile->photo;
             }
+
             return null;
         };
 
@@ -187,7 +186,7 @@ class ProfileController extends Controller
         $user = auth()->user();
 
         $user->update([
-            'name' => request('name')
+            'name' => request('name'),
         ]);
 
         return $user;

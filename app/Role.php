@@ -17,7 +17,6 @@ class Role extends EmpatieRole
         return $this->belongsToMany(Menu::class);
     }
 
-
     public function setNameAttribute($name)
     {
         $this->attributes['name'] = strtolower(trim(Str::slug($name)));

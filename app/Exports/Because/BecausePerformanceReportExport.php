@@ -2,7 +2,6 @@
 
 namespace App\Exports\Because;
 
-use App\Exports\ConditionalFormats\ConditionalFontsColor;
 use App\Exports\Support\Formats\Borders;
 use App\Exports\Support\Formats\Conditionals\ConditionalFontsColor as ConditionalsConditionalFontsColor;
 use App\Exports\Support\Formats\TextOrNumberFormat;
@@ -28,10 +27,10 @@ class BecausePerformanceReportExport implements FromView, WithTitle, WithEvents,
     public function __construct(array $options)
     {
         $this->sheet = $options['campaign'] == '%' ? 'Overall' : $options['campaign'];
-        
+
         $this->repo = new BecausePerformanceReportRepository([
             'date' => $options['date'],
-            'campaign' => $options['campaign']
+            'campaign' => $options['campaign'],
         ]);
     }
 
@@ -39,7 +38,7 @@ class BecausePerformanceReportExport implements FromView, WithTitle, WithEvents,
     {
         return view('exports.because.daily-performance', [
             'data' => $this->repo->data,
-            'title' => $this->sheet
+            'title' => $this->sheet,
         ]);
     }
 
@@ -47,7 +46,6 @@ class BecausePerformanceReportExport implements FromView, WithTitle, WithEvents,
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
@@ -68,10 +66,10 @@ class BecausePerformanceReportExport implements FromView, WithTitle, WithEvents,
                         'size' => 18,
                     ],
                     'alignment' => [
-                        'horizontal' => Alignment::HORIZONTAL_CENTER
-                    ]
+                        'horizontal' => Alignment::HORIZONTAL_CENTER,
+                    ],
                 ]);
-            }
+            },
         ];
     }
 
@@ -118,24 +116,24 @@ class BecausePerformanceReportExport implements FromView, WithTitle, WithEvents,
     protected function addFormulas()
     {
         // Automated Greeting Disconnect Rate
-        $this->setDivisionFormulas([ 'row' => 9, 'dividend' => 8, 'divisor' => 6 ]);
+        $this->setDivisionFormulas(['row' => 9, 'dividend' => 8, 'divisor' => 6]);
         // Abandonment Rate
-        $this->setDivisionFormulas([ 'row' => 11, 'dividend' => 10, 'divisor' => 6 ]);
+        $this->setDivisionFormulas(['row' => 11, 'dividend' => 10, 'divisor' => 6]);
         // % of Qualified Calls
-        $this->setDivisionFormulas([ 'row' => 12, 'dividend' => 34, 'divisor' => 7 ]);
+        $this->setDivisionFormulas(['row' => 12, 'dividend' => 34, 'divisor' => 7]);
         // % of Non-Qualified Calls
-        $this->setDivisionFormulas([ 'row' => 13, 'dividend' => 48, 'divisor' => 7 ]);
+        $this->setDivisionFormulas(['row' => 13, 'dividend' => 48, 'divisor' => 7]);
         // Gross Conversion Rate
-        $this->setDivisionFormulas([ 'row' => 14, 'dividend' => 20, 'divisor' => 6 ]);
+        $this->setDivisionFormulas(['row' => 14, 'dividend' => 20, 'divisor' => 6]);
         // Net Conversion Rate
-        $this->setDivisionFormulas([ 'row' => 15, 'dividend' => 20, 'divisor' => 7 ]);
+        $this->setDivisionFormulas(['row' => 15, 'dividend' => 20, 'divisor' => 7]);
         // Qualified Conversion Rate
-        $this->setDivisionFormulas([ 'row' => 16, 'dividend' => 20, 'divisor' => 34 ]);
+        $this->setDivisionFormulas(['row' => 16, 'dividend' => 20, 'divisor' => 34]);
 
         // Total Overall Minutes
-        $this->setSumFormula([ 'row' => 34, 'from_row' => 20, 'to_row' => 33 ]);
+        $this->setSumFormula(['row' => 34, 'from_row' => 20, 'to_row' => 33]);
         // Total Cap Sales
-        $this->setSumFormula([ 'row' => 48, 'from_row' => 35, 'to_row' => 47 ]);
+        $this->setSumFormula(['row' => 48, 'from_row' => 35, 'to_row' => 47]);
 
         return $this;
     }
@@ -178,17 +176,17 @@ class BecausePerformanceReportExport implements FromView, WithTitle, WithEvents,
         return [
             'font' => [
                 'bold' => true,
-                'size' => 22
+                'size' => 22,
             ],
             'alignment' => [
-                'horizontal' => Alignment::HORIZONTAL_CENTER
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
             ],
             'borders' => [
                 'outline' => [
                     'borderStyle' => Border::BORDER_THIN,
                     'color' => ['rgb' => '000000'],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -199,7 +197,7 @@ class BecausePerformanceReportExport implements FromView, WithTitle, WithEvents,
                 'fillType' => Fill::FILL_SOLID,
                 'color' => [
                     'rgb' => 'DCE7F8',
-                ]
+                ],
             ],
             'borders' => [
                 'outline' => [
@@ -209,25 +207,25 @@ class BecausePerformanceReportExport implements FromView, WithTitle, WithEvents,
                 'top' => [
                     'borderStyle' => Border::BORDER_HAIR,
                     'color' => ['rgb' => '000000'],
-                ]
+                ],
             ],
             'font' => [
                 'bold' => true,
-            ]
+            ],
         ];
 
         // $this->sheet->getStyle('A2:K2')->applyFromArray($format);
         $this->sheet->getStyle('A4:K4')->applyFromArray([
             'borders' => [
                 'outline' => [
-                    'borderStyle' => Border::BORDER_THIN
-                ]
+                    'borderStyle' => Border::BORDER_THIN,
+                ],
             ],
             'fill' => [
                 'fillType' => Fill::FILL_SOLID,
                 'color' => [
                     'rgb' => '9EBDEA',
-                ]
+                ],
             ],
         ]);
         $this->sheet->getStyle('A20:K20')->applyFromArray([
@@ -235,8 +233,8 @@ class BecausePerformanceReportExport implements FromView, WithTitle, WithEvents,
                 'fillType' => Fill::FILL_SOLID,
                 'color' => [
                     'rgb' => 'FFF2CC',
-                ]
-            ]
+                ],
+            ],
         ]);
         $this->sheet->getStyle('A19:K19')->applyFromArray($format);
         $this->sheet->getStyle('A34:K34')->applyFromArray($format);
@@ -249,7 +247,7 @@ class BecausePerformanceReportExport implements FromView, WithTitle, WithEvents,
                 'bottom' => [
                     'borderStyle' => Border::BORDER_MEDIUM,
                     'color' => ['rgb' => '000000'],
-                ]
+                ],
             ],
             'font' => [
                 'bold' => true,
@@ -258,13 +256,12 @@ class BecausePerformanceReportExport implements FromView, WithTitle, WithEvents,
                 'fillType' => Fill::FILL_SOLID,
                 'color' => [
                     'rgb' => 'A9FBFD',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         return $this;
     }
-
 
     protected function addNumberFormats()
     {

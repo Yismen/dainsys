@@ -6,7 +6,6 @@ use Illuminate\Console\Command;
 
 abstract class BaseProductionReportCommand extends Command
 {
-
     /**
      * Create a new command instance.
      *
@@ -16,6 +15,7 @@ abstract class BaseProductionReportCommand extends Command
     {
         parent::__construct();
     }
+
     /**
      * Parse and return the distribution list for the email
      *
@@ -24,10 +24,11 @@ abstract class BaseProductionReportCommand extends Command
     protected function getDistroList(string $config_key): array
     {
         $list = config($config_key) ??
-            abort(404, "Invalid distro list. Set it up in the .env, separated by pipe (|).");
+            abort(404, 'Invalid distro list. Set it up in the .env, separated by pipe (|).');
 
-        return (array) explode("|", $list);
+        return (array) explode('|', $list);
     }
+
     /**
      * Returns the dates range form the report
      *
@@ -47,13 +48,14 @@ abstract class BaseProductionReportCommand extends Command
 
         return [
             'from_date' => $from_date->format('Y-m-d'),
-            'to_date' => $to_date->format('Y-m-d')
+            'to_date' => $to_date->format('Y-m-d'),
         ];
     }
 
     protected function getFileName(string $client_name, array $dates_range): string
     {
         $now = now()->format('His');
+
         return "{$client_name} Production Report {$dates_range['from_date']}_{$dates_range['to_date']} {$now}.xlsx";
     }
 }

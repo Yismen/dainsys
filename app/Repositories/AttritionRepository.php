@@ -11,11 +11,11 @@ class AttritionRepository
         $static = new self();
         $data = [];
 
-        for ($i = $months - 1; $i >= 0; $i--) { 
+        for ($i = $months - 1; $i >= 0; $i--) {
             $date = now()->subMonths($i);
             $actives = $static->activesStartOfMonth($i);
             $terminations = $static->terminatedThisMonth($i);
-            $data[] =  [
+            $data[] = [
                 'month' => $date->format('Y-m'),
                 'head_count' => $actives,
                 'terminations' => $terminations,
@@ -23,11 +23,11 @@ class AttritionRepository
             ];
         }
 
-        return $data;       
+        return $data;
     }
 
     /**
-     * Calculate MTD attrition for any given month. 0 means, current month. 1 means last month. 
+     * Calculate MTD attrition for any given month. 0 means, current month. 1 means last month.
      *
      * @param integer $months
      * @return void
@@ -37,7 +37,8 @@ class AttritionRepository
         $static = new self();
 
         return $static->calculate(
-            $static->terminatedThisMonth( $months), $static->activesStartOfMonth( $months)
+            $static->terminatedThisMonth($months),
+            $static->activesStartOfMonth($months)
         );
     }
 
@@ -50,7 +51,7 @@ class AttritionRepository
             ->where(function ($query) use ($start_of_month) {
                 $query->actives()
                 ->orWhereHas('termination', function ($query) use ($start_of_month) {
-                    $query->where('termination_date', '>', $start_of_month );
+                    $query->where('termination_date', '>', $start_of_month);
                 });
             })->count();
     }

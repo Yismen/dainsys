@@ -73,6 +73,7 @@ class ExcelFileLoader
         if (count($this->errors) > 0) {
             return true;
         }
+
         return false;
     }
 

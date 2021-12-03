@@ -6,5 +6,4 @@ use App\DainsysModel as Model;
 
 class Config extends Model
 {
-    //
 }

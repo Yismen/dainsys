@@ -3,18 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Department;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\DepartmentResource;
-use Carbon\Carbon;
 
 class DepartmentsController extends Controller
 {
     /**
      * Store Departmens
-     * 
+     *
      * Save a Department model to database.
-     * 
+     *
      * @bodyParam name string required The name of the Department
      * @response 201 {
      *      "name": "Asdfasdf",
@@ -26,7 +23,7 @@ class DepartmentsController extends Controller
     public function store()
     {
         $this->validate(request(), [
-            'name' => 'required'
+            'name' => 'required',
         ]);
 
         $afp = Department::create(request()->all());

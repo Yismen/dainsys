@@ -16,7 +16,6 @@ class DashboardPolicy
      */
     public function __construct()
     {
-        //
     }
 
     public function viewAny(User $user)

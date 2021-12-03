@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Employee;
 use App\OvernightHour;
-use Illuminate\Http\Request;
 use App\Repositories\OvernightHourRepo;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\OvernightHour\CreateOvernightHourRequest;
@@ -12,8 +10,6 @@ use App\Http\Requests\OvernightHour\UpdateOvernightHourRequest;
 
 class OvernightHourController extends Controller
 {
-
-
     /**
      * Protect the controller agaist unauthorized users.
      */
@@ -24,6 +20,7 @@ class OvernightHourController extends Controller
         $this->middleware('authorize:create-overnight-hours', ['only' => ['create', 'store']]);
         $this->middleware('authorize:destroy-overnight-hours', ['only' => ['destroy']]);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +34,7 @@ class OvernightHourController extends Controller
             return view('overnight-hours.index', compact('employees'));
         }
 
-        $overnight_hours =  $overnight_repo->all();
+        $overnight_hours = $overnight_repo->all();
 
         return DataTables::of($overnight_hours)
             ->toJson(true);

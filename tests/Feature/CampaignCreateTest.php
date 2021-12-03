@@ -51,7 +51,6 @@ class CampaignCreateTest extends TestCase
     /** @test */
     public function it_requires_a_all_fields_to_create_a_campaign()
     {
-
         $this->actingAs($this->userWithPermission('create-campaigns'))
             ->post(
                 route('admin.campaigns.store'),

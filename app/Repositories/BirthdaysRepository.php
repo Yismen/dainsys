@@ -2,13 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Department;
 use App\Employee;
-use App\Gender;
-use App\Position;
-use App\Project;
-use App\Site;
-use App\Supervisor;
 
 class BirthdaysRepository
 {

@@ -11,6 +11,6 @@ class CapillusLeadsReportMail extends CapillusMailBase
      */
     public function build()
     {
-        return $this->defaultBuild("Ecco - Capillus leads file");
+        return $this->defaultBuild('Ecco - Capillus leads file');
     }
 }

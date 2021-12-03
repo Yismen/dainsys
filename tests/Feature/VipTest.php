@@ -117,7 +117,6 @@ class VipTest extends TestCase
     /** @test */
     public function it_requires_a_date_to_create_a_vip()
     {
-
         $this->actingAs($this->userWithPermission('create-vips'))
             ->post(route('admin.vips.store'), $this->formAttributes(['since' => '']))
             ->assertSessionHasErrors('since');

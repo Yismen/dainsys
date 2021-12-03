@@ -41,6 +41,7 @@ class PasswordController extends Controller
         if ($request->ajax()) {
             return $passwords;
         }
+
         return view('passwords.index', compact('passwords'));
     }
 
@@ -51,7 +52,6 @@ class PasswordController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -62,7 +62,6 @@ class PasswordController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -73,7 +72,6 @@ class PasswordController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -84,7 +82,6 @@ class PasswordController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -96,7 +93,6 @@ class PasswordController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
@@ -107,6 +103,5 @@ class PasswordController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 }

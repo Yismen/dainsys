@@ -17,7 +17,6 @@ class PasswordResetByAdminNotification extends Notification
      */
     public function __construct()
     {
-        //
     }
 
     /**
@@ -54,7 +53,7 @@ class PasswordResetByAdminNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+
         ];
     }
 }

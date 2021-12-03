@@ -9,8 +9,6 @@ use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithPreCalculateFormulas;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Events\AfterSheet;
-use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
-use Illuminate\Support\Str;
 
 class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
 {
@@ -54,11 +52,12 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
 
         $this->calls_data = collect($this->data['period_calls_parser']);
         $this->first_hours_column = 'B';
-        $this->working_range = range("A", "M");
+        $this->working_range = range('A', 'M');
 
         $this->dates = $this->hours_data->pluck('Report Date')->unique()->sort();
         $this->names = $this->hours_data->pluck('agent_name')->unique()->sort()->filter(function ($name) {
             $calls = ($this->calls_data->first(fn ($item) => $item->agent_name == $name));
+
             return $calls->total_calls ?? 0 > 0;
         });
 
@@ -88,7 +87,6 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
                 $this->sheet->getColumnDimension('A')->setWidth(30);
@@ -97,7 +95,7 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
 
                 (new RangeFormarter($event, "A1:{$this->last_column}{$this->rows}"))
                     ->configurePage('landscape')
-                    ->formatTitle("A1:E1")
+                    ->formatTitle('A1:E1')
                     ->formatHeaderRow("A2:{$this->last_column}2")
                     ->applyBorders("A3:{$this->last_column}{$this->rows}")
                     ->applyNumberFormats("A3:{$this->total_hours_column}{$this->totals_row}", '_(* #,##0.00_);_(* (#,##0.00);_(* "-"??_);_(@_)')
@@ -106,15 +104,14 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
                     ->formatTotals("B{$this->totals_row}:{$this->last_column}{$this->totals_row}")
                     ->applyFontBoldToRange("{$this->total_hours_column}3:{$this->last_column}{$this->rows}")
                     ->applyBgToRange("{$this->total_hours_column}3:{$this->last_column}{$this->rows}", 'F8F7FF')
-                    ->setColumnsRangeWidth("B", $this->last_column, 12);
-
+                    ->setColumnsRangeWidth('B', $this->last_column, 12);
 
                 $this->sheet->freezePane('B3');
 
                 $this->sheet->setAutoFilter("A2:{$this->last_column}{$this->rows}");
 
                 // Adjust DialGroup column width
-            }
+            },
         ];
     }
 

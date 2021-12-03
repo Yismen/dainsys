@@ -5,17 +5,15 @@ namespace App\Http\Controllers\Api;
 use App\Position;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\PositionResource;
 use App\Rules\PositionUnique;
-use Carbon\Carbon;
 
 class PositionsController extends Controller
 {
     /**
      * Store Positions
-     * 
+     *
      * Save a Position model to database.
-     * 
+     *
      * @bodyParam name string required The name of the Position
      * @bodyParam department_id numeric required The department_id of the Position
      * @bodyParam payment_type_id numeric required The payment_type_id of the Position

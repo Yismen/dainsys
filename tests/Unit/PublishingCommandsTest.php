@@ -3,7 +3,6 @@
 namespace Tests\Unit;
 
 use App\Console\Commands\RingCentralReports\Exports\Support\Mails\BaseRingCentralMails;
-use App\Mail\CommandsBaseMail;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

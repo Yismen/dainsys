@@ -22,7 +22,6 @@ class SendPoliticalTextCampaignReportCommand extends BaseProductionReportCommand
      */
     protected $description = 'Send a roduction report for the text campaign to Political distro';
 
-
     public function handle()
     {
         $dates_range = $this->getDatesRange();
@@ -47,6 +46,7 @@ class SendPoliticalTextCampaignReportCommand extends BaseProductionReportCommand
 
         $this->info("{$client_name} Text Report Sent!");
     }
+
     /**
      * Returns the dates range form the report
      *
@@ -66,7 +66,7 @@ class SendPoliticalTextCampaignReportCommand extends BaseProductionReportCommand
 
         $ranges = [
             'from_date' => $from_date->format('Y-m-d'),
-            'to_date' => $to_date->format('Y-m-d')
+            'to_date' => $to_date->format('Y-m-d'),
         ];
 
         return $ranges;

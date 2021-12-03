@@ -13,7 +13,6 @@ class SemdEmailToHumanResources
      */
     public function __construct()
     {
-        //
     }
 
     /**

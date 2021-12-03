@@ -4,7 +4,6 @@ namespace App\Http\Traits\Relationships;
 
 use App\Attendance;
 use App\Performance;
-use Carbon\Carbon;
 
 trait EmployeeRelationships
 {

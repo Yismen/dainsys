@@ -16,9 +16,9 @@ class CapillusCallTypeRepository extends RingCentralConnection
     public function __construct(array $options)
     {
         $this->options = $options;
-        
+
         $this->call_types_count = $this->getCallsTypeCounts();
-        
+
         $this->call_types_results = $this->getCallsTypeResults();
     }
 

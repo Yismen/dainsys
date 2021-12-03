@@ -10,10 +10,9 @@ use Illuminate\Support\Facades\Cache;
 
 class VIPController extends Controller
 {
-
     /**
      * Update VIP
-     * 
+     *
      * Update VIP information for a given employee.
      *
      * @bodyParam is_vip boolean required Indicates if the employee should be added to or removed from the Vip list
@@ -61,7 +60,6 @@ class VIPController extends Controller
         ]);
 
         Cache::forget('employees');
-
 
         if ($request->get('is_vip') == 1) {
             $employee->vip()->create(['since' => Carbon::now()]);

@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\EmployeeReactivated as Event;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class EmployeeReactivated
 {
@@ -15,7 +13,6 @@ class EmployeeReactivated
      */
     public function __construct()
     {
-        //
     }
 
     /**
@@ -26,6 +23,5 @@ class EmployeeReactivated
      */
     public function handle(Event $event)
     {
-        //
     }
 }

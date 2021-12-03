@@ -2,8 +2,6 @@
 
 namespace App\Mail;
 
-use App\Employee;
-use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
