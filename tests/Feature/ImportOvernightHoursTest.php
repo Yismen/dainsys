@@ -19,7 +19,6 @@ class ImportOvernightHoursTest extends TestCase
     /** Authentication: Prevent access to unauthenticated users */
     public function testGuestCantAccess()
     {
-        $this->withExceptionHandling();
 
         $this->get(route('admin.overnight_hours.index'))->assertRedirect('/login');
         $this->get(route('admin.overnight_hours.create'))->assertRedirect('/login');
@@ -28,7 +27,6 @@ class ImportOvernightHoursTest extends TestCase
     /** Authorization: Prevent access to unauthorizated users */
     public function testUnuthorizedUsersCantAccess()
     {
-        $this->withExceptionHandling();
         $hour = create('App\OvernightHour');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
@@ -42,7 +40,6 @@ class ImportOvernightHoursTest extends TestCase
     /** Authorization: Grant access to authorizated users to import */
     public function testAuthorizedUsersCanSeeAFormToImportOvernightHours()
     {
-        // $this->disableExceptionHandling();
         $response = $this->actingAs($this->userWithPermission('view-overnight-hours'));
 
         $response->get(route('admin.overnight_hours.index'))
@@ -54,7 +51,6 @@ class ImportOvernightHoursTest extends TestCase
     /** Validations: Validate fields to reate */
     public function testValidateImportingOvernightHour()
     {
-        $this->withExceptionHandling();
         $response = $this->actingAs($this->userWithPermission('import-overnight-hours'));
 
         // File field is required
@@ -84,7 +80,6 @@ class ImportOvernightHoursTest extends TestCase
     /** Import file with hours */
     public function testAuthorizedUsersCanImportOvernightHoursFile()
     {
-        $this->withExceptionHandling();
         Excel::fake();
 
         $response = $this->actingAs($this->userWithPermission('import-overnight-hours'));

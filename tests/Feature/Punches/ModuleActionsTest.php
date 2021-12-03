@@ -81,7 +81,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_destroy_punch()
     {
-        // $this->disableExceptionHandling();
         $punch = create('App\Punch');
         $response = $this->actingAs($this->userWithPermission('destroy-punches'));
 

@@ -15,7 +15,6 @@ class VipTest extends TestCase
     /** @test */
     public function it_requries_authentication()
     {
-        $this->withExceptionHandling();
         $vip = create('App\Vip');
         $this->get(route('admin.vips.index'))->assertRedirect('/login');
         $this->post(route('admin.vips.store', $vip->toArray()))->assertRedirect('/login');
@@ -27,7 +26,6 @@ class VipTest extends TestCase
     /** @test */
     public function it_requires_permissions()
     {
-        $this->withExceptionHandling();
         $this->actingAs(create('App\User'));
         $vip = create('App\Vip');
 
@@ -50,7 +48,6 @@ class VipTest extends TestCase
     /** @test */
     public function authorized_users_can_view_vip_resource()
     {
-        $this->withExceptionHandling();
         $user = $this->userWithPermission('view-vips');
         $vip = create('App\Vip');
         $employee = create('App\Employee');
@@ -68,7 +65,6 @@ class VipTest extends TestCase
     /** @test */
     public function authorized_users_can_create_vip_resource()
     {
-        // $this->withExceptionHandling();
         $user = $this->userWithPermission('create-vips');
         $this->actingAs($user);
 
@@ -91,7 +87,6 @@ class VipTest extends TestCase
     /** @test */
     public function it_allows_users_with_destroy_vips_permission_to_destroy_vips()
     {
-        // $this->withExceptionHandling();
         // given
         $user = $this->userWithPermission('destroy-vips');
         $vip = create('App\Vip');
@@ -108,7 +103,6 @@ class VipTest extends TestCase
     /** @test */
     public function a_user_can_create_a_vip()
     {
-        // $this->withExceptionHandling();
         $vip = make('App\Vip');
 
         $this->actingAs($this->userWithPermission('create-vips'))
@@ -123,7 +117,6 @@ class VipTest extends TestCase
     /** @test */
     public function it_requires_a_date_to_create_a_vip()
     {
-        $this->withExceptionHandling();
 
         $this->actingAs($this->userWithPermission('create-vips'))
             ->post(route('admin.vips.store'), $this->formAttributes(['since' => '']))
@@ -133,7 +126,6 @@ class VipTest extends TestCase
     /** @test */
     public function a_user_can_see_a_form_to_update_a_vip()
     {
-        $this->withExceptionHandling();
         $vip = create('App\Vip');
 
         $this->actingAs($this->userWithPermission('edit-vips'))
@@ -144,7 +136,6 @@ class VipTest extends TestCase
     /** @test */
     public function test_validations_to_update()
     {
-        $this->withExceptionHandling();
         $user = $this->userWithPermission('edit-vips');
         $vip = create('App\Vip');
 
@@ -156,7 +147,6 @@ class VipTest extends TestCase
     /** @test */
     public function a_user_can_update_a_vip()
     {
-        $this->withExceptionHandling();
         $vip = create('App\Vip');
         $date = Carbon::now()->format('Y-m-d 00:00:00');
         $array = ['since' => $date];

@@ -19,7 +19,6 @@ class FormValidationTest extends TestCase
     /** @test */
     public function name_field_is_required()
     {
-        // $this->withoutExceptionHandling();
         $revenue_type = create(RevenueType::class)->toArray();
 
         $this->actingAs($this->userWithPermission('create-revenue-types'))

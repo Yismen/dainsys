@@ -45,7 +45,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_see_edit_page()
     {
-        // $this->disableExceptionHandling();
         $holiday = create('App\Holiday');
         $response = $this->actingAs($this->userWithPermission('edit-holidays'));
 
@@ -62,7 +61,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_update_holiday()
     {
-        // $this->disableExceptionHandling();
         $holiday = create('App\Holiday');
         $updated = [
             'name' => 'Updated Name',
@@ -81,7 +79,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_destroy_holiday()
     {
-        $this->disableExceptionHandling();
         $holiday = create('App\Holiday');
         $response = $this->actingAs($this->userWithPermission('destroy-holidays'));
 
@@ -110,7 +107,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function it_create_holidays_only_returns_holidays_limited_to_many_months()
     {
-        $this->disableExceptionHandling();
         $months = 6;
         $date = Carbon::now()->subMonths($months)->startOfMonth();
         $holiday = raw('App\Holiday', ['date' => $date]);

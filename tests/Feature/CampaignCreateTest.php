@@ -14,7 +14,6 @@ class CampaignCreateTest extends TestCase
     /** @test */
     public function guests_can_not_visit_any_campaigns_route()
     {
-        $this->withExceptionHandling();
         $campaign = create('App\Campaign');
 
         $this->get(route('admin.campaigns.create'))->assertRedirect('/login');
@@ -24,7 +23,6 @@ class CampaignCreateTest extends TestCase
     /** @test */
     public function it_requires_create_campaigns_permission_to_add_a_campaign()
     {
-        $this->withExceptionHandling();
         // Given
         $user = create('App\User');
         $this->actingAs($user);
@@ -39,7 +37,6 @@ class CampaignCreateTest extends TestCase
     /** @test */
     public function it_allows_with_create_campaigns_permission_to_create_campaigns()
     {
-        // $this->withExceptionHandling();
         // given
         $user = $this->userWithPermission('create-campaigns');
 
@@ -54,7 +51,6 @@ class CampaignCreateTest extends TestCase
     /** @test */
     public function it_requires_a_all_fields_to_create_a_campaign()
     {
-        $this->withExceptionHandling();
 
         $this->actingAs($this->userWithPermission('create-campaigns'))
             ->post(
@@ -80,7 +76,6 @@ class CampaignCreateTest extends TestCase
     /** @test */
     public function a_user_can_create_a_campaign()
     {
-        // $this->withExceptionHandling();
         $campaign = make('App\Campaign');
 
         $this->actingAs($this->userWithPermission('create-campaigns'))

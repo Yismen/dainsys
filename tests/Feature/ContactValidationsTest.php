@@ -13,7 +13,6 @@ class ContactValidationsTest extends TestCase
     /** @test */
     function it_requires_a_name_to_create_a_contact()
     {
-        $this->withExceptionHandling();
 
         $this->actingAs(create(\App\User::class))
             ->post(route('admin.contacts.store'), $this->formAttributes(['name' => '']))
@@ -23,7 +22,6 @@ class ContactValidationsTest extends TestCase
     /** @test */
     function it_requires_a_phone_to_create_a_contact()
     {
-        $this->withExceptionHandling();
 
         $this->actingAs(create(\App\User::class))
             ->post(route('admin.contacts.store'), $this->formAttributes(['phone' => '']))
@@ -33,7 +31,6 @@ class ContactValidationsTest extends TestCase
     /** @test */
     function it_requires_a_formated_correctly_to_create_a_contact()
     {
-        $this->withExceptionHandling();
 
         $this->actingAs(create(\App\User::class))
             ->post(route('admin.contacts.store'), $this->formAttributes(['email' => '']))

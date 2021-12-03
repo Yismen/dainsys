@@ -54,7 +54,6 @@ class ContactTest extends TestCase
     /** @test */
     public function users_cant_see_details_of_not_owned_contacts()
     {
-        $this->withExceptionHandling();
 
         $user = create('App\User');
         $contact = $user->contacts()->create(

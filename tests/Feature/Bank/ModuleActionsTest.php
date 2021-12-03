@@ -32,7 +32,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     // public function authorized_users_can_store_bank()
     // {
-    //     // $this->withoutExceptionHandling();
     //     $bank = make(Bank::class, ['date' => Carbon::now()])->toArray();
     //     $bank = array_merge($bank, ['employee_id' => [$bank['employee_id']]]);
 

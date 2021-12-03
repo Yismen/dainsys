@@ -102,7 +102,6 @@ class DGT4ControllerTest extends TestCase
     /** @test */
     public function it_downloads_dgt4_report()
     {
-        $this->withoutExceptionHandling();
         Excel::fake();
         $employee_hired_this_year = factory(Employee::class)->create(['hire_date' => now()]);
         $employee_hired_last_year = factory(Employee::class)->create(['hire_date' => now()->subYear()]);

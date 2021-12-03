@@ -62,7 +62,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     // public function authorized_users_can_store_attendance()
     // {
-    //     // $this->withoutExceptionHandling();
     //     $attendance = make(Attendance::class, ['date' => Carbon::now()])->toArray();
     //     $attendance = array_merge($attendance, ['employee_id' => [$attendance['employee_id']]]);
 
