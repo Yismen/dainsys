@@ -4,7 +4,7 @@ namespace Tests\Feature\HumanResources;
 
 use App\Employee;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Maatwebsite\Excel\Facades\Excel;
 use Tests\TestCase;
 
 class DGT3ControllerTest extends TestCase
@@ -89,7 +89,7 @@ class DGT3ControllerTest extends TestCase
         $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
 
         $this->post(route('admin.human_resources.dgt3.show', [
-            'year' => now()->year
+            'year' => now()->year,
         ]))
             ->assertOk()
             ->assertViewIs('human_resources.reports.dgt3')
@@ -99,19 +99,22 @@ class DGT3ControllerTest extends TestCase
     }
 
     /** @test */
-    // public function it_downloads_dgt3_report()
-    // {
-    //     $employee_hired_this_year = factory(Employee::class)->create(['hire_date' => now()]);
-    //     $employee_hired_last_year = factory(Employee::class)->create(['hire_date' => now()->subYear()]);
-    //     $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
+    public function it_downloads_dgt3_report()
+    {
+        Excel::fake();
+        $employee_hired_this_year = factory(Employee::class)->create(['hire_date' => now()]);
+        $employee_hired_last_year = factory(Employee::class)->create(['hire_date' => now()->subYear()]);
+        $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
 
-    //     $this->get(route('admin.human_resources.dgt3.download', [
-    //         'year' => now()->year
-    //     ]))
-    //         ->assertOk()
-    //         ->assertViewIs('human_resources.reports.dgt3')
-    //         ->assertSee($employee_hired_this_year->full_name)
-    //         // ->assertDontSee($employee_hired_last_year->full_name)
-    //     ;
-    // }
+        $this->get(route('admin.human_resources.dgt3.download', [
+            'year' => now()->year,
+        ]))
+            ->assertOk()
+            ->assertViewIs('human_resources.reports.dgt3')
+            ->assertSee($employee_hired_this_year->full_name)
+            // ->assertDontSee($employee_hired_last_year->full_name)
+        ;
+
+        Excel::assertDownloaded('DGT3-' . now()->year . '.xlsx');
+    }
 }

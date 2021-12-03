@@ -85,12 +85,11 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::group(['prefix' => 'human_resources', 'middleware' => 'authorize:view-human-resources-dashboard'], function () {
         Route::get('employees/dgt3', 'HumanResources\DGT3Controller@dgt3')->name('human_resources.dgt3.index');
         Route::post('employees/dgt3', 'HumanResources\DGT3Controller@handleDgt3')->name('human_resources.dgt3.show');
-        Route::get('employees/dgt3_to_excel/{year}', 'HumanResources\DGT3Controller@dgt3ToExcel')->name('human_resources.dgt3.download');
+        Route::get('employees/dgt3_to_excel/{year}', 'HumanResources\DGT3Controller@excel')->name('human_resources.dgt3.download');
 
         Route::get('employees/dgt4', 'HumanResources\DGT4Controller@dgt4')->name('human_resources.dgt4.index');
         Route::post('employees/dgt4', 'HumanResources\DGT4Controller@handleDgt4')->name('human_resources.dgt4.show');
-        Route::get('employees/dgt4_to_excel/{year}/{month}', 'HumanResources\DGT4Controller@dgt4ToExcel')->name('human_resources.dgt4.month.download');
-        Route::get('employees/dgt4_to_excel/{year}', 'HumanResources\DGT4Controller@dgt3ToExcel')->name('human_resources.dgt4.download');
+        Route::get('employees/dgt4_to_excel/{year}', 'HumanResources\DGT4Controller@excel')->name('human_resources.dgt4.download');
 
         Route::get('birthdays/this_month', 'HumanResources\BirthdaysController@birthdaysThisMonth')->name('birthdays_this_month');
         Route::get('birthdays/next_month', 'HumanResources\BirthdaysController@birthdaysNextMonth')->name('birthdays_next_month');
@@ -167,7 +166,6 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 
     Route::get('users/force_reset/{user}', 'User\PasswordController@force_reset')->name('users.force_reset');
     Route::post('users/force_reset/{user}', 'User\PasswordController@force_change')->name('users.force_change');
-
 
     Route::post('users/settings', 'User\SettingController@update')->name('users.settings');
 
