@@ -22,6 +22,7 @@ class OomaMonthTDCallsSheet extends DispositionsSheet
      * @var boolean
      */
     protected $reportable = true;
+
     /**
      * @return View
      */
@@ -36,7 +37,7 @@ class OomaMonthTDCallsSheet extends DispositionsSheet
         }
 
         return view(
-            "exports.reports.ring_central.calls_mtd",
+            'exports.reports.ring_central.calls_mtd',
             [
                 // 'title' => "{$this->exporter->client_name} {$this->title()} From {$this->exporter->dates_range['from_date']} To {$this->exporter->dates_range['to_date']}",
                 'data' => $this->data,
@@ -96,13 +97,13 @@ class OomaMonthTDCallsSheet extends DispositionsSheet
                 $formarter = new RangeFormarter($event, "A1:{$last_column}{$rows}");
 
                 $formarter->configurePage(PageSetup::ORIENTATION_PORTRAIT)
-                    ->setColumnsRangeWidth("A", "B", 11)
-                    ->setColumnsRangeWidth("C", $last_column, 13)
+                    ->setColumnsRangeWidth('A', 'B', 11)
+                    ->setColumnsRangeWidth('C', $last_column, 13)
                     ->formatHeaderRow("A1:{$last_column}1")
                     ->setRowHeight(1, 32)
                     ->setAutoFilter("A1:{$last_column}{$rows}")
                     ->freezePane('A2');
-            }
+            },
         ];
     }
 }

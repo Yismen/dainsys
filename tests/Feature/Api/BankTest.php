@@ -4,7 +4,6 @@ namespace Tests\Feature\Api;
 
 use App\Bank;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Laravel\Passport\Passport;
 use Tests\TestCase;
 
@@ -17,7 +16,7 @@ class BankTest extends TestCase
     {
         Passport::actingAs($this->user());
         $attributes = [
-            'name' => ''
+            'name' => '',
         ];
 
         $response = $this->post('/api/banks', $attributes);

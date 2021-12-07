@@ -16,8 +16,8 @@ class Afp extends Model
         return [
             'slug' => [
                 'source' => ['name'],
-                'onUpdate' => true
-            ]
+                'onUpdate' => true,
+            ],
         ];
     }
 

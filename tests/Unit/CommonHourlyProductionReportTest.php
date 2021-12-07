@@ -14,16 +14,14 @@ class CommonHourlyProductionReportTest extends TestCase
     /** @test */
     public function excel_file_is_stored()
     {
-
         Mail::fake();
         Excel::fake();
-        $subject = "Fake Name";
+        $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
         $repo = Mockery::mock(HourlyProductionReportRepository::class);
         $repo->shouldReceive('getData')
             ->once()
             ->andReturn($this->getData());
-
 
         Excel::store(
             new HourlyProductionReportExport(
@@ -42,7 +40,7 @@ class CommonHourlyProductionReportTest extends TestCase
     {
         Excel::fake();
         Mail::fake();
-        $subject = "Fake Name";
+        $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
         $recipient = 'someone@fake.email';
         $repo = Mockery::mock(HourlyProductionReportRepository::class);

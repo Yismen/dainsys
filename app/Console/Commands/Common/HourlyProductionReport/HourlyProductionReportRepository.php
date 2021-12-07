@@ -41,6 +41,7 @@ class HourlyProductionReportRepository extends RingCentralConnection implements 
                     exec [sp_Hours_Summary] @fromDate, @toDate, @campaign, @team
                 ")
             );
+
         return $this;
     }
 

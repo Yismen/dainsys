@@ -5,8 +5,6 @@ namespace Tests\Feature\Employee;
 use App\Address;
 use App\Employee;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Arr;
 use Tests\TestCase;
 
 class AddressTest extends TestCase
@@ -34,7 +32,7 @@ class AddressTest extends TestCase
         $updated_attributes = [
             'sector' => 'Updated Info',
             'street_address' => 'Updated Info',
-            'city' => 'Updated Info'
+            'city' => 'Updated Info',
         ];
 
         $response = $this
@@ -52,7 +50,7 @@ class AddressTest extends TestCase
         $updated_attributes = [
             'sector' => '',
             'street_address' => '',
-            'city' => ''
+            'city' => '',
         ];
 
         $response = $this

@@ -54,7 +54,6 @@ class RangeFormarter
         return $this;
     }
 
-
     public function setColumnsWidth(string $from_column, string $to_column)
     {
         foreach (range($from_column, $to_column) as $col) {
@@ -84,8 +83,6 @@ class RangeFormarter
         return $this;
     }
 
-
-
     public function setColumnsRangeWidth(string $from_column, string $to_column, int $width = 11)
     {
         foreach (range($from_column, $to_column) as $col) {
@@ -94,7 +91,6 @@ class RangeFormarter
 
         return $this;
     }
-
 
     public function formatTitle(string $range)
     {
@@ -105,7 +101,7 @@ class RangeFormarter
             ->getStyle($range)
             ->applyFromArray([
                 'font' => [
-                    'bold' => true
+                    'bold' => true,
                 ],
                 'fill' => [
                     'fillType' => Fill::FILL_SOLID,
@@ -114,7 +110,7 @@ class RangeFormarter
                     ],
                 ],
                 'alignment' => [
-                    'horizontal' => Alignment::HORIZONTAL_LEFT
+                    'horizontal' => Alignment::HORIZONTAL_LEFT,
                 ],
                 'borders' => [
                     'outline' => [
@@ -124,13 +120,12 @@ class RangeFormarter
                     'inside' => [
                         'borderStyle' => Border::BORDER_THIN,
                         'color' => ['rgb' => '000000'],
-                    ]
-                ]
+                    ],
+                ],
             ]);
 
         return $this;
     }
-
 
     public function applyFontBoldToRange(string $range)
     {
@@ -138,13 +133,12 @@ class RangeFormarter
             ->getStyle($range)
             ->applyFromArray([
                 'font' => [
-                    'bold' => true
-                ]
+                    'bold' => true,
+                ],
             ]);
 
         return $this;
     }
-
 
     public function applyBgToRange(string $range, string $color)
     {
@@ -172,7 +166,7 @@ class RangeFormarter
             ->applyFromArray([
                 'font' => [
                     'bold' => true,
-                    'italic' => true
+                    'italic' => true,
                 ],
                 'fill' => [
                     'fillType' => Fill::FILL_SOLID,
@@ -181,7 +175,7 @@ class RangeFormarter
                     ],
                 ],
                 'alignment' => [
-                    'horizontal' => Alignment::HORIZONTAL_RIGHT
+                    'horizontal' => Alignment::HORIZONTAL_RIGHT,
                 ],
                 'borders' => [
                     'outline' => [
@@ -191,14 +185,15 @@ class RangeFormarter
                     'inside' => [
                         'borderStyle' => Border::BORDER_THIN,
                         'color' => ['rgb' => '000000'],
-                    ]
-                ]
+                    ],
+                ],
             ]);
 
         return $this;
     }
+
     /**
-     * Set Height Row. 
+     * Set Height Row.
      *
      * @param integer $row
      * @param integer $height. -1 for Auto
@@ -210,8 +205,9 @@ class RangeFormarter
 
         return $this;
     }
+
     /**
-     * Set Height Row. 
+     * Set Height Row.
      *
      * @param integer $row
      * @param integer $height. -1 for Auto
@@ -233,7 +229,7 @@ class RangeFormarter
         $this->sheet->getStyle($range)
             ->applyFromArray([
                 'font' => [
-                    'bold' => true
+                    'bold' => true,
                 ],
                 'fill' => [
                     'fillType' => Fill::FILL_SOLID,
@@ -253,8 +249,8 @@ class RangeFormarter
                     'inside' => [
                         'borderStyle' => Border::BORDER_THIN,
                         'color' => ['rgb' => '000000'],
-                    ]
-                ]
+                    ],
+                ],
             ]);
 
         // Set auto height
@@ -279,8 +275,8 @@ class RangeFormarter
                     'inside' => [
                         'borderStyle' => Border::BORDER_THIN,
                         'color' => ['rgb' => '000000'],
-                    ]
-                ]
+                    ],
+                ],
             ]);
 
         return $this;

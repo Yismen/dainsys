@@ -4,7 +4,6 @@ namespace Tests\Feature\Exports;
 
 use App\LoginName;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Maatwebsite\Excel\Facades\Excel;
 use Tests\TestCase;
 

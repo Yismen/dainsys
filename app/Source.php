@@ -3,7 +3,6 @@
 namespace App;
 
 use App\DainsysModel as Model;
-use Cviebrock\EloquentSluggable\Sluggable;
 
 class Source extends Model
 {

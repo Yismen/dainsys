@@ -13,7 +13,6 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewHoliday()
     {
-        $this->withExceptionHandling();
         $holiday = create('App\Holiday');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
@@ -26,7 +25,6 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetHoliday()
     {
-        $this->withExceptionHandling();
         $holiday = create('App\Holiday');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
@@ -39,7 +37,6 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditHoliday()
     {
-        $this->withExceptionHandling();
         $holiday = create('App\Holiday');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
@@ -52,7 +49,6 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyHoliday()
     {
-        $this->withExceptionHandling();
         $holiday = create('App\Holiday');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 

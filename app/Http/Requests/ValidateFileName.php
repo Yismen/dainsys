@@ -22,7 +22,7 @@ class ValidateFileName extends Request
     public function rules()
     {
         return [
-            //
+
         ];
     }
 }

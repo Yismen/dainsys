@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\EmployeeTerminated as Event;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class EmployeeTerminated
 {
@@ -15,7 +13,6 @@ class EmployeeTerminated
      */
     public function __construct()
     {
-        //
     }
 
     /**

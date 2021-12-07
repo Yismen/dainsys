@@ -52,7 +52,7 @@ class PaymentFrequenciesController extends Controller
     public function store(PaymentFrequency $payment_frequency, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:payment_frequencies,name'
+            'name' => 'required|unique:payment_frequencies,name',
         ]);
 
         $payment_frequency = $payment_frequency->create($request->only(['name']));
@@ -88,7 +88,7 @@ class PaymentFrequenciesController extends Controller
     public function update(PaymentFrequency $payment_frequency, Request $request)
     {
         $this->validate($request, [
-            'name' => "required|unique:payment_frequencies,name,$payment_frequency->id,id"
+            'name' => "required|unique:payment_frequencies,name,$payment_frequency->id,id",
         ]);
 
         $payment_frequency->update($request->only(['name']));

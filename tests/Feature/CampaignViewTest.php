@@ -14,7 +14,6 @@ class CampaignViewTest extends TestCase
     /** @test */
     public function guest_users_are_redirected()
     {
-        $this->withExceptionHandling();
         $campaign = create('App\Campaign');
 
         $this->get(route('admin.campaigns.index'))->assertRedirect('/login');
@@ -24,7 +23,6 @@ class CampaignViewTest extends TestCase
     /** @test */
     public function it_requires_view_campaigns_permissions_to_view_all_campaigns()
     {
-        $this->withExceptionHandling();
         $this->actingAs(create('App\User'));
 
         $response = $this->get('/admin/campaigns');
@@ -35,7 +33,6 @@ class CampaignViewTest extends TestCase
     /** @test */
     public function it_requires_view_campaigns_permissions_to_view_a_campaign_details()
     {
-        $this->withExceptionHandling();
         // given
         $campaign = create('App\Campaign');
         $this->actingAs(create('App\User'));
@@ -50,7 +47,6 @@ class CampaignViewTest extends TestCase
     /** @test */
     public function it_allows_users_to_view_campaigns_if_they_have_view_campaigns_permission()
     {
-        // $this->withExceptionHandling();
         // given
         $user = $this->userWithPermission('view-campaigns');
         $campaign = create('App\Campaign');
@@ -67,7 +63,6 @@ class CampaignViewTest extends TestCase
     /** @test */
     public function it_allows_users_to_view_a_campaign_if_they_have_view_campaigns_permission()
     {
-        // $this->withExceptionHandling();
         // given
         $user = $this->userWithPermission('view-campaigns');
         $campaign = create('App\Campaign');

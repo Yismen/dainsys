@@ -13,9 +13,9 @@ class ProjectsController extends Controller
 {
     /**
      * Performances Projects
-     * 
-     * Collection of performances data for many months back.    
-     *  
+     *
+     * Collection of performances data for many months back.
+     *
      * @response 200 {
      *      "data": [
      *          {

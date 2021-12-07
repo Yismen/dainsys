@@ -7,7 +7,6 @@ use App\Site;
 class SiteRepository
 {
     public $data;
-    
 
     protected function query()
     {
@@ -24,7 +23,8 @@ class SiteRepository
     public static function actives()
     {
         $instance = new self();
-        return $instance->query()->whereHas('employees', function($query) {
+
+        return $instance->query()->whereHas('employees', function ($query) {
             $query->actives();
         })->get();
     }

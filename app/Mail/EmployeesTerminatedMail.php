@@ -5,7 +5,6 @@ namespace App\Mail;
 use App\Termination;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
-use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
 class EmployeesTerminatedMail extends EmployeesBaseMail
@@ -23,8 +22,8 @@ class EmployeesTerminatedMail extends EmployeesBaseMail
 
         $this->markdown = 'emails.employees-terminated';
         $this->site = $site;
-        
-        $this->title = "Employees Terminated " . ($months > 1 ? "Last {$months} Months" : "This Month");
+
+        $this->title = 'Employees Terminated ' . ($months > 1 ? "Last {$months} Months" : 'This Month');
 
         $this->employees = $this->getEmployees();
     }
@@ -43,7 +42,7 @@ class EmployeesTerminatedMail extends EmployeesBaseMail
             ->with([
                 'terminationType',
                 'terminationReason',
-                'employee'
+                'employee',
             ])
             ->get();
     }

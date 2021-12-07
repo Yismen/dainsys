@@ -3,18 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Supervisor;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\SupervisorResource;
-use Carbon\Carbon;
 
 class SupervisorsController extends Controller
 {
     /**
      * Store Supervisors
-     * 
+     *
      * Save a Supervisor model to database.
-     * 
+     *
      * @bodyParam name string required The name of the Supervisor
      * @response 201 {
      *      "name": "Asdfasdf",
@@ -26,7 +23,7 @@ class SupervisorsController extends Controller
     public function store()
     {
         $this->validate(request(), [
-            'name' => 'required'
+            'name' => 'required',
         ]);
 
         $supervisor = Supervisor::create(request()->all());

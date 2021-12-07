@@ -6,7 +6,6 @@ use App\Http\Requests\OvernightHour\ImportOvernightHourRequest;
 use App\Imports\OvernightHoutImport;
 use App\OvernightHour;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Excel;
 use Maatwebsite\Excel\Facades\Excel as MaatwebsiteExcel;
 
 class ImportOvernightHourController extends Controller
@@ -15,6 +14,7 @@ class ImportOvernightHourController extends Controller
     {
         $this->middleware('authorize:import-overnight-hours', ['only' => ['store']]);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +22,6 @@ class ImportOvernightHourController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -32,7 +31,6 @@ class ImportOvernightHourController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -57,7 +55,6 @@ class ImportOvernightHourController extends Controller
      */
     public function show(OvernightHour $overnightHour)
     {
-        //
     }
 
     /**
@@ -68,7 +65,6 @@ class ImportOvernightHourController extends Controller
      */
     public function edit(OvernightHour $overnightHour)
     {
-        //
     }
 
     /**
@@ -80,7 +76,6 @@ class ImportOvernightHourController extends Controller
      */
     public function update(Request $request, OvernightHour $overnightHour)
     {
-        //
     }
 
     /**
@@ -91,6 +86,5 @@ class ImportOvernightHourController extends Controller
      */
     public function destroy(OvernightHour $overnightHour)
     {
-        //
     }
 }

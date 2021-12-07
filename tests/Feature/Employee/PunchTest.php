@@ -5,8 +5,6 @@ namespace Tests\Feature\Employee;
 use App\Punch;
 use App\Employee;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Arr;
 use Tests\TestCase;
 
 class PunchTest extends TestCase

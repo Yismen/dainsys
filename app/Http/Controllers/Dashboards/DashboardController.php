@@ -16,9 +16,10 @@ class DashboardController extends Controller
     protected $roles_hierarchy = [];
 
     protected $dashboards_namespace = 'App\\Http\\Controllers\\Dashboards\\';
+
     /**
      * Handle the incoming request.
-     * 
+     *
      * User must have 'view-dashboard' permissions. Otherwise will be denied!
      *
      * @param  \Illuminate\Http\Request  $request
@@ -45,7 +46,7 @@ class DashboardController extends Controller
     {
         $class_name = $this->dashboards_namespace . $class;
 
-        $controller =  new $class_name;
+        $controller = new $class_name;
 
         return $controller->index($role);
     }

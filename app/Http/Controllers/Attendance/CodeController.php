@@ -6,7 +6,6 @@ use App\AttendanceCode;
 use Illuminate\Http\Request;
 use App\Repositories\Attendances\AttendanceCodesRepository;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 
 class CodeController extends Controller
 {

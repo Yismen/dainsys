@@ -4,7 +4,6 @@ namespace Tests\Feature\Api;
 
 use App\Downtime;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Laravel\Passport\Passport;
 use Tests\TestCase;
 
@@ -34,8 +33,8 @@ class DowntimesControllerTest extends TestCase
                         'login_time',
                         'downtime_reason',
                         'reported_by',
-                    ]
-                ]
+                    ],
+                ],
             ]);
     }
 

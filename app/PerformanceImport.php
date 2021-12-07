@@ -11,7 +11,7 @@ class PerformanceImport extends Model
     use Trackable, PerformanceTrait;
 
     protected $table = 'performances';
-    
+
     protected $fillable = [
         'unique_id',
         'date',
@@ -32,8 +32,8 @@ class PerformanceImport extends Model
         'revenue',
         'downtime_reason_id',
         'reported_by',
-        'file_name'
-    ];               
+        'file_name',
+    ];
 
     public static function removeExisting($unique_id)
     {

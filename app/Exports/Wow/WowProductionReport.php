@@ -32,7 +32,7 @@ class WowProductionReport implements WithMultipleSheets
         $sheets = [];
         $sheets[] = new WowDataSheet($this->repo->data);
         $sheets[] = new WowDispositionsSheet($this->repo->dispositions);
-        
+
         return $sheets;
     }
 }

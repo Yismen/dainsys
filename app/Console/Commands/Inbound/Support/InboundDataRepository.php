@@ -31,6 +31,7 @@ class InboundDataRepository
      * Array of instances of the \App\Console\Commands\Inbound\Support\DataParser\DataParsersContract to be run!
      */
     private static array $data_parsers;
+
     /**
      * Get inbound data. It is the class entry point and serve as an constructor.
      *

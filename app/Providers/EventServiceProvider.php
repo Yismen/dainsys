@@ -13,7 +13,7 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'Illuminate\Mail\Events\MessageSent' => [
-            'App\Listeners\RemoveTemporaryMailAttachments'
+            'App\Listeners\RemoveTemporaryMailAttachments',
         ],
         'Illuminate\Notifications\Events\NotificationSent' => [
             'App\Listeners\AppNotificationReceived',

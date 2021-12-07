@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class AttendanceCodesController extends Controller
 {
-    
     public function __construct()
     {
         $this->middleware('authorize:view-attendance-codes|edit-attendance-codes|create-attendance-codes', ['only' => ['index', 'show']]);
@@ -15,6 +14,7 @@ class AttendanceCodesController extends Controller
         $this->middleware('authorize:create-attendance-codes', ['only' => ['create', 'store']]);
         $this->middleware('authorize:destroy-attendance-codes', ['only' => ['destroy']]);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,14 +37,14 @@ class AttendanceCodesController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|min:4|max:150|unique:attendance_codes,name',
-            'color' => 'required|not_in:#000,#000000|unique:attendance_codes,color'
+            'color' => 'required|not_in:#000,#000000|unique:attendance_codes,color',
         ]);
-        
+
         AttendanceCode::create($request->all());
 
         return redirect()
             ->route('admin.attendance_codes.index')
-            ->withSuccess("Created!");
+            ->withSuccess('Created!');
     }
 
     /**
@@ -76,6 +76,6 @@ class AttendanceCodesController extends Controller
 
         return redirect()
             ->route('admin.attendance_codes.edit', $attendanceCode->id)
-            ->withWarning("Updated!");
+            ->withWarning('Updated!');
     }
 }

@@ -9,8 +9,6 @@ class CapillusLeadsRepository extends RingCentralConnection
 {
     public $data;
 
-    
-
     protected $date_from;
 
     protected $date_to;
@@ -19,7 +17,7 @@ class CapillusLeadsRepository extends RingCentralConnection
     {
         $this->date_from = $options['date_from'];
         $this->date_to = $options['date_to'];
-        
+
         $this->data = $this->getData();
     }
 

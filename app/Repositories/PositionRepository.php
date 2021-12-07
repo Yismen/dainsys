@@ -21,8 +21,8 @@ class PositionRepository
     public static function actives()
     {
         $instance = new self();
-        
-        return $instance->query()->whereHas('employees', function($query) {
+
+        return $instance->query()->whereHas('employees', function ($query) {
             return $query->actives();
         })
         ->get();

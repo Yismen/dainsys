@@ -13,7 +13,6 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewAttendanceCode()
     {
-        $this->withExceptionHandling();
         $attendance_code = create('App\AttendanceCode');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
@@ -26,7 +25,6 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetAttendanceCode()
     {
-        $this->withExceptionHandling();
         $attendance_code = create('App\AttendanceCode');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
@@ -36,7 +34,6 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditAttendanceCode()
     {
-        $this->withExceptionHandling();
         $attendance_code = create('App\AttendanceCode');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
@@ -46,7 +43,6 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyAttendanceCode()
     {
-        $this->withExceptionHandling();
         $attendance_code = create('App\AttendanceCode');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 

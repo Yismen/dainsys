@@ -139,7 +139,7 @@ class SupervisorsController extends Controller
         $this->validate(
             $request,
             [
-                'name' => 'required|min:5|unique:supervisors,name,'.$supervisor->id,
+                'name' => 'required|min:5|unique:supervisors,name,' . $supervisor->id,
                 'active' => 'boolean',
             ]
         );

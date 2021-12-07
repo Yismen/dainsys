@@ -51,12 +51,12 @@ class CapillusDailyPerformance extends Model
     ];
 
     protected $dates = ['date'];
-    
+
     public function removeIfExists(array $options = [])
     {
         $options = array_merge([
             'date' => Carbon::parse()->format('Y-m-d'),
-            'campaign' => 'Capillus DRTV'
+            'campaign' => 'Capillus DRTV',
         ], $options);
 
         $this
@@ -71,7 +71,7 @@ class CapillusDailyPerformance extends Model
     {
         return $query->whereBetween('date', [
             Carbon::parse($date)->startOfWeek()->format('Y-m-d'),
-            Carbon::parse($date)->endOfWeek()->format('Y-m-d')
+            Carbon::parse($date)->endOfWeek()->format('Y-m-d'),
         ]);
     }
 
@@ -79,7 +79,7 @@ class CapillusDailyPerformance extends Model
     {
         return $query->whereBetween('date', [
             Carbon::parse($date)->startOfMonth()->format('Y-m-d'),
-            Carbon::parse($date)->format('Y-m-d')
+            Carbon::parse($date)->format('Y-m-d'),
         ]);
     }
 

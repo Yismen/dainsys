@@ -3,7 +3,6 @@
 namespace Tests\Feature\Employee;
 
 use App\Termination;
-use App\Employee;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

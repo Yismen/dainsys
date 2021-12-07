@@ -27,7 +27,7 @@ class DateCurrentOrOlderRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        $this->attribute  = $attribute;
+        $this->attribute = $attribute;
 
         return $value <= Carbon::now();
     }

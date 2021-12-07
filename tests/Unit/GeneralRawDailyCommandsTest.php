@@ -21,13 +21,12 @@ class GeneralRawDailyCommandsTest extends TestCase
         Mail::fake();
         Excel::fake();
 
-        $subject = "Fake Name";
+        $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
 
         $this->artisan('dainsys:general-rc-raw-report')
-            ->expectsOutput("General Daily Raw Report Sent!")
+            ->expectsOutput('General Daily Raw Report Sent!')
             ->assertExitCode(0);
-
 
         Mail::assertSent(CommandsBaseMail::class);
     }
@@ -37,7 +36,7 @@ class GeneralRawDailyCommandsTest extends TestCase
     {
         Excel::fake();
 
-        $subject = "Fake Name";
+        $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
 
         Excel::store(
@@ -58,7 +57,7 @@ class GeneralRawDailyCommandsTest extends TestCase
         Excel::fake();
         Mail::fake();
 
-        $subject = "Fake Name";
+        $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
         $recipient = 'someone@fake.email';
 

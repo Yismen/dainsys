@@ -2,7 +2,6 @@
 
 namespace App\Exports\Capillus;
 
-use App\Repositories\Capillus\CapillusFlashRepository;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
@@ -30,7 +29,7 @@ class CapillusFlashReportExport implements FromView, WithColumnFormatting, WithT
             'current_date' => Carbon::now()->format('d-M-Y'),
             'previous_date' => Carbon::now()->subDay()->format('d-M-Y'),
             'todays' => $this->data['todays'],
-            'yesterdays' => $this->data['yesterdays']
+            'yesterdays' => $this->data['yesterdays'],
         ]);
     }
 
@@ -38,7 +37,6 @@ class CapillusFlashReportExport implements FromView, WithColumnFormatting, WithT
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                
                 // format the whole tables
                 $event->sheet->getDelegate()->getStyle('A4:U13')->applyFromArray($this->tableStyle());
                 $event->sheet->getDelegate()->getStyle('A16:U25')->applyFromArray($this->tableStyle());
@@ -64,10 +62,10 @@ class CapillusFlashReportExport implements FromView, WithColumnFormatting, WithT
                     ->setRight(0.17)
                     ->setLeft(0.17);
                 $event->sheet->getDelegate()->getSheetView()->setZoomScale(90);
-            }
+            },
         ];
     }
-    
+
     public function columnFormats(): array
     {
         return [
@@ -114,11 +112,11 @@ class CapillusFlashReportExport implements FromView, WithColumnFormatting, WithT
                 'inside' => [
                     'borderStyle' => Border::BORDER_THIN,
                     'color' => ['rgb' => '000000'],
-                ]
+                ],
             ],
             'alignment' => [
-                'wrapText' => true
-            ]
+                'wrapText' => true,
+            ],
         ];
     }
 
@@ -129,11 +127,11 @@ class CapillusFlashReportExport implements FromView, WithColumnFormatting, WithT
                 'outline' => [
                     'borderStyle' => Border::BORDER_THICK,
                     'color' => ['rgb' => '000000'],
-                ]
+                ],
             ],
             'font' => [
                 'bold' => true,
-                'color' => ['rgb' => 'FFFFFF']
+                'color' => ['rgb' => 'FFFFFF'],
             ],
             'fill' => [
                 'fillType' => Fill::FILL_SOLID,

@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Supervisor;
-use App\SupervisorUser;
 use App\User;
 
 class SupervisorUsersRepository
@@ -11,9 +10,9 @@ class SupervisorUsersRepository
     public function data()
     {
         return [
-            'assigned' => $this->assigned(), 
-            'free_users' => $this->freeUsers(), 
-            'free_supervisors' => $this->freeSupervisors()
+            'assigned' => $this->assigned(),
+            'free_users' => $this->freeUsers(),
+            'free_supervisors' => $this->freeSupervisors(),
         ];
     }
 

@@ -34,12 +34,13 @@ class DispositionsSheet extends BaseRingCentralSheet
             ]
         );
     }
+
     /**
      * @return string
      */
     public function title(): string
     {
-        return "Dispositions";
+        return 'Dispositions';
     }
 
     public function getData(ConnectionContract $connection, string $date_from, string $date_to): array
@@ -72,12 +73,11 @@ class DispositionsSheet extends BaseRingCentralSheet
 
                 $this->addSubTotals($totals_row, $rows, $event->sheet);
 
-
                 $formarter = new RangeFormarter($event, "A1:{$last_column}{$rows}");
 
                 $formarter->configurePage(PageSetup::ORIENTATION_PORTRAIT)
-                    ->setAutoSizeRange("B", "F")
-                    ->formatTitle("A1:D1")
+                    ->setAutoSizeRange('B', 'F')
+                    ->formatTitle('A1:D1')
                     ->freezePane('A3')
                     ->setAutoFilter("A2:{$last_column}{$rows}")
                     ->formatHeaderRow("A2:{$last_column}2")
@@ -85,7 +85,7 @@ class DispositionsSheet extends BaseRingCentralSheet
                     ->applyNumberFormats("E3:E{$totals_row}", '_(* #,##0_);_(* (#,##0);_(* "-"??_);_(@_)')
                     ->applyNumberFormats("F3:{$last_column}{$totals_row}", '_(* #,##0.0%_);_(* (#,##0.0%);_(* "-"??_);_(@_)')
                     ->formatTotals("E{$totals_row}:F{$totals_row}");
-            }
+            },
         ];
     }
 

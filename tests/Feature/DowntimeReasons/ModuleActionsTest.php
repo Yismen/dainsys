@@ -3,11 +3,6 @@
 namespace Tests\Feature\DowntimeReasons;
 
 use App\DowntimeReason;
-use App\DowntimeReasonCode;
-use App\Employee;
-use App\Supervisor;
-use App\User;
-use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

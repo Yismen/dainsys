@@ -5,12 +5,7 @@ namespace App\Imports;
 use App\Http\Requests\OvernightHour\CreateOvernightHourRequest;
 use App\OvernightHour;
 use Carbon\Carbon;
-use App\Performance;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\Importable;
-use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
@@ -32,7 +27,7 @@ class OvernightHoutImport implements ToModel, WithHeadingRow, WithValidation, Wi
             'date' => $row['date'],
             'employee_id' => $row['employee_id'],
             'hours' => $row['hours'],
-            'unique_id' => $row['unique_id']
+            'unique_id' => $row['unique_id'],
         ]);
     }
 

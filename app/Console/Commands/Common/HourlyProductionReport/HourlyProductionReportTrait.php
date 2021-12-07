@@ -37,6 +37,7 @@ trait HourlyProductionReportTrait
      * Report subject name
      */
     protected string $mail_subject;
+
     /**
      * Execute the console command.
      *
@@ -55,9 +56,10 @@ trait HourlyProductionReportTrait
         } catch (\Throwable $th) {
             $this->notifyUsersAndLogError($th);
 
-            $this->error("Something went wrong");
+            $this->error('Something went wrong');
         }
     }
+
     /**
      * Creates and send the report
      *
@@ -67,7 +69,7 @@ trait HourlyProductionReportTrait
      */
     protected function createAndSendReport(string $mail_subject, array $distro): void
     {
-        $file_name = $mail_subject . " " . now()->format('Ymd_His') . ".xlsx";
+        $file_name = $mail_subject . ' ' . now()->format('Ymd_His') . '.xlsx';
 
         $this->repo = new HourlyProductionReportRepository(
             $this->date_from,
@@ -100,6 +102,7 @@ trait HourlyProductionReportTrait
             $this->report_message = 'No data for this date. Nothing sent';
         }
     }
+
     /**
      * Get the distribution list from the config and explode it into an array
      *
@@ -108,10 +111,11 @@ trait HourlyProductionReportTrait
     protected function getDistroList(): array
     {
         $list = config($this->distro_config_path) ??
-            abort(404, "Invalid distro list. Set it up in the .env, separated by pipe (|).");
+            abort(404, 'Invalid distro list. Set it up in the .env, separated by pipe (|).');
 
-        return explode("|", $list);
+        return explode('|', $list);
     }
+
     /**
      * Initialize dates and other variables which can't be initialized from the constructor
      *
@@ -123,8 +127,7 @@ trait HourlyProductionReportTrait
             now()->format('m/d/Y') :
             Carbon::parse($this->option('date'))->format('m/d/Y');
 
-
-        $this->date_from =  $this->option('from') == 'default' ?
+        $this->date_from = $this->option('from') == 'default' ?
             $this->date_to :
             Carbon::parse($this->option('from'))->format('m/d/Y');
 

@@ -14,7 +14,6 @@ class AfpTest extends TestCase
     /** @test */
     public function guests_can_not_visit_any_afps_route()
     {
-        $this->withExceptionHandling();
         $afp = create('App\Afp');
         $this->get(route('admin.afps.index'))->assertRedirect('/login');
         $this->get(route('admin.afps.show', $afp->id))->assertRedirect('/login');
@@ -28,7 +27,6 @@ class AfpTest extends TestCase
     /** @test */
     public function it_requires_view_afps_permissions_to_view_all_afps()
     {
-        $this->withExceptionHandling();
         $this->actingAs(create('App\User'));
 
         $response = $this->get('/admin/afps');
@@ -39,7 +37,6 @@ class AfpTest extends TestCase
     /** @test */
     public function it_requires_view_afps_permissions_to_view_a_afp_details()
     {
-        $this->withExceptionHandling();
         // given
         $afp = create('App\Afp');
         $this->actingAs(create('App\User'));
@@ -54,7 +51,6 @@ class AfpTest extends TestCase
     /** @test */
     public function it_allows_users_to_view_afps_if_they_have_view_afps_permission()
     {
-        // $this->withExceptionHandling();
         // given
         $user = $this->userWithPermission('view-afps');
         $afp = create('App\Afp');
@@ -70,7 +66,6 @@ class AfpTest extends TestCase
     /** @test */
     public function it_allows_users_to_view_a_afp_if_they_have_view_afps_permission()
     {
-        // $this->withExceptionHandling();
         // given
         $user = $this->userWithPermission('view-afps');
         $afp = create('App\Afp');
@@ -86,7 +81,6 @@ class AfpTest extends TestCase
     /** @test */
     public function it_requires_create_afps_permission_to_add_a_permission()
     {
-        $this->withExceptionHandling();
         // Given
         $user = create('App\User');
         $this->actingAs($user);
@@ -101,7 +95,6 @@ class AfpTest extends TestCase
     /** @test */
     public function it_allows_with_create_afps_permission_to_create_afps()
     {
-        // $this->withExceptionHandling();
         // given
         $user = $this->userWithPermission('create-afps');
 
@@ -116,7 +109,6 @@ class AfpTest extends TestCase
     /** @test */
     public function it_requires_destroy_afps_permission_to_destroy_a_permission()
     {
-        $this->withExceptionHandling();
         // Given
         $this->actingAs(create('App\User'));
         $afp = create('App\Afp');
@@ -132,7 +124,6 @@ class AfpTest extends TestCase
     /** @test */
     public function it_allows_users_with_destroy_afps_permission_to_destroy_afps()
     {
-        // $this->withExceptionHandling();
         // given
         $user = $this->userWithPermission('destroy-afps');
         $afp = create('App\Afp');
@@ -149,8 +140,6 @@ class AfpTest extends TestCase
     /** @test */
     public function it_requires_a_name_to_create_a_afp()
     {
-        $this->withExceptionHandling();
-
         $this->actingAs($this->userWithPermission('create-afps'))
             ->post(route('admin.afps.store'), $this->formAttributes(['name' => '']))
             ->assertSessionHasErrors('name');
@@ -159,7 +148,6 @@ class AfpTest extends TestCase
     /** @test */
     public function a_user_can_create_a_afp()
     {
-        // $this->withExceptionHandling();
         $afp = make('App\Afp');
 
         $this->actingAs($this->userWithPermission('create-afps'))
@@ -174,7 +162,6 @@ class AfpTest extends TestCase
     /** @test */
     public function a_user_can_see_a_form_to_update_a_afp()
     {
-        $this->withExceptionHandling();
         $afp = create('App\Afp');
 
         $this->actingAs($this->userWithPermission('edit-afps'))
@@ -185,7 +172,6 @@ class AfpTest extends TestCase
     /** @test */
     public function it_requires_a_name_to_update_a_afp()
     {
-        $this->withExceptionHandling();
         $afp = create('App\Afp');
 
         $this->actingAs($this->userWithPermission('edit-afps'))
@@ -196,7 +182,6 @@ class AfpTest extends TestCase
     /** @test */
     public function a_user_can_update_a_afp()
     {
-        $this->withExceptionHandling();
         $afp = create('App\Afp');
         $afp->name = 'New Name';
 

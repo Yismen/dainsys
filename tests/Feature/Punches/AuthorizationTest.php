@@ -13,7 +13,6 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewPunch()
     {
-        $this->withExceptionHandling();
         $punch = create('App\Punch');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
@@ -26,7 +25,6 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetPunch()
     {
-        $this->withExceptionHandling();
         $punch = create('App\Punch');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
@@ -36,7 +34,6 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditPunch()
     {
-        $this->withExceptionHandling();
         $punch = create('App\Punch');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
@@ -46,7 +43,6 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyPunch()
     {
-        $this->withExceptionHandling();
         $punch = create('App\Punch');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 

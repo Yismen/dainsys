@@ -22,7 +22,6 @@ class SendPoliticalProductionReportCommand extends BaseProductionReportCommand
      */
     protected $description = 'Send a roduction report to Political distro';
 
-
     public function handle()
     {
         $dates_range = $this->getDatesRange();

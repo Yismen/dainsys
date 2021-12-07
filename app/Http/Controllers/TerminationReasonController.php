@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\TerminationReason;
-use Illuminate\Http\Request;
 use App\Http\Requests\TerminationReasonRequest;
 
 class TerminationReasonController extends Controller
@@ -15,6 +14,7 @@ class TerminationReasonController extends Controller
         $this->middleware('authorize:create-termination-reasons', ['only' => ['create', 'store']]);
         $this->middleware('authorize:destroy-termination-reasons', ['only' => ['destroy']]);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -61,7 +61,6 @@ class TerminationReasonController extends Controller
      */
     public function show(TerminationReason $termination_reason)
     {
-        //
     }
 
     /**

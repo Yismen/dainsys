@@ -23,7 +23,7 @@ class BanksController extends Controller
      */
     public function index(Request $request)
     {
-        $banks = Cache::rememberForever('banks', function() {
+        $banks = Cache::rememberForever('banks', function () {
             return Bank::orderBy('name')->get();
         });
 
@@ -43,7 +43,7 @@ class BanksController extends Controller
     public function store(Request $request, Bank $bank)
     {
         $this->validate($request, [
-            'name' => 'required|unique:banks'
+            'name' => 'required|unique:banks',
         ]);
 
         Cache::forget('banks');
@@ -80,7 +80,7 @@ class BanksController extends Controller
     public function update(Request $request, Bank $bank)
     {
         $this->validate($request, [
-            'name' => 'required|unique:banks,name,' . $bank->id
+            'name' => 'required|unique:banks,name,' . $bank->id,
         ]);
 
         Cache::forget('banks');
@@ -108,6 +108,7 @@ class BanksController extends Controller
             if ($request->ajax()) {
                 return abort(403, "The bank {$bank->name} can't be removed because it already has accounts and employees assigned!");
             }
+
             return redirect()->route('admin.banks.index')
                 ->withDanger("The bank {$bank->name} can't be removed because it already has accounts and employees assigned!");
         }

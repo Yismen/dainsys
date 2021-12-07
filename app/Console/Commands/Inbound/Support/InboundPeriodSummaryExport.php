@@ -3,7 +3,6 @@
 namespace App\Console\Commands\Inbound\Support;
 
 use App\Console\Commands\Inbound\Sheets\SummaryPeriodInboundDataSheet;
-use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class InboundPeriodSummaryExport implements WithMultipleSheets
@@ -46,7 +45,6 @@ class InboundPeriodSummaryExport implements WithMultipleSheets
             $this->date_from,
             $this->date_to
         );
-
 
         return $sheets;
     }

@@ -2,8 +2,6 @@
 
 namespace App\Exports\Political\Sheets;
 
-use App\Repositories\Capillus\CapillusPerformanceReportRepository;
-use App\Repositories\Political\PoliticalHoursRepository;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithEvents;
@@ -13,7 +11,6 @@ use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
-use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
 class FlashHoursSheet implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
@@ -21,7 +18,7 @@ class FlashHoursSheet implements FromView, WithTitle, WithEvents, WithPreCalcula
     protected $hours;
 
     protected $sheet;
-    
+
     protected $rows;
 
     public function __construct(array $hours)
@@ -35,7 +32,7 @@ class FlashHoursSheet implements FromView, WithTitle, WithEvents, WithPreCalcula
     {
         return view('exports.political.hours', [
             'data' => $this->hours,
-            'title' => "Hours"
+            'title' => 'Hours',
         ]);
     }
 
@@ -43,14 +40,13 @@ class FlashHoursSheet implements FromView, WithTitle, WithEvents, WithPreCalcula
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
                 $this->configurePage()
                     ->setColumnsWidth()
                     ;
-                    
+
                 $this->sheet->getStyle('A1:B1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
                 $this->sheet->getStyle('A1:B1')->applyFromArray($this->headerStyle());
                 $this->sheet->getStyle("B2:B{$this->rows}")->getNumberFormat()->setFormatCode('#,##0.00');
@@ -63,16 +59,16 @@ class FlashHoursSheet implements FromView, WithTitle, WithEvents, WithPreCalcula
                         'inside' => [
                             'borderStyle' => Border::BORDER_THIN,
                             'color' => ['rgb' => '000000'],
-                        ]
-                    ]
+                        ],
+                    ],
                 ]);
-            }
+            },
         ];
     }
 
     public function title(): string
     {
-        return "Hours";
+        return 'Hours';
     }
 
     protected function setColumnsWidth()
@@ -106,7 +102,7 @@ class FlashHoursSheet implements FromView, WithTitle, WithEvents, WithPreCalcula
     {
         return [
             'font' => [
-                'bold' => true
+                'bold' => true,
             ],
             'fill' => [
                 'fillType' => Fill::FILL_SOLID,
@@ -115,7 +111,7 @@ class FlashHoursSheet implements FromView, WithTitle, WithEvents, WithPreCalcula
                 ],
             ],
             'alignment' => [
-                'horizontal' => Alignment::HORIZONTAL_LEFT
+                'horizontal' => Alignment::HORIZONTAL_LEFT,
             ],
             'borders' => [
                 'outline' => [
@@ -125,8 +121,8 @@ class FlashHoursSheet implements FromView, WithTitle, WithEvents, WithPreCalcula
                 'inside' => [
                     'borderStyle' => Border::BORDER_THIN,
                     'color' => ['rgb' => '000000'],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

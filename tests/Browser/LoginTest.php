@@ -10,6 +10,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 class LoginTest extends DuskTestCase
 {
     use DatabaseMigrations;
+
     // use WithFaker;
     /** @test */
     public function guest_can_see_login_page()

@@ -8,7 +8,7 @@ class AdminDashboardController extends DashboardAbstractController
 {
     /**
      * Constructtor.
-     * 
+     *
      * Limit access by applying middlerware
      */
     public function __construct()

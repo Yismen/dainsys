@@ -9,11 +9,12 @@ use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 class CapillusPerformanceExport implements WithMultipleSheets
 {
     use CapillusCommandsTrait;
-    
+
     public function __construct(Carbon $date)
     {
         $this->date = $date;
     }
+
     /**
      * @return array
      */
@@ -26,7 +27,7 @@ class CapillusPerformanceExport implements WithMultipleSheets
         foreach ($this->capillusCampaigns() as $campaign) {
             $sheets[] = new CapillusPerformanceReportExport(['date' => $this->date, 'campaign' => $campaign]);
         }
-        
+
         return $sheets;
     }
 }

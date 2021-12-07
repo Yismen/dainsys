@@ -33,7 +33,7 @@ class PermissionsController extends Controller
         return DataTables::of(
             Permission::query()
                 ->with([
-                    'roles'
+                    'roles',
                 ])
         )
             ->addColumn('delete', function ($query) {

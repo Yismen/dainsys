@@ -4,9 +4,7 @@ namespace Tests\Feature\Employee;
 
 use App\Employee;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Arr;
 use Tests\TestCase;
 
 class PhotoTest extends TestCase

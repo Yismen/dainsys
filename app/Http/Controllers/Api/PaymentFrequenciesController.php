@@ -3,18 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\PaymentFrequency;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\PaymentFrequencyResource;
-use Carbon\Carbon;
 
 class PaymentFrequenciesController extends Controller
 {
     /**
      * Store Payment Frequencies
-     * 
+     *
      * Save a Payment Frequency model to database.
-     * 
+     *
      * @bodyParam name string required The name of the Payment Frequency
      * @response 201 {
      *      "name": "Asdfasdf",
@@ -26,7 +23,7 @@ class PaymentFrequenciesController extends Controller
     public function store()
     {
         $this->validate(request(), [
-            'name' => 'required'
+            'name' => 'required',
         ]);
 
         $afp = PaymentFrequency::create(request()->all());

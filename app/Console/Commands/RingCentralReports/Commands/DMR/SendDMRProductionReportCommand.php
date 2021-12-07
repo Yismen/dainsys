@@ -22,7 +22,6 @@ class SendDMRProductionReportCommand extends BaseProductionReportCommand
      */
     protected $description = 'Send a roduction report to DMR distro';
 
-
     public function handle()
     {
         $dates_range = $this->getDatesRange();

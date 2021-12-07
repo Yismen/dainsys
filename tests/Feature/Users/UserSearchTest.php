@@ -3,12 +3,9 @@
 namespace Tests\Feature\Users;
 
 use App\User;
-use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Hash;
 
 class UserSearchTest extends TestCase
 {

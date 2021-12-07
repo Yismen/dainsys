@@ -268,6 +268,7 @@ class Employee extends Model
             return $query->where('termination_date', '>=', '2012-02-09');
         }])->get();
     }
+
     /**
      * Inactivate the current employee
      *

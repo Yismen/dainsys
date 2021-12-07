@@ -4,7 +4,6 @@ namespace Tests\Feature\HumanResources;
 
 use App\Employee;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class BirthdaysControllerTest extends TestCase

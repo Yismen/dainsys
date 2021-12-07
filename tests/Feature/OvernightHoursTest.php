@@ -18,7 +18,6 @@ class OvernightHoursTest extends TestCase
     public function testGuestCantAccess()
     {
         $overnight = create('App\OvernightHour');
-        $this->withExceptionHandling();
 
         $this->get(route('admin.overnight_hours.index'))->assertRedirect('/login');
         // $this->get(route('admin.overnight_hours.show', $overnight->id))->assertRedirect('/login');
@@ -32,7 +31,6 @@ class OvernightHoursTest extends TestCase
     /** Authorization: Prevent access to unauthorizated users */
     public function testUnuthorizedUsersCantAccess()
     {
-        $this->withExceptionHandling();
         $hour = create('App\OvernightHour');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
@@ -61,7 +59,6 @@ class OvernightHoursTest extends TestCase
     /** Validations: Validate fields to reate */
     public function testValidateStoringOvernightHour()
     {
-        $this->withExceptionHandling();
         // $employee = create(Employee::class);
         $hour = create(OvernightHour::class)->toArray();
 
@@ -111,7 +108,6 @@ class OvernightHoursTest extends TestCase
     /** Validations: Validate fields to update */
     public function testValidateUpdatingOvernightHour()
     {
-        $this->withExceptionHandling();
         // $employee = create(Employee::class);
         $hour = create(OvernightHour::class)->toArray();
 
@@ -170,7 +166,6 @@ class OvernightHoursTest extends TestCase
     /** Authorization: Grant access to authorizated users to edit/update */
     public function testAuthorizedUsersCanEditOvernightHours()
     {
-        // $this->disableExceptionHandling();
         $hour = create(OvernightHour::class);
         $response = $this->actingAs($this->userWithPermission('edit-overnight-hours'));
 
@@ -200,7 +195,6 @@ class OvernightHoursTest extends TestCase
     /** Authorization: Grant access to authorizated users to destroy */
     public function testAuthorizedUsersCanDestroyOvernightHours()
     {
-        // $this->disableExceptionHandling();
         $hour = create(OvernightHour::class);
         $response = $this->actingAs($this->userWithPermission('destroy-overnight-hours'));
 
@@ -208,7 +202,7 @@ class OvernightHoursTest extends TestCase
             ->assertRedirect(route('admin.overnight_hours.index'));
 
         $this->assertDatabaseMissing('overnight_hours', [
-            'id' => $hour->id
+            'id' => $hour->id,
         ]);
     }
 }

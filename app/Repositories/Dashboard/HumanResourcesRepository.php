@@ -28,7 +28,7 @@ class HumanResourcesRepository
             'terminated_tm' => AttritionRepository::terminatedThisMonth(),
             'attrition_monthly' => [
                 'labels' => $monthly_attrition->map->month,
-                'datasets' =>[
+                'datasets' => [
                     [
                         'label' => 'Head Count',
                         'data' => $monthly_attrition->map->head_count,
@@ -45,10 +45,10 @@ class HumanResourcesRepository
                         'type' => 'line',
                         'fill' => false,
                         // "yAxisID" => "y1",
-                    ]
-                ]
+                    ],
+                ],
             ],
-            
+
             'birthdays' => [
                 'today' => BirthdaysRepository::today()->get(),
                 'this_month' => BirthdaysRepository::thisMonth()->count(),
@@ -75,22 +75,25 @@ class HumanResourcesRepository
                 'missing_supervisor' => MissingInfoRepository::supervisor()->count(),
                 'missing_nationality' => MissingInfoRepository::nationality()->count(),
                 'missing_schedules' => MissingInfoRepository::schedules()->count(),
-            ]
+            ],
         ];
     }
 
     protected function getDataset(
-        $collection, $rgb = '1, 80, 175', array $options = [], $labels_name = 'name', $values_name = 'employees_count'    
-    ):array
-    {
+        $collection,
+        $rgb = '1, 80, 175',
+        array $options = [],
+        $labels_name = 'name',
+        $values_name = 'employees_count'
+    ):array {
         $defaults = [
             'labels' => $collection->map->$labels_name,
             'data' => $collection->map->$values_name,
             'borderColor' => "rgba({$rgb}, 1)",
             'backgroundColor' => "rgba({$rgb}, .25)",
-            'fill' => true
+            'fill' => true,
         ];
-        
+
         return array_merge($defaults, $options);
     }
 }

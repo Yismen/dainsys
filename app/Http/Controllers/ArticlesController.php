@@ -211,7 +211,7 @@ class ArticlesController extends Controller
          * set optional parameters
          */
         $localPath = 'images/articles/'; // local folder where the image will be loaded to
-        $fileName = sha1($request->input('slug')); // 
+        $fileName = sha1($request->input('slug'));
         $extension = '.png'; // the destinied extension
         $extendedName = $localPath . $fileName . $extension;
 
@@ -231,7 +231,7 @@ class ArticlesController extends Controller
         if ($request->ajax()) {
             return response()->json([
                 'status' => 1,
-                'data' => $article->main_image
+                'data' => $article->main_image,
             ]);
         }
 
@@ -250,7 +250,7 @@ class ArticlesController extends Controller
          * set optional parameters
          */
         $localPath = 'images/articles/'; // local folder where the image will be loaded to
-        $fileName = sha1($request->input('slug')); //
+        $fileName = sha1($request->input('slug'));
         $extension = '.png'; // the destinied extension
         $extendedName = $localPath . $fileName . $extension;
 
@@ -270,7 +270,7 @@ class ArticlesController extends Controller
         if ($request->ajax()) {
             return response()->json([
                 'status' => 1,
-                'data' => $article->main_image
+                'data' => $article->main_image,
             ]);
         }
 
@@ -303,6 +303,7 @@ class ArticlesController extends Controller
                 array_push($tagsArray, $tags->id); //add just created tag to the array
             }
         }
+
         return $tagsArray;
     }
 }

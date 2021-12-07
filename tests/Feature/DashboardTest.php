@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class DashboardTest extends TestCase
@@ -64,7 +63,7 @@ class DashboardTest extends TestCase
                 'login_hours_mtd',
                 'production_hours_mtd',
                 'headcounts',
-                'performance'
+                'performance',
             ]);
     }
 
@@ -103,7 +102,7 @@ class DashboardTest extends TestCase
                 'attrition_monthly',
                 'birthdays',
                 'headcounts',
-                'issues'
+                'issues',
             ]);
     }
 }

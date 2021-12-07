@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Profile;
-use Illuminate\Support\Facades\Cache;
 
 class Profiles
 {
@@ -13,8 +12,7 @@ class Profiles
     {
         $user = auth()->user();
 
-        return Profile::
-            with('user')
+        return Profile::with('user')
             ->whereHas('user', function ($query) {
                 return $query;
             })

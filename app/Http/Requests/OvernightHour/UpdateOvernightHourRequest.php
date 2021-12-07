@@ -24,7 +24,7 @@ class UpdateOvernightHourRequest extends FormRequest
     public function rules()
     {
         return [
-            'hours' => 'numeric|min:0|max:14'
+            'hours' => 'numeric|min:0|max:14',
         ];
     }
 }

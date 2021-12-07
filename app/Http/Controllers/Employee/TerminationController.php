@@ -6,7 +6,6 @@ use App\Employee;
 use App\Events\EmployeeReactivated;
 use App\Events\EmployeeTerminated;
 use App\Http\Controllers\Controller;
-use App\Termination;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 

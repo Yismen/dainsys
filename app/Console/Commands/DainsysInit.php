@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Storage;
 
 class DainsysInit extends Command
 {
@@ -45,7 +44,7 @@ class DainsysInit extends Command
                 ->askForMigration()
                 ->askForSeeders();
 
-            $this->info("Project initialized. Happy codding!");
+            $this->info('Project initialized. Happy codding!');
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -56,6 +55,7 @@ class DainsysInit extends Command
         if ($this->confirm('Do you want to install COMPOSER dependencies?')) {
             shell_exec('composer install');
         }
+
         return $this;
     }
 
@@ -65,6 +65,7 @@ class DainsysInit extends Command
             shell_exec('npm install');
             shell_exec('npm run production');
         }
+
         return $this;
     }
 
@@ -77,6 +78,7 @@ class DainsysInit extends Command
                 $this->call('key:generate');
             }
         }
+
         return $this;
     }
 
@@ -84,9 +86,10 @@ class DainsysInit extends Command
     {
         if ($this->confirm('Do you want to migrate?')) {
             $this->call('migrate', [
-                '--step'
+                '--step',
             ]);
         }
+
         return $this;
     }
 
@@ -95,6 +98,7 @@ class DainsysInit extends Command
         if ($this->confirm('Do you want to seed the database?')) {
             $this->call('db:seed');
         }
+
         return $this;
     }
 }

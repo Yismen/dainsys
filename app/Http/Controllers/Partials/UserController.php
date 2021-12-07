@@ -16,10 +16,10 @@ class UserController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $users = User::where('name', 'like', "%" . request('q') . "%")->get();
+        $users = User::where('name', 'like', '%' . request('q') . '%')->get();
 
         return view('partials._users', [
-            'users' => $users
+            'users' => $users,
         ]);
     }
 }

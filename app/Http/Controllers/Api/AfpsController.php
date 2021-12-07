@@ -3,18 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Afp;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\AfpResource;
-use Carbon\Carbon;
 
 class AfpsController extends Controller
 {
     /**
      * Store Afps
-     * 
+     *
      * Save a Afp model to database.
-     * 
+     *
      * @bodyParam name string required The name of the Afp
      * @response 201 {
      *      "name": "Asdfasdf",
@@ -27,7 +24,7 @@ class AfpsController extends Controller
     public function store()
     {
         $this->validate(request(), [
-            'name' => 'required'
+            'name' => 'required',
         ]);
 
         $afp = Afp::create(request()->all());

@@ -49,7 +49,6 @@ class OvernightHour extends Model
         $duplicateds = $this->where('unique_id', $unique_id)
             ->get();
 
-
         foreach ($duplicateds as $duplicated) {
             $duplicated->delete();
         }

@@ -4,7 +4,6 @@ namespace App\Utilities\FromCollection;
 
 class FromArray
 {
-
     public $data_array = [];
 
     public $keys = [];
@@ -22,6 +21,7 @@ class FromArray
                     if (!in_array($key, $this->keys)) {
                         $this->keys[$key] = null;
                     }
+
                     return $elem !== null;
                 });
             };

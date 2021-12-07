@@ -7,10 +7,9 @@ use Illuminate\Support\Facades\DB;
 
 class CapillusPullDailyPerformanceDataRepository extends RingCentralConnection
 {
-    
     public function getData($dial_group, $date)
     {
-        return $this->data =  $this->connection()->select(
+        return $this->data = $this->connection()->select(
             DB::raw("
                 declare 
                     @startDate as smalldatetime, @endDate as smalldatetime, @campaignName as varchar(50)

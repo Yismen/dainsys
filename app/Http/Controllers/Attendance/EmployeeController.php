@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Attendance;
 
-use App\AttendanceCode;
 use App\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Attendances\AttendanceEmployeesRepository;
-use Carbon\Carbon;
 
 class EmployeeController extends Controller
 {

@@ -14,7 +14,7 @@ abstract class RingCentralConnection
     protected $connection;
 
     public function __construct()
-    {        
+    {
         $this->connection = $this->connection();
     }
 

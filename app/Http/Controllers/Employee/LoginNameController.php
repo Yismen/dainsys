@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Cache;
 
 class LoginNameController extends Controller
 {
-
     public function store(Employee $employee, Request $request)
     {
         $this->validate($request, [

@@ -56,13 +56,12 @@ class SendDailySummaryCommand extends Command
     {
         $date = now()->subDay();
         $mail_subject = 'Kipany Inbound Daily Report';
-        $file_name = $mail_subject . " " . now()->format('Ymd_His') . ".xlsx";
+        $file_name = $mail_subject . ' ' . now()->format('Ymd_His') . '.xlsx';
         $distro = $this->getDistroList();
 
         $this->date_to = !$this->option('date') ?
             $date->format('m/d/Y') :
             $date->parse($this->option('date'))->format('m/d/Y');
-
 
         $this->date_from = !$this->option('from') ?
             $this->date_to :
@@ -106,9 +105,9 @@ class SendDailySummaryCommand extends Command
     protected function getDistroList(): array
     {
         $list = config($this->distro_config_path) ??
-            abort(404, "Invalid distro list. Set it up in the .env, separated by pipe (|).");
+            abort(404, 'Invalid distro list. Set it up in the .env, separated by pipe (|).');
 
-        return explode("|", $list);
+        return explode('|', $list);
     }
 
     /**

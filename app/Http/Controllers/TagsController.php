@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Str;
-
 use App\Tag;
 
 class TagsController extends Controller
@@ -45,7 +44,6 @@ class TagsController extends Controller
      */
     public function store()
     {
-        //
     }
 
     /**
@@ -69,7 +67,6 @@ class TagsController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -80,7 +77,6 @@ class TagsController extends Controller
      */
     public function update($id)
     {
-        //
     }
 
     /**
@@ -91,6 +87,5 @@ class TagsController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 }

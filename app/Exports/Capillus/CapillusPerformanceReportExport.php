@@ -24,10 +24,10 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
     public function __construct(array $options)
     {
         $this->sheet = $options['campaign'] == '%' ? 'Overall' : $options['campaign'];
-        
+
         $this->repo = new CapillusPerformanceReportRepository([
             'date' => $options['date'],
-            'campaign' => $options['campaign']
+            'campaign' => $options['campaign'],
         ]);
     }
 
@@ -35,7 +35,7 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
     {
         return view('exports.capillus.daily-performance', [
             'data' => $this->repo->data,
-            'title' => $this->sheet
+            'title' => $this->sheet,
         ]);
     }
 
@@ -43,7 +43,6 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
@@ -64,7 +63,7 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
                 $event->sheet->getDelegate()->getStyle('A1:k1')->applyFromArray($this->headerStyle());
                 $event->sheet->getDelegate()->getStyle('A1:A70')->applyFromArray($this->setBold());
                 $event->sheet->getDelegate()->getStyle('I1:K70')->applyFromArray($this->setBold());
-            }
+            },
         ];
     }
 
@@ -82,15 +81,15 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
 
         return $this;
     }
-    
+
     protected function formatLegends()
     {
         $this->sheet->getStyle('L1:L70')->applyFromArray([
             'font' => [
                 'size' => 8,
                 'color' => [
-                    'rgb' => '152EFD'
-                ]
+                    'rgb' => '152EFD',
+                ],
             ],
         ]);
 
@@ -117,33 +116,33 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
     protected function addFormulas()
     {
         // Short Abandon Rate
-        $this->setDivisionFormulas([ 'row' => 8, 'dividend' => 7, 'divisor' => 5 ]);
+        $this->setDivisionFormulas(['row' => 8, 'dividend' => 7, 'divisor' => 5]);
         // Long Abandon Rate
-        $this->setDivisionFormulas([ 'row' => 10, 'dividend' => 9, 'divisor' => 5 ]);
+        $this->setDivisionFormulas(['row' => 10, 'dividend' => 9, 'divisor' => 5]);
         // % Qualified Calls
-        $this->setDivisionFormulas([ 'row' => 11, 'dividend' => 41, 'divisor' => 6 ]);
+        $this->setDivisionFormulas(['row' => 11, 'dividend' => 41, 'divisor' => 6]);
         // % Non Qualified Calls
-        $this->setDivisionFormulas([ 'row' => 12, 'dividend' => 55, 'divisor' => 6 ]);
+        $this->setDivisionFormulas(['row' => 12, 'dividend' => 55, 'divisor' => 6]);
         // Total Overall Minutes
-        $this->setSumFormula([ 'row' => 13, 'from_row' => 14, 'to_row' => 15 ]);
+        $this->setSumFormula(['row' => 13, 'from_row' => 14, 'to_row' => 15]);
         // Total Cap Sales
-        $this->setSumFormula([ 'row' => 17, 'from_row' => 18, 'to_row' => 20 ]);
+        $this->setSumFormula(['row' => 17, 'from_row' => 18, 'to_row' => 20]);
         // Revenue per call received
-        $this->setDivisionFormulas([ 'row' => 22, 'dividend' => 21, 'divisor' => 5 ]);
+        $this->setDivisionFormulas(['row' => 22, 'dividend' => 21, 'divisor' => 5]);
         // Revenue per call answered
-        $this->setDivisionFormulas([ 'row' => 23, 'dividend' => 21, 'divisor' => 6 ]);
+        $this->setDivisionFormulas(['row' => 23, 'dividend' => 21, 'divisor' => 6]);
         // Revenue per call qualified calls
-        $this->setDivisionFormulas([ 'row' => 24, 'dividend' => 21, 'divisor' => 41 ]);
+        $this->setDivisionFormulas(['row' => 24, 'dividend' => 21, 'divisor' => 41]);
         // Conversion - Against Calls Received
-        $this->setDivisionFormulas([ 'row' => 25, 'dividend' => 17, 'divisor' => 5 ]);
+        $this->setDivisionFormulas(['row' => 25, 'dividend' => 17, 'divisor' => 5]);
         // Conversion - Against Calls Answered
-        $this->setDivisionFormulas([ 'row' => 26, 'dividend' => 17, 'divisor' => 6 ]);
+        $this->setDivisionFormulas(['row' => 26, 'dividend' => 17, 'divisor' => 6]);
         // Conversion - Against Qualified Calls
-        $this->setDivisionFormulas([ 'row' => 27, 'dividend' => 17, 'divisor' => 41 ]);
+        $this->setDivisionFormulas(['row' => 27, 'dividend' => 17, 'divisor' => 41]);
         // Qualified Calls
-        $this->setQualifiedCallsSumFormula([ 'row' => 41, 'from_row' => 29, 'to_row' => 40 ]);
+        $this->setQualifiedCallsSumFormula(['row' => 41, 'from_row' => 29, 'to_row' => 40]);
         // Non Qualified Calls
-        $this->setSumFormula([ 'row' => 55, 'from_row' => 42, 'to_row' => 54 ]);
+        $this->setSumFormula(['row' => 55, 'from_row' => 42, 'to_row' => 54]);
 
         return $this;
     }
@@ -194,7 +193,7 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
                 ],
             ],
             'alignment' => [
-                'horizontal' => Alignment::HORIZONTAL_CENTER
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
             ],
             'borders' => [
                 'outline' => [
@@ -204,8 +203,8 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
                 'inside' => [
                     'borderStyle' => Border::BORDER_THIN,
                     'color' => ['rgb' => '000000'],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -226,15 +225,15 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
                 'top' => [
                     'borderStyle' => Border::BORDER_HAIR,
                     'color' => ['rgb' => '000000'],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $this->sheet->getStyle('A8:K8')->applyFromArray($format);
         $this->sheet->getStyle('B8:K8')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_PERCENTAGE_00);
         $this->sheet->getStyle('A10:K10')->applyFromArray($format);
         $this->sheet->getStyle('B10:K10')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_PERCENTAGE_00);
-        
+
         return $this;
     }
 
@@ -245,7 +244,7 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
                 'fillType' => Fill::FILL_SOLID,
                 'color' => [
                     'rgb' => 'E7E6E6',
-                ]
+                ],
             ],
             'borders' => [
                 'outline' => [
@@ -255,11 +254,11 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
                 'top' => [
                     'borderStyle' => Border::BORDER_HAIR,
                     'color' => ['rgb' => '000000'],
-                ]
+                ],
             ],
             'font' => [
                 'bold' => true,
-            ]
+            ],
         ];
 
         $this->sheet->getStyle('A2:K2')->applyFromArray($format);
@@ -273,8 +272,8 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
                 'bottom' => [
                     'borderStyle' => Border::BORDER_MEDIUM,
                     'color' => ['rgb' => '000000'],
-                ]
-            ]
+                ],
+            ],
         ]);
 
         return $this;
@@ -296,8 +295,8 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
                 'bottom' => [
                     'borderStyle' => Border::BORDER_DOUBLE,
                     'color' => ['rgb' => '000000'],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $this->sheet->getStyle('A17:K17')->applyFromArray($format);
@@ -308,7 +307,7 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
     protected function formatCallsPercentages()
     {
         $this->sheet->getStyle('B11:K12')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_PERCENTAGE_00);
-        
+
         return $this;
     }
 
@@ -328,8 +327,8 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
                 'outline' => [
                     'borderStyle' => Border::BORDER_THIN,
                     'color' => ['rgb' => '000000'],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $this->sheet->getStyle('A16:K16')->applyFromArray($format);
@@ -345,8 +344,8 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
                 'right' => [
                     'borderStyle' => Border::BORDER_THIN,
                     'color' => ['rgb' => '000000'],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $this->sheet->getStyle('A2:A55')->applyFromArray($format);
@@ -358,8 +357,8 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
                 'right' => [
                     'borderStyle' => Border::BORDER_MEDIUM,
                     'color' => ['rgb' => '000000'],
-                ]
-            ]
+                ],
+            ],
         ]);
 
         return $this;
@@ -385,8 +384,8 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
                 'bottom' => [
                     'borderStyle' => Border::BORDER_HAIR,
                     'color' => ['rgb' => '000000'],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $this->sheet->getStyle('A13:K13')->applyFromArray($format);
@@ -412,8 +411,8 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
                 'outline' => [
                     'borderStyle' => Border::BORDER_THIN,
                     'color' => ['rgb' => '000000'],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $this->sheet->getStyle('A21:K21')->applyFromArray($format);
@@ -439,8 +438,8 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
                 'outline' => [
                     'borderStyle' => Border::BORDER_THIN,
                     'color' => ['rgb' => '000000'],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $this->sheet->getStyle('A22:K24')->applyFromArray($format);

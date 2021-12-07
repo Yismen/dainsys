@@ -10,12 +10,11 @@ use App\Http\Resources\ClientResource;
  * @group Performances
  */ class ClientsController extends Controller
 {
-
     /**
      * Performances Clients
-     * 
+     *
      * Collection of clients information
-     * 
+     *
      * @response 200 {
      *      "data": [
      *          {

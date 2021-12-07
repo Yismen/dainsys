@@ -18,7 +18,7 @@ class AuthenticationTest extends TestCase
     {
         $user = create('App\User');
         $supervisor = create('App\Supervisor');
-        
+
         $this->get(route('admin.supervisor_users.index'))->assertRedirect('/login');
     }
 

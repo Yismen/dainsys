@@ -12,7 +12,6 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class InboundWTDCommandTest extends TestCase
 {
-
     /** @test */
     public function wtd_summary_command_exists()
     {
@@ -21,7 +20,7 @@ class InboundWTDCommandTest extends TestCase
 
         $this->artisan('inbound:send-wtd-summary')
             ->assertExitCode(0)
-            ->expectsOutput("Kipany Inbound WTD Report sent!");
+            ->expectsOutput('Kipany Inbound WTD Report sent!');
     }
 
     /** @test */
@@ -29,7 +28,7 @@ class InboundWTDCommandTest extends TestCase
     {
         Excel::fake();
         Mail::fake();
-        $subject = "Fake Name";
+        $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
         $this->artisan('inbound:send-wtd-summary');
 
@@ -54,7 +53,7 @@ class InboundWTDCommandTest extends TestCase
     {
         Excel::fake();
 
-        $subject = "Fake Name";
+        $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
         $repo['data'] = InboundDataRepository::getData(
             '2021-05-25',
@@ -64,7 +63,7 @@ class InboundWTDCommandTest extends TestCase
                 // \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByGate::class,
                 // \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByEmployee::class,
                 // \App\Console\Commands\Inbound\Support\DataParsers\WTDHoursData::class,
-                PeriodHoursParser::class
+                PeriodHoursParser::class,
             ]
         );
 
@@ -86,7 +85,7 @@ class InboundWTDCommandTest extends TestCase
         Excel::fake();
         Mail::fake();
 
-        $subject = "Fake Name";
+        $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
         $recipient = 'someone@fake.email';
 
@@ -99,7 +98,7 @@ class InboundWTDCommandTest extends TestCase
                 // \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByEmployee::class,
                 // \App\Console\Commands\Inbound\Support\DataParsers\HoursData::class,
                 // \App\Console\Commands\Inbound\Support\DataParsers\WTDHoursData::class,
-                PeriodHoursParser::class
+                PeriodHoursParser::class,
             ]
         );
 

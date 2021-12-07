@@ -5,8 +5,6 @@ namespace Tests\Feature\Employees;
 use App\Employee;
 use App\Termination;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Maatwebsite\Excel\Facades\Excel;
 use Tests\TestCase;
 
 class ExportEmployeesTest extends TestCase

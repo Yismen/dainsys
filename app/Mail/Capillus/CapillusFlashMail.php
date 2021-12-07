@@ -3,7 +3,7 @@
 namespace App\Mail\Capillus;
 
 class CapillusFlashMail extends CapillusMailBase
-{    
+{
     /**
      * Build the message.
      *
@@ -16,6 +16,6 @@ class CapillusFlashMail extends CapillusMailBase
             ->bcc('yjorge@eccocorpbpo.com')
             ->view('emails.capillus')
             ->attachFromStorage($this->temporary_mail_attachment)
-            ->subject("KNYC.E Flash Report");
+            ->subject('KNYC.E Flash Report');
     }
 }

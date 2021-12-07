@@ -2,10 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Imports\PerformancesImport;
 use App\Performance;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
@@ -30,10 +28,9 @@ class PerformancesImportTest extends TestCase
     public function it_validates_request_before_storing_a_file()
     {
         $attributes = [
-            'excel_file' => ''
+            'excel_file' => '',
         ];
         $this->actingAs($this->userWithPermission('create-performances-import'));
-
 
         $response = $this->post(route('admin.performances_import.store'), $attributes);
 
@@ -47,10 +44,9 @@ class PerformancesImportTest extends TestCase
 
         $file = UploadedFile::fake()->create('wrong file name.csv', 8);
         $attributes = [
-            'excel_file' => [$file]
+            'excel_file' => [$file],
         ];
         $this->actingAs($this->userWithPermission('create-performances-import'));
-
 
         $response = $this->post(route('admin.performances_import.store'), $attributes);
 
@@ -66,14 +62,14 @@ class PerformancesImportTest extends TestCase
         $file_name = $correct_name_prefix . '_anything.csv';
         $file = UploadedFile::fake()->create($file_name, 8);
         $attributes = [
-            'excel_file' => [$file]
+            'excel_file' => [$file],
         ];
         $this->actingAs($this->userWithPermission('create-performances-import'));
 
         $response = $this->post(route('admin.performances_import.store'), $attributes)
             ->assertRedirect(route('admin.performances_import.index'))
             ->assertSessionHas('imported_files', [
-                0 => $file_name
+                0 => $file_name,
             ]);
 
         Excel::assertImported($file->getFilename());

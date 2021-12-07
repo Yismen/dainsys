@@ -2,9 +2,6 @@
 
 namespace App\Console\Commands\Inbound\Sheets;
 
-use App\Exports\RangeFormarter;
-use Maatwebsite\Excel\Events\AfterSheet;
-
 class DispositionsByGate extends BaseDispositionsSheet
 {
     protected $last_column = 'L';

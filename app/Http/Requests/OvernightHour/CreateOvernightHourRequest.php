@@ -3,7 +3,6 @@
 namespace App\Http\Requests\OvernightHour;
 
 use App\OvernightHour;
-use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -35,10 +34,10 @@ class CreateOvernightHourRequest extends FormRequest
         return [
             'date' => [
                 'required', 'date',
-                Rule::notIn($dates)
+                Rule::notIn($dates),
             ],
             'employee_id' => 'required|exists:employees,id',
-            'hours' => 'numeric|min:0|max:17'
+            'hours' => 'numeric|min:0|max:17',
         ];
     }
 

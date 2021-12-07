@@ -4,9 +4,7 @@ namespace App\Imports;
 
 use App\Notifications\UserAppNotification;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Events\AfterImport;
-use Maatwebsite\Excel\Events\BeforeImport;
 use Maatwebsite\Excel\Events\ImportFailed;
 use Maatwebsite\Excel\Importer;
 
@@ -21,6 +19,7 @@ trait ExcelImportTrait
     {
         return 500;
     }
+
     /**
      * The size of batches to insert.
      *
@@ -30,6 +29,7 @@ trait ExcelImportTrait
     {
         return 500;
     }
+
     /**
      * Events listeners for the Importer.
      *
@@ -40,14 +40,14 @@ trait ExcelImportTrait
         return [
             AfterImport::class => function (AfterImport $event) {
                 $this->importedBy->notify(new UserAppNotification(
-                    "Data Imported Succesfully!",
+                    'Data Imported Succesfully!',
                     "File {$this->file_name} was imported!",
                     'success'
                 ));
             },
             ImportFailed::class => function (ImportFailed $event) {
                 $this->importedBy->notify(new UserAppNotification(
-                    "Import Failed!***",
+                    'Import Failed!***',
                     $event->e->getMessage(),
                     'danger'
                 ));

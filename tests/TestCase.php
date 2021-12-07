@@ -15,7 +15,6 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
         // DB::statement('PRAGMA foreign_keys=on;');
-        // $this->withExceptionHandling();
     }
 
     protected function signIn($user = null)
@@ -27,34 +26,34 @@ abstract class TestCase extends BaseTestCase
     }
 
     // Hat tip, @adamwathan.
-    protected function disableExceptionHandling()
-    {
-        $this->oldExceptionHandler = $this->app->make(ExceptionHandler::class);
-        $this->app->instance(ExceptionHandler::class, new class() extends Handler
-        {
-            public function __construct()
-            {
-            }
+    // protected function disableExceptionHandling()
+    // {
+    //     $this->oldExceptionHandler = $this->app->make(ExceptionHandler::class);
+    //     $this->app->instance(ExceptionHandler::class, new class() extends Handler
+    //     {
+    //         public function __construct()
+    //         {
+    //         }
 
-            public function report(\Throwable $e)
-            {
-            }
+    //         public function report(\Throwable $e)
+    //         {
+    //         }
 
-            public function render($request, \Throwable $e)
-            {
-                throw $e;
-            }
-        });
-    }
+    //         public function render($request, \Throwable $e)
+    //         {
+    //             throw $e;
+    //         }
+    //     });
+    // }
 
-    protected function withExceptionHandling()
-    {
-        $this->oldExceptionHandler = $this->app->make(ExceptionHandler::class);
+    // protected function withExceptionHandling()
+    // {
+    //     $this->oldExceptionHandler = $this->app->make(ExceptionHandler::class);
 
-        $this->app->instance(ExceptionHandler::class, $this->oldExceptionHandler);
+    //     $this->app->instance(ExceptionHandler::class, $this->oldExceptionHandler);
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     protected function user(array $attributes = [])
     {

@@ -3,9 +3,7 @@
 namespace Tests\Feature\Banks;
 
 use App\Bank;
-use App\BankCode;
 use App\Employee;
-use App\Supervisor;
 use App\User;
 use Carbon\Carbon;
 use Tests\TestCase;
@@ -32,7 +30,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     // public function authorized_users_can_store_bank()
     // {
-    //     // $this->withoutExceptionHandling();
     //     $bank = make(Bank::class, ['date' => Carbon::now()])->toArray();
     //     $bank = array_merge($bank, ['employee_id' => [$bank['employee_id']]]);
 
@@ -78,7 +75,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_destroy_bank()
     {
-
         $bank = create(Bank::class);
 
         $this->actingAs($this->userWithPermission('destroy-banks'))

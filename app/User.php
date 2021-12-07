@@ -28,7 +28,7 @@ class User extends Authenticatable implements CanResetPassword
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'is_active', 'is_admin'
+        'name', 'email', 'password', 'username', 'is_active', 'is_admin',
     ];
 
     /**
@@ -61,6 +61,7 @@ class User extends Authenticatable implements CanResetPassword
                 return $this->profile;
             }
         }
+
         return false;
     }
 
@@ -69,6 +70,7 @@ class User extends Authenticatable implements CanResetPassword
         if (Cache::has('online-user-' . $this->id)) {
             return true;
         }
+
         return false;
     }
 
