@@ -18,7 +18,7 @@
                 @if ( Auth::check() )
                     <div class="well">
                         <div class="list-group">
-                            <a href="#" class="list-group-item active">Dashboard <i class="fa fa-dashboard"> </i></a>
+                            <a href="#" class="list-group-item active">Dashboard <i class="fa fa-tachometer-alt"> </i></a>
                             <a href="{{ route('articles.create') }}" class="list-group-item success">Create new post</a>
                             <a href="{{ route('unpublished') }}" class="list-group-item">See your unpublished articles</a>
                         </div>

@@ -7,7 +7,7 @@ Route::get('/', 'HomeController@welcome');
 Auth::routes(['register' => false]);
 
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], function () {
-    Route::get('/', 'AdminController@admin');
+    Route::get('/', 'AdminController@admin')->name('home');
 
     Route::post('afps/employees', 'AfpsController@assignEmployees');
     Route::resource('afps', 'AfpsController');

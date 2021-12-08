@@ -8,7 +8,7 @@
                 <div class="box box-primary">
 
                     <div class="box-header with-border"><h4>Run DGT-3 Report
-                        <a href="/admin/human_resources" class="pull-right"><i class="fa fa-dashboard"></i></a>
+                        <a href="/admin/human_resources" class="pull-right"><i class="fa fa-tachometer-alt"></i></a>
                     </h4></div>
                         
                     <div class="box-body">

@@ -60,7 +60,7 @@
                         </span>
                     </div>
 
-                    @include('layouts.partials.errors')
+                    <x-errors-div></x-errors-div>
                 </div>
             </div>
         </form>

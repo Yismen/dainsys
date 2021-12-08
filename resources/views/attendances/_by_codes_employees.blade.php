@@ -9,7 +9,7 @@
                 <h4>
                     Search Employees by Codes:
                     <a href="{{ route('admin.attendances.code', $code->id) }}" class="pull-right">
-                        <i class="fa fa-dashboard"></i> Dashboard
+                        <i class="fa fa-tachometer-alt"></i> Dashboard
                     </a>
                 </h4>
             </div>

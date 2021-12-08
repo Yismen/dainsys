@@ -13,60 +13,15 @@
         <link rel="stylesheet" type="text/css" href="{{ mix('css/site.css') }}">
         <!-- Site Favicon -->
         <link rel="shortcut icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesnt work if you view the page via file:// -->
-
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-            <![endif]-->
     </head>
-    <!--
-        BODY TAG OPTIONS:
-        =================
-        Apply one or more of the following classes to get the
-        desired effect
-        |*********************************************************|
-        | SKINS         | skin-blue                               |
-        |               | skin-black                              |
-        |               | skin-purple                             |
-        |               | skin-yellow                             |
-        |               | skin-red                                |
-        |               | skin-green                              |
-        |*********************************************************|
-        |LAYOUT OPTIONS | fixed                                   |
-        |               | layout-boxed                            |
-        |               | layout-top-nav                          |
-        |               | sidebar-collapse                        |
-        |               | sidebar-mini                            |
-        |*********************************************************|
-        -->
-
     <body class="sidebar-collapse">
         <div class="wrapper" id="app">
             <!-- Main Header -->
-            {{-- @inject('user', 'App\Layout') --}}
-            {{-- @include('layouts.partials.main-header') --}}
-            <!-- Left side column. contains the logo and sidebar -->
-
-            {{-- @include('layouts.partials.main-sidebar') --}}
-            <!-- Content Wrapper. Contains page content -->
-
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
-                {{-- @include('layouts.partials.session-flash-messages') --}}
                 <div class="hidden-xs">
                     <back-to-top></back-to-top>
                 </div>
-                {{-- <loading-component></loading-component> --}}
-                <!-- Your Page Content Here -->
-                <!--
-                    |************************************|
-                    | Main Content Here
-                    |************************************|
-                     -->
-
                 <!-- Main content -->
                 <section class="content">
                     @yield('content')
@@ -103,18 +58,6 @@
         <!-- REQUIRED JS SCRIPTS -->
         <script src="{{ mix('js/app.js') }}"></script>
         <script src="{{ mix('js/site.js') }}"></script>
-        <script>
-        </script>
-        <!-- Optionally, you can add Slimscroll and FastClick plugins.
-            Both of these plugins are recommended to enhance the
-            user experience. Slimscroll is required when using the
-            fixed layout. -->
-
-        <!--
-            |************************************|
-            | All scripts will be placed here
-            |************************************|
-             -->
         @stack('scripts')
     </body>
 

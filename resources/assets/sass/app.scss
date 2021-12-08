@@ -7,13 +7,16 @@
 @import "variables";
 
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
-// @import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/bootstrap";
 @import url('~datatables.net-bs/css/dataTables.bootstrap.css');
-@import url('~admin-lte/dist/css/AdminLTE.css');
-@import url('~admin-lte/dist/css/skins/_all-skins.css');
+@import url('~admin-lte/dist/css/adminlte.css');
 @import url('~animate.css/animate.css');
-@import '~font-awesome/scss/font-awesome';
+// Font Awesome
+$fa-font-path:        "../webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
 
 .covered {
   background-color: rgba(0,0,0,.2)

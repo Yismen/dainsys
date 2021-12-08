@@ -300,7 +300,7 @@
                 <ul class="nav navbar-nav">
                     <li class="{{ Route::is('log-viewer::dashboard') ? 'active' : '' }}">
                         <a href="{{ route('log-viewer::dashboard') }}">
-                            <i class="fa fa-dashboard"></i> Dashboard
+                            <i class="fa fa-tachometer-alt"></i> Dashboard
                         </a>
                     </li>
                     <li class="{{ Route::is('log-viewer::logs.list') ? 'active' : '' }}">

@@ -33,7 +33,7 @@
             <div class="col-md-4">
                 <div class="row">
                     <animation-scale>
-                        <i class="fa fa-5x fa-dashboard text-primary"></i>
+                        <i class="fa fa-5x fa-tachometer-alt text-primary"></i>
                     </animation-scale>
                     <h3>Roles Based Access</h3>
                     <div
@@ -60,7 +60,7 @@
             <div class="col-md-4">
                 <div class="row">
                     <animation-scale>
-                        <i class="fa fa-5x fa-dashboard text-primary"></i>
+                        <i class="fa fa-5x fa-tachometer-alt text-primary"></i>
                     </animation-scale>
                     <h3>Dashboards</h3>
                     <div
