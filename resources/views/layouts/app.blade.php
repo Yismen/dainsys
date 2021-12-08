@@ -1,139 +1,120 @@
+
 <!DOCTYPE html>
-<html style="height: auto; min-height: 100%;">
-
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!-- <meta id="_token" name="_token" content="{{ csrf_token() }}">  Laravel 5.3 token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <!-- Tell the browser to be responsive to screen width -->
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Ecco | {{ $page_header ?? 'Admin Header' }}</title>
-        <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
-        <!-- Site Favicon -->
-        <link rel="shortcut icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesnt work if you view the page via file:// -->
-
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-            <![endif]-->
-    </head>
-    <!--
-        BODY TAG OPTIONS:
-        =================
-        Apply one or more of the following classes to get the
-        desired effect
-        |*********************************************************|
-        | SKINS         | skin-blue                               |
-        |               | skin-black                              |
-        |               | skin-purple                             |
-        |               | skin-yellow                             |
-        |               | skin-red                                |
-        |               | skin-green                              |
-        |*********************************************************|
-        |LAYOUT OPTIONS | fixed                                   |
-        |               | layout-boxed                            |
-        |               | layout-top-nav                          |
-        |               | sidebar-collapse                        |
-        |               | sidebar-mini                            |
-        |*********************************************************|
-        -->
-
-    <body
-        style="height: auto; min-height: 100%;"
-        class="
-            {{ $settings->skin ?? config('dainsys.layout_color', 'skin-yellow') }}
-            {{ $settings->layout ?? config('dainsys.layout', 'default')  }}
-            {{ $settings->sidebar ?? config('dainsys.sidebar_collapse', '')  }}
-            {{ $settings->sidebar_mini ?? config('dainsys.sidebar_mini', '')  }}
-        "
-    >
-        <div class="wrapper" style="height: auto;" id="app">
-            <!-- Main Header -->
-            {{-- @inject('user', 'App\Layout') --}}
-            @include('layouts.partials.main-header')
-            <!-- Left side column. contains the logo and sidebar -->
-
-            @include('layouts.partials.main-sidebar')
-            <!-- Content Wrapper. Contains page content -->
-
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper" style="min-height: 960px;">
-
-                <!-- Content Header (Page header) -->
-                @if (! isset($hide_content_header) )
-                    <section class="content-header" style="padding: 15px;">
-                        <h1>
-                            {{ $page_header ?? config('dainsys.app_name') }}
-                            <small>{{ $page_description ?? '' }}</small>
-                        </h1>
-
-                        @include('layouts.partials.breadcrumbs')
-                    </section>
-                @endif
-                @include('layouts.partials.session-flash-messages')
-                <div class="hidden-xs">
-                    <back-to-top></back-to-top>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('dainsys.app_client') }} | {{ $page_header ?? 'Admin Header' }}</title>
+    
+    <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
+    <!-- Site Favicon -->
+    <link rel="shortcut icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
+</head>
+<!--
+    `body` tag options:
+    
+    Apply one or more of the following classes to to the body tag
+    to get the desired effect
+    
+    * sidebar-collapse
+    * sidebar-mini
+-->
+<body class="hold-transition sidebar-mini sidebar-collapse">
+    <div class="wrapper">
+        <!-- Navbar -->
+        @include('layouts.partials.navbar')
+        <!-- /.navbar -->
+        
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4" id="app">
+            <!-- Brand Logo -->
+            <a href="index3.html" class="brand-link">
+                {{-- <img src="{{ asset('images/logo-with-text.png') }}" alt="{{ config('dainsys.client_name') }} Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
+                <span class="brand-text font-weight-light">{{ config('dainsys.client_name') }}</span>
+            </a>
+            
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                @auth
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="{{ asset(optional($user->profile)->photo) }}" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">{{ $user->name }}</a>
+                    </div>
                 </div>
-                <loading-component></loading-component>
-                <!-- Your Page Content Here -->
-                <!--
-                    |************************************|
-                    | Main Content Here
-                    |************************************|
-                     -->
-
-                <!-- Main content -->
-                <section class="content" style="padding: 0">
-                    @yield('content')
-                </section>
-                <!-- /.content -->
-
+                @endauth
+                
+                <!-- SidebarSearch Form -->
+                <div class="form-inline">
+                    <div class="input-group" data-widget="sidebar-search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-sidebar">
+                                <i class="fas fa-search fa-fw"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Menu -->
+                @include('layouts.partials.sidebar-menu')
+                <!-- /.sidebar-menu -->
             </div>
-            <!-- /.content-wrapper -->
-            <!-- Main Footer -->
-            <footer class="main-footer">
-                <!-- To the right -->
-                <div class="pull-right hidden-xs">
-                    @include('layouts.partials.links.webmaster')
+            <!-- /.sidebar -->
+        </aside>
+            
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">{{ $page_header }}</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            @include('layouts.partials._breadcrumbs')
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+            
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+                    @yield('content')
+                    <!-- /.row -->
                 </div>
-                <!-- Default to the left -->
-                <strong>
-                    Copyright &copy; {{ date("Y") }}
-                    <a href="{{ url('/admin') }}">
-                        {{ $app_name }}, {{ $client_name }}
-                    </a>.
-                </strong> All rights reserved.
-            </footer>
-
-            <!-- Control Sidebar -->
-            @if ($user)
-                @include('layouts.partials.control-sidebar')
-            @endif
-            <div class="control-sidebar-bg"></div>
-            <!-- /.control-sidebar -->
-            <!-- Add the sidebars background. This div must be placed
-                immediately after the control sidebar -->
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /.content -->
         </div>
-        <!-- ./wrapper -->
-        <!-- REQUIRED JS SCRIPTS -->
-        <script src="{{ mix('js/app.js') }}"></script>
-        <script>
-        </script>
-        <!-- Optionally, you can add Slimscroll and FastClick plugins.
-            Both of these plugins are recommended to enhance the
-            user experience. Slimscroll is required when using the
-            fixed layout. -->
-
-        <!--
-            |************************************|
-            | All scripts will be placed here
-            |************************************|
-             -->
+        <!-- /.content-wrapper -->
+        
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 3.1.0
+            </div>
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+    
+    <!-- REQUIRED SCRIPTS -->
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="dist/js/demo.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script>
         @stack('scripts')
-    </body>
-
+    </script>
+    
+</body>
 </html>
+    

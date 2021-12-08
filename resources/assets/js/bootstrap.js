@@ -1,4 +1,5 @@
-window.Vue = require('vue');
+window.Vue = require('vue').default;
+// import Vue from 'vue';
 window.Popper = require('popper.js').default;
 
 /**
@@ -8,7 +9,7 @@ window.Popper = require('popper.js').default;
 */
 import Vuec from 'vue-container';
 Vue.use(Vuec);
-Vue.$ioc.register('Form', require('./vendor/dainsys-form').default);
+Vue.$ioc.register('Form', require('dainsys-form').default);
 import Datepicker from 'vuejs-datepicker'
 Vue.$ioc.register('Datepicker', Datepicker);
 
