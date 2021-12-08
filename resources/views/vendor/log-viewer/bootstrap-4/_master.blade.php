@@ -227,7 +227,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item {{ Route::is('log-viewer::dashboard') ? 'active' : '' }}">
                     <a href="{{ route('log-viewer::dashboard') }}" class="nav-link">
-                        <i class="fa fa-dashboard"></i> Dashboard
+                        <i class="fa fa-tachometer-alt"></i> Dashboard
                     </a>
                 </li>
                 <li class="nav-item {{ Route::is('log-viewer::logs.list') ? 'active' : '' }}">

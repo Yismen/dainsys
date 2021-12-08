@@ -1,4 +1,4 @@
-@include('layouts.partials.errors-div')
+<x-errors-div type="primary"></x-errors-div>
 
 <div class="col-sm-12">
 

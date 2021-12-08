@@ -69,7 +69,7 @@
                         <button type="submit" class="btn btn-warning">Re-Assign</button>
                     </span>
                 </div>
-                @include('layouts.partials.errors')
+                <x-errors-div></x-errors-div>
             </div>
         </form>
     </div>

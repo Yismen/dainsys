@@ -8,7 +8,7 @@
                 <div class="box box-primary">
                     <div class="box-body">
                         @include('performances_import._import-form')
-                        @include('layouts.partials.errors')
+                        <x-errors-div></x-errors-div>
                     </div>
 
                     @if (Session::has('imported_files'))

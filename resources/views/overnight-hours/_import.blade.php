@@ -34,9 +34,7 @@
     </div>
 
     <div class="box-footer">
-        @component('components.errors-div')
-
-        @endcomponent
+        <x-errors-div></x-errors-div>
     </div>
 
 
