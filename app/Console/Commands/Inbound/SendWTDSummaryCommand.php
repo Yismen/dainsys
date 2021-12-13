@@ -56,9 +56,8 @@ class SendWTDSummaryCommand extends Command
     {
         $date = now();
         $mail_subject = 'Kipany Inbound WTD Report';
-        $file_name = $mail_subject . " " . now()->format('Ymd_His') . ".xlsx";
+        $file_name = $mail_subject . ' ' . now()->format('Ymd_His') . '.xlsx';
         $distro = $this->getDistroList();
-
 
         $this->date_to = $this->option('date') ?
             $date->copy()->parse($this->option('date'))->format('m/d/Y') :
@@ -72,7 +71,9 @@ class SendWTDSummaryCommand extends Command
             $data_parsers = [
                 \App\Console\Commands\Inbound\Support\DataParsers\Periods\PeriodHoursParser::class,
                 \App\Console\Commands\Inbound\Support\DataParsers\Periods\PeriodCallsParser::class,
-            ]
+            ],
+            $team = 'ECC%',
+            $gate = 'HTL%'
         );
 
         if ($this->hasAnyData((array) $repo['data'])) {
@@ -105,9 +106,9 @@ class SendWTDSummaryCommand extends Command
     protected function getDistroList(): array
     {
         $list = config($this->distro_config_path) ??
-            abort(404, "Invalid distro list. Set it up in the .env, separated by pipe (|).");
+            abort(404, 'Invalid distro list. Set it up in the .env, separated by pipe (|).');
 
-        return explode("|", $list);
+        return explode('|', $list);
     }
 
     /**
