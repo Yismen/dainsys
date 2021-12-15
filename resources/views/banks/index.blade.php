@@ -1,12 +1,12 @@
 <x-view page_header="{{ __('Banks') }}" page_description="{{ __('Banks') }} {{ __('Management') }}">
     @include('banks.create')
 
-    <x-box type="primary">
+    <x-card type="primary">
         <x-slot name="header">
             <h3>Banks List</h3>    
         </x-slot>
 
-        <x-table>
+        <x-table.table>
             <thead>
                 <tr>
                     <th>Name</th>
@@ -26,5 +26,5 @@
                 @endforeach
             </tbody>
         </x-table>
-    </x-box>
+    </x-card>
 </x-view>

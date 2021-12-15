@@ -5,26 +5,26 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="box box-warning">
-                    <div class="box-header">
+                <div class="card card-warning">
+                    <div class="card-header">
                         <h4>
                             Edit Performance
                             <a href="{{ route('admin.performances.show', $performance->id) }}" title="Show Details">
                                  <i class="fa fa-eye"></i>
                             </a>
-                            <a href="/admin/performances" class="pull-right" title="Back to the list">
+                            <a href="/admin/performances" class="float-right" title="Back to the list">
                                  <i class="fa fa-list"></i> List
                             </a>
                         </h4>
                     </div>
 
 
-                    <div class="box-body">
+                    <div class="card-body">
                         {!! Form::model($performance, ['route'=>['admin.performances.update', $performance->id], 'method'=>'PUT', 'class'=>'', 'role'=>'form', 'novalidate'=>true]) !!}
 
                             @include('performances._form')
 
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <div class="col-sm-6 col-sm-offset-2">
                                     <button type="submit" class="btn btn-warning">Update</button>
                                 </div>
@@ -33,13 +33,13 @@
                         {!! Form::close() !!}
                     </div>
 
-                    <div class="box-footer">
+                    <div class="card-footer">
 
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
+                        <div class="card card-default">
+                            <div class="card-header">
                                 <h5>More Details</h5>
                             </div>
-                            <div class="panel-body">
+                            <div class="card-body">
                                 <ul class="list-group">
                                     <div class="col-sm-6">
                                         <li class="list-group-item">
@@ -110,7 +110,7 @@
                         </div>
                     </div>
 
-                    <div class="box-footer">
+                    <div class="card-footer">
                         <delete-request-button
                             url="{{ route('admin.performances.destroy', $performance->id) }}"
                             redirect-url="{{ route('admin.performances.index') }}"

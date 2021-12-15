@@ -5,18 +5,18 @@
 	@if ($shift)
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
-				<div class="box box-info">
-					<div class="box-header">
+				<div class="card card-info">
+					<div class="card-header">
 						<h4>
 							Shift {{ personName($shift->name) }}
-							<a href="{{ route('admin.shifts.index') }}" class="pull-right">
+							<a href="{{ route('admin.shifts.index') }}" class="float-right">
 								<i class="fa fa-list"></i>
 								Shifts List
 							</a>
 						</h4>
 					</div>
 
-					<div class="box-body">
+					<div class="card-body">
 						{{ $shift }}
 					</div>
 				</div>

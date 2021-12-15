@@ -70,6 +70,7 @@ class DashboardTest extends TestCase
     /** @test */
     public function admin_users_are_rendered_with_admin_dashboard()
     {
+        $this->withoutExceptionHandling();
         $this->actingAs($this->userWithRole('admin'));
 
         $this->get(route('admin.dashboards'))
@@ -86,6 +87,7 @@ class DashboardTest extends TestCase
     /** @test */
     public function human_resource_users_are_rendered_with_human_resource_dashboard()
     {
+        $this->withoutExceptionHandling();
         $this->actingAs($this->userWithRole('human_resource'));
 
         $this->get(route('admin.dashboards'))

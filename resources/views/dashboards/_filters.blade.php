@@ -13,7 +13,7 @@
                     </button>
                     <h4 class="modal-title">
                         {{ __('Select') }} {{ __('Filter') }}s
-                        <a href="{{ $clear_route ?? '/'.request()->route()->uri }}" class="btn btn-xs btn-danger pull-right" style="margin-right: 10px">Clear</a>
+                        <a href="{{ $clear_route ?? '/'.request()->route()->uri }}" class="btn btn-sm btn-danger float-right" style="margin-right: 10px">Clear</a>
                     </h4>
                     
                 </div>
@@ -21,7 +21,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-xs-6 col-lg-4">
-                            <div class=form-group>
+                            <div class=form-group row>
                                 <label for="">{{ __('Site') }}</label>
                                 <select name="site[]" id="" class="form-control" multiple size="10">
                                     <option value="%">{{ __('All') }}</option>
@@ -35,7 +35,7 @@
                         </div>
                         {{-- /.col --}}
                         <div class="col-xs-6 col-lg-4">
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <label for="">{{ __('Project') }}</label>
                                 <select name="project[]" id="" class="form-control" multiple size="10">
                                     <option value="%">All</option>
@@ -49,7 +49,7 @@
                         </div>  
                         {{-- /.col                   --}}
                         <div class="col-xs-6 col-lg-4">
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <label for="">Departments</label>
                                 <select name="department[]" id="" class="form-control" multiple size="10">
                                     <option value="%">All</option>
@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary float-left" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">
                         Apply 
                         <i class="fa fa-caret-down"></i>

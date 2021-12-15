@@ -6,7 +6,7 @@
     $value = $value ?? 1;
     $value = old($field_name) ?? $value;
 @endphp
-<div class="form-group {{ $errors->has($field_name) ? 'has-error' : null }}">
+<div class="form-group row {{ $errors->has($field_name) ? 'has-error' : null }}">
     <div class="checkbox">
         <label class="{{ $label_class }}"> 
             {!! Form::checkbox($field_name, $value, null) !!}

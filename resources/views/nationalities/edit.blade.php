@@ -5,25 +5,25 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
-                <div class="box box-primary">
+                <div class="card card-primary card-outline">
 
                     {!! Form::model($nationality, ['route'=>['admin.nationalities.update', $nationality->id], 'method' => 'PUT', 'class'=>'form-horizontal', 'role'=>'form', 'autocomplete'=>"off",  'enctype'=>"multipart/form-data"]) !!}
-                        <div class="box-header with-border">
+                        <div class="card-header with-border">
                             <h4>
                                 Edit Nationality {{ $nationality->name }}
-                                <a href="{{ route('admin.nationalities.index') }}" class="pull-right" title="Back to Main Page"><i class="fa fa-list"></i></a>
+                                <a href="{{ route('admin.nationalities.index') }}" class="float-right" title="Back to Main Page"><i class="fa fa-list"></i></a>
                             </h4>
                         </div>
-                        {{-- /. .box-header --}}
-                        <div class="box-body">
+                        {{-- /. .card-header --}}
+                        <div class="card-body">
                             @include('nationalities._form')
                         </div>
-                        {{-- /. .box-body --}}
-                        <div class="box-footer">
+                        {{-- /. .card-body --}}
+                        <div class="card-footer">
                             <div class="col-sm-12">
-                                <div class="form-group">
+                                <div class="form-group row">
                                     <button type="submit" class="btn btn-warning">UPDATE</button>
-                                    <button type="reset" class="btn btn-default">CANCEL</button>
+                                    <button type="reset" class="btn btn-secondary">CANCEL</button>
                                 </div>
                             </div>
 

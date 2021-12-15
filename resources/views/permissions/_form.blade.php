@@ -1,8 +1,8 @@
 <!-- Resource -->
-<div class="form-group ">
+<div class="form-group row ">
 	<div class="col-sm-8 {{ $errors->has('resource') ? 'has-error' : null }}">
 
-		{!! Form::label('resource', 'Resource:', ['class'=>'col-sm-2 control-label']) !!}
+		{!! Form::label('resource', 'Resource:', ['class'=>'col-sm-2  col-form-label']) !!}
 		<div class="col-sm-10">
 			{!! Form::input('text', 'resource', null, ['class'=>'form-control', 'placeholder'=>'Resource']) !!}
 			{!! $errors->first('resource', '<span class="text-danger">:message</span>') !!}
@@ -20,8 +20,8 @@
 <!-- /. Resource -->
 
 <!-- Actions -->
-<div class="form-group {{ $errors->has('actions') ? 'has-error' : null }}">
-	{!! Form::label('actions', 'Actions:', ['class'=>'col-sm-2 control-label']) !!}
+<div class="form-group row {{ $errors->has('actions') ? 'has-error' : null }}">
+	{!! Form::label('actions', 'Actions:', ['class'=>'col-sm-2  col-form-label']) !!}
 	<div class="col-sm-10">
 
 		<div class="btn-group" >
@@ -55,8 +55,8 @@
 <!-- /. Actions -->
 
 <!-- Roles -->
-<div class="form-group {{ $errors->has('roles') ? 'has-error' : null }}">
-	{!! Form::label('roles', 'Roles:', ['class'=>'col-sm-2 control-label']) !!}
+<div class="form-group row {{ $errors->has('roles') ? 'has-error' : null }}">
+	{!! Form::label('roles', 'Roles:', ['class'=>'col-sm-2  col-form-label']) !!}
 	<div class="col-sm-10">
 		<div class="row">
 			@foreach ($permission->roles_list as $id => $role)

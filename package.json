@@ -17,7 +17,6 @@
     "admin-lte": "^3.1.0",
     "animate.css": "^4.1.1",
     "axios": "^0.24.0",
-    "bootstrap-sass": "^3.4.1",
     "cheditor": "0.0.1-security",
     "cross-env": "^7.0.3",
     "dainsys-form": "git+https://github.com/Yismen/dainsys-form.git",

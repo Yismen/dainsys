@@ -5,14 +5,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-                <div class="box box-primary">
-                    <div class="box-body">
+                <div class="card card-primary card-outline">
+                    <div class="card-body">
                         @include('performances_import._import-form')
                         <x-errors-div></x-errors-div>
                     </div>
 
                     @if (Session::has('imported_files'))
-                        <div class="box-footer">
+                        <div class="card-footer">
                             <ul>
                                 @foreach (session()->get('imported_files') as $file)
                                     <li>{{ $file }}</li>
@@ -25,14 +25,14 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="box box-info">
-                    <div class="box-body">
-                        <div class="box-header">
+                <div class="card card-info">
+                    <div class="card-body">
+                        <div class="card-header">
                             <h4>Imported Dates</h4>
                         </div>
 
-                        <div class="box-body table-responsive">
-                            <table class="table table-condensed table-bordered table-hover" id="performances-table">
+                        <div class="card-body table-responsive">
+                            <table class="table table-sm table-bordered table-hover" id="performances-table">
                                 <thead>
                                     <tr>
                                         <th>Performance Date</th>

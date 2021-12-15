@@ -4,20 +4,20 @@
 @section('content')
 	<div class="row">
 		<div class="col-sm-8 col-sm-offset-2">
-			<div class="box box-primary">
-				<div class="box-header">
+			<div class="card card-primary card-outline">
+				<div class="card-header">
 					<h4>
 						{{ $department->name }}
 						<a href="{{ route('admin.departments.edit', $department->id) }}">
 							<i class="fa fa-pencil"></i>
 						</a>
-						<a href="{{ route('admin.departments.index') }}" class="pull-right">
+						<a href="{{ route('admin.departments.index') }}" class="float-right">
 							<i class="fa fa-home"></i> List
 						</a>
 					</h4>
 				</div>
-				{{-- /.box-header --}}
-				<div class="box-body">
+				{{-- /.card-header --}}
+				<div class="card-body">
 					@if (!$department->positions->count())
 
 						<div class="alert alert-danger">
@@ -25,7 +25,7 @@
 						</div>
 					@else
 						<h3>Positions</h3>
-						<table class="table table-condensed">
+						<table class="table table-sm">
 							<thead>
 								<tr>
 									<th>Name</th>
@@ -49,7 +49,7 @@
 						</table>
 					@endif
 				</div>
-				{{-- /.box-body --}}
+				{{-- /.card-body --}}
 			</div>
 		</div>
 	</div>

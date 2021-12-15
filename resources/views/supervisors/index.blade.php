@@ -9,7 +9,7 @@
                 <div class="col-sm-8 col-sm-offset-2">
                     <h3>
                         Supervisors List
-                        <a href="/admin/supervisors/create" class="pull-right"><i class="fa fa-plus"></i> Add</a>
+                        <a href="/admin/supervisors/create" class="float-right"><i class="fa fa-plus"></i> Add</a>
                     </h3>
                 </div>
 
@@ -32,11 +32,11 @@
             @if ($inactive_supervisors->count() > 0)
                 <div class="row">
                     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-                        <div class="box box-danger">
-                            <div class="box-header">
+                        <div class="card card-danger">
+                            <div class="card-header">
                                 <h4>List of Supervisors Inactives</h4>
                             </div>
-                            <div class="box-body">
+                            <div class="card-body">
                                 @foreach ($inactive_supervisors as $supervisor)
                                     <div class="col-lg-3 col-md-4 col-xs-6">
                                         <a href="{{ route('admin.supervisors.edit', $supervisor->id) }}" class="text-warning">

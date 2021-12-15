@@ -4,10 +4,10 @@
 @section('content')
 	<div class="container-fluid">
 		<div class="col-sm-8 col-sm-offset-2">
-			<div class="box box-primary pad">
+			<div class="card card-primary card-outline pad">
 				<h3 class="page-header">
 					Payment Types Items List
-				 	<a href="{{ route('admin.payment_types.create') }}" class="pull-right btn btn-primary">
+				 	<a href="{{ route('admin.payment_types.create') }}" class="float-right btn btn-primary">
 				 		<i class="fa fa-plus"></i> Create
 				 	</a>
 				</h3>
@@ -17,7 +17,7 @@
 						<h1>No Payment Types has been added yet, please add one</h1>
 					</div>
 				@else
-					<table class="table table-condensed table-hover">
+					<table class="table table-sm table-hover">
 						<thead>
 							<tr>
 								<th>Payment Name</th>

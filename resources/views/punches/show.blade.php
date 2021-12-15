@@ -4,7 +4,7 @@
 @section('content')
 	@if ($punch)
 		<div class="col-sm-8 col-sm-offset-2 well row">
-			<table class="table table-condensed table-hover">
+			<table class="table table-sm table-hover">
 				<tbody>
 					<tr>
 						<th>Punch: </th>

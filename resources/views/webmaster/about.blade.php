@@ -173,13 +173,13 @@ opacity:0.9;
       </header>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
-        <div class="panel panel-default">
-          <div class="panel-heading resume-heading">
+        <div class="card card-default">
+          <div class="card-header resume-heading">
             <div class="row">
               <div class="col-lg-12">
                 <div class="col-xs-12 col-sm-4">
                   <figure>
-                    <img class="img-circle img-responsive" alt="" src="/images/management_team/yismen_jorge.JPG" width="100%">
+                    <img class="rounded-circle img-fluid" alt="" src="/images/management_team/yismen_jorge.JPG" width="100%">
                   </figure>
                   
                   <div class="row">

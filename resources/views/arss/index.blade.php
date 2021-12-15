@@ -5,23 +5,23 @@
 	<div class="container-fluid">
     	<form action="/admin/arss/employees" method="POST">
             @csrf
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2">
-                    <h3>
+            <div class="row justify-content-center">
+                <div class="col-sm-8">
+                    <h3 class="row justify-content-between">
                         {{ __('List') }} ARS 
-                        <a href="/admin/arss/create" class="pull-right"><i class="fa fa-plus"></i>{{ __('Add') }}</a>
+                        <a href="/admin/arss/create" class="float-right"><i class="fa fa-plus"></i>{{ __('Add') }}</a>
                     </h3>
 
                     @if ($free_employees->count() > 0)
-                        <div class="box box-danger">
-                            <div class="box-header">
+                        <div class="card card-outline card-danger">
+                            <div class="card-header">
                                 <h4>
                                     {{ __('List of Employees Not Assigned to') }} ARS
                                     <span class="badge bg-yellow">{{ $free_employees->count() }}</span>
                                 </h4>
                             </div>
-                            <div class="box-body">
-                                <table class="table table-condensed table-hover">
+                            <div class="card-body">
+                                <table class="table table-sm table-hover">
                                     <tbody>
                                         @foreach ($free_employees as $employee)
                                             <tr is="employee-row" :employee="{{ $employee }}"  class="col-lg-3 col-md-4 col-sm-6"/>
@@ -33,22 +33,23 @@
                     @endif
                 </div>
 
-                <div class="col-sm-10 col-sm-offset-1">
+                <div class="col-sm-10">
                     @foreach ($arss as $ars)
                         @if ($ars->employees->count() > 0)
-                            <div class="box box-warning">
-                                <div class="box-header">
+                            <div class="card card-outline card-warning">
+                                <div class="card-header">
                                     <h4>
                                         <a href="{{ route('admin.arss.show', $ars->id) }}">{{ $ars->name }}</a>
                                         <span class="badge bg-yellow">{{ $ars->employees->count() }}</span>
-                                        <a href="{{ route('admin.arss.edit', $ars->id) }}" class="pull-right text-warning">
+                                        <a href="{{ route('admin.arss.edit', $ars->id) }}" class="float-right text-warning">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                     </h4>
                                 </div>
 
-                                <div class="box-body">
-                                    <table class="table table-condensed table-hover">
+                                <div class="card-body p-0">
+
+                                    <table class="table table-sm table-hover">
                                         <tbody>
                                             @foreach ($ars->employees as $employee)
                                                 <tr is="employee-row" :employee="{{ $employee }}" class="col-lg-3 col-md-4 col-sm-6">

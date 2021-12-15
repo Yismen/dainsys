@@ -5,24 +5,24 @@
 	<div class="container-fluid">
     	<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
-				<div class="box box-primary">
+				<div class="card card-primary card-outline">
 
-					<div class="box-header">
+					<div class="card-header">
 						<h4>
 					 		Revenue Types
-						 	<a href="{{ route('admin.revenue_types.create') }}" class="pull-right">
+						 	<a href="{{ route('admin.revenue_types.create') }}" class="float-right">
 						 		<i class="fa fa-plus"></i> Add
 						 	</a>
 						</h4>
 					</div>
 
-					<div class="box-body">
+					<div class="card-body">
 						@if ($revenue_types->isEmpty())
 							<div class="bs-callout bs-callout-warning">
 								<h1>No Revenue Types has been added yet, please add one</h1>
 							</div>
 						@else
-							<table class="table table-condensed table-hover">
+							<table class="table table-sm table-hover">
 								<thead>
 									<tr>
 										<th>Revenue Types Item</th>

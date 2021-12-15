@@ -5,7 +5,7 @@
 	<div class="container-fluid">
     	<div class="row">
 			<div class="col-sm-4 col-sm-offset-4">
-				<div class="box box-primary pad">
+				<div class="card card-primary card-outline pad">
 					@if ($user)
 						<div class="">
 							<ul class="list-group">

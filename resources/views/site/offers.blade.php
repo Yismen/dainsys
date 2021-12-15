@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-7">
                 <a href="portfolio-item.html">
-                    <img class="img-responsive img-hover" src="http://placehold.it/700x300" alt="">
+                    <img class="img-fluid img-hover" src="http://placehold.it/700x300" alt="">
                 </a>
             </div>
             <div class="col-md-5">
@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-md-7 col-sm-push-5">
                 <a href="portfolio-item.html">
-                    <img class="img-responsive img-hover" src="http://placehold.it/700x300" alt="">
+                    <img class="img-fluid img-hover" src="http://placehold.it/700x300" alt="">
                 </a>
             </div>
             <div class="col-md-5 col-sm-pull-7">
@@ -44,7 +44,7 @@
         <div class="row">
             <div class="col-md-7">
                 <a href="portfolio-item.html">
-                    <img class="img-responsive img-hover" src="http://placehold.it/700x300" alt="">
+                    <img class="img-fluid img-hover" src="http://placehold.it/700x300" alt="">
                 </a>
             </div>
             <div class="col-md-5">
@@ -63,7 +63,7 @@
 
             <div class="col-md-7 col-sm-push-5">
                 <a href="portfolio-item.html">
-                    <img class="img-responsive img-hover" src="http://placehold.it/700x300" alt="">
+                    <img class="img-fluid img-hover" src="http://placehold.it/700x300" alt="">
                 </a>
             </div>
             <div class="col-md-5 col-sm-pull-7">
@@ -81,7 +81,7 @@
         <div class="row">
             <div class="col-md-7">
                 <a href="#">
-                    <img class="img-responsive img-hover" src="http://placehold.it/700x300" alt="">
+                    <img class="img-fluid img-hover" src="http://placehold.it/700x300" alt="">
                 </a>
             </div>
             <div class="col-md-5">

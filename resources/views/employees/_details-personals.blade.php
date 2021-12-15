@@ -1,4 +1,4 @@
-<div class="box box-widget widget-user-2">
+<div class="card card-widget widget-user-2">
     <!-- Add the bg color to the header using any of the bg-* classes -->
     <div
         class="widget-user-header {{ $employee->status === 'Active' ? 'bg-green' : 'bg-yellow' }}"
@@ -6,13 +6,13 @@
         <a href="{{ file_exists(trim(explode('?', $employee->photo)[0], '/')) ? asset($employee->photo) : 'http://placehold.it/200x200' }}" target="_employee-photo">
             <div class="widget-user-image">
                 <img src="{{ file_exists(trim(explode('?', $employee->photo)[0], '/')) ? asset($employee->photo) : 'http://placehold.it/200x200' }}"
-                        class="img-circle img-responsive center-block" alt="Image" width="200px">
+                        class="rounded-circle img-fluid mx-auto" alt="Image" width="200px">
             </div>
         </a>
         <!-- /.widget-user-image -->
         <h3 class="widget-user-username">
             {{ $employee->full_name }}
-            <a href="{{ route('admin.employees.edit', $employee->id) }}" class="text-gray pull-right" title="Edit">
+            <a href="{{ route('admin.employees.edit', $employee->id) }}" class="text-gray float-right" title="Edit">
                 <i class="fa fa-pencil"></i>
             </a>
         </h3>
@@ -29,7 +29,7 @@
 
     <div class="footer">
         {{-- Personal Info --}}
-        <table class="table table-condensed table-bordered table-hover">
+        <table class="table table-sm table-bordered table-hover">
             <tbody>
                 <tr>
                     <th>{{ __('Personal Id') }} / {{ __('Passport') }}: </th>

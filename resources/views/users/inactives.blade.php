@@ -11,17 +11,17 @@ inactive users list']) @section('content')
                 
                 @foreach ($users as $user)
                     <div class="col-sm-6">
-                        <div class="box box-danger info-box bg-grey">
+                        <div class="card card-danger info-box bg-grey">
                             <span class="info-box-icon">
                                 @if (file_exists(optional($user->profile)->photo))
                                     <a href="{{ asset($user->profile->photo) }}" target="_user_photo">
                                         <img src="{{ asset($user->profile->photo) }}"
-                                            class="profile-user-img img-responsive img-circle img-thumbnail" alt="Image"
+                                            class="profile-user-img img-fluid rounded-circle img-thumbnail" alt="Image"
                                         >
                                     </a>
                                 @else
                                     <img src="http://placehold.it/300x300"
-                                        class="profile-user-img img-responsive img-circle img-thumbnail" alt="Image"
+                                        class="profile-user-img img-fluid rounded-circle img-thumbnail" alt="Image"
                                     >
                                 @endif
                             </span>
@@ -39,7 +39,7 @@ inactive users list']) @section('content')
 
                                     <form action="{{ route('admin.users.inactive-users.restore',  $user->id) }}" method="post">
                                         @csrf
-                                        <button type="submit" class="pull-right btn btn-warning btn-xs">
+                                        <button type="submit" class="float-right btn btn-warning btn-sm">
                                             <i class="fa fa-pencil"></i> Restore
                                         </button>
                                     </form>

@@ -1,5 +1,5 @@
 {{-- External Info --}}
-<table class="table table-condensed table-bordered table-hover">
+<table class="table table-sm table-bordered table-hover">
     <tbody>
         <tr>
             <th>{{ __('Social #') }}: </th>

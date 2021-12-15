@@ -40,7 +40,7 @@
             <div class="card mb-4">
                 <div class="card-header">
                     Log info :
-                    <div class="group-btns pull-right">
+                    <div class="group-btns float-right">
                         <a href="{{ route('log-viewer::logs.download', [$log->date]) }}" class="btn btn-sm btn-success">
                             <i class="fa fa-download"></i> DOWNLOAD
                         </a>
@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-condensed mb-0">
+                    <table class="table table-sm mb-0">
                         <tbody>
                             <tr>
                                 <td>File path :</td>
@@ -80,7 +80,7 @@
                 <div class="card-footer">
                     {{-- Search --}}
                     <form action="{{ route('log-viewer::logs.search', [$log->date, $level]) }}" method="GET">
-                        <div class=form-group">
+                        <div class=form-group row">
                             <div class="input-group">
                                 <input id="query" name="query" class="form-control"  value="{!! $query !!}" placeholder="Type here to search">
                                 <div class="input-group-append">

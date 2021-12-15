@@ -5,13 +5,13 @@
 	<div class="container-fluid">
     	<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
-				<div class="box box-primary pad">
+				<div class="card card-primary card-outline pad">
 					<div class="row">
 						<div class="col-sm-12">
 							<ul class="list-group">
 								<li class="list-group-item">
 									<strong>Name: </strong>{{ $role->name }}
-									<a href="{{ route('admin.roles.index') }}" class="pull-right"><i class="fa fa-home"></i> List</a>
+									<a href="{{ route('admin.roles.index') }}" class="float-right"><i class="fa fa-home"></i> List</a>
 								</li>
 								<li class="list-group-item">
 									<strong>Display Name: </strong>{{ $role->name }}

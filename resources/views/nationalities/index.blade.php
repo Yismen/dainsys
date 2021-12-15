@@ -5,10 +5,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="box-header with-border">
+                <div class="card-header with-border">
                     <h3>
                         Nationalities List
-                        <a href="{{ route('admin.nationalities.create') }}" class="pull-right">
+                        <a href="{{ route('admin.nationalities.create') }}" class="float-right">
                             <i class="fa fa-plus"></i> Add
                         </a>
                     </h3>
@@ -18,8 +18,8 @@
                     @csrf
 
                     @if ($free_employees->count() > 0)
-                        <div class="box box-danger">
-                            <div class="box-header">
+                        <div class="card card-danger">
+                            <div class="card-header">
                                 <h4>
                                     List of Employees Not Assigned to Any Nationality
                                     <span class="badge bg-yellow">{{ $free_employees->count() }}</span>
@@ -28,15 +28,15 @@
 
                             <?php $count = $free_employees->count() == 0 ? 0 : ceil($free_employees->count() / 2) ?>
 
-                            <div class="box-body">
+                            <div class="card-body">
                                 <div class="row">
                                     @foreach ($free_employees->chunk($count) as $chunk)
                                         <div class="col-sm-6">
                                             @foreach ($chunk as $employee)
-                                                 <employee-check-box :employee="{{ $employee }}" style="border-top: solid 1px #ccc"
+                                                 <employee-check-card :employee="{{ $employee }}" style="border-top: solid 1px #ccc"
                                                 >,
                                                     - {{ filled($employee->personal_id) ? $employee->personal_id : $employee->passport }}
-                                                </employee-check-box>
+                                                </employee-check-card>
                                             @endforeach
                                         </div>
                                     @endforeach
@@ -47,29 +47,29 @@
 
                     @foreach ($nationalities as $nationality)
                         @if ($nationality->employees->count() > 0)
-                            <div class="box box-warning">
-                                <div class="box-header">
+                            <div class="card card-warning">
+                                <div class="card-header">
                                     <h4>
                                         <a href="{{ route('admin.nationalities.show', $nationality->id) }}" title="Details">{{ $nationality->name }}</a>
                                         <span class="badge bg-red">{{ $nationality->employees->count() }}</span>
-                                        <a href="{{ route('admin.nationalities.edit', $nationality->id) }}" class="pull-right text-warning">
+                                        <a href="{{ route('admin.nationalities.edit', $nationality->id) }}" class="float-right text-warning">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                     </h4>
                                 </div>
-                                    <div class="box-body">
+                                    <div class="card-body">
 
                                         <?php $count = $nationality->employees->count() == 0 ? 0 : ceil($nationality->employees->count() / 2) ?>
 
-                                        <div class="box-body">
+                                        <div class="card-body">
                                             <div class="row">
                                                 @foreach ($nationality->employees->chunk($count) as $chunk)
                                                     <div class="col-sm-6">
                                                         @foreach ($chunk as $employee)
-                                                             <employee-check-box :employee="{{ $employee }}" style="border-top: solid 1px #ccc"
+                                                             <employee-check-card :employee="{{ $employee }}" style="border-top: solid 1px #ccc"
                                                             >,
                                                                 {{ filled($employee->personal_id) ? $employee->personal_id : $employee->passport }}
-                                                            </employee-check-box>
+                                                            </employee-check-card>
                                                         @endforeach
                                                     </div>
                                                 @endforeach

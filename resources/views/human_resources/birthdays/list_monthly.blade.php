@@ -8,14 +8,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
-                <div class="box box-info">
-                    <div class="box-header">
+                <div class="card card-info">
+                    <div class="card-header">
                         <h4>{{ $title }}</h4>
                     </div>
-                    {{-- .box-header --}}
-                    <div class="box-body">
+                    {{-- .card-header --}}
+                    <div class="card-body">
                         @if ($employees->count() > 0)
-                            <table class="table table-condensed table-hover">
+                            <table class="table table-sm table-hover">
                                 <thead>
                                     <tr>
                                         <th>{{ __('Name') }}</th>
@@ -44,12 +44,12 @@
                                                 @if (file_exists($employee->photo))
                                                     <a href="{{ asset($employee->photo) }}" target="_employee">
                                                         <img src="{{ asset($employee->photo) }}" style="max-height: 50px; max-width: 50px;"
-                                                            class="profile-user-img img-responsive img-circle" alt="Image"
+                                                            class="profile-user-img img-fluid rounded-circle" alt="Image"
                                                         >
                                                     </a>
                                                 @else
                                                     <img src="http://placehold.it/300x300" style="max-height: 50px; max-width: 50px;"
-                                                        class="profile-user-img img-responsive img-circle" alt="Image"
+                                                        class="profile-user-img img-fluid rounded-circle" alt="Image"
                                                     >
                                                 @endif
                                             </td>

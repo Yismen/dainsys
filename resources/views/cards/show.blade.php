@@ -4,8 +4,8 @@
 @section('content')
 	@if ($card)
 		<div class="col-sm-8 col-sm-offset-2">
-			<div class="box box-primary pad">
-				<table class="table table-condensed table-hover">
+			<div class="card card-primary card-outline pad">
+				<table class="table table-sm table-hover">
 					<tbody>
 						<tr>
 							<th>Card: </th>

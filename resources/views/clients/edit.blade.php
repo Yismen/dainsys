@@ -3,8 +3,8 @@
 
 @section('content')
 	<div class="col-sm-8 col-sm-offset-2">
-		<div class="box box-primary">
-			<div class="box-body">
+		<div class="card card-primary card-outline">
+			<div class="card-body">
 				{!! Form::model($client, ['route'=>['admin.clients.update', $client->id], 'method'=>'PUT', 'class'=>'form-horizontal', 'role'=>'form']) !!}	
 			
 					@include('clients._form')

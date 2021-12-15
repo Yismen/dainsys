@@ -58,7 +58,7 @@
         </ul>
 </div>
 <div class="page-wrapper">
-    <div class="dark-box"></div>
+    <div class="dark-card"></div>
     <div class="content">
         <h1>Introduction</h1>
 <p>This documentation aims to provide all the information you need to work with our API.</p>
@@ -182,7 +182,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-dashboards-human_resources-head_counts"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -337,7 +337,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-dashboards-human_resources-attritions"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -488,7 +488,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-dashboards-human_resources-hc_by_project"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -638,7 +638,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-dashboards-human_resources-hc_by_gender"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -788,7 +788,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-dashboards-human_resources-hc_by_department"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -939,7 +939,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-dashboards-production-mtd_stats"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>campaign</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -1148,7 +1148,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-dashboards-production-monthly_stats"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>campaign</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -1452,7 +1452,7 @@ fetch(url, {
                                                                 data-endpoint="POSTapi-afps"
                                                                 data-component="header"></label>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                        <h4 class="fancy-heading-card"><b>Body Parameters</b></h4>
         <p>
             <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
@@ -1570,7 +1570,7 @@ fetch(url, {
                                                                 data-endpoint="POSTapi-arss"
                                                                 data-component="header"></label>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                        <h4 class="fancy-heading-card"><b>Body Parameters</b></h4>
         <p>
             <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
@@ -1684,7 +1684,7 @@ fetch(url, {
                                                                 data-endpoint="POSTapi-banks"
                                                                 data-component="header"></label>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                        <h4 class="fancy-heading-card"><b>Body Parameters</b></h4>
         <p>
             <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
@@ -1828,7 +1828,7 @@ fetch(url, {
                                                                 data-endpoint="POSTapi-positions"
                                                                 data-component="header"></label>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                        <h4 class="fancy-heading-card"><b>Body Parameters</b></h4>
         <p>
             <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
@@ -1985,7 +1985,7 @@ fetch(url, {
                                                                 data-endpoint="POSTapi-supervisors"
                                                                 data-component="header"></label>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                        <h4 class="fancy-heading-card"><b>Body Parameters</b></h4>
         <p>
             <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
@@ -2102,7 +2102,7 @@ fetch(url, {
                                                                 data-endpoint="POSTapi-departments"
                                                                 data-component="header"></label>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                        <h4 class="fancy-heading-card"><b>Body Parameters</b></h4>
         <p>
             <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
@@ -2219,7 +2219,7 @@ fetch(url, {
                                                                 data-endpoint="POSTapi-payment_frequencies"
                                                                 data-component="header"></label>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                        <h4 class="fancy-heading-card"><b>Body Parameters</b></h4>
         <p>
             <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
@@ -2333,7 +2333,7 @@ fetch(url, {
                                                                 data-endpoint="POSTapi-nationalities"
                                                                 data-component="header"></label>
         </p>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                        <h4 class="fancy-heading-card"><b>Body Parameters</b></h4>
         <p>
             <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
@@ -2480,7 +2480,7 @@ fetch(url, {
                                                                 data-endpoint="POSTapi-employees--employee--vip"
                                                                 data-component="header"></label>
         </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                <h4 class="fancy-heading-card"><b>URL Parameters</b></h4>
                     <p>
                 <b><code>employee</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
                 <input type="number"
@@ -2491,7 +2491,7 @@ fetch(url, {
     <br>
 
             </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                            <h4 class="fancy-heading-card"><b>Body Parameters</b></h4>
         <p>
             <b><code>is_vip</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
                 <label data-endpoint="POSTapi-employees--employee--vip" hidden>
@@ -2649,7 +2649,7 @@ fetch(url, {
                                                                 data-endpoint="POSTapi-employees--employee--universal"
                                                                 data-component="header"></label>
         </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                <h4 class="fancy-heading-card"><b>URL Parameters</b></h4>
                     <p>
                 <b><code>employee</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
                 <input type="number"
@@ -2660,7 +2660,7 @@ fetch(url, {
     <br>
 
             </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                            <h4 class="fancy-heading-card"><b>Body Parameters</b></h4>
         <p>
             <b><code>is_vip</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
                 <label data-endpoint="POSTapi-employees--employee--universal" hidden>
@@ -2822,7 +2822,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-employees"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -3003,7 +3003,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-employees-all"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -3184,7 +3184,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-employees-actives"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -3365,7 +3365,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-employees-recents"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -3512,7 +3512,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-holidays"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>year</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -3632,7 +3632,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-overnight_hours"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>date</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -3772,7 +3772,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-notifications-unread"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>max_items</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
                 <input type="number"
@@ -3892,7 +3892,7 @@ fetch(url, {
                                                                 data-endpoint="POSTapi-notifications-mark-all-as-read"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>max_items</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
                 <input type="number"
@@ -4005,7 +4005,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-notifications-show--notification-"
                                                                 data-component="header"></label>
         </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                <h4 class="fancy-heading-card"><b>URL Parameters</b></h4>
                     <p>
                 <b><code>notification</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -4737,7 +4737,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-performances-employees"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>site</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -4898,7 +4898,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-performances-downtimes"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>campaign</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -5092,7 +5092,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-performances-login_names"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>recents</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -5211,7 +5211,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-performances-schedules"
                                                                 data-component="header"></label>
         </p>
-                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>daysago</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
                 <input type="number"
@@ -5473,7 +5473,7 @@ fetch(url, {
                                                                 data-endpoint="GETapi-performances-performance_data-last--many--months"
                                                                 data-component="header"></label>
         </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                <h4 class="fancy-heading-card"><b>URL Parameters</b></h4>
                     <p>
                 <b><code>many</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
                 <input type="number"
@@ -5484,7 +5484,7 @@ fetch(url, {
     <br>
 <p>The amount of months back to filter data. Example /performances/performance_data/last/3/months</p>
             </p>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                        <h4 class="fancy-heading-card"><b>Query Parameters</b></h4>
                     <p>
                 <b><code>campaign</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
@@ -5581,7 +5581,7 @@ fetch(url, {
 
         
     </div>
-    <div class="dark-box">
+    <div class="dark-card">
                     <div class="lang-selector">
                                     <a href="#" data-language-name="bash">bash</a>
                                     <a href="#" data-language-name="javascript">javascript</a>

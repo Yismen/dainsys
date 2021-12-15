@@ -1,6 +1,6 @@
 @if ($employee->changes->count() > 0)
     <div class="table-responsive">
-        <table class="table table-condensed table-hover table-bordered">
+        <table class="table table-sm table-hover table-bordered">
             <thead>
                 <tr>
                     <th>{{ __('Changes') }} ({{ __('Latest') }} {{ $employee->changes->count() }})</th>

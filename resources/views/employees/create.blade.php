@@ -6,10 +6,10 @@
 	<div class="container-fluid">
     	<div class="row">
 			<div class="col-sm-10 col-sm-offset-1">
-				<div class="box box-primary">
-					<div class="box-header with-border">
+				<div class="card card-primary card-outline">
+					<div class="card-header with-border">
 						{{ $title }} @include('punches._last_punch_id')
-						<a href="{{ route('admin.employees.index') }}" class="pull-right" title="Return to the employees' list."><i class="fa fa-list"></i></a>
+						<a href="{{ route('admin.employees.index') }}" class="float-right" title="Return to the employees' list."><i class="fa fa-list"></i></a>
 					</div>
 					<create-employee :employee="{{ $employee }}"></create-employee>
 				</div>

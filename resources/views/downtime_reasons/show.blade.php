@@ -3,17 +3,17 @@
 
 @section('content')
 	<div class="col-sm-8 col-sm-offset-2">
-		<div class="box box-primary">
-			<div class="box-header with-border">
+		<div class="card card-primary card-outline">
+			<div class="card-header with-border">
 				<h4>
 					Details Reason For Downtime {{ $downtime_reason->name }}
-					<a href="{{ route('admin.downtime_reasons.index') }}" class="pull-right" title="Return to the List">
+					<a href="{{ route('admin.downtime_reasons.index') }}" class="float-right" title="Return to the List">
 						<i class="fa fa-home"></i>
 					</a>
 				</h4>
 			</div>
 
-			<div class="box-body">
+			<div class="card-body">
 				<h4>Under construction. Show Hours Details...</h4>
 				{{ $downtime_reason->hours }}
 			</div>

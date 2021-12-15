@@ -14,14 +14,14 @@
             <div class="row">
                 @foreach($percents as $level => $item)
                     <div class="col-sm-6 col-md-12 col-lg-4 mb-3">
-                        <div class="box level-{{ $level }} {{ $item['count'] === 0 ? 'empty' : '' }}">
-                            <div class="box-icon">
+                        <div class="card level-{{ $level }} {{ $item['count'] === 0 ? 'empty' : '' }}">
+                            <div class="card-icon">
                                 {!! log_styler()->icon($level) !!}
                             </div>
 
-                            <div class="box-content">
-                                <span class="box-text">{{ $item['name'] }}</span>
-                                <span class="box-number">
+                            <div class="card-content">
+                                <span class="card-text">{{ $item['name'] }}</span>
+                                <span class="card-number">
                                     {{ $item['count'] }} entries - {!! $item['percent'] !!} %
                                 </span>
                                 <div class="progress" style="height: 3px;">

@@ -1,9 +1,9 @@
-<div class="box box-danger">
-    <div class="box-header with-border"><h4><i class="fa fa-exclamation-triangle"> </i> {{ __('Issue') }}s</h4></div>
+<div class="card card-danger">
+    <div class="card-header with-border"><h4><i class="fa fa-exclamation-triangle"> </i> {{ __('Issue') }}s</h4></div>
 
-    <div class="box-body no-padding">
+    <div class="card-body no-padding">
         <div class="table-responsive">
-            <table class="table table-condensed table-bordereds">
+            <table class="table table-sm table-bordereds">
                 <thead>
                     <tr>
                         <th>{{ __('Status') }}</th>

@@ -5,21 +5,21 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
-                <div class="box box-primary">
-                    <div class="box-header">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
                         <h4>
                             Create Performance Data <small>D Only</small>
-                            <a href="{{ route('admin.performances.index') }}" class="pull-right" title="Back to List">
+                            <a href="{{ route('admin.performances.index') }}" class="float-right" title="Back to List">
                                 <i class="fa fa-list"></i> List
                             </a>
                         </h4>
                     </div>
 
                     {!! Form::open(['route'=>['admin.performances.store'], 'method'=>'POST', 'class'=>'', 'role'=>'form', 'novalidate'=>true]) !!}
-                        <div class="box-body" id="performances-create">
+                        <div class="card-body" id="performances-create">
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <div class="form-group {{ $errors->has('employee_id') ? 'has-error' : null }}">
+                                    <div class="form-group row {{ $errors->has('employee_id') ? 'has-error' : null }}">
                                         {!! Form::label('employee_id', ' Employee:', ['class'=>'']) !!}
                                         {!! Form::select('employee_id', $performance->employeeRecentsList->pluck('full_name', 'id'), null, ['class'=>'form-control', 'placeholder' => '--Select One']) !!}
                                         {!! $errors->first('employee_id', '<span class="text-danger">:message</span>') !!}
@@ -27,7 +27,7 @@
                                 </div>
                                 <!-- /Employee -->
                                 <div class="col-sm-4">
-                                    <div class="form-group {{ $errors->has('campaign_id') ? 'has-error' : null }}">
+                                    <div class="form-group row {{ $errors->has('campaign_id') ? 'has-error' : null }}">
                                         {!! Form::label('campaign_id', ' Downtime Campaign:', ['class'=>'']) !!}
                                         {!! Form::select('campaign_id', $performance->downtimesCampaignsList->pluck('name', 'id'), null, ['class'=>'form-control', 'placeholder' => '--Select One']) !!}
                                     </div>
@@ -36,7 +36,7 @@
 
                                 {{-- Login Time --}}
                                 <div class="col-sm-4">
-                                    <div class="form-group {{ $errors->has('login_time') ? 'has-error' : null }}">
+                                    <div class="form-group row {{ $errors->has('login_time') ? 'has-error' : null }}">
                                         {!! Form::label('login_time', ' Login Time:', ['class'=>'']) !!}
                                         {!! Form::input('number', 'login_time', null, ['step'=>0.05, 'class'=>'form-control', 'placeholder'=>'Login Time']) !!}
                                         {!! $errors->first('login_time', '<span class="text-danger">:message</span>') !!}
@@ -48,7 +48,7 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <!-- Date -->
-                                    <div class="form-group {{ $errors->has('date') ? 'has-error' : null }}">
+                                    <div class="form-group row {{ $errors->has('date') ? 'has-error' : null }}">
                                         {!! Form::label('date', ' Date:', ['class'=>'']) !!}
                                         {{-- {!! Form::input('text', 'date', null, ['class'=>'form-control', 'placeholder'=>'Date']) !!} --}}
                                         <date-picker
@@ -63,7 +63,7 @@
                                 </div>
                                 <!-- Downtime Reason -->
                                 <div class="col-sm-4">
-                                    <div class="form-group {{ $errors->has('downtime_reason_id') ? 'has-error' : null }}">
+                                    <div class="form-group row {{ $errors->has('downtime_reason_id') ? 'has-error' : null }}">
                                         {!! Form::label('downtime_reason_id', ' Downtime Reason:', ['class'=>'']) !!}
                                         {!! Form::select('downtime_reason_id', $performance->downtimesReasonsList->pluck('name', 'id')->toArray(), null, ['class'=>'form-control', 'placeholder' => '--Select One']) !!}
                                         {!! $errors->first('downtime_reason_id', '<span class="text-danger">:message</span>') !!}
@@ -72,7 +72,7 @@
                                 <!-- /. Downtime Reason -->
                                 <!-- Reported By -->
                                 <div class="col-sm-4">
-                                    <div class="form-group {{ $errors->has('reported_by') ? 'has-error' : null }}">
+                                    <div class="form-group row {{ $errors->has('reported_by') ? 'has-error' : null }}">
                                         {!! Form::label('reported_by', ' Reported By:', ['class'=>'']) !!}
                                         {!! Form::select('reported_by', $performance->activeSupervisorsList->pluck('name', 'name')->toArray(), null, ['class'=>'form-control', 'placeholder' => '--Select One']) !!}
                                         {!! $errors->first('reported_by', '<span class="text-danger">:message</span>') !!}
@@ -81,26 +81,26 @@
                             </div>
                             {{-- .row --}}
                         </div>
-                        {{-- .box-body --}}
+                        {{-- .card-body --}}
                         <!-- /. Reported By -->
-                        <div class="box-footer">
+                        <div class="card-footer">
                             <div class="row">
                                 <div class="col-sm-offset-2">
                                     <button class="btn btn-warning" type="submit">CREATE</button>
                                 </div>
                             </div>
                         </div>
-                        {{-- .box-footer --}}
+                        {{-- .card-footer --}}
                     {!! Form::close() !!}
                 </div>
 
-                <div class="box box-info">
-                    <div class="box-header">
+                <div class="card card-info">
+                    <div class="card-header">
                         <h4>Recently Created</h4>
                     </div>
 
-                    <div class="box-body">
-                        <table class="table table-condensed table-hover">
+                    <div class="card-body">
+                        <table class="table table-sm table-hover">
                             <thead>
                                 <tr>
                                     <th>Name</th>

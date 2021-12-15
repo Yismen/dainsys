@@ -5,16 +5,16 @@
 	<div class="container-fluid">S
     	<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
-				<div class="box box-primary">
-					<div class="box-header with-boarder">
+				<div class="card card-primary card-outline">
+					<div class="card-header with-boarder">
 						Details for Supervisor {{ $supervisor->name }}, has
 						<span class="badge badge-primary">{{ $supervisor->employees->count()  }}</span> employees assigned.
-						<a href="/admin/supervisors" class="pull-right"><i class="fa fa-list"></i> List</a>
+						<a href="/admin/supervisors" class="float-right"><i class="fa fa-list"></i> List</a>
 					</div>
 
-					<div class="box-body pad">
+					<div class="card-body pad">
 						@if ($supervisor->employees->count() > 0)
-							<table class="table table-condensed table-bordered">
+							<table class="table table-sm table-bordered">
 								<thead>
 									<tr>
 										<th>Id</th>
@@ -43,7 +43,7 @@
 						@endif
 					</div>
 
-					<div class="box-footer"></div>
+					<div class="card-footer"></div>
 
 				</div>
 			</div>

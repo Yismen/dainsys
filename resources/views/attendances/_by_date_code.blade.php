@@ -8,15 +8,15 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="box box-primary">
-                    <div class="box-header">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
                         <h5>List of employees {{ request()->route()->parameters['code']->name }} on {{ request()->route()->parameters['date'] }} </h5>
                     </div>
 
-                    <div class="box-body">
+                    <div class="card-body">
                         @foreach ($employees->chunk(number_format($employees->count()/2, 0)) as $chunk)
                             <div class=" col-xs-12 col-sm-6">
-                                <table class="table table-condensed table-hover table-bordered">
+                                <table class="table table-sm table-hover table-bordered">
                                     <tbody>
                                         @foreach ($chunk as $el)
                                             <tr style="background-color: {{ request()->route()->parameters['code']->color }} ">

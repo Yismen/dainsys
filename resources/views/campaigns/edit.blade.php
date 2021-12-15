@@ -5,11 +5,11 @@
 	<div class="container-fluid">
     	<div class="row">
 			<div class="col-sm-10 col-sm-offset-1">
-				<div class="box box-warning">
-					<div class="box-header">
+				<div class="card card-warning">
+					<div class="card-header">
 						<h4>
 							Edit Campaign {{ $campaign->name }}
-					    	<a href="{{ route('admin.campaigns.index') }}" class="pull-right">
+					    	<a href="{{ route('admin.campaigns.index') }}" class="float-right">
 						    	<i class="fa fa-list"></i> List
 						    </a>
 						</h4>
@@ -17,20 +17,20 @@
 
 
 					{!! Form::model($campaign, ['route'=>['admin.campaigns.update', $campaign->id], 'method'=>'PUT', 'class'=>'form-horizontal', 'role'=>'form']) !!}
-						<div class="box-body">
+						<div class="card-body">
 
 							@include('campaigns._form')
 
 						</div>
 
-						<div class="box-footer">
+						<div class="card-footer">
 							<div class="col-sm-6 col-sm-offset-2">
 								<button type="submit" class="btn btn-warning">Update</button>
 							</div>
 						</div>
 					{!! Form::close() !!}
 
-					<div class="box-footer">
+					<div class="card-footer">
 						<delete-request-button
 							url="{{ route('admin.campaigns.destroy', $campaign->id) }}"
 							redirect-url="{{ route('admin.campaigns.index') }}"

@@ -4,20 +4,20 @@
 @section('content')
 <div class="container-fluid">
 		<div class="col-lg-10 col-lg-offset-1">
-			<div class="box box-primary">
+			<div class="card card-primary card-outline">
 
-				<div class="box-header with-border">
-					<h3 class="box-title">
+				<div class="card-header with-border">
+					<h3 class="card-title">
 						Positions List
 					</h3>
-				 	<a href="{{ route('admin.positions.create') }}" class="pull-right">
+				 	<a href="{{ route('admin.positions.create') }}" class="float-right">
 				 		<i class="fa fa-plus"></i> Add
 				 	</a>
 				</div>
 
-				<div class="box-body">
+				<div class="card-body">
 					<div class="table-responsive">
-						<table class="table table-condensed table-striped" id="positions-table">
+						<table class="table table-sm table-striped" id="positions-table">
 							<thead>
 								<tr>
 									<th>Position Name</th>

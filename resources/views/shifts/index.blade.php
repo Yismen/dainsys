@@ -5,19 +5,19 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="panel-title">
+                <div class="card card-primary card-outline">
+                    <div class="card-header with-border">
+                        <h3 class="card-title">
                             Shifts
-                            <a href="{{ route('admin.shifts.create') }}" class="pull-right">
+                            <a href="{{ route('admin.shifts.create') }}" class="float-right">
                                 <i class="fa fa-plus"></i>
                                  Add Shift Item
                             </a>
                         </h3>
                     </div>
-                    {{-- .box-bheader --}}
-                    <div class="box-body table-responsive">
-                        <table class="table table-bordered table-condensed table-striped" id="shifts-table">
+                    {{-- .card-bheader --}}
+                    <div class="card-body table-responsive">
+                        <table class="table table-bordered table-sm table-striped" id="shifts-table">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -36,9 +36,9 @@
                             </thead>
                         </table>
                     </div>
-                    {{-- .box-body --}}
+                    {{-- .card-body --}}
                 </div>
-                {{-- .box --}}
+                {{-- .card --}}
             </div>
         </div>
     </div>

@@ -158,7 +158,11 @@ class AfpsController extends Controller
     public function assignEmployees(Request $request)
     {
         $this->validate($request, [
-            'employee' => 'required|array',
+            'employee' => [
+                'required',
+                'array',
+                'min:1',
+            ],
             'afp' => 'required|exists:afps,id',
         ], [
             'employee.required' => 'Select at least one employee!',

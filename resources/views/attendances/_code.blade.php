@@ -1,6 +1,6 @@
 
-    <!-- small box -->
-    <div class="small-box {{ $color }}">
+    <!-- small card -->
+    <div class="small-card {{ $color }}">
         <div class="inner">
             <h3>{{ $count }}</h3>
 
@@ -9,7 +9,7 @@
         <div class="icon">
             <i class="fa fa-pie-chart"></i>
         </div>
-        <a href="{{ route('admin.attendances.code.employees', $code) }}" class="small-box-footer">
+        <a href="{{ route('admin.attendances.code.employees', $code) }}" class="small-card-footer">
             More info <i class="fa fa-arrow-circle-right"></i>
         </a>
     </div>

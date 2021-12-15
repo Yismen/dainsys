@@ -5,19 +5,19 @@
 	<div class="container-fluid">
     	<div class="row">
 			<div class="col-sm-8">
-				<div class="box box-primary">
+				<div class="card card-primary card-outline">
 
-					<div class="box-header with-border">
+					<div class="card-header with-border">
 						<h4>
 							Punches Items List
-						 	<a href="{{ route('admin.punches.create') }}" class="pull-right">
+						 	<a href="{{ route('admin.punches.create') }}" class="float-right">
 						 		<i class="fa fa-plus"></i> Add
 						 	</a>
 						</h4>
 					</div>
 
-					<div class="box-body">
-						<table class="table table-condensed table-hover" id="punches-table">
+					<div class="card-body">
+						<table class="table table-sm table-hover" id="punches-table">
 							<thead>
 								<tr>
 									<th>Punch ID</th>
@@ -33,19 +33,19 @@
 
 
 			<div class="col-sm-4">
-				<div class="box box-danger">
+				<div class="card card-danger">
 
-					<div class="box-header with-border">
+					<div class="card-header with-border">
 						<h4>
 							List of Employees Missing Punch ID
-						 	<a href="{{ route('admin.punches.create') }}" class="pull-right">
+						 	<a href="{{ route('admin.punches.create') }}" class="float-right">
 						 		<i class="fa fa-plus"></i> Add
 						 	</a>
 						</h4>
 					</div>
 
-					<div class="box-body">
-						<table class="table table-condensed table-hover">
+					<div class="card-body">
+						<table class="table table-sm table-hover">
 							<thead>
 								<tr>
 									<th>Employee</th>
@@ -70,7 +70,7 @@
 						</table>
 					</div>
 
-					<div class="box-footer">
+					<div class="card-footer">
 						{{ $employees_missing_punch->render() }}
 					</div>
 				</div>

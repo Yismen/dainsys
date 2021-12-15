@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
-                <div class="box box-primary pad">
+                <div class="card card-primary card-outline pad">
                     <div class="row" id="passwords">
                         <div class="col-sm-12">
                             <router-view></router-view>  

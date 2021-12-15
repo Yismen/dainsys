@@ -47,7 +47,7 @@ production.'])
                         {data: 'description', name: 'description'},
                         {data: 'id', name: 'id', orderable:false, searchable:false, render(data, type, full) {
                             return `
-                                <a href="/admin/holidays/${data}/edit" class="btn btn-warning btn-xs">
+                                <a href="/admin/holidays/${data}/edit" class="btn btn-warning btn-sm">
                                     <i class="fa fa-edit"></i> Edit
                                 </a>
                             `

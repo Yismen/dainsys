@@ -1,12 +1,12 @@
-<div class="box box-primary no-padding">
-    <div class="box-header with-border">
+<div class="card card-primary card-outline no-padding">
+    <div class="card-header with-border">
         <h3>
             Holidays List
         </h3>
     </div>
 
-    <div class="box-body">
-        <table class="table table-condensed table-hover table-striped" id="holidays-table">
+    <div class="card-body">
+        <table class="table table-sm table-hover table-striped" id="holidays-table">
             <thead>
                 <tr>
                     <th>Date</th>

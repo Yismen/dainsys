@@ -8,7 +8,7 @@
     $value = $value ?? null;
     $value = old($field_name) ?? $value;
 @endphp
-<div class="form-group {{ $errors->has($field_name) ? 'has-error' : null }}">
+<div class="form-group row {{ $errors->has($field_name) ? 'has-error' : null }}">
     <label for="{{ $field_name }}" class="{{ $label_class }}"> 
         {{ $slot }}
         @include('components.fields._required_label')

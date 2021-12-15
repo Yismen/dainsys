@@ -6,7 +6,7 @@
         <article>
             @if ($article->main_image)
                 <div class="col-sm-6">
-                    <img class="img-responsive" src="{{ $article->main_image }}" alt="" height="150px">
+                    <img class="img-fluid" src="{{ $article->main_image }}" alt="" height="150px">
                 </div>
             @endif
             <h3 align="center">

@@ -1,7 +1,7 @@
 <div>
 
 	{!! Form::open(['route'=>['test'], 'method'=>'POST', 'class'=>'form-horizontal', 'files'=>true, 'role'=>'form', 'autocomplete'=>"off"]) !!}		
-		<div class="form-group">
+		<div class="form-group row">
 			<legend>Form title</legend>
 		</div>
 		{!! Form::file('name', []) !!}

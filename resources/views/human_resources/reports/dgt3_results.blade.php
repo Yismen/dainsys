@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="box box-warning">
-            <div class="box-header with-border">
+        <div class="card card-warning">
+            <div class="card-header with-border">
                 <div class="col-xs-8">
                     <h4>DGT-3 Report for Year {{ request('year') }} <span class="badge">{{ $results->count() }} Records</span></h4>
                 </div>
@@ -10,9 +10,9 @@
                 </div>
             </div>
     
-            <div class="box-body">
+            <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-condensed table-bordered">
+                    <table class="table table-sm table-bordered">
                         <thead>
                             <tr>
                                 <th>Nombre(s) y Apellido(s) del Trabajador</th>
@@ -54,7 +54,7 @@
                 </div>
             </div>
     
-            {{-- <div class="box-footer"></div> --}}
+            {{-- <div class="card-footer"></div> --}}
             
         </div>
     </div>

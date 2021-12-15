@@ -4,13 +4,13 @@
 @section('content')
 	<div class="container-fluid">
 		<div class="col-sm-8 col-sm-offset-2">
-			<div class="box box-primary">
-				<div class="box-header">
+			<div class="card card-primary card-outline">
+				<div class="card-header">
 					<h4>Clients</h4>
 				</div>
-				<div class="box-body">
+				<div class="card-body">
 					<div class="table-responsive">
-						<table class="table table-condensed table-bordered">
+						<table class="table table-sm table-bordered">
 							<thead>
 								<tr>
 									<th>Name</th>

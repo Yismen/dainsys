@@ -5,22 +5,22 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1">
-				<div class="box box-primary">
-					<div class="box-header">
+				<div class="card card-primary card-outline">
+					<div class="card-header">
 						<h4>Roles List
-							<a href="{{ route('admin.roles.create') }}" class="pull-right">
+							<a href="{{ route('admin.roles.create') }}" class="float-right">
 								<i class="fa fa-plus"></i> Add Role
 							</a>
 						</h4>
 					</div>
 
-					<div class="box-body">
+					<div class="card-body">
 						@if ($roles->isEmpty())
 							<div class="bs-callout bs-callout-warning">
 								<h1>No Roles has been added yet, please add one</h1>
 							</div>
 						@else
-							<table class="table table-condensed table-hover">
+							<table class="table table-sm table-hover">
 								<thead>
 									<tr>
 										<th>Name</th>

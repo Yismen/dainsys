@@ -5,8 +5,8 @@
 	<div class="container-fluid">
     	<div class="row">
 			<div class="col-sm-6 col-sm-offset-3">
-				<div class="box box-primary">
-					<div class="box-body">
+				<div class="card card-primary card-outline">
+					<div class="card-body">
 						{{ $revenue_type }}
 					</div>
 				</div>

@@ -5,40 +5,40 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
-                <div class="box box-danger">
-                    <div class="box-header">
+                <div class="card card-danger">
+                    <div class="card-header">
                         <h4>
                             Create Downtimes <small>D Only</small>
-                            <a href="{{ route('admin.performances.index') }}" class="pull-right" title="Back to List">
+                            <a href="{{ route('admin.performances.index') }}" class="float-right" title="Back to List">
                                 <i class="fa fa-list"></i> Performances
                             </a>
                         </h4>
                     </div>
 
                     {!! Form::open(['route'=>['admin.downtimes.store'], 'method'=>'POST', 'class'=>'', 'role'=>'form', 'novalidate'=>true]) !!}
-                        <div class="box-body" id="performances-create">
+                        <div class="card-body" id="performances-create">
                              @include('downtimes._form')
                         </div>
-                        {{-- .box-body --}}
+                        {{-- .card-body --}}
                         <!-- /. Reported By -->
-                        <div class="box-footer">
+                        <div class="card-footer">
                             <div class="col-sm-offset-2">
                                 <button class="btn btn-warning" type="submit">CREATE</button>
                             </div>
                         </div>
-                        {{-- .box-footer --}}
+                        {{-- .card-footer --}}
                     {!! Form::close() !!}
                 </div>
             </div>
 
             <div class="col-xs-12">  
-                <div class="box box-info">
-                    <div class="box-header">
+                <div class="card card-info">
+                    <div class="card-header">
                         <h4>Downtimes</h4>
                     </div>
 
-                    <div class="box-body">
-                        <table class="table table-condensed table-hover table-bordered" id="downtimes-table">
+                    <div class="card-body">
+                        <table class="table table-sm table-hover table-bordered" id="downtimes-table">
                             <thead>
                                 <tr>
                                     <th>Updated At</th>
@@ -117,7 +117,7 @@
                             return data
                         }},
                         {data: 'id', name: 'id', orderable:false, searchable: false, render: function(data, type, full) {
-                            return `<a href="/admin/downtimes/${data}/edit" title="Edit" class="btn btn-xs btn-warning">
+                            return `<a href="/admin/downtimes/${data}/edit" title="Edit" class="btn btn-sm btn-warning">
                                 <i class="fa fa-edit"></i> Edit
                             </a>`
                         }}

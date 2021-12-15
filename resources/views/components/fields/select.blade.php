@@ -1,24 +1,15 @@
+@props([
+    'field-name',
+    'items' => []
+])
 
-@php
-    $slot = $slot == "" ? "Select Label:" : $slot;
-    $label_class = $label_class ?? "";
-    $input_class = $input_class ?? "";
-    $select_class = $select_class ?? "form-control";
-    $required = $required ?? true;
-    $disabled = $disabled ?? false;
-    $placeholder = $placeholder ?? '<-- Select One -->';
-@endphp
-<div class="form-group {{ $errors->has($field_name) ? 'has-error' : null }}">
-    <label for="{{ $field_name }}" class="{{ $label_class }}"> 
-        {{ $slot }}
-        @include('components.fields._required_label')
-    </label>
-    <div class="{{ $input_class }}">
-		{!! Form::select($field_name, $list_array, null, [
-            'class'=> $select_class,
-            'placeholder' => $placeholder,
-            'disabled' => $disabled
-        ]) !!}
-		{!! $errors->first($field_name, '<span class="text-danger">:message</span>') !!}
-	</div>
-</div>
+<select 
+    name="{{ $fieldName }}" 
+    id="{{ $fieldName }}" 
+    {{ $attributes->merge(['class' => 'form-control']) }}
+>
+    <option value="">-- {{ __('Please select one') }} --</option>
+    @foreach ($items as $key => $value)
+        <option value="{{ $key }}">{{ $value }}</option>
+    @endforeach
+</select>

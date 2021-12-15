@@ -5,7 +5,7 @@
 	<div class="col-sm-8 col-sm-offset-2">
 		<div class="well row ">
 			{!! Form::open(['route'=>['menus.store'], 'method'=>'POST', 'class'=>'form-horizontal', 'role'=>'form']) !!}		
-				<div class="form-group">
+				<div class="form-group row">
 					<legend>New Menu</legend>
 				</div>
 			

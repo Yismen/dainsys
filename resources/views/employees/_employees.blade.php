@@ -1,7 +1,7 @@
 <!-- Initiate the variable List at 0. This will be auto incremented in the table -->
 <?php $list = 0 ?>
 <div class="table-responsive">
-	<table class="table table-hover table-condensed" id="employees-table">
+	<table class="table table-hover table-sm" id="employees-table">
 		<thead>
 			<tr>
 				<!-- <th>#:</th> -->
@@ -48,7 +48,7 @@
 			<tr>
 				<th colspan="50">
 					{!! $employees->render() !!}
-					<span class="help-block">
+					<span class="form-text">
 						Showing page {!! $employees->count() !!} out of {!! $employees->total() !!} records.
 					</span>
 				</th>

@@ -4,23 +4,23 @@
 @section('content')
 	<div class="container ">
 		<div class="col-sm-8 col-sm-offset-2">
-			<div class="box box-primary pad">
+			<div class="card card-primary card-outline pad">
 				<div class="row">
 					<div class="col-sm-12">
 						{!! Form::model($user, ['route'=>['admin.users.update', $user->id], 'method'=>'PUT', 'class'=>'form-horizontal', 'role'=>'form']) !!}		
-							<div class="form-groups">
+							<div class="form-group rows">
 								<legend>
 									Edit user - {{ $user->name }}
-									<a href="{{ route('admin.users.index') }}" class="pull-right"><i class="fa fa-list"></i></a>
+									<a href="{{ route('admin.users.index') }}" class="float-right"><i class="fa fa-list"></i></a>
 								</legend>
 							</div>
 						
 							@include('users._form')
 							<hr>
-							<div class="form-group">
+							<div class="form-group row">
 								<div class="col-sm-10 col-sm-offset-2">
 									<button type="submit" class="btn btn-primary">SAVE UPDATES</button>
-									<a href="/admin/users" class="btn btn-default">
+									<a href="/admin/users" class="btn btn-secondary">
 										<i class="fa fa-home"></i> Cancel
 									</a>
 								</div>
@@ -31,7 +31,7 @@
 
 						<hr>
 
-						<div class="form-group">
+						<div class="form-group row">
 							<div class="col-sm-10 col-sm-offset-2">
 
 								<form action="{{ url('/admin/users', $user->id) }}" method="POST" class="inactivate-user" style="display: inline-block;">
@@ -43,7 +43,7 @@
 								    </button>
 								</form>
 
-								<a href="/admin/users/force_reset/{{ $user->id }}" class="btn btn-warning pull-right">
+								<a href="/admin/users/force_reset/{{ $user->id }}" class="btn btn-warning float-right">
 									<i class="fa fa-pencil"></i> Forcely reset password
 								</a>
 

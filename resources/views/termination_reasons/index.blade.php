@@ -5,18 +5,18 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
+                <div class="card card-primary card-outline">
+                    <div class="card-header with-border">
                         <h4>
                             Termination Reasons 
-                            <a href="{{ route('admin.termination_reasons.create') }}" class="pull-right"><i class="fa fa-plus"></i> Create</a>
+                            <a href="{{ route('admin.termination_reasons.create') }}" class="float-right"><i class="fa fa-plus"></i> Create</a>
                         </h4>
                     </div>
 
-                    <div class="box-body">
+                    <div class="card-body">
 
                         <div class="table-responsive">
-                            <table class="table table-condensed table-bordered">
+                            <table class="table table-sm table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
@@ -41,7 +41,7 @@
                         </div>
                     </div>
 
-                    <div class="box-footer"></div>
+                    <div class="card-footer"></div>
                     
                 </div>
             </div>

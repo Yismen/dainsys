@@ -5,7 +5,7 @@
             <h3 class="article-title text-primary">
                 <a href="{{ route('articles.show', $article->slug )}}" class="text-primary">{{ ucwords($article->title) }}</a>
                 @if( Auth::check() && $article->username == Auth::user()->username )                
-                    <small class="pull-right">( 
+                    <small class="float-right">( 
                         <a href="{{ route('articles.edit', $article->slug) }}" class="">
                             <i class="fa fa-pencil"></i>
                         </a>
@@ -34,7 +34,7 @@
                     <div class="row">
                         <div class="col-sm-4 col-sm-push-8">  
                             @if (strlen($article->main_image)>0 ) 
-                                <img class="img- img-circle" src="{{ asset($article->main_image) }}" alt="" height="120px">
+                                <img class="img- rounded-circle" src="{{ asset($article->main_image) }}" alt="" height="120px">
                             @endif
                         </div>
                         <div class="excert col-sm-8 col-sm-pull-4"  align="justify">

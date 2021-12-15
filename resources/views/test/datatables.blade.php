@@ -5,9 +5,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
-                <div class="box box-primary pad">
+                <div class="card card-primary card-outline pad">
                     <div class="table-responsive">
-                        <table class="table table-hover table-condensed table-bordered" id="testing">
+                        <table class="table table-hover table-sm table-bordered" id="testing">
                             <thead>
                                 <tr>
                                     <th>Name</th>

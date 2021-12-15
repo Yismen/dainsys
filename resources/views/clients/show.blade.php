@@ -3,16 +3,16 @@
 
 @section('content')
 	<div class="col-sm-8 col-sm-offset-2">
-		<div class="box box-primary">
-			<div class="box-header with-border">
+		<div class="card card-primary card-outline">
+			<div class="card-header with-border">
 				<h4>
 					Client - {{ $client->name }}
-					<a href="{{ route('admin.clients.index') }}" class="pull-right" title="Back to Clients List">
+					<a href="{{ route('admin.clients.index') }}" class="float-right" title="Back to Clients List">
 						<i class="fa fa-home"></i>
 					</a>
 				</h4>
 			</div>
-			<div class="box-body">
+			<div class="card-body">
 				<table class="table">
 					<tbody>
 						<tr>

@@ -5,23 +5,23 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="box box-warning">
-                    <div class="box-header">
+                <div class="card card-warning">
+                    <div class="card-header">
                         <h4>
                             Edit Dowmtime
-                            <a href="/admin/downtimes/create" class="pull-right" title="Home">
+                            <a href="/admin/downtimes/create" class="float-right" title="Home">
                                  <i class="fa fa-plus"></i> Add
                             </a>
                         </h4>
                     </div>
 
 
-                    <div class="box-body">
+                    <div class="card-body">
                         {!! Form::model($downtime, ['route'=>['admin.downtimes.update', $downtime->id], 'method'=>'PUT', 'class'=>'', 'role'=>'form', 'novalidate'=>true]) !!}
 
                             @include('downtimes._form')
 
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <div class="col-sm-6 col-sm-offset-2">
                                     <button type="submit" class="btn btn-warning">Update</button>
                                 </div>
@@ -30,13 +30,13 @@
                         {!! Form::close() !!}
                     </div>
 
-                    <div class="box-footer">
+                    <div class="card-footer">
 
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
+                        <div class="card card-default">
+                            <div class="card-header">
                                 <h5>More Details</h5>
                             </div>
-                            <div class="panel-body">
+                            <div class="card-body">
                                 <ul class="list-group">
                                     <div class="col-sm-6">
                                         <li class="list-group-item">
@@ -107,7 +107,7 @@
                         </div>
                     </div>
 
-                    <div class="box-footer">
+                    <div class="card-footer">
                         <delete-request-button
                             url="{{ route('admin.downtimes.destroy', $downtime->id) }}"
                             redirect-url="{{ route('admin.downtimes.index') }}"

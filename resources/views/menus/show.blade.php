@@ -5,18 +5,18 @@
 	@if ($menu)
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
-				<div class="box box-info">
-					<div class="box-header">
+				<div class="card card-info">
+					<div class="card-header">
 						<h4>
 							Menu Details [{{ personName($menu->name) }}]
-							<a href="{{ route('admin.menus.index') }}" class="pull-right">
+							<a href="{{ route('admin.menus.index') }}" class="float-right">
 								<i class="fa fa-list"></i> 
 								Menus List
 							</a>
 						</h4>
 					</div>
 
-					<div class="box body pad">
+					<div class="card body pad">
 						<ul class="list-group">
 							<li class="list-group-item">
 								<strong>Route: </strong><a href="{{ url($menu->name) }}">{{ $menu->name }}</a>

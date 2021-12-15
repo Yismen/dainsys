@@ -5,7 +5,7 @@
 	<div class="container-fluid">
 		<div class="col-sm-12">
 			<edit-employee :employee="{{ $employee }}"></edit-employee>
-		</div><!-- /. Main box -->
+		</div><!-- /. Main card -->
 	</div>
 @endsection
 

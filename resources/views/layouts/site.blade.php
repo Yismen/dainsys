@@ -33,7 +33,7 @@
             <!-- Main Footer -->
             <footer class="main-footer">
                 <!-- To the right -->
-                <div class="pull-right hidden-xs">
+                <div class="float-right hidden-xs">
                     @include('layouts.partials.links.webmaster')
                 </div>
                 <!-- Default to the left -->

@@ -1,17 +1,17 @@
 
 @foreach ($users as $user)
 <div class="col-sm-6">
-    <div class="box box-primary info-box bg-grey">
+    <div class="card card-primary card-outline info-box bg-grey">
         <span class="info-box-icon">
             @if (file_exists(optional($user->profile)->photo))
                 <a href="{{ asset($user->profile->photo) }}" target="_user_photo">
                     <img src="{{ asset($user->profile->photo) }}"
-                        class="profile-user-img img-responsive img-circle img-thumbnail" alt="Image"
+                        class="profile-user-img img-fluid rounded-circle img-thumbnail" alt="Image"
                     >
                 </a>
             @else
                 <img src="http://placehold.it/300x300"
-                    class="profile-user-img img-responsive img-circle img-thumbnail" alt="Image"
+                    class="profile-user-img img-fluid rounded-circle img-thumbnail" alt="Image"
                 >
             @endif
         </span>
@@ -26,7 +26,7 @@
                     class="fa fa-circle {{ $user->isOnline() ? 'text-green' : 'text-gray'}}"
                     title="{{ $user->isOnline() ? 'Online' : 'Away'}}"
                 ></i>
-                <a href="{{ route('admin.users.edit', $user->id) }}" class="pull-right">
+                <a href="{{ route('admin.users.edit', $user->id) }}" class="float-right">
                     <i class="fa fa-pencil"></i>
                 </a>
             </span>

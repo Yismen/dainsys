@@ -1,12 +1,12 @@
 @if (count($birthdays['today']) > 0)
     <p>{{ __('The following employees are on birthday') }}!</p>
     @foreach ($birthdays['today'] as $employee)
-        <div class="box box-widget widget-user-2">
+        <div class="card card-widget widget-user-2">
             <!-- Add the bg color to the header using any of the bg-* classes -->
             <div class="widget-user-header bg-green">
                 <a href="{{ route('admin.employees.show', $employee->id) }}" target="_employee" title="Details">
                     <div class="widget-user-image">
-                        <img class="img-circle" src="{{ $employee->photo }}" alt="User Avatar">
+                        <img class="rounded-circle" src="{{ $employee->photo }}" alt="User Avatar">
                     </div>
                 </a>
                 <!-- /.widget-user-image -->

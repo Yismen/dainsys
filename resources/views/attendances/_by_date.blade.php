@@ -7,7 +7,7 @@
 	<div class="col-sm-12">
         @foreach ($codes as $code)
             <div class=" col-xs-6 col-md-4 col-lg-3">
-                <div class="small-box">
+                <div class="small-card">
                     <div class="inner" style="background-color: {{ $code->color }} ;">
                         <h3>
                             {{ $code->attendances_count }} 
@@ -25,7 +25,7 @@
                     <div class="icon">
                         <i class="fa fa-"></i>
                     </div>
-                    <a href="{{ route('admin.attendances.date.code', [request()->route()->parameters['date'], $code->id]) }}" class="small-box-footer"
+                    <a href="{{ route('admin.attendances.date.code', [request()->route()->parameters['date'], $code->id]) }}" class="small-card-footer"
                         style="background-color: gray;" target="_attendances"
                     >
                         More info <i class="fa fa-arrow-circle-right"></i>

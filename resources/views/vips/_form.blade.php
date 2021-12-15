@@ -1,5 +1,5 @@
 <div class="rows">
-    <div class="form-group">
+    <div class="form-group row">
         <label for="employee_id" class="col-xs-3 col-md-12">Employee:</label>
         <div class="col-xs-9 col-md-12">
             {!! Form::select('employee_id', $no_vip_list->pluck('full_name', 'id'), null, ['class' => 'form-control', 'placeholder' => '<--Select One-->'] ) !!}
@@ -7,10 +7,10 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group row">
         <label for="since" class="col-xs-3 col-md-12">Vip Since:</label>
         <div class="col-xs-9 col-md-12">
-            <date-picker input-class="form-control input-sm"
+            <date-picker input-class="form-control form-control-sm"
                 name="since"
                 format="yyyy-MM-dd"
             ></date-picker>

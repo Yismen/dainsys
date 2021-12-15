@@ -82,10 +82,10 @@
         </div>
 
         <div class="col-sm-12 ">
-            <a href="/admin" class="btn btn-default btn-lg animatable"
+            <a href="/admin" class="btn btn-secondary btn-lg animatable"
                 data-animation="from-bottom"  
                 style="margin-top: 2rem;
-                box-shadow: rgba(0, 0, 0, .5) -2px 2px 2px 0px;
+                card-shadow: rgba(0, 0, 0, .5) -2px 2px 2px 0px;
                 text-transform: uppercase;
                 visibility: visible;
                 font-weight: 700"

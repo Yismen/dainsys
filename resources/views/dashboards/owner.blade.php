@@ -55,9 +55,9 @@
     <div class="col-xs-12">
         {{-- /. Performance Data --}}            
         <div class="col-lg-6">
-            <div class="box box-primary">
-                <div class="box-header">Revenue</div>
-                <div class="box-body no-padding">
+            <div class="card card-primary card-outline">
+                <div class="card-header">Revenue</div>
+                <div class="card-body no-padding">
                     <line-base-chart
                     :labels="{{ collect($performance['labels']) }}"
                     :datasets="{{ collect($performance['revenue']) }}"
@@ -67,9 +67,9 @@
         </div>
         {{-- /. Chart --}}            
         <div class="col-lg-6">
-            <div class="box box-primary">
-                <div class="box-header">Revenue / Hora</div>
-                <div class="box-body no-padding">
+            <div class="card card-primary card-outline">
+                <div class="card-header">Revenue / Hora</div>
+                <div class="card-body no-padding">
                     <line-base-chart
                     :goal="8.5"
                     :labels="{{ collect($performance['labels']) }}"
@@ -80,9 +80,9 @@
         </div>
         {{-- /. Chart --}}              
         <div class="col-lg-6">
-            <div class="box box-primary">
-                <div class="box-header">Payroll Hours</div>
-                <div class="box-body no-padding">
+            <div class="card card-primary card-outline">
+                <div class="card-header">Payroll Hours</div>
+                <div class="card-body no-padding">
                     <line-base-chart
                     :labels="{{ collect($performance['labels']) }}"
                     :datasets="{{ collect($performance['login_time']) }}"
@@ -92,9 +92,9 @@
         </div>
         {{-- /. Chart --}}                
         <div class="col-lg-6">
-            <div class="box box-primary">
-                <div class="box-header">Production Hours</div>
-                <div class="box-body no-padding">
+            <div class="card card-primary card-outline">
+                <div class="card-header">Production Hours</div>
+                <div class="card-body no-padding">
                     <line-base-chart
                     :labels="{{ collect($performance['labels']) }}"
                     :datasets="{{ collect($performance['production_time']) }}"
@@ -104,9 +104,9 @@
         </div>
         {{-- /. Chart --}}                
         <div class="col-lg-6">
-            <div class="box box-primary">
-                <div class="box-header">Monthly SPH</div>
-                <div class="box-body no-padding">
+            <div class="card card-primary card-outline">
+                <div class="card-header">Monthly SPH</div>
+                <div class="card-body no-padding">
                     <line-base-chart
                     :labels="{{ collect($performance['labels']) }}"
                     :datasets="{{ collect($performance['sph']) }}"
@@ -116,9 +116,9 @@
         </div>
         {{-- /. Chart --}}                
         <div class="col-lg-6">
-            <div class="box box-primary">
-                <div class="box-header">Hours Efficiency</div>
-                <div class="box-body no-padding">
+            <div class="card card-primary card-outline">
+                <div class="card-header">Hours Efficiency</div>
+                <div class="card-body no-padding">
                     <line-base-chart
                     :goal=".9"
                     :labels="{{ collect($performance['labels']) }}"

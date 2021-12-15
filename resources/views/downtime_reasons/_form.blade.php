@@ -1,4 +1,4 @@
-<div class="form-group {{ $errors->has('name') ? 'has-error' : null }}">
+<div class="form-group row {{ $errors->has('name') ? 'has-error' : null }}">
 	<label for="name" class="col-sm-2">Downtime Reason:</label>
 	<div class="col-sm-10">
 		{!! Form::text('name', null, ['class'=>'form-control', 'id'=>'name', 'placeholder'=>'Downtime Reason']) !!}

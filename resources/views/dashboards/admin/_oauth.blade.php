@@ -4,23 +4,23 @@
     </div>
 
     <div class="col-xs-12">
-        <div class="box box-warning">
-            <div class="box-body">
+        <div class="card card-warning">
+            <div class="card-body">
                 <passport-clients></passport-clients>
             </div>
         </div>
-        {{-- /.box --}}
+        {{-- /.card --}}
     </div>
     <div class="col-xs-12">
-        <div class="box box-warning">
-            <div class="box-body">
+        <div class="card card-warning">
+            <div class="card-body">
                 <passport-personal-access-tokens></passport-personal-access-tokens>
             </div>
         </div>
     </div>
     <div class="col-xs-12">
-        <div class="box box-warning">
-            <div class="box-body">
+        <div class="card card-warning">
+            <div class="card-body">
                 <passport-authorized-clients></passport-authorized-clients>
             </div>
         </div>

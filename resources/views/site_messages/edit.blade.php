@@ -6,7 +6,7 @@
 		{{-- {{ dd($employee) }} --}}
 		<div class="well row">
 			{!! Form::model($menu, ['route'=>['menus.update', $menu->name], 'method'=>'PUT', 'class'=>'form-horizontal', 'role'=>'form']) !!}		
-				<div class="form-group">
+				<div class="form-group row">
 					<legend>Edit Menu {{ $menu->display_name }}</legend>
 				</div>
 			

@@ -8,10 +8,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="box-header with-border">
+                <div class="card-header with-border">
                     <h3>
                         Projects List
-                        <a href="{{ route('admin.projects.create') }}" class="pull-right">
+                        <a href="{{ route('admin.projects.create') }}" class="float-right">
                             <i class="fa fa-plus"></i> Add
                         </a>
                     </h3>
@@ -21,8 +21,8 @@
                     @csrf
                     @foreach ($projects as $project)
                         @if ($project->employees->count() > 0)
-                            <div class="box box-info">
-                                <div class="box-header">
+                            <div class="card card-info">
+                                <div class="card-header">
                                     <h4>
                                         <a href="{{ route('admin.projects.show', $project->id) }}"
                                             class="{{ $project->client == null ? 'text-danger' : '' }}"  
@@ -30,7 +30,7 @@
                                             {{ $project->name }}, {{ optional($project->client)->name }}
                                         </a>
                                         <span class="badge bg-light-blue">{{ $project->employees->count() }}</span>
-                                        <a href="{{ route('admin.projects.edit', $project->id) }}" class="pull-right text-info">
+                                        <a href="{{ route('admin.projects.edit', $project->id) }}" class="float-right text-info">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                     </h4>
@@ -38,16 +38,16 @@
 
                                 <?php $count = $project->employees->count() == 0 ? 0 : ceil($project->employees->count() / 2) ?>
 
-                                <div class="box-body">
+                                <div class="card-body">
                                     <div class="row">
                                         @foreach ($project->employees->chunk($count) as $chunk)
                                             <div class="col-sm-6">
                                                 @foreach ($chunk as $employee)
-                                                     <employee-check-box :employee="{{ $employee }}" style="border-top: solid 1px #ccc"
+                                                     <employee-check-card :employee="{{ $employee }}" style="border-top: solid 1px #ccc"
                                                         >,
                                                         {{ optional($employee->supervisor)->name }} -
                                                         {{ optional($employee->position)->name }}
-                                                    </employee-check-box>
+                                                    </employee-check-card>
                                                 @endforeach
                                             </div>
                                         @endforeach
@@ -83,7 +83,7 @@
                                                 <a href="{{ route('admin.projects.show', $project->id) }}" class="{{ $project->client == null ? 'text-danger' : '' }}" >
                                                     {{ $project->name }}, {{ optional($project->client)->name }}
                                                 </a>
-                                                <a href="{{ route('admin.projects.edit', $project->id) }}" class="pull-right text-warning"><i class="fa fa-pencil"></i></a>
+                                                <a href="{{ route('admin.projects.edit', $project->id) }}" class="float-right text-warning"><i class="fa fa-pencil"></i></a>
                                             </li>
                                         @endif
                                     @endforeach

@@ -4,11 +4,11 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
-				<div class="box box-warning">
-					<div class="box-header with-border">
+				<div class="card card-warning">
+					<div class="card-header with-border">
 						<h4>
 							Update Your Profile
-							<a href="{{ route('admin.profiles.index') }}" class="pull-right" title="Return to Your Profile">
+							<a href="{{ route('admin.profiles.index') }}" class="float-right" title="Return to Your Profile">
 								<i class="fa fa-arrow-circle-left"></i> Home
 							</a>
 						</h4>
@@ -16,18 +16,18 @@
 
 					{!! Form::model($profile, ['route'=>['admin.profiles.update', $profile->id], 'method'=>'PUT',  'class'=>'', 'role'=>'form', 'autocomplete'=>"off", 'files' => true]) !!}
 
-						<div class="box-body">
+						<div class="card-body">
 							@include('profiles._form')
 						</div>
-						{{-- ./ .box-body --}}
-						<div class="box-footer">
-							<div class="form-group">
+						{{-- ./ .card-body --}}
+						<div class="card-footer">
+							<div class="form-group row">
 								<button type="subbmit" class="btn btn-warning">Update Your Profile</button>
 
-								<button type="reset" class="btn btn-default">Cancel</button>
+								<button type="reset" class="btn btn-secondary">Cancel</button>
 							</div>
 						</div>
-						{{-- /.box-footer --}}
+						{{-- /.card-footer --}}
 					{!! Form::close() !!}
 				</div>
 			</div>

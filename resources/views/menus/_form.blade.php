@@ -1,6 +1,6 @@
 <!-- Menu Name -->
-<div class="form-group ">
-    {!! Form::label('name', 'Route:', ['class'=>'col-sm-2 control-label']) !!}
+<div class="form-group row ">
+    {!! Form::label('name', 'Route:', ['class'=>'col-sm-2  col-form-label']) !!}
     <div class="col-sm-10">
         <div class="row">
             <div class="col-xs-7 {{ $errors->has('name') ? 'has-error' : null }}">
@@ -21,8 +21,8 @@
 <!-- /. Menu Name -->
 
 <!-- Display Name -->
-<div class="form-group {{ $errors->has('display_name') ? 'has-error' : null }}">
-    {!! Form::label('display_name', 'Display Name:', ['class'=>'col-sm-2 control-label']) !!}
+<div class="form-group row {{ $errors->has('display_name') ? 'has-error' : null }}">
+    {!! Form::label('display_name', 'Display Name:', ['class'=>'col-sm-2  col-form-label']) !!}
     <div class="col-sm-10">
         {!! Form::input('text', 'display_name', null, ['class'=>'form-control', 'placeholder'=>'Display Name']) !!}
         {!! $errors->first('display_name', '<span class="text-danger">:message</span>') !!}
@@ -31,8 +31,8 @@
 <!-- /. Display Name -->
 
 <!-- Description -->
-<div class="form-group {{ $errors->has('description') ? 'has-error' : null }}">
-    {!! Form::label('description', 'Description:', ['class'=>'col-sm-2 control-label']) !!}
+<div class="form-group row {{ $errors->has('description') ? 'has-error' : null }}">
+    {!! Form::label('description', 'Description:', ['class'=>'col-sm-2  col-form-label']) !!}
     <div class="col-sm-10">
         {!! Form::input('text', 'description', null, ['class'=>'form-control', 'placeholder'=>'Description']) !!}
         {!! $errors->first('description', '<span class="text-danger">:message</span>') !!}
@@ -41,8 +41,8 @@
 <!-- /. Description -->
 
 <!-- Icon Class -->
-<div class="form-group {{ $errors->has('icon') ? 'has-error' : null }}">
-    {!! Form::label('icon', 'Icon Class:', ['class'=>'col-sm-2 control-label']) !!}
+<div class="form-group row {{ $errors->has('icon') ? 'has-error' : null }}">
+    {!! Form::label('icon', 'Icon Class:', ['class'=>'col-sm-2  col-form-label']) !!}
     <div class="col-sm-10">
         {!! Form::input('text', 'icon', null, ['class'=>'form-control', 'placeholder'=>'Icon Class']) !!}
         {!! $errors->first('icon', '<span class="text-danger">:message</span>') !!}
@@ -51,8 +51,8 @@
 <!-- /. Icon Class -->
 
 <!-- Roles -->
-<div class="form-group {{ $errors->has('roles') ? 'has-error' : null }}">
-	{!! Form::label('roles', 'Roles:', ['class'=>'col-sm-2 control-label']) !!}
+<div class="form-group row {{ $errors->has('roles') ? 'has-error' : null }}">
+	{!! Form::label('roles', 'Roles:', ['class'=>'col-sm-2  col-form-label']) !!}
 	<div class="col-sm-10">
 		<div class="row">
 			@foreach ($menu->roles_list as $id => $role)								

@@ -4,25 +4,25 @@
 @section('content')
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
-        <div class="box box-primary">
-            <div class="box-header">
+        <div class="card card-primary card-outline">
+            <div class="card-header">
                 <h4>
                     Search Employees by Codes:
-                    <a href="{{ route('admin.attendances.code', $code->id) }}" class="pull-right">
+                    <a href="{{ route('admin.attendances.code', $code->id) }}" class="float-right">
                         <i class="fa fa-tachometer-alt"></i> Dashboard
                     </a>
                 </h4>
             </div>
             
-            <div class="box-body" style="max-height: 200px; overflow-y: auto;">
+            <div class="card-body" style="max-height: 200px; overflow-y: auto;">
                 @foreach ($codes as $attendance_code)
                     @if ($attendance_code->id == $code->id)
-                        <a href="#" class="btn btn-xs btn-primary">
+                        <a href="#" class="btn btn-sm btn-primary">
                             {{ $attendance_code->name }}
                         </a>
                     @else
                     <a href="{{ route('admin.attendances.code.employees', $attendance_code->id) }}" 
-                        class="btn btn-xs btn-default">
+                        class="btn btn-sm btn-secondary">
                         {{ $attendance_code->name }}
                     </a>
                     @endif

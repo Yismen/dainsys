@@ -1,5 +1,5 @@
 <div class="col-md-4 col-md-push-8">
-    <img class="img-circle img-responsive img-center" src="https://images.unsplash.com/photo-1431910078401-c3f7e61b1d5c?q=80&fm=jpg&s=bc04cdb20a18b6b037858b9a87f36d75" alt="" width="70%">
+    <img class="rounded-circle img-fluid img-center" src="https://images.unsplash.com/photo-1431910078401-c3f7e61b1d5c?q=80&fm=jpg&s=bc04cdb20a18b6b037858b9a87f36d75" alt="" width="70%">
     <hr>
     <h3>Dainsys</h3>
     <p>
@@ -49,25 +49,25 @@
 
         <div class="row">
             <div class="col-sm-6">
-                <div class="form-group {{ $errors->has('customer_name') ? 'has-error' : null }}">
+                <div class="form-group row {{ $errors->has('customer_name') ? 'has-error' : null }}">
                     {!! Form::label('customer_name', 'Your Name:', ['class'=>'']) !!}
                     {!! Form::input('text', 'customer_name', null, ['class'=>'form-control', 'placeholder'=>'Your Name']) !!}
                 </div>
                 <!-- /. Your Name: -->
 
-                <div class="form-group {{ $errors->has('phone') ? 'has-error' : null }}">
+                <div class="form-group row {{ $errors->has('phone') ? 'has-error' : null }}">
                     {!! Form::label('phone', 'Your Phone Number:', ['class'=>'']) !!}
                     {!! Form::input('phone', 'phone', null, ['class'=>'form-control', 'placeholder'=>'Your Phone Number']) !!}
                 </div>
                 <!-- /. Your Phone Number -->
 
-                <div class="form-group {{ $errors->has('email') ? 'has-error' : null }}">
+                <div class="form-group row {{ $errors->has('email') ? 'has-error' : null }}">
                     {!! Form::label('email', 'Your Email Address:', ['class'=>'']) !!}
                     {!! Form::input('email', 'email', null, ['class'=>'form-control', 'placeholder'=>'Your Email Address']) !!}
                 </div>
                 <!-- /. Your Email Address -->
 
-                <div class="form-group {{ $errors->has('contact_types_id') ? 'has-error' : null }}">
+                <div class="form-group row {{ $errors->has('contact_types_id') ? 'has-error' : null }}">
                     {!! Form::label('contact_types_id', 'Message About:', ['class'=>'']) !!}
                     {!! Form::select('contact_types_id', App\ContactType::pluck('contact_type', 'id'), null, ['class'=>'form-control', 'placeholder'=>'Message About']) !!}
                 </div>
@@ -75,7 +75,7 @@
             </div>
             <div class="col-sm-6">
 
-                <div class="form-group {{ $errors->has('message') ? 'has-error' : null }}">
+                <div class="form-group row {{ $errors->has('message') ? 'has-error' : null }}">
                     {!! Form::label('message', 'Your Message:', ['class'=>'']) !!}
                     {!! Form::textarea('message', null, ['class'=>'form-control', 'placeholder'=>'Your Message']) !!}
                 </div>

@@ -13,8 +13,8 @@
 
     <div class="row">
         <div class="col-md-2">
-            <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-fw fa-flag"></i> Levels</div>
+            <div class="card card-default">
+                <div class="card-header"><i class="fa fa-fw fa-flag"></i> Levels</div>
                 <ul class="list-group">
                     @foreach($log->menu() as $levelKey => $item)
                         @if ($item['count'] === 0)
@@ -40,21 +40,21 @@
         </div>
         <div class="col-md-10">
             {{-- Log Details --}}
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card card-default">
+                <div class="card-header">
                     Log info :
 
-                    <div class="group-btns pull-right">
-                        <a href="{{ route('log-viewer::logs.download', [$log->date]) }}" class="btn btn-xs btn-success">
+                    <div class="group-btns float-right">
+                        <a href="{{ route('log-viewer::logs.download', [$log->date]) }}" class="btn btn-sm btn-success">
                             <i class="fa fa-download"></i> DOWNLOAD
                         </a>
-                        <a href="#delete-log-modal" class="btn btn-xs btn-danger" data-toggle="modal">
+                        <a href="#delete-log-modal" class="btn btn-sm btn-danger" data-toggle="modal">
                             <i class="fa fa-trash-o"></i> DELETE
                         </a>
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-condensed">
+                    <table class="table table-sm">
                         <thead>
                             <tr>
                                 <td>File path :</td>
@@ -83,15 +83,15 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="panel-footer">
+                <div class="card-footer">
                     {{-- Search --}}
                     <form action="{{ route('log-viewer::logs.search', [$log->date, $level]) }}" method="GET">
-                        <div class=form-group">
+                        <div class=form-group row">
                             <div class="input-group">
                                 <input id="query" name="query" class="form-control"  value="{!! $query !!}" placeholder="Type here to search">
                                 <span class="input-group-btn">
                                     @unless (is_null($query))
-                                        <a href="{{ route('log-viewer::logs.show', [$log->date]) }}" class="btn btn-default">
+                                        <a href="{{ route('log-viewer::logs.show', [$log->date]) }}" class="btn btn-secondary">
                                             ({{ $entries->count() }} results) <span class="glyphicon glyphicon-remove"></span>
                                         </a>
                                     @endunless
@@ -106,19 +106,19 @@
             </div>
 
             {{-- Log Entries --}}
-            <div class="panel panel-default">
+            <div class="card card-default">
                 @if ($entries->hasPages())
-                    <div class="panel-heading">
+                    <div class="card-header">
                         {{ $entries->appends(compact('query'))->render() }}
 
-                        <span class="label label-info pull-right">
+                        <span class="label label-info float-right">
                             Page {{ $entries->currentPage() }} of {{ $entries->lastPage() }}
                         </span>
                     </div>
                 @endif
 
                 <div class="table-responsive">
-                    <table id="entries" class="table table-condensed">
+                    <table id="entries" class="table table-sm">
                         <thead>
                             <tr>
                                 <th>ENV</th>
@@ -148,7 +148,7 @@
                                     </td>
                                     <td class="text-right">
                                         @if ($entry->hasStack())
-                                            <a class="btn btn-xs btn-default" role="button" data-toggle="collapse" href="#log-stack-{{ $key }}" aria-expanded="false" aria-controls="log-stack-{{ $key }}">
+                                            <a class="btn btn-sm btn-secondary" role="button" data-toggle="collapse" href="#log-stack-{{ $key }}" aria-expanded="false" aria-controls="log-stack-{{ $key }}">
                                                 <i class="fa fa-toggle-on"></i> Stack
                                             </a>
                                         @endif
@@ -175,10 +175,10 @@
                 </div>
 
                 @if ($entries->hasPages())
-                    <div class="panel-footer">
+                    <div class="card-footer">
                         {!! $entries->appends(compact('query'))->render() !!}
 
-                        <span class="label label-info pull-right">
+                        <span class="label label-info float-right">
                             Page {{ $entries->currentPage() }} of {{ $entries->lastPage() }}
                         </span>
                     </div>
@@ -207,7 +207,7 @@
                         <p>Are you sure you want to <span class="label label-danger">DELETE</span> this log file <span class="label label-primary">{{ $log->date }}</span> ?</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-sm btn-secondary float-left" data-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-sm btn-danger" data-loading-text="Loading&hellip;">DELETE FILE</button>
                     </div>
                 </div>

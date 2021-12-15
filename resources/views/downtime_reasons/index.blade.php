@@ -4,19 +4,19 @@
 @section('content')
     <div class="container-fluid">
         <div class="col-sm-8 col-sm-offset-2">
-            <div class="box box-primary">
-                <div class="box-header">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
                     <h4>
                         Downtime Reasons
-                        <a href="{{ route('admin.downtime_reasons.create') }}" class="pull-right">
+                        <a href="{{ route('admin.downtime_reasons.create') }}" class="float-right">
                             <i class="fa fa-plus"></i>
                             Add
                         </a>
                     </h4>
                 </div>
-                <div class="box-body">
+                <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-condensed table-bordered">
+                        <table class="table table-sm table-bordered">
                             <thead>
                                 <tr>
                                     <th>Name</th>

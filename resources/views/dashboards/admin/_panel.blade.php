@@ -1,6 +1,6 @@
 <div class="col-xs-12">
-    <div class="box box-primary">
-        <div class="box-body">
+    <div class="card card-primary card-outline">
+        <div class="card-body">
             <table class="table table-striped table-inverse table-responsive">
                 <thead class="thead-inverse">
                     <tr>

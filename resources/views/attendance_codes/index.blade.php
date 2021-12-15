@@ -9,16 +9,16 @@
             </div>
             
             <div class="col-xs-12 col-lg-7">
-                <div class="box box-info">
-                    <div class="box-header with-border">
+                <div class="card card-info">
+                    <div class="card-header with-border">
                         <h4>
                             Attendance Codes List
                         </h4>
                     </div>
 
-                    <div class="box-body">
+                    <div class="card-body">
                         
-                        <table class="table table-condensed table-hover table-bordered">
+                        <table class="table table-sm table-hover table-bordered">
                             <thead>
                                 <tr>    
                                     <th>Code</th>    

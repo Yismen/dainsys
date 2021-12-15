@@ -5,8 +5,8 @@
   <div class="container-fluid">
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
-          <div class="box box-primary pad big-box">
-            <div class="box-body">
+          <div class="card card-primary card-outline pad big-card">
+            <div class="card-body">
               <div class="error-page">
                 <h2 class="headline text-red"> 403</h2>
 

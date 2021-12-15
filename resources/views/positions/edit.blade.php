@@ -4,31 +4,31 @@
 @section('content')
 	<div class="container-fluid">
 		<div class="col-sm-10 col-sm-offset-1">
-			<div class="box box-warning">
-				<div class="box-header with-border">
+			<div class="card card-warning">
+				<div class="card-header with-border">
 					<h4>
 						Edit Position {{ $position->name }}
-						<a href="{{ route('admin.positions.index') }}" class="pull-right" title="Back to the list"><i class="fa fa-list"></i></a>
+						<a href="{{ route('admin.positions.index') }}" class="float-right" title="Back to the list"><i class="fa fa-list"></i></a>
 					</h4>
 				</div>
 
-				<div class="box-body">
+				<div class="card-body">
 					{!! Form::model($position, ['route'=>['admin.positions.update', $position->id], 'method'=>'PUT', 'class'=>'form-horizontal', 'role'=>'form']) !!}
 
 						@include('positions._form')
 
-						<div class="box-footer with-border">
-							<div class="form-group">
+						<div class="card-footer with-border">
+							<div class="form-group row">
 								<div class="col-sm-10 col-sm-offset-1">
 									<button type="submit" class="btn btn-warning">UPDATE</button>
 								</div>
 							</div>
 						</div>
-						{{-- / div.box-body --}}
+						{{-- / div.card-body --}}
 					{!! Form::close() !!}
 				</div>
-				{{-- / div.box-body --}}
-				<div class="box-footer">
+				{{-- / div.card-body --}}
+				<div class="card-footer">
 
 					<delete-request-button
 					    url="{{ route('admin.positions.destroy', $position->id) }}"
@@ -37,7 +37,7 @@
 
 				</div>
 			</div>
-			{{-- / div."box box-primary pad" --}}
+			{{-- / div."card card-primary card-outline pad" --}}
 		</div>
 		{{-- / div.col-sm-10 col-sm-offset-1 --}}
 	</div>

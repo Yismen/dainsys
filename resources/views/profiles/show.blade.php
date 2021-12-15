@@ -8,14 +8,14 @@
 			<h1>User Profile</h1>
 		</div>
 		<div class="col-sm-3">
-			<div class="box box-primary">
-				<div class="box-body box-profile">
+			<div class="card card-primary card-outline">
+				<div class="card-body card-profile">
 					@if (file_exists(optional($profile)->photo))
 					<a href="{{ asset(optional($profile)->photo) }}" target="_user_photo">
-						<img src="{{ asset(optional($profile)->photo) }}" class="profile-user-img img-responsive img-circle animated rotateIn" alt="Image">
+						<img src="{{ asset(optional($profile)->photo) }}" class="profile-user-img img-fluid rounded-circle animated rotateIn" alt="Image">
 					</a>
 					@else
-					<img src="http://placehold.it/300x300" class="profile-user-img img-responsive img-circle animated rotateIn" alt="Image">
+					<img src="http://placehold.it/300x300" class="profile-user-img img-fluid rounded-circle animated rotateIn" alt="Image">
 					@endif
 
 					<h3 class="profile-username text-center">{{ optional(optional($profile)->user)->name }}</h3>
@@ -23,7 +23,7 @@
 						<a href="mailto:{{ optional(optional($profile)->user)->email }}"></a>{{ optional(optional($profile)->user)->email }}
 					</p>
 
-					<div class="form-group text-center">
+					<div class="form-group row text-center">
 
 						@if (auth()->user()->id == optional($profile)->user_id)
 						<a class="btn btn-warning" href="{{ route('admin.profiles.edit', optional($profile)->id) }}">
@@ -40,11 +40,11 @@
 				</div>
 			</div>
 
-			<div class="box box-primary">
-				<div class="box-header with-border">
-					<h3 class="box-title">About Me</h3>
+			<div class="card card-primary card-outline">
+				<div class="card-header with-border">
+					<h3 class="card-title">About Me</h3>
 				</div>
-				<div class="box-body">
+				<div class="card-body">
 					<strong> <i class="fa fa-book margin-r-5"></i> Education </strong>
 					<p class="text-muted">{!! optional($profile)->education !!}</p>
 					<hr>
@@ -77,11 +77,11 @@
 		</div>
 
 		<div class="col-sm-9">
-			<div class="box box-primary">
-				<div class="box-header with-border">
-					<h3 class="box-title">More About Me</h3>
+			<div class="card card-primary card-outline">
+				<div class="card-header with-border">
+					<h3 class="card-title">More About Me</h3>
 				</div>
-				<div class="box-body">
+				<div class="card-body">
 					<p>{!! optional($profile)->bio !!}</p>
 				</div>
 			</div>

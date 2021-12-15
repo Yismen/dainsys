@@ -5,17 +5,17 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <div class="box box-danger">
-                <div class="box-header with-border">
+            <div class="card card-danger">
+                <div class="card-header with-border">
                     <h4>
                         Delete data for date [{{ $date }}] and file name [{{ $file_name }}]...
-                        <a href="/admin/performances_import" class="pull-right" title="Back to the list" style="margin-left: 3px;">
+                        <a href="/admin/performances_import" class="float-right" title="Back to the list" style="margin-left: 3px;">
                             <i class="fa fa-list"></i> List
                         </a>
                     </h4>
                 </div>
 
-                <div class="box-body">
+                <div class="card-body">
 
                     <p class="text-danger">
                         Please make sure before proceeding! This action cant be undone... 
@@ -25,7 +25,7 @@
 
                 </div>
 
-                <div class="box-footer">
+                <div class="card-footer">
 
                     <delete-request-button 
                         url="/admin/performances_import/dd?date={{ $date }}&file_name={{ $file_name }}" 

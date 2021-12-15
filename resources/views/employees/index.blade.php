@@ -5,8 +5,8 @@
     <div class="container-fluids">
         <div class="row">
             <div class="col-sm-12">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
+                <div class="card card-primary card-outline">
+                    <div class="card-header with-border">
 
                         <div class="col-sm-6">
                             <h3>@lang('List') @lang('Employees')</h3>
@@ -15,7 +15,7 @@
                         <div class="col-sm-6">
                             <!-- Single button -->
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-file-excel-o"></i> Descargar Excel <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
@@ -38,7 +38,7 @@
                                 </ul>
                             </div>
 
-                            <a href="{{ route('admin.employees.create') }}" class="pull-right">
+                            <a href="{{ route('admin.employees.create') }}" class="float-right">
                                 <i class="fa fa-plus"></i> @lang('Create')
                             </a>
 
@@ -46,9 +46,9 @@
 
                     </div>
 
-                    <div class="box-body">
+                    <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-hover table-condensed table-bordered" id="employees-table">
+                            <table class="table table-hover table-sm table-bordered" id="employees-table">
                                 <thead>
                                     <tr>
                                         <th>ID:</th>

@@ -5,16 +5,16 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1">
-				<div class="box box-primary">
-					<h4 class="box-header">
+				<div class="card card-primary card-outline">
+					<h4 class="card-header">
 						Permissions Items List
-						<a href="{{ route('admin.permissions.create') }}" class="pull-right">
+						<a href="{{ route('admin.permissions.create') }}" class="float-right">
 							<i class="fa fa-plus"></i>
 							New Permission
 						</a>
 					</h4>
-					<div class="box-body table-responsive">
-						<table class="table table-condensed table-hover table-striped" id="permissions-table">
+					<div class="card-body table-responsive">
+						<table class="table table-sm table-hover table-striped" id="permissions-table">
 							<thead>
 								<tr>
 									<th>Name</th>

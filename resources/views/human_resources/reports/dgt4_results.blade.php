@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
-        <div class="box box-success">
-            <div class="box-header with-border">
+        <div class="card card-success">
+            <div class="card-header with-border">
                 <div class="col-xs-6">
 
                 </div>
@@ -14,8 +14,8 @@
                     </h4>
             </div>
     
-            <div class="box-body">
-                <table class="table table-condensed table-bordered">
+            <div class="card-body">
+                <table class="table table-sm table-bordered">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -39,7 +39,7 @@
                 </table>    
             </div>
     
-            {{-- <div class="box-footer"></div> --}}
+            {{-- <div class="card-footer"></div> --}}
             
         </div>
     </div>

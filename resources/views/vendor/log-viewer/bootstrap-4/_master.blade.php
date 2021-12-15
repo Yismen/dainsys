@@ -60,24 +60,24 @@
          * Boxes
          */
 
-        .box {
+        .card {
             display: block;
             padding: 0;
             min-height: 70px;
             background: #fff;
             width: 100%;
-            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+            card-shadow: 0 1px 1px rgba(0,0,0,0.1);
             border-radius: .25rem;
         }
 
-        .box > .box-icon > i,
-        .box .box-content .box-text,
-        .box .box-content .box-number {
+        .card > .card-icon > i,
+        .card .card-content .card-text,
+        .card .card-content .card-number {
             color: #FFF;
             text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
         }
 
-        .box > .box-icon {
+        .card > .card-icon {
             border-radius: 2px 0 0 2px;
             display: block;
             float: left;
@@ -88,12 +88,12 @@
             background: rgba(0,0,0,0.2);
         }
 
-        .box .box-content {
+        .card .card-content {
             padding: 5px 10px;
             margin-left: 70px;
         }
 
-        .box .box-content .box-text {
+        .card .card-content .card-text {
             display: block;
             font-size: 1rem;
             white-space: nowrap;
@@ -102,16 +102,16 @@
             font-weight: 600;
         }
 
-        .box .box-content .box-number {
+        .card .card-content .card-number {
             display: block;
         }
 
-        .box .box-content .progress {
+        .card .card-content .progress {
             background: rgba(0,0,0,0.2);
             margin: 5px -10px 5px -10px;
         }
 
-        .box .box-content .progress .progress-bar {
+        .card .card-content .progress .progress-bar {
             background-color: #FFF;
         }
 
@@ -139,7 +139,7 @@
         }
 
         /*
-         * Colors: Badge & Infobox
+         * Colors: Badge & Infocard
          */
 
         .badge.badge-env,
@@ -158,52 +158,52 @@
         }
 
         .badge.badge-level-all,
-        .box.level-all {
+        .card.level-all {
             background-color: {{ log_styler()->color('all') }};
         }
 
         .badge.badge-level-emergency,
-        .box.level-emergency {
+        .card.level-emergency {
             background-color: {{ log_styler()->color('emergency') }};
         }
 
         .badge.badge-level-alert,
-        .box.level-alert  {
+        .card.level-alert  {
             background-color: {{ log_styler()->color('alert') }};
         }
 
         .badge.badge-level-critical,
-        .box.level-critical {
+        .card.level-critical {
             background-color: {{ log_styler()->color('critical') }};
         }
 
         .badge.badge-level-error,
-        .box.level-error {
+        .card.level-error {
             background-color: {{ log_styler()->color('error') }};
         }
 
         .badge.badge-level-warning,
-        .box.level-warning {
+        .card.level-warning {
             background-color: {{ log_styler()->color('warning') }};
         }
 
         .badge.badge-level-notice,
-        .box.level-notice {
+        .card.level-notice {
             background-color: {{ log_styler()->color('notice') }};
         }
 
         .badge.badge-level-info,
-        .box.level-info {
+        .card.level-info {
             background-color: {{ log_styler()->color('info') }};
         }
 
         .badge.badge-level-debug,
-        .box.level-debug {
+        .card.level-debug {
             background-color: {{ log_styler()->color('debug') }};
         }
 
         .badge.empty,
-        .box.empty {
+        .card.empty {
             background-color: {{ log_styler()->color('empty') }};
         }
 
@@ -248,10 +248,10 @@
     {{-- Footer --}}
     <footer class="main-footer">
         <div class="container-fluid">
-            <p class="text-muted pull-left">
+            <p class="text-muted float-left">
                 LogViewer - <span class="badge badge-info">version {{ log_viewer()->version() }}</span>
             </p>
-            <p class="text-muted pull-right">
+            <p class="text-muted float-right">
                 Created with <i class="fa fa-heart"></i> by ARCANEDEV <sup>&copy;</sup>
             </p>
         </div>

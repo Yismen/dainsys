@@ -12,7 +12,7 @@
 			
 			@if ( $article->username == Auth::user()->username )
 				<hr>
-				<div class="form-group">
+				<div class="form-group row">
 					<div class="col-xs-offset-1">
 						{!! delete_form(['articles.destroy', $article->slug ]) !!}
 					</div>

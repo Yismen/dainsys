@@ -3,8 +3,8 @@
 
 @section('content')
   <div class="col-sm-8 col-sm-offset-2">
-    <div class="box box-primary">
-      <div class="box-body">
+    <div class="card card-primary card-outline">
+      <div class="card-body">
         <div class="error-page">
           <h2 class="headline text-yellow">404</h2>
 
@@ -18,7 +18,7 @@
             </p>
 
             <p>
-              <a href="{{ url()->previous() }}" class="btn btn-default">
+              <a href="{{ url()->previous() }}" class="btn btn-secondary">
                 <i class="fa fa-home"></i>
                 Go Back
               </a>

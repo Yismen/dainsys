@@ -7,8 +7,8 @@ the users configurations and setting.']) @section('content')
             <div class="row">
                 <div class="col-md-3">
                     @if (isset($users))
-                        <div class="box box-success">
-                            <div class="box-header">
+                        <div class="card card-success">
+                            <div class="card-header">
                                 <h4>Online Users</h4>
                             </div>
 
@@ -25,7 +25,7 @@ the users configurations and setting.']) @section('content')
                             </ul>
                         </div>
 
-                        <div class="box box-primary">
+                        <div class="card card-primary card-outline">
                             <div class="info-box">
                                 <span class="info-box-icon bg-aqua">
                                     <i class="fa fa-users"></i>
@@ -49,13 +49,13 @@ the users configurations and setting.']) @section('content')
                 <div class="col-md-9">
                     <h3>
                         Users List
-                        <a href="{{ route('admin.users.create') }}" class="pull-right">
+                        <a href="{{ route('admin.users.create') }}" class="float-right">
                             <i class="fa fa-plus"></i>
                             Add New
                         </a>
                     </h3>
                     <div class="row">
-                        <div class="col-12 form-group">
+                        <div class="col-12 form-group row">
                             Search: <input type="text" id="js-search">
                         </div>
                     </div>
@@ -71,26 +71,26 @@ the users configurations and setting.']) @section('content')
                 <div class="col-sm-12">
                     <h3>OAuth API Users</h3>
 
-                    <div class="box box-warning">
-                        <div class="box-body">
+                    <div class="card card-warning">
+                        <div class="card-body">
                             <passport-clients></passport-clients>
                         </div>
                     </div>
-                    {{-- /.box --}}
+                    {{-- /.card --}}
 
-                    <div class="box box-warning">
-                        <div class="box-body">
+                    <div class="card card-warning">
+                        <div class="card-body">
                             <passport-personal-access-tokens></passport-personal-access-tokens>
                         </div>
                     </div>
-                    {{-- /.box --}}
+                    {{-- /.card --}}
 
-                    <div class="box box-warning">
-                        <div class="box-body">
+                    <div class="card card-warning">
+                        <div class="card-body">
                             <passport-authorized-clients></passport-authorized-clients>
                         </div>
                     </div>
-                    {{-- /.box --}}
+                    {{-- /.card --}}
                 </div>
             </div>
             {{-- /.row --}}

@@ -4,6 +4,6 @@
 	@else
 		src="https://via.placeholder.com/125" 
 	@endif
-	class="img-circle elevation-2" 
+	class="rounded-circle elevation-2" 
 	alt="User Image">
 </div>

@@ -12,13 +12,13 @@
 				</div>
 				<div class="modal-body">
 			
-					<div class="form-group">
+					<div class="form-group row">
 						{{-- {!! Form::label('slug', 'URL:', ['class'=>'']) !!} --}}
 						{!! Form::input('text', 'slug', $article->slug, ['class'=>'form-control', 'placeholder'=>'slug', 'readonly'=>'readonly']) !!}
 					</div>
 					<!-- /. Slug -->
 			
-					<div class="form-group {{ $errors->has('file') ? 'has-error' : null }}">
+					<div class="form-group row {{ $errors->has('file') ? 'has-error' : null }}">
 						{!! Form::label('file', 'Select Image:', ['class'=>'']) !!}
 						{!! Form::file('file', ['class'=>'form-control', 'placeholder'=>'Select Fhoto']) !!}
 					</div>
@@ -27,7 +27,7 @@
 					
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<button type="submit" class="btn btn-primary" id="submit-file">Save changes</button>
 				</div>
 			
@@ -47,13 +47,13 @@
 				</div>
 				<div class="modal-body">
 			
-					<div class="form-group {{ $errors->has('url') ? 'has-error' : null }}">
+					<div class="form-group row {{ $errors->has('url') ? 'has-error' : null }}">
 						{{-- {!! Form::label('slug', 'URL:', ['class'=>'']) !!} --}}
 						{!! Form::input('text', 'slug', $article->slug, ['class'=>'form-control', 'placeholder'=>'slug', 'readonly'=>'readonly']) !!}
 					</div>
 					<!-- /. Slug -->
 			
-					<div class="form-group {{ $errors->has('url') ? 'has-error' : null }}">
+					<div class="form-group row {{ $errors->has('url') ? 'has-error' : null }}">
 						{!! Form::label('url', 'URL:', ['class'=>'']) !!}
 						{!! Form::input('text', 'url', null, ['class'=>'form-control', 'placeholder'=>'URL']) !!}
 					</div>
@@ -63,7 +63,7 @@
 					
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<button type="submit" class="btn btn-primary" id="submit-url">Save changes</button>
 				</div>
 			
@@ -97,7 +97,7 @@
 
 				$('#modal-from-file').modal('hide');
 				$('#main_image').val(results.data);
-				bootbox.alert({
+				bootcard.alert({
 					title: 'Yupiiii!',
 					message: 'Your image has been created',
 					buttons: {
@@ -144,7 +144,7 @@
 				// console.log(results.response);
 				$('#modal-from-file').modal('hide');
 				$('#main_image').val(results.data);
-				bootbox.alert({
+				bootcard.alert({
 					title: 'Yupiiii!',
 					message: 'Your image has been created',
 					buttons: {

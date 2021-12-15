@@ -23,7 +23,7 @@
         <!-- Blog Entries Column -->
         <div class="col-sm-8 col-sm-offset-2">
             <div class="row well">
-                <div class="col-sm-12 articles-nav pull-right">
+                <div class="col-sm-12 articles-nav float-right">
                     <div class="navbar text-center">
                         @if (Auth::check())
                             <div class="">
@@ -47,7 +47,7 @@
                             <div class="input-group">
                                 {!! Form::input('search', 'search', null, ['class'=>'form-control', 'id'=>'search', 'placeholder'=>'Search by part of title or body']) !!}
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                                    <button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></button>
                                 </span>
                             
                             </div>

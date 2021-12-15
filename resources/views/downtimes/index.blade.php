@@ -5,18 +5,18 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="box box-primary">
-                    <div class="box-header">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
                         <h4>
                             Performance Data
-                            <a href="{{ route('admin.performances.create') }}" class="pull-right">
+                            <a href="{{ route('admin.performances.create') }}" class="float-right">
                                 <i class="fa fa-plus"></i> Add
                             </a>
                         </h4>
                     </div>
 
-                    <div class="box-body table-responsive">
-                        <table class="table table-condensed table-bordered" id="performances-table">
+                    <div class="card-body table-responsive">
+                        <table class="table table-sm table-bordered" id="performances-table">
                             <thead>
                                 <tr>
                                     <th>Date</th>

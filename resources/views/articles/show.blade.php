@@ -8,7 +8,7 @@
                     <h2>
                         {{ strtoupper($article->title) }}  
                         @if( Auth::check() && $article->username == Auth::user()->username )
-                            <small class="pull-right">( 
+                            <small class="float-right">( 
                                 <a href="{{ route('articles.edit', $article->slug) }}" class="">
                                     <i class="fa fa-pencil"></i>
                                 </a>
@@ -33,7 +33,7 @@
         <div class="col-sm-10 col-sm-offset-1">
             <!-- Preview Image -->
             @if (strlen($article->main_image)>0 )
-                <img class="img-responsive" src="{{ asset($article->main_image) }}" alt="" width="100%">
+                <img class="img-fluid" src="{{ asset($article->main_image) }}" alt="" width="100%">
             @endif
 
             @if ($article->excert)
@@ -63,7 +63,7 @@
             <hr>
             <div class="row">
                 <div class="col-sm-4">
-                    <img class="img-circle img-responsive img-center img-thumbnail" src="{{ url($article->user->profile->photo) }}" alt="">
+                    <img class="rounded-circle img-fluid img-center img-thumbnail" src="{{ url($article->user->profile->photo) }}" alt="">
                 </div>
                 <div class="col-sm-8">
                     <h3><a href="{{ route('admin.profiles.show', $article->user->username) }}">{{ strtoupper($article->user->name) }}</a></h3>

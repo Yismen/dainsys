@@ -5,17 +5,17 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
-				<div class="box box-primary">
-					<div class="box-header with-border">
+				<div class="card card-primary card-outline">
+					<div class="card-header with-border">
 						<h4>
 							{{ $position->name }}
-							<a href="{{ route('admin.positions.index') }}" class="pull-right">
+							<a href="{{ route('admin.positions.index') }}" class="float-right">
 								<i class="fa fa-home"></i> List
 							</a>
 						</h4>
 					</div>
 					{{-- ./ Box header --}}
-					<div class="box-body">
+					<div class="card-body">
 						<div class="dl-horizontal">
 							<dt>Name:</dt>
 							<dd>{{ $position->name }}</dd>
@@ -29,23 +29,23 @@
 							<dd>RD$ {{ number_format($position->salary, 2) }}</dd>
 						</div>
 					</div>
-					{{-- .box-body --}}
-					<div class="box-footer">
+					{{-- .card-body --}}
+					<div class="card-footer">
 						<a href="{{ route('admin.positions.edit', $position->id) }}" class="btn btn-warning">
 							<i class="fa fa-edit"></i> Edit
 						</a>
 					</div>
 				</div>
-				{{-- .box --}}
+				{{-- .card --}}
 				@if ($position->employees->count() > 0)
-					<div class="box box-info">
-						<div class="box-header with-border">
+					<div class="card card-info">
+						<div class="card-header with-border">
 							<h4>Employees for this Position</h4>
 						</div>
-						{{-- /.box-header --}}
-						<div class="box-body">
+						{{-- /.card-header --}}
+						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-condensed table-bordered">
+								<table class="table table-sm table-bordered">
 									<thead>
 										<tr>
 											<th>Site</th>

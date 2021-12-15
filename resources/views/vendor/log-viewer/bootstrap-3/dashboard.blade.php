@@ -8,7 +8,7 @@
             <canvas id="stats-doughnut-chart" height="300"></canvas>
         </div>
         <div class="col-md-9">
-            <section class="box-body">
+            <section class="card-body">
                 <div class="row">
                     @foreach($percents as $level => $item)
                         <div class="col-md-4">

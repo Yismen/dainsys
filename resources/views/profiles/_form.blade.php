@@ -2,7 +2,7 @@
 
 <div class="col-sm-12">
 
-	<div class="form-group {{ $errors->has('name') ? 'has-error' : null }}">
+	<div class="form-group row {{ $errors->has('name') ? 'has-error' : null }}">
 		{!! Form::label('name', 'Your Name:', ['class'=>'']) !!}
 		<div class="input-group">
 			<div class="input-group-addon"><i class="fa fa-user"></i></div>
@@ -13,7 +13,7 @@
 </div>
 <div class="col-sm-6">
 
-	<div class="form-group {{ $errors->has('gender') ? 'has-error' : null }}">
+	<div class="form-group row {{ $errors->has('gender') ? 'has-error' : null }}">
 		{!! Form::label('gender', 'Your Gender:', ['class'=>'']) !!}
 		<div class="input-group">
 			<label class="radio-inline">
@@ -28,7 +28,7 @@
 </div>
 <div class="col-sm-6">
 
-	<div class="form-group {{ $errors->has('phone') ? 'has-error' : null }}">
+	<div class="form-group row {{ $errors->has('phone') ? 'has-error' : null }}">
 		{!! Form::label('phone', 'Phone Number:', ['class'=>'']) !!}
 		<div class="input-group">
 			<div class="input-group-addon"><i class="fa fa-phone"></i></div>
@@ -41,13 +41,13 @@
 
 <div class="row">
 	<div class="col-sm-12">
-		<div class="form-group {{ $errors->has('bio') ? 'has-error' : null }}">
+		<div class="form-group row {{ $errors->has('bio') ? 'has-error' : null }}">
 			{!! Form::label('bio', 'Your Bio:', ['class'=>'']) !!}
 			<div class="input-group">
 				<div class="input-group-addon"><i class="fa fa-info"></i></div>
 				{!! Form::textarea('bio', null, ['class'=>'form-control', 'placeholder'=>'Your Bio', 'rows'=>10]) !!}
 			</div>
-			<span class="help-block">Be very descriptive, rovide as much details as you can!</span>
+			<span class="form-text">Be very descriptive, rovide as much details as you can!</span>
 		</div>
 	</div>
 
@@ -56,25 +56,25 @@
 
 <div class="row">
 	<div class="col-md-6">
-		<div class="form-group {{ $errors->has('education') ? 'has-error' : null }}">
+		<div class="form-group row {{ $errors->has('education') ? 'has-error' : null }}">
 			{!! Form::label('education', 'Educational Info:', ['class'=>'']) !!}
 			<div class="input-group">
 				<div class="input-group-addon"><i class="fa fa-graduation-cap"></i></div>
 				{!! Form::textarea('education', null, ['class'=>'form-control', 'placeholder'=>'Educational Info', 'rows'=>5]) !!}
 			</div>
-			<span class="help-block">Keep it short. Highlight your degrees!</span>
+			<span class="form-text">Keep it short. Highlight your degrees!</span>
 		</div>
 		<!-- /. Education -->
 	</div>
 
 	<div class="col-md-6">
-		<div class="form-group {{ $errors->has('skills') ? 'has-error' : null }}">
+		<div class="form-group row {{ $errors->has('skills') ? 'has-error' : null }}">
 			{!! Form::label('skills', 'Skills:', ['class'=>'']) !!}
 			<div class="input-group">
 				<div class="input-group-addon"><i class="fa fa-bolt"></i></div>
 				{!! Form::input('text', 'skills', null, ['class'=>'form-control', 'placeholder'=>'Skills']) !!}
 			</div>
-			<span class="help-block">Separate skills by comma.</span>
+			<span class="form-text">Separate skills by comma.</span>
 		</div>
 		<!-- /. Skills -->
 	</div>
@@ -82,25 +82,25 @@
 
 <div class="row">
 	<div class="col-md-6">
-		<div class="form-group {{ $errors->has('work') ? 'has-error' : null }}">
+		<div class="form-group row {{ $errors->has('work') ? 'has-error' : null }}">
 			{!! Form::label('work', 'Work Info:', ['class'=>'']) !!}
 			<div class="input-group">
 				<div class="input-group-addon"><i class="fa fa-building"></i></div>
 				{!! Form::textarea('work', null, ['class'=>'form-control', 'placeholder'=>'Work Info', 'rows'=>5]) !!}
 			</div>
-			<span class="help-block">Keep it short. Name of your company and your position there.</span>
+			<span class="form-text">Keep it short. Name of your company and your position there.</span>
 		</div>
 		<!-- /. Work Info -->
 	</div>
 
 	<div class="col-md-6">
-		<div class="form-group {{ $errors->has('location') ? 'has-error' : null }}">
+		<div class="form-group row {{ $errors->has('location') ? 'has-error' : null }}">
 			{!! Form::label('location', 'Location Info:', ['class'=>'']) !!}
 			<div class="input-group">
 				<div class="input-group-addon"><i class="fa fa-location-arrow"></i></div>
 				{!! Form::textarea('location', null, ['class'=>'form-control', 'placeholder'=>'Location Info', 'rows'=>5]) !!}
 			</div>
-			<span class="help-block">Keep it short. Perhaps company's address or office location!</span>
+			<span class="form-text">Keep it short. Perhaps company's address or office location!</span>
 		</div>
 		<!-- /. Location Info -->
 	</div>
@@ -111,26 +111,26 @@
         @if (auth()->user()->profile && file_exists(auth()->user()->profile->photo))
             <a href="{{ asset(auth()->user()->profile->photo) }}" target="_user_photo">
             	<img src="{{ asset(auth()->user()->profile->photo) }}"
-	            	class="img-responsive img-circle center-block" alt="Image"
+	            	class="img-fluid rounded-circle mx-auto" alt="Image"
 	            	style="max-height: 150px; max-width: 125px;">
             </a>
         @else
             <img src="http://placehold.it/800x600"
-            	class="img-responsive img-circle center-block" alt="Image"
+            	class="img-fluid rounded-circle mx-auto" alt="Image"
             	style="max-height: 150px; max-width: 125px;">
         @endif
     </div>
     {{-- /.col --}}
     <div class="col-md-6">
-        <div class="form-group {{ $errors->has('photo') ? 'has-error' : null }}">
+        <div class="form-group row {{ $errors->has('photo') ? 'has-error' : null }}">
             {!! Form::label('photo', 'Your Photo:', ['class'=>'']) !!}
             <div class="input-group">
                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
                 {!! Form::file('photo', ['class'=>'form-control', 'placeholder'=>'Your Photo']) !!}
             </div>
-            <span class="help-block">If you choose a file your photo will be updated, otherwise current will stay!</span>
+            <span class="form-text">If you choose a file your photo will be updated, otherwise current will stay!</span>
         </div>
-        {{-- /.form-group --}}
+        {{-- /.form-group row --}}
     </div>
     {{-- /.col --}}
 </div>

@@ -4,16 +4,16 @@
 @section('content')
 <div class="container-fluid">
 	<div class="col-sm-10 col-sm-offset-1">
-		<div class="box box-primary">
-			<div class="box-header">
+		<div class="card card-primary card-outline">
+			<div class="card-header">
 				<h3>
 					Positions Items List
-					<router-link :to="{path: '/'}" class="pull-right">
+					<router-link :to="{path: '/'}" class="float-right">
 						<i class="fa fa-home"></i>
 					</router-link>
 				</h3>
 			</div>
-			<div class="box-body">
+			<div class="card-body">
 				<router-view name="positions"></router-view>
 				<router-view></router-view>
 			</div>

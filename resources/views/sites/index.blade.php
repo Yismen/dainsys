@@ -5,10 +5,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="box-header with-border">
+                <div class="card-header with-border">
                     <h3>
                         Sites List
-                        <a href="{{ route('admin.sites.create') }}" class="pull-right">
+                        <a href="{{ route('admin.sites.create') }}" class="float-right">
                             <i class="fa fa-plus"></i> Add
                         </a>
                     </h3>
@@ -18,12 +18,12 @@
                     @csrf
 
                     @foreach ($sites as $site)
-                        <div class="box box-danger">
-                            <div class="box-header">
+                        <div class="card card-danger">
+                            <div class="card-header">
                                 <h4>
                                     {{ $site->name }}
                                     <span class="badge bg-red">{{ $site->employees->count() }}</span>
-                                    <a href="{{ route('admin.sites.edit', $site->id) }}" class="pull-right text-warning">
+                                    <a href="{{ route('admin.sites.edit', $site->id) }}" class="float-right text-warning">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                 </h4>
@@ -32,16 +32,16 @@
 
                                 <?php $count = $site->employees->count() == 0 ? 0 : ceil($site->employees->count() / 2) ?>
 
-                                <div class="box-body">
+                                <div class="card-body">
                                     <div class="row">
                                         @foreach ($site->employees->chunk($count) as $chunk)
                                             <div class="col-sm-6">
                                                 @foreach ($chunk as $employee)
-                                                     <employee-check-box :employee="{{ $employee }}" style="border-top: solid 1px #ccc"
+                                                     <employee-check-card :employee="{{ $employee }}" style="border-top: solid 1px #ccc"
                                                     >,
                                                         {{ optional($employee->project)->name }} -
                                                         {{ optional($employee->position)->name }}
-                                                    </employee-check-box>
+                                                    </employee-check-card>
                                                 @endforeach
                                             </div>
                                         @endforeach

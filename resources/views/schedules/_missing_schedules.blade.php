@@ -1,11 +1,11 @@
-<div class="box box-danger">
+<div class="card card-danger">
 
-    <div class="box-header with-border">
+    <div class="card-header with-border">
         <h4> List of Employees Missing Schedule ID </h4>
     </div>
 
-    <div class="box-body">
-        <table class="table table-condensed table-hover">
+    <div class="card-body">
+        <table class="table table-sm table-hover">
             <thead>
                 <tr>
                     <th>Employee</th>
@@ -30,7 +30,7 @@
         </table>
     </div>
 
-    <div class="box-footer">
+    <div class="card-footer">
         {{ $employees_missing_schedule->render() }}
     </div>
 </div>

@@ -3,25 +3,25 @@
 
 @section('content')
     <div class="col-sm-8 col-sm-offset-2">
-        <div class="box box-primary">
-            <div class="box-header">
+        <div class="card card-primary card-outline">
+            <div class="card-header">
                 <h4>
                     Search by Codes:
-                    <a href="{{ route('admin.attendances.index') }}" class="pull-right">
+                    <a href="{{ route('admin.attendances.index') }}" class="float-right">
                         <i class="fa fa-home"></i> List
                     </a>
                 </h4>
             </div>
 
-            <div class="box-body" style="max-height: 200px; overflow-y: auto;">
+            <div class="card-body" style="max-height: 200px; overflow-y: auto;">
                 @foreach ($codes as $code)
                     @if ($code->id == request()->route()->parameters('code')['code'])
-                        <a href="#" class="btn btn-xs btn-primary">
+                        <a href="#" class="btn btn-sm btn-primary">
                             {{ $code->name }}
                         </a>
                     @else                        
                         <a href="{{ route('admin.attendances.code', $code->id) }}" 
-                            class="btn btn-xs btn-default">
+                            class="btn btn-sm btn-secondary">
                             {{ $code->name }}
                         </a>
                     @endif

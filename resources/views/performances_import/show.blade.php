@@ -5,18 +5,18 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="box box-info">
-                    <div class="box-header">
+                <div class="card card-info">
+                    <div class="card-header">
                         <h4>
                             Details for date {{ $date }}
-                            <a href="{{ route('admin.performances_import.index') }}" class="pull-right">
+                            <a href="{{ route('admin.performances_import.index') }}" class="float-right">
                                 <i class="fa fa-home"></i> List
                             </a>
                         </h4>
                     </div>
 
-                    <div class="box-body table-responsive">
-                        <table class="table table-condensed table-bordered" id="performances_import-table">
+                    <div class="card-body table-responsive">
+                        <table class="table table-sm table-bordered" id="performances_import-table">
                             <thead>
                                 <tr>
                                     <th>Date</th>

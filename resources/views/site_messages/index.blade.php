@@ -19,7 +19,7 @@
 					<h1>No Site Messages has been added yet, please add one</h1>
 				</div>
 			@else
-				<table class="table table-condensed table-hover">
+				<table class="table table-sm table-hover">
 					<thead>
 						<tr>
 							<th>Person Name</th>

@@ -5,16 +5,16 @@
 	<div class="container-fluid">
 		<div class="cow-sm-12">
 			<div class="col-sm-8">
-				<div class="box box-primary">
-					<div class="box-body">
+				<div class="card card-primary card-outline">
+					<div class="card-body">
 						@include('quality.scores.create')
 					</div>
 				</div>
 			</div>
 
 			<div class="col-sm-4">
-				<div class="box box-primary">
-					<div class="box-body">
+				<div class="card card-primary card-outline">
+					<div class="card-body">
 						Import from Excel form here
 					</div>
 				</div>
@@ -22,12 +22,12 @@
 		</div>
 
 		<div class="col-sm-12">			
-			{{--  /.box-primary  --}}
-			<div class="box box-success">
-				<div class="box-body">
+			{{--  /.card-primary card-outline  --}}
+			<div class="card card-success">
+				<div class="card-body">
 					
 					<div class="table-responsive">
-						<table class="table table-condensed table-bordered">
+						<table class="table table-sm table-bordered">
 							<thead>
 								<tr>
 									<th>Unique Id</th>
@@ -58,7 +58,7 @@
 					</div>
 					
 				</div>
-				<div class="box-footer">{{ $scores->render() }}</div>
+				<div class="card-footer">{{ $scores->render() }}</div>
 			</div>
 		</div>
 	</div>

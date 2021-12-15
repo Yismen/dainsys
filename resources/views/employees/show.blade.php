@@ -4,10 +4,10 @@
 @section('content')
 	<div class="row">
 		<div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1">
-			<div class="box box-primary">
-				<div class="box-body">
+			<div class="card card-primary card-outline">
+				<div class="card-body">
 					<div class="col-xs-12 ">
-						<a href="{{ route('admin.employees.index') }}" class="pull-right" title="Back to List">
+						<a href="{{ route('admin.employees.index') }}" class="float-right" title="Back to List">
 							<i class="fa fa-list"></i>
 						</a>
 					</div>

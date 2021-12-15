@@ -90,9 +90,9 @@
             padding: 4px 10px;
         }
 
-        .table-condensed > tbody > tr > td.stack,
-        .table-condensed > tfoot > tr > td.stack,
-        .table-condensed > thead > tr > td.stack {
+        .table-sm > tbody > tr > td.stack,
+        .table-sm > tfoot > tr > td.stack,
+        .table-sm > thead > tr > td.stack {
             padding: 0;
             border-top: none;
             background-color: #F6F6F6;
@@ -101,7 +101,7 @@
             overflow-x: auto;
         }
 
-        .table-condensed > tbody > tr > td > p {
+        .table-sm > tbody > tr > td > p {
           margin: 0;
         }
 
@@ -121,7 +121,7 @@
             min-height: 70px;
             background: #fff;
             width: 100%;
-            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+            card-shadow: 0 1px 1px rgba(0,0,0,0.1);
             border-radius: 2px;
         }
 
@@ -321,10 +321,10 @@
     {{-- Footer --}}
     <footer class="main-footer">
         <div class="container">
-            <p class="text-muted pull-left">
+            <p class="text-muted float-left">
                 LogViewer - <span class="label label-info">version {{ log_viewer()->version() }}</span>
             </p>
-            <p class="text-muted pull-right">
+            <p class="text-muted float-right">
                 Created with <i class="fa fa-heart"></i> by ARCANEDEV <sup>&copy;</sup>
             </p>
         </div>

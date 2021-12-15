@@ -4,8 +4,8 @@
 @section('content')
 	<div class="container-fluid">
 		<div class="col-sm-8 col-sm-offset-2">
-			<div class="box box-primary pad">
-				<div class="small-box bg-purple">
+			<div class="card card-primary card-outline pad">
+				<div class="small-card bg-purple">
 					<div class="inner">
 						<p>Payment Type:</p>
 						<h3>{{ $payment_type->name }}</h3>
@@ -14,7 +14,7 @@
 					<div class="icon">
 						<i class="fa fa-flag"></i>
 					</div>
-					<a href="{{ route('admin.payment_types.edit', $payment_type->id) }}" class="small-box-footer">
+					<a href="{{ route('admin.payment_types.edit', $payment_type->id) }}" class="small-card-footer">
 						Edit info <i class="fa fa-pencil"></i>
 					</a>
 				</div>

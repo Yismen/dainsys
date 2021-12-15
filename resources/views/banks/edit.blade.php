@@ -5,31 +5,31 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
-                <div class="box box-primary">
+                <div class="card card-primary card-outline">
 
                     {!! Form::model($bank, ['route'=>['admin.banks.update', $bank->id], 'method'=>'PUT', 'class'=>'form-horizontal', 'role'=>'form', 'autocomplete'=>"off",  'enctype'=>"multipart/form-data"]) !!}
 
-                       <div class="box-header with-border">
+                       <div class="card-header with-border">
                             <h4>
                                 Edit Bank {{ $bank->name }}
-                                <a href="{{ route('admin.banks.index') }}" class="pull-right">
+                                <a href="{{ route('admin.banks.index') }}" class="float-right">
                                     <i class="fa fa-home"></i>
                                     List
                                 </a>
                             </h4>
                        </div>
 
-                        <div class="box-body">
+                        <div class="card-body">
                             @include('banks._form')
 
-                            <div class="box-footer">
+                            <div class="card-footer">
                                 <button type="submit" class="btn btn-success">UPDATE</button>
-                                <button type="reset" class="btn btn-default">CANCEL</button>
+                                <button type="reset" class="btn btn-secondary">CANCEL</button>
                             </div>
 
                     {!! Form::close() !!}
 
-                    <div class="box-footer">
+                    <div class="card-footer">
                         <delete-request-button
                             url="{{ route('admin.banks.destroy', $bank->id) }}"
                             redirect-url="{{ route('admin.banks.index') }}"

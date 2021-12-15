@@ -4,14 +4,14 @@
 @section('content')
 	<div class="container ">
 		<div class="col-sm-8 col-sm-offset-2">
-			<div class="box box-primary pad">
+			<div class="card card-primary card-outline pad">
 				<div class="row">
 					<div class="col-sm-12">
 						{!! Form::open(['route'=>['admin.users.store'], 'method'=>'POST', 'class'=>'form-horizontal', 'role'=>'form']) !!}		
-							<div class="col-sm-12 form-group">
+							<div class="col-sm-12 form-group row">
 								<legend>
 									Create a New User 
-									<a href="{{ route('admin.users.index') }}" class="pull-right">
+									<a href="{{ route('admin.users.index') }}" class="float-right">
 										<i class="fa fa-list"></i>
 									</a>
 								</legend>
@@ -22,8 +22,8 @@
 							<hr>
 
 							{{-- {{ dd($rolesList) }} --}}
-							<div class="form-group has-error">	
-								{!! Form::label('notify', 'Notify:', ['class'=>'col-sm-2 control-label']) !!}
+							<div class="form-group row has-error">	
+								{!! Form::label('notify', 'Notify:', ['class'=>'col-sm-2  col-form-label']) !!}
 								<div class="col-sm-12">		
 									<div class="checkbox">
 										<label>

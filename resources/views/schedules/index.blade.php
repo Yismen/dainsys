@@ -5,22 +5,22 @@
 	<div class="container-fluid">
     	<div class="row">
 			<div class="col-sm-8">
-				<div class="box box-primary">
+				<div class="card card-primary card-outline">
 
-					<div class="box-header with-border">
+					<div class="card-header with-border">
 						<h4>
 							Schedules Items List, Based on
 							<a href="{{ route('admin.shifts.index') }}" target="_shifts">
 								Shifts <i class="fa fa-angle-double-right"></i>
 							</a>
-						 	<a href="{{ route('admin.schedules.create') }}" class="pull-right">
+						 	<a href="{{ route('admin.schedules.create') }}" class="float-right">
 						 		<i class="fa fa-plus"></i> Add
 						 	</a>
 						</h4>
 					</div>
 
-					<div class="box-body table-responsive">
-						<table class="table table-condensed table-hover" id="schedules-table">
+					<div class="card-body table-responsive">
+						<table class="table table-sm table-hover" id="schedules-table">
 							<thead>
 								<tr>
 									<th>Employee</th>

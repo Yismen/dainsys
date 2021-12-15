@@ -5,16 +5,16 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
-                <div class="box box-primary pad">
-                    <div class="box-header with-border">
+                <div class="card card-primary card-outline pad">
+                    <div class="card-header with-border">
                         <h4>
                             {{ __('Details') }} - {{ $ars->name }}
-                            <a href="{{ route('admin.arss.index') }}" class="pull-right">
+                            <a href="{{ route('admin.arss.index') }}" class="float-right">
                                 <i class="fa fa-home"></i> {{ __('List') }}
                             </a>
                         </h4>
                     </div>
-                    <div class="box-body">
+                    <div class="card-body">
 
                         <div class="info-box">
                             <span class="info-box-icon bg-green"><i class="fa fa-star"></i></span>
@@ -39,7 +39,7 @@
                         @if(count($ars->employees))
                             <div class="table-responsive">
                                 {{ __('Employees') }}
-                                <table class="table table-condensed table-bordered">
+                                <table class="table table-sm table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Id</th>

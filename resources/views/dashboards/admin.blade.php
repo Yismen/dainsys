@@ -49,7 +49,7 @@
         @include('dashboards.admin._oauth')
     </div>
 </div>
-{{--  Admin panel  --}}
+{{--  Admin card  --}}
 <div class="row">
     <div class="col-sm-12">
         @include('dashboards.admin._panel')

@@ -1,17 +1,17 @@
 @props(['type', 'headerClasses'])
-<div {{ $attributes->merge(['class' => 'box box-' . $type]) }}>
+<div {{ $attributes->merge(['class' => 'card card-' . $type]) }}>
     @isset($header)
-    <div class="box-header with-border {{ $headerClasses ?? '' }}">
+    <div class="card-header with-border {{ $headerClasses ?? '' }}">
         {{ $header }}
     </div>
     @endisset
 
-    <div class="box-body">
+    <div class="card-body">
         {{ $slot }}
     </div>
 
     @isset($footer)
-        <div class="box-footer">
+        <div class="card-footer">
             {{ $footer }}
         </div>
     @endisset

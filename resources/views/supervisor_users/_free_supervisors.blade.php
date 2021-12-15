@@ -1,11 +1,11 @@
 
-<div class="box box-warning">
-    <div class="box-header">
+<div class="card card-warning">
+    <div class="card-header">
         <h5>List of Supervisors not assigned to any user </h5>
     </div>
 
-    <div class="box-body">
-        <table class="table table-condensed table-hover table-bordered">
+    <div class="card-body">
+        <table class="table table-sm table-hover table-bordered">
             <thead>
                 <tr>
                     <th>Supervisor Name</th>

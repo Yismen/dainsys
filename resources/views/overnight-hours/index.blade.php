@@ -53,7 +53,7 @@ production.'])
                         }},
                         {data: 'id', name: 'id', render(data, type, full) {
                             return `
-                                <a href="/admin/overnight_hours/${data}/edit" class="btn btn-warning btn-xs">
+                                <a href="/admin/overnight_hours/${data}/edit" class="btn btn-warning btn-sm">
                                     <i class="fa fa-edit"></i> Edit
                                 </a>
                             `

@@ -6,11 +6,11 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-8 col-sm-offset-2">					
-					<div class="box box-primary pad">
-						<div class="box-header">
+					<div class="card card-primary card-outline pad">
+						<div class="card-header">
 							<h4>
 								{{ ucwords(str_replace(['-', '_'], ' ', $permission->name)) }} 
-								<a href="{{ route('admin.permissions.index') }}" class="pull-right">
+								<a href="{{ route('admin.permissions.index') }}" class="float-right">
 									<i class="fa fa-list"></i> List
 								</a>
 							</h4>

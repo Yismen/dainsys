@@ -6,7 +6,7 @@
     {!! $rows->render() !!}
 
     <div class="table-responsive">
-        <table class="table table-condensed table-hover table-stats">
+        <table class="table table-sm table-hover table-stats">
             <thead>
                 <tr>
                     @foreach($headers as $key => $header)
@@ -41,13 +41,13 @@
                             </td>
                         @endforeach
                         <td class="text-right">
-                            <a href="{{ route('log-viewer::logs.show', [$date]) }}" class="btn btn-xs btn-info">
+                            <a href="{{ route('log-viewer::logs.show', [$date]) }}" class="btn btn-sm btn-info">
                                 <i class="fa fa-search"></i>
                             </a>
-                            <a href="{{ route('log-viewer::logs.download', [$date]) }}" class="btn btn-xs btn-success">
+                            <a href="{{ route('log-viewer::logs.download', [$date]) }}" class="btn btn-sm btn-success">
                                 <i class="fa fa-download"></i>
                             </a>
-                            <a href="#delete-log-modal" class="btn btn-xs btn-danger" data-log-date="{{ $date }}">
+                            <a href="#delete-log-modal" class="btn btn-sm btn-danger" data-log-date="{{ $date }}">
                                 <i class="fa fa-trash-o"></i>
                             </a>
                         </td>
@@ -86,7 +86,7 @@
                         <p></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-sm btn-secondary float-left" data-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-sm btn-danger" data-loading-text="Loading&hellip;">DELETE FILE</button>
                     </div>
                 </div>

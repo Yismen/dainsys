@@ -1,12 +1,11 @@
 
 <div class="row">
     <div class="col-xs-12">
-        @component('components.fields.select', [
-            'field_name' => 'code_id',
-            'list_array' => $attendance->codesList->pluck('name', 'id'),
-        ])
-            Attendance Code:
-        @endcomponent       
+        <label for="code_id">Attendance Code:</label>
+        <x-fields.select
+            field-name="code_id"
+            :items="$attendance->codesList->pluck('name', 'id')"
+        ></x-fields.select>
     </div>
 
     <div class="col-xs-12">

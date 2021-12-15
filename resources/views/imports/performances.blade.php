@@ -5,18 +5,18 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
-                <div class="box box-primary">
+                <div class="card card-primary card-outline">
 
-                    <div class="box-body">
+                    <div class="card-body">
                         {!! Form::open(['route'=>['admin.imports.performances'], 'files' => true, 'method'=>'POST', 'class'=>'form-horizontal', 'role'=>'form', 'autocomplete'=>"off"]) !!}
 
-                           <div class="box-header with-border"><h4>Import Perforces Data</h4></div>
+                           <div class="card-header with-border"><h4>Import Perforces Data</h4></div>
 
                             @include('imports._form')
 
-                            <div class="box-footer">
+                            <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">SUBMIT</button>
-                                <button type="submit" class="btn btn-default">CANCEL</button>
+                                <button type="submit" class="btn btn-secondary">CANCEL</button>
                             </div>
 
                         {!! Form::close() !!}

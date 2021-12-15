@@ -5,12 +5,12 @@
 	<div class="container-fluid">
     	<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
-				<div class="box box-primary">
+				<div class="card card-primary card-outline">
 
-					<div class="box-header">
+					<div class="card-header">
 						<h4>
 							Create Schedule for Employees
-							<a href="{{ route('admin.schedules.index') }}" class="pull-right" title="Back To Schedules List">
+							<a href="{{ route('admin.schedules.index') }}" class="float-right" title="Back To Schedules List">
 								<i class="fa fa-list"></i>
 							</a>
 						</h4>
@@ -19,12 +19,12 @@
 
 					{!! Form::open(['route'=>['admin.schedules.store'], 'method'=>'POST', 'class'=>'form-horizontal', 'role'=>'form', 'novalidate' => true]) !!}
 
-						<div class="box-body">
+						<div class="card-body">
 							@include('schedules._form')
 						</div>
 
 
-						<div class="box-footer">
+						<div class="card-footer">
 							<div class="col-sm-10 col-sm-offset-2">
 								<button type="submit" class="btn btn-primary">Create</button>
 							</div>

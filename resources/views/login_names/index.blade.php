@@ -5,9 +5,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-                <div class="box box-primary">
+                <div class="card card-primary card-outline">
 
-                    <div class="box-header with-border">
+                    <div class="card-header with-border">
                         <h4>
                             <div class="col-xs-8">
                                 Logins Items List
@@ -17,7 +17,7 @@
                                     <i class="fa fa-plus"></i> Create
                                 </a>
 
-                                <div role="presentation" class="dropdown pull-right">
+                                <div role="presentation" class="dropdown float-right">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                         <i class="fa fa-download"></i>
                                         <span class="caret"></span>
@@ -40,8 +40,8 @@
                         </h4>
                     </div>
 
-                    <div class="box-body">
-                        <table class="table table-condensed table-hover" id="login-names-table">
+                    <div class="card-body">
+                        <table class="table table-sm table-hover" id="login-names-table">
                             <thead>
                                 <tr>
                                     <th>Employee</th>

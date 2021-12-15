@@ -1,9 +1,9 @@
-<div class="box-header">
+<div class="card-header">
     <h4>Add a new Attendance</h4>
 </div>
 
 {!! Form::open(['route'=>['admin.attendances.store'], 'method'=>'POST', 'class'=>'', 'role'=>'form']) !!}
-    <div class="box-body">
+    <div class="card-body">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 {{ $errors->has('employee_id') ? 'has-error' : null }}">  
             {{-- <employee-checkbox-list
                 :data="{{ $attendance->employeesList }}" title="Your Employees: (select one or more)"
@@ -17,7 +17,7 @@
                 {{-- <a href="#" class="btn btn-primary">Select All</a>
                 <a href="#" class="btn btn-warning">Unselect All</a> --}}
             </div>
-            <div class="form-group {{ $errors->has('employee_id') ? 'has-error' : null }}" style="max-height: 300px; overflow-y: overlay;">
+            <div class="form-group row {{ $errors->has('employee_id') ? 'has-error' : null }}" style="max-height: 300px; overflow-y: overlay;">
                 @foreach ($attendance->employeesList as $employee)            
                     <div class="checkbox">
                         <label>
@@ -36,11 +36,11 @@
         </div>
     </div>
 
-    <div class="box-footer">
-        <div class="form-group">
+    <div class="card-footer">
+        <div class="form-group row">
             <div class="col-sm-10 col-sm-offset-1">
                 <button class="btn btn-primary"><i class="fa fa-floppy-o"></i> CREATE</button>
-                {{-- <div class="pull-right">
+                {{-- <div class="float-right">
                     <a href="#" class="btn btn-warning">Report all as present!</a>
                 </div> --}}
             </div>

@@ -6,23 +6,23 @@
     	<div class="row">
             <div class="col-sm-10 col-sm-offset-1">
                 
-                <div class="box box-primary">
+                <div class="card card-primary card-outline">
 					@include('attendances.create')
                 </div>
                 
             </div>
 
 			<div class="col-sm-10 col-sm-offset-1">
-				<div class="box box-primary">
+				<div class="card card-primary card-outline">
 
-					<div class="box-header with-border">
+					<div class="card-header with-border">
 						<h4>
 							Attendances List
 						</h4>
 					</div>
 
-					<div class="box-body">
-						<table class="table table-condensed table-hover table-bordered" id="attendances-table">
+					<div class="card-body">
+						<table class="table table-sm table-hover table-bordered" id="attendances-table">
 							<thead>
 								<tr>
 									<th>Date</th>

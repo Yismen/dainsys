@@ -8,7 +8,7 @@
         <span class="badge bg-red">{{ $terminations->count() }} </span>:
     </h4>
     
-    <table class="table table-condensed table-hover" >
+    <table class="table table-sm table-hover" >
         <thead>
             <tr>
                 <th>@lang('Date'):</th>
