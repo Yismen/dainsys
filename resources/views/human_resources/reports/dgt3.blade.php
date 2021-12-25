@@ -7,13 +7,8 @@
             <div class="col-sm-8 col-sm-offset-2">
                 <div class="card card-primary card-outline">
 
-                    <div class="card-header with-border"><h4>Run DGT-3 Report
                         <a href="/admin/human_resources" class="float-right"><i class="fa fa-tachometer-alt"></i></a>
                     </h4></div>
-                        
-                    <div class="card-body">
-                        {!! Form::open(['/admin/human_resources/dgt3', 'method'=>'POST', 'class'=>'form-horizontal', 'role'=>'form', 'autocomplete'=>"off",  'enctype'=>"multipart/form-data"]) !!}       
-                    
                             <!-- Select a Year -->
                             <div class="col-sm-6">
                                 <div class="form-group row {{ $errors->has('year') ? 'has-error' : null }}">
