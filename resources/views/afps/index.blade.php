@@ -76,12 +76,22 @@
                         @endif
                     @endforeach
                 </div>
-                <x-floating-button 
-                    field-name="afp" 
-                    :items="$afps->pluck('name', 'id')"
-                >{{ __('Assign') }}</x-floating-button>
+                
+                <x-floating-div>
+                    <div class="input-group">
+                        <x-fields.select 
+                            field-name="afp" 
+                            :items="$afps->pluck('name', 'id')"
+                        ></x-fields.select>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-warning">{{ __('Assign') }}</button>
+                        </div>
+                    </div>
+                            
+                    <x-errors-div></x-errors-div>
+                </x-floating-div>
             </form>
-    </div>
+        </div>
    </div>
 </x-view>
 
