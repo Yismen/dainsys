@@ -14,6 +14,7 @@ class TerminationTypeController extends Controller
         $this->middleware('authorize:create-termination-types', ['only' => ['create', 'store']]);
         $this->middleware('authorize:destroy-termination-types', ['only' => ['destroy']]);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +46,7 @@ class TerminationTypeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:termination_types'
+            'name' => 'required|unique:termination_types',
         ]);
 
         $termination_type = TerminationType::create(
@@ -64,7 +65,6 @@ class TerminationTypeController extends Controller
      */
     public function show(TerminationType $termination_type)
     {
-        //
     }
 
     /**

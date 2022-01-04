@@ -11,7 +11,7 @@ class Notification extends DainsysModel
     public function markAsRead()
     {
         return $this->update([
-            'read_at' => now()
+            'read_at' => now(),
         ]);
     }
 }

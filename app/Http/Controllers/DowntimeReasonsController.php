@@ -49,7 +49,7 @@ class DowntimeReasonsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:5|unique:downtime_reasons,name'
+            'name' => 'required|min:5|unique:downtime_reasons,name',
         ]);
 
         $downtime_reason = DowntimeReason::create($request->only(['name']));
@@ -89,7 +89,7 @@ class DowntimeReasonsController extends Controller
     public function update(DowntimeReason $downtime_reason, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:5|unique:downtime_reasons,name,' . $downtime_reason->id
+            'name' => 'required|min:5|unique:downtime_reasons,name,' . $downtime_reason->id,
         ]);
 
         $downtime_reason->update($request->only(['name']));

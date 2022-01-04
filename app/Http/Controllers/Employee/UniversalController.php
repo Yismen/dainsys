@@ -10,10 +10,9 @@ use Illuminate\Support\Facades\Cache;
 
 class UniversalController extends Controller
 {
-
     /**
      * Update Universal
-     * 
+     *
      * Update Universal information for a given employee.
      *
      * @bodyParam is_vip boolean required Indicates if the employee should be added to or removed from the Universal list

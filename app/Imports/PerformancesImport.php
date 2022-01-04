@@ -10,7 +10,6 @@ use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
-use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithEvents;
 
 class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, WithBatchInserts, WithEvents, WithChunkReading, ShouldQueue
@@ -42,7 +41,6 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
      */
     public $timeout = 120;
 
-
     /**
      * class constructor
      *
@@ -64,7 +62,7 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
     public function model(array $row)
     {
         PerformanceImport::where('unique_id', $row['unique_id'])->delete();
-        
+
         return new PerformanceImport([
             'unique_id' => $row['unique_id'],
             'date' => $this->transformDate($row['date'])->format('Y-m-d'),
@@ -94,6 +92,7 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
             'file_name' => $this->file_name,
         ]);
     }
+
     /**
      * Validation rules
      *

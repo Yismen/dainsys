@@ -16,7 +16,6 @@ class FormValidationTest extends TestCase
     /** @test */
     public function date_field_is_required()
     {
-        $this->withExceptionHandling();
         $holiday = create(Holiday::class)->toArray();
 
         $this->actingAs($this->userWithPermission('create-holidays'))
@@ -31,7 +30,6 @@ class FormValidationTest extends TestCase
     /** @test */
     public function date_field_must_be_a_date()
     {
-        $this->withExceptionHandling();
         $holiday = create(Holiday::class)->toArray();
 
         $this->actingAs($this->userWithPermission('create-holidays'))
@@ -46,7 +44,6 @@ class FormValidationTest extends TestCase
     /** @test */
     public function date_field_must_be_unique()
     {
-        $this->withExceptionHandling();
         $date = Carbon::today();
         $holiday = create(Holiday::class, ['date' => $date])->toArray();
 
@@ -62,7 +59,6 @@ class FormValidationTest extends TestCase
     /** @test */
     public function name_field_is_required()
     {
-        $this->withExceptionHandling();
         $holiday = create(Holiday::class)->toArray();
 
         $this->actingAs($this->userWithPermission('create-holidays'))
@@ -77,7 +73,6 @@ class FormValidationTest extends TestCase
     /** @test */
     public function name_field_must_have_at_least_4_digits()
     {
-        $this->withExceptionHandling();
         $holiday = create(Holiday::class)->toArray();
 
         $this->actingAs($this->userWithPermission('create-holidays'))
@@ -92,7 +87,6 @@ class FormValidationTest extends TestCase
     /** @test */
     public function name_field_must_have_a_max_of_150_digits()
     {
-        $this->withExceptionHandling();
         $holiday = create(Holiday::class)->toArray();
 
         $this->actingAs($this->userWithPermission('create-holidays'))

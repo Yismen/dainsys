@@ -3,7 +3,7 @@
 namespace App\Mail\Capillus;
 
 class CapillusAgentReportMail extends CapillusMailBase
-{    
+{
     /**
      * Build the message.
      *
@@ -11,6 +11,6 @@ class CapillusAgentReportMail extends CapillusMailBase
      */
     public function build()
     {
-        return $this->defaultBuild("KNYC.E Agent Report");
+        return $this->defaultBuild('KNYC.E Agent Report');
     }
 }

@@ -3,11 +3,7 @@
 namespace Tests\Feature\Roles;
 
 use App\Role;
-use App\RoleCode;
-use App\Employee;
-use App\Supervisor;
 use App\User;
-use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

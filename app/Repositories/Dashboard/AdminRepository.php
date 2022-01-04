@@ -19,7 +19,7 @@ class AdminRepository
             'revenue' => number_format(Performance::sum('revenue'), 2),
             'revenue_mtd' => number_format($mtdData->monthToDateData()->sum('revenue'), 2),
             'users' => User::latest()->get(),
-            'roles' => $static->getRoles()
+            'roles' => $static->getRoles(),
         ];
     }
 

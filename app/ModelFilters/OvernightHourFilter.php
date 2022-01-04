@@ -13,6 +13,7 @@ class OvernightHourFilter extends ModelFilter
      * @var array
      */
     public $relations = [];
+
     /**
      * Filter by date
      *
@@ -23,6 +24,7 @@ class OvernightHourFilter extends ModelFilter
     {
         return $this->whereDate('date', $request);
     }
+
     /**
      * Filter by date
      *
@@ -36,6 +38,7 @@ class OvernightHourFilter extends ModelFilter
         return $this->whereDate('date', '>=', $date)
             ->whereDate('date', '<=', \now());
     }
+
     /**
      * Filter by date
      *

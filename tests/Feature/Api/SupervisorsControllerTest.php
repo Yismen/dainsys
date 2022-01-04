@@ -4,7 +4,6 @@ namespace Tests\Feature\Api;
 
 use App\Supervisor;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Laravel\Passport\Passport;
 use Tests\TestCase;
 
@@ -27,8 +26,8 @@ class SupervisorsControllerTest extends TestCase
                         'id',
                         'name',
                         'active',
-                    ]
-                ]
+                    ],
+                ],
             ]);
     }
 

@@ -8,14 +8,14 @@ class DataRepository
 
     public function __construct(array $data = [], $label = 'Default Label')
     {
-        $color = "rgba(1, 87, 155, 1)";
-        
+        $color = 'rgba(1, 87, 155, 1)';
+
         $this->defaults = [
-            "data" => $data,
+            'data' => $data,
             'borderColor' => 'rgba(1, 87, 155, 1)',
             'backgroundColor' => 'rgba(1, 87, 155, .25)',
             'label' => $label,
-            'fill' => true
+            'fill' => true,
         ];
     }
 

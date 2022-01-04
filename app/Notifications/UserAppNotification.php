@@ -32,8 +32,8 @@ class UserAppNotification extends Notification implements ShouldQueue
 
     /**
      * Get the notification's delivery channels.
-     * 
-     * The Listner \App\Listeners\AppNotificationReceived will fire event 
+     *
+     * The Listner \App\Listeners\AppNotificationReceived will fire event
      * \App\Events\UserAppNotificationReceived
      *
      * @param  mixed  $notifiable
@@ -53,7 +53,7 @@ class UserAppNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject("Dainsys: " . $this->subject)
+            ->subject('Dainsys: ' . $this->subject)
             ->line($this->body)
             ->action('Open App', url('/admin'));
     }
@@ -69,7 +69,7 @@ class UserAppNotification extends Notification implements ShouldQueue
         return [
             'subject' => $this->subject,
             'body' => $this->body,
-            'css_class' => $this->css_class
+            'css_class' => $this->css_class,
         ];
     }
 }

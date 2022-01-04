@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Employee;
 use App\Http\Resources\EmployeesResource;
 
 class EmployeeController extends Controller
 {
-
     /**
      * Employees All
-     * 
+     *
      * Collection of employees registered.
      *
      * @queryParam site string Limit results to specific site. Example ?site=%Santiago%
@@ -70,7 +68,7 @@ class EmployeeController extends Controller
 
     /**
      * Employees Recents
-     * 
+     *
      * Collection of recent employees. Recents are all active imployees plus any inactive employee with a termination date greater than 30 days ago.
      *
      * @queryParam site string Limit results to specific site. Example ?site=%Santiago%
@@ -129,7 +127,7 @@ class EmployeeController extends Controller
 
     /**
      * Employees Actives
-     * 
+     *
      * Collection of employees actives. This is any employee without a termination.
      *
      * @queryParam site string Limit results to specific site. Example ?site=%Santiago%
@@ -203,7 +201,7 @@ class EmployeeController extends Controller
             'supervisor',
             'termination',
             'universal',
-            'vip'
+            'vip',
         ])
             ->sorted()
             ->filter(request()->all());

@@ -15,7 +15,6 @@ class EmployeeDeactivated extends Event
      */
     public function __construct()
     {
-        //
     }
 
     /**

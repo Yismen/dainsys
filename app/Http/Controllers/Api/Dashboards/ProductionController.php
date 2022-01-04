@@ -11,10 +11,9 @@ use App\Repositories\PerformanceRepository;
  */
 class ProductionController extends Controller
 {
-
     /**
      * Dashboards Production Month To Date Stats
-     * 
+     *
      * Production MTD stats for production dashboard
      *
      * @queryParam campaign string Limit results to specific campaign. Example ?campaign=%Santiago%
@@ -26,7 +25,7 @@ class ProductionController extends Controller
      * @queryParam project_employee string Limit results to specific project_employee. Example ?project_employee=%Santiago%
      * @queryParam site string Limit results to specific site. Example ?site=%Santiago%
      * @queryParam client string Limit results to specific client. Example ?client=%Pub%
-     * 
+     *
      * @response 200 {
      *     "revenue_mtd": "0.00",
      *     "login_hours_mtd": "8.00",
@@ -48,7 +47,7 @@ class ProductionController extends Controller
 
     /**
      * Dashboards Production Monthly Stats
-     * 
+     *
      * Production Monthly stats for production dashboard
      *
      * @queryParam campaign string Limit results to specific campaign. Example ?campaign=%Santiago%
@@ -60,7 +59,7 @@ class ProductionController extends Controller
      * @queryParam project_employee string Limit results to specific project_employee. Example ?project_employee=%Santiago%
      * @queryParam site string Limit results to specific site. Example ?site=%Santiago%
      * @queryParam client string Limit results to specific client. Example ?client=%Pub%
-     * 
+     *
      * @response 200 [
      *      {
      *          "revenue": 0,

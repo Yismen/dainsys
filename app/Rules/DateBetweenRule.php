@@ -20,8 +20,8 @@ class DateBetweenRule implements Rule
      */
     public function __construct(Carbon $from, Carbon $to = null)
     {
-        $this->from = $from;    
-        
+        $this->from = $from;
+
         $this->to = $to != null ? $to : Carbon::now();
     }
 
@@ -35,9 +35,9 @@ class DateBetweenRule implements Rule
     public function passes($attribute, $value)
     {
         $this->attribute = $attribute;
-        
+
         $this->value = $value;
-        
+
         return $value >= $this->from && $value <= $this->to;
     }
 

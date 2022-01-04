@@ -11,12 +11,11 @@ use App\Http\Resources\SupervisorsResource;
  */
 class SupervisorsController extends Controller
 {
-
     /**
      * Performances Supervisors
-     * 
+     *
      * Collection of employees' supervisors.
-     * 
+     *
      * @response 200 {
      *      "data": [
      *          {
@@ -36,9 +35,9 @@ class SupervisorsController extends Controller
 
     /**
      * Performances Active Supervisors
-     * 
+     *
      * Collection of employees' Actives supervisors.
-     * 
+     *
      * @response 200 {
      *      "data": [
      *          {

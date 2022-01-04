@@ -11,12 +11,11 @@ use App\Http\Resources\SiteResource;
  */
 class SitesController extends Controller
 {
-
     /**
      * Performances Sites
-     * 
+     *
      * Collection of employees' sites.
-     * 
+     *
      * @response 200 {
      *      "data": [
      *          {

@@ -16,7 +16,7 @@ class WowDispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCa
     protected $data;
 
     protected $sheet;
-    
+
     protected $rows;
     protected $last_column;
 
@@ -25,13 +25,13 @@ class WowDispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCa
         $this->data = $data;
 
         $this->rows = count($this->data) + 2;
-        $this->last_column = "F";
+        $this->last_column = 'F';
     }
 
     public function view(): View
     {
         return view('exports.wow.dispositions', [
-            'data' => $this->data
+            'data' => $this->data,
         ]);
     }
 
@@ -39,25 +39,24 @@ class WowDispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCa
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
                 (new RangeFormarter($event, "A1:{$this->last_column}{$this->rows}"))
                     ->configurePage()
-                    ->setColumnsWidth("A", "C")
-                    ->formatTitle("A1:D1")
+                    ->setColumnsWidth('A', 'C')
+                    ->formatTitle('A1:D1')
                     ->formatHeaderRow("A2:{$this->last_column}2")
                     ->applyBorders("A3:{$this->last_column}{$this->rows}")
                     // ->applyNumberFormats("E2:G{$this->rows}", '#,##0.00')
                     ->applyNumberFormats("{$this->last_column}2:{$this->last_column}{$this->rows}", NumberFormat::FORMAT_PERCENTAGE_00)
                     ;
-            }
+            },
         ];
     }
 
     public function title(): string
     {
-        return "Dispositions";
+        return 'Dispositions';
     }
 }

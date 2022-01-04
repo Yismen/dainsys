@@ -3,9 +3,6 @@
 namespace Tests\Feature\RevenueTypes;
 
 use App\RevenueType;
-use App\Employee;
-use App\User;
-use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -15,11 +12,9 @@ class FormValidationTest extends TestCase
     use RefreshDatabase;
     use WithFaker;
 
-
     /** @test */
     public function name_field_is_required()
     {
-        // $this->withoutExceptionHandling();
         $revenue_type = create(RevenueType::class)->toArray();
 
         $this->actingAs($this->userWithPermission('create-revenue-types'))

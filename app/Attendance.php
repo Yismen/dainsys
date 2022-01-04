@@ -43,9 +43,9 @@ class Attendance extends Model
 
     public function getEmployeesListAttribute()
     {
-        return auth()->user()->supervisors->load(['employees' => function($query) {
+        return auth()->user()->supervisors->load(['employees' => function ($query) {
             return $query->actives()->sorted();
-        }])->map(function($item, $key) {
+        }])->map(function ($item, $key) {
             return $item->employees;
         })->collapse();
     }

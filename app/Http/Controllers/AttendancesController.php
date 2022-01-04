@@ -25,7 +25,7 @@ class AttendancesController extends Controller
      */
     public function index(Attendance $attendance)
     {
-        if (! request()->ajax()) {
+        if (!request()->ajax()) {
             return view('attendances.index', compact('attendance'));
         }
 
@@ -56,13 +56,13 @@ class AttendancesController extends Controller
 
         foreach ($request->employee_id as $id) {
             $newAttendance = array_merge($request->all(), ['employee_id' => $id]);
-            
+
             $exists = Attendance::whereDate('date', $newAttendance['date'])
                 // ->where('code_id', $newAttendance['code_id'])
                 ->where('employee_id', $newAttendance['employee_id'])
                 ->first();
 
-            if (! $exists) {
+            if (!$exists) {
                 // $exists->delete();
 
                 auth()->user()
@@ -70,11 +70,10 @@ class AttendancesController extends Controller
                     ->create($newAttendance);
             }
         }
-        
-        
+
         return redirect()
             ->route('admin.attendances.index')
-            ->withSuccess("Attendance Created!");
+            ->withSuccess('Attendance Created!');
     }
 
     /**
@@ -85,7 +84,6 @@ class AttendancesController extends Controller
      */
     public function show(Attendance $attendance)
     {
-        //
     }
 
     /**
@@ -113,7 +111,7 @@ class AttendancesController extends Controller
 
         return redirect()
             ->route('admin.attendances.index')
-            ->withSuccess("Attendance Updated!");
+            ->withSuccess('Attendance Updated!');
     }
 
     /**
@@ -128,6 +126,6 @@ class AttendancesController extends Controller
 
         return redirect()
             ->route('admin.attendances.index')
-            ->withDanger("Attendance Removed!");
+            ->withDanger('Attendance Removed!');
     }
 }

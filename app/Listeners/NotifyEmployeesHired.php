@@ -13,7 +13,6 @@ class NotifyEmployeesHired
      */
     public function __construct()
     {
-        //
     }
 
     /**
@@ -24,6 +23,5 @@ class NotifyEmployeesHired
      */
     public function handle(EmployeesUpdates $event)
     {
-        //
     }
 }

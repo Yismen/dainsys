@@ -25,7 +25,7 @@ class BecauseFlashRepository extends RingCentralConnection
     {
         return $this->execQuery(1);
     }
-    
+
     protected function execQuery(int $subdays = 0)
     {
         return $this->connection()->select(

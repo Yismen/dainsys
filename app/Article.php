@@ -34,8 +34,8 @@ class Article extends Model
         return [
             'slug' => [
                 'source' => ['title'],
-                'onUpdate' => true
-            ]
+                'onUpdate' => true,
+            ],
         ];
     }
 
@@ -116,6 +116,7 @@ class Article extends Model
             ->where('published_at', '<', $this->published_at)
             ->published()
             ->first();
+
         return $article ? $article : null;
     }
 

@@ -65,7 +65,7 @@ class AfpsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:3|unique:afps,name'
+            'name' => 'required|min:3|unique:afps,name',
         ]);
 
         Cache::forget('employees');
@@ -113,7 +113,7 @@ class AfpsController extends Controller
     public function update(Request $request, Afp $afp)
     {
         $this->validate($request, [
-            'name' => 'required|min:3|unique:afps,name,' . $afp->id
+            'name' => 'required|min:3|unique:afps,name,' . $afp->id,
         ]);
 
         Cache::forget('employees');
@@ -140,6 +140,7 @@ class AfpsController extends Controller
             if ($request->ajax()) {
                 return abort(403, "AFP $afp->name has employees therefore it can't be deleted!");
             }
+
             return redirect()->back()
                 ->withDanger("AFP $afp->name has employees therefore it can't be deleted!");
         }
@@ -158,9 +159,9 @@ class AfpsController extends Controller
     {
         $this->validate($request, [
             'employee' => 'required|array',
-            'afp' => 'required|exists:afps,id'
+            'afp' => 'required|exists:afps,id',
         ], [
-            'employee.required' => 'Select at least one employee!'
+            'employee.required' => 'Select at least one employee!',
         ]);
 
         Cache::forget('employees');
@@ -173,6 +174,6 @@ class AfpsController extends Controller
         }
 
         return redirect()->route('admin.afps.index')
-            ->withSuccess("Done!");
+            ->withSuccess('Done!');
     }
 }

@@ -69,24 +69,23 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
 
                 $this->addSubTotals($totals_row, $rows, $event->sheet);
 
-
                 $formarter = new RangeFormarter($event, "A1:{$last_column}{$rows}");
 
                 $formarter->configurePage()
-                    ->formatTitle("A1:D1")
+                    ->formatTitle('A1:D1')
                     ->formatHeaderRow("A2:{$last_column}2")
                     ->setRowHeight(2, 45)
                     ->freezePane('A3')
                     ->setAutoFilter("A2:{$last_column}{$rows}")
                     ->setColumnsRangeWidth('A', 'A', 19)
                     ->applyBorders("A3:{$last_column}{$rows}")
-                    ->setAutoSizeRange("B", "E")
+                    ->setAutoSizeRange('B', 'E')
                     ->setColumnsRangeWidth('F', $last_column, 11)
                     ->applyNumberFormats("F3:H{$totals_row}")
                     ->applyNumberFormats("I3:I{$totals_row}", '_(* #,##0.0%_);_(* (#,##0.0%);_(* "-"??_);_(@_)')
                     ->applyNumberFormats("J3:{$last_column}{$totals_row}", '_(* #,##0_);_(* (#,##0);_(* "-"??_);_(@_)')
                     ->formatTotals("F{$totals_row}:{$last_column}{$totals_row}");
-            }
+            },
         ];
     }
 
@@ -96,7 +95,6 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
         $workTimeColumn = 'G';
         $talkTimeColumn = 'H';
         $callsColumn = 'J';
-
 
         foreach (range($loginTimeColumn, $talkTimeColumn) as $letter) {
             $sheet_object->setCellValue(
@@ -111,14 +109,14 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
             "=IFERROR({$talkTimeColumn}{$totals_row}/{$workTimeColumn}{$totals_row},0)"
         );
 
-
-        foreach (range($callsColumn, "L") as $letter) {
+        foreach (range($callsColumn, 'L') as $letter) {
             $sheet_object->setCellValue(
                 "{$letter}{$totals_row}",
                 "=SUBTOTAL(9, {$letter}3:{$letter}{$rows})"
             );
         }
     }
+
     /**
      * @return string
      */
@@ -145,11 +143,11 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
         }
 
         return view(
-            "exports.reports.ring_central.ooma_production_sheet",
+            'exports.reports.ring_central.ooma_production_sheet',
             [
                 'title' => "Ooma {$this->title()} Production Report From {$date_from} To {$date_to}",
                 'data' => $this->data,
-                'dispositions' => collect($dispositions)
+                'dispositions' => collect($dispositions),
             ]
         );
     }

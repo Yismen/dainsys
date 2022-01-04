@@ -29,6 +29,7 @@ class ProductionSheet extends BaseRingCentralSheet
                 ")
             );
     }
+
     /**
      * @return View
      */
@@ -41,12 +42,12 @@ class ProductionSheet extends BaseRingCentralSheet
         if (count($this->data) > 0) {
             $this->exporter->has_data = true;
 
-            $cache_key =  $this->exporter->campaign_name . $this->exporter->team .  $this->exporter->dates_range['from_date'] . $this->exporter->dates_range['to_date'] . collect($this->data)->sum('login_time');
+            $cache_key = $this->exporter->campaign_name . $this->exporter->team . $this->exporter->dates_range['from_date'] . $this->exporter->dates_range['to_date'] . collect($this->data)->sum('login_time');
 
             if (!Cache::has($cache_key)) {
                 Cache::put($cache_key, 'some', now()->addHours(3));
 
-                info("Cache-key: " . $cache_key);
+                info('Cache-key: ' . $cache_key);
 
                 $this->exporter->data_is_new = true;
             }
@@ -60,6 +61,7 @@ class ProductionSheet extends BaseRingCentralSheet
             ]
         );
     }
+
     /**
      * @return string
      */
@@ -67,6 +69,7 @@ class ProductionSheet extends BaseRingCentralSheet
     {
         return "{$this->exporter->client_name} Production Report";
     }
+
     /**
      * @return array
      */
@@ -81,12 +84,11 @@ class ProductionSheet extends BaseRingCentralSheet
 
                 $this->addSubTotals($totals_row, $rows, $event->sheet);
 
-
                 $formarter = new RangeFormarter($event, "A1:{$last_column}{$rows}");
 
                 $formarter->configurePage()
-                    ->setAutoSizeRange("B", "E")
-                    ->formatTitle("A1:D1")
+                    ->setAutoSizeRange('B', 'E')
+                    ->formatTitle('A1:D1')
                     ->freezePane('A3')
                     ->setAutoFilter("A2:{$last_column}{$rows}")
                     ->formatHeaderRow("A2:{$last_column}2")
@@ -97,7 +99,7 @@ class ProductionSheet extends BaseRingCentralSheet
                     ->applyNumberFormats("L3:L{$totals_row}")
                     ->applyNumberFormats("M3:{$last_column}{$totals_row}", '_(* #,##0.0%_);_(* (#,##0.0%);_(* "-"??_);_(@_)')
                     ->formatTotals("F{$totals_row}:P{$totals_row}");
-            }
+            },
         ];
     }
 
@@ -109,7 +111,6 @@ class ProductionSheet extends BaseRingCentralSheet
         $callsColumn = 'I';
         $salesColumn = 'J';
         $contactsColumn = 'K';
-
 
         foreach (range($loginTimeColumn, $contactsColumn) as $letter) {
             $sheet_object->setCellValue(

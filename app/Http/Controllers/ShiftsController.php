@@ -73,7 +73,7 @@ class ShiftsController extends Controller
         $shift = Shift::create($validated);
 
         return redirect()->route('admin.shifts.index')
-            ->withSuccess('Shift '.$shift->name.' created!');
+            ->withSuccess('Shift ' . $shift->name . ' created!');
     }
 
     /**
@@ -111,7 +111,7 @@ class ShiftsController extends Controller
     public function update(Request $request, Shift $shift)
     {
         $validated = $this->validate($request, [
-            'employee_id' => 'required|unique:shifts,employee_id,'.$shift->id,
+            'employee_id' => 'required|unique:shifts,employee_id,' . $shift->id,
             'start_at' => 'required|date_format:H:i',
             'end_at' => 'required|date_format:H:i',
             'monday' => 'nullable|numeric|min:0|max:12',
@@ -126,7 +126,7 @@ class ShiftsController extends Controller
         $shift->update($validated);
 
         return redirect()->route('admin.shifts.index')
-            ->withSuccess('Shift '.$shift->name.' updated!');
+            ->withSuccess('Shift ' . $shift->name . ' updated!');
     }
 
     /**

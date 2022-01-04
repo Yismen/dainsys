@@ -64,7 +64,7 @@ class ArsController extends Controller
     public function store(Request $request, Ars $ars)
     {
         $this->validate($request, [
-            'name' => 'required|min:3|unique:arss'
+            'name' => 'required|min:3|unique:arss',
         ]);
 
         Cache::forget('employees');
@@ -112,7 +112,7 @@ class ArsController extends Controller
     public function update(Request $request, Ars $ars)
     {
         $this->validate($request, [
-            'name' => 'required|min:3|unique:arss,name,' . $ars->id
+            'name' => 'required|min:3|unique:arss,name,' . $ars->id,
         ]);
 
         Cache::forget('employees');
@@ -139,6 +139,7 @@ class ArsController extends Controller
             if ($request->ajax()) {
                 return abort(403, "ARS $ars->name has employees therefore it can't be deleted!");
             }
+
             return redirect()->back()
                 ->withDanger("ARS $ars->name has employees therefore it can't be deleted!");
         }
@@ -157,9 +158,9 @@ class ArsController extends Controller
     {
         $this->validate($request, [
             'employee' => 'required|array',
-            'ars' => 'required|exists:arss,id'
+            'ars' => 'required|exists:arss,id',
         ], [
-            'employee.required' => 'Select at least one employee!'
+            'employee.required' => 'Select at least one employee!',
         ]);
 
         Cache::forget('employees');
@@ -172,6 +173,6 @@ class ArsController extends Controller
         }
 
         return redirect()->route('admin.arss.index')
-            ->withSuccess("Done!");
+            ->withSuccess('Done!');
     }
 }

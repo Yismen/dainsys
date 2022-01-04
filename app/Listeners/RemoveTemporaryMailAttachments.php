@@ -18,7 +18,6 @@ class RemoveTemporaryMailAttachments
      */
     public function __construct()
     {
-        //
     }
 
     /**

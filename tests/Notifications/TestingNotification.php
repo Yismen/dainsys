@@ -4,7 +4,6 @@ namespace Tests\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use Illuminate\Notifications\Messages\MailMessage;
 
 class TestingNotification extends Notification
 {
@@ -17,7 +16,6 @@ class TestingNotification extends Notification
      */
     public function __construct()
     {
-        //
     }
 
     /**
@@ -40,7 +38,7 @@ class TestingNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+
         ];
     }
 }

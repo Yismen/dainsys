@@ -3,11 +3,9 @@
 namespace App\Console\Commands\RingCentralReports\Exports\Sheets\Ooma;
 
 use App\Console\Commands\RingCentralReports\Exports\Sheets\DispositionsSheet;
-use App\Console\Commands\RingCentralReports\Exports\Support\Connections\ConnectionContract;
 use App\Console\Commands\RingCentralReports\Exports\Support\Connections\RingCentralConnection;
 use App\Exports\RangeFormarter;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Sheet;
@@ -15,7 +13,6 @@ use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
 class OomaDispositionsSheet extends DispositionsSheet
 {
-
     protected $program_start_date = '2021-07-07';
     /**
      * Report this sheet if it has data. For some sheets it make no sense to send a report
@@ -24,6 +21,7 @@ class OomaDispositionsSheet extends DispositionsSheet
      * @var boolean
      */
     protected $reportable = true;
+
     /**
      * @return View
      */
@@ -62,14 +60,13 @@ class OomaDispositionsSheet extends DispositionsSheet
 
                 $this->addSubTotals($totals_row, $rows, $event->sheet);
 
-
                 $formarter = new RangeFormarter($event, "A1:{$last_column}{$rows}");
 
                 $formarter->configurePage(PageSetup::ORIENTATION_PORTRAIT)
-                    ->setAutoSizeRange("B", "D")
-                    ->setColumnsRangeWidth("A", "A", 19)
-                    ->setColumnsRangeWidth("B", $last_column, 11)
-                    ->formatTitle("A1:D1")
+                    ->setAutoSizeRange('B', 'D')
+                    ->setColumnsRangeWidth('A', 'A', 19)
+                    ->setColumnsRangeWidth('B', $last_column, 11)
+                    ->formatTitle('A1:D1')
                     ->freezePane('A3')
                     ->setAutoFilter("A2:{$last_column}{$rows}")
                     ->formatHeaderRow("A2:{$last_column}2")
@@ -77,7 +74,7 @@ class OomaDispositionsSheet extends DispositionsSheet
                     ->applyNumberFormats("E3:F{$totals_row}", '_(* #,##0_);_(* (#,##0);_(* "-"??_);_(@_)')
                     ->applyNumberFormats("G3:{$last_column}{$totals_row}", '_(* #,##0.0%_);_(* (#,##0.0%);_(* "-"??_);_(@_)')
                     ->formatTotals("E{$totals_row}:F{$totals_row}");
-            }
+            },
         ];
     }
 

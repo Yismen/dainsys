@@ -11,6 +11,6 @@ class CapillusCallTypeReportMail extends CapillusMailBase
      */
     public function build()
     {
-        return $this->defaultBuild("KNYC.E Calls Type Report");
+        return $this->defaultBuild('KNYC.E Calls Type Report');
     }
 }

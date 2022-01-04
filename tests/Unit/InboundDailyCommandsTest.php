@@ -11,7 +11,6 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class InboundDailyCommandsTest extends TestCase
 {
-
     /** @test */
     public function daily_summary_command_exists()
     {
@@ -20,7 +19,7 @@ class InboundDailyCommandsTest extends TestCase
 
         $this->artisan('inbound:send-daily-summary')
             ->assertExitCode(0)
-            ->expectsOutput("Kipany Inbound Daily Report sent!");
+            ->expectsOutput('Kipany Inbound Daily Report sent!');
     }
 
     /** @test */
@@ -28,7 +27,7 @@ class InboundDailyCommandsTest extends TestCase
     {
         Excel::fake();
         Mail::fake();
-        $subject = "Fake Name";
+        $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
         $this->artisan('inbound:send-daily-summary');
 
@@ -53,7 +52,7 @@ class InboundDailyCommandsTest extends TestCase
     {
         Excel::fake();
 
-        $subject = "Fake Name";
+        $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
         $repo['data'] = InboundDataRepository::getData(
             '2021-05-25',
@@ -84,7 +83,7 @@ class InboundDailyCommandsTest extends TestCase
         Excel::fake();
         Mail::fake();
 
-        $subject = "Fake Name";
+        $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
         $recipient = 'someone@fake.email';
 

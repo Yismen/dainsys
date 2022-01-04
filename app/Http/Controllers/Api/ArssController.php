@@ -3,18 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Ars;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ArsResource;
-use Carbon\Carbon;
 
 class ArssController extends Controller
 {
     /**
      * Store Ars
-     * 
+     *
      * Save a Ars model to database.
-     * 
+     *
      * @bodyParam name string required The name of the Ars
      * @response 201 {
      *      "name": "Asdfasdf",
@@ -27,7 +24,7 @@ class ArssController extends Controller
     public function store()
     {
         $this->validate(request(), [
-            'name' => 'required'
+            'name' => 'required',
         ]);
 
         $afp = Ars::create(request()->all());

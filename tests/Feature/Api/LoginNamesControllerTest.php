@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Api;
 
-use App\Employee;
 use App\LoginName;
 use App\Termination;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -25,12 +24,12 @@ class LoginNamesControllerTest extends TestCase
             ->assertJsonStructure([
                 'data' => [
                     '*' => [
-                        "employee_id",
-                        "employee_name",
-                        "login",
-                        "supervisor_id",
-                    ]
-                ]
+                        'employee_id',
+                        'employee_name',
+                        'login',
+                        'supervisor_id',
+                    ],
+                ],
             ]);
     }
 
@@ -38,7 +37,7 @@ class LoginNamesControllerTest extends TestCase
     public function it_returns_a_login_names_for_recent_employees_only()
     {
         $recent_employee = create(Termination::class, ['termination_date' => now()])->employee;
-        $old_employee = create(Termination::class,  ['termination_date' => now()->subYear()])->employee;
+        $old_employee = create(Termination::class, ['termination_date' => now()->subYear()])->employee;
         create(LoginName::class, ['employee_id' => $recent_employee->id]);
         create(LoginName::class, ['employee_id' => $old_employee->id]);
         Passport::actingAs($this->user());

@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Menu;
 use App\Role;
-use App\User;
-use App\Permission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 

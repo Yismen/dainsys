@@ -3,7 +3,6 @@
 namespace App\Repositories\Capillus;
 
 use App\CapillusDailyPerformance;
-use Carbon\Carbon;
 
 class CapillusPerformanceReportRepository
 {

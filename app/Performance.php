@@ -43,9 +43,6 @@ class Performance extends Model
 
             $model->unique_id = $model->date . '-' . $model->employee_id . '-' . $model->campaign_id;
             $model->name = $employee->fullName;
-
         });
-
     }
-
 }

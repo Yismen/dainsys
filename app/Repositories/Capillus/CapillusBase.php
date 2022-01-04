@@ -6,5 +6,4 @@ use App\Connections\RingCentralConnection;
 
 abstract class CapillusBase extends RingCentralConnection
 {
-   
 }

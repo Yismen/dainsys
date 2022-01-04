@@ -22,6 +22,7 @@ class SupervisorUserController extends Controller
 
         $this->repo = new SupervisorUsersRepository;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -52,7 +53,7 @@ class SupervisorUserController extends Controller
     {
         $supervisor_user->syncRelationship([
             'user_ids' => $request->user_id,
-            'supervisor_ids' => $request->supervisor_id
+            'supervisor_ids' => $request->supervisor_id,
         ]);
 
         return redirect()
@@ -67,7 +68,6 @@ class SupervisorUserController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -95,7 +95,7 @@ class SupervisorUserController extends Controller
     {
         $supervisor_user->syncRelationship([
             'user_ids' => $request->user_id,
-            'supervisor_ids' => $request->supervisor_id
+            'supervisor_ids' => $request->supervisor_id,
         ]);
 
         return redirect()

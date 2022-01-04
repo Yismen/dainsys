@@ -3,7 +3,6 @@
 namespace Tests\Feature\Api;
 
 use App\OvernightHour;
-use App\Termination;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
 use Tests\TestCase;
@@ -26,12 +25,12 @@ class OvernightHoursControllerTest extends TestCase
             ->assertJsonStructure([
                 'data' => [
                     '*' => [
-                        "date",
-                        "employee_id",
-                        "name",
-                        "hours",
-                    ]
-                ]
+                        'date',
+                        'employee_id',
+                        'name',
+                        'hours',
+                    ],
+                ],
             ]);
     }
 }

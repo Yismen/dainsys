@@ -36,14 +36,13 @@ class UniqueInDBRule implements Rule
      * @return bool
      */
     public function passes($attribute, $value)
-    {    
+    {
         foreach ($this->fields as $field) {
             $this->model = in_array($field, $this->dates) ?
-                $this->model->whereDate($field, request($field)) : 
+                $this->model->whereDate($field, request($field)) :
                 $this->model->where($field, request($field));
         }
-        
-        
+
         $model = $this->model->first();
 
         return $model == null || $model->id == $this->except_id;

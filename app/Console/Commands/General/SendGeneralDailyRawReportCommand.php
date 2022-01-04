@@ -43,6 +43,7 @@ class SendGeneralDailyRawReportCommand extends Command
      * Report subject name
      */
     protected string $mail_subject;
+
     /**
      * Create a new command instance.
      *
@@ -52,12 +53,13 @@ class SendGeneralDailyRawReportCommand extends Command
     {
         parent::__construct();
 
-        $this->mail_subject = "General Daily Raw Report";
+        $this->mail_subject = 'General Daily Raw Report';
 
-        $this->file_name = $this->mail_subject . now()->subDay()->format('Ymd_His') . ".xlsx";
+        $this->file_name = $this->mail_subject . now()->subDay()->format('Ymd_His') . '.xlsx';
 
         $this->distro = $this->getDistroList();
     }
+
     /**
      * Execute the console command.
      *
@@ -71,7 +73,7 @@ class SendGeneralDailyRawReportCommand extends Command
             $results = (new GeneralDailyRawReportRepository(
                 [
                     'date_from' => $this->date_from,
-                    'date_to' => $this->date_to
+                    'date_to' => $this->date_to,
                 ],
                 $team = "{$this->option('team')}%"
             ));
@@ -93,13 +95,14 @@ class SendGeneralDailyRawReportCommand extends Command
                 $this->warn('No data for this date. Nothing sent');
             }
         } catch (\Throwable $th) {
-            $this->error("Something went wrong");
+            $this->error('Something went wrong');
 
             Log::debug($th);
 
             $this->notifyUsersAndLogError($th);
         }
     }
+
     /**
      * Get the list of emails to receive the report
      *
@@ -108,10 +111,11 @@ class SendGeneralDailyRawReportCommand extends Command
     protected function getDistroList(): array
     {
         $list = config('dainsys.workforce.distro') ??
-            abort(404, "Invalid distro list. Set it up in the .env, separated by pipe (|).");
+            abort(404, 'Invalid distro list. Set it up in the .env, separated by pipe (|).');
 
-        return explode("|", $list);
+        return explode('|', $list);
     }
+
     /**
      * Initiate command variables
      *
@@ -123,8 +127,7 @@ class SendGeneralDailyRawReportCommand extends Command
             now()->subDay()->format('m/d/Y') :
             Carbon::parse($this->option('date'))->format('m/d/Y');
 
-
-        $this->date_from =  !$this->option('from') ?
+        $this->date_from = !$this->option('from') ?
             $this->date_to :
             Carbon::parse($this->option('from'))->format('m/d/Y');
 

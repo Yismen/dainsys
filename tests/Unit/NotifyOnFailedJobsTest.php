@@ -2,7 +2,6 @@
 
 namespace Tests\Unit;
 
-use App\Jobs\ExampleJob;
 use App\Jobs\NotifyBirthdays;
 use App\Notifications\UserAppNotification;
 use Exception;

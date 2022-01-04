@@ -3,8 +3,6 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FileExtensionRule implements Rule
 {
@@ -44,6 +42,6 @@ class FileExtensionRule implements Rule
      */
     public function message()
     {
-        return "File must be of extenxions " . implode('|', $this->extensions);
+        return 'File must be of extenxions ' . implode('|', $this->extensions);
     }
 }

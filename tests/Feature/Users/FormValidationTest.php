@@ -12,7 +12,6 @@ class FormValidationTest extends TestCase
     use RefreshDatabase;
     use WithFaker;
 
-
     /** @test */
     public function name_field_is_required()
     {

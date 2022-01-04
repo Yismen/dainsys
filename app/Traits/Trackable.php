@@ -2,9 +2,6 @@
 
 namespace App\Traits;
 
-use App\User;
-use Exception;
-
 /**
  * summary
  */
@@ -25,7 +22,6 @@ trait Trackable
             // abort(405, 'Trackable trait requires authenticated users');
             $this->changes()->create($this->getDiff());
         }
-
     }
 
     protected function getDiff()
@@ -35,7 +31,7 @@ trait Trackable
         return [
             'user_id' => auth()->user()->id,
             'before' => json_encode(array_intersect_key($this->fresh()->toArray(), $after)),
-            'after' => json_encode($after)
+            'after' => json_encode($after),
         ];
     }
 

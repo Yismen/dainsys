@@ -20,7 +20,6 @@ class AttendanceCodesRepository
         $this->code = $code;
     }
 
-
     public function data()
     {
         return Cache::remember('attendances-' . $this->code . '-' . $this->current_user, now()->addHours(4), function () {
@@ -72,6 +71,7 @@ class AttendanceCodesRepository
     {
         return $this->prepare()->whereYear('date', Carbon::now()->year)->get();
     }
+
     protected function prepare()
     {
         return Attendance::where('code_id', $this->code)

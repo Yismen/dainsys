@@ -2,12 +2,9 @@
 
 namespace Tests\Feature\Api;
 
-use App\Nationality;
 use App\Notification;
-use App\Vip;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Laravel\Passport\Passport;
 use Tests\Notifications\TestingNotification;
 use Tests\TestCase;
@@ -58,7 +55,7 @@ class NotificationTest extends TestCase
             )
         );
 
-        $response = $this->post("/api/notifications/mark-all-as-read");
+        $response = $this->post('/api/notifications/mark-all-as-read');
 
         $response->assertOk()
             ->assertJsonCount(0);
@@ -79,7 +76,7 @@ class NotificationTest extends TestCase
         $unread_notification = create(Notification::class, ['notifiable_id' => $user->id, 'read_at' => null], 3);
         Passport::actingAs($user);
 
-        $response = $this->post("/api/notifications/mark-all-as-read?max_items=2");
+        $response = $this->post('/api/notifications/mark-all-as-read?max_items=2');
 
         $response->assertOk()
             ->assertJsonCount(1);

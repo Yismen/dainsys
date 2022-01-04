@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Employee;
 use App\Nationality;
-use App\Termination;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

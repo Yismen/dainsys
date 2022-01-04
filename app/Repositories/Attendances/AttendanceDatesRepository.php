@@ -25,15 +25,14 @@ class AttendanceDatesRepository
         $this->date = $date;
     }
 
-
     public function data()
     {
         return AttendanceCode::query()
-            ->withCount(['attendances' => function($query) {
+            ->withCount(['attendances' => function ($query) {
                 return $query->whereDate('date', $this->date)
                     ->where('user_id', 'like', $this->current_user);
             }])
-            ->whereHas('attendances', function($query){
+            ->whereHas('attendances', function ($query) {
                 $query->whereDate('date', $this->date)
                 ->where('user_id', 'like', $this->current_user);
             })
@@ -49,5 +48,4 @@ class AttendanceDatesRepository
             ->latest('date')
             ->get();
     }
-
 }

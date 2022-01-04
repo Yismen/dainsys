@@ -10,9 +10,9 @@ class NotificationsController extends Controller
 {
     /**
      * Notifications Unread
-     * 
+     *
      * Return a list of unread notifications for the authenticated user.
-     * 
+     *
      * @queryParam max_items integer Max amount of notifications to take. Default is 25.
      * @response 200 [
      *     {
@@ -36,10 +36,10 @@ class NotificationsController extends Controller
 
     /**
      * Notifications Mark all as Read
-     * 
+     *
      * Cleans the unread notifications for the user
      *
-     * @queryParam max_items integer Max amount of notifications to mark as read. Default is 25. This will also affect the amount of 
+     * @queryParam max_items integer Max amount of notifications to mark as read. Default is 25. This will also affect the amount of
      * unread notifications to return. Also, this will return the next batch of unread notifications for the authenticated user.
      * @response 200 [
      *     {
@@ -69,9 +69,9 @@ class NotificationsController extends Controller
 
     /**
      * Notification Details
-     * 
+     *
      * Show details for a user notification. This will also mark the given notification as read.
-     * 
+     *
      * @urlParam notification string Uuid of the stored notification
      * @response {
      *      "id": "d8e62834-828a-482d-a279-bb113fcaaa53",

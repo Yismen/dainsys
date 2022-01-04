@@ -9,9 +9,9 @@ class UserController extends Controller
 {
     /**
      * Authenticated User
-     * 
+     *
      * Return information of the authenticated user
-     * 
+     *
      * @response 200 {
      *      "id": 1,
      *      "name": "Yismen Jorge",

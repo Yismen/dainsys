@@ -18,6 +18,7 @@ class ClearCache
     {
         // dd('here');
         Cache::forget($name);
+
         return $next($request);
     }
 }

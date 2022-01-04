@@ -38,14 +38,13 @@ class ModuleActionsTest extends TestCase
         $this->assertDatabaseHas('holidays', [
             'date' => Carbon::parse($holiday['date']),
             'name' => $holiday['name'],
-            'description' => $holiday['description']
+            'description' => $holiday['description'],
         ]);
     }
 
     /** @test */
     public function authorized_users_can_see_edit_page()
     {
-        // $this->disableExceptionHandling();
         $holiday = create('App\Holiday');
         $response = $this->actingAs($this->userWithPermission('edit-holidays'));
 
@@ -62,12 +61,11 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_update_holiday()
     {
-        // $this->disableExceptionHandling();
         $holiday = create('App\Holiday');
         $updated = [
             'name' => 'Updated Name',
             'date' => Carbon::now(),
-            'description' => 'Changed Description'
+            'description' => 'Changed Description',
         ];
 
         $response = $this->actingAs($this->userWithPermission('edit-holidays'));
@@ -81,7 +79,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_destroy_holiday()
     {
-        $this->disableExceptionHandling();
         $holiday = create('App\Holiday');
         $response = $this->actingAs($this->userWithPermission('destroy-holidays'));
 
@@ -89,7 +86,7 @@ class ModuleActionsTest extends TestCase
             ->assertRedirect(route('admin.holidays.index'));
 
         $this->assertDatabaseMissing('holidays', [
-            'id' => $holiday->id
+            'id' => $holiday->id,
         ]);
     }
 
@@ -110,7 +107,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function it_create_holidays_only_returns_holidays_limited_to_many_months()
     {
-        $this->disableExceptionHandling();
         $months = 6;
         $date = Carbon::now()->subMonths($months)->startOfMonth();
         $holiday = raw('App\Holiday', ['date' => $date]);

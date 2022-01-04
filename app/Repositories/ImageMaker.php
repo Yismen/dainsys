@@ -12,7 +12,7 @@ class ImageMaker
     protected static $DESIRED_SIZE;
 
     public static function make($FILE, $SQUARED = null, $ENCODE = null, $DESIRED_SIZE = null)
-    {        
+    {
         static::$FILE = $FILE;
         static::$SQUARED = $SQUARED ?? true;
         static::$ENCODE = $ENCODE ?? 'png';
@@ -23,7 +23,7 @@ class ImageMaker
         $image = static::resizeImage($image);
 
         $image = static::wantsSquaredImage($image);
-        
+
         return $image->encode(static::$ENCODE);
     }
 

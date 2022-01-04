@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Dashboard;
 
-use App\Repositories\Dashboard\DataRepository;
 use App\Repositories\EmployeeRepository;
 use App\Repositories\PerformanceRepository;
 use App\Site;
@@ -47,27 +46,27 @@ class OwnerRepository
                 'revenue' => [
                     $data_repo->toArray([
                         'data' => $data->map->revenue,
-                        'label' => 'Revenue'
-                    ])
+                        'label' => 'Revenue',
+                    ]),
                 ],
                 'rph' => [
                     $data_repo->toArray([
                         'data' => $data->map->rph,
                         'label' => 'RPH',
-                        'fill' => false
-                    ])
+                        'fill' => false,
+                    ]),
                 ],
                 'login_time' => [
                     $data_repo->toArray([
                         'data' => $data->map->login_time,
-                        'label' => 'Login Hours'
-                    ])
+                        'label' => 'Login Hours',
+                    ]),
                 ],
                 'production_time' => [
                     $data_repo->toArray([
                         'data' => $data->map->production_time,
-                        'label' => 'Prod. Hours'
-                    ])
+                        'label' => 'Prod. Hours',
+                    ]),
                 ],
                 'sph' => [
                     $data_repo->toArray([
@@ -79,17 +78,17 @@ class OwnerRepository
                     $data_repo->toArray([
                         'data' => $data->map->sph,
                         'fill' => false,
-                        'label' => 'SPH'
-                    ])
+                        'label' => 'SPH',
+                    ]),
                 ],
                 'efficiency' => [
                     $data_repo->toArray([
                         'data' => $data->map->efficiency,
                         'label' => 'Efficiency',
-                        'fill' => false
-                    ])
-                ]
-            ]
+                        'fill' => false,
+                    ]),
+                ],
+            ],
         ];
     }
 

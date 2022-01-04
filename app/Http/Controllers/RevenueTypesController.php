@@ -47,7 +47,7 @@ class RevenueTypesController extends Controller
     public function store(RevenueType $revenue_type, Request $request)
     {
         $this->validate($request, [
-            'name' => "required|min:3|unique:revenue_types",
+            'name' => 'required|min:3|unique:revenue_types',
         ]);
 
         $revenue_type = $revenue_type->create(
@@ -89,11 +89,11 @@ class RevenueTypesController extends Controller
     public function update(RevenueType $revenue_type, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:3|unique:revenue_types,name,' . $revenue_type->id
+            'name' => 'required|min:3|unique:revenue_types,name,' . $revenue_type->id,
         ]);
 
         $revenue_type->update($request->only([
-            'name', 'display_name', 'description', 'url'
+            'name', 'display_name', 'description', 'url',
         ]));
 
         return redirect()->route('admin.revenue_types.index')

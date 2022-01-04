@@ -2,10 +2,8 @@
 
 namespace App\Console\Commands\RingCentralReports\Exports\Sheets\Ooma;
 
-use App\Console\Commands\RingCentralReports\Exports\Support\Connections\RingCentralConnection;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Str;
 
 class OomaMonthTDProductionSheet extends BaseOomaProductionSheet
 {
@@ -17,6 +15,7 @@ class OomaMonthTDProductionSheet extends BaseOomaProductionSheet
      * @var boolean
      */
     protected $reportable = false;
+
     /**
      * @return View
      */

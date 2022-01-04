@@ -10,7 +10,6 @@ use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithPreCalculateFormulas;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Events\AfterSheet;
-use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
 abstract class BaseDispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
 {
@@ -41,7 +40,7 @@ abstract class BaseDispositionsSheet implements FromView, WithTitle, WithEvents,
 
     protected $sheet_name;
 
-    public function __construct(array $data, $sheet_name = null,  $date_from = null, $date_to = null)
+    public function __construct(array $data, $sheet_name = null, $date_from = null, $date_to = null)
     {
         $this->data = $data;
         $this->date_from = $date_from;
@@ -76,7 +75,7 @@ abstract class BaseDispositionsSheet implements FromView, WithTitle, WithEvents,
                 (new RangeFormarter($event, "A1:{$this->last_column}{$this->rows}"))
                     ->configurePage()
                     ->setColumnsWidth($this->auto_fit_column_start, $this->auto_fit_column_end)
-                    ->formatTitle("A1:D1")
+                    ->formatTitle('A1:D1')
                     ->formatHeaderRow("A2:{$this->last_column}2")
                     ->setRowHeight(2, 45)
                     ->applyBorders("A3:{$this->last_column}{$this->rows}")
@@ -88,7 +87,7 @@ abstract class BaseDispositionsSheet implements FromView, WithTitle, WithEvents,
                 $this->sheet->freezePane($this->freeze_pane_cell);
 
                 $this->sheet->setAutoFilter("A2:{$this->last_column}{$this->rows}");
-            }
+            },
         ];
     }
 

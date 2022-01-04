@@ -15,7 +15,7 @@ class PerformancesController extends Controller
 {
     /**
      * Performances Data
-     * 
+     *
      * Collection of performances data for many months back.
      *
      * @urlParam many integer The amount of months back to filter data. Example /performances/performance_data/last/3/months
@@ -28,7 +28,7 @@ class PerformancesController extends Controller
      * @queryParam source string Filter data by source name. Example ?source=%Santiago HQ%.
      * @queryParam client string Filter data by client name. Example ?client=%blackhawk%.
      * @queryParam supervisor_employee string Filter data by supervisor_employee name. Example ?supervisor_employee=%Yismen Jore%.
-     * 
+     *
      * @response 200 {
      *      "data": [
      *          {

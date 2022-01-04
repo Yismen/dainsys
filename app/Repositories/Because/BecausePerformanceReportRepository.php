@@ -3,7 +3,6 @@
 namespace App\Repositories\Because;
 
 use App\BecauseDailyPerformance;
-use Carbon\Carbon;
 
 class BecausePerformanceReportRepository
 {
@@ -17,7 +16,7 @@ class BecausePerformanceReportRepository
     {
         $this->date = $options['date'];
         $this->campaign = $options['campaign'];
-        
+
         $this->data = [
             'wtd' => $this->wtd(),
             'mtd' => $this->mtd(),

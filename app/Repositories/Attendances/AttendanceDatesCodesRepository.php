@@ -27,12 +27,11 @@ class AttendanceDatesCodesRepository
         $this->code = $code;
     }
 
-
     public function data()
     {
         return Attendance::query()
             ->with('employee')
-            ->whereHas('employee', function($query){
+            ->whereHas('employee', function ($query) {
                 $query->whereDate('date', $this->date)
                     ->where('code_id', $this->code)
                     ->where('user_id', 'like', $this->current_user);
@@ -49,5 +48,4 @@ class AttendanceDatesCodesRepository
             ->latest('date')
             ->get();
     }
-
 }

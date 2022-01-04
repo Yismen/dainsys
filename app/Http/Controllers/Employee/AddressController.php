@@ -24,7 +24,7 @@ class AddressController extends Controller
             [
                 'sector' => 'required|min:3',
                 'street_address' => 'required|min:3',
-                'city' => 'required|min:3'
+                'city' => 'required|min:3',
             ]
         );
 

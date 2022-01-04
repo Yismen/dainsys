@@ -2,9 +2,7 @@
 
 namespace App\Console\Commands\RingCentralReports\Exports\Sheets\Ooma;
 
-use App\Console\Commands\RingCentralReports\Exports\Support\Connections\RingCentralConnection;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Str;
 
 class OomaDailyProductionSheet extends BaseOomaProductionSheet
 {

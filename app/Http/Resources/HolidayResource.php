@@ -18,7 +18,7 @@ class HolidayResource extends JsonResource
         return [
             'date' => $this->date->format('Y-m-d'),
             'name' => $this->name,
-            'description' => $this->description
+            'description' => $this->description,
         ];
     }
 }

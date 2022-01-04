@@ -3,19 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 use App\Holiday;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\HolidayResource;
-use Carbon\Carbon;
 
 class HolidayController extends Controller
 {
     /**
-     * Holidays Dates 
-     * 
+     * Holidays Dates
+     *
      * Collection of holidays. If year is not especified in the query string, it will return all holidays for previous year, current year and futuristic holidays.
-     * 
-     * @queryParam year string Limit the results to a specific year. Default to previous year. Example ?year=2021. 
+     *
+     * @queryParam year string Limit the results to a specific year. Default to previous year. Example ?year=2021.
      * @response 200 {
      *      "data": [
      *          {
@@ -28,7 +26,6 @@ class HolidayController extends Controller
      */
     public function index()
     {
-
         $holidays = Holiday::query()
             ->when(
                 request()->has('year'),

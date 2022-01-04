@@ -14,7 +14,6 @@ class ArsTest extends TestCase
     /** @test */
     public function guests_can_not_visit_any_arss_route()
     {
-        $this->withExceptionHandling();
         $ars = create('App\Ars');
         $this->get(route('admin.arss.index'))->assertRedirect('/login');
         $this->get(route('admin.arss.show', $ars->id))->assertRedirect('/login');
@@ -28,7 +27,6 @@ class ArsTest extends TestCase
     /** @test */
     public function it_requires_view_arss_permissions_to_view_all_arss()
     {
-        $this->withExceptionHandling();
         $this->actingAs(create('App\User'));
 
         $response = $this->get('/admin/arss');
@@ -39,7 +37,6 @@ class ArsTest extends TestCase
     /** @test */
     public function it_requires_view_arss_permissions_to_view_a_ars_details()
     {
-        $this->withExceptionHandling();
         // given
         $ars = create('App\Ars');
         $this->actingAs(create('App\User'));
@@ -54,7 +51,6 @@ class ArsTest extends TestCase
     /** @test */
     public function it_allows_users_to_view_arss_if_they_have_view_arss_permission()
     {
-        $this->withExceptionHandling();
         // given
         $user = $this->userWithPermission('view-arss');
         $ars = create('App\Ars');
@@ -70,7 +66,6 @@ class ArsTest extends TestCase
     /** @test */
     public function it_allows_users_to_view_a_ars_if_they_have_view_arss_permission()
     {
-        // $this->withExceptionHandling();
         // given
         $user = $this->userWithPermission('view-arss');
         $ars = create('App\Ars');
@@ -86,7 +81,6 @@ class ArsTest extends TestCase
     /** @test */
     public function it_requires_create_arss_permission_to_add_a_permission()
     {
-        $this->withExceptionHandling();
         // Given
         $user = create('App\User');
         $this->actingAs($user);
@@ -101,7 +95,6 @@ class ArsTest extends TestCase
     /** @test */
     public function it_allows_with_create_arss_permission_to_create_arss()
     {
-        // $this->withExceptionHandling();
         // given
         $user = $this->userWithPermission('create-arss');
 
@@ -116,7 +109,6 @@ class ArsTest extends TestCase
     /** @test */
     public function it_requires_destroy_arss_permission_to_destroy_a_permission()
     {
-        $this->withExceptionHandling();
         // Given
         $this->actingAs(create('App\User'));
         $ars = create('App\Ars');
@@ -132,7 +124,6 @@ class ArsTest extends TestCase
     /** @test */
     public function it_allows_users_with_destroy_arss_permission_to_destroy_arss()
     {
-        // $this->withExceptionHandling();
         // given
         $user = $this->userWithPermission('destroy-arss');
         $ars = create('App\Ars');
@@ -149,8 +140,6 @@ class ArsTest extends TestCase
     /** @test */
     public function it_requires_a_name_to_create_a_ars()
     {
-        $this->withExceptionHandling();
-
         $this->actingAs($this->userWithPermission('create-arss'))
             ->post(route('admin.arss.store'), $this->formAttributes(['name' => '']))
             ->assertSessionHasErrors('name');
@@ -159,7 +148,6 @@ class ArsTest extends TestCase
     /** @test */
     public function a_user_can_create_a_ars()
     {
-        // $this->withExceptionHandling();
         $ars = make('App\Ars');
 
         $this->actingAs($this->userWithPermission('create-arss'))
@@ -177,7 +165,6 @@ class ArsTest extends TestCase
     /** @test */
     public function a_user_can_see_a_form_to_update_a_ars()
     {
-        $this->withExceptionHandling();
         $this->actingAs($this->userWithPermission('edit-arss'));
         $ars = create('App\Ars');
 
@@ -192,7 +179,6 @@ class ArsTest extends TestCase
     /** @test */
     public function it_requires_a_name_to_update_a_ars()
     {
-        $this->withExceptionHandling();
         $ars = create('App\Ars');
 
         $this->actingAs($this->userWithPermission('edit-arss'))
@@ -203,7 +189,6 @@ class ArsTest extends TestCase
     /** @test */
     public function a_user_can_update_a_ars()
     {
-        $this->withExceptionHandling();
         $ars = create('App\Ars');
         $ars->name = 'New Name';
 

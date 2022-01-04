@@ -11,7 +11,6 @@ class TodosController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -21,7 +20,6 @@ class TodosController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -31,7 +29,6 @@ class TodosController extends Controller
      */
     public function store()
     {
-        //
     }
 
     /**
@@ -42,7 +39,6 @@ class TodosController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -53,7 +49,6 @@ class TodosController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -64,7 +59,6 @@ class TodosController extends Controller
      */
     public function update($id)
     {
-        //
     }
 
     /**
@@ -75,6 +69,5 @@ class TodosController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 }

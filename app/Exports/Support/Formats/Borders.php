@@ -2,8 +2,6 @@
 
 namespace App\Exports\Support\Formats;
 
-use PhpOffice\PhpSpreadsheet\Style\Border;
-
 class Borders
 {
     public static function apply(
@@ -18,8 +16,8 @@ class Borders
                 $position => [
                     'borderStyle' => $size,
                     'color' => ['rgb' => $color],
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 }

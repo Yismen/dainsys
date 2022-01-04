@@ -21,6 +21,5 @@ class DropboxFilesystemServiceProvider extends ServiceProvider
 
     public function register()
     {
-        //
     }
 }

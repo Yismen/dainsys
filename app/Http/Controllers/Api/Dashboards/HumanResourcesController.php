@@ -14,14 +14,14 @@ class HumanResourcesController extends Controller
 {
     /**
      * Dashboards Human Resources Head Counts
-     * 
+     *
      * Head Counts data for human resources dashboard
      *
      * @queryParam site string Limit results to specific site. Example ?site=%Santiago%
      * @queryParam project string Limit results to specific project. Example ?project=%Pub%
      * @queryParam department string Limit results to specific department. Example ?department=%Product%
      * @queryParam position string Limit results to specific position. Example ?position=%Agente%
-     * @response 200 { 
+     * @response 200 {
      *   "head_count": 75,
      *   "attrition_mtd": 1.33,
      *   "hired_tm": 5,
@@ -40,7 +40,7 @@ class HumanResourcesController extends Controller
 
     /**
      * Dashboards Human Resources Head Counts by Projects
-     * 
+     *
      * Collection of head counts grouped by projects for human resources dashboard
      *
      * @queryParam site string Limit results to specific site. Example ?site=%Santiago%
@@ -65,7 +65,7 @@ class HumanResourcesController extends Controller
 
     /**
      * Dashboards Human Resources Head Counts by Gender
-     * 
+     *
      * Collection of head count data grouped by gender for human resources dashboard
      *
      * @queryParam site string Limit results to specific site. Example ?site=%Santiago%
@@ -89,7 +89,7 @@ class HumanResourcesController extends Controller
 
     /**
      * Dashboards Human Resources Head Counts by Departments
-     * 
+     *
      * Collection of head count data grouped by department for human resources dashboard
      *
      * @queryParam site string Limit results to specific site. Example ?site=%Santiago%
@@ -113,7 +113,7 @@ class HumanResourcesController extends Controller
 
     /**
      * Dashboards Human Resources Month Attritions
-     * 
+     *
      * Collection of attritions by months, including the last 12 months for human resources dashboard
      *
      * @queryParam site string Limit results to specific site. Example ?site=%Santiago%

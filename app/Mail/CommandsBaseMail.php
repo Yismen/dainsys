@@ -47,7 +47,7 @@ class CommandsBaseMail extends Mailable
         return array_merge([
             'from' => 'yjorge@eccocorpbpo.com',
             'bcc' => 'yjorge@eccocorpbpo.com',
-            'view' => 'emails.commands-email'
+            'view' => 'emails.commands-email',
         ], $defaults);
     }
 }

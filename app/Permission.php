@@ -13,7 +13,7 @@ class Permission extends EmpatiePermission
         'view',
         'edit',
         'create',
-        'destroy'
+        'destroy',
     ];
 
     public function setNameAttribute($name)
@@ -42,11 +42,11 @@ class Permission extends EmpatiePermission
 
     public function updatePermission($request)
     {
-        $resource = explode("-", Str::slug($request->name), 2);
+        $resource = explode('-', Str::slug($request->name), 2);
         $resource = count($resource) > 1 ? $resource[1] : $resource[0];
 
         $request->merge([
-            'resource' => $resource
+            'resource' => $resource,
         ]);
 
         $this->update($request->only('name', 'resource'));

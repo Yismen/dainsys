@@ -102,6 +102,6 @@ class MigrationStatus extends Command
      */
     private function getMigrationFiles($dir)
     {
-        return File::files(database_path()."/{$dir}");
+        return File::files(database_path() . "/{$dir}");
     }
 }

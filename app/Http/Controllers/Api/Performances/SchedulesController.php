@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Api\Performances;
 
 use App\Schedule;
-use App\LoginName;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ScheduleResource;
-use App\Http\Resources\LoginNameResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Collection;
 
@@ -17,14 +14,13 @@ use Illuminate\Support\Collection;
  */
 class SchedulesController extends Controller
 {
-
     /**
      * Performances Schedules
-     * 
+     *
      * Collection of employees' schedules, filtered by many days ago.
-     * 
-     * @queryParam daysago int The amount of days to filter back. Default 90. Example daysago=45    
-     *  
+     *
+     * @queryParam daysago int The amount of days to filter back. Default 90. Example daysago=45
+     *
      * @response 200 {
      *      "data": [
      *          {

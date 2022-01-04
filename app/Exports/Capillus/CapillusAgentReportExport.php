@@ -34,12 +34,12 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
 
         $this->repo = new CapillusAgentReportRepository([
             'from_date' => $this->getInitialDate($options['period']),
-            'to_date' => $this->getFormatedDate($options['date'])->format('m/d/Y')
+            'to_date' => $this->getFormatedDate($options['date'])->format('m/d/Y'),
         ]);
 
         $this->rows = count($this->repo->data) + 2;
 
-        $this->last_column = "T";
+        $this->last_column = 'T';
     }
 
     protected function getFormatedDate($date)
@@ -51,24 +51,33 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
     {
         switch ($period) {
             case 'pd':
-                $this->sheet_name = "Previous Day";
+                $this->sheet_name = 'Previous Day';
+
                 return $this->getFormatedDate($this->options['date'])->format('m/d/Y');
+
                 break;
             case 'wtd':
-                $this->sheet_name = "WTD";
+                $this->sheet_name = 'WTD';
+
                 return $this->getFormatedDate($this->options['date'])->startOfWeek()->format('m/d/Y');
+
                 break;
             case 'mtd':
-                $this->sheet_name = "MTD";
+                $this->sheet_name = 'MTD';
+
                 return $this->getFormatedDate($this->options['date'])->startOfMonth()->format('m/d/Y');
+
                 break;
             case 'ptd':
-                $this->sheet_name = "PTD";
+                $this->sheet_name = 'PTD';
+
                 return $this->getFormatedDate('10/14/2019')->startOfWeek()->format('m/d/Y');
+
                 break;
-            
+
             default:
-                throw new Exception("Unknown Period passed!", 1);
+                throw new Exception('Unknown Period passed!', 1);
+
                 break;
         }
     }
@@ -76,7 +85,7 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
     public function view(): View
     {
         return view('exports.capillus.agent-report', [
-            'data' => $this->repo->data
+            'data' => $this->repo->data,
         ]);
     }
 
@@ -84,7 +93,6 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
@@ -100,13 +108,13 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
                 (new ConditionalFontsColor([
                     'sheet' => $this->sheet,
                     'range' => "A3:T{$this->rows}",
-                    'condition' => 0
+                    'condition' => 0,
                 ]))->apply();
 
                 // $event->sheet->getDelegate()->getStyle('A1:k1')->applyFromArray($this->headerStyle());
                 // $event->sheet->getDelegate()->getStyle('A1:A70')->applyFromArray($this->setBold());
                 // $event->sheet->getDelegate()->getStyle('I1:K70')->applyFromArray($this->setBold());
-            }
+            },
         ];
     }
 
@@ -139,7 +147,7 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
             ->setBottom(0.17)
             ->setRight(0.17)
             ->setLeft(0.17);
-        
+
         $this->sheet->setAutoFilter("A1:{$this->last_column}{$this->rows}");
 
         return $this;
@@ -152,7 +160,7 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
                 'fillType' => Fill::FILL_SOLID,
                 'color' => [
                     'rgb' => 'C9C9C9',
-                ]
+                ],
             ],
             'borders' => [
                 'top' => [
@@ -162,19 +170,19 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
                 'bottom' => [
                     'borderStyle' => Border::BORDER_THIN,
                     'color' => ['rgb' => '000000'],
-                ]
+                ],
             ],
             'font' => [
                 'bold' => true,
-            ]
+            ],
         ]);
-        
+
         $this->sheet->getStyle("A1:{$this->last_column}{$this->rows}")
             ->getAlignment()
                 ->setHorizontal(Alignment::HORIZONTAL_CENTER)
                 ->setVertical(Alignment::VERTICAL_CENTER)
                 ->setWrapText(true);
-        
+
         $this->sheet->freezePane('B3');
 
         return $this;
@@ -187,7 +195,7 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
                 'fillType' => Fill::FILL_SOLID,
                 'color' => [
                     'rgb' => 'DBDBDB',
-                ]
+                ],
             ],
             'borders' => [
                 'top' => [
@@ -197,11 +205,11 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
                 'bottom' => [
                     'borderStyle' => Border::BORDER_THIN,
                     'color' => ['rgb' => '000000'],
-                ]
+                ],
             ],
             'font' => [
                 'bold' => true,
-            ]
+            ],
         ]);
 
         return $this;
@@ -210,18 +218,18 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
     protected function mergeCells()
     {
         $this->sheet
-            ->mergeCells("A1:A2")
-            ->mergeCells("B1:B2")
-            ->mergeCells("C1:C2")
-            ->mergeCells("D1:D2")
-            ->mergeCells("E1:E2")
-            ->mergeCells("F1:F2")
-            ->mergeCells("G1:I1")
-            ->mergeCells("J1:J2")
-            ->mergeCells("K1:L1")
-            ->mergeCells("M1:N1")
-            ->mergeCells("O1:Q1")
-            ->mergeCells("R1:T1")
+            ->mergeCells('A1:A2')
+            ->mergeCells('B1:B2')
+            ->mergeCells('C1:C2')
+            ->mergeCells('D1:D2')
+            ->mergeCells('E1:E2')
+            ->mergeCells('F1:F2')
+            ->mergeCells('G1:I1')
+            ->mergeCells('J1:J2')
+            ->mergeCells('K1:L1')
+            ->mergeCells('M1:N1')
+            ->mergeCells('O1:Q1')
+            ->mergeCells('R1:T1')
             ;
 
         return $this;
@@ -234,11 +242,11 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
                 'right' => [
                     'borderStyle' => Border::BORDER_THIN,
                     'color' => ['rgb' => '000000'],
-                ]
-            ]
+                ],
+            ],
         ];
 
-        foreach (range("A", "F") as $col) {
+        foreach (range('A', 'F') as $col) {
             $this->sheet
             ->getStyle("{$col}1:{$col}{$this->rows}")->applyFromArray($format);
         }
@@ -249,17 +257,16 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
         $this->sheet->getStyle("N1:N{$this->rows}")->applyFromArray($format);
         $this->sheet->getStyle("Q1:Q{$this->rows}")->applyFromArray($format);
         $this->sheet->getStyle("T1:T{$this->rows}")->applyFromArray($format);
-            
 
         return $this;
     }
-    
+
     protected function applySpecialFormats()
     {
         $this->sheet->getStyle("B1:B{$this->rows}")
             ->getNumberFormat()
             ->setFormatCode(NumberFormat::FORMAT_DATE_DDMMYYYY);
-        
+
         $this->sheet->getStyle("E1:F{$this->rows}")
             ->getNumberFormat()
             ->setFormatCode(NumberFormat::FORMAT_PERCENTAGE_00);
@@ -267,15 +274,15 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
         $this->sheet->getStyle("M1:N{$this->rows}")
             ->getNumberFormat()
             ->setFormatCode(NumberFormat::FORMAT_PERCENTAGE_00);
-        
+
         $this->sheet->getStyle("J1:L{$this->rows}")
             ->getNumberFormat()
             ->setFormatCode(NumberFormat::FORMAT_CURRENCY_USD);
-        
+
         $this->sheet->getStyle("O1:T{$this->rows}")
             ->getNumberFormat()
             ->setFormatCode(NumberFormat::FORMAT_DATE_TIME4);
-        
+
         return $this;
     }
 }

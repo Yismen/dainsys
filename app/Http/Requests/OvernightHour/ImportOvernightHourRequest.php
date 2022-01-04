@@ -32,7 +32,7 @@ class ImportOvernightHourRequest extends FormRequest
                 // 'mimes:xls,xlsx',
                 'max:3000',
                 new FilenameStartsWithRule('import_overnight_hours_'),
-                new FileExtensionRule('xls|xlsx')
+                new FileExtensionRule('xls|xlsx'),
             ],
         ];
     }

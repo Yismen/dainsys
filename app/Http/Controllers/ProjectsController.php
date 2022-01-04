@@ -59,7 +59,7 @@ class ProjectsController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|min:3|unique:projects',
-            'client_id' => 'required|exists:clients,id'
+            'client_id' => 'required|exists:clients,id',
         ]);
 
         $project = $project->create($request->only(['name', 'client_id']));
@@ -104,7 +104,7 @@ class ProjectsController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|min:3|unique:projects,name,' . $project->id,
-            'client_id' => 'required|exists:clients,id'
+            'client_id' => 'required|exists:clients,id',
         ]);
 
         $project->update($request->only(['name', 'client_id']));

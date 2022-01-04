@@ -30,7 +30,7 @@ class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateForm
         $this->data = $data;
 
         $this->rows = count($this->data) + 2;
-        $this->last_column = "P";
+        $this->last_column = 'P';
         $this->sheetName = $sheetName;
         $this->title = $title;
         $this->view = $view;
@@ -53,11 +53,10 @@ class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateForm
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
-
                 (new RangeFormarter($event, "A1:{$this->last_column}{$this->rows}"))
                     ->configurePage()
-                    ->setColumnsWidth("B", "E")
-                    ->formatTitle("A1:D1")
+                    ->setColumnsWidth('B', 'E')
+                    ->formatTitle('A1:D1')
                     ->formatHeaderRow("A2:{$this->last_column}2")
                     ->applyBorders("A3:{$this->last_column}{$this->rows}")
                     ->applyNumberFormats("F3:H{$totalsRow}")
@@ -74,7 +73,7 @@ class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateForm
 
                 // Adjust DialGroup column width
                 $this->sheet->getColumnDimension('A')->setWidth(10);
-            }
+            },
         ];
     }
 
@@ -92,7 +91,6 @@ class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateForm
         $callsColumn = 'I';
         $salesColumn = 'J';
         $contactsColumn = 'K';
-
 
         foreach (range($loginTimeColumn, $contactsColumn) as $letter) {
             $this->sheet->setCellValue(

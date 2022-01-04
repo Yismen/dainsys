@@ -21,11 +21,11 @@ class CapillusAgentCallDataDumpExport implements FromView, WithTitle, WithEvents
     protected $sheet;
 
     public function __construct(array $options)
-    {        
+    {
         $this->repo = new CapillusAgentCallDataDumpRepository([
-            'date' => $options['date'], 
+            'date' => $options['date'],
             'startOfMonth' => $options['startOfMonth'],
-            'campaign' => $options['campaign']
+            'campaign' => $options['campaign'],
         ]);
 
         $this->count = count($this->repo->data);
@@ -36,20 +36,19 @@ class CapillusAgentCallDataDumpExport implements FromView, WithTitle, WithEvents
     {
         return view('exports.capillus.agent-call-data-dump', [
             'data' => $this->repo->data,
-            'title' => $this->sheet
+            'title' => $this->sheet,
         ]);
     }
 
     public function title(): string
     {
-        return "Agent Call Data Dump";
+        return 'Agent Call Data Dump';
     }
 
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function(AfterSheet $event) {  
-                
+            AfterSheet::class => function (AfterSheet $event) {
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
@@ -58,28 +57,28 @@ class CapillusAgentCallDataDumpExport implements FromView, WithTitle, WithEvents
                     ->formatDateColumn()
                     ->formatTimecolumns()
                     ->setColumnsWidth()
-                    ;     
-                    
+                    ;
+
                 $this->sheet->setAutoFilter("A1:M{$this->count}");
                 $this->sheet->freezePane('A2');
-            }
+            },
         ];
     }
 
     protected function setColumnsWidth()
-    {    
+    {
         $this->sheet->getDefaultColumnDimension()->setWidth(10);
 
-        $this->sheet->getRowDimension('1')->setRowHeight(32); 
-                    
-        foreach (range(1, 8) as $col) { 
+        $this->sheet->getRowDimension('1')->setRowHeight(32);
+
+        foreach (range(1, 8) as $col) {
             $this->sheet->getColumnDimensionByColumn($col)
                 ->setAutoSize(true);
         }
-        
+
         $this->sheet->getColumnDimension('D')
             ->setWidth(23);
-            
+
         $this->sheet->getColumnDimension('F')
             ->setWidth(23);
 
@@ -108,7 +107,7 @@ class CapillusAgentCallDataDumpExport implements FromView, WithTitle, WithEvents
         $this->sheet->getStyle("A1:A{$this->count}")
             ->getNumberFormat()
             ->setFormatCode('mm/dd/yyyy');
-        
+
         return $this;
     }
 
@@ -119,17 +118,17 @@ class CapillusAgentCallDataDumpExport implements FromView, WithTitle, WithEvents
                 'fillType' => Fill::FILL_SOLID,
                 'color' => [
                     'rgb' => 'E7E6E6',
-                ]
+                ],
             ],
             'borders' => [
                 'bottom' => [
                     'borderStyle' => Border::BORDER_HAIR,
                     'color' => ['rgb' => '000000'],
-                ]
+                ],
             ],
             'font' => [
                 'bold' => true,
-            ]
+            ],
         ];
 
         $this->sheet
@@ -145,10 +144,10 @@ class CapillusAgentCallDataDumpExport implements FromView, WithTitle, WithEvents
     {
         $this->sheet->getStyle("B1:B{$this->count}")->getNumberFormat()
             ->setFormatCode(NumberFormat::FORMAT_DATE_TIME2);
-            
+
         $this->sheet->getStyle("I1:M{$this->count}")->getNumberFormat()
             ->setFormatCode(NumberFormat::FORMAT_DATE_TIME4);
-        
+
         return $this;
     }
 }

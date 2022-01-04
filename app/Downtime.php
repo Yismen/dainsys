@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Carbon\Carbon;
 use App\Traits\Trackable;
 use App\Traits\PerformanceTrait;
 use App\DainsysModel as Model;
@@ -19,7 +18,7 @@ class Downtime extends Model
         'campaign_id',
         'login_time',
         'downtime_reason_id',
-        'reported_by'
+        'reported_by',
     ];
 
     public static function boot()
@@ -31,11 +30,11 @@ class Downtime extends Model
 
             $model->unique_id = request('date') . '-' . request('employee_id') . '-' . request('campaign_id');
 
-            $model->name =  $employe->fullName;
+            $model->name = $employe->fullName;
 
-            $model->file_name = request('date') . "-" . request('campaign_id') . "-downtimes-file";
+            $model->file_name = request('date') . '-' . request('campaign_id') . '-downtimes-file';
 
-            $model->supervisor_id =  optional($employe->supervisor)->id;
+            $model->supervisor_id = optional($employe->supervisor)->id;
         });
     }
 }

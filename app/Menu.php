@@ -24,7 +24,7 @@ class Menu extends Model
 
     public function getRolesListAttribute()
     {
-        return $roles =  Role::pluck('name', 'id')->toArray();
+        return $roles = Role::pluck('name', 'id')->toArray();
     }
 
     public function setDisplayNameAttribute($display_name)
@@ -99,7 +99,7 @@ class Menu extends Model
 
     private function prepareName($name)
     {
-        return strtolower(trim(preg_replace("/\.|\/\//", "/", $name)));
+        return strtolower(trim(preg_replace("/\.|\/\//", '/', $name)));
     }
 
     private function stripAdmin($name)
@@ -121,7 +121,7 @@ class Menu extends Model
             if (!Permission::where('name', $new_name)->first()) {
                 Permission::create([
                     'name' => $new_name,
-                    'resource' => $name
+                    'resource' => $name,
                 ]);
             }
         }

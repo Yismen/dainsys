@@ -22,11 +22,11 @@ class HumanResourcesTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonStructure([
                 '*' => [
-                    "month",
-                    "head_count",
-                    "terminations",
-                    "attrition",
-                ]
+                    'month',
+                    'head_count',
+                    'terminations',
+                    'attrition',
+                ],
             ]);
     }
 
@@ -41,12 +41,12 @@ class HumanResourcesTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonStructure([
                 '*' => [
-                    "id",
-                    "name",
-                    "created_at",
-                    "updated_at",
-                    "employees_count",
-                ]
+                    'id',
+                    'name',
+                    'created_at',
+                    'updated_at',
+                    'employees_count',
+                ],
             ]);
     }
 
@@ -61,12 +61,12 @@ class HumanResourcesTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonStructure([
                 '*' => [
-                    "id",
-                    "name",
-                    "created_at",
-                    "updated_at",
-                    "employees_count",
-                ]
+                    'id',
+                    'name',
+                    'created_at',
+                    'updated_at',
+                    'employees_count',
+                ],
             ]);
     }
 
@@ -81,13 +81,13 @@ class HumanResourcesTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonStructure([
                 '*' => [
-                    "id",
-                    "name",
-                    "client_id",
-                    "created_at",
-                    "updated_at",
-                    "employees_count",
-                ]
+                    'id',
+                    'name',
+                    'client_id',
+                    'created_at',
+                    'updated_at',
+                    'employees_count',
+                ],
             ]);
     }
 
@@ -101,10 +101,10 @@ class HumanResourcesTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJsonStructure([
-                "head_count",
-                "attrition_mtd",
-                "hired_tm",
-                "terminated_tm",
+                'head_count',
+                'attrition_mtd',
+                'hired_tm',
+                'terminated_tm',
             ]);
     }
 }

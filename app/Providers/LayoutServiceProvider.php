@@ -28,7 +28,6 @@ class LayoutServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
     }
 
     /**

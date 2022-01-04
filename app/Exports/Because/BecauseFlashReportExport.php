@@ -29,7 +29,7 @@ class BecauseFlashReportExport implements FromView, WithColumnFormatting, WithTi
             'current_date' => Carbon::now()->format('d-M-Y'),
             'previous_date' => Carbon::now()->subDay()->format('d-M-Y'),
             'todays' => $this->data['todays'],
-            'yesterdays' => $this->data['yesterdays']
+            'yesterdays' => $this->data['yesterdays'],
         ]);
     }
 
@@ -37,7 +37,6 @@ class BecauseFlashReportExport implements FromView, WithColumnFormatting, WithTi
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                
                 // format the whole tables
                 $event->sheet->getDelegate()->getStyle('A4:O13')->applyFromArray($this->tableStyle());
                 $event->sheet->getDelegate()->getStyle('A16:O25')->applyFromArray($this->tableStyle());
@@ -63,10 +62,10 @@ class BecauseFlashReportExport implements FromView, WithColumnFormatting, WithTi
                     ->setRight(0.17)
                     ->setLeft(0.17);
                 $event->sheet->getDelegate()->getSheetView()->setZoomScale(90);
-            }
+            },
         ];
     }
-    
+
     public function columnFormats(): array
     {
         return [
@@ -111,11 +110,11 @@ class BecauseFlashReportExport implements FromView, WithColumnFormatting, WithTi
                 'inside' => [
                     'borderStyle' => Border::BORDER_THIN,
                     'color' => ['rgb' => '000000'],
-                ]
+                ],
             ],
             'alignment' => [
-                'wrapText' => true
-            ]
+                'wrapText' => true,
+            ],
         ];
     }
 
@@ -126,11 +125,11 @@ class BecauseFlashReportExport implements FromView, WithColumnFormatting, WithTi
                 'outline' => [
                     'borderStyle' => Border::BORDER_THICK,
                     'color' => ['rgb' => '000000'],
-                ]
+                ],
             ],
             'font' => [
                 'bold' => true,
-                'color' => ['rgb' => 'FFFFFF']
+                'color' => ['rgb' => 'FFFFFF'],
             ],
             'fill' => [
                 'fillType' => Fill::FILL_SOLID,

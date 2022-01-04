@@ -14,7 +14,6 @@ class ProductionTest extends TestCase
     /** @test */
     public function it_returns_a_collection_of_monthly_stats()
     {
-        $this->withoutExceptionHandling();
         factory(Performance::class, 3)->create();
         Passport::actingAs($this->user());
 
@@ -23,23 +22,22 @@ class ProductionTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonStructure([
                 '*' => [
-                    "revenue",
-                    "login_time",
-                    "rph",
-                    "sales",
-                    "production_time",
-                    "sph",
-                    "efficiency",
-                    "sph_goal",
-                    "month",
-                ]
+                    'revenue',
+                    'login_time',
+                    'rph',
+                    'sales',
+                    'production_time',
+                    'sph',
+                    'efficiency',
+                    'sph_goal',
+                    'month',
+                ],
             ]);
     }
 
     /** @test */
     public function it_returns_a_collection_of_mtd_stats()
     {
-        $this->withoutExceptionHandling();
         factory(Performance::class, 3)->create();
         Passport::actingAs($this->user());
 
@@ -47,9 +45,9 @@ class ProductionTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJsonStructure([
-                "revenue_mtd",
-                "login_hours_mtd",
-                "production_hours_mtd",
+                'revenue_mtd',
+                'login_hours_mtd',
+                'production_hours_mtd',
             ]);
     }
 }

@@ -25,7 +25,7 @@ class SupervisorUserRequest extends FormRequest
     {
         return [
             'supervisor_id' => 'required|exists:supervisors,id',
-            'user_id' => 'required|exists:users,id'
+            'user_id' => 'required|exists:users,id',
         ];
     }
 }

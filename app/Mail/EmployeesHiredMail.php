@@ -17,7 +17,7 @@ class EmployeesHiredMail extends EmployeesBaseMail
         $this->markdown = 'emails.employees-hired';
 
         // $months = $months + 1;
-        $this->title = "Employees Hired " . ($months > 1 ? "Last {$months} Months" : "This Month");
+        $this->title = 'Employees Hired ' . ($months > 1 ? "Last {$months} Months" : 'This Month');
 
         $this->employees = $this->getEmployees();
     }
@@ -28,14 +28,14 @@ class EmployeesHiredMail extends EmployeesBaseMail
             ->orderBy('hire_date', 'DESC')
             ->orderBy('site_id')
             ->sorted()
-            ->whereHas('site',  function ($query) {
+            ->whereHas('site', function ($query) {
                 $query->where('name', 'like', $this->site);
             })
             ->with([
                 'termination',
                 'supervisor',
                 'project',
-                'site'
+                'site',
             ])
             ->with(['position' => function ($query) {
                 return $query->with(['department', 'payment_type']);

@@ -41,7 +41,7 @@ class GeneralCommandsTest extends TestCase
     {
         Excel::fake();
 
-        $subject = "Fake Name";
+        $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
 
         Excel::store(
@@ -62,7 +62,7 @@ class GeneralCommandsTest extends TestCase
         Excel::fake();
         Mail::fake();
 
-        $subject = "Fake Name";
+        $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
         $recipient = 'someone@fake.email';
 

@@ -11,7 +11,7 @@ class BecausePullDailyPerformanceDataRepository extends RingCentralConnection
 
     public function getData($dial_group, $date)
     {
-        return $this->data =  $this->connection()->select(
+        return $this->data = $this->connection()->select(
             DB::raw("
                 declare @reportDate as date, @campaign as  varchar(50)
 

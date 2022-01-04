@@ -50,7 +50,7 @@ class MenusController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:menus',
             'display_name' => 'required|unique:menus,display_name',
-            'roles' => 'sometimes|required|array'
+            'roles' => 'sometimes|required|array',
         ]);
 
         $menu = $menu->addMenu($request);
@@ -94,7 +94,7 @@ class MenusController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:menus,name,' . $menu->id,
             'display_name' => 'required|unique:menus,display_name,' . $menu->id . ',id',
-            'roles' => 'sometimes|required|array'
+            'roles' => 'sometimes|required|array',
         ]);
 
         $menu->updateMenu($request);

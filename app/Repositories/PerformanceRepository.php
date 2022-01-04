@@ -29,6 +29,7 @@ class PerformanceRepository
             ->whereDate('date', '<', now()->today())
             ->get();
     }
+
     public function weeklyManyWeeks(int $weeks = 12)
     {
         $start_of_week = Carbon::now()->subWeeks($weeks)->startOfWeek();
@@ -86,7 +87,7 @@ class PerformanceRepository
                 [
                     'campaign.project',
                     'supervisor',
-                    'employee.termination'
+                    'employee.termination',
                 ]
             );
     }

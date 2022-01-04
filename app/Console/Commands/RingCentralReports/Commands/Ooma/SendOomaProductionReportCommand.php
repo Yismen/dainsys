@@ -22,7 +22,6 @@ class SendOomaProductionReportCommand extends BaseProductionReportCommand
      */
     protected $description = 'Send a roduction report to Ooma distro, including a daily, wtd and mtd data, along with the daily dispositions';
 
-
     public function handle()
     {
         $dates_range = $this->getDatesRange();
@@ -69,7 +68,7 @@ class SendOomaProductionReportCommand extends BaseProductionReportCommand
 
         return [
             'from_date' => $from_date->format('Y-m-d'),
-            'to_date' => $to_date->format('Y-m-d')
+            'to_date' => $to_date->format('Y-m-d'),
         ];
     }
 }

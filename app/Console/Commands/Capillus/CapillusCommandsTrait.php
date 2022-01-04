@@ -14,11 +14,12 @@ trait CapillusCommandsTrait
         $campaigns = config('dainsys.capillus.campaigns');
 
         if (!$campaigns) {
-            throw new Exception("Capillus Campaigns not set in config.dainsys.capillus array!");
+            throw new Exception('Capillus Campaigns not set in config.dainsys.capillus array!');
         }
 
         return explode('|', $campaigns);
     }
+
     /**
      * Parse the distro list from the dainsys config file
      *
@@ -27,9 +28,9 @@ trait CapillusCommandsTrait
     protected function distroList(): array
     {
         $list = config('dainsys.capillus.distro') ??
-            abort(404, "Invalid distro list. Set it up in the .env, separated by pipe (|).");
+            abort(404, 'Invalid distro list. Set it up in the .env, separated by pipe (|).');
 
-        return explode("|", $list);
+        return explode('|', $list);
     }
 
     protected function getArrayFields($results)
