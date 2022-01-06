@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Punchs;
+namespace Tests\Feature\Punches;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;

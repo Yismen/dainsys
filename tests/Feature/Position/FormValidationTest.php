@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Positions;
+namespace Tests\Feature\Position;
 
 use App\Position;
 use Tests\TestCase;

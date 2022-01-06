@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Banks;
+namespace Tests\Feature\Bank;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;

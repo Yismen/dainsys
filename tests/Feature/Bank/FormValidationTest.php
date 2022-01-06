@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Banks;
+namespace Tests\Feature\Bank;
 
 use App\Bank;
 use Tests\TestCase;

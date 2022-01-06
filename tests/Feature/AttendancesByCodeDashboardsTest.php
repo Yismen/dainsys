@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\AttendanceCodes;
+namespace Tests\Feature;
 
 use App\AttendanceCode;
 use Tests\TestCase;

@@ -2,12 +2,13 @@
 
 namespace App\Providers;
 
-use App\Notifications\UserAppNotification;
 use App\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Queue\Events\JobFailed;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\ServiceProvider;
+use App\Notifications\UserAppNotification;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
+
+
+        Model::preventLazyLoading(!$this->app->isProduction());
 
         Queue::failing(function (JobFailed $event) {
             $users = User::role(['admin'])->get();

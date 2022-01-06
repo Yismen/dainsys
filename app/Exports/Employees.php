@@ -34,8 +34,22 @@ class Employees implements FromQuery, WithTitle, ShouldAutoSize, WithColumnForma
         return Employee::query()
             ->orderBy('first_name')
             ->with([
-                'punch', 'address', 'gender', 'marital', 'nationality',
-                'site', 'project', 'position', 'bankAccount', 'termination',
+                'punch',
+                'address',
+                'gender',
+                'marital',
+                'nationality',
+                'site',
+                'project',
+                'position' => function ($query) {
+                    $query->with([
+                        'department',
+                        'payment_type',
+                    ]);
+                },
+                'bankAccount',
+                'supervisor',
+                'termination',
             ])
             ->$status();
     }

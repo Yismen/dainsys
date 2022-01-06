@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\SupervisorUsers;
+namespace Tests\Feature\SupervisorUser;
 
 use App\Supervisor;
 use App\SupervisorUser;
