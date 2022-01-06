@@ -24,7 +24,7 @@ class DefaultDashboardController extends DashboardAbstractController
             'app_name' => ucwords(config('dainsys.app_name', 'Dainsys')),
             'users_count' => User::count(),
             'employees_count' => Employee::actives()->count(),
-            'profiles' => Profile::latest()->take(6)->get(),
+            'profiles' => Profile::latest()->take(6)->with('user')->get(),
             'sites' => SiteRepository::actives()->count(),
             'projects' => ProjectRepository::actives()->count(),
             'birthdays' => BirthdaysRepository::today()->get(),
