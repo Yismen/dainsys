@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Nationalities;
 
 use App\Employee;
 use App\Nationality;
