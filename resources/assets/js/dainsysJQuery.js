@@ -5,10 +5,10 @@
         $(section).find('form').each(function(index, item) {
             $(item).attr('autocomplete', 'off')
         })
-        // apply select to all selects
-        // $(section).find('select').select2({
-        //     theme: "bootstrap"
-        // })
+        // apply select to all selects with the select-class
+        $(section).find('select').select2({
+            theme: "bootstrap"
+        })
         // focus on first element
         $(section).find(':input').filter(':visible:first').focus()
     })
