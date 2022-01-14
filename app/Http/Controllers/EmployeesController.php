@@ -106,12 +106,20 @@ class EmployeesController extends Controller
      */
     public function show(Employee $employee)
     {
-        $terminations = Termination::where('employee_id', $employee->id)
-            ->withTrashed()
-            ->with(['terminationType', 'terminationReason'])
-            ->get();
+        $employee->load([
+            'termination' => function ($query) {
+                return $query
+                    ->withTrashed()
+                    ->with([
+                        'terminationType',
+                        'terminationReason'
+                    ]);
+            },
+            'changes.user',
+        ]);
 
-        return view('employees.show', compact('employee', 'terminations'));
+        // dd($employee->toArray());
+        return view('employees.show', compact('employee'));
     }
 
     /**

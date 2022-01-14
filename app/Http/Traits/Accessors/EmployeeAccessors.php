@@ -73,22 +73,22 @@ trait EmployeeAccessors
 
     public function getStatusAttribute()
     {
-        return $this->termination ? 'Inactive' : 'Active';
+        return $this->termination()->exists() ? 'Inactive' : 'Active';
     }
 
     public function getIsVipAttribute()
     {
-        return $this->vip ? true : false;
+        return $this->vip()->exists();
     }
 
     public function getIsUniversalAttribute()
     {
-        return $this->universal ? true : false;
+        return $this->universal()->exists();
     }
 
     public function getActiveAttribute()
     {
-        return false == $this->termination;
+        return $this->termination()->exists();
     }
 
     /**
@@ -144,21 +144,17 @@ trait EmployeeAccessors
      */
     public function getCanBeRehiredAttribute()
     {
-        return $this->termination ? $this->termination->can_be_rehired : null;
+        return $this->termination->can_be_rehired ?? null;
     }
 
     public function getTerminationDateAttribute()
     {
-        return !$this->termination ?
-            Carbon::now()->format('Y-m-d') :
-            $this->termination->termination_date->format('Y-m-d');
+        return $this->termination->termination_date->format('Y-m-d') ?? now()->format('Y-m-d');
     }
 
     public function getTerminationTypeIdAttribute()
     {
-        return $this->termination ?
-            $this->termination->terminationType->id :
-            null;
+        $this->termination->terminationType->id ?? null;
     }
 
     public function getTerminationTypeListAttribute()
@@ -168,9 +164,7 @@ trait EmployeeAccessors
 
     public function getTerminationReasonIdAttribute()
     {
-        return $this->termination ?
-            $this->termination->terminationType->id :
-            null;
+        return $this->termination->terminationType->id ?? null;
     }
 
     public function getTerminationReasonListAttribute()

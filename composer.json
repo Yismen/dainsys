@@ -16,7 +16,7 @@
         "graham-campbell/flysystem": "^7.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "intervention/image": "^2.5",
-        "knuckleswtf/scribe": "^3.18",
+        "knuckleswtf/scribe": "^3.21",
         "laravel/framework": "^8.0",
         "laravel/legacy-factories": "^1.1",
         "laravel/passport": "^10.0",
