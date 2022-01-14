@@ -1,11 +1,7 @@
-@php
-    $terminations = $terminations->except([optional($employee->termination)->id]);
-@endphp
-@if ($terminations->count() > 0)
-    <hr>
+@if ($employee->terminations)
     <h4>
          @lang('Past Terminations')
-        <span class="badge bg-red">{{ $terminations->count() }} </span>:
+        <span class="badge bg-red">{{ $employee->terminations->count() }} </span>:
     </h4>
     
     <table class="table table-condensed table-hover" >
@@ -18,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($terminations as $termination)								
+            @foreach ($employee->terminations as $termination)								
                 <tr class=" bg-danger">
                     <td>{{ $termination->termination_date->format('d/M/y') }} </td>
                     <td>{{ optional($termination->terminationType)->name }} </td>
