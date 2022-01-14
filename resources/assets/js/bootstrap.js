@@ -33,7 +33,7 @@ try {
     require('bootstrap');
     require('datatables.net-bs');
     require('admin-lte');
-    // require('select2');
+    require('select2');
     require('./dainsysJQuery')
 } catch (e) { console.log(e) }
 
