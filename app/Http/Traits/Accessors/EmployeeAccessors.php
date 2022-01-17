@@ -88,7 +88,7 @@ trait EmployeeAccessors
 
     public function getActiveAttribute()
     {
-        return $this->termination()->exists();
+        return !$this->termination()->exists();
     }
 
     /**
