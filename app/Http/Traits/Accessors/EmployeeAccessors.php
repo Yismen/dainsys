@@ -73,7 +73,17 @@ trait EmployeeAccessors
 
     public function getStatusAttribute()
     {
-        return $this->termination()->exists() ? 'Inactive' : 'Active';
+        return $this->is_active ? 'Active' : 'Inactive';
+    }
+
+    public function getActiveAttribute()
+    {
+        return !$this->termination()->exists();
+    }
+
+    public function getIsActiveAttribute()
+    {
+        return $this->active;
     }
 
     public function getIsVipAttribute()
@@ -84,11 +94,6 @@ trait EmployeeAccessors
     public function getIsUniversalAttribute()
     {
         return $this->universal()->exists();
-    }
-
-    public function getActiveAttribute()
-    {
-        return !$this->termination()->exists();
     }
 
     /**
