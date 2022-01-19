@@ -71,7 +71,9 @@ class SendWTDSummaryCommand extends Command
             $data_parsers = [
                 \App\Console\Commands\Inbound\Support\DataParsers\Periods\PeriodHoursParser::class,
                 \App\Console\Commands\Inbound\Support\DataParsers\Periods\PeriodCallsParser::class,
-            ]
+            ],
+            $team = 'ECC%',
+            $gate = 'HTL%'
         );
 
         if ($this->hasAnyData((array) $repo['data'])) {

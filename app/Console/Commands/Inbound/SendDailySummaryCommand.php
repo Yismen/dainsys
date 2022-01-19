@@ -75,7 +75,9 @@ class SendDailySummaryCommand extends Command
                 \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByGate::class,
                 \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByEmployee::class,
                 \App\Console\Commands\Inbound\Support\DataParsers\HoursData::class,
-            ]
+            ],
+            'ECC%',
+            'HTL%'
         );
 
         if ($this->hasAnyData((array) $repo['data'])) {

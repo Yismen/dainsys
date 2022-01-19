@@ -20,12 +20,15 @@ class InboundSummaryRepository extends RingCentralConnection implements InboundS
 
     protected string $agent_group_name;
 
+    protected string $dial_group_name;
+
     public function __construct($date_from, $date_to, $agent_group_name = 'ECC%', $gate = '%')
     {
         $this->date_from = $date_from;
         $this->date_to = $date_to;
         $this->gate_statement = $this->getGateStatement($gate);
         $this->agent_group_name = $agent_group_name;
+        $this->dial_group_name = $gate;
     }
 
     public function getInboundData(array $group_fields = []): array
@@ -47,7 +50,7 @@ class InboundSummaryRepository extends RingCentralConnection implements InboundS
                     FROM vw_Hours_Summary
                     WHERE
                         CONVERT(date, [Report Date]) BETWEEN '{$this->date_from}' AND '{$this->date_to}'
-                        AND [Dial Group] LIKE '{$this->agent_group_name}'
+                        AND [Dial Group] LIKE '{$this->dial_group_name}'
                         AND Team like '{$this->agent_group_name}' 
             ")
             );
