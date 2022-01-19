@@ -74,7 +74,7 @@
 <div class="form-group form-group-sm {{ $errors->has('tag_list') ? 'has-error' : null }}">
 	{!! Form::label('tag_list', 'Tags', ['class'=>'col-sm-2 control-label']) !!}
 	<div class="col-sm-10">
-			{!! Form::select('tag_list[]', $tags, null, ['class'=>'form-control', 'multiple'=>"multiple", 'id'=>'tag_list'])!!}
+			{!! Form::select('tag_list[]', $tags, null, ['class'=>'form-control select-2', 'multiple'=>"multiple", 'id'=>'tag_list'])!!}
 	</div>
 </div>
 

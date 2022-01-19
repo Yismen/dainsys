@@ -93,7 +93,7 @@
 	<div class="col-sm-6">
 		<div class="form-group {{ $errors->has('gender_id') ? 'has-error' : null }}">
 			{!! Form::label('gender_id', 'Gender:', ['class'=>'']) !!}
-			{!! Form::select('gender_id', $employee->gendersList, null, ['class'=>'form-control input-sm']) !!}
+			{!! Form::select('gender_id', $employee->gendersList, null, ['class'=>'form-control select-2 input-sm']) !!}
 			{!! $errors->first('gender_id', '<span class="text-danger">:message</span>') !!}
 		</div>
 		<!-- /. Gender -->
@@ -102,7 +102,7 @@
 	<div class="col-sm-6">
 		<div class="form-group {{ $errors->has('marital_id') ? 'has-error' : null }}">
 			{!! Form::label('marital_id', 'Marital Status:', ['class'=>'']) !!}
-			{!! Form::select('marital_id', $employee->maritalsList, null, ['class'=>'form-control input-sm']) !!}
+			{!! Form::select('marital_id', $employee->maritalsList, null, ['class'=>'form-control select-2 input-sm']) !!}
 			{!! $errors->first('marital_id', '<span class="text-danger">:message</span>') !!}
 		</div>
 	</div>
@@ -112,7 +112,7 @@
 	<div class="col-sm-6">
 		<div class="form-group {{ $errors->has('has_kids') ? 'has-error' : null }}">
 			{!! Form::label('has_kids', 'Has Kids:', ['class'=>'']) !!}
-			{!! Form::select('has_kids', $employee->hasKidsList, null, ['class'=>'form-control input-sm']) !!}
+			{!! Form::select('has_kids', $employee->hasKidsList, null, ['class'=>'form-control select-2 input-sm']) !!}
 			{!! $errors->first('has_kids', '<span class="text-danger">:message</span>') !!}
 		</div>
 	</div>

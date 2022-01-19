@@ -29,7 +29,7 @@
 		<div class="form-group {{ $errors->has('payment_type_id') ? 'has-error' : null }}">
 			{!! Form::label('payment_type_id', 'Payment Type:', ['class'=>'col-sm-2 control-label']) !!}
 			<div class="col-sm-10">
-				{!! Form::select('payment_type_id', $position->paymentTypesList->pluck('name', 'id'), null, ['class'=>'form-control', 'id'=>'payment_type_id']) !!}
+				{!! Form::select('payment_type_id', $position->paymentTypesList->pluck('name', 'id'), null, ['class'=>'form-control select-2', 'id'=>'payment_type_id']) !!}
 				{!! $errors->first('payment_type_id', '<span class="text-danger">:message</span>') !!}
 			</div>
 		</div>
@@ -41,7 +41,7 @@
 		<div class="form-group {{ $errors->has('payment_frequency_id') ? 'has-error' : null }}">
 			{!! Form::label('payment_frequency_id', 'Payment Frequency:', ['class'=>'col-sm-3 control-label']) !!}
 			<div class="col-sm-9">
-				{!! Form::select('payment_frequency_id', $position->paymentFrequenciesList->pluck('name', 'id'), null, ['class'=>'form-control', 'id'=>'payment_frequency_id']) !!}
+				{!! Form::select('payment_frequency_id', $position->paymentFrequenciesList->pluck('name', 'id'), null, ['class'=>'form-control select-2', 'id'=>'payment_frequency_id']) !!}
 				{!! $errors->first('payment_frequency_id', '<span class="text-danger">:message</span>') !!}
 			</div>
 		</div>

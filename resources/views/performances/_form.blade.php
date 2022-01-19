@@ -3,7 +3,7 @@
         <!-- Employee -->
         <div class="form-group {{ $errors->has('employee_id') ? 'has-error' : null }}">
             {!! Form::label('employee_id', ' Employee:', ['class'=>'']) !!}
-                {!! Form::select('employee_id', $performance->employeesList->pluck('full_name', 'id'), null, ['class'=>'form-control', 'placeholder'=>'--Select One']) !!}
+                {!! Form::select('employee_id', $performance->employeesList->pluck('full_name', 'id'), null, ['class'=>'form-control select-2', 'placeholder'=>'--Select One']) !!}
                 {!! $errors->first('employee_id', '<span class="text-danger">:message</span>') !!}
         </div>
         <!-- /. Employee -->
@@ -14,7 +14,7 @@
         <div class="form-group {{ $errors->has('supervisor_id') ? 'has-error' : null }}">
             {!! Form::label('supervisor_id', ' Supervisor:', ['class'=>'']) !!}
 
-            {!! Form::select('supervisor_id', $performance->supervisorsList->pluck('name', 'id'), null, ['class'=>'form-control', 'placeholder'=>'--Select One']) !!}
+            {!! Form::select('supervisor_id', $performance->supervisorsList->pluck('name', 'id'), null, ['class'=>'form-control select-2', 'placeholder'=>'--Select One']) !!}
             {!! $errors->first('supervisor_id', '<span class="text-danger">:message</span>') !!}
         </div>
         <!-- /. Supervisor -->
@@ -72,7 +72,7 @@
     <div class="col-xs-8">
         <div class="form-group {{ $errors->has('campaign_id') ? 'has-error' : null }}">
             {!! Form::label('campaign_id', ' Campaign:', ['class'=>'']) !!}
-            {!! Form::select('campaign_id', $performance->campaignsList->pluck('name', 'id'), null, ['class'=>'form-control', 'placeholder' => '--Select One']) !!}
+            {!! Form::select('campaign_id', $performance->campaignsList->pluck('name', 'id'), null, ['class'=>'form-control select-2', 'placeholder' => '--Select One']) !!}
         </div>
     </div>
     <!-- /Campaign -->

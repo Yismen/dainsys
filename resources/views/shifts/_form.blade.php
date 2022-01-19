@@ -3,7 +3,7 @@
         <!-- Name -->
         <div class="form-group {{ $errors->has('employee_id') ? 'has-error' : null }}">
             {!! Form::label('employee_id', 'Name:', ['class'=>'']) !!}
-            {!! Form::select('employee_id', $shift->employeesList->pluck('full_name', 'id'), null, ['class' => 'form-control']) !!}
+            {!! Form::select('employee_id', $shift->employeesList->pluck('full_name', 'id'), null, ['class' => 'form-control select-2']) !!}
             {!! $errors->first('employee_id', '<span class="text-danger">:message</span>') !!}
         </div>
         <!-- /. Name -->

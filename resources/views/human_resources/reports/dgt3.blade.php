@@ -19,7 +19,7 @@
                                 <div class="form-group {{ $errors->has('year') ? 'has-error' : null }}">
                                     {!! Form::label('year', 'Select a Year:', ['class'=>'col-sm-4 control-label']) !!}
                                     <div class="col-sm-8">
-                                        {!! Form::select('year', $years, null, ['class'=>'form-control input-sm']) !!}
+                                        {!! Form::select('year', $years, null, ['class'=>'form-control select-2 input-sm']) !!}
                                         {!! $errors->first('name', '<span class="text-danger">:message</span>') !!}
                                     </div>
                                 </div>

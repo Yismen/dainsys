@@ -64,7 +64,7 @@
             </div>
             <div class="col-sm-3 col-xs-7" style="position: fixed; bottom: 35%; right: 30px; padding: 15px ;  background-color: whitesmoke; border: darkgray; border-style: solid; border-width: thin;">
                 <div class="input-group">
-                    {{ Form::select('afp', $afps->pluck('name', 'id'), null, ['class' => 'form-control']) }}
+                    {{ Form::select('afp', $afps->pluck('name', 'id'), null, ['class' => 'form-control select-2']) }}
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-warning">Re-Assign</button>
                     </span>

@@ -19,7 +19,7 @@
                                 <div class="form-group {{ $errors->has('year') ? 'has-error' : null }}">
                                     {!! Form::label('year', 'Select a Year:', ['class'=>'col-sm-4 control-label']) !!}
                                     <div class="col-sm-8">
-                                        {!! Form::select('year', $years, null, ['class'=>'form-control input-sm']) !!}
+                                        {!! Form::select('year', $years, null, ['class'=>'form-control select-2 input-sm']) !!}
                                         {!! $errors->first('name', '<span class="text-danger">:message</span>') !!}
                                     </div>
                                 </div>
@@ -31,7 +31,7 @@
                                 <div class="form-group {{ $errors->has('month') ? 'has-error' : null }}">
                                     {!! Form::label('month', 'Select a Month:', ['class'=>'col-sm-4 control-label']) !!}
                                     <div class="col-sm-8">
-                                        {!! Form::select('month', $months, null, ['class'=>'form-control input-sm']) !!}
+                                        {!! Form::select('month', $months, null, ['class'=>'form-control select-2 input-sm']) !!}
                                         {!! $errors->first('month', '<span class="text-danger">:message</span>') !!}
                                     </div>
                                 </div>

@@ -6,9 +6,9 @@
             $(item).attr('autocomplete', 'off')
         })
         // apply select to all selects with the select-class
-        // $(section).find('select').select2({
-        //     theme: "bootstrap"
-        // })
+        $(section).find('.select-2').select2({
+            theme: "bootstrap"
+        })
         // focus on first element
         $(section).find(':input').filter(':visible:first').focus()
     })

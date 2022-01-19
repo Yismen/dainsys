@@ -58,7 +58,7 @@
 <div class="form-group {{ $errors->has('roles') ? 'has-error' : null }}">
 	{!! Form::label('roles', 'Roles:', ['class'=>'col-sm-2 control-label']) !!}
 	<div class="col-sm-10">
-		{!! Form::select('roles_lists[]', $rolesList, null, ['class'=>'form-control', 'multiple'=>"multiple", 'id'=>'roles_lists'])!!}
+		{!! Form::select('roles_lists[]', $rolesList, null, ['class'=>'form-control select-2', 'multiple'=>"multiple", 'id'=>'roles_lists'])!!}
 		<span class="help-block">!! Select the roles that will be served with this menu item:</span>
 	</div>
 	{{-- {!! $errors->first('roles', '<span class="text-danger">:message</span>') !!} --}}

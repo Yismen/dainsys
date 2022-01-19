@@ -60,7 +60,7 @@
                     {{-- Empty projects --}}
                     <div class="col-sm-4 col-xs-7" style="position: fixed; bottom: 35%; right: 30px; padding: 15px ;  background-color: whitesmoke; border: darkgray; border-style: solid; border-width: thin; z-index: 1000">
                         <div class="input-group">
-                            {{ Form::select('project', $projects->filter(function($key,$value){return ! Str::contains($key->name, 'Downtimes');})->pluck('name', 'id'), null, ['class' => 'form-control']) }}
+                            {{ Form::select('project', $projects->filter(function($key,$value){return ! Str::contains($key->name, 'Downtimes');})->pluck('name', 'id'), null, ['class' => 'form-control select-2']) }}
                             <span class="input-group-btn">
                                 <button type="submit" class="btn btn-info">Re-Assign</button>
                             </span>

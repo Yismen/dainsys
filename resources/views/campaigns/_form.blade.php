@@ -17,7 +17,7 @@
 		<div class="form-group {{ $errors->has('project_id') ? 'has-error' : null }}">
 			{!! Form::label('project_id', ' Project:', ['class'=>'col-sm-2 control-label']) !!}
 			<div class="col-sm-10">
-				{!! Form::select('project_id', $campaign->project_list->pluck('name', 'id'), null, ['class'=>'form-control']) !!}
+				{!! Form::select('project_id', $campaign->project_list->pluck('name', 'id'), null, ['class'=>'form-control select-2']) !!}
 				{!! $errors->first('project_id', '<span class="text-danger">:message</span>') !!}
 			</div>
 		</div>
@@ -31,7 +31,7 @@
 		<div class="form-group {{ $errors->has('source_id') ? 'has-error' : null }}">
 			{!! Form::label('source_id', ' Source:', ['class'=>'col-sm-2 control-label']) !!}
 			<div class="col-sm-10">
-				{!! Form::select('source_id', $campaign->source_list->pluck('name', 'id'), null, ['class'=>'form-control']) !!}
+				{!! Form::select('source_id', $campaign->source_list->pluck('name', 'id'), null, ['class'=>'form-control select-2']) !!}
 				{!! $errors->first('source_id', '<span class="text-danger">:message</span>') !!}
 			</div>
 		</div>
@@ -40,7 +40,7 @@
 		<div class="form-group {{ $errors->has('revenue_type_id') ? 'has-error' : null }}">
 			{!! Form::label('revenue_type_id', ' Revenue Type:', ['class'=>'col-sm-2 control-label']) !!}
 			<div class="col-sm-10">
-					{!! Form::select('revenue_type_id', $campaign->revenue_type_list->pluck('name', 'id'), null, ['class'=>'form-control']) !!}
+					{!! Form::select('revenue_type_id', $campaign->revenue_type_list->pluck('name', 'id'), null, ['class'=>'form-control select-2']) !!}
 				{!! $errors->first('revenue_type_id', '<span class="text-danger">:message</span>') !!}
 			</div>
 		</div>

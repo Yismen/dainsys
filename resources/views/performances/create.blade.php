@@ -21,7 +21,7 @@
                                 <div class="col-sm-4">
                                     <div class="form-group {{ $errors->has('employee_id') ? 'has-error' : null }}">
                                         {!! Form::label('employee_id', ' Employee:', ['class'=>'']) !!}
-                                        {!! Form::select('employee_id', $performance->employeeRecentsList->pluck('full_name', 'id'), null, ['class'=>'form-control', 'placeholder' => '--Select One']) !!}
+                                        {!! Form::select('employee_id', $performance->employeeRecentsList->pluck('full_name', 'id'), null, ['class'=>'form-control select-2', 'placeholder' => '--Select One']) !!}
                                         {!! $errors->first('employee_id', '<span class="text-danger">:message</span>') !!}
                                     </div>
                                 </div>
@@ -29,7 +29,7 @@
                                 <div class="col-sm-4">
                                     <div class="form-group {{ $errors->has('campaign_id') ? 'has-error' : null }}">
                                         {!! Form::label('campaign_id', ' Downtime Campaign:', ['class'=>'']) !!}
-                                        {!! Form::select('campaign_id', $performance->downtimesCampaignsList->pluck('name', 'id'), null, ['class'=>'form-control', 'placeholder' => '--Select One']) !!}
+                                        {!! Form::select('campaign_id', $performance->downtimesCampaignsList->pluck('name', 'id'), null, ['class'=>'form-control select-2', 'placeholder' => '--Select One']) !!}
                                     </div>
                                 </div>
                                 <!-- /Downtime Campaign -->
@@ -65,7 +65,7 @@
                                 <div class="col-sm-4">
                                     <div class="form-group {{ $errors->has('downtime_reason_id') ? 'has-error' : null }}">
                                         {!! Form::label('downtime_reason_id', ' Downtime Reason:', ['class'=>'']) !!}
-                                        {!! Form::select('downtime_reason_id', $performance->downtimesReasonsList->pluck('name', 'id')->toArray(), null, ['class'=>'form-control', 'placeholder' => '--Select One']) !!}
+                                        {!! Form::select('downtime_reason_id', $performance->downtimesReasonsList->pluck('name', 'id')->toArray(), null, ['class'=>'form-control select-2', 'placeholder' => '--Select One']) !!}
                                         {!! $errors->first('downtime_reason_id', '<span class="text-danger">:message</span>') !!}
                                     </div>
                                 </div>
@@ -74,7 +74,7 @@
                                 <div class="col-sm-4">
                                     <div class="form-group {{ $errors->has('reported_by') ? 'has-error' : null }}">
                                         {!! Form::label('reported_by', ' Reported By:', ['class'=>'']) !!}
-                                        {!! Form::select('reported_by', $performance->activeSupervisorsList->pluck('name', 'name')->toArray(), null, ['class'=>'form-control', 'placeholder' => '--Select One']) !!}
+                                        {!! Form::select('reported_by', $performance->activeSupervisorsList->pluck('name', 'name')->toArray(), null, ['class'=>'form-control select-2', 'placeholder' => '--Select One']) !!}
                                         {!! $errors->first('reported_by', '<span class="text-danger">:message</span>') !!}
                                     </div>
                                 </div>

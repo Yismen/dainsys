@@ -2,7 +2,7 @@
     <div class="col-sm-6">
         <div class="form-group {{ $errors->has('employee_id') ? 'has-error' : null }}">
             <label for="employee_id" class="">Employee:</label>
-            {!! Form::select('employee_id', $score->employees_list, null, ['class'=>'form-control select2','id'=>'employee_id','tabindex'=>1]) !!}
+            {!! Form::select('employee_id', $score->employees_list, null, ['class'=>'form-control select-2','id'=>'employee_id','tabindex'=>1]) !!}
             {!! $errors->first('employee_id', '<span class="text-danger">:message</span>') !!}
         </div>
     </div>
@@ -11,7 +11,7 @@
     <div class="col-sm-6">
         <div class="form-group {{ $errors->has('client_id') ? 'has-error' : null }}">
             <label for="client_id" class="">Client:</label>
-            {!! Form::select('client_id', $score->clients_list, null, ['class'=>'form-control select2','id'=>'client_id','tabindex'=>2]) !!}
+            {!! Form::select('client_id', $score->clients_list, null, ['class'=>'form-control select-2','id'=>'client_id','tabindex'=>2]) !!}
             {!! $errors->first('client_id', '<span class="text-danger">:message</span>') !!}
         </div>
     </div>

@@ -2,7 +2,7 @@
     <div class="form-group">
         <label for="employee_id" class="col-xs-3 col-md-12">Employee:</label>
         <div class="col-xs-9 col-md-12">
-            {!! Form::select('employee_id', $no_universal_list->pluck('full_name', 'id'), null, ['class' => 'form-control', 'placeholder' => '<--Select One-->'] ) !!}
+            {!! Form::select('employee_id', $no_universal_list->pluck('full_name', 'id'), null, ['class' => 'form-control select-2', 'placeholder' => '<--Select One-->'] ) !!}
             {!! $errors->first('employee_id', '<span class="text-danger">:message</span>') !!}
         </div>
     </div>

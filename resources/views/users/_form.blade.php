@@ -48,7 +48,7 @@
 <div class="form-group {{ $errors->has('is_active') ? 'has-error' : null }}">
 	{!! Form::label('is_active', 'Is Active:', ['class'=>'col-sm-2 control-label']) !!}
 	<div class="col-sm-10">
-		{!! Form::select('is_active', $user->activeList, null, ['class'=>'form-control', 'id'=>'is_active'])!!}
+		{!! Form::select('is_active', $user->activeList, null, ['class'=>'form-control select-2', 'id'=>'is_active'])!!}
 	</div>
 	{{-- {!! $errors->first('roles', '<span class="text-danger">:message</span>') !!} --}}
 </div>
@@ -58,7 +58,7 @@
 <div class="form-group {{ $errors->has('is_admin') ? 'has-error' : null }}">
 	{!! Form::label('is_admin', 'Is Admin:', ['class'=>'col-sm-2 control-label']) !!}
 	<div class="col-sm-10">
-		{!! Form::select('is_admin', $user->adminList, null, ['class'=>'form-control', 'id'=>'is_admin'])!!}
+		{!! Form::select('is_admin', $user->adminList, null, ['class'=>'form-control select-2', 'id'=>'is_admin'])!!}
 		<span class="help-block text-danger">Very dangerous. If you make the user admin it will
 			have access to every module of the app.</span>
 	</div>
