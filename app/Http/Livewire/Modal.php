@@ -1,27 +1,29 @@
 <?php
 
-namespace Bastinald\Ui\Components;
+namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class ModalComponent extends Component
+class Modal extends Component
 {
     public $component;
     public $params = [];
 
     protected $listeners = ['showModal', 'resetModal'];
 
+    public $title;
+
     public function render()
     {
-        return view('ui::components.modal');
+        return view('livewire.modal');
     }
 
-    public function showModal($component, ...$params)
+    public function showModal($component = '', ...$params)
     {
         $this->component = $component;
         $this->params = $params;
 
-        $this->emit('showBootstrapModal');
+        $this->dispatchBrowserEvent('showBootstrapModal');
     }
 
     public function resetModal()

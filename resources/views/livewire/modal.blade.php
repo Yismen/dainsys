@@ -6,22 +6,18 @@
 
 @push('scripts')
     <script>
-        let modalElement = document.querySelector('.modal');
+        let modalElement = $('.modal');
 
-        modalElement.addEventListener('hidden.bs.modal', () => {
-            Livewire.emit('resetModal');
-        });
+        // document.addEventListener('hidden.bs.modal', () => {
+        //     Livewire.emit('resetModal');
+        // });        
 
         Livewire.on('showBootstrapModal', () => {
-            let modal = new window.bootstrap.Modal(modalElement);
-
-            modal.show();
+            let modal = modalElement.modal('show');
         });
 
         Livewire.on('hideModal', () => {
-            let modal = window.bootstrap.Modal.getInstance(modalElement);
-
-            modal.hide();
+            let modal = modalElement.modal('hide');
         });
     </script>
 @endpush
