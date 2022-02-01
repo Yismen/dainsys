@@ -7,7 +7,6 @@ use App\Termination;
 use App\Universal;
 use App\Vip;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use PHPUnit\Framework\TestCase;
 use Tests\TestCase as TestsTestCase;
 
 class EmployeAccessorsTest extends TestsTestCase

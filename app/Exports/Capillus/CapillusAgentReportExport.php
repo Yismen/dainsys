@@ -111,7 +111,7 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
                     'condition' => 0,
                 ]))->apply();
 
-                // $event->sheet->getDelegate()->getStyle('A1:k1')->applyFromArray($this->headerStyle());
+            // $event->sheet->getDelegate()->getStyle('A1:k1')->applyFromArray($this->headerStyle());
                 // $event->sheet->getDelegate()->getStyle('A1:A70')->applyFromArray($this->setBold());
                 // $event->sheet->getDelegate()->getStyle('I1:K70')->applyFromArray($this->setBold());
             },
