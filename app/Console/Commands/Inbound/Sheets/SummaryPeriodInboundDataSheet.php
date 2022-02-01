@@ -110,7 +110,7 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
 
                 $this->sheet->setAutoFilter("A2:{$this->last_column}{$this->rows}");
 
-                // Adjust DialGroup column width
+            // Adjust DialGroup column width
             },
         ];
     }

@@ -21,7 +21,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-
         Model::preventLazyLoading(!$this->app->isProduction());
 
         Queue::failing(function (JobFailed $event) {
