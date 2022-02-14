@@ -31,7 +31,7 @@
     "mocha-webpack": "^0.7.0",
     "popper.js": "^1.16.1",
     "resolve-url-loader": "^3.1.4",
-    "sass": "^1.44.0",
+    "sass": "^1.49.7",
     "sass-loader": "^7.3.1",
     "select2": "^4.1.0-rc.0",
     "select2-bootstrap-theme": "0.1.0-beta.10",
@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "ajv": "^6.12.6",
-    "cached-path-relative": ">=1.0.2",
+    "cached-path-relative": "^1.1.0",
     "ckeditor": "^4.12.1",
     "dainsys-form": "git+https://github.com/Yismen/dainsys-form.git",
     "imagemin": "^5.3.1",
