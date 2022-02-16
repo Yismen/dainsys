@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeders;
 
 use App\Department;
 use Illuminate\Database\Seeder;

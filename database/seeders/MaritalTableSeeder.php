@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeders;
 
 use App\Marital;
 use Illuminate\Database\Seeder;

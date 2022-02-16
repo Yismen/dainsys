@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeders;
 
 use App\PaymentType;
 use Illuminate\Database\Seeder;

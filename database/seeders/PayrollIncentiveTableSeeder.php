@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeders;
 
 use App\PayrollIncentiveConcept;
 use Illuminate\Database\Seeder;
@@ -12,7 +13,6 @@ class PayrollIncentiveTableSeeder extends Seeder
      */
     public function run()
     {
-
         PayrollIncentiveConcept::create(['name' => 'Production']);
         PayrollIncentiveConcept::create(['name' => 'Sales']);
     }

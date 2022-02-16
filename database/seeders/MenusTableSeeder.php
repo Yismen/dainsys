@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeders;
 
 use App\Menu;
 use App\Role;
@@ -14,7 +15,6 @@ class MenusTableSeeder extends Seeder
      */
     public function run()
     {
-
         Menu::create(['name' => 'telescope', 'display_name' => 'Telescope', 'description' => '', 'icon' => 'fa fa-bolt']);
         Menu::create(['name' => 'log-viewer', 'display_name' => 'Log Viewer', 'description' => '', 'icon' => 'fa fa-archive']);
         Menu::create(['name' => 'admin/users', 'display_name' => 'Users', 'description' => '', 'icon' => 'fa fa-users']);
@@ -24,7 +24,7 @@ class MenusTableSeeder extends Seeder
         Menu::create(['name' => 'admin/employees', 'display_name' => 'Employees', 'description' => '', 'icon' => 'fa fa-users']);
         Menu::create(['name' => 'admin/positions', 'display_name' => 'Positions', 'description' => '']);
 
-        // Attach all menus to admin Role 
+        // Attach all menus to admin Role
         $admin = Role::where('name', 'admin')->first();
 
         if ($admin) {

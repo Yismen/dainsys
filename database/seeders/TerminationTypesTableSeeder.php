@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeders;
 
 use App\TerminationType;
 use Illuminate\Database\Seeder;

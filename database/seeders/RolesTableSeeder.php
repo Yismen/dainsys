@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeders;
 
 use App\Role;
 use App\User;
@@ -14,9 +15,8 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         $user = User::where('email', 'yismen.jorge@gmail.com')->first();
-        $admin = Role::create([ 'name' => 'admin', ]);
+        $admin = Role::create(['name' => 'admin', ]);
         $user->roles()->sync((array)$admin->only('id'));
-
 
         Role::create(['name' => 'management']);
         Role::create(['name' => 'human_resource']);

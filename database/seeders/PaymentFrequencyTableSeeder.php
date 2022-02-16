@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeders;
 
 use App\PaymentFrequency;
 use Illuminate\Database\Seeder;
