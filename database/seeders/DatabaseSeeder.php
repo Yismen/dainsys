@@ -1,7 +1,8 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class DatabaseSeeder extends Seeder
@@ -32,9 +33,9 @@ class DatabaseSeeder extends Seeder
         $this->call(NationalityTableSeeder::class);
         $this->call(PaymentFrequencyTableSeeder::class);
         $this->call(PaymentTypeTableSeeder::class);
-        $this->call(PayrollAdditionalConceptTableSeeder::class);
-        $this->call(PayrollDiscountConceptTableSeeder::class);
-        $this->call(PayrollIncentiveTableSeeder::class);
+        // $this->call(PayrollAdditionalConceptTableSeeder::class);
+        // $this->call(PayrollDiscountConceptTableSeeder::class);
+        // $this->call(PayrollIncentiveTableSeeder::class);
 
         // DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         Model::reguard();
