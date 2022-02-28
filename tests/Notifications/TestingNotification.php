@@ -37,8 +37,6 @@ class TestingNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        return [
-
-        ];
+        return [];
     }
 }
