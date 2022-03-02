@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Listeners\RemoveTemporaryMailAttachments;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Mail\Events\MessageSent;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -12,8 +14,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Illuminate\Mail\Events\MessageSent' => [
-            'App\Listeners\RemoveTemporaryMailAttachments',
+        \Illuminate\Mail\Events\MessageSent::class => [
+            \App\Listeners\RemoveTemporaryMailAttachments::class,
         ],
         'Illuminate\Notifications\Events\NotificationSent' => [
             'App\Listeners\AppNotificationReceived',

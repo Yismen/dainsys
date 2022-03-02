@@ -10,7 +10,7 @@
 @story('deploy')
     update-locally
     {{-- ensure-folder-exists --}}
-    copy-project-to-release-folder
+    {{-- copy-project-to-release-folder --}}
     deploy-to-production-folder
 @endstory
 
