@@ -46,6 +46,11 @@ abstract class BaseRingCentralExports implements RingCentralExportsContract, Wit
                 $file_name,
                 "{$this->client_name} {$this->subject_sufix}"
             ));
+
+
+            if (Storage::exists($file_name)) {
+                Storage::delete($file_name);
+            }
         };
     }
 }
