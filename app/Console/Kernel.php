@@ -2,8 +2,10 @@
 
 namespace App\Console;
 
-use Dainsys\Commands\ClearLogs\ClearLogsCommand;
+use App\Performance;
 use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Database\Console\PruneCommand;
+use Dainsys\Commands\ClearLogs\ClearLogsCommand;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
@@ -36,6 +38,10 @@ class Kernel extends ConsoleKernel
     {
         $date = now();
         $schedule->command('telescope:prune --hours=72')->dailyAt('06:40');
+
+        $schedule->command(PruneCommand::class, [
+            '--model' => [Performance::class]
+        ])->monthlyOn(15);
 
         $schedule->command(ClearLogsCommand::class, [
             '--clear',

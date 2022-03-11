@@ -2,14 +2,18 @@
 
 namespace App;
 
-use App\ModelFilters\FilterableTrait;
-use App\Traits\PerformanceTrait;
 use App\Traits\Trackable;
 use App\DainsysModel as Model;
+use App\Traits\PerformanceTrait;
+use App\ModelFilters\FilterableTrait;
+use Illuminate\Database\Eloquent\Prunable;
 
 class Performance extends Model
 {
-    use Trackable, PerformanceTrait, FilterableTrait;
+    use Trackable;
+    use PerformanceTrait;
+    use FilterableTrait;
+    use Prunable;
 
     protected $fillable = [
         'date',
@@ -44,5 +48,15 @@ class Performance extends Model
             $model->unique_id = $model->date . '-' . $model->employee_id . '-' . $model->campaign_id;
             $model->name = $employee->fullName;
         });
+    }
+
+    /**
+     * Get the prunable model query.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function prunable()
+    {
+        return static::where('created_at', '<=', now()->subYears(2));
     }
 }
