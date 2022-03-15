@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Api\Performances;
+namespace App\Http\Controllers\Api\V2;
 
-use App\Employee;
 use Carbon\Carbon;
 use App\Performance;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\DowntimesResource;
 
 /**
  * @group Performances
@@ -19,14 +17,12 @@ class DowntimesController extends Controller
      * Collection of dowtimes
      *
      * @queryParam campaign string Limit results to specific campaign. Example ?campaign=%Santiago%
-     * @queryParam source string Limit results to specific source. Example ?source=%Santiago%
-     * @queryParam employee string Limit results to specific employee. Example ?employee=%Santiago%
-     * @queryParam supervisor string Limit results to specific supervisor. Example ?supervisor=%Santiago%
-     * @queryParam supervisor_employee string Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%
-     * @queryParam project_campaign string Limit results to specific project_campaign. Example ?project_campaign=%Santiago%
-     * @queryParam project_employee string Limit results to specific project_employee. Example ?project_employee=%Santiago%
-     * @queryParam site string Limit results to specific site. Example ?site=%Santiago%
      * @queryParam client string Limit results to specific client. Example ?client=%Pub%
+     * @queryParam employee string Limit results to specific employee. Example ?employee=%Santiago%
+     * @queryParam project_campaign string Limit results to specific project_campaign. Example ?project_campaign=%Santiago%
+     * @queryParam site string Limit results to specific site. Example ?site=%Santiago%
+     * @queryParam source string Limit results to specific source. Example ?source=%Santiago%
+     * @queryParam supervisor string Limit results to specific supervisor. Example ?supervisor=%Santiago%
      *
      * @response 200 {
      *      "data": [
@@ -35,7 +31,7 @@ class DowntimesController extends Controller
      *               "date": "2021-05-17",
      *               "employee_id": 50001,
      *               "campaign": "Some Campaign",
-     *               "project_performance": "Some Project",
+     *               "project_campaign": "Some Project",
      *               "employee_name": "Some Employee",
      *               "login_time": 8.21,
      *               "downtime_reason": "falta de Trabajo",
@@ -61,6 +57,17 @@ class DowntimesController extends Controller
             })
             ->orderBy('date')
             ->when(
+                request('project_campaign'),
+                function ($project_campaign_query) {
+                    $project_campaign_query->whereHas(
+                        'campaign.project',
+                        function ($project_query) {
+                            $project_query->whereName(request('project_campaign'));
+                        }
+                    );
+                }
+            )
+            ->when(
                 request('months'),
                 function ($performance_query) {
                     $performance_query->whereDate(
@@ -80,6 +87,6 @@ class DowntimesController extends Controller
             ->filter(request()->all())
             ->get();
 
-        return DowntimesResource::collection($downtimes);
+        return \App\Http\Resources\V2\DowntimesResource::collection($downtimes);
     }
 }

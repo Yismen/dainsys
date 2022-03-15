@@ -2,19 +2,42 @@
 
 namespace App\Http\Traits\Relationships;
 
+use App\Afp;
+use App\Ars;
+use App\Vip;
+use App\Card;
+use App\Hour;
+use App\Site;
+use App\Punch;
+use App\Shift;
+use App\Gender;
+use App\Address;
+use App\Marital;
+use App\Project;
+use App\Position;
+use App\Schedule;
+use App\LoginName;
+use App\Universal;
 use App\Attendance;
+use App\Department;
+use App\Supervisor;
+use App\BankAccount;
+use App\Nationality;
 use App\Performance;
+use App\Termination;
+use App\OvernightHour;
+use App\SocialSecurity;
 
 trait EmployeeRelationships
 {
     public function address()
     {
-        return $this->hasOne('App\Address');
+        return $this->hasOne(Address::class);
     }
 
     public function ars()
     {
-        return $this->belongsTo('App\Ars');
+        return $this->belongsTo(Ars::class);
     }
 
     public function attendances()
@@ -24,42 +47,42 @@ trait EmployeeRelationships
 
     public function afp()
     {
-        return $this->belongsTo('App\Afp');
+        return $this->belongsTo(Afp::class);
     }
 
     public function bankAccount()
     {
-        return $this->hasOne('App\BankAccount');
+        return $this->hasOne(BankAccount::class);
     }
 
     public function department()
     {
-        return $this->hasManyThrough('App\Department', 'App\Position', 'department_id', 'position_id');
+        return $this->hasManyThrough(Department::class, Position::class);
     }
 
     public function gender()
     {
-        return $this->belongsTo('App\Gender', 'gender_id');
+        return $this->belongsTo(Gender::class, 'gender_id');
     }
 
     public function nationality()
     {
-        return $this->belongsTo('App\Nationality');
+        return $this->belongsTo(Nationality::class);
     }
 
     public function project()
     {
-        return $this->belongsTo('App\Project');
+        return $this->belongsTo(Project::class);
     }
 
     public function position()
     {
-        return $this->belongsTo('App\Position');
+        return $this->belongsTo(Position::class);
     }
 
     public function marital()
     {
-        return $this->belongsTo('App\Marital', 'marital_id');
+        return $this->belongsTo(Marital::class, 'marital_id');
     }
 
     public function performances()
@@ -69,33 +92,33 @@ trait EmployeeRelationships
 
     public function productions()
     {
-        return $this->hasMany('App\Production');
+        return $this->hasMany(Production::class);
     }
 
     public function hours()
     {
-        return $this->hasMany('App\Hour');
+        return $this->hasMany(Hour::class);
     }
 
     public function loginNames()
     {
-        return $this->hasMany('App\LoginName')
+        return $this->hasMany(LoginName::class)
             ->orderBy('login');
     }
 
     public function card()
     {
-        return $this->hasOne('App\Card');
+        return $this->hasOne(Card::class);
     }
 
     public function punch()
     {
-        return $this->hasOne('App\Punch');
+        return $this->hasOne(Punch::class);
     }
 
     public function termination()
     {
-        return $this->hasOne('App\Termination');
+        return $this->hasOne(Termination::class);
     }
 
     /**
@@ -105,7 +128,7 @@ trait EmployeeRelationships
      */
     public function shift()
     {
-        return $this->hasMany('App\Shift');
+        return $this->hasMany(Shift::class);
     }
 
     /**
@@ -115,36 +138,36 @@ trait EmployeeRelationships
      */
     public function schedules()
     {
-        return $this->hasMany('App\Schedule');
+        return $this->hasMany(Schedule::class);
     }
 
     public function supervisor()
     {
-        return $this->belongsTo('App\Supervisor');
+        return $this->belongsTo(Supervisor::class);
     }
 
     public function site()
     {
-        return $this->belongsTo('App\Site');
+        return $this->belongsTo(Site::class);
     }
 
     public function socialSecurity()
     {
-        return $this->hasOne('App\SocialSecurity');
+        return $this->hasOne(SocialSecurity::class);
     }
 
     public function overnightHours()
     {
-        return $this->hasMany('App\OvernightHour');
+        return $this->hasMany(OvernightHour::class);
     }
 
     public function universal()
     {
-        return $this->hasOne('App\Universal');
+        return $this->hasOne(Universal::class);
     }
 
     public function vip()
     {
-        return $this->hasOne('App\Vip');
+        return $this->hasOne(Vip::class);
     }
 }

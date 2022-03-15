@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\V2;
 
 use App\Employee;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EmployeesResource;
 
-class EmployeeController extends Controller
+class EmployeesController extends Controller
 {
     /**
      * Employees All
