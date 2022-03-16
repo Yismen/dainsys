@@ -3,10 +3,10 @@
 namespace App\Traits;
 
 use App\Campaign;
-use App\DowntimeReason;
 use App\Employee;
-use App\Supervisor;
 use Carbon\Carbon;
+use App\Supervisor;
+use App\DowntimeReason;
 
 trait PerformanceTrait
 {

@@ -13,7 +13,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer fEDcZdVae435vakhPb1g686'
+      Authorization: 'Bearer Dgf68kbE4dheVvca3a6Z5P1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -49,7 +49,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 361aDgZVbE85ve4adkfh6cP'
+      Authorization: 'Bearer ge63cafa5bVkv6Dh1ZP84dE'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -81,7 +81,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer ab8ZhV5kg4E1dPca3f66Dve'
+      Authorization: 'Bearer ahaVE5Z8bfdP63gv6e1cD4k'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -117,7 +117,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer vPkg4bd6ecf3Z58aD6aEVh1'
+      Authorization: 'Bearer aEPgc18bZ6kf634v5aDdeVh'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -148,7 +148,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 8P3aVd1Db6afgZvke65hE4c'
+      Authorization: 'Bearer Z643EkaPg5fv1c8ehaDd6bV'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -180,7 +180,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 6Eh1dDaP368ceZg5kfva4bV'
+      Authorization: 'Bearer hdVfgD3bc8aek15v6E4P6Za'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -211,7 +211,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer f5VgaPca4Z61Eh36Dvkbde8'
+      Authorization: 'Bearer ag3EvZD641d8ke6V5Pcbfah'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -220,28 +220,28 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: repellendus
+        example: architecto
         type: string
         custom: []
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Santiago%'
         required: false
-        example: at
+        example: esse
         type: string
         custom: []
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Santiago%'
         required: false
-        example: odio
+        example: deleniti
         type: string
         custom: []
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Santiago%'
         required: false
-        example: est
+        example: voluptas
         type: string
         custom: []
     bodyParameters: []
@@ -273,7 +273,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 5vaZ36f6h8VDk1cde4bgPaE'
+      Authorization: 'Bearer De3hbVgk46c1v68aZf5PaEd'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -282,63 +282,63 @@ endpoints:
         name: campaign
         description: 'Limit results to specific campaign. Example ?campaign=%Santiago%'
         required: false
-        example: quisquam
+        example: et
         type: string
         custom: []
       source:
         name: source
         description: 'Limit results to specific source. Example ?source=%Santiago%'
         required: false
-        example: dolorem
+        example: aspernatur
         type: string
         custom: []
       employee:
         name: employee
         description: 'Limit results to specific employee. Example ?employee=%Santiago%'
         required: false
-        example: eos
+        example: consequatur
         type: string
         custom: []
       supervisor:
         name: supervisor
         description: 'Limit results to specific supervisor. Example ?supervisor=%Santiago%'
         required: false
-        example: et
+        example: dolorum
         type: string
         custom: []
       supervisor_employee:
         name: supervisor_employee
         description: 'Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%'
         required: false
-        example: qui
+        example: aut
         type: string
         custom: []
       project_campaign:
         name: project_campaign
         description: 'Limit results to specific project_campaign. Example ?project_campaign=%Santiago%'
         required: false
-        example: quos
+        example: doloribus
         type: string
         custom: []
       project_employee:
         name: project_employee
         description: 'Limit results to specific project_employee. Example ?project_employee=%Santiago%'
         required: false
-        example: et
+        example: similique
         type: string
         custom: []
       site:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: omnis
+        example: et
         type: string
         custom: []
       client:
         name: client
         description: 'Limit results to specific client. Example ?client=%Pub%'
         required: false
-        example: accusantium
+        example: officia
         type: string
         custom: []
     bodyParameters: []
@@ -374,7 +374,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer E56VhvcDaZ86kPefbg14d3a'
+      Authorization: 'Bearer D6eh43ag6E1afkbZcd85VPv'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -383,7 +383,7 @@ endpoints:
         name: recents
         description: 'optional When present, only login names for employees labeled as recents will be included. Default is true. Example ?recents=true'
         required: false
-        example: et
+        example: sed
         type: string
         custom: []
     bodyParameters: []
@@ -410,7 +410,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer fgZ3c6PEb58V4kadaDv1e6h'
+      Authorization: 'Bearer V6g5P4hkeDaafdZ1E8c6bv3'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -419,7 +419,7 @@ endpoints:
         name: daysago
         description: 'The amount of days to filter back. Default 90. Example daysago=45'
         required: false
-        example: 9
+        example: 2
         type: integer
         custom: []
     bodyParameters: []
@@ -451,7 +451,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer E5VDaZbd38gP61kevcfha46'
+      Authorization: 'Bearer 3k6Va5hEbZ8gcvdf1D4ePa6'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -483,7 +483,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer bdkaf5aeghZ8E461DP6vc3V'
+      Authorization: 'Bearer fVZ8D6acP5gdk14avE6hb3e'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -491,7 +491,7 @@ endpoints:
         name: many
         description: 'The amount of months back to filter data. Example /performances/performance_data/last/3/months'
         required: false
-        example: 6
+        example: 20
         type: integer
         custom: []
     queryParameters:
@@ -499,63 +499,625 @@ endpoints:
         name: campaign
         description: 'Filter data by campaign name. Example ?campaign=%POL-%.'
         required: false
-        example: voluptates
+        example: corrupti
         type: string
         custom: []
       employee:
         name: employee
         description: 'Filter data by employee name. Example ?employee=%Yismen Jore%.'
         required: false
-        example: exercitationem
+        example: aut
         type: string
         custom: []
       supervisor:
         name: supervisor
         description: 'Filter data by supervisor name. Example ?supervisor=%Yismen Jore%.'
         required: false
-        example: exercitationem
+        example: in
         type: string
         custom: []
       project_campaign:
         name: project_campaign
         description: 'Filter data by project_campaign name. Example ?project_campaign=%blackhawk%.'
         required: false
-        example: ut
+        example: impedit
         type: string
         custom: []
       project_employee:
         name: project_employee
         description: 'Filter data by project_employee name. Example ?project_campaign=%blackhawk%.'
         required: false
-        example: id
+        example: in
         type: string
         custom: []
       site:
         name: site
         description: 'Filter data by site name. Example ?site=%Santiago HQ%.'
         required: false
-        example: facilis
+        example: et
         type: string
         custom: []
       source:
         name: source
         description: 'Filter data by source name. Example ?source=%Santiago HQ%.'
         required: false
-        example: earum
+        example: fugit
         type: string
         custom: []
       client:
         name: client
         description: 'Filter data by client name. Example ?client=%blackhawk%.'
         required: false
-        example: suscipit
+        example: fuga
         type: string
         custom: []
       supervisor_employee:
         name: supervisor_employee
         description: 'Filter data by supervisor_employee name. Example ?supervisor_employee=%Yismen Jore%.'
         required: false
-        example: maxime
+        example: aspernatur
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "unique_id": "2021-11-01-10007-1",
+                       "away_time": 0,
+                       "billable_hours": 0,
+                       "break_time": 0,
+                       "calls": 0,
+                       "campaign_sph_goal": 0,
+                       "campaign": "asdfasfas-downtimes",
+                       "cc_sales": 0,
+                       "client": null,
+                       "contacts": 0,
+                       "date": "2021-11-01",
+                       "department": "Sarah Schmeler",
+                       "dontime_reason": "Falta De Trabajo",
+                       "employee_id": 10007,
+                       "employee_name": "Dorcas Iliana Turner Robel",
+                       "first_name": "Dorcas",
+                       "hire_date": "2004-08-04",
+                       "last_name": "Turner",
+                       "login_time": 8,
+                       "lunch_time": 0,
+                       "off_hook_time": 0,
+                       "pending_dispo_time": 0,
+                       "production_time": 0,
+                       "project_employee": "Jaycee Kris",
+                       "project_performance": "Administracion",
+                       "punch_id": null,
+                       "reported_by": "Bianka Quitzon",
+                       "revenue": 0,
+                       "salary": 125,
+                       "sales": 0,
+                       "second_first_name": "Iliana",
+                       "second_last_name": "Robel",
+                       "site": "Anabel Hammes",
+                       "source": "Data Entry",
+                       "status": "Active",
+                       "supervisor_employee": "Kiley Kirlin",
+                       "supervisor_performance": "Kiley Kirlin",
+                       "talk_time": 0,
+                       "training_time": 0,
+                       "upsales": 0
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/projects
+    metadata:
+      title: 'Performances Projects'
+      description: 'Collection of performances data for many months back.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer ac6dk8h1b4D5VPZE6vef3ag'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 1,
+                       "name": "Administracion",
+                       "client": null
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/supervisors/actives
+    metadata:
+      title: 'Performances Active Supervisors'
+      description: 'Collection of employees'' Actives supervisors.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer k18ad4cPeE3Zh6vDV6f5bga'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 1,
+                       "name": "Yismen Jorge",
+                       "active": 1,
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/supervisors
+    metadata:
+      title: 'Performances Supervisors'
+      description: 'Collection of employees'' supervisors.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 3V6cakPgh1aZv4ED5feb6d8'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 1,
+                       "name": "Yismen Jorge",
+                       "active": 1,
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/sites
+    metadata:
+      title: 'Performances Sites'
+      description: 'Collection of employees'' sites.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer DZ5caV8b6d4PEh1k3vfea6g'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 1,
+                       "name": "Yismen Jorge",
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/schedules
+    metadata:
+      title: 'Performances Schedules'
+      description: 'Collection of employees'' schedules, filtered by many days ago.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer DdE5V46bca1ekh3gvZ8f6Pa'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      daysago:
+        name: daysago
+        description: 'The amount of days to filter back. Default 90. Example daysago=45'
+        required: false
+        example: 2
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "employee_id": 50001,
+                       "employee_name": "Yismen Jorge",
+                       "supervisor": "Supervisor Name",
+                       "date": "2021-05-19",
+                       "hours": 5.75,
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v2/supervisors
+    metadata:
+      title: 'Store Supervisors'
+      description: 'Save a Supervisor model to database.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 3cZh8vkda6EV4fDe1bPa56g'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the Supervisor'
+        required: true
+        example: est
+        type: string
+        custom: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+               "name": "Asdfasdf",
+               "updated_at": "2021-12-01T19:05:29.000000Z",
+               "created_at": "2021-12-01T19:05:29.000000Z",
+               "id": 12
+           }
+        headers: []
+        description: '201'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/login_names
+    metadata:
+      title: 'Performances Login Names'
+      description: 'Return a collection of login names.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer E5aVDfk6g3Z1bPcae8v46hd'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      recents:
+        name: recents
+        description: 'optional When present, only login names for employees labeled as recents will be included. Default is true. Example ?recents=true'
+        required: false
+        example: nobis
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+           "employee_id": 10001,
+           "employee_name": Yismen Jorge,
+           "login": yjorge,
+           "supervisor_id": 1
+          }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/downtimes
+    metadata:
+      title: 'Performances Downtimes'
+      description: 'Collection of dowtimes'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer e8gaf4hkP6vD5ab3VcE1Zd6'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      campaign:
+        name: campaign
+        description: 'Limit results to specific campaign. Example ?campaign=%Santiago%'
+        required: false
+        example: et
+        type: string
+        custom: []
+      client:
+        name: client
+        description: 'Limit results to specific client. Example ?client=%Pub%'
+        required: false
+        example: numquam
+        type: string
+        custom: []
+      employee:
+        name: employee
+        description: 'Limit results to specific employee. Example ?employee=%Santiago%'
+        required: false
+        example: aut
+        type: string
+        custom: []
+      project_campaign:
+        name: project_campaign
+        description: 'Limit results to specific project_campaign. Example ?project_campaign=%Santiago%'
+        required: false
+        example: nihil
+        type: string
+        custom: []
+      site:
+        name: site
+        description: 'Limit results to specific site. Example ?site=%Santiago%'
+        required: false
+        example: et
+        type: string
+        custom: []
+      source:
+        name: source
+        description: 'Limit results to specific source. Example ?source=%Santiago%'
+        required: false
+        example: quas
+        type: string
+        custom: []
+      supervisor:
+        name: supervisor
+        description: 'Limit results to specific supervisor. Example ?supervisor=%Santiago%'
+        required: false
+        example: sed
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                        "unique_id": "unique-id-1-dsf-3",
+                        "date": "2021-05-17",
+                        "employee_id": 50001,
+                        "campaign": "Some Campaign",
+                        "project_campaign": "Some Project",
+                        "employee_name": "Some Employee",
+                        "login_time": 8.21,
+                        "downtime_reason": "falta de Trabajo",
+                        "reported_by": "Yismen Jorge",
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/downtime_reasons
+    metadata:
+      title: 'Performances Downtime Reasons'
+      description: 'Collection of downtime reasons'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer dEPVa6gkevZaD5c4f36bh18'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 1,
+                       "name": "Falta De Trabajo"
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/clients
+    metadata:
+      title: 'Performances Clients'
+      description: 'Collection of clients information'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer Zfkc541deE3ag6bahPDv68V'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 1,
+                       "name": "Miss Ericka Medhurst",
+                       "contact_name": "Roel Harvey",
+                       "main_phone": "(954) 631-9605",
+                       "email": "toy.raquel@hotmail.com",
+                       "secondary_phone": "+14408935480",
+                       "account_number": "929-384-1946"
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/campaigns
+    metadata:
+      title: 'Performances Campaigns'
+      description: 'Collection of camaigns information'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer fPDabZek48gEd6v516hacV3'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 1,
+                       "name": "asdfasfas-downtimes",
+                       "project_id": 1,
+                       "source_id": 5,
+                       "revenue_type_id": 1,
+                       "sph_goal": 24,
+                       "rate": 40
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/performances
+    metadata:
+      title: 'Performances Data'
+      description: 'Collection of performances data for many months back.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer cE65agb48Zf3evdV6Phak1D'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      campaign:
+        name: campaign
+        description: 'Filter data by campaign name. Example ?campaign=%POL-%.'
+        required: false
+        example: molestiae
+        type: string
+        custom: []
+      employee:
+        name: employee
+        description: 'Filter data by employee name. Example ?employee=%Yismen Jore%.'
+        required: false
+        example: aspernatur
+        type: string
+        custom: []
+      supervisor:
+        name: supervisor
+        description: 'Filter data by supervisor name. Example ?supervisor=%Yismen Jore%.'
+        required: false
+        example: blanditiis
+        type: string
+        custom: []
+      project_campaign:
+        name: project_campaign
+        description: 'Filter data by project_campaign name. Example ?project_campaign=%blackhawk%.'
+        required: false
+        example: nulla
+        type: string
+        custom: []
+      project_employee:
+        name: project_employee
+        description: 'Filter data by project_employee name. Example ?project_campaign=%blackhawk%.'
+        required: false
+        example: sapiente
+        type: string
+        custom: []
+      site:
+        name: site
+        description: 'Filter data by site name. Example ?site=%Santiago HQ%.'
+        required: false
+        example: molestiae
+        type: string
+        custom: []
+      source:
+        name: source
+        description: 'Filter data by source name. Example ?source=%Santiago HQ%.'
+        required: false
+        example: nulla
+        type: string
+        custom: []
+      client:
+        name: client
+        description: 'Filter data by client name. Example ?client=%blackhawk%.'
+        required: false
+        example: cumque
+        type: string
+        custom: []
+      supervisor_employee:
+        name: supervisor_employee
+        description: 'Filter data by supervisor_employee name. Example ?supervisor_employee=%Yismen Jore%.'
+        required: false
+        example: saepe
         type: string
         custom: []
     bodyParameters: []

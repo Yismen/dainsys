@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api\Performances;
 
 use App\Employee;
+use Carbon\Carbon;
+use App\Performance;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DowntimesResource;
-use App\Performance;
-use Carbon\Carbon;
 
 /**
  * @group Performances
@@ -46,17 +46,38 @@ class DowntimesController extends Controller
      */
     public function __invoke()
     {
-        $months = request()->months ?: 0;
-
-        $downtimes = Performance::with('campaign.project', 'downtimeReason', 'employee')
-            ->whereHas('campaign', function ($query) {
-                return $query->whereHas('project', function ($query) {
-                    return $query->where('name', 'like', '%downtimes%');
+        $downtimes = Performance::query()
+            ->with([
+                'campaign.project',
+                'downtimeReason',
+                'employee',
+                'supervisor'
+            ])
+            ->whereHas('campaign', function ($campaign_query) {
+                return $campaign_query->whereHas('project', function ($project_query) {
+                    return $project_query->where('name', 'like', '%downtimes%');
                 })
                     ->orWhere('name', 'like', '%downtimes%');
             })
             ->orderBy('date')
-            ->whereDate('date', '>=', Carbon::now()->subMonths((int)$months)->startOfMonth())
+            ->when(
+                request('months'),
+                function ($performance_query) {
+                    $performance_query->whereDate(
+                        'date',
+                        '>=',
+                        Carbon::now()->subMonths((int)request('months'))->startOfMonth()
+                    );
+                },
+                function ($performance_query) {
+                    $performance_query->whereDate(
+                        'date',
+                        '>=',
+                        Carbon::now()->subMonths(4)->startOfMonth()
+                    );
+                }
+            )
+            ->filter(request()->all())
             ->get();
 
         return DowntimesResource::collection($downtimes);

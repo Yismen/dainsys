@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Employee;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\EmployeesResource;
 
 class EmployeeController extends Controller

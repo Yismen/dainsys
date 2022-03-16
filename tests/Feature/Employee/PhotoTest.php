@@ -3,9 +3,9 @@
 namespace Tests\Feature\Employee;
 
 use App\Employee;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PhotoTest extends TestCase
 {
@@ -14,6 +14,7 @@ class PhotoTest extends TestCase
     /** @test */
     public function employee_photo_is_created()
     {
+        $this->withoutExceptionHandling();
         $photo_array = ['photo' => UploadedFile::fake()->image('avatarForTesting.jpg', 200)];
         $employee = create(Employee::class);
 
