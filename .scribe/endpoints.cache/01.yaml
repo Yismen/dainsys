@@ -13,7 +13,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer evg8a6abdf6E1kV5h3PZc4D'
+      Authorization: 'Bearer ead6EV4Dv3ghkZafbcP6518'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -47,7 +47,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer k8dVPeaDEc4hgZ61v35b6af'
+      Authorization: 'Bearer db1EPfc3D656k4ZghavV8ae'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -57,7 +57,7 @@ endpoints:
         name: name
         description: 'The name of the Afp'
         required: true
-        example: velit
+        example: illum
         type: string
         custom: []
     responses:
@@ -84,7 +84,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer hafZgDEPbkvV5634d1c6a8e'
+      Authorization: 'Bearer E6geac16Pd8v345fakbDZVh'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -94,7 +94,7 @@ endpoints:
         name: name
         description: 'The name of the Ars'
         required: true
-        example: esse
+        example: dolorem
         type: string
         custom: []
     responses:
@@ -121,7 +121,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer bcEhZ3DgV546P1e6vafad8k'
+      Authorization: 'Bearer 46kbg6hvZd5efaPaDEVc831'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -131,7 +131,7 @@ endpoints:
         name: name
         description: 'The name of the Banks'
         required: true
-        example: animi
+        example: repellendus
         type: string
         custom: []
     responses:
@@ -154,7 +154,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 5ae4hb6dga8f6V3k1cDPEvZ'
+      Authorization: 'Bearer 6febZkPV6EgD85cd1vaah43'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -164,35 +164,35 @@ endpoints:
         name: name
         description: 'The name of the Position'
         required: true
-        example: illo
+        example: alias
         type: string
         custom: []
       department_id:
         name: department_id
         description: 'The department_id of the Position'
         required: true
-        example: doloribus
+        example: impedit
         type: numeric
         custom: []
       payment_type_id:
         name: payment_type_id
         description: 'The payment_type_id of the Position'
         required: true
-        example: aperiam
+        example: tempore
         type: numeric
         custom: []
       payment_frequency_id:
         name: payment_frequency_id
         description: 'The payment_frequency_id of the Position'
         required: true
-        example: cum
+        example: est
         type: numeric
         custom: []
       salary:
         name: salary
         description: 'The salary of the Position'
         required: true
-        example: officiis
+        example: molestiae
         type: numeric
         custom: []
     responses:
@@ -237,7 +237,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer ebvfEdk16aZcPhg6a854V3D'
+      Authorization: 'Bearer 68d5aPEVah3bfk4c1gDZv6e'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -247,7 +247,7 @@ endpoints:
         name: name
         description: 'The name of the Supervisor'
         required: true
-        example: est
+        example: velit
         type: string
         custom: []
     responses:
@@ -273,7 +273,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer Dh8d4e3gEZfvb6P5ac6kVa1'
+      Authorization: 'Bearer kP4ag8EvDcb56a1fe6dhZ3V'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -283,7 +283,7 @@ endpoints:
         name: name
         description: 'The name of the Department'
         required: true
-        example: et
+        example: facilis
         type: string
         custom: []
     responses:
@@ -309,7 +309,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 4g1EefdchD683baZkva65VP'
+      Authorization: 'Bearer 3ZdEDa54P6af8gV6k1vebch'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -319,7 +319,7 @@ endpoints:
         name: name
         description: 'The name of the Payment Frequency'
         required: true
-        example: ipsum
+        example: illo
         type: string
         custom: []
     responses:
@@ -345,7 +345,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer aE8Z4abfhVc6eDk6gP315dv'
+      Authorization: 'Bearer 61aPdVk4b8Dhev35gaEcZ6f'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -355,7 +355,7 @@ endpoints:
         name: name
         description: 'The name of the Nationality     *'
         required: true
-        example: nemo
+        example: ea
         type: string
         custom: []
     responses:
@@ -378,7 +378,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 3dDaV6kcg6hZ54E8bvaPef1'
+      Authorization: 'Bearer dZ31V6Eva6acfbg8PkheD54'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -386,7 +386,7 @@ endpoints:
         name: employee
         description: ''
         required: true
-        example: 12
+        example: 17
         type: integer
         custom: []
     queryParameters: []
@@ -395,7 +395,7 @@ endpoints:
         name: is_vip
         description: 'Indicates if the employee should be added to or removed from the Vip list'
         required: true
-        example: false
+        example: true
         type: boolean
         custom: []
     responses:
@@ -451,7 +451,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer vZE65fkedg4h1bc68aVaP3D'
+      Authorization: 'Bearer D5Va1cZEfbdv46ekhPa86g3'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -459,7 +459,7 @@ endpoints:
         name: employee
         description: ''
         required: true
-        example: 14
+        example: 9
         type: integer
         custom: []
     queryParameters: []
@@ -524,7 +524,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer D81v63aagfe4bZcVE5hdk6P'
+      Authorization: 'Bearer gVbEa8d435vcZa16ehfD6kP'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -533,28 +533,28 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: earum
+        example: qui
         type: string
         custom: []
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Pub%'
         required: false
-        example: nesciunt
+        example: esse
         type: string
         custom: []
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Product%'
         required: false
-        example: similique
+        example: quas
         type: string
         custom: []
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Agente%'
         required: false
-        example: ducimus
+        example: sapiente
         type: string
         custom: []
     bodyParameters: []
@@ -615,7 +615,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 8kaPbZ3h65DaE1c64eVvdgf'
+      Authorization: 'Bearer a54vdfkeZg1P3Vc68hD6baE'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -624,28 +624,28 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: est
+        example: natus
         type: string
         custom: []
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Pub%'
         required: false
-        example: voluptate
+        example: ipsam
         type: string
         custom: []
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Product%'
         required: false
-        example: laudantium
+        example: temporibus
         type: string
         custom: []
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Agente%'
         required: false
-        example: sint
+        example: iure
         type: string
         custom: []
     bodyParameters: []
@@ -706,7 +706,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 1fhebak3cVEvDdg5Z66P84a'
+      Authorization: 'Bearer bZ5keE6cva81gDdVahP36f4'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -715,28 +715,28 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: possimus
+        example: reiciendis
         type: string
         custom: []
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Pub%'
         required: false
-        example: laborum
+        example: tenetur
         type: string
         custom: []
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Product%'
         required: false
-        example: doloremque
+        example: perferendis
         type: string
         custom: []
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Agente%'
         required: false
-        example: in
+        example: quod
         type: string
         custom: []
     bodyParameters: []
@@ -797,7 +797,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 6Vdk1h8abP6Dg34fvZ5eaEc'
+      Authorization: 'Bearer a5bkgVdac6E84Dfh6Zve3P1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -806,28 +806,28 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: est
+        example: praesentium
         type: string
         custom: []
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Pub%'
         required: false
-        example: ut
+        example: deleniti
         type: string
         custom: []
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Product%'
         required: false
-        example: voluptatem
+        example: perspiciatis
         type: string
         custom: []
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Agente%'
         required: false
-        example: voluptas
+        example: corrupti
         type: string
         custom: []
     bodyParameters: []
@@ -888,7 +888,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer a8ebdg4VcvDZ56f13a6kPhE'
+      Authorization: 'Bearer 8hk635EPDZa1gadV6efc4bv'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -897,7 +897,7 @@ endpoints:
         name: year
         description: 'Limit the results to a specific year. Default to previous year. Example ?year=2021.'
         required: false
-        example: rerum
+        example: sint
         type: string
         custom: []
     bodyParameters: []
@@ -927,7 +927,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer VfegaEcDaP3Z6k1v6458dhb'
+      Authorization: 'Bearer dZev1abVf8k46aPhEc6D53g'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -936,21 +936,21 @@ endpoints:
         name: date
         description: 'Limit the results ot a specific date. Example ?date=2021-11-24.'
         required: false
-        example: ex
+        example: dicta
         type: string
         custom: []
       months:
         name: months
         description: 'Defines how many months back should the data limited to. Example ?months=2 will get data between current date and last two months.'
         required: false
-        example: 7
+        example: 6
         type: integer
         custom: []
       days:
         name: days
         description: 'Defines how many days back should the data limited to. Example ?days=2 will get data between current date and last two days.'
         required: false
-        example: 15
+        example: 13
         type: integer
         custom: []
     bodyParameters: []
@@ -981,7 +981,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 86P5a1VDah46gcevk3bZfdE'
+      Authorization: 'Bearer 1vDhf35e6gakZ8aV4d6cPbE'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -990,7 +990,7 @@ endpoints:
         name: max_items
         description: 'Max amount of notifications to take. Default is 25.'
         required: false
-        example: 15
+        example: 17
         type: integer
         custom: []
     bodyParameters: []
@@ -1023,7 +1023,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer k65f3vgaaZ4bh68V1ecEdPD'
+      Authorization: 'Bearer 163vck6EVe8bZdga4haD5fP'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -1034,7 +1034,7 @@ endpoints:
           Max amount of notifications to mark as read. Default is 25. This will also affect the amount of
           unread notifications to return. Also, this will return the next batch of unread notifications for the authenticated user.
         required: false
-        example: 15
+        example: 9
         type: integer
         custom: []
     bodyParameters: []
@@ -1067,7 +1067,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 1f68aPaeVDEk3vdcZg564bh'
+      Authorization: 'Bearer hV6d4DaZkvfe36P8g15acEb'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -1076,6 +1076,1064 @@ endpoints:
         description: 'Uuid of the stored notification'
         required: false
         example: ut
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "id": "d8e62834-828a-482d-a279-bb113fcaaa53",
+               "type": "App\\Notifications\\UserCreatedNotification",
+               "notifiable_type": "App\\User",
+               "notifiable_id": 1,
+               "data": "[]",
+               "read_at": "2021-12-01T22:29:34.797992Z",
+               "created_at": "2021-11-24T14:33:44.000000Z",
+               "updated_at": "2021-12-01T22:29:34.000000Z"
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/user
+    metadata:
+      title: 'Authenticated User'
+      description: 'Return information of the authenticated user'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer kchEbV3D6Pa1dg54fe86Zav'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "id": 1,
+               "name": "Yismen Jorge",
+               "email": "yismen.jorge@gmail.com",
+               "is_active": 1,
+               "is_admin": 1,
+               "username": "yjorge",
+               "created_at": "2021-11-19T15:09:09.000000Z",
+               "updated_at": "2021-11-19T15:09:09.000000Z",
+               "deleted_at": null
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/v2/employees/{employee}/vip'
+    metadata:
+      title: 'Update VIP'
+      description: 'Update VIP information for a given employee.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer aPd3g46VhbZ1e6v5cfEak8D'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      employee:
+        name: employee
+        description: ''
+        required: true
+        example: 14
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      is_vip:
+        name: is_vip
+        description: 'Indicates if the employee should be added to or removed from the Vip list'
+        required: true
+        example: true
+        type: boolean
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "id": 10006,
+              "first_name": "August",
+              "second_first_name": "Nicklaus",
+              "last_name": "Schaefer",
+              "second_last_name": "Wuckert",
+              "full_name": "August Nicklaus Schaefer Wuckert",
+              "hire_date": "1990-08-30",
+              "personal_id": "40546748566",
+              "passport": null,
+              "date_of_birth": "1996-10-15",
+              "cellphone_number": "8095607690",
+              "secondary_phone": null,
+              "site": "Prof. Quincy Lockman DVM",
+              "project": "Gustave Homenick",
+              "position": "Dr. Arlo Walter Dds",
+              "salary": 125,
+              "salary_type": "Kaylah Ratke",
+              "pay_per_hours": 125,
+              "department": "Malachi Feeney I",
+              "supervisor": "Yismen Jorge",
+              "gender": "Ms. Kamille Hagenes MD",
+              "marital": "Miss Brenda Will",
+              "ars": "Adan Friesen",
+              "afp": "Devonte Goyette DDS",
+              "nationality": "Guam_662326",
+              "has_kids": 0,
+              "photo": "storage/images/employees/10006.png",
+              "active": true,
+              "status": "Active",
+              "punch": null,
+              "account_number": null,
+              "is_vip": true,
+              "is_universal": false,
+              "termination_date": null
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v2/notifications/mark-all-as-read
+    metadata:
+      title: 'Notifications Mark all as Read'
+      description: 'Cleans the unread notifications for the user'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer vadVfk54cDh68eg6EP1Za3b'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      max_items:
+        name: max_items
+        description: |-
+          Max amount of notifications to mark as read. Default is 25. This will also affect the amount of
+          unread notifications to return. Also, this will return the next batch of unread notifications for the authenticated user.
+        required: false
+        example: 18
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          [
+              {
+                  "id": "d8e62834-828a-482d-a279-bb113fcaaa53",
+                  "type": "App\\Notifications\\UserCreatedNotification",
+                  "notifiable_type": "App\\User",
+                  "notifiable_id": 1,
+                  "data": [],
+                  "read_at": null,
+                  "created_at": "2021-11-24T14:33:44.000000Z",
+                  "updated_at": "2021-11-24T14:33:44.000000Z"
+              }
+          ]
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/notifications/unread
+    metadata:
+      title: 'Notifications Unread'
+      description: 'Return a list of unread notifications for the authenticated user.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer ZvPd35c16EeaDfk486ahVbg'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      max_items:
+        name: max_items
+        description: 'Max amount of notifications to take. Default is 25.'
+        required: false
+        example: 7
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          [
+              {
+                  "id": "d8e62834-828a-482d-a279-bb113fcaaa53",
+                  "type": "App\\Notifications\\UserCreatedNotification",
+                  "notifiable_type": "App\\User",
+                  "notifiable_id": 1,
+                  "data": [],
+                  "read_at": null,
+                  "created_at": "2021-11-24T14:33:44.000000Z",
+                  "updated_at": "2021-11-24T14:33:44.000000Z"
+              }
+          ]
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/overnight_hours
+    metadata:
+      title: 'Overnight Hours'
+      description: 'Collection of all the overnight hours'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer EDv3af6bca51e8kh4P6dZgV'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      date:
+        name: date
+        description: 'Limit the results ot a specific date. Example ?date=2021-11-24.'
+        required: false
+        example: fuga
+        type: string
+        custom: []
+      months:
+        name: months
+        description: 'Defines how many months back should the data limited to. Example ?months=2 will get data between current date and last two months.'
+        required: false
+        example: 5
+        type: integer
+        custom: []
+      days:
+        name: days
+        description: 'Defines how many days back should the data limited to. Example ?days=2 will get data between current date and last two days.'
+        required: false
+        example: 3
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "data": [
+                  {
+                      "date": "2021-12-01",
+                      "employee_id": 10009,
+                      "name": "Clifford Odell Jerde Vandervort",
+                      "hours": 8
+                  }
+              ]
+          }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/holidays
+    metadata:
+      title: 'Holidays Dates'
+      description: 'Collection of holidays. If year is not especified in the query string, it will return all holidays for previous year, current year and futuristic holidays.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer c56bhP3gaZdV1vE8f64Deka'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      year:
+        name: year
+        description: 'Limit the results to a specific year. Default to previous year. Example ?year=2021.'
+        required: false
+        example: dolore
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "date": "2021-07-04",
+                       "name": "Independence Day",
+                       "description": "Day of idenpendence in USA."
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v2/positions
+    metadata:
+      title: 'Store Positions'
+      description: 'Save a Position model to database.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer a8vPcEf4dk1begZ65D3aVh6'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the Position'
+        required: true
+        example: animi
+        type: string
+        custom: []
+      department_id:
+        name: department_id
+        description: 'The department_id of the Position'
+        required: true
+        example: assumenda
+        type: numeric
+        custom: []
+      payment_type_id:
+        name: payment_type_id
+        description: 'The payment_type_id of the Position'
+        required: true
+        example: quibusdam
+        type: numeric
+        custom: []
+      payment_frequency_id:
+        name: payment_frequency_id
+        description: 'The payment_frequency_id of the Position'
+        required: true
+        example: suscipit
+        type: numeric
+        custom: []
+      salary:
+        name: salary
+        description: 'The salary of the Position'
+        required: true
+        example: qui
+        type: numeric
+        custom: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+               "name": "Asdfasdf",
+               "department_id": 1,
+               "payment_type_id": 1,
+               "payment_frequency_id": 1,
+               "salary": 150,
+               "updated_at": "2021-12-01T19:18:45.000000Z",
+               "created_at": "2021-12-01T19:18:45.000000Z",
+               "id": 14,
+               "name_and_department": "Administration-Asdfasdf",
+               "pay_per_hours": 150,
+               "department": {
+                   "id": 1,
+                   "name": "Administration",
+                   "created_at": "2021-11-19T15:09:20.000000Z",
+                   "updated_at": "2021-11-19T15:09:20.000000Z"
+               },
+               "payment_type": {
+                   "id": 1,
+                   "name": "By Hours",
+                   "slug": "by-hours",
+                   "created_at": "2021-11-19T15:09:42.000000Z",
+                   "updated_at": "2021-11-19T15:09:42.000000Z"
+               }
+           }
+        headers: []
+        description: '201'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v2/payment_frequencies
+    metadata:
+      title: 'Store Payment Frequencies'
+      description: 'Save a Payment Frequency model to database.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer a16v58ZaEP3h46gbDckdfeV'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the Payment Frequency'
+        required: true
+        example: placeat
+        type: string
+        custom: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+               "name": "Asdfasdf",
+               "updated_at": "2021-12-01T19:05:29.000000Z",
+               "created_at": "2021-12-01T19:05:29.000000Z",
+               "id": 12
+           }
+        headers: []
+        description: '201'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v2/nationalities
+    metadata:
+      title: 'Store Nationalities'
+      description: 'Save a Nationality model to database.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer D4v5fdak6VeP1ah86cE3bgZ'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the Nationality     *'
+        required: true
+        example: sed
+        type: string
+        custom: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+               "name": "Asdfasdf",
+           }
+        headers: []
+        description: '201'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v2/departments
+    metadata:
+      title: 'Store Departmens'
+      description: 'Save a Department model to database.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer hf8bE1ZgakvPeD3V64cd5a6'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the Department'
+        required: true
+        example: quisquam
+        type: string
+        custom: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+               "name": "Asdfasdf",
+               "updated_at": "2021-12-01T19:05:29.000000Z",
+               "created_at": "2021-12-01T19:05:29.000000Z",
+               "id": 12
+           }
+        headers: []
+        description: '201'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/employees
+    metadata:
+      title: 'Employees All'
+      description: 'Collection of employees registered.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer Zh4DdEgaVefv83166cakPb5'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      site:
+        name: site
+        description: 'Limit results to specific site. Example ?site=%Santiago%'
+        required: false
+        example: et
+        type: string
+        custom: []
+      project:
+        name: project
+        description: 'Limit results to specific project. Example ?project=%Pub%'
+        required: false
+        example: consequatur
+        type: string
+        custom: []
+      department:
+        name: department
+        description: 'Limit results to specific department. Example ?department=%Product%'
+        required: false
+        example: a
+        type: string
+        custom: []
+      position:
+        name: position
+        description: 'Limit results to specific position. Example ?position=%Agente%'
+        required: false
+        example: exercitationem
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 10006,
+                       "first_name": "August",
+                       "second_first_name": "Nicklaus",
+                       "last_name": "Schaefer",
+                       "second_last_name": "Wuckert",
+                       "full_name": "August Nicklaus Schaefer Wuckert",
+                       "hire_date": "1990-08-30",
+                       "personal_id": "40546748566",
+                       "passport": null,
+                       "date_of_birth": "1996-10-15",
+                       "cellphone_number": "8095607690",
+                       "secondary_phone": null,
+                       "site": "Prof. Quincy Lockman DVM",
+                       "project": "Gustave Homenick",
+                       "position": "Dr. Arlo Walter Dds",
+                       "salary": 125,
+                       "salary_type": "Kaylah Ratke",
+                       "pay_per_hours": 125,
+                       "department": "Malachi Feeney I",
+                       "supervisor": "Yismen Jorge",
+                       "gender": "Ms. Kamille Hagenes MD",
+                       "marital": "Miss Brenda Will",
+                       "ars": "Adan Friesen",
+                       "afp": "Devonte Goyette DDS",
+                       "nationality": "Guam_662326",
+                       "has_kids": 0,
+                       "photo": "storage/images/employees/10006.png",
+                       "active": true,
+                       "status": "Active",
+                       "punch": null,
+                       "account_number": null,
+                       "is_vip": true,
+                       "is_universal": false,
+                       "termination_date": null
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v2/banks
+    metadata:
+      title: 'Store Banks'
+      description: 'Save a Banks model to database.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 583DZafkv4gPVhdeb1Ea6c6'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the Banks'
+        required: true
+        example: sunt
+        type: string
+        custom: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+               "name": "Asdfasdf",
+           }
+        headers: []
+        description: '201'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v2/arss
+    metadata:
+      title: 'Store Ars'
+      description: 'Save a Ars model to database.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer facbDVdk6P48EZ3vg56ahe1'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the Ars'
+        required: true
+        example: nihil
+        type: string
+        custom: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+               "name": "Asdfasdf",
+               "slug": "asdfasdf",
+               "updated_at": "2021-12-01T19:05:29.000000Z",
+               "created_at": "2021-12-01T19:05:29.000000Z",
+               "id": 12
+           }
+        headers: []
+        description: '201'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v2/afps
+    metadata:
+      title: 'Store Afps'
+      description: 'Save a Afp model to database.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer bZ6h5dPD1g864evkfa3acEV'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the Afp'
+        required: true
+        example: eligendi
+        type: string
+        custom: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+               "name": "Asdfasdf",
+               "slug": "asdfasdf",
+               "updated_at": "2021-12-01T19:05:29.000000Z",
+               "created_at": "2021-12-01T19:05:29.000000Z",
+               "id": 12
+           }
+        headers: []
+        description: '201'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/v2/employees/{employee}/universal'
+    metadata:
+      title: 'Update Universal'
+      description: 'Update Universal information for a given employee.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 3vehEfVbd46aaZDP85k61gc'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      employee:
+        name: employee
+        description: ''
+        required: true
+        example: 20
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      is_vip:
+        name: is_vip
+        description: 'Indicates if the employee should be added to or removed from the Universal list'
+        required: true
+        example: false
+        type: boolean
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "id": 10006,
+              "first_name": "August",
+              "second_first_name": "Nicklaus",
+              "last_name": "Schaefer",
+              "second_last_name": "Wuckert",
+              "full_name": "August Nicklaus Schaefer Wuckert",
+              "hire_date": "1990-08-30",
+              "personal_id": "40546748566",
+              "passport": null,
+              "date_of_birth": "1996-10-15",
+              "cellphone_number": "8095607690",
+              "secondary_phone": null,
+              "site": "Prof. Quincy Lockman DVM",
+              "project": "Gustave Homenick",
+              "position": "Dr. Arlo Walter Dds",
+              "salary": 125,
+              "salary_type": "Kaylah Ratke",
+              "pay_per_hours": 125,
+              "department": "Malachi Feeney I",
+              "supervisor": "Yismen Jorge",
+              "gender": "Ms. Kamille Hagenes MD",
+              "marital": "Miss Brenda Will",
+              "ars": "Adan Friesen",
+              "afp": "Devonte Goyette DDS",
+              "nationality": "Guam_662326",
+              "has_kids": 0,
+              "photo": "storage/images/employees/10006.png",
+              "active": true,
+              "status": "Active",
+              "punch": null,
+              "account_number": null,
+              "is_vip": true,
+              "is_universal": false,
+              "termination_date": null
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/employees/recents
+    metadata:
+      title: 'Employees Recents'
+      description: 'Collection of recent employees. Recents are all active imployees plus any inactive employee with a termination date greater than 30 days ago.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer D3dha1g6vZ56caVeb4f8kPE'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      site:
+        name: site
+        description: 'Limit results to specific site. Example ?site=%Santiago%'
+        required: false
+        example: sed
+        type: string
+        custom: []
+      project:
+        name: project
+        description: 'Limit results to specific project. Example ?project=%Pub%'
+        required: false
+        example: et
+        type: string
+        custom: []
+      department:
+        name: department
+        description: 'Limit results to specific department. Example ?department=%Product%'
+        required: false
+        example: autem
+        type: string
+        custom: []
+      position:
+        name: position
+        description: 'Limit results to specific position. Example ?position=%Agente%'
+        required: false
+        example: quo
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 10006,
+                       "first_name": "August",
+                       "second_first_name": "Nicklaus",
+                       "last_name": "Schaefer",
+                       "second_last_name": "Wuckert",
+                       "full_name": "August Nicklaus Schaefer Wuckert",
+                       "hire_date": "1990-08-30",
+                       "personal_id": "40546748566",
+                       "passport": null,
+                       "date_of_birth": "1996-10-15",
+                       "cellphone_number": "8095607690",
+                       "secondary_phone": null,
+                       "site": "Prof. Quincy Lockman DVM",
+                       "project": "Gustave Homenick",
+                       "position": "Dr. Arlo Walter Dds",
+                       "salary": 125,
+                       "salary_type": "Kaylah Ratke",
+                       "pay_per_hours": 125,
+                       "department": "Malachi Feeney I",
+                       "supervisor": "Yismen Jorge",
+                       "gender": "Ms. Kamille Hagenes MD",
+                       "marital": "Miss Brenda Will",
+                       "ars": "Adan Friesen",
+                       "afp": "Devonte Goyette DDS",
+                       "nationality": "Guam_662326",
+                       "has_kids": 0,
+                       "photo": "storage/images/employees/10006.png",
+                       "active": true,
+                       "status": "Active",
+                       "punch": null,
+                       "account_number": null,
+                       "is_vip": true,
+                       "is_universal": false,
+                       "termination_date": null
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/employees/all
+    metadata:
+      title: 'Employees All'
+      description: 'Collection of employees registered.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 5aZh6c1ae8P4fvb6E3kgDVd'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      site:
+        name: site
+        description: 'Limit results to specific site. Example ?site=%Santiago%'
+        required: false
+        example: ut
+        type: string
+        custom: []
+      project:
+        name: project
+        description: 'Limit results to specific project. Example ?project=%Pub%'
+        required: false
+        example: doloribus
+        type: string
+        custom: []
+      department:
+        name: department
+        description: 'Limit results to specific department. Example ?department=%Product%'
+        required: false
+        example: nihil
+        type: string
+        custom: []
+      position:
+        name: position
+        description: 'Limit results to specific position. Example ?position=%Agente%'
+        required: false
+        example: consequatur
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 10006,
+                       "first_name": "August",
+                       "second_first_name": "Nicklaus",
+                       "last_name": "Schaefer",
+                       "second_last_name": "Wuckert",
+                       "full_name": "August Nicklaus Schaefer Wuckert",
+                       "hire_date": "1990-08-30",
+                       "personal_id": "40546748566",
+                       "passport": null,
+                       "date_of_birth": "1996-10-15",
+                       "cellphone_number": "8095607690",
+                       "secondary_phone": null,
+                       "site": "Prof. Quincy Lockman DVM",
+                       "project": "Gustave Homenick",
+                       "position": "Dr. Arlo Walter Dds",
+                       "salary": 125,
+                       "salary_type": "Kaylah Ratke",
+                       "pay_per_hours": 125,
+                       "department": "Malachi Feeney I",
+                       "supervisor": "Yismen Jorge",
+                       "gender": "Ms. Kamille Hagenes MD",
+                       "marital": "Miss Brenda Will",
+                       "ars": "Adan Friesen",
+                       "afp": "Devonte Goyette DDS",
+                       "nationality": "Guam_662326",
+                       "has_kids": 0,
+                       "photo": "storage/images/employees/10006.png",
+                       "active": true,
+                       "status": "Active",
+                       "punch": null,
+                       "account_number": null,
+                       "is_vip": true,
+                       "is_universal": false,
+                       "termination_date": null
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/employees/actives
+    metadata:
+      title: 'Employees Actives'
+      description: 'Collection of employees actives. This is any employee without a termination.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 664hvfbV51gceD38PEZadka'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      site:
+        name: site
+        description: 'Limit results to specific site. Example ?site=%Santiago%'
+        required: false
+        example: sunt
+        type: string
+        custom: []
+      project:
+        name: project
+        description: 'Limit results to specific project. Example ?project=%Pub%'
+        required: false
+        example: aut
+        type: string
+        custom: []
+      department:
+        name: department
+        description: 'Limit results to specific department. Example ?department=%Product%'
+        required: false
+        example: consequuntur
+        type: string
+        custom: []
+      position:
+        name: position
+        description: 'Limit results to specific position. Example ?position=%Agente%'
+        required: false
+        example: adipisci
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 10006,
+                       "first_name": "August",
+                       "second_first_name": "Nicklaus",
+                       "last_name": "Schaefer",
+                       "second_last_name": "Wuckert",
+                       "full_name": "August Nicklaus Schaefer Wuckert",
+                       "hire_date": "1990-08-30",
+                       "personal_id": "40546748566",
+                       "passport": null,
+                       "date_of_birth": "1996-10-15",
+                       "cellphone_number": "8095607690",
+                       "secondary_phone": null,
+                       "site": "Prof. Quincy Lockman DVM",
+                       "project": "Gustave Homenick",
+                       "position": "Dr. Arlo Walter Dds",
+                       "salary": 125,
+                       "salary_type": "Kaylah Ratke",
+                       "pay_per_hours": 125,
+                       "department": "Malachi Feeney I",
+                       "supervisor": "Yismen Jorge",
+                       "gender": "Ms. Kamille Hagenes MD",
+                       "marital": "Miss Brenda Will",
+                       "ars": "Adan Friesen",
+                       "afp": "Devonte Goyette DDS",
+                       "nationality": "Guam_662326",
+                       "has_kids": 0,
+                       "photo": "storage/images/employees/10006.png",
+                       "active": true,
+                       "status": "Active",
+                       "punch": null,
+                       "account_number": null,
+                       "is_vip": true,
+                       "is_universal": false,
+                       "termination_date": null
+                   }
+               ]
+           }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v2/notifications/show/{notification}'
+    metadata:
+      title: 'Notification Details'
+      description: 'Show details for a user notification. This will also mark the given notification as read.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer aVdZ6P83vagEf4hkcb156De'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      notification:
+        name: notification
+        description: 'Uuid of the stored notification'
+        required: false
+        example: quaerat
         type: string
         custom: []
     queryParameters: []

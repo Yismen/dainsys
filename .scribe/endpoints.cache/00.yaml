@@ -13,7 +13,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer cd8b6kva1g36VehEP45DfaZ'
+      Authorization: 'Bearer eD5vbfc31h4aZ8E6dgakP6V'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -22,28 +22,28 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: unde
+        example: et
         type: string
         custom: []
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Pub%'
         required: false
-        example: perferendis
+        example: aut
         type: string
         custom: []
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Product%'
         required: false
-        example: et
+        example: dolorem
         type: string
         custom: []
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Agente%'
         required: false
-        example: voluptas
+        example: aliquam
         type: string
         custom: []
     bodyParameters: []
@@ -70,7 +70,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer dhg63VcvD6Zke5a84P1fbaE'
+      Authorization: 'Bearer eP6EdVf85k6gDZba3h14cav'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -79,28 +79,28 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: eum
+        example: praesentium
         type: string
         custom: []
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Pub%'
         required: false
-        example: numquam
+        example: voluptatibus
         type: string
         custom: []
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Product%'
         required: false
-        example: ipsam
+        example: odit
         type: string
         custom: []
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Agente%'
         required: false
-        example: aliquid
+        example: iusto
         type: string
         custom: []
     bodyParameters: []
@@ -135,7 +135,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer eE386D1dVc4vab6hfgka5PZ'
+      Authorization: 'Bearer 6PE5V1gka3bDfheadZv64c8'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -144,28 +144,28 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: qui
+        example: minima
         type: string
         custom: []
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Pub%'
         required: false
-        example: maiores
+        example: est
         type: string
         custom: []
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Product%'
         required: false
-        example: exercitationem
+        example: sed
         type: string
         custom: []
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Agente%'
         required: false
-        example: occaecati
+        example: deleniti
         type: string
         custom: []
     bodyParameters: []
@@ -196,7 +196,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer hP16cbV84Eg5eZvaD6kafd3'
+      Authorization: 'Bearer da4VvkPeZ8f16Dab35gEhc6'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -205,28 +205,28 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: sit
+        example: et
         type: string
         custom: []
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Pub%'
         required: false
-        example: similique
+        example: dicta
         type: string
         custom: []
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Product%'
         required: false
-        example: maxime
+        example: tempora
         type: string
         custom: []
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Agente%'
         required: false
-        example: temporibus
+        example: non
         type: string
         custom: []
     bodyParameters: []
@@ -256,7 +256,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer c8hgebd3D6EZ6ka1fPVv5a4'
+      Authorization: 'Bearer d3DV5k6814h6cbgPaefaZvE'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -265,28 +265,28 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: non
+        example: et
         type: string
         custom: []
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Pub%'
         required: false
-        example: distinctio
+        example: esse
         type: string
         custom: []
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Product%'
         required: false
-        example: dolor
+        example: tempora
         type: string
         custom: []
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Agente%'
         required: false
-        example: inventore
+        example: laborum
         type: string
         custom: []
     bodyParameters: []
@@ -316,7 +316,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 36aDPeE8Z4ad5chfv6gbV1k'
+      Authorization: 'Bearer 66e5ha13d48gfkEvVbcDPZa'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -325,63 +325,63 @@ endpoints:
         name: campaign
         description: 'Limit results to specific campaign. Example ?campaign=%Santiago%'
         required: false
-        example: ipsum
+        example: non
         type: string
         custom: []
       source:
         name: source
         description: 'Limit results to specific source. Example ?source=%Santiago%'
         required: false
-        example: quos
+        example: itaque
         type: string
         custom: []
       employee:
         name: employee
         description: 'Limit results to specific employee. Example ?employee=%Santiago%'
         required: false
-        example: sed
+        example: et
         type: string
         custom: []
       supervisor:
         name: supervisor
         description: 'Limit results to specific supervisor. Example ?supervisor=%Santiago%'
         required: false
-        example: vel
+        example: quidem
         type: string
         custom: []
       supervisor_employee:
         name: supervisor_employee
         description: 'Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%'
         required: false
-        example: ab
+        example: laboriosam
         type: string
         custom: []
       project_campaign:
         name: project_campaign
         description: 'Limit results to specific project_campaign. Example ?project_campaign=%Santiago%'
         required: false
-        example: et
+        example: tempore
         type: string
         custom: []
       project_employee:
         name: project_employee
         description: 'Limit results to specific project_employee. Example ?project_employee=%Santiago%'
         required: false
-        example: numquam
+        example: corporis
         type: string
         custom: []
       site:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: beatae
+        example: impedit
         type: string
         custom: []
       client:
         name: client
         description: 'Limit results to specific client. Example ?client=%Pub%'
         required: false
-        example: omnis
+        example: inventore
         type: string
         custom: []
     bodyParameters: []
@@ -407,7 +407,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer bv65g6he1Ek8caaVZDdf4P3'
+      Authorization: 'Bearer be165kEvf64VZagP8adhD3c'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -416,63 +416,556 @@ endpoints:
         name: campaign
         description: 'Limit results to specific campaign. Example ?campaign=%Santiago%'
         required: false
-        example: aut
+        example: perspiciatis
         type: string
         custom: []
       source:
         name: source
         description: 'Limit results to specific source. Example ?source=%Santiago%'
         required: false
-        example: ut
+        example: commodi
         type: string
         custom: []
       employee:
         name: employee
         description: 'Limit results to specific employee. Example ?employee=%Santiago%'
         required: false
-        example: fugit
+        example: ratione
         type: string
         custom: []
       supervisor:
         name: supervisor
         description: 'Limit results to specific supervisor. Example ?supervisor=%Santiago%'
         required: false
-        example: fugiat
+        example: accusantium
         type: string
         custom: []
       supervisor_employee:
         name: supervisor_employee
         description: 'Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%'
         required: false
-        example: quia
+        example: est
         type: string
         custom: []
       project_campaign:
         name: project_campaign
         description: 'Limit results to specific project_campaign. Example ?project_campaign=%Santiago%'
         required: false
-        example: repellendus
+        example: id
         type: string
         custom: []
       project_employee:
         name: project_employee
         description: 'Limit results to specific project_employee. Example ?project_employee=%Santiago%'
         required: false
-        example: quo
+        example: iure
         type: string
         custom: []
       site:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: minus
+        example: sint
         type: string
         custom: []
       client:
         name: client
         description: 'Limit results to specific client. Example ?client=%Pub%'
         required: false
+        example: qui
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          [
+               {
+                   "revenue": 0,
+                   "login_time": 5,
+                   "rph": 0,
+                   "sales": "0",
+                   "production_time": 0,
+                   "sph": null,
+                   "efficiency": 0,
+                   "sph_goal": null,
+                   "month": "2021-Oct"
+               }
+           ]
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/dashboards/human_resources/head_counts
+    metadata:
+      title: 'Dashboards Human Resources Head Counts'
+      description: 'Head Counts data for human resources dashboard'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer VEeZa86P5b43g1hcf6avkDd'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      site:
+        name: site
+        description: 'Limit results to specific site. Example ?site=%Santiago%'
+        required: false
+        example: rerum
+        type: string
+        custom: []
+      project:
+        name: project
+        description: 'Limit results to specific project. Example ?project=%Pub%'
+        required: false
+        example: blanditiis
+        type: string
+        custom: []
+      department:
+        name: department
+        description: 'Limit results to specific department. Example ?department=%Product%'
+        required: false
+        example: et
+        type: string
+        custom: []
+      position:
+        name: position
+        description: 'Limit results to specific position. Example ?position=%Agente%'
+        required: false
+        example: laboriosam
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "head_count": 75,
+            "attrition_mtd": 1.33,
+            "hired_tm": 5,
+            "terminated_tm": 7,
+          }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/dashboards/human_resources/attritions
+    metadata:
+      title: 'Dashboards Human Resources Month Attritions'
+      description: 'Collection of attritions by months, including the last 12 months for human resources dashboard'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 38VfhaDZ56e1EadgvcP4bk6'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      site:
+        name: site
+        description: 'Limit results to specific site. Example ?site=%Santiago%'
+        required: false
+        example: fugiat
+        type: string
+        custom: []
+      project:
+        name: project
+        description: 'Limit results to specific project. Example ?project=%Pub%'
+        required: false
+        example: occaecati
+        type: string
+        custom: []
+      department:
+        name: department
+        description: 'Limit results to specific department. Example ?department=%Product%'
+        required: false
+        example: minus
+        type: string
+        custom: []
+      position:
+        name: position
+        description: 'Limit results to specific position. Example ?position=%Agente%'
+        required: false
+        example: velit
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          [
+            {
+                "month": "2021-01",
+                "head_count": 10,
+                "terminations": 0,
+                "attrition": "0.00"
+            },
+            {
+                "month": "2021-02",
+                "head_count": 10,
+                "terminations": 0,
+                "attrition": "0.00"
+             }
+          ]
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/dashboards/human_resources/hc_by_project
+    metadata:
+      title: 'Dashboards Human Resources Head Counts by Projects'
+      description: 'Collection of head counts grouped by projects for human resources dashboard'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 8vd1Degc5PEVa43fh66bZak'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      site:
+        name: site
+        description: 'Limit results to specific site. Example ?site=%Santiago%'
+        required: false
+        example: recusandae
+        type: string
+        custom: []
+      project:
+        name: project
+        description: 'Limit results to specific project. Example ?project=%Pub%'
+        required: false
+        example: accusamus
+        type: string
+        custom: []
+      department:
+        name: department
+        description: 'Limit results to specific department. Example ?department=%Product%'
+        required: false
+        example: distinctio
+        type: string
+        custom: []
+      position:
+        name: position
+        description: 'Limit results to specific position. Example ?position=%Agente%'
+        required: false
+        example: eveniet
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          [
+            {
+              "id": 13,
+              "name": "Vincenzo Rolfson IV",
+              "client_id": 1,
+              "created_at": "2021-11-19T16:49:20.000000Z",
+              "updated_at": "2021-11-19T16:49:20.000000Z",
+              "employees_count": 1
+          }
+          ]
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/dashboards/human_resources/hc_by_gender
+    metadata:
+      title: 'Dashboards Human Resources Head Counts by Gender'
+      description: 'Collection of head count data grouped by gender for human resources dashboard'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer ZEV3dkP164ev5Dhafabcg86'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      site:
+        name: site
+        description: 'Limit results to specific site. Example ?site=%Santiago%'
+        required: false
+        example: laboriosam
+        type: string
+        custom: []
+      project:
+        name: project
+        description: 'Limit results to specific project. Example ?project=%Pub%'
+        required: false
+        example: sapiente
+        type: string
+        custom: []
+      department:
+        name: department
+        description: 'Limit results to specific department. Example ?department=%Product%'
+        required: false
         example: ut
+        type: string
+        custom: []
+      position:
+        name: position
+        description: 'Limit results to specific position. Example ?position=%Agente%'
+        required: false
+        example: alias
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          [
+              {
+                 "id": 3,
+                 "name": "Male",
+                 "created_at": "2021-11-19T16:49:21.000000Z",
+                 "updated_at": "2021-11-19T16:49:21.000000Z",
+                 "employees_count": 1
+              }
+          ]
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/dashboards/human_resources/hc_by_department
+    metadata:
+      title: 'Dashboards Human Resources Head Counts by Departments'
+      description: 'Collection of head count data grouped by department for human resources dashboard'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 38a5DbPhcZfaV6k46eEvd1g'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      site:
+        name: site
+        description: 'Limit results to specific site. Example ?site=%Santiago%'
+        required: false
+        example: fuga
+        type: string
+        custom: []
+      project:
+        name: project
+        description: 'Limit results to specific project. Example ?project=%Pub%'
+        required: false
+        example: doloribus
+        type: string
+        custom: []
+      department:
+        name: department
+        description: 'Limit results to specific department. Example ?department=%Product%'
+        required: false
+        example: sint
+        type: string
+        custom: []
+      position:
+        name: position
+        description: 'Limit results to specific position. Example ?position=%Agente%'
+        required: false
+        example: repellat
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          [
+           {
+               "id": 5,
+               "name": "Luis McClure",
+               "created_at": "2021-11-19T16:49:18.000000Z",
+               "updated_at": "2021-11-19T16:49:18.000000Z",
+               "employees_count": 1
+           }
+          ]
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/dashboards/production/mtd_stats
+    metadata:
+      title: 'Dashboards Production Month To Date Stats'
+      description: 'Production MTD stats for production dashboard'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer e3dE41bcfv8a6gahkZ56VDP'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      campaign:
+        name: campaign
+        description: 'Limit results to specific campaign. Example ?campaign=%Santiago%'
+        required: false
+        example: magnam
+        type: string
+        custom: []
+      source:
+        name: source
+        description: 'Limit results to specific source. Example ?source=%Santiago%'
+        required: false
+        example: aliquid
+        type: string
+        custom: []
+      employee:
+        name: employee
+        description: 'Limit results to specific employee. Example ?employee=%Santiago%'
+        required: false
+        example: qui
+        type: string
+        custom: []
+      supervisor:
+        name: supervisor
+        description: 'Limit results to specific supervisor. Example ?supervisor=%Santiago%'
+        required: false
+        example: eligendi
+        type: string
+        custom: []
+      supervisor_employee:
+        name: supervisor_employee
+        description: 'Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%'
+        required: false
+        example: dolores
+        type: string
+        custom: []
+      project_campaign:
+        name: project_campaign
+        description: 'Limit results to specific project_campaign. Example ?project_campaign=%Santiago%'
+        required: false
+        example: voluptatum
+        type: string
+        custom: []
+      project_employee:
+        name: project_employee
+        description: 'Limit results to specific project_employee. Example ?project_employee=%Santiago%'
+        required: false
+        example: mollitia
+        type: string
+        custom: []
+      site:
+        name: site
+        description: 'Limit results to specific site. Example ?site=%Santiago%'
+        required: false
+        example: rerum
+        type: string
+        custom: []
+      client:
+        name: client
+        description: 'Limit results to specific client. Example ?client=%Pub%'
+        required: false
+        example: necessitatibus
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "revenue_mtd": "0.00",
+              "login_hours_mtd": "8.00",
+              "production_hours_mtd": "0.00"
+          }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/dashboards/production/monthly_stats
+    metadata:
+      title: 'Dashboards Production Monthly Stats'
+      description: 'Production Monthly stats for production dashboard'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 8E1ckVf46adPDaeZ6g35vbh'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      campaign:
+        name: campaign
+        description: 'Limit results to specific campaign. Example ?campaign=%Santiago%'
+        required: false
+        example: qui
+        type: string
+        custom: []
+      source:
+        name: source
+        description: 'Limit results to specific source. Example ?source=%Santiago%'
+        required: false
+        example: molestiae
+        type: string
+        custom: []
+      employee:
+        name: employee
+        description: 'Limit results to specific employee. Example ?employee=%Santiago%'
+        required: false
+        example: quaerat
+        type: string
+        custom: []
+      supervisor:
+        name: supervisor
+        description: 'Limit results to specific supervisor. Example ?supervisor=%Santiago%'
+        required: false
+        example: quo
+        type: string
+        custom: []
+      supervisor_employee:
+        name: supervisor_employee
+        description: 'Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%'
+        required: false
+        example: alias
+        type: string
+        custom: []
+      project_campaign:
+        name: project_campaign
+        description: 'Limit results to specific project_campaign. Example ?project_campaign=%Santiago%'
+        required: false
+        example: est
+        type: string
+        custom: []
+      project_employee:
+        name: project_employee
+        description: 'Limit results to specific project_employee. Example ?project_employee=%Santiago%'
+        required: false
+        example: iure
+        type: string
+        custom: []
+      site:
+        name: site
+        description: 'Limit results to specific site. Example ?site=%Santiago%'
+        required: false
+        example: non
+        type: string
+        custom: []
+      client:
+        name: client
+        description: 'Limit results to specific client. Example ?client=%Pub%'
+        required: false
+        example: est
         type: string
         custom: []
     bodyParameters: []
