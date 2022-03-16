@@ -1,4 +1,4 @@
-{{--  @if(Session::has('alert'))
+{{--  @if(session()->has('alert'))
     <flash-message
         type="{{ $class }}"
         heading="{{ $title }}"
@@ -12,36 +12,36 @@
         $title = null;
         $icon = null;
 
-        if (Session::has('global')) {
+        if (session()->has('global')) {
             $class = 'global';
             $title = 'Attention';
-            $message = Session::get('global');
+            $message = session()->get('global');
             $icon = 'info';
-        } elseif (Session::has('info')) {
+        } elseif (session()->has('info')) {
             $class = 'info';
             $title = 'Attention';
-            $message = Session::get('info');
+            $message = session()->get('info');
             $icon = 'info';
-        } elseif (Session::has('success')) {
+        } elseif (session()->has('success')) {
             $class = 'success';
             $title = 'Nice';
-            $message = Session::get('success');
+            $message = session()->get('success');
             $icon = 'check-circle';
-        } elseif (Session::has('danger')) {
+        } elseif (session()->has('danger')) {
             $class = 'error';
             // $class = 'danger';
             $title = 'Oops';
-            $message = Session::get('danger');
+            $message = session()->get('danger');
             $icon = 'exclamation-triangle';
-        } elseif (Session::has('warning')) {
+        } elseif (session()->has('warning')) {
             $class = 'warning';
             $title = 'Warning';
-            $message = Session::get('warning');
+            $message = session()->get('warning');
             $icon = 'exclamation-circle';
-        }elseif (Session::has('question')) {
+        }elseif (session()->has('question')) {
             $class = 'question';
             $title = '??';
-            $message = Session::get('question');
+            $message = session()->get('question');
             $icon = 'exclamation-circle';
         }
     ?>
