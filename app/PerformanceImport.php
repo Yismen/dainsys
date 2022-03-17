@@ -3,12 +3,13 @@
 namespace App;
 
 use App\Traits\Trackable;
-use App\Traits\PerformanceTrait;
 use App\DainsysModel as Model;
+use App\Traits\PerformanceTrait;
 
 class PerformanceImport extends Model
 {
-    use Trackable, PerformanceTrait;
+    use Trackable;
+    use PerformanceTrait;
 
     protected $table = 'performances';
 
@@ -23,6 +24,12 @@ class PerformanceImport extends Model
         'login_time',
         'production_time',
         'talk_time',
+        'break_time',
+        'lunch_time',
+        'training_time',
+        'away_time',
+        'off_hook_time',
+        'pending_dispo_time',
         'billable_hours',
         'contacts',
         'calls',
