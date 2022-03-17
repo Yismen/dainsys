@@ -1,8 +1,9 @@
 <?php
+
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\RevenueType;
+use Illuminate\Database\Seeder;
 
 class RevenueTypesTableSeeder extends Seeder
 {
@@ -14,7 +15,8 @@ class RevenueTypesTableSeeder extends Seeder
     public function run()
     {
         RevenueType::create(['name' => 'Sales or Production']);
-        RevenueType::create(['name' => 'Login Time']);
+        RevenueType::create(['name' => 'Production Time']);
         RevenueType::create(['name' => 'Talk Time']);
+        RevenueType::create(['name' => 'Login Time']);
     }
 }
