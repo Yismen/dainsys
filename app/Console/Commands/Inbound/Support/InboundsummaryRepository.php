@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands\Inbound\Support;
 
-use App\Connections\RingCentralConnection;
 use Illuminate\Support\Facades\DB;
+use App\Connections\RingCentralConnection;
 
 class InboundSummaryRepository extends RingCentralConnection implements InboundSummaryInterface
 {
