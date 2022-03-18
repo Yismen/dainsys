@@ -7,7 +7,7 @@
         <!-- Image Header -->
         <div class="row">
             <div class="col-lg-12">
-                <img class="img-responsive" src="http://placehold.it/1200x300" alt="">
+                <img class="img-responsive" src="{{ asset('images/placeholders/1200x300.png') }}" alt="">
             </div>
         </div>
         <!-- /.row -->

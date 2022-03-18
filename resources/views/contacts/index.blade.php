@@ -19,7 +19,7 @@
 								<div class="widget-user-header bg-yellow">
 									<div class="row">
 										{{--  <div class="widget-user-image">
-											<img class="img-circle" src="http://" alt="User Avatar">
+											<img class="img-circle" src="{{ asset('images/placeholders/150.png') }}" alt="User Avatar">
 										</div>  --}}
 											<!-- /.widget-user-image -->
 										<h3 class="widget-user-usernamea">

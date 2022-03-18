@@ -115,7 +115,7 @@
 	            	style="max-height: 150px; max-width: 125px;">
             </a>
         @else
-            <img src="http://placehold.it/800x600"
+            <img src="{{ asset('images/placeholders/800x600.png') }}"
             	class="img-responsive img-circle center-block" alt="Image"
             	style="max-height: 150px; max-width: 125px;">
         @endif

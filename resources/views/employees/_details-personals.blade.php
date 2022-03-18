@@ -3,9 +3,9 @@
     <div
         class="widget-user-header {{ $employee->status === 'Active' ? 'bg-green' : 'bg-yellow' }}"
     >
-        <a href="{{ file_exists(trim(explode('?', $employee->photo)[0], '/')) ? asset($employee->photo) : 'http://placehold.it/200x200' }}" target="_employee-photo">
+        <a href="{{ file_exists(trim(explode('?', $employee->photo)[0], '/')) ? asset($employee->photo) : asset('images/placeholders/200.png') }}" target="_employee-photo">
             <div class="widget-user-image">
-                <img src="{{ file_exists(trim(explode('?', $employee->photo)[0], '/')) ? asset($employee->photo) : 'http://placehold.it/200x200' }}"
+                <img src="{{ file_exists(trim(explode('?', $employee->photo)[0], '/')) ? asset($employee->photo) : asset('images/placeholders/300.png') }}"
                         class="img-circle img-responsive center-block" alt="Image" width="200px">
             </div>
         </a>

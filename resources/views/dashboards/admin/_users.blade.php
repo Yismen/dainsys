@@ -19,7 +19,7 @@
                                 >
                             </a>
                         @else
-                            <img src="http://placehold.it/300x300"
+                            <img src="{{ asset('images/placeholders/300.png') }}"
                                 class="profile-user-img img-responsive img-circle img-thumbnail" alt="Image"
                             >
                         @endif

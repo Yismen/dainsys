@@ -11,11 +11,11 @@
 			<div class="box box-primary">
 				<div class="box-body box-profile">
 					@if (file_exists(optional($profile)->photo))
-					<a href="{{ asset(optional($profile)->photo) }}" target="_user_photo">
-						<img src="{{ asset(optional($profile)->photo) }}" class="profile-user-img img-responsive img-circle animated rotateIn" alt="Image">
-					</a>
+						<a href="{{ asset(optional($profile)->photo) }}" target="_user_photo">
+							<img src="{{ asset(optional($profile)->photo) }}" class="profile-user-img img-responsive img-circle animated rotateIn" alt="Image">
+						</a>
 					@else
-					<img src="http://placehold.it/300x300" class="profile-user-img img-responsive img-circle animated rotateIn" alt="Image">
+						<img src="{{ asset('images/placeholders/300.png') }}" class="profile-user-img img-responsive img-circle animated rotateIn" alt="Image">
 					@endif
 
 					<h3 class="profile-username text-center">{{ optional(optional($profile)->user)->name }}</h3>

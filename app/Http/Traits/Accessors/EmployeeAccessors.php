@@ -5,10 +5,10 @@ namespace App\Http\Traits\Accessors;
 use App\Afp;
 use App\Ars;
 use App\Bank;
-use App\Gender;
 use App\Site;
-use App\Project;
+use App\Gender;
 use App\Marital;
+use App\Project;
 use App\Position;
 use Carbon\Carbon;
 use App\Department;
@@ -68,7 +68,7 @@ trait EmployeeAccessors
 
     public function getPhotoAttribute($photo)
     {
-        return '' == $photo ? 'http://placehold.it/300x300' : $photo;
+        return '' == $photo ? asset('images/placeholders/300.png') : $photo;
     }
 
     public function getStatusAttribute()

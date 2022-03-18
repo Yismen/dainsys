@@ -48,7 +48,7 @@
                                                         >
                                                     </a>
                                                 @else
-                                                    <img src="http://placehold.it/300x300" style="max-height: 50px; max-width: 50px;"
+                                                    <img src="{{ asset('images/placeholders/300.png') }}" style="max-height: 50px; max-width: 50px;"
                                                         class="profile-user-img img-responsive img-circle" alt="Image"
                                                     >
                                                 @endif
