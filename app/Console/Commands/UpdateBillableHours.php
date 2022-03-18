@@ -12,7 +12,9 @@ class UpdateBillableHours extends Command
      *
      * @var string
      */
-    protected $signature = 'dainsys:update-billable-hours-by-revenue-type';
+    protected $signature = 'dainsys:update-billable-hours-by-revenue-type
+                            {--R|revenue_type= : update for a specific revenue type. If empty, % (all)  will be used.}
+                            {--M|months= : Int|Optional. The amount of months to update the data. Default is 1 months old.}';
 
     /**
      * The console command description.
@@ -38,6 +40,6 @@ class UpdateBillableHours extends Command
      */
     public function handle()
     {
-        JobsUpdateBillableHours::dispatch();
+        JobsUpdateBillableHours::dispatch($this->options());
     }
 }

@@ -6,9 +6,10 @@ use App\Performance;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class UpdateBillableHours
+class UpdateBillableHours implements ShouldQueue
 {
     use Dispatchable;
     use InteractsWithQueue;
@@ -20,8 +21,11 @@ class UpdateBillableHours
      *
      * @return void
      */
-    public function __construct()
+    public array $options;
+
+    public function __construct(array $options)
     {
+        $this->options = $options;
     }
 
     /**
@@ -33,6 +37,22 @@ class UpdateBillableHours
     {
         $performances = Performance::query()
             ->with('campaign.revenueType')
+            ->when(
+                $this->options['revenue_type'],
+                fn ($query) => $query->whereHas(
+                    'campaign.revenueType',
+                    fn ($q) => $q->where(
+                        'name',
+                        'like',
+                        "{$this->options['revenue_type']}%"
+                    )
+                )
+            )
+            ->when(
+                $this->options['months'],
+                fn ($query) => $query->whereDate('date', '>=', now()->subMonths($this->options['months'])),
+                fn ($query) => $query->whereDate('date', '>=', now()->subMonth()->startOfMonth())
+            )
             ->get();
 
         $performances->each(function ($query) {
@@ -55,8 +75,8 @@ class UpdateBillableHours
                     break;
 
                 default:
-                // code...
-                break;
+                    // code...
+                    break;
             }
         });
     }
