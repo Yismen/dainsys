@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Performance;
 use Carbon\Carbon;
+use App\Performance;
 use Illuminate\Support\Facades\DB;
 
 class PerformanceRepository
@@ -89,12 +89,22 @@ class PerformanceRepository
                     'supervisor',
                     'employee.termination',
                 ]
-            );
+            )
+            ->select([
+                'date',
+                'employee_id',
+                'campaign_id',
+                'supervisor_id',
+                'login_time',
+                'production_time',
+                'transactions',
+                'revenue',
+            ]);
     }
 
     protected function baseQeury()
     {
-        return Performance::filter(request()->all())
+        $performance_query = Performance::filter(request()->all())
             ->select(
                 DB::raw('
                 sum(revenue) as revenue,
@@ -108,5 +118,7 @@ class PerformanceRepository
             ')
             )
             ->orderBy('date');
+
+        return $performance_query;
     }
 }

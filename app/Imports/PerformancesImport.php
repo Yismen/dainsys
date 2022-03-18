@@ -3,18 +3,19 @@
 namespace App\Imports;
 
 use App\PerformanceImport;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\WithBatchInserts;
-use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
-use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Concerns\WithBatchInserts;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 
 class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, WithBatchInserts, WithEvents, WithChunkReading, ShouldQueue
 {
-    use Importable, ExcelImportTrait;
+    use Importable;
+    use ExcelImportTrait;
 
     /**
      * The name with the file will be saved.
@@ -56,13 +57,13 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
     /**
      * Use ToModel logic to save the data
      *
-     * @param array $row
+     * @param  array             $row
      * @return PerformanceImport instance
      */
     public function model(array $row)
     {
         PerformanceImport::where('unique_id', $row['unique_id'])->delete();
-
+        dd($row);
         return new PerformanceImport([
             'unique_id' => $row['unique_id'],
             'date' => $this->transformDate($row['date'])->format('Y-m-d'),

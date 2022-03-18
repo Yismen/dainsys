@@ -2,12 +2,12 @@
 
 namespace Tests\Feature;
 
-use App\Performance;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
-use Maatwebsite\Excel\Facades\Excel;
 use Tests\TestCase;
+use App\Performance;
+use Illuminate\Http\UploadedFile;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PerformancesImportTest extends TestCase
 {
@@ -66,7 +66,7 @@ class PerformancesImportTest extends TestCase
         ];
         $this->actingAs($this->userWithPermission('create-performances-import'));
 
-        $response = $this->post(route('admin.performances_import.store'), $attributes)
+        $this->post(route('admin.performances_import.store'), $attributes)
             ->assertRedirect(route('admin.performances_import.index'))
             ->assertSessionHas('imported_files', [
                 0 => $file_name,

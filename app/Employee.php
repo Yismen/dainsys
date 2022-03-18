@@ -5,10 +5,10 @@ namespace App;
 use Carbon\Carbon;
 use App\Traits\Trackable;
 use App\DainsysModel as Model;
+use App\ModelFilters\FilterableTrait;
 use App\Http\Traits\Mutators\EmployeeMutators;
 use App\Http\Traits\Accessors\EmployeeAccessors;
 use App\Http\Traits\Relationships\EmployeeRelationships;
-use App\ModelFilters\FilterableTrait;
 
 class Employee extends Model
 {
@@ -140,8 +140,8 @@ class Employee extends Model
      * Query Active employees or terminated after a given date.
      *
      * @param Query Builder $query -automatically injected by laravel
-     * @param Carbon        $date  carbon instance. The Date since where
-     *                             to include the inactives. Default is 1 month ago
+     * @param Carbon $date carbon instance. The Date since where
+     *                     to include the inactives. Default is 1 month ago
      *
      * @return Query Builder        query builder instance
      */
@@ -272,10 +272,10 @@ class Employee extends Model
     /**
      * Inactivate the current employee
      *
-     * @param Carbon $carbon
-     * @param TerminationType $termination_type
-     * @param TerminationReason $termination_eason
-     * @param string $comments
+     * @param  Carbon            $carbon
+     * @param  TerminationType   $termination_type
+     * @param  TerminationReason $termination_eason
+     * @param  string            $comments
      * @return void
      */
     public function inactivate(Carbon $carbon, TerminationType $termination_type, TerminationReason $termination_eason, string $comments = null)
