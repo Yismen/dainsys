@@ -63,7 +63,7 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
     public function model(array $row)
     {
         PerformanceImport::where('unique_id', $row['unique_id'])->delete();
-        dd($row);
+
         return new PerformanceImport([
             'unique_id' => $row['unique_id'],
             'date' => $this->transformDate($row['date'])->format('Y-m-d'),
