@@ -91,6 +91,7 @@ class PerformanceRepository
                 ]
             )
             ->select([
+                'id',
                 'date',
                 'employee_id',
                 'campaign_id',

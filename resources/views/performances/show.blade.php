@@ -56,6 +56,18 @@
                                 <li class="list-group-item">
                                     <strong>Sales: </strong> {{ number_format($performance->transactions) }}
                                 </li>
+
+                                <li class="list-group-item">
+                                    <strong>Upsales: </strong> {{ number_format($performance->upsales) }}
+                                </li>
+
+                                <li class="list-group-item">
+                                    <strong>CC Sales: </strong> {{ number_format($performance->cc_sales) }}
+                                </li>
+
+                                <li class="list-group-item">
+                                    <strong>Revenue: </strong> ${{ number_format($performance->revenue, 3) }}
+                                </li>
                             </ul>
                         </div>
 
@@ -78,15 +90,27 @@
                                 </li>
 
                                 <li class="list-group-item">
-                                    <strong>Upsales: </strong> {{ number_format($performance->upsales) }}
+                                    <strong>Break Time: </strong> {{ number_format($performance->break_time, 3) }}
                                 </li>
 
                                 <li class="list-group-item">
-                                    <strong>CC Sales: </strong> {{ number_format($performance->cc_sales) }}
+                                    <strong>Lunch Time: </strong> {{ number_format($performance->lunch_time, 3) }}
                                 </li>
 
                                 <li class="list-group-item">
-                                    <strong>Revenue: </strong> ${{ number_format($performance->revenue, 3) }}
+                                    <strong>Training Time: </strong> {{ number_format($performance->training_time, 3) }}
+                                </li>
+
+                                <li class="list-group-item">
+                                    <strong>Away Time: </strong> {{ number_format($performance->away_time, 3) }}
+                                </li>
+
+                                <li class="list-group-item">
+                                    <strong>Off Hook Time: </strong> {{ number_format($performance->off_hook_time, 3) }}
+                                </li>
+
+                                <li class="list-group-item">
+                                    <strong>Pending Disposition Time: </strong> {{ number_format($performance->pending_dispo_time, 3) }}
                                 </li>
 
                                 <li class="list-group-item">
