@@ -1,23 +1,23 @@
 <?php
 
-namespace Tests\Feature\Api\V2;
+namespace Tests\Feature\Api_V2;
 
+use App\Site;
 use Tests\TestCase;
-use App\DowntimeReason;
 use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class DowntimeReasonsControllerTest extends TestCase
+class SitesControllerTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function it_returns_a_downtime_reasons_collection()
+    public function it_returns_a_sites_collection()
     {
-        $downtime = factory(DowntimeReason::class)->create();
+        factory(Site::class)->create();
         Passport::actingAs($this->user());
 
-        $response = $this->get('/api/v2/downtime_reasons');
+        $response = $this->get('/api/v2/sites');
 
         $response->assertOk()
             ->assertJsonStructure([

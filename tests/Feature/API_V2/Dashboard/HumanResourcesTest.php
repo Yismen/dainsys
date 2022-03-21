@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Api\V2\Dashboard;
+namespace Tests\Feature\Api_V2\Dashboard;
 
 use App\Employee;
 use Illuminate\Foundation\Testing\RefreshDatabase;

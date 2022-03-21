@@ -1,43 +1,44 @@
 <?php
 
-namespace Tests\Feature\Api\V2;
+namespace Tests\Feature\Api_V2;
 
-use App\Department;
+use App\Afp;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
 use Tests\TestCase;
 
-class DepartmentTest extends TestCase
+class AfpTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function it_validates_request_to_create_department()
+    public function it_validates_request_to_create_afp()
     {
         Passport::actingAs($this->user());
         $attributes = [
             'name' => '',
         ];
 
-        $response = $this->post('/api/v2/departments', $attributes);
+        $response = $this->post('/api/v2/afps', $attributes);
 
         $response->assertInvalid(array_keys($attributes));
     }
 
     /** @test */
-    public function it_creates_a_department_and_returns_json()
+    public function it_creates_a_afp_and_returns_json()
     {
-        $department = factory(Department::class)->make()->toArray();
+        $afp = factory(Afp::class)->make()->toArray();
         Passport::actingAs($this->user());
 
-        $response = $this->post('/api/v2/departments', $department);
+        $response = $this->post('/api/v2/afps', $afp);
 
         $response->assertStatus(201)
             ->assertJsonStructure([
                 'id',
                 'name',
+                'slug',
             ]);
 
-        $this->assertDatabaseHas('departments', $department);
+        $this->assertDatabaseHas('afps', $afp);
     }
 }

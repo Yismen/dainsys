@@ -1,23 +1,23 @@
 <?php
 
-namespace Tests\Feature\Api\V2;
+namespace Tests\Feature\Api_V2;
 
-use App\Project;
+use App\Campaign;
 use Tests\TestCase;
 use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ProjectsControllerTest extends TestCase
+class CampaignsControllerTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function it_returns_a_projects_collection()
+    public function it_returns_a_campaigns_collection()
     {
-        factory(Project::class)->create();
+        factory(Campaign::class)->create();
         Passport::actingAs($this->user());
 
-        $response = $this->get('/api/v2/projects');
+        $response = $this->get('/api/v2/campaigns');
 
         $response->assertOk()
             ->assertJsonStructure([
@@ -25,7 +25,11 @@ class ProjectsControllerTest extends TestCase
                     '*' => [
                         'id',
                         'name',
-                        'client',
+                        'project_id',
+                        'source_id',
+                        'revenue_type_id',
+                        'sph_goal',
+                        'rate',
                     ],
                 ],
             ]);

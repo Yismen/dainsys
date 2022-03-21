@@ -1,36 +1,36 @@
 <?php
 
-namespace Tests\Feature\Api\V2;
+namespace Tests\Feature\Api_V2;
 
-use App\Nationality;
+use App\Department;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
 use Tests\TestCase;
 
-class NationalityTest extends TestCase
+class DepartmentTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function it_validates_request_to_create_nationality()
+    public function it_validates_request_to_create_department()
     {
         Passport::actingAs($this->user());
         $attributes = [
             'name' => '',
         ];
 
-        $response = $this->post('/api/v2/nationalities', $attributes);
+        $response = $this->post('/api/v2/departments', $attributes);
 
         $response->assertInvalid(array_keys($attributes));
     }
 
     /** @test */
-    public function it_creates_a_nationality_and_returns_json()
+    public function it_creates_a_department_and_returns_json()
     {
-        $nationality = factory(Nationality::class)->make()->toArray();
+        $department = factory(Department::class)->make()->toArray();
         Passport::actingAs($this->user());
 
-        $response = $this->post('/api/v2/nationalities', $nationality);
+        $response = $this->post('/api/v2/departments', $department);
 
         $response->assertStatus(201)
             ->assertJsonStructure([
@@ -38,6 +38,6 @@ class NationalityTest extends TestCase
                 'name',
             ]);
 
-        $this->assertDatabaseHas('nationalities', $nationality);
+        $this->assertDatabaseHas('departments', $department);
     }
 }

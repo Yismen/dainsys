@@ -1,44 +1,43 @@
 <?php
 
-namespace Tests\Feature\Api\V2;
+namespace Tests\Feature\Api_V2;
 
-use App\Afp;
+use App\Nationality;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
 use Tests\TestCase;
 
-class AfpTest extends TestCase
+class NationalityTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function it_validates_request_to_create_afp()
+    public function it_validates_request_to_create_nationality()
     {
         Passport::actingAs($this->user());
         $attributes = [
             'name' => '',
         ];
 
-        $response = $this->post('/api/v2/afps', $attributes);
+        $response = $this->post('/api/v2/nationalities', $attributes);
 
         $response->assertInvalid(array_keys($attributes));
     }
 
     /** @test */
-    public function it_creates_a_afp_and_returns_json()
+    public function it_creates_a_nationality_and_returns_json()
     {
-        $afp = factory(Afp::class)->make()->toArray();
+        $nationality = factory(Nationality::class)->make()->toArray();
         Passport::actingAs($this->user());
 
-        $response = $this->post('/api/v2/afps', $afp);
+        $response = $this->post('/api/v2/nationalities', $nationality);
 
         $response->assertStatus(201)
             ->assertJsonStructure([
                 'id',
                 'name',
-                'slug',
             ]);
 
-        $this->assertDatabaseHas('afps', $afp);
+        $this->assertDatabaseHas('nationalities', $nationality);
     }
 }

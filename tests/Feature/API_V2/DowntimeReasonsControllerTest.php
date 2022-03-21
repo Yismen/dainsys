@@ -1,23 +1,23 @@
 <?php
 
-namespace Tests\Feature\Api\V2;
+namespace Tests\Feature\Api_V2;
 
-use App\Client;
 use Tests\TestCase;
+use App\DowntimeReason;
 use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ClientsControllerTest extends TestCase
+class DowntimeReasonsControllerTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function it_returns_a_clients_collection()
+    public function it_returns_a_downtime_reasons_collection()
     {
-        factory(Client::class)->create();
+        $downtime = factory(DowntimeReason::class)->create();
         Passport::actingAs($this->user());
 
-        $response = $this->get('/api/v2/clients');
+        $response = $this->get('/api/v2/downtime_reasons');
 
         $response->assertOk()
             ->assertJsonStructure([
@@ -25,11 +25,6 @@ class ClientsControllerTest extends TestCase
                     '*' => [
                         'id',
                         'name',
-                        'contact_name',
-                        'main_phone',
-                        'email',
-                        'secondary_phone',
-                        'account_number',
                     ],
                 ],
             ]);

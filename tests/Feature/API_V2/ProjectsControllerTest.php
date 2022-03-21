@@ -1,23 +1,23 @@
 <?php
 
-namespace Tests\Feature\Api\V2;
+namespace Tests\Feature\Api_V2;
 
-use App\Site;
+use App\Project;
 use Tests\TestCase;
 use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class SitesControllerTest extends TestCase
+class ProjectsControllerTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function it_returns_a_sites_collection()
+    public function it_returns_a_projects_collection()
     {
-        factory(Site::class)->create();
+        factory(Project::class)->create();
         Passport::actingAs($this->user());
 
-        $response = $this->get('/api/v2/sites');
+        $response = $this->get('/api/v2/projects');
 
         $response->assertOk()
             ->assertJsonStructure([
@@ -25,6 +25,7 @@ class SitesControllerTest extends TestCase
                     '*' => [
                         'id',
                         'name',
+                        'client',
                     ],
                 ],
             ]);
