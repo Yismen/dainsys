@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use App\Listeners\RemoveTemporaryMailAttachments;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Mail\Events\MessageSent;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -17,35 +15,41 @@ class EventServiceProvider extends ServiceProvider
         \Illuminate\Mail\Events\MessageSent::class => [
             \App\Listeners\RemoveTemporaryMailAttachments::class,
         ],
-        'Illuminate\Notifications\Events\NotificationSent' => [
-            'App\Listeners\AppNotificationReceived',
+        \Illuminate\Notifications\Events\NotificationSent::class => [
+            \App\Listeners\AppNotificationReceived::class,
         ],
-        'App\Events\EmployeeDeactivated' => [
-            'App\Listeners\SemdEmailToHumanResources',
+        \App\Events\EmployeeDeactivated::class => [
+            \App\Listeners\SemdEmailToHumanResources::class,
         ],
-        'App\Events\EmployeeTerminated' => [
-            'App\Listeners\EmployeeTerminated',
+        \App\Events\EmployeeTerminated::class => [
+            \App\Listeners\EmployeeTerminated::class,
         ],
-        'App\Events\EmployeeReactivate' => [
-            'App\Listeners\EmployeeReactivate',
+        \App\Events\EmployeeReactivated::class => [
+            \App\Listeners\EmployeeReactivated::class,
         ],
-        'App\Events\EmployeeCreated' => [
-            'App\Listeners\SemdEmailToHumanResources',
-            'App\Listeners\CreateEmployeeShift',
-            'App\Listeners\CreateEmployeeSchedule',
+        \App\Events\EmployeeCreated::class => [
+            \App\Listeners\SemdEmailToHumanResources::class,
+            \App\Listeners\CreateEmployeeShift::class,
+            \App\Listeners\CreateEmployeeSchedule::class,
         ],
-        'App\Events\MessageCreaed' => [
-            'App\Listeners\NotifyUserOfANewMessage',
+        // \App\Events\MessageCreated::class => [
+        //     \App\Listeners\NotifyUserOfANewMessage::class,
+        // ],
+        \App\Events\CreateUserSettings::class => [
+            \App\Listeners\StoreUserSettings::class,
         ],
-        'App\Events\CreateUserSettings' => [
-            'App\Listeners\StoreUserSettings',
+        \App\Events\EditUserSettings::class => [
+            \App\Listeners\UpdateUserSettings::class,
         ],
-        'App\Events\EditUserSettings' => [
-            'App\Listeners\UpdateUserSettings',
+        \App\Events\EmployeesUpdates::class => [
+            \App\Listeners\NotifyEmployeesTerminated::class,
+            \App\Listeners\NotifyEmployeesHired::class,
         ],
-        'App\Events\EmployeesUpdates' => [
-            'App\Listeners\NotifyEmployeesTerminated',
-            'App\Listeners\NotifyEmployeesHired',
+        \Illuminate\Auth\Events\Login::class => [
+            \App\Listeners\UserLoggedIn::class,
+        ],
+        \Illuminate\Auth\Events\Logout::class => [
+            \App\Listeners\UserLoggedOut::class,
         ],
     ];
 

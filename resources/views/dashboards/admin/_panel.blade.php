@@ -46,6 +46,7 @@
                                                 class="fa fa-circle {{ $user->isOnline() ? 'text-green' : 'text-gray'}}"
                                                 title="{{ $user->isOnline() ? 'Online' : 'Away'}}"
                                             ></i>
+                                            <span class="float-right text-muted text-sm">Active since {{ $user->lastOpenSession()->logged_in_at->diffForHumans() ?? '' }}</span>
                                             @unless ($loop->last)
                                                 <br>
                                             @endunless    

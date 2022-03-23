@@ -2,14 +2,15 @@
 
 namespace App\Http\Traits\Relationships;
 
-use App\Attendance;
 use App\Task;
+use App\Contact;
 use App\Message;
 use App\Profile;
 use App\Password;
-use App\UserSetting;
-use App\Contact;
+use App\UserLogin;
+use App\Attendance;
 use App\Supervisor;
+use App\UserSetting;
 
 trait UserRelationships
 {
@@ -81,8 +82,13 @@ trait UserRelationships
 
     public function employees()
     {
-        return $this->supervisors()->map(function ($item, $key) {
+        return $this->supervisors()->map(function ($item) {
             return $item->employees;
         })->collapse();
+    }
+
+    public function login()
+    {
+        return $this->hasOne(UserLogin::class);
     }
 }

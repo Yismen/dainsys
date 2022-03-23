@@ -17,7 +17,9 @@ the users configurations and setting.']) @section('content')
                                     @if ($user->isOnline())
                                         <li class="list-group-item">
                                             <a href="{{ route('admin.profiles.show', $user->id) }}">
-                                                <i class="fa fa-user"></i> {{ $user->name }}
+                                                <i class="fa fa-user"></i> 
+                                                {{ $user->name }}
+                                                <span class="float-right text-muted text-sm">{{ $user->lastOpenSession()->logged_in_at->diffForHumans() ?? '' }}</span>
                                             </a>
                                         </li>
                                     @endif

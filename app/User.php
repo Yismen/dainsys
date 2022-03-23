@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Traits\Trackable;
+use Illuminate\Support\Str;
 use App\Mail\NewUserCreated;
 use App\Mail\UpdatedPassword;
 use Laravel\Passport\HasApiTokens;
@@ -13,15 +14,22 @@ use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use App\Http\Traits\Mutators\UserMutators;
 use App\Http\Traits\Accessors\UserAccessors;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use App\Http\Traits\Relationships\UserRelationships;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Str;
 
 class User extends Authenticatable implements CanResetPassword
 {
-    use HasApiTokens, HasRoles,  UserAccessors, UserRelationships, UserMutators, Notifiable, Trackable, SoftDeletes;
+    use HasApiTokens;
+    use HasRoles;
+    use UserAccessors;
+    use UserRelationships;
+    use UserMutators;
+    use Notifiable;
+    use Trackable;
+    use SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
@@ -65,9 +73,21 @@ class User extends Authenticatable implements CanResetPassword
         return false;
     }
 
+    /**
+     * Check if the authenticate user has a session open
+     *
+     * @return void
+     */
+    public function getIsLoggedInAttribute()
+    {
+        return $this->login()
+            ->where(['logged_out_at' => null])
+            ->count() > 0;
+    }
+
     public function isOnline()
     {
-        if (Cache::has('online-user-' . $this->id)) {
+        if ($this->is_logged_in || Cache::has('online-user-' . $this->id)) {
             return true;
         }
 
@@ -135,5 +155,54 @@ class User extends Authenticatable implements CanResetPassword
     public function isAdmin()
     {
         return $this->is_admin === true || $this->hasAnyRole('admin', 'Admin', 'Administrador', 'administrador');
+    }
+
+    /**
+     * Open a new login session for the current user.
+     *
+     * @return void
+     */
+    public function createLoginSession()
+    {
+        $this->login()->create([
+            'logged_in_at' => now(),
+        ]);
+    }
+
+    /**
+     * Close all open sessions for the current user.
+     *
+     * @return void
+     */
+    public function closeLoginSessions()
+    {
+        $this->openSessions()
+            ->each->update(['logged_out_at' => now()]);
+    }
+
+    /**
+     * Return a collection of all sessions open for the current user.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function openSessions(): Collection
+    {
+        return $this->login()
+            ->orderBy('logged_out_at', 'DESC')
+            ->where(['logged_out_at' => null])
+            ->get();
+    }
+
+    /**
+     * Return user last open session.
+     *
+     * @return void
+     */
+    public function lastOpenSession()
+    {
+        return $this->login()
+            ->orderBy('logged_out_at', 'DESC')
+            ->where(['logged_out_at' => null])
+            ->first();
     }
 }
