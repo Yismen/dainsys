@@ -57,6 +57,36 @@ class Performance extends Model
      */
     public function prunable()
     {
-        return static::where('created_at', '<=', now()->subYears(2));
+        return static::where('created_at', '<=', now()->subYears(2)->startOfMonth());
+    }
+
+    public function parseBillableHours()
+    {
+        switch ($this->campaign->revenueType->name) {
+            case 'Sales Or Production':
+                $this->billable_hours = $this->production_time;
+                $this->save();
+                break;
+            case 'Login Time':
+                $this->billable_hours = $this->login_time;
+                $this->save();
+                break;
+            case 'Production Time':
+                $this->billable_hours = $this->production_time;
+                $this->save();
+                break;
+            case 'Talk Time':
+                $this->billable_hours = $this->talk_time;
+                $this->save();
+                break;
+            case 'Downtime':
+                $this->billable_hours = 0;
+                $this->save();
+                break;
+
+            default:
+                // code...
+                break;
+        }
     }
 }
