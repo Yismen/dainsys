@@ -19,7 +19,9 @@ the users configurations and setting.']) @section('content')
                                             <a href="{{ route('admin.profiles.show', $user->id) }}">
                                                 <i class="fa fa-user"></i> 
                                                 {{ $user->name }}
-                                                <span class="float-right text-muted text-sm">{{ $user->lastOpenSession()->logged_in_at->diffForHumans() ?? '' }}</span>
+                                                @if ($last_open_session = $user->lastOpenSession())
+                                                    <span class="float-right text-muted text-sm">Active since {{ $last_open_session->logged_in_at->diffForHumans() ?? '' }}</span>
+                                                @endif
                                             </a>
                                         </li>
                                     @endif

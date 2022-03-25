@@ -30,7 +30,9 @@
                             {{ $user->name }} 
                         </a>
                         <span class="users-list-date">Created {{ $user->created_at->diffForHumans() }}</span>
-                        <span class="float-right text-muted text-sm">Active since {{ $user->lastOpenSession()->logged_in_at->diffForHumans() ?? '' }}</span>
+                        @if ($last_open_session = $user->lastOpenSession())
+                            <span class="float-right text-muted text-sm">Active since {{ $last_open_session->logged_in_at->diffForHumans() ?? '' }}</span>
+                        @endif
                     </div>
                 @endforeach
                 <!-- /.users-list -->

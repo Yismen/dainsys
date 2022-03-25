@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class DashboardTest extends TestCase
 {
@@ -72,15 +72,16 @@ class DashboardTest extends TestCase
     {
         $this->actingAs($this->userWithRole('admin'));
 
-        $this->get(route('admin.dashboards'))
-            ->assertOk()
-            ->assertViewIs('dashboards.admin')
-            ->assertViewHasAll([
-                'revenue',
-                'revenue_mtd',
-                'users',
-                'roles',
-            ]);
+        $response = $this->get(route('admin.dashboards'));
+
+        $response->assertOk();
+        $response->assertViewIs('dashboards.admin');
+        $response->assertViewHasAll([
+            'revenue',
+            'revenue_mtd',
+            'users',
+            'roles',
+        ]);
     }
 
     /** @test */

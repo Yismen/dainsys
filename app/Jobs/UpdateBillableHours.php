@@ -16,16 +16,19 @@ class UpdateBillableHours implements ShouldQueue
     use Queueable;
     use SerializesModels;
 
+    public string $revenue_type;
+
+    public int $days;
+
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public array $options;
-
-    public function __construct(array $options)
+    public function __construct($days = 0, $revenue_type = null)
     {
-        $this->options = $options;
+        $this->revenue_type = (string)$revenue_type;
+        $this->days = (int)$days;
     }
 
     /**
@@ -38,46 +41,19 @@ class UpdateBillableHours implements ShouldQueue
         $performances = Performance::query()
             ->with('campaign.revenueType')
             ->when(
-                $this->options['revenue_type'],
+                $this->revenue_type,
                 fn ($query) => $query->whereHas(
                     'campaign.revenueType',
-                    fn ($q) => $q->where(
-                        'name',
-                        'like',
-                        "{$this->options['revenue_type']}%"
-                    )
+                    fn ($q) => $q->where('name', 'like', "{$this->revenue_type}%")
                 )
             )
             ->when(
-                $this->options['months'],
-                fn ($query) => $query->whereDate('date', '>=', now()->subMonths($this->options['months'])),
-                fn ($query) => $query->whereDate('date', '>=', now()->subMonth()->startOfMonth())
+                $this->days > 0,
+                fn ($query) => $query->whereDate('date', '>=', now()->subDays($this->days)),
+                fn ($query) => $query->whereDate('date', '>=', now()->subDay())
             )
             ->get();
 
-        $performances->each(function ($query) {
-            switch ($query->campaign->revenueType->name) {
-                case 'Sales Or Production':
-                    $query->billable_hours = $query->production_time;
-                    $query->save();
-                    break;
-                case 'Login Time':
-                    $query->billable_hours = $query->login_time;
-                    $query->save();
-                    break;
-                case 'Production Time':
-                    $query->billable_hours = $query->production_time;
-                    $query->save();
-                    break;
-                case 'Talk Time':
-                    $query->billable_hours = $query->talk_time;
-                    $query->save();
-                    break;
-
-                default:
-                    // code...
-                    break;
-            }
-        });
+        $performances->each(fn (Performance $q) => $q->parseBillableHours());
     }
 }

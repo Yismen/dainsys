@@ -39,9 +39,6 @@ class UpdateBillableHoursTest extends TestCase
         ]);
 
         $this->artisan(UpdateBillableHours::class);
-        $this->artisan('queue:work', [
-            '--stop-when-empty' => true
-        ]);
 
         $this->assertDatabaseHas('performances', [
             'billable_hours' => $performance->production_time,
@@ -66,9 +63,6 @@ class UpdateBillableHoursTest extends TestCase
         ]);
 
         $this->artisan(UpdateBillableHours::class);
-        $this->artisan('queue:work', [
-            '--stop-when-empty' => true
-        ]);
 
         $this->assertDatabaseHas('performances', [
             'billable_hours' => $performance->production_time,
@@ -93,9 +87,6 @@ class UpdateBillableHoursTest extends TestCase
         ]);
 
         $this->artisan(UpdateBillableHours::class);
-        $this->artisan('queue:work', [
-            '--stop-when-empty' => true
-        ]);
 
         $this->assertDatabaseHas('performances', [
             'billable_hours' => $performance->talk_time,
@@ -120,9 +111,6 @@ class UpdateBillableHoursTest extends TestCase
         ]);
 
         $this->artisan(UpdateBillableHours::class);
-        $this->artisan('queue:work', [
-            '--stop-when-empty' => true
-        ]);
 
         $this->assertDatabaseHas('performances', [
             'billable_hours' => $performance->login_time,
@@ -133,64 +121,22 @@ class UpdateBillableHoursTest extends TestCase
         ]);
     }
 
-    /** @test */
-    public function billable_hours_only_update_specified_revenue_type()
-    {
-        $revenue_type_1 = factory(RevenueType::class)->create(['name' => 'Login Time']);
-        $revenue_type_2 = factory(RevenueType::class)->create(['name' => 'Talk Time']);
-        $campaign_1 = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type_1->id]);
-        $campaign_2 = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type_2->id]);
-        $performance_1 = factory(Performance::class)->create([
-            'campaign_id' => $campaign_1->id,
-            'login_time' => 10,
-            'production_time' => 10,
-            'login_time' => 10,
-            'billable_hours' => 4,
-        ]);
-        $performance_2 = factory(Performance::class)->create([
-            'campaign_id' => $campaign_2->id,
-            'login_time' => 10,
-            'production_time' => 10,
-            'login_time' => 10,
-            'billable_hours' => 4,
-        ]);
-
-        $this->artisan(UpdateBillableHours::class, [
-            '--revenue_type' => $revenue_type_1->name
-        ]);
-        $this->artisan('queue:work', [
-            '--stop-when-empty' => true
-        ]);
-
-        $this->assertDatabaseHas('performances', [
-            'id' => $performance_1->id,
-            'campaign_id' => $campaign_1->id,
-            'billable_hours' => 10,
-        ]);
-        
-        $this->assertDatabaseHas('performances', [
-            'id' => $performance_2->id,
-            'campaign_id' => $campaign_2->id,
-            'billable_hours' => 4,
-        ]);
-    }
-
-    /** @test */
-    // public function billable_hours_only_update_after_certain_amount_of_years()
+    // /** @test */
+    // public function billable_hours_only_update_specified_revenue_type()
     // {
-    //     $revenue_type = factory(RevenueType::class)->create(['name' => 'Login Time']);
-    //     $campaign = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type->id]);
+    //     $revenue_type_1 = factory(RevenueType::class)->create(['name' => 'Login Time']);
+    //     $revenue_type_2 = factory(RevenueType::class)->create(['name' => 'Talk Time']);
+    //     $campaign_1 = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type_1->id]);
+    //     $campaign_2 = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type_2->id]);
     //     $performance_1 = factory(Performance::class)->create([
-    //         'date' => now(),
-    //         'campaign_id' => $campaign->id,
+    //         'campaign_id' => $campaign_1->id,
     //         'login_time' => 10,
     //         'production_time' => 10,
     //         'login_time' => 10,
     //         'billable_hours' => 4,
     //     ]);
     //     $performance_2 = factory(Performance::class)->create([
-    //         'date' => now()->subYears(2),
-    //         'campaign_id' => $campaign->id,
+    //         'campaign_id' => $campaign_2->id,
     //         'login_time' => 10,
     //         'production_time' => 10,
     //         'login_time' => 10,
@@ -198,10 +144,42 @@ class UpdateBillableHoursTest extends TestCase
     //     ]);
 
     //     $this->artisan(UpdateBillableHours::class, [
-    //         '--years' => 1
+    //         '--revenue_type' => $revenue_type_1->name
     //     ]);
-    //     $this->artisan('queue:work', [
-    //         '--stop-when-empty' => true
+
+    //     $this->assertDatabaseHas('performances', [
+    //         'id' => $performance_1->id,
+    //         'campaign_id' => $campaign_1->id,
+    //         'billable_hours' => 10,
+    //     ]);
+
+    //         $this->assertDatabaseHas('performances', [
+    //         'id' => $performance_2->id,
+    //         'campaign_id' => $campaign_2->id,
+    //         'billable_hours' => 4,
+    //     ]);
+    // }
+
+    // /** @test */
+    // public function billable_hours_only_update_records_for_after_certain_amount_of_days()
+    // {
+    //     $revenue_type = factory(RevenueType::class)->create(['name' => 'Login Time']);
+    //     $campaign = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type->id]);
+    //     $performance_1 = factory(Performance::class)->create([
+    //         'date' => now(),
+    //         'campaign_id' => $campaign->id,
+    //         'login_time' => 10,
+    //         'billable_hours' => 4,
+    //     ]);
+    //     $performance_2 = factory(Performance::class)->create([
+    //         'date' => now()->subMonths(2),
+    //         'campaign_id' => $campaign->id,
+    //         'login_time' => 10,
+    //         'billable_hours' => 4,
+    //     ]);
+
+    //     $this->artisan(UpdateBillableHours::class, [
+    //         '--days' => 4
     //     ]);
 
     //     $this->assertDatabaseHas('performances', [
@@ -209,7 +187,7 @@ class UpdateBillableHoursTest extends TestCase
     //         'campaign_id' => $campaign->id,
     //         'billable_hours' => 10,
     //     ]);
-        
+
     //     $this->assertDatabaseHas('performances', [
     //         'id' => $performance_2->id,
     //         'campaign_id' => $campaign->id,
@@ -217,77 +195,36 @@ class UpdateBillableHoursTest extends TestCase
     //     ]);
     // }
 
-    /** @test */
-    public function billable_hours_only_update_after_certain_amount_of_months()
-    {
-        $revenue_type = factory(RevenueType::class)->create(['name' => 'Login Time']);
-        $campaign = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type->id]);
-        $performance_1 = factory(Performance::class)->create([
-            'date' => now(),
-            'campaign_id' => $campaign->id,
-            'login_time' => 10,
-            'billable_hours' => 4,
-        ]);
-        $performance_2 = factory(Performance::class)->create([
-            'date' => now()->subMonths(2),
-            'campaign_id' => $campaign->id,
-            'login_time' => 10,
-            'billable_hours' => 4,
-        ]);
+    // /** @test */
+    // public function billable_hours_only_update_last_day_if_days_is_not_specified()
+    // {
+    //     $revenue_type = factory(RevenueType::class)->create(['name' => 'Login Time']);
+    //     $campaign = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type->id]);
+    //     $performance_previous_day = factory(Performance::class)->create([
+    //         'date' => now()->subDay(),
+    //         'campaign_id' => $campaign->id,
+    //         'login_time' => 10,
+    //         'billable_hours' => 4,
+    //     ]);
+    //     $performance_older_than_one_day = factory(Performance::class)->create([
+    //         'date' => now()->subMonths(4),
+    //         'campaign_id' => $campaign->id,
+    //         'login_time' => 10,
+    //         'billable_hours' => 4,
+    //     ]);
 
-        $this->artisan(UpdateBillableHours::class, [
-            '--months' => 1
-        ]);
-        $this->artisan('queue:work', [
-            '--stop-when-empty' => true
-        ]);
+    //     $this->artisan(UpdateBillableHours::class);
 
-        $this->assertDatabaseHas('performances', [
-            'id' => $performance_1->id,
-            'campaign_id' => $campaign->id,
-            'billable_hours' => 10,
-        ]);
-        
-        $this->assertDatabaseHas('performances', [
-            'id' => $performance_2->id,
-            'campaign_id' => $campaign->id,
-            'billable_hours' => 4,
-        ]);
-    }
+    //     $this->assertDatabaseHas('performances', [
+    //         'id' => $performance_previous_day->id,
+    //         'campaign_id' => $campaign->id,
+    //         'billable_hours' => 10,
+    //      ]);
 
-    /** @test */
-    public function billable_hours_only_update_last_month_if_months_is_not_specified()
-    {
-        $revenue_type = factory(RevenueType::class)->create(['name' => 'Login Time']);
-        $campaign = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type->id]);
-        $performance_1 = factory(Performance::class)->create([
-            'date' => now(),
-            'campaign_id' => $campaign->id,
-            'login_time' => 10,
-            'billable_hours' => 4,
-        ]);
-        $performance_2 = factory(Performance::class)->create([
-            'date' => now()->subMonths(4),
-            'campaign_id' => $campaign->id,
-            'login_time' => 10,
-            'billable_hours' => 4,
-        ]);
-
-        $this->artisan(UpdateBillableHours::class);
-        $this->artisan('queue:work', [
-            '--stop-when-empty' => true
-        ]);
-
-        $this->assertDatabaseHas('performances', [
-            'id' => $performance_1->id,
-            'campaign_id' => $campaign->id,
-            'billable_hours' => 10,
-        ]);
-        
-        $this->assertDatabaseHas('performances', [
-            'id' => $performance_2->id,
-            'campaign_id' => $campaign->id,
-            'billable_hours' => 4,
-        ]);
-    }
+    //     $this->assertDatabaseHas('performances', [
+    //         'id' => $performance_older_than_one_day->id,
+    //         'campaign_id' => $campaign->id,
+    //         'billable_hours' => 4,
+    //     ]);
+    //  }
 }

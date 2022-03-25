@@ -36,7 +36,9 @@ inactive users list']) @section('content')
                                         class="fa fa-circle {{ $user->isOnline() ? 'text-green' : 'text-gray'}}"
                                         title="{{ $user->isOnline() ? 'Online' : 'Away'}}"
                                     ></i>
-                                    <span class="float-right text-muted text-sm">Active since {{ $user->lastOpenSession()->logged_in_at->diffForHumans() ?? '' }}</span>
+                                    @if ($last_open_session = $user->lastOpenSession())
+                                        <span class="float-right text-muted text-sm">Active since {{ $last_open_session->logged_in_at->diffForHumans() ?? '' }}</span>
+                                    @endif
 
                                     <form action="{{ route('admin.users.inactive-users.restore',  $user->id) }}" method="post">
                                         @csrf

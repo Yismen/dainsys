@@ -42,11 +42,13 @@ class Performance extends Model
     {
         parent::boot();
 
-        static::saving(function ($model) {
+        static::saving(function (self $model) {
             $employee = Employee::findOrfail($model->employee_id);
 
             $model->unique_id = $model->date . '-' . $model->employee_id . '-' . $model->campaign_id;
             $model->name = $employee->fullName;
+
+            $model->parseBillableHours();
         });
     }
 
@@ -60,33 +62,39 @@ class Performance extends Model
         return static::where('created_at', '<=', now()->subYears(2)->startOfMonth());
     }
 
+    /**
+     * Update billable hours attribute.
+     *
+     * @return void
+     */
     public function parseBillableHours()
     {
+        $this->load('campaign.revenueType');
+
         switch ($this->campaign->revenueType->name) {
             case 'Sales Or Production':
                 $this->billable_hours = $this->production_time;
-                $this->save();
                 break;
             case 'Login Time':
                 $this->billable_hours = $this->login_time;
-                $this->save();
                 break;
             case 'Production Time':
                 $this->billable_hours = $this->production_time;
-                $this->save();
                 break;
             case 'Talk Time':
                 $this->billable_hours = $this->talk_time;
-                $this->save();
                 break;
             case 'Downtime':
                 $this->billable_hours = 0;
-                $this->save();
                 break;
-
             default:
                 // code...
                 break;
         }
+
+        $this->withoutEvents(function() {
+            $this->save();
+        });
+
     }
 }

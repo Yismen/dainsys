@@ -18,5 +18,6 @@ class RevenueTypesTableSeeder extends Seeder
         RevenueType::create(['name' => 'Production Time']);
         RevenueType::create(['name' => 'Talk Time']);
         RevenueType::create(['name' => 'Login Time']);
+        RevenueType::create(['name' => 'Downtime']);
     }
 }

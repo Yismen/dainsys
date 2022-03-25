@@ -6,7 +6,6 @@ use Tests\TestCase;
 use App\Notification;
 use Illuminate\Support\Arr;
 use Laravel\Passport\Passport;
-use Tests\Notifications\TestingNotification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class NotificationTest extends TestCase
@@ -88,15 +87,14 @@ class NotificationTest extends TestCase
     /** @test */
     public function it_returns_one_notification_and_mark_it_as_read()
     {
-        $user = $this->user();
-        $user->notify(new TestingNotification());
-
+        $user = $this->userWithRole('admin');
         Passport::actingAs($user);
+        create(Notification::class, ['notifiable_id' => $user->id, 'read_at' => null], 2);
 
+        $this->assertEquals(2, Notification::whereNull('read_at')->count());
         $notification = Notification::first();
-        $this->assertEquals(1, Notification::whereNull('read_at')->count());
 
-        $response = $this->get('/api/v2/notifications/show/' . $notification->id);
+        $response = $this->get('/api/notifications/show/' . $notification->id);
 
         $response->assertOk()
             ->assertJsonStructure([
@@ -105,6 +103,6 @@ class NotificationTest extends TestCase
                 'notifiable_id',
                 'data',
             ]);
-        $this->assertEquals(0, Notification::whereNull('read_at')->count());
+        $this->assertEquals(1, Notification::whereNull('read_at')->count());
     }
 }
