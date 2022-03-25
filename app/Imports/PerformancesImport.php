@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\PerformanceImport;
+use App\Performance;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithEvents;
@@ -57,14 +57,14 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
     /**
      * Use ToModel logic to save the data
      *
-     * @param  array             $row
-     * @return PerformanceImport instance
+     * @param  array            $row
+     * @return \App\Performance instance
      */
     public function model(array $row)
     {
-        PerformanceImport::where('unique_id', $row['unique_id'])->delete();
+        Performance::where('unique_id', $row['unique_id'])->delete();
 
-        return new PerformanceImport([
+        return new Performance([
             'unique_id' => $row['unique_id'],
             'date' => $this->transformDate($row['date'])->format('Y-m-d'),
             'employee_id' => $row['employee_id'],

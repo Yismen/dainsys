@@ -65,7 +65,7 @@ class User extends Authenticatable implements CanResetPassword
     public function userHasProfileOrCreate()
     {
         if (auth()->check()) {
-            if (auth()->user()->has('profile')) {
+            if (auth()->user()->profile()->exists()) {
                 return $this->profile;
             }
         }

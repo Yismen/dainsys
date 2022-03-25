@@ -16,26 +16,32 @@ class Performance extends Model
     use Prunable;
 
     protected $fillable = [
-        'date',
-        'employee_id',
-        'supervisor_id',
-        'login_time',
-        'production_time',
-        'transactions',
+        'away_time',
+        'billable_hours',
+        'break_time',
+        'calls',
         'campaign_id',
+        'cc_sales',
+        'contacts',
+        'date',
+        'downtime_reason_id',
+        'employee_id',
+        'file_name',
+        'login_time',
+        'lunch_time',
+        'name',
+        'off_hook_time',
+        'pending_dispo_time',
+        'production_time',
+        'reported_by',
         'revenue',
-        // 'unique_id',
-        // 'name',
-        // 'sph_goal',
-        // 'talk_time',
-        // 'billable_hours',
-        // 'contacts',
-        // 'calls',
-        // 'upsales',
-        // 'cc_sales',
-        // 'downtime_reason_id',
-        // 'reported_by',
-        // 'file_name'
+        'sph_goal',
+        'supervisor_id',
+        'talk_time',
+        'training_time',
+        'transactions',
+        'unique_id',
+        'upsales',
     ];
 
     public static function boot()
@@ -92,9 +98,8 @@ class Performance extends Model
                 break;
         }
 
-        $this->withoutEvents(function() {
+        $this->withoutEvents(function () {
             $this->save();
         });
-
     }
 }

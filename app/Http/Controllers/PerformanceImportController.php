@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\PerformanceImport;
+use App\Performance;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Imports\PerformancesImport;
@@ -36,7 +36,7 @@ class PerformanceImportController extends Controller
         }
 
         return DataTables::of(
-            PerformanceImport::orderBy('date', 'DESC')
+            Performance::orderBy('date', 'DESC')
                 ->with(['campaign.project'])
                 ->groupBy(['date', 'file_name'])
         )
@@ -71,7 +71,7 @@ class PerformanceImportController extends Controller
             return view('performances_import.show')->with(['date' => $perf_date]);
         }
 
-        $performances = PerformanceImport::where('date', $perf_date)
+        $performances = Performance::where('date', $perf_date)
             ->with('campaign.project')
             ->with('supervisor')
             ->with('employee.supervisor');
@@ -102,7 +102,7 @@ class PerformanceImportController extends Controller
     {
         $has_file_name = request('file_name') && request('file_name') !== 'null';
 
-        $performances = PerformanceImport::query()
+        $performances = Performance::query()
             ->where('date', request('date'))
             ->when($has_file_name, function ($query) {
                 $query->where('file_name', request('file_name'));
@@ -137,7 +137,7 @@ class PerformanceImportController extends Controller
             $this->imported_files[] = $file_name;
 
             Excel::import(new PerformancesImport($file_name), $file);
-        };
+        }
 
         $request->session()->flash('imported_files', $this->imported_files);
 
