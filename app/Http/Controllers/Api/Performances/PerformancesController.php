@@ -87,13 +87,26 @@ class PerformancesController extends Controller
 
         $start_of_month = Carbon::now()->subMonths((int)$many)->startOfMonth();
 
-        $performances = Performance::with(['supervisor', 'downtimeReason'])
+        $performances = Performance::query()
+            ->with([
+                'supervisor',
+                'downtimeReason'
+            ])
             ->with(['campaign' => function ($query) {
-                $query->with(['source', 'project.client']);
+                $query->with([
+                    'source',
+                    'project.client'
+                ]);
             }])
             ->with(['employee' => function ($query) {
-                $query
-                    ->with(['supervisor', 'site', 'termination', 'position.department', 'project', 'punch']);
+                $query->with([
+                    'supervisor',
+                    'site',
+                    'termination',
+                    'position.department',
+                    'project',
+                    'punch'
+                ]);
             }])
             ->whereDate('date', '>=', $start_of_month)
             ->filter(request()->all())

@@ -15,7 +15,6 @@ class PerformanceResource extends JsonResource
      */
     public function toArray($request)
     {
-        // return parent::toArray($request);
         return [
             'unique_id' => $this->unique_id,
             'away_time' => $this->away_time,

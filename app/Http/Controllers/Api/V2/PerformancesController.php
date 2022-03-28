@@ -19,6 +19,7 @@ class PerformancesController extends Controller
      * Collection of performances data for many months back.
      *
      * @example /api/v2/performances
+     * @queryParam months int Filter data for many months old. Default is 2.
      * @queryParam campaign string Filter data by campaign name. Example ?campaign=%POL-%.
      * @queryParam employee string Filter data by employee name. Example ?employee=%Yismen Jore%.
      * @queryParam supervisor string Filter data by supervisor name. Example ?supervisor=%Yismen Jore%.

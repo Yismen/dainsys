@@ -2,17 +2,19 @@
 
 namespace App\Imports;
 
+use Carbon\Carbon;
 use App\Performance;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 
-class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, WithBatchInserts, WithEvents, WithChunkReading, ShouldQueue
+class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, WithBatchInserts, WithEvents, WithChunkReading, ShouldQueue, WithMapping
 {
     use Importable;
     use ExcelImportTrait;
@@ -54,6 +56,38 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
         $this->importedBy = auth()->user();
     }
 
+    public function map($performance): array
+    {
+        return [
+            'away_time' => $performance['away_time_parsed'],
+            'billable_hours' => $performance['billable_hours'],
+            'break_time' => $performance['break_time_parsed'],
+            'calls' => $performance['calls'],
+            'campaign_id' => $performance['campaign_id'],
+            'cc_sales' => $performance['cc_sales'],
+            'contacts' => $performance['contacts'],
+            'date' => Carbon::parse($performance['date'])->format('Y-m-d'),
+            'employee_id' => $performance['employee_id'],
+            'employee_name' => $performance['employee_name'],
+            'file_name' => $this->file_name,
+            'login_time' => $performance['login_time_parsed'],
+            'lunch_time' => $performance['lunch_time_parsed'],
+            'off_hook_time' => $performance['off_hook_time_parsed'],
+            'pending_dispo_time' => $performance['pending_dispo_time_parsed'],
+            'production_time' => $performance['production_time_parsed'],
+            'reason_id' => $performance['reason_id'],
+            'reported_by' => $performance['reported_by'],
+            'revenue' => $performance['revenue'],
+            'sph_goal' => $performance['sph_goal'],
+            'supervisor_id' => $performance['supervisor_id'],
+            'talk_time' => $performance['talk_time_parsed'],
+            'training_time' => $performance['training_time_parsed'],
+            'transactions' => $performance['transactions'],
+            'unique_id' => $performance['unique_id'],
+            'upsales' => $performance['upsales'],
+        ];
+    }
+
     /**
      * Use ToModel logic to save the data
      *
@@ -62,36 +96,17 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
      */
     public function model(array $row)
     {
-        Performance::where('unique_id', $row['unique_id'])->delete();
+        Performance::query()
+            ->where('unique_id', $row['unique_id'])
+            ->orWhere(function ($performance_query) use ($row) {
+                $performance_query
+                    ->where('employee_id', $row['employee_id'])
+                    ->where('campaign_id', $row['campaign_id'])
+                    ->where('date', $row['date']);
+            })
+            ->delete();
 
-        return new Performance([
-            'unique_id' => $row['unique_id'],
-            'date' => $this->transformDate($row['date'])->format('Y-m-d'),
-            'employee_id' => $row['employee_id'],
-            'name' => $row['employee_name'],
-            'campaign_id' => $row['campaign_id'],
-            'supervisor_id' => $row['supervisor_id'],
-            'sph_goal' => $row['sph_goal'],
-            'login_time' => $row['login_time_parsed'],
-            'production_time' => $row['production_time_parsed'],
-            'talk_time' => $row['talk_time_parsed'],
-            'break_time' => $row['break_time_parsed'],
-            'lunch_time' => $row['lunch_time_parsed'],
-            'training_time' => $row['training_time_parsed'],
-            'away_time' => $row['away_time_parsed'],
-            'off_hook_time' => $row['off_hook_time_parsed'],
-            'pending_dispo_time' => $row['pending_dispo_time_parsed'],
-            'billable_hours' => $row['billable_hours'],
-            'contacts' => $row['contacts'],
-            'calls' => $row['calls'],
-            'transactions' => $row['transactions'],
-            'upsales' => $row['upsales'],
-            'cc_sales' => $row['cc_sales'],
-            'revenue' => $row['revenue'],
-            'downtime_reason_id' => $row['reason_id'],
-            'reported_by' => $row['reported_by'],
-            'file_name' => $this->file_name,
-        ]);
+        return new Performance($row);
     }
 
     /**
@@ -105,19 +120,19 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
             '*.unique_id' => 'required',
             '*.date' => 'required|date',
             '*.employee_id' => 'required|exists:employees,id',
-            '*.employee_name' => 'required',
+            // '*.employee_name' => 'required',
             '*.campaign_id' => 'required|exists:campaigns,id',
             '*.supervisor_id' => 'required|exists:supervisors,id',
             '*.sph_goal' => 'required|numeric',
-            '*.login_time_parsed' => 'required|numeric',
-            '*.production_time_parsed' => 'required|numeric',
-            '*.talk_time_parsed' => 'numeric',
-            '*.break_time_parsed' => 'numeric',
-            '*.lunch_time_parsed' => 'numeric',
-            '*.training_time_parsed' => 'numeric',
-            '*.pending_dispo_time_parsed' => 'numeric',
-            '*.off_hook_time_parsed' => 'numeric',
-            '*.away_time_parsed' => 'numeric',
+            '*.login_time' => 'required|numeric',
+            '*.production_time' => 'required|numeric',
+            '*.talk_time' => 'numeric',
+            '*.break_time' => 'numeric',
+            '*.lunch_time' => 'numeric',
+            '*.training_time' => 'numeric',
+            '*.pending_dispo_time' => 'numeric',
+            '*.off_hook_time' => 'numeric',
+            '*.away_time' => 'numeric',
             '*.billable_hours' => 'required|numeric',
             '*.contacts' => 'required|numeric',
             '*.calls' => 'required|numeric',
