@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Performance;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use App\Imports\PerformancesImport;
-use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
+use App\Services\PerformancesImportService;
 
 class PerformanceImportController extends Controller
 {
@@ -50,14 +47,14 @@ class PerformanceImportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PerformancesImportService $service)
     {
-        $this->validate($request, [
+        $this->validate(request(), [
             'excel_file' => 'required',
             'excel_file.*' => 'file|mimes:csv,txt',
         ]);
 
-        return $this->importPerformance($request);
+        return $service->import();
     }
 
     /**
@@ -114,37 +111,5 @@ class PerformanceImportController extends Controller
         $performances->each->delete();
 
         return ['status' => 'sucess', 'message' => 'Performances Deleted', 'data' => $performances];
-    }
-
-    private function importPerformance(Request $request)
-    {
-        ini_set('memory_limit', config('dainsys.memory_limit'));
-        ini_set('max_execution_time', 300);
-
-        foreach ($request->file('excel_file') as $key => $file) {
-            $file_name = $file->getClientOriginalName();
-
-            if (!Str::contains($file_name, '_performance_daily_data_')) {
-                $message = 'Wrong file selected. Please make sure you pick a file which the correct naming convention _performance_daily_data_...';
-                if ($request->ajax()) {
-                    return response($message, 422);
-                }
-
-                return redirect()->back()
-                    ->withErrors(['excel_file' => $message]);
-            }
-
-            $this->imported_files[] = $file_name;
-
-            Excel::import(new PerformancesImport($file_name), $file);
-        }
-
-        $request->session()->flash('imported_files', $this->imported_files);
-
-        if ($request->ajax()) {
-            return response($this->imported_files);
-        }
-
-        return redirect()->route('admin.performances_import.index');
     }
 }
