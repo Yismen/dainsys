@@ -72,43 +72,43 @@ require('./config/interceptors')
 /**
 * Here global components are registered
 */
-Vue.component('dainsys-logo', () => import(/*webpackChunkName: "chunks/dainsysLogo" */ './components/DainsysLogo.vue'));
-Vue.component('back-to-top', () => import(/*webpackChunkName: "chunks/backToTop" */ './components/BackToTop'));
-Vue.component('loading-component', () => import(/*webpackChunkName: "chunks/loadingComponent" */ './components/LoadingComponent.vue'));
-Vue.component('passport-clients', () => import(/*webpackChunkName: "chunks/passportClients" */ './components/passport/Clients.vue'));
-Vue.component('passport-authorized-clients', () => import(/*webpackChunkName: "chunks/passportAuthorizedClients" */ './components/passport/AuthorizedClients.vue'));
-Vue.component('passport-personal-access-tokens', () => import(/*webpackChunkName: "chunks/passportPersonalAccessTokens" */ './components/passport/PersonalAccessTokens.vue'));
-Vue.component('positions-select', () => import(/*webpackChunkName: "chunks/positionsSelect" */ './components/positions/SelectList'));
-Vue.component('departments-select', () => import(/*webpackChunkName: "chunks/departmentsSelect" */ './components/selects/Departments'));
-// Vue.component('create-position', () => import(/*webpackChunkName: "chunks/createPosition" */ './components/employees/positions/Create'));
-// Vue.component('modal', () => import(/*webpackChunkName: "chunks/modal" */ './components/Modal'))
-Vue.component('add-button', () => import(/*webpackChunkName: "chunks/addButton" */ './components/links/AddButton'));
-Vue.component('delete-request-button', () => import(/*webpackChunkName: "chunks/deleteRequestButton" */ './components/DeleteRequest'));
-Vue.component('create-afp-form', () => import(/*webpackChunkName: "chunks/createAfpForm" */ './components/forms/CreateAfp'));
-Vue.component('flash-message', () => import(/*webpackChunkName: "chunks/flashMessages" */ './components/FlashMessage'));
+Vue.component('dainsys-logo', () => import(/*webpackChunkName: "js/chunks/dainsysLogo" */ './components/DainsysLogo.vue'));
+Vue.component('back-to-top', () => import(/*webpackChunkName: "js/chunks/backToTop" */ './components/BackToTop'));
+Vue.component('loading-component', () => import(/*webpackChunkName: "js/chunks/loadingComponent" */ './components/LoadingComponent.vue'));
+Vue.component('passport-clients', () => import(/*webpackChunkName: "js/chunks/passportClients" */ './components/passport/Clients.vue'));
+Vue.component('passport-authorized-clients', () => import(/*webpackChunkName: "js/chunks/passportAuthorizedClients" */ './components/passport/AuthorizedClients.vue'));
+Vue.component('passport-personal-access-tokens', () => import(/*webpackChunkName: "js/chunks/passportPersonalAccessTokens" */ './components/passport/PersonalAccessTokens.vue'));
+Vue.component('positions-select', () => import(/*webpackChunkName: "js/chunks/positionsSelect" */ './components/positions/SelectList'));
+Vue.component('departments-select', () => import(/*webpackChunkName: "js/chunks/departmentsSelect" */ './components/selects/Departments'));
+// Vue.component('create-position', () => import(/*webpackChunkName: "js/chunks/createPosition" */ './components/employees/positions/Create'));
+// Vue.component('modal', () => import(/*webpackChunkName: "js/chunks/modal" */ './components/Modal'))
+Vue.component('add-button', () => import(/*webpackChunkName: "js/chunks/addButton" */ './components/links/AddButton'));
+Vue.component('delete-request-button', () => import(/*webpackChunkName: "js/chunks/deleteRequestButton" */ './components/DeleteRequest'));
+Vue.component('create-afp-form', () => import(/*webpackChunkName: "js/chunks/createAfpForm" */ './components/forms/CreateAfp'));
+Vue.component('flash-message', () => import(/*webpackChunkName: "js/chunks/flashMessages" */ './components/FlashMessage'));
 
-Vue.component('edit-employee', () => import(/*webpackChunkName: "chunks/editEmployee" */ './components/employees/Edit'));
-Vue.component('create-employee', () => import(/*webpackChunkName: "chunks/createEmployee" */ './components/employees/CreateEmployee'));
-Vue.component('employee-row', () => import(/*webpackChunkName: "chunks/employeeRow" */ './components/employees/partials/RowCheckBox'));
-Vue.component('employee-check-box', () => import(/*webpackChunkName: "chunks/employeeCheckbox" */ './components/employees/partials/DinamicCheckbox'));
-Vue.component('employee-checkbox-list', () => import(/*webpackChunkName: "chunks/eployeeCheckboxList" */ './components/employees/partials/DinamicCheckboxList'));
+Vue.component('edit-employee', () => import(/*webpackChunkName: "js/chunks/editEmployee" */ './components/employees/Edit'));
+Vue.component('create-employee', () => import(/*webpackChunkName: "js/chunks/createEmployee" */ './components/employees/CreateEmployee'));
+Vue.component('employee-row', () => import(/*webpackChunkName: "js/chunks/employeeRow" */ './components/employees/partials/RowCheckBox'));
+Vue.component('employee-check-box', () => import(/*webpackChunkName: "js/chunks/employeeCheckbox" */ './components/employees/partials/DinamicCheckbox'));
+Vue.component('employee-checkbox-list', () => import(/*webpackChunkName: "js/chunks/eployeeCheckboxList" */ './components/employees/partials/DinamicCheckboxList'));
 
-Vue.component('dropzone-form', () => import(/*webpackChunkName: "chunks/dropzoneForm" */ './components/DropzoneForm'));
+Vue.component('dropzone-form', () => import(/*webpackChunkName: "js/chunks/dropzoneForm" */ './components/DropzoneForm'));
 
-// Vue.component('headcounts', () => import(/*webpackChunkName: "chunks/headcounts" */ './components/human_resources/HeadCountsComponent'));
-// Vue.component('hc-rotations', () => import(/*webpackChunkName: "chunks/hcRotations" */ './components/human_resources/RotationsComponent'));
-// Vue.component('monthly-rotation', () => import(/*webpackChunkName: "chunks/monthlyRotation" */ './components/human_resources/MonthlyRotation'));
-// Vue.component('monthly-attrition', () => import(/*webpackChunkName: "chunks/monthlyAttrition" */ './components/human_resources/MonthlyAttrition'));
-Vue.component('sites-metric', () => import(/*webpackChunkName: "chunks/sitesMetric" */ './components/dashboards/SitesOverview'));
-Vue.component('sites-sph', () => import(/*webpackChunkName: "chunks/sitesSph" */ './components/dashboards/sites/Sph'));
+// Vue.component('headcounts', () => import(/*webpackChunkName: "js/chunks/headcounts" */ './components/human_resources/HeadCountsComponent'));
+// Vue.component('hc-rotations', () => import(/*webpackChunkName: "js/chunks/hcRotations" */ './components/human_resources/RotationsComponent'));
+// Vue.component('monthly-rotation', () => import(/*webpackChunkName: "js/chunks/monthlyRotation" */ './components/human_resources/MonthlyRotation'));
+// Vue.component('monthly-attrition', () => import(/*webpackChunkName: "js/chunks/monthlyAttrition" */ './components/human_resources/MonthlyAttrition'));
+Vue.component('sites-metric', () => import(/*webpackChunkName: "js/chunks/sitesMetric" */ './components/dashboards/SitesOverview'));
+Vue.component('sites-sph', () => import(/*webpackChunkName: "js/chunks/sitesSph" */ './components/dashboards/sites/Sph'));
 
-Vue.component('date-picker', () => import(/*webpackChunkName: "chunks/datePicker" */ './components/DatePicker'));
-Vue.component('animation-scale', () => import(/*webpackChunkName: "chunks/animationScale" */ './components/animations/ScaleComponent'));
+Vue.component('date-picker', () => import(/*webpackChunkName: "js/chunks/datePicker" */ './components/DatePicker'));
+Vue.component('animation-scale', () => import(/*webpackChunkName: "js/chunks/animationScale" */ './components/animations/ScaleComponent'));
 
-Vue.component('app-notifications', () => import(/*webpackChunkName: "chunks/appNotification" */ './components/AppNotifications'));
-Vue.component('line-base-chart', () => import(/*webpackChunkName: "chunks/lineBaseChart" */ './components/charts/LineBaseChart'));
-Vue.component('doughnut-base-chart', () => import(/*webpackChunkName: "chunks/dougnutBaseChart" */ './components/charts/DoughnutBaseChart'));
-Vue.component('bar-base-chart', () => import(/*webpackChunkName: "chunks/barBaseChart" */ './components/charts/BarBaseChart'));
+Vue.component('app-notifications', () => import(/*webpackChunkName: "js/chunks/appNotification" */ './components/AppNotifications'));
+Vue.component('line-base-chart', () => import(/*webpackChunkName: "js/chunks/lineBaseChart" */ './components/charts/LineBaseChart'));
+Vue.component('doughnut-base-chart', () => import(/*webpackChunkName: "js/chunks/dougnutBaseChart" */ './components/charts/DoughnutBaseChart'));
+Vue.component('bar-base-chart', () => import(/*webpackChunkName: "js/chunks/barBaseChart" */ './components/charts/BarBaseChart'));
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
