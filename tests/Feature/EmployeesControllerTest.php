@@ -2,11 +2,11 @@
 
 namespace Tests\Feature;
 
+use App\Employee;
 use Tests\TestCase;
+use Illuminate\Support\Arr;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Employee;
-use Illuminate\Support\Arr;
 
 class EmployeesControllerTest extends TestCase
 {
@@ -157,11 +157,13 @@ class EmployeesControllerTest extends TestCase
     {
         $employee = create(Employee::class);
 
-        $this->actingAs($this->userWithPermission('view-employees'))
-            ->get(route('admin.employees.show', $employee->id))
-            ->assertViewIs('employees.show')
-            ->assertViewHas('employee')
-            ->assertViewHas('employee.changes')
-            ->assertViewHas('employee.site');
+        $response = $this->actingAs($this->userWithPermission('view-employees'))
+            ->get(route('admin.employees.show', $employee->id));
+
+        $response->assertViewIs('employees.show');
+        $response->assertViewHas('employee');
+        $response->assertViewHas('previous_terminations');
+        $response->assertViewHas('employee.changes');
+        $response->assertViewHas('employee.site');
     }
 }

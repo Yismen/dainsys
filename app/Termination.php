@@ -3,13 +3,12 @@
 namespace App;
 
 use Carbon\Carbon;
-use App\Traits\Trackable;
 use App\DainsysModel as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Termination extends Model
 {
-    use Trackable, SoftDeletes;
+    use SoftDeletes;
 
     protected $fillable = ['employee_id', 'termination_date', 'termination_type_id', 'termination_reason_id', 'can_be_rehired', 'comments'];
 

@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use App\Track;
+
 /**
  * summary
  */
@@ -19,7 +21,6 @@ trait Trackable
     protected function recordChanges()
     {
         if (auth()->check()) {
-            // abort(405, 'Trackable trait requires authenticated users');
             $this->changes()->create($this->getDiff());
         }
     }
@@ -30,13 +31,13 @@ trait Trackable
 
         return [
             'user_id' => auth()->user()->id,
-            'before' => json_encode(array_intersect_key($this->fresh()->toArray(), $after)),
+            'before' => json_encode(array_intersect_key(optional($this->fresh())->toArray() ?? $this->toArray(), $after)),
             'after' => json_encode($after),
         ];
     }
 
     public function changes()
     {
-        return $this->morphMany('App\Track', 'trackable')->latest()->take(35);
+        return $this->morphMany(Track::class, 'trackable')->latest()->take(35);
     }
 }

@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Employee;
 use Carbon\Carbon;
+use App\Termination;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
-use Illuminate\Support\Str;
 
 class EmployeesController extends Controller
 {
@@ -105,20 +106,16 @@ class EmployeesController extends Controller
      */
     public function show(Employee $employee)
     {
-        $employee->load([
-            'termination' => function ($query) {
-                return $query
-                    ->withTrashed()
-                    ->with([
-                        'terminationType',
-                        'terminationReason',
-                    ]);
-            },
-            'changes.user',
-        ]);
+        $employee->load(['changes.user']);
 
-        // dd($employee->toArray());
-        return view('employees.show', compact('employee'));
+        $previous_terminations = Termination::query()
+            ->withTrashed()
+            ->latest('updated_at')
+            ->where('employee_id', $employee->id)
+            ->with(['terminationReason', 'terminationType'])
+            ->get();
+
+        return view('employees.show', compact('employee', 'previous_terminations'));
     }
 
     /**
