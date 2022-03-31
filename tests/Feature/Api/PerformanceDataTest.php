@@ -4,12 +4,12 @@ namespace Tests\Feature\Api;
 
 use App\Campaign;
 use App\Employee;
-use App\Performance;
 use App\Supervisor;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+use App\Performance;
 use Illuminate\Support\Arr;
 use Laravel\Passport\Passport;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PerformanceDataTest extends TestCase
 {
@@ -75,7 +75,7 @@ class PerformanceDataTest extends TestCase
     public function data_can_be_filtered_by_amount_of_months()
     {
         $this_month_performance = factory(Performance::class)->create(['date' => now()]);
-        $last_month_performance = factory(Performance::class)->create(['date' => now()->subMonth()]);
+        $last_month_performance = factory(Performance::class)->create(['date' => now()->subMonths(3)]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/performances/performance_data/last/1/months');
