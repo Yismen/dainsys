@@ -12,13 +12,11 @@
       @focusout.native="close"
     >
       <template v-slot:beforeCalendarHeader>
-        <div class="flexed">
-          <a href="#" class="btn btn-sm btn-link" @click.prevent="selectToday"
-            >Today</a
-          >
+        <div class="flexed border-bottom">
+          <a href="#" class="text-sm p-2" @click.prevent="selectToday">Today</a>
           <a
             href="#"
-            class="btn bnt-link btn-sm close-button"
+            class="text-sm p-2 close-button"
             title="Cancel"
             @click.prevent="close"
             >X</a
@@ -111,7 +109,8 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.close-button :hover {
-  color: rgb(96, 23, 23);
+.close-button:hover {
+  color: rgb(198, 6, 6);
+  font-weight: bold;
 }
 </style>

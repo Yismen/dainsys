@@ -1,61 +1,71 @@
 @mixin tablet {
     @media (min-width: #{922px}) {
         @content;
-    } 
+    }
 }
+
 @mixin laptop {
     @media (min-width: #{1100px}) {
         @content;
-    } 
+    }
 }
+
 @mixin desktop {
     @media (min-width: #{1250px}) {
         @content;
-    } 
+    }
 }
+
 body {
     height: auto;
     min-height: 100%;
 }
+
 .wrapper {
     height: auto;
+
     .content-wrapper {
         min-height: 960px;
+
         .content {
             padding: 0;
         }
     }
 }
+
 .overlay::after {
-    content:"";
+    content: "";
     display: block;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0, 0, 0, .5);
 }
+
 .intro-header::after {
-    content:"";
+    content: "";
     display: block;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0,0,0,.5);
-    @include tablet() {        
-        content:"";
+    background-color: rgba(0, 0, 0, .5);
+
+    @include tablet() {
+        content: "";
         display: block;
         height: 100%;
         position: absolute;
         top: 0;
         left: 0;
         width: 0;
-        background-color: rgba(0,0,0,0);
+        background-color: rgba(0, 0, 0, 0);
     }
 }
+
 .intro-header {
     background-color: black;
     background-image: url(/images/main-header.jpg);
@@ -66,16 +76,21 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    @include tablet() {        
+
+    @include tablet() {
         background-position: 300px center;
         background-size: contain;
     }
+
     @include laptop() {
         background-position: 450px center;
     }
+
     @include desktop() {
         background-position: 600px center;
     }
+
+    // Headers
     .main-header {
         min-height: 100vh;
         width: 100%;
@@ -85,20 +100,24 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        @include tablet(){
+
+        @include tablet() {
             min-height: 100vh;
             align-items: flex-start;
             width: 80%;
         }
+
         @include laptop() {
             min-height: 80vh;
             padding-left: 0px;
             width: 70%;
         }
+
         @include desktop() {
             width: 70%;
             min-height: 90vh;
         }
+
         .app-title {
             text-transform: uppercase;
             font-stretch: normal;
@@ -106,25 +125,31 @@ body {
             font-size: 50px;
             margin-bottom: 20px;
             text-shadow: -2px 1px 6px #030303;
+
             @include tablet() {
                 font-size: 60px;
             }
+
             @include laptop() {
                 font-size: 65px;
             }
+
             @include desktop() {
                 font-size: 70px;
             }
         }
+
         .lead {
             max-width: 50%;
             line-height: 1.75;
             font-size: medium;
             letter-spacing: 3px;
         }
+
         .dainsys-logo:hover {
             opacity: 1;
         }
+
         .dainsys-logo {
             cursor: pointer;
             height: 250px;
@@ -133,7 +158,8 @@ body {
             padding: 0;
             opacity: 0.6;
             transition: opacity 1s ease-out;
-            @include tablet() {                
+
+            @include tablet() {
                 // display: none;
                 position: absolute;
                 right: 0%;
@@ -141,6 +167,7 @@ body {
                 max-height: 200px;
             }
         }
+
         .call-to-action {
             margin-top: 1.5rem;
             color: #030303;
@@ -148,18 +175,21 @@ body {
             text-transform: uppercase;
             // text-shadow: rgba(0, 0, 0, 0.7) -2px 2px 0px;
             box-shadow: -1.5px 1.5px 3px rgba(0, 0, 0, 0.8);
+
             @include tablet() {
                 margin-top: 6rem;
             }
-        }     
+        }
+
         .more-button {
             position: absolute;
             bottom: 20px;
             color: white;
             align-self: center;
         }
-            
-        .more-button:hover, .more-button:focus {
+
+        .more-button:hover,
+        .more-button:focus {
             color: #e3e3e3;
         }
     }
@@ -169,7 +199,7 @@ body {
     padding-top: 7rem;
     padding-bottom: 7rem;
     text-align: center;
-}   
+}
 
 .animatable {
     visibility: hidden;
@@ -186,43 +216,67 @@ body {
 .from-left {
     animation: from-left 0.5s 1 ease-in-out;
 }
+
 .from-bottom {
     animation: from-bottom 0.5s 1 ease-in-out;
 }
+
 .from-right {
     animation: from-right 0.5s 1 ease-in-out;
 }
+
 .from-top {
     animation: from-top 0.5s 1 ease-in-out;
 }
 
+// borders
+.border-bottom {
+    border-bottom: 1px solid #f4f4f4;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(244, 244, 244);
+}
+
+.border-top {
+    border-top: 1px solid #f4f4f4;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: rgb(244, 244, 244);
+}
+
+// Keyframes
 @keyframes from-left {
     from {
         transform: translateX(-15px);
         opacity: 0;
     }
 }
+
 @keyframes from-top {
     from {
         transform: translateY(-15px);
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
 }
+
 @keyframes from-bottom {
     from {
         transform: translateY(15px);
         opacity: 0;
     }
 }
+
 @keyframes from-right {
     from {
         transform: translateX(15px);
         opacity: 0;
     }
 }
+
 @keyframes from-bottom-left {
     from {
         transform: translateY(15px);
@@ -230,6 +284,7 @@ body {
         opacity: 0;
     }
 }
+
 @keyframes from-bottom-right {
     from {
         transform: translateY(15px);
@@ -237,6 +292,7 @@ body {
         opacity: 0;
     }
 }
+
 @keyframes from-top-left {
     from {
         transform: translateY(-15px);
@@ -244,6 +300,7 @@ body {
         opacity: 0;
     }
 }
+
 @keyframes from-top-right {
     from {
         transform: translateY(-15px);
