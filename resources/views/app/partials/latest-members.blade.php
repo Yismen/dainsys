@@ -2,7 +2,7 @@
     <div class="col-sm-12">
         <div class="box box-danger">
             <div class="box-header with-border">
-                <h4 class="no-margin">Latest Members</h4>
+                <h4 class="m-0">Latest Members</h4>
             </div>
 
             <div class="box-body" style="display: flex; flex-wrap: wrap; justify-content: flex-start;">

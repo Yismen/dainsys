@@ -16,14 +16,16 @@
 @import '~font-awesome/scss/font-awesome';
 @import url('~select2/dist/css/select2.css');
 @import url('~select2-bootstrap-theme/dist/select2-bootstrap.css');
+@import "~dainsys-css-utilities/build/css-utilities.css";
 
 .covered {
-  background-color: rgba(0,0,0,.2)
+  background-color: rgba(0, 0, 0, .2)
 }
 
 .alert-default {
   background-color: #d2d6de;
 }
+
 .blur {
   -webkit-filter: blur(5px);
   -moz-filter: blur(5px);
@@ -31,59 +33,69 @@
   -ms-filter: blur(5px);
   filter: blur(5px);
 }
+
 .parallax {
-    position: relative;
-    opacity: 0.70;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* The image used */
-    /* background-image: url("../img/logo.png"); */
+  position: relative;
+  opacity: 0.70;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* The image used */
+  /* background-image: url("../img/logo.png"); */
 
-    /* Set a specific height */
-    /* height: 500px;  */
+  /* Set a specific height */
+  /* height: 500px;  */
 
-    /* Create the parallax scrolling effect */
+  /* Create the parallax scrolling effect */
 }
+
 .vertical-center {
   display: flex;
   align-items: center;
 }
-.main-spinner {
-    /*background-color: rgba(0, 0, 0, .2);*/
-    border-top: 10px solid rgb(66,139,202);
-    border-right: 10px solid rgb(66,139,202);
-    border-bottom: 10px solid rgb(66,139,202);
-    /*border-left: 10px solid rgba(66,139,202,.2);*/
-    border-left: 10px solid rgba(66,139,202,0);
-    transform: translateZ(0);
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    animation-duration: .8s;
-    animation-name: spinner-loading;
 
-    width: 100px;
-    height: 100px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-top: -32px;
-    margin-left: -32px;
-    border-radius: 50%;
-    z-index: 2;
+.main-spinner {
+  /*background-color: rgba(0, 0, 0, .2);*/
+  border-top: 10px solid rgb(66, 139, 202);
+  border-right: 10px solid rgb(66, 139, 202);
+  border-bottom: 10px solid rgb(66, 139, 202);
+  /*border-left: 10px solid rgba(66,139,202,.2);*/
+  border-left: 10px solid rgba(66, 139, 202, 0);
+  transform: translateZ(0);
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: .8s;
+  animation-name: spinner-loading;
+
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -32px;
+  margin-left: -32px;
+  border-radius: 50%;
+  z-index: 2;
 }
-@keyframes spinner-loading{
+
+@keyframes spinner-loading {
   0% {
-      transform: rotate(0deg)
-      } to {
-          transform: rotate(1turn)
-      }
+    transform: rotate(0deg)
   }
+
+  to {
+    transform: rotate(1turn)
+  }
+}
+
 /**
  * Remove extra paddings created by Admin-LTE
  */
- .content {padding-left: 0px; padding-right: 0px; }
+.content {
+  padding-left: 0px;
+  padding-right: 0px;
+}
 
 /**
  * Color Divs
@@ -103,17 +115,21 @@
 /**
  * Margins
  */
- .no-margin{margin:0px; }
+.no-margin {
+  margin: 0px;
+}
 
 /**
  * Paddings
  */
- .no-padding {padding: 0px; }
+.no-padding {
+  padding: 0px;
+}
 
 /**
  * Loader: Any element with the class of loader will get affected
  */
- .loader {
+.loader {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
   border-top: 16px solid #3498db;
@@ -125,30 +141,42 @@
 }
 
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .navbar-nav>.user-menu>.dropdown-menu>.user-footer {
   /* background-color: #222; */
   color: #ffffff;
 }
+
 .user-footer a {
   color: #fff;
 }
+
 .user-footer a:hover {
   color: #bab3b2;
 }
 
 
 .bg-disabled {
-    opacity: .85;
-    filter: alpha(opacity=85);
+  opacity: .85;
+  filter: alpha(opacity=85);
 }
 
 .well .box-footer {
@@ -163,17 +191,18 @@
   }
 
   .user-footer a {
-      color: #ffffff;
+    color: #ffffff;
   }
+
   .user-footer a:hover {
-      background-color: #222;
-      color: #bab3b2;
+    background-color: #222;
+    color: #bab3b2;
   }
 }
 
 .import-forms .box {
-    height: 580px;
-    overflow: overlay;
+  height: 580px;
+  overflow: overlay;
 }
 
 .slanted-right {
@@ -198,8 +227,8 @@
 }
 
 td>.checkbox {
-    margin-top: 0;
-    margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 //padding
@@ -382,6 +411,7 @@ td>.checkbox {
 .ps-5 {
   padding-left: 3rem !important;
 }
+
 //margin
 .m-0 {
   margin: 0 !important;

@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 class HomeController extends Controller
 {
-    public function welcome()
+    public function __invoke()
     {
-        return view('welcome');
+        return view('home');
     }
 }

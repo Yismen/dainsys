@@ -72,7 +72,6 @@ require('./config/interceptors')
 /**
 * Here global components are registered
 */
-Vue.component('dainsys-logo', () => import(/*webpackChunkName: "js/chunks/dainsysLogo" */ './components/DainsysLogo.vue'));
 Vue.component('back-to-top', () => import(/*webpackChunkName: "js/chunks/backToTop" */ './components/BackToTop'));
 Vue.component('loading-component', () => import(/*webpackChunkName: "js/chunks/loadingComponent" */ './components/LoadingComponent.vue'));
 Vue.component('passport-clients', () => import(/*webpackChunkName: "js/chunks/passportClients" */ './components/passport/Clients.vue'));
@@ -80,8 +79,6 @@ Vue.component('passport-authorized-clients', () => import(/*webpackChunkName: "j
 Vue.component('passport-personal-access-tokens', () => import(/*webpackChunkName: "js/chunks/passportPersonalAccessTokens" */ './components/passport/PersonalAccessTokens.vue'));
 Vue.component('positions-select', () => import(/*webpackChunkName: "js/chunks/positionsSelect" */ './components/positions/SelectList'));
 Vue.component('departments-select', () => import(/*webpackChunkName: "js/chunks/departmentsSelect" */ './components/selects/Departments'));
-// Vue.component('create-position', () => import(/*webpackChunkName: "js/chunks/createPosition" */ './components/employees/positions/Create'));
-// Vue.component('modal', () => import(/*webpackChunkName: "js/chunks/modal" */ './components/Modal'))
 Vue.component('add-button', () => import(/*webpackChunkName: "js/chunks/addButton" */ './components/links/AddButton'));
 Vue.component('delete-request-button', () => import(/*webpackChunkName: "js/chunks/deleteRequestButton" */ './components/DeleteRequest'));
 Vue.component('create-afp-form', () => import(/*webpackChunkName: "js/chunks/createAfpForm" */ './components/forms/CreateAfp'));
@@ -94,11 +91,6 @@ Vue.component('employee-check-box', () => import(/*webpackChunkName: "js/chunks/
 Vue.component('employee-checkbox-list', () => import(/*webpackChunkName: "js/chunks/eployeeCheckboxList" */ './components/employees/partials/DinamicCheckboxList'));
 
 Vue.component('dropzone-form', () => import(/*webpackChunkName: "js/chunks/dropzoneForm" */ './components/DropzoneForm'));
-
-// Vue.component('headcounts', () => import(/*webpackChunkName: "js/chunks/headcounts" */ './components/human_resources/HeadCountsComponent'));
-// Vue.component('hc-rotations', () => import(/*webpackChunkName: "js/chunks/hcRotations" */ './components/human_resources/RotationsComponent'));
-// Vue.component('monthly-rotation', () => import(/*webpackChunkName: "js/chunks/monthlyRotation" */ './components/human_resources/MonthlyRotation'));
-// Vue.component('monthly-attrition', () => import(/*webpackChunkName: "js/chunks/monthlyAttrition" */ './components/human_resources/MonthlyAttrition'));
 Vue.component('sites-metric', () => import(/*webpackChunkName: "js/chunks/sitesMetric" */ './components/dashboards/SitesOverview'));
 Vue.component('sites-sph', () => import(/*webpackChunkName: "js/chunks/sitesSph" */ './components/dashboards/sites/Sph'));
 
