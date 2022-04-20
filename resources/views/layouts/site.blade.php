@@ -32,7 +32,7 @@
                 </section>
 
             </div>
-            <footer class="flex flex-column justify-space-between main-footer px-15 py-10 md:flex-row md:px-20">
+            <footer class="bg-white border-top flex flex-column justify-space-between main-footer md:flex-row px-15 py-10 md:px-20">
                 <div>
                     <strong>
                         Copyright &copy; {{ date("Y") }}
