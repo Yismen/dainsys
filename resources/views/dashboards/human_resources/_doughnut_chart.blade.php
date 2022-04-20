@@ -3,7 +3,7 @@
         <div class="box-header">
             <h4>{{ $title }}</h4>
         </div>
-        <div class="box-body no-padding">
+        <div class="box-body p-0">
             <doughnut-base-chart
                 :labels="{{ $headcounts[$data_key]['labels'] }}"
                 :dataset="{{ $headcounts[$data_key]['data'] }}"

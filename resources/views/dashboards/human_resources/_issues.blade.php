@@ -1,7 +1,7 @@
 <div class="box box-danger">
     <div class="box-header with-border"><h4><i class="fa fa-exclamation-triangle"> </i> {{ __('Issue') }}s</h4></div>
 
-    <div class="box-body no-padding">
+    <div class="box-body p-0">
         <div class="table-responsive">
             <table class="table table-condensed table-bordereds">
                 <thead>

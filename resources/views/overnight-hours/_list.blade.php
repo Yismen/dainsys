@@ -1,4 +1,4 @@
-<div class="box box-primary no-padding">
+<div class="box box-primary p-0">
     <div class="box-header with-border">
         <h3>
             Overnight Hours List

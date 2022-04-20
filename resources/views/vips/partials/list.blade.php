@@ -1,11 +1,11 @@
-<div class="box box-primary no-padding">
+<div class="box box-primary p-0">
     <div class="box-header with-border">
         <h3>
             VIP List
         </h3>
     </div>
 
-    <div class="box-body no-padding">
+    <div class="box-body p-0">
         <table class="table table-condensed table-hover table-striped">
             <thead>
                 <tr>
