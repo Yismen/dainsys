@@ -9,7 +9,6 @@
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <title>Ecco | {{ $page_header ?? 'Admin Header' }}</title>
-        <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ mix('css/site.css') }}">
         <!-- Site Favicon -->
         <link rel="shortcut icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
@@ -22,99 +21,32 @@
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
             <![endif]-->
     </head>
-    <!--
-        BODY TAG OPTIONS:
-        =================
-        Apply one or more of the following classes to get the
-        desired effect
-        |*********************************************************|
-        | SKINS         | skin-blue                               |
-        |               | skin-black                              |
-        |               | skin-purple                             |
-        |               | skin-yellow                             |
-        |               | skin-red                                |
-        |               | skin-green                              |
-        |*********************************************************|
-        |LAYOUT OPTIONS | fixed                                   |
-        |               | layout-boxed                            |
-        |               | layout-top-nav                          |
-        |               | sidebar-collapse                        |
-        |               | sidebar-mini                            |
-        |*********************************************************|
-        -->
-
     <body class="sidebar-collapse">
         <div class="wrapper" id="app">
-            <!-- Main Header -->
-            {{-- @inject('user', 'App\Layout') --}}
-            {{-- @include('layouts.partials.main-header') --}}
-            <!-- Left side column. contains the logo and sidebar -->
-
-            {{-- @include('layouts.partials.main-sidebar') --}}
-            <!-- Content Wrapper. Contains page content -->
-
-            <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
-                {{-- @include('layouts.partials.session-flash-messages') --}}
                 <div class="hidden-xs">
                     <back-to-top></back-to-top>
                 </div>
-                {{-- <loading-component></loading-component> --}}
-                <!-- Your Page Content Here -->
-                <!--
-                    |************************************|
-                    | Main Content Here
-                    |************************************|
-                     -->
-
-                <!-- Main content -->
                 <section class="content">
                     @yield('content')
                 </section>
-                <!-- /.content -->
 
             </div>
-            <!-- /.content-wrapper -->
-            <!-- Main Footer -->
-            <footer class="main-footer">
-                <!-- To the right -->
-                <div class="pull-right hidden-xs">
+            <footer class="flex flex-column justify-space-between main-footer px-15 py-10 md:flex-row md:px-20">
+                <div>
+                    <strong>
+                        Copyright &copy; {{ date("Y") }}
+                        <a href="{{ url('/admin') }}">
+                            {{ $app_name }}, {{ $client_name }}
+                        </a>.
+                    </strong> All rights reserved.
+                </div>
+                <div class="md:m-0 mt-7">
                     @include('layouts.partials.links.webmaster')
                 </div>
-                <!-- Default to the left -->
-                <strong>
-                    Copyright &copy; {{ date("Y") }}
-                    <a href="{{ url('/admin') }}">
-                        {{ $app_name }}, {{ $client_name }}
-                    </a>.
-                </strong> All rights reserved.
             </footer>
-
-            <!-- Control Sidebar -->
-            @if ($user)
-                @include('layouts.partials.control-sidebar')
-            @endif
-            <div class="control-sidebar-bg"></div>
-            <!-- /.control-sidebar -->
-            <!-- Add the sidebars background. This div must be placed
-                immediately after the control sidebar -->
         </div>
-        <!-- ./wrapper -->
-        <!-- REQUIRED JS SCRIPTS -->
-        <script src="{{ mix('js/app.js') }}"></script>
         <script src="{{ mix('js/site.js') }}"></script>
-        <script>
-        </script>
-        <!-- Optionally, you can add Slimscroll and FastClick plugins.
-            Both of these plugins are recommended to enhance the
-            user experience. Slimscroll is required when using the
-            fixed layout. -->
-
-        <!--
-            |************************************|
-            | All scripts will be placed here
-            |************************************|
-             -->
         @stack('scripts')
     </body>
 

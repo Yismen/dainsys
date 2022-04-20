@@ -89,7 +89,7 @@
                     {data: 'id', name: 'id', searchable: "false", orderable: false, render: function(data, type, full) {
                         return `<a 
                                 href="/admin/performances_import/mass_delete?date=${full.date}&file_name=${full.file_name}" 
-                                class="btn btn-link no-padding text-red"\
+                                class="btn btn-link p-0 text-red"\
                             >Delete</a>`
                     }},
                 ]

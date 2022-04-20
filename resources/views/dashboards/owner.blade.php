@@ -57,7 +57,7 @@
         <div class="col-lg-6">
             <div class="box box-primary">
                 <div class="box-header">Revenue</div>
-                <div class="box-body no-padding">
+                <div class="box-body p-0">
                     <line-base-chart
                     :labels="{{ collect($performance['labels']) }}"
                     :datasets="{{ collect($performance['revenue']) }}"
@@ -69,7 +69,7 @@
         <div class="col-lg-6">
             <div class="box box-primary">
                 <div class="box-header">Revenue / Hora</div>
-                <div class="box-body no-padding">
+                <div class="box-body p-0">
                     <line-base-chart
                     :goal="8.5"
                     :labels="{{ collect($performance['labels']) }}"
@@ -82,7 +82,7 @@
         <div class="col-lg-6">
             <div class="box box-primary">
                 <div class="box-header">Payroll Hours</div>
-                <div class="box-body no-padding">
+                <div class="box-body p-0">
                     <line-base-chart
                     :labels="{{ collect($performance['labels']) }}"
                     :datasets="{{ collect($performance['login_time']) }}"
@@ -94,7 +94,7 @@
         <div class="col-lg-6">
             <div class="box box-primary">
                 <div class="box-header">Production Hours</div>
-                <div class="box-body no-padding">
+                <div class="box-body p-0">
                     <line-base-chart
                     :labels="{{ collect($performance['labels']) }}"
                     :datasets="{{ collect($performance['production_time']) }}"
@@ -106,7 +106,7 @@
         <div class="col-lg-6">
             <div class="box box-primary">
                 <div class="box-header">Monthly SPH</div>
-                <div class="box-body no-padding">
+                <div class="box-body p-0">
                     <line-base-chart
                     :labels="{{ collect($performance['labels']) }}"
                     :datasets="{{ collect($performance['sph']) }}"
@@ -118,7 +118,7 @@
         <div class="col-lg-6">
             <div class="box box-primary">
                 <div class="box-header">Hours Efficiency</div>
-                <div class="box-body no-padding">
+                <div class="box-body p-0">
                     <line-base-chart
                     :goal=".9"
                     :labels="{{ collect($performance['labels']) }}"
