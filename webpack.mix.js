@@ -31,6 +31,7 @@ mix
             /even/,
             /dz-/,
             /dropzone/,
+            /swal2-/,
         ],
     })
     ;

@@ -8,7 +8,7 @@ window.Popper = require('popper.js').default;
 */
 import Vuec from 'vue-container';
 Vue.use(Vuec);
-Vue.$ioc.register('Form', require('./vendor/dainsys-form').default);
+Vue.$ioc.register('Form', require('dainsys-form').default);
 import Datepicker from 'vuejs-datepicker'
 Vue.$ioc.register('Datepicker', Datepicker);
 
@@ -29,7 +29,7 @@ try {
     window.$ = window.jQuery = require('jquery');
     window._ = require('lodash');
     window.moment = require('moment');
-    window.Form = require('./vendor/dainsys-form').default
+    window.Form = require('dainsys-form').default
     require('bootstrap');
     require('datatables.net-bs');
     require('admin-lte');

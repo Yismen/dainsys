@@ -20,7 +20,7 @@
 @task('ensure-folder-exists')    
     [ -d {{ $projectFolder }} ] || mkdir {{ $projectFolder }}
 @endtask
-@task('copy-project-to-release-folder', ['on' => 'web'])  
+@task('copy-project-to-release-folder', ['on' => 'web2'])  
     ln -sfn {{ $projectFolder }} {{ $serverLink }}
 
     [ -d {{ $releaseFolder }} ] || mkdir {{ $releaseFolder }}
@@ -41,7 +41,7 @@
     ln -sfn {{ $releaseFolder }} {{ $serverLink }}
 @endtask
 
-@task('deploy-to-production-folder', ['on' => 'web'])
+@task('deploy-to-production-folder', ['on' => 'web2'])
     cd {{ $projectFolder }}
     git reset --hard
     git pull origin {{ $branch }} --force
@@ -49,9 +49,9 @@
 
     composer install --no-dev -o -n
 
-    chown -R :www-data {{ $projectFolder }}
+    {{-- chown -R :www-data {{ $projectFolder }}
     chmod -R 775 {{ $projectFolder.'/storage' }}
-    chmod -R 775 {{ $projectFolder.'/bootstrap/cache' }}
+    chmod -R 775 {{ $projectFolder.'/bootstrap/cache' }} --}}
     
     php artisan cache:clear
     php artisan optimize:clear
