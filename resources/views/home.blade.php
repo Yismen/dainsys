@@ -14,9 +14,11 @@
                 :random-animation="true"
                 >
             </dainsys-logo> --}}
-            <a class="btn btn-lg btn-warning call-to-action md:w-50 visible mt-92 md:mt-30"  data-animation="from-bottom" href="/admin" role="button" >
-                <i class="fa fa-sign-in"></i> Get Started!
-            </a>
+            <div>
+                <a class="btn btn-lg btn-warning text-center call-to-action md:w-50 visible mt-92 md:mt-30"  data-animation="from-bottom" href="/admin" role="button" >
+                    <i class="fa fa-sign-in"></i> Get Started!
+                </a>
+            </div>
             <a  href="#features" class="more-button "  data-animation="from-bottom">
                 <i class="fa fa-angle-double-down"></i> More
             </a>
