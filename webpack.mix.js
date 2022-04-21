@@ -29,6 +29,8 @@ mix
             /thead/,
             /sorting/,
             /even/,
+            /dz-/,
+            /dropzone/,
         ],
     })
     ;
