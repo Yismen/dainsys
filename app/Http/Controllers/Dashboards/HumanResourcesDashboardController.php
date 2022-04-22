@@ -17,7 +17,7 @@ class HumanResourcesDashboardController extends DashboardAbstractController
         $this->middleware('role:human-resource');
     }
 
-    public function index()
+    public function __invoke()
     {
         request()->flash();
 

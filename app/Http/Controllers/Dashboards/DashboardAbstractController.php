@@ -7,6 +7,4 @@ use App\Http\Controllers\Controller;
 abstract class DashboardAbstractController extends Controller
 {
     protected $views_location = 'dashboards';
-
-    abstract public function index();
 }

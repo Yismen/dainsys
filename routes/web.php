@@ -58,17 +58,18 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 
     Route::resource('contacts', \App\Http\Controllers\User\ContactsController::class);
 
-    Route::get('dashboards', DashboardController::class)
-        ->name('dashboards');
-    Route::get('dashboards/human_resources', [\App\Http\Controllers\Dashboards\HumanResourcesDashboardController::class, 'index'])
-        ->name('human_resources_dashboard');
-
-    Route::get('dashboards/owner', [\App\Http\Controllers\Dashboards\OwnerDashboardController::class, 'index'])
-        ->name('owner_dashboard');
-    Route::get('dashboards/admin', [\App\Http\Controllers\Dashboards\AdminDashboardController::class, 'index'])
-        ->name('admin_dashboard');
-    Route::get('dashboards/default', [\App\Http\Controllers\Dashboards\DefaultDashboardController::class, 'index'])
-        ->name('default_dashboard');
+    Route::group(['prefix' => 'dashboards'], function () {
+        Route::get('', DashboardController::class)
+            ->name('');
+        Route::get('human_resources', \App\Http\Controllers\Dashboards\HumanResourcesDashboardController::class)
+            ->name('human_resources_dashboard');
+        Route::get('owner', \App\Http\Controllers\Dashboards\OwnerDashboardController::class)
+            ->name('owner_dashboard');
+        Route::get('admin', \App\Http\Controllers\Dashboards\AdminDashboardController::class)
+            ->name('admin_dashboard');
+        Route::get('default', \App\Http\Controllers\Dashboards\DefaultDashboardController::class)
+            ->name('default_dashboard');
+    });
 
     Route::resource('departments', \App\Http\Controllers\DepartmentsController::class);
 

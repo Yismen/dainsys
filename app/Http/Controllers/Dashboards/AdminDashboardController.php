@@ -22,7 +22,7 @@ class AdminDashboardController extends DashboardAbstractController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __invoke()
     {
         request()->flash();
 
