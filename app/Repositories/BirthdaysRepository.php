@@ -8,11 +8,25 @@ class BirthdaysRepository
 {
     protected function query()
     {
+        $default_sites = config('dainsys.limit_queries.sites');
+
         $orderClause = env('DB_CONNECTION') === 'sqlite' ?
             'strftime("%d", date_of_birth) ASC' :
             'Day(date_of_birth) ASC';
 
-        return Employee::actives()->filter(request()->all())
+        return Employee::query()
+            ->actives()
+            ->filter(request()->all())
+            ->with([
+                'site',
+                'position' => function ($query) {
+                    $query->with([
+                        'department',
+                        'payment_type'
+                    ]);
+                },
+            ])
+            ->forDefaultSites()
             ->orderByRaw($orderClause);
     }
 

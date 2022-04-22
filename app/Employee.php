@@ -219,6 +219,27 @@ class Employee extends Model
         return $query->has('card', false);
     }
 
+    public function scopeForDefaultSites($query)
+    {
+        $default_sites = config('dainsys.limit_queries.sites');
+
+        $query->when(request('site') === null, function ($query) use ($default_sites) {
+            $query->whereHas('site', function ($site_query) use ($default_sites) {
+                $site_query->whereIn('name', $default_sites);
+            });
+        });
+    }
+
+    public function scopeMissingPhoto($query)
+    {
+        $query
+            ->where(function ($query) {
+                $query
+                    ->where('photo', '')
+                    ->orWhereNull('photo');
+            });
+    }
+
     public function computedSalary()
     {
         $base_salary = 8310;

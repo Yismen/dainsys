@@ -13,6 +13,18 @@
                 <tbody>
                     <tr class="">
                         <th>
+                            @if ($issues['missing_photo'] > 0)
+                                <a href="{{ route('admin.employees.missing_photo') }}" target="_issues">{{ __('Missing') }} {{ __('Photo') }}</a>                                
+                            @else
+                                {{ __('Missing') }} {{ __('Photo') }}
+                            @endif
+                        </th>
+                        <td>
+                            <span class="badge bg-{{ $issues['missing_photo'] > 0 ? 'red' : 'green' }}">{{ $issues['missing_photo'] }}</span>
+                        </td>
+                    </tr>
+                    <tr class="">
+                        <th>
                             <a href="/admin/addresses" target="_issues">{{ __('Missing') }} {{ __('Address') }}</a>
                         </th>
                         <td>

@@ -23,7 +23,6 @@ use App\Http\Controllers\AttendanceCodesController;
 use App\Http\Controllers\PerformanceImportController;
 use App\Http\Controllers\HumanResources\DGT3Controller;
 use App\Http\Controllers\HumanResources\DGT4Controller;
-use App\Http\Controllers\Dashboards\DashboardController;
 use App\Http\Controllers\HumanResources\BirthdaysController;
 
 Route::get('/', \App\Http\Controllers\HomeController::class)->name('home');
@@ -58,17 +57,18 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 
     Route::resource('contacts', \App\Http\Controllers\User\ContactsController::class);
 
-    Route::get('dashboards', DashboardController::class)
-        ->name('dashboards');
-    Route::get('dashboards/human_resources', [\App\Http\Controllers\Dashboards\HumanResourcesDashboardController::class, 'index'])
-        ->name('human_resources_dashboard');
-
-    Route::get('dashboards/owner', [\App\Http\Controllers\Dashboards\OwnerDashboardController::class, 'index'])
-        ->name('owner_dashboard');
-    Route::get('dashboards/admin', [\App\Http\Controllers\Dashboards\AdminDashboardController::class, 'index'])
-        ->name('admin_dashboard');
-    Route::get('dashboards/default', [\App\Http\Controllers\Dashboards\DefaultDashboardController::class, 'index'])
-        ->name('default_dashboard');
+    Route::group(['prefix' => 'dashboards'], function () {
+        Route::get('', \App\Http\Controllers\Dashboards\DashboardController::class)
+            ->name('dashboards');
+        Route::get('human_resources', [\App\Http\Controllers\Dashboards\HumanResourcesDashboardController::class, 'index'])
+            ->name('human_resources_dashboard');
+        Route::get('owner', [\App\Http\Controllers\Dashboards\OwnerDashboardController::class, 'index'])
+            ->name('owner_dashboard');
+        Route::get('admin', [\App\Http\Controllers\Dashboards\AdminDashboardController::class, 'index'])
+            ->name('admin_dashboard');
+        Route::get('default', [\App\Http\Controllers\Dashboards\DefaultDashboardController::class, 'index'])
+            ->name('default_dashboard');
+    });
 
     Route::resource('departments', \App\Http\Controllers\DepartmentsController::class);
 
@@ -77,36 +77,40 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 
     Route::resource('downtime_reasons', \App\Http\Controllers\DowntimeReasonsController::class);
 
-    Route::post('employees/{employee}/address', [\App\Http\Controllers\Employee\AddressController::class, 'update'])
-        ->name('employees.update-address');
-    Route::put('employees/{employee}/ars', [\App\Http\Controllers\Employee\ARSController::class, 'assign'])
-        ->name('employees.update-ars');
-    Route::put('employees/{employee}/afp', [\App\Http\Controllers\Employee\AFPController::class, 'assign'])
-        ->name('employees.update-afp');
-    Route::put('employees/{employee}/supervisor', [\App\Http\Controllers\Employee\SupervisorController::class, 'assign'])
-        ->name('employees.update-supervisor');
-    Route::post('employees/{employee}/card', [\App\Http\Controllers\Employee\CardController::class, 'update'])
-        ->name('employees.update-card');
-    Route::get('employees/export_to_excel/{status}', [\App\Http\Controllers\Employee\ExportController::class, 'toExcel'])
-        ->name('employees.export_to_excel');
-    Route::post('employees/{employee}/login_names', [\App\Http\Controllers\Employee\LoginNameController::class, 'store'])
-        ->name('employees.login.create');
-    Route::post('employees/{employee}/terminate', [\App\Http\Controllers\Employee\TerminationController::class, 'terminate'])
-        ->name('employees.terminate');
-    Route::post('employees/{employee}/reactivate', [\App\Http\Controllers\Employee\TerminationController::class, 'reactivate'])
-        ->name('employees.reactivate');
-    Route::post('employees/{employee}/punch', [\App\Http\Controllers\Employee\PunchController::class, 'update'])
-        ->name('employees.update-punch');
-    Route::post('employees/{employee}/photo', [\App\Http\Controllers\Employee\PhotoController::class, 'update'])
-        ->name('employees.update-photo');
-    Route::put('employees/{employee}/bank-account', [\App\Http\Controllers\Employee\BankAccountController::class, 'update'])
-        ->name('employees.update-bank-account');
-    Route::post('employees/{employee}/social-security', [\App\Http\Controllers\Employee\SocialSecurityController::class, 'update'])
-        ->name('employees.update-social-security');
-    Route::post('employees/{employee}/nationality', [\App\Http\Controllers\Employee\NationalityController::class, 'assign'])
-        ->name('employees.update-nationality');
+    Route::prefix('employees')->group(function () {
+        Route::post('{employee}/address', [\App\Http\Controllers\Employee\AddressController::class, 'update'])
+            ->name('employees.update-address');
+        Route::put('{employee}/ars', [\App\Http\Controllers\Employee\ARSController::class, 'assign'])
+            ->name('employees.update-ars');
+        Route::put('{employee}/afp', [\App\Http\Controllers\Employee\AFPController::class, 'assign'])
+            ->name('employees.update-afp');
+        Route::put('{employee}/supervisor', [\App\Http\Controllers\Employee\SupervisorController::class, 'assign'])
+            ->name('employees.update-supervisor');
+        Route::post('{employee}/card', [\App\Http\Controllers\Employee\CardController::class, 'update'])
+            ->name('employees.update-card');
+        Route::get('export_to_excel/{status}', [\App\Http\Controllers\Employee\ExportController::class, 'toExcel'])
+            ->name('employees.export_to_excel');
+        Route::post('{employee}/login_names', [\App\Http\Controllers\Employee\LoginNameController::class, 'store'])
+            ->name('employees.login.create');
+        Route::post('{employee}/terminate', [\App\Http\Controllers\Employee\TerminationController::class, 'terminate'])
+            ->name('employees.terminate');
+        Route::post('{employee}/reactivate', [\App\Http\Controllers\Employee\TerminationController::class, 'reactivate'])
+            ->name('employees.reactivate');
+        Route::post('{employee}/punch', [\App\Http\Controllers\Employee\PunchController::class, 'update'])
+            ->name('employees.update-punch');
+        Route::post('{employee}/photo', [\App\Http\Controllers\Employee\PhotoController::class, 'update'])
+            ->name('employees.update-photo');
+        Route::put('{employee}/bank-account', [\App\Http\Controllers\Employee\BankAccountController::class, 'update'])
+            ->name('employees.update-bank-account');
+        Route::post('{employee}/social-security', [\App\Http\Controllers\Employee\SocialSecurityController::class, 'update'])
+            ->name('employees.update-social-security');
+        Route::post('{employee}/nationality', [\App\Http\Controllers\Employee\NationalityController::class, 'assign'])
+            ->name('employees.update-nationality');
+        Route::get('missing_photo', \App\Http\Controllers\Employee\MissingPhotoController::class)->name('employees.missing_photo');
+    });
+
     Route::resource('employees', \App\Http\Controllers\EmployeesController::class)
-        ->except(['destroy']);
+        ->except(['destroy'])->names('employees');
 
     Route::resource('holidays', \App\Http\Controllers\HolidayController::class)
         ->except('show');

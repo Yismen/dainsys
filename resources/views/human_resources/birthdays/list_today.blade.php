@@ -11,7 +11,7 @@
                 </a>
                 <!-- /.widget-user-image -->
                 <h4 class="widget-user-username">{{ $employee->full_name }}</h4>
-                <h5 class="widget-user-desc">{{ optional($employee->position)->name_and_department }}</h5>
+                <p class="widget-user-desc">{{ optional($employee->position)->name_and_department }}, {{ optional($employee->site)->name }}</p>
             </div>
         </div>
     @endforeach

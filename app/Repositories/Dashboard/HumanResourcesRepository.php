@@ -2,13 +2,13 @@
 
 namespace App\Repositories\Dashboard;
 
+use App\Repositories\SiteRepository;
+use App\Repositories\ProjectRepository;
+use App\Repositories\EmployeeRepository;
 use App\Repositories\AttritionRepository;
 use App\Repositories\BirthdaysRepository;
 use App\Repositories\DepartmentRepository;
-use App\Repositories\EmployeeRepository;
 use App\Repositories\MissingInfoRepository;
-use App\Repositories\ProjectRepository;
-use App\Repositories\SiteRepository;
 
 class HumanResourcesRepository
 {
@@ -67,6 +67,7 @@ class HumanResourcesRepository
             ],
 
             'issues' => [
+                'missing_photo' => MissingInfoRepository::photo()->count(),
                 'missing_address' => MissingInfoRepository::address()->count(),
                 'missing_punch' => MissingInfoRepository::punch()->count(),
                 'missing_ars' => MissingInfoRepository::ars()->count(),
@@ -85,7 +86,7 @@ class HumanResourcesRepository
         array $options = [],
         $labels_name = 'name',
         $values_name = 'employees_count'
-    ):array {
+    ): array {
         $defaults = [
             'labels' => $collection->map->$labels_name,
             'data' => $collection->map->$values_name,
