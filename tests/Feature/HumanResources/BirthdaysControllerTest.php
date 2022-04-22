@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\HumanResources;
 
+use App\Site;
 use App\Employee;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -71,11 +72,22 @@ class BirthdaysControllerTest extends TestCase
      */
 
     /** @test */
-    public function it_shous_birthdays_for_this_month()
+    public function it_shows_birthdays_for_this_month()
     {
-        $employee_with_birthday_this_month = factory(Employee::class)->create(['date_of_birth' => now()]);
-        $employee_with_birthday_last_month = factory(Employee::class)->create(['date_of_birth' => now()->subMonths(4)]);
-        $employee_with_birthday_next_month = factory(Employee::class)->create(['date_of_birth' => now()->addMonth()]);
+        $site = factory(Site::class)->create(['name' => 'Santiago-HQ']);
+
+        $employee_with_birthday_this_month = factory(Employee::class)->create([
+            'site_id' => $site->id,
+            'date_of_birth' => now()
+        ]);
+        $employee_with_birthday_last_month = factory(Employee::class)->create([
+            'site_id' => $site->id,
+            'date_of_birth' => now()->subMonths(4)
+        ]);
+        $employee_with_birthday_next_month = factory(Employee::class)->create([
+            'site_id' => $site->id,
+            'date_of_birth' => now()->addMonth()
+        ]);
         $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
 
         $this->get(route('admin.birthdays_this_month'))
@@ -86,11 +98,22 @@ class BirthdaysControllerTest extends TestCase
     }
 
     /** @test */
-    public function it_shous_birthdays_for_last_month()
+    public function it_shows_birthdays_for_last_month()
     {
-        $employee_with_birthday_this_month = factory(Employee::class)->create(['date_of_birth' => now()->startOfMonth()]);
-        $employee_with_birthday_last_month = factory(Employee::class)->create(['date_of_birth' => now()->startOfMonth()->subMonth()]);
-        $employee_with_birthday_next_month = factory(Employee::class)->create(['date_of_birth' => now()->startOfMonth()->addMonth()]);
+        $site = factory(Site::class)->create(['name' => 'Santiago-HQ']);
+
+        $employee_with_birthday_this_month = factory(Employee::class)->create([
+            'site_id' => $site->id,
+            'date_of_birth' => now()->startOfMonth()
+        ]);
+        $employee_with_birthday_last_month = factory(Employee::class)->create([
+            'site_id' => $site->id,
+            'date_of_birth' => now()->startOfMonth()->subMonth()
+        ]);
+        $employee_with_birthday_next_month = factory(Employee::class)->create([
+            'site_id' => $site->id,
+            'date_of_birth' => now()->startOfMonth()->addMonth()
+        ]);
         $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
 
         $this->get(route('admin.birthdays_last_month'))
@@ -101,11 +124,22 @@ class BirthdaysControllerTest extends TestCase
     }
 
     /** @test */
-    public function it_shous_birthdays_for_next_month()
+    public function it_shows_birthdays_for_next_month()
     {
-        $employee_with_birthday_this_month = factory(Employee::class)->create(['date_of_birth' => now()->startOfMonth()]);
-        $employee_with_birthday_last_month = factory(Employee::class)->create(['date_of_birth' => now()->startOfMonth()->subMonths()]);
-        $employee_with_birthday_next_month = factory(Employee::class)->create(['date_of_birth' => now()->startOfMonth()->addMonth()]);
+        $site = factory(Site::class)->create(['name' => 'Santiago-HQ']);
+
+        $employee_with_birthday_this_month = factory(Employee::class)->create([
+            'site_id' => $site->id,
+            'date_of_birth' => now()->startOfMonth()
+        ]);
+        $employee_with_birthday_last_month = factory(Employee::class)->create([
+            'site_id' => $site->id,
+            'date_of_birth' => now()->startOfMonth()->subMonths()
+        ]);
+        $employee_with_birthday_next_month = factory(Employee::class)->create([
+            'site_id' => $site->id,
+            'date_of_birth' => now()->startOfMonth()->addMonth()
+        ]);
         $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
 
         $this->get(route('admin.birthdays_next_month'))

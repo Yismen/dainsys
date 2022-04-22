@@ -50,6 +50,15 @@ return [
      */
     'flash_as_toast' => env('FLASH_AS_TOAST', false),
 
+    /**
+     * Some queries should initially be limited to specific names.
+     */
+    'limit_queries' => [
+        'sites' => [
+            'Santiago-HQ'
+        ]
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Emergency Memory Limit
@@ -132,5 +141,6 @@ return [
             'owner' => 'OwnerDashboardController',
             'human-resource' => 'HumanResourcesDashboardController',
         ]
-    ]
+    ],
+
 ];
