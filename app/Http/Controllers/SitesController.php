@@ -25,6 +25,12 @@ class SitesController extends Controller
                     ->orderBy('second_first_name')
                     ->orderBy('last_name')
                     ->orderBy('second_last_name')
+                    ->with([
+                        'position' => function ($query) {
+                            $query->with(['department', 'payment_type']);
+                        },
+                        'project',
+                    ])
                     ->actives();
             }])
                 ->get();
