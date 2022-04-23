@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboards;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class DashboardController extends Controller
 {
@@ -39,14 +39,14 @@ class DashboardController extends Controller
             }
         }
 
-        return (new DefaultDashboardController)->index('default');
+        return (new DefaultDashboardController())->index('default');
     }
 
     protected function renderRoleController($role, $class)
     {
         $class_name = $this->dashboards_namespace . $class;
 
-        $controller = new $class_name;
+        $controller = new $class_name();
 
         return $controller->index($role);
     }

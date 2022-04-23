@@ -17,7 +17,7 @@ class DefaultDashboardController extends DashboardAbstractController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke()
+    public function index()
     {
         return view("{$this->views_location}.default", [
             'user' => auth()->user()->load(['roles.menus']),

@@ -29,7 +29,7 @@ class AttritionRepository
     /**
      * Calculate MTD attrition for any given month. 0 means, current month. 1 means last month.
      *
-     * @param integer $months
+     * @param  integer $months
      * @return void
      */
     public static function mtd(int $months = 0)
@@ -42,12 +42,14 @@ class AttritionRepository
         );
     }
 
-    public static function activesStartOfMonth(int $months = 0):int
+    public static function activesStartOfMonth(int $months = 0): int
     {
         $static = new self();
         $start_of_month = now()->subDay()->subMonths($months)->startOfMonth();
 
-        return Employee::where('hire_date', '<=', $start_of_month)->filter(request()->all())
+        return Employee::where('hire_date', '<=', $start_of_month)
+            ->filter(request()->all())
+            ->forDefaultSites()
             ->where(function ($query) use ($start_of_month) {
                 $query->actives()
                 ->orWhereHas('termination', function ($query) use ($start_of_month) {
@@ -56,22 +58,26 @@ class AttritionRepository
             })->count();
     }
 
-    public static function terminatedThisMonth(int $months = 0):int
+    public static function terminatedThisMonth(int $months = 0): int
     {
         $start_of_month = now()->subDay()->subMonths($months);
 
-        return Employee::with('termination')->filter(request()->all())
+        return Employee::with('termination')
+            ->filter(request()->all())
+            ->forDefaultSites()
             ->whereHas('termination', function ($query) use ($start_of_month) {
                 return $query->whereYear('termination_date', $start_of_month->year)
                     ->whereMonth('termination_date', $start_of_month->month);
             })->count();
     }
 
-    public static function hiredThisMonth(int $months = 0):int
+    public static function hiredThisMonth(int $months = 0): int
     {
         $start_of_month = now()->subDay()->subMonths($months);
 
-        return Employee::whereYear('hire_date', $start_of_month->year)->filter(request()->all())
+        return Employee::whereYear('hire_date', $start_of_month->year)
+            ->forDefaultSites()
+            ->filter(request()->all())
             ->whereMonth('hire_date', $start_of_month->month)->count();
     }
 

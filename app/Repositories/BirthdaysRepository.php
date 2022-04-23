@@ -26,11 +26,7 @@ class BirthdaysRepository
                     ]);
                 },
             ])
-            ->when(request('site') === null, function ($query) use ($default_sites) {
-                $query->whereHas('site', function ($site_query) use ($default_sites) {
-                    $site_query->whereIn('name', $default_sites);
-                });
-            })
+            ->forDefaultSites()
             ->orderByRaw($orderClause);
     }
 

@@ -29,6 +29,15 @@ class MissingInfoRepository
         return self::$instance->query('ars');
     }
 
+    public static function photo()
+    {
+        return Employee::actives()
+        ->filter(request()->all())
+        ->sorted()
+        ->forDefaultSites()
+        ->missingPhoto();
+    }
+
     public static function punch()
     {
         self::$instance = self::$instance ?? new self();
@@ -69,6 +78,7 @@ class MissingInfoRepository
         return Employee::actives()
             ->filter(request()->all())
             ->sorted()
+            ->forDefaultSites()
             ->with($related_field)
             ->whereDoesntHave($related_field);
     }

@@ -2,20 +2,23 @@
 
 namespace App\Repositories;
 
-use App\Department;
-use App\Employee;
-use App\Gender;
-use App\Nationality;
-use App\Position;
-use App\Project;
 use App\Site;
+use App\Gender;
+use App\Project;
+use App\Employee;
+use App\Position;
+use App\Department;
 use App\Supervisor;
+use App\Nationality;
 
 class EmployeeRepository
 {
     protected function query()
     {
-        return Employee::sorted()->filter(request()->all());
+        return Employee::query()
+            ->sorted()
+            ->filter(request()->all())
+            ->forDefaultSites();
     }
 
     public static function all()
@@ -90,7 +93,7 @@ class EmployeeRepository
 
     protected function constrained($class)
     {
-        $class = new $class;
+        $class = new $class();
 
         return $class->withCount(['employees' => $this->constrainCallback()])
             ->whereHas('employees', $this->constrainCallback())->get();

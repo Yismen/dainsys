@@ -74,7 +74,7 @@ class BirthdaysControllerTest extends TestCase
     /** @test */
     public function it_shows_birthdays_for_this_month()
     {
-        $site = factory(Site::class)->create(['name' => 'Santiago-HQ']);
+        $site = factory(Site::class)->create(['name' => config('dainsys.limit_queries.sites')[0]]);
 
         $employee_with_birthday_this_month = factory(Employee::class)->create([
             'site_id' => $site->id,
@@ -100,7 +100,7 @@ class BirthdaysControllerTest extends TestCase
     /** @test */
     public function it_shows_birthdays_for_last_month()
     {
-        $site = factory(Site::class)->create(['name' => 'Santiago-HQ']);
+        $site = factory(Site::class)->create(['name' => config('dainsys.limit_queries.sites')[0]]);
 
         $employee_with_birthday_this_month = factory(Employee::class)->create([
             'site_id' => $site->id,
@@ -126,7 +126,7 @@ class BirthdaysControllerTest extends TestCase
     /** @test */
     public function it_shows_birthdays_for_next_month()
     {
-        $site = factory(Site::class)->create(['name' => 'Santiago-HQ']);
+        $site = factory(Site::class)->create(['name' => config('dainsys.limit_queries.sites')[0]]);
 
         $employee_with_birthday_this_month = factory(Employee::class)->create([
             'site_id' => $site->id,
@@ -147,5 +147,51 @@ class BirthdaysControllerTest extends TestCase
             ->assertSee($employee_with_birthday_next_month->full_name)
             ->assertDontSee($employee_with_birthday_this_month->full_name)
             ->assertDontSee($employee_with_birthday_last_month->full_name);
+    }
+    
+
+    /** @test */
+    public function birthdays_only_shows_default_sites_when_site_is_not_on_request()
+    {
+        $site_default = factory(Site::class)->create(['name' => config('dainsys.limit_queries.sites')[0]]);
+        $site_any = factory(Site::class)->create();
+
+        $employee_for_default_site = factory(Employee::class)->create([
+            'site_id' => $site_default->id,
+            'date_of_birth' => now()
+        ]);
+        $employee_for_any_site = factory(Employee::class)->create([
+            'site_id' => $site_any->id,
+            'date_of_birth' => now()
+        ]);
+
+        $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
+
+        $response = $this->get(route('admin.birthdays_this_month'));
+        $response->assertOk();
+        $response->assertSee($employee_for_default_site->full_name);
+        $response->assertDontSee($employee_for_any_site->full_name);
+    }
+    /** @test */
+    public function birthdays_shows_all_when_site_is_on_request()
+    {
+        $site_default = factory(Site::class)->create(['name' => config('dainsys.limit_queries.sites')[0]]);
+        $site_any = factory(Site::class)->create();
+
+        $employee_for_default_site = factory(Employee::class)->create([
+            'site_id' => $site_default->id,
+            'date_of_birth' => now()
+        ]);
+        $employee_for_any_site = factory(Employee::class)->create([
+            'site_id' => $site_any->id,
+            'date_of_birth' => now()
+        ]);
+
+        $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
+
+        $response = $this->get(route('admin.birthdays_this_month') . "?site=%");
+        $response->assertOk();
+        $response->assertSee($employee_for_default_site->full_name);
+        $response->assertSee($employee_for_any_site->full_name);
     }
 }
