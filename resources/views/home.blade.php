@@ -6,16 +6,16 @@
 <div class="bg-white">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <div class="intro-header">
-        <div class="flex flex-column justify-center m-0 main-header md:vh-90 md:w-50 px-20 py-40 text-white w-100">
+        <div class="flex flex-column justify-center m-0 main-header md:vh-90 md:w-40 px-20 py-40 text-white w-100">
             <h1 class="app-title fw-900">{{ $app_name }}</h1>
-            <p class="lead">Valuable, timely and on point information to aggregate value to your job.</p>
+            <p class="lead letter-spacing-2 md:letter-spacing-3">Valuable, timely and on point information to aggregate value to your job.</p>
             {{-- <dainsys-logo default-animation="shake" class="logo my-30 md:invisible" class="hidden-sm"
                 logo="{{ asset('images/logo.png') }}" 
                 :random-animation="true"
                 >
             </dainsys-logo> --}}
             <div>
-                <a class="btn btn-lg btn-warning text-center call-to-action md:w-50 visible mt-92 md:mt-30"  data-animation="from-bottom" href="/admin" role="button" >
+                <a class="btn btn-lg btn-warning text-center call-to-action mt-92 md:mt-30"  data-animation="from-bottom" href="/admin" role="button" >
                     <i class="fa fa-sign-in"></i> Get Started!
                 </a>
             </div>
