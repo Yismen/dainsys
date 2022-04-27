@@ -23,19 +23,19 @@ html {
 }
 
 @mixin tablet {
-    @media (min-width: #{922px}) {
+    @media (min-width: #{768px}) {
         @content;
     }
 }
 
 @mixin laptop {
-    @media (min-width: #{1100px}) {
+    @media (min-width: #{992px}) {
         @content;
     }
 }
 
 @mixin desktop {
-    @media (min-width: #{1250px}) {
+    @media (min-width: #{1200px}) {
         @content;
     }
 }
@@ -111,6 +111,7 @@ body {
     font-size: 50px;
     margin-bottom: 20px;
     text-shadow: -2px 1px 6px #030303;
+    text-align: center;
 
     @include tablet() {
         font-size: 60px;
@@ -118,6 +119,7 @@ body {
 
     @include laptop() {
         font-size: 65px;
+        text-align: left;
     }
 
     @include desktop() {
@@ -160,10 +162,42 @@ body {
     color: #e3e3e3;
 }
 
-.animatable {
-    visibility: hidden;
+// .animatable {
+//     visibility: hidden;
+// }
+
+.bg-white {
+    background-color: #FFF;
 }
 
+.bg-yellow {
+    background-color: #e69500;
+}
+
+.text-white {
+    color: #FFF;
+}
+
+.text-yellow {
+    color: #e69500;
+}
+
+// borders
+.border-bottom {
+    border-bottom: 1px solid #f4f4f4;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(244, 244, 244);
+}
+
+.border-top {
+    border-top: 1px solid #f4f4f4;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: rgb(244, 244, 244);
+}
+
+// Keyframe Classes
 .from-left {
     animation: from-left 0.5s 1 ease-in-out;
 }
@@ -180,19 +214,30 @@ body {
     animation: from-top 0.5s 1 ease-in-out;
 }
 
-// borders
-.border-bottom {
-    border-bottom: 1px solid #f4f4f4;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: rgb(244, 244, 244);
+
+
+.fade-in-down {
+    -webkit-animation: fade-in-down 500ms ease-in-out;
+    /* Chrome, Safari, Opera */
+    animation: fade-in-down 500ms ease-in-out;
 }
 
-.border-top {
-    border-top: 1px solid #f4f4f4;
-    border-top-width: 1px;
-    border-top-style: solid;
-    border-top-color: rgb(244, 244, 244);
+.fade-in-up {
+    -webkit-animation: fade-in-up 500ms ease-in-out;
+    /* Chrome, Safari, Opera */
+    animation: fade-in-up 500ms ease-in-out;
+}
+
+.fade-in-left {
+    -webkit-animation: fade-in-left 500ms ease-in-out;
+    /* Chrome, Safari, Opera */
+    animation: fade-in-left 500ms ease-in-out;
+}
+
+.fade-in-right {
+    -webkit-animation: fade-in-right 500ms ease-in-out;
+    /* Chrome, Safari, Opera */
+    animation: fade-in-right 500ms ease-in-out;
 }
 
 // Keyframes
@@ -260,18 +305,106 @@ body {
     }
 }
 
-.bg-white {
-    background-color: #FFF;
+/* Chrome, Safari, Opera */
+@-webkit-keyframes fade-in-down {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-40px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
 }
 
-.bg-yellow {
-    background-color: #e69500;
+/* Standard syntax */
+@keyframes fade-in-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.text-white {
-    color: #FFF;
+/* Chrome, Safari, Opera */
+@-webkit-keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(40px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
 }
 
-.text-yellow {
-    color: #e69500;
+/* Standard syntax */
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes fade-in-left {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(80px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+/* Standard syntax */
+@keyframes fade-in-left {
+    0% {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes fade-in-right {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(-80px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+/* Standard syntax */
+@keyframes fade-in-right {
+    0% {
+        opacity: 0;
+        transform: translateX(-80px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
