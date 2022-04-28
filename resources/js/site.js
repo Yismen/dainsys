@@ -23,16 +23,19 @@ const appSite = new VueSite({
 
     let observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-            let className = entry.target.dataset.animation;
-
-            entry.target.style.setProperty('visibility', 'hidden');
+            // animation: from-left 0.5s 1 ease-in-out;
+            let animation = entry.target.dataset.animation ?? 'fade-in-up';
+            let duration = entry.target.dataset.duration ?? '0.5s';
+            let count = entry.target.dataset.count ?? 1;
+            let delay = entry.target.dataset.delay ?? '0s';
+            let timing = entry.target.dataset.timing ?? 'ease-out';
+            // entry.target.style.setProperty('visibility', 'hidden');
 
             if (entry.isIntersecting) {
-                entry.target.style.setProperty('visibility', 'visible');
-                // entry.target.classList.remove('hidden');
-                entry.target.classList.add(className);
+                entry.target.style.animation = `${animation} ${duration} forwards ${count} ${timing} ${delay}`;
 
                 observer.unobserve(entry.target);
+                // entry.target.classList.remove('animatable');
             }
 
         });
