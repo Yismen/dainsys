@@ -12,7 +12,7 @@
 // @import url('~datatables.net-bs/css/dataTables.bootstrap.css');
 // @import url('~admin-lte/dist/css/AdminLTE.css');
 // @import url('~admin-lte/dist/css/skins/_all-skins.css');
-@import url('~animate.css/animate.css');
+// @import url('~animate.css/animate.css');
 @import '~font-awesome/scss/font-awesome';
 // @import url('~select2/dist/css/select2.css');
 // @import url('~select2-bootstrap-theme/dist/select2-bootstrap.css');
@@ -69,97 +69,82 @@ body {
     background-color: rgba(0, 0, 0, .5);
 }
 
-// @include tablet() {
-//     content: "";
-//     display: block;
-//     height: 100%;
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 0;
-//     background-color: rgba(0, 0, 0, 0);
-// }
 
-.intro-header {
-    background-color: black;
-    background-image: url(/images/main-header.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+img.poligon {
+    position: absolute;
+    top: -60%;
+
+    @include laptop() {
+        top: -55%;
+    }
+
+    @include desktop() {
+        top: -10%;
+        left: -20%;
+    }
+}
+
+img.eclipse {
+    position: absolute;
+    top: 35%;
+
+    @include desktop() {
+        top: 40%;
+        width: 10%;
+
+    }
+}
+
+img.eclipse-icon {
+    display: none;
+
+    @include desktop() {
+        display: block;
+        position: absolute;
+    }
+}
+
+.intro-heading {
+    text-align: center;
     position: relative;
-    text-align: center;
 
-    @include tablet() {
-        background-position: 300px center;
-        background-size: contain;
-    }
-
-    @include laptop() {
-        background-position: 450px center;
-        text-align: left;
+    p {
+        font-size: 2rem;
     }
 
     @include desktop() {
-        background-position: 600px center;
-    }
-}
-
-.app-title {
-    text-transform: uppercase;
-    font-stretch: normal;
-    font-weight: 900;
-    font-size: 50px;
-    margin-bottom: 20px;
-    text-shadow: -2px 1px 6px #030303;
-    text-align: center;
-
-    @include tablet() {
-        font-size: 60px;
-    }
-
-    @include laptop() {
-        font-size: 65px;
         text-align: left;
     }
+}
 
-    @include desktop() {
-        font-size: 70px;
+.intro-image {
+    display: none;
+
+    @include laptop() {
+        display: flex !important;
     }
 }
 
-.dainsys-logo:hover {
-    opacity: 1;
+.main-title {
+    font-size: 6rem;
 }
 
-.dainsys-logo {
-    cursor: pointer;
-    height: 250px;
-    max-width: 14rem;
-    max-height: 14rem;
-    padding: 0;
-    opacity: 0.6;
-    transition: opacity 1s ease-out;
+.title {
+    font-size: 6rem;
 }
 
-.call-to-action {
-    color: #030303;
-    // font-weight: 900;
-    text-transform: uppercase;
-    // text-shadow: rgba(0, 0, 0, 0.7) -2px 2px 0px;
-    box-shadow: -1.5px 1.5px 3px rgba(0, 0, 0, 0.8);
-}
 
 .more-button {
     position: absolute;
-    bottom: 20px;
-    left: 47%;
-    color: white;
-    align-self: center;
+    bottom: 13%;
+    z-index: 1000;
 }
 
 .more-button:hover,
 .more-button:focus {
-    color: #e3e3e3;
+    color: #040f1f !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
 }
 
 .bg-white {

@@ -5,23 +5,29 @@
 @section('content')
 <div class="bg-white">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <div class="intro-header">
-        <div class="flex flex-column justify-center m-0 main-header md:vh-90 md:w-40 px-20 py-40 text-white w-100">
-            <h1 class="app-title fw-900 animatable" data-animation="fade-in-left">{{ $app_name }}</h1>
-            <p class="lead letter-spacing-2 md:letter-spacing-3 animatable" data-animation="fade-in-down" data-delay="0.25s">Valuable, timely and on point information to aggregate value to your job.</p>
-            {{-- <dainsys-logo default-animation="shake" class="logo my-30 md:invisible" class="hidden-sm"
-                logo="{{ asset('images/logo.png') }}" 
-                :random-animation="true"
-                >
-            </dainsys-logo> --}}
-            <div>
-                <a class="from-bottom btn btn-lg btn-warning text-center call-to-action mt-92 md:mt-30 animatable"  data-animation="from-bottom" href="/admin" role="button" >
-                    <i class="fa fa-sign-in"></i> Get Started!
+    <div class="flex justify-center">        
+        <img src="{{ asset('images/eclipse_icon.png') }}" alt="Eclipse Icon" class="eclipse-icon">
+        <a  href="#features" class="btn btn-primary btn-link more-button w-60 animatable"  data-animation="from-top" data-delay="0.9s">
+            <i class="fa fa-angle-double-down"></i> More
+        </a> 
+        <img src="{{ asset('images/eclipse.png') }}" alt="Eclipse" class="eclipse w-20 animatable" data-delay="0.35s" data-duration="1s">
+        <img src="{{ asset('images/poligon.png') }}" alt="Poligon" class="poligon">
+    </div>
+    <div class="flex flex-row justify-center lg:justify-between lg:justify-space-between px-20">
+        <div class="align-center border-bottom flex flex-column intro-heading justify-center lg:pr-70 m-0 main-header md:w-60 py-40 vh-90 w-100">
+            <div class="align-center flex flex-column justify-between lg:align-flex-start px-20 pr-0 lg:px-0 lg:pr-30">
+                <h1 class="fw-1000 text-primary text-uppercase main-title animatable" data-animation="fade-in-left">{{ $app_name }}</h1>
+                <p class="mt-2 letter-spacing-2 animatable" data-animation="from-bottom-left" data-delay="0.25s">
+                    Valuable, timely and on point information to aggregate value to your job.
+                </p>
+                <a href="/admin" class="btn btn-primary btn-lg mt-16">
+                    <i class="fa fa-angle-double-right"></i> Get Started
                 </a>
             </div>
-            <a  href="#features" class="more-button animatable"  data-animation="from-top" data-delay="0.9s">
-                <i class="fa fa-angle-double-down"></i> More
-            </a>
+        </div>
+
+        <div class="intro-image md:flex justify-center align-center">
+            <img src="{{ asset('images/main-header 2.png') }}" class="animatable h-60" alt="Main Header">
         </div>
     </div>
 
@@ -56,10 +62,10 @@
                 </div>
             </div>
             <div class="md:w-50 w-100 invisible md:visible">
-                <div class="h-100" style="background-image: url({{ asset('images/snapshots/data-amico.png') }}); 
-                    background-position: left top;
-                    background-repeat: no-repeat;
-                    background-size: cover;">
+                <div
+                  class="h-100"
+                  style="background-image: url({{ asset('images/snapshots/data-amico.png') }}); background-position: left top; background-repeat: no-repeat; background-size: cover;"
+                >
                 </div>
             </div>
         </div>
@@ -73,17 +79,19 @@
                     <h2 class="fw-700 animatable" data-animation="from-bottom-left" data-delay="0.25s">
                         <i class="fa fa-dashboard"></i> Dashboards
                     </h2>
-                    <p class="mt-4 text-muted animatable" data-animation="fade-in-up" style="
-                        font-stretch: ultra-expanded;
-                        line-height: 2.25rem;
-                    ">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem soluta at esse excepturi sed quaerat maiores placeat? Distinctio commodi consequatur molestias inventore nulla numquam provident accusamus dolore. Aut, tempora voluptas.</p>
+                    <p
+                      class="mt-4 text-muted animatable"
+                      data-animation="fade-in-up"
+                      style=" font-stretch: ultra-expanded; line-height: 2.25rem; "
+                    >
+                      Lots of story telling infographics, featured with info cards, bar charts, line charts, pie charts, combined charts, giving life and meaning to your Key Process Indicators.
+                    </p>
                 </div>
             </div>
             <div class="md:w-50 w-100 invisible md:visible">
-                <div class="h-100" style="background-image: url({{ asset('images/snapshots/hh_rr_dashboard.png') }}); 
-                    background-position: left top;
-                    background-repeat: no-repeat;
-                    background-size: cover;">
+                <div
+                  class="h-100"
+                  style="background-image: url({{ asset('images/snapshots/hh_rr_dashboard.png') }}); background-position: left top; background-repeat: no-repeat; background-size: cover;">
                 </div>
             </div>
         </div>
@@ -97,17 +105,15 @@
                     <h2 class="fw-700 animatable" data-animation="from-right" data-delay="0.35s">
                         <i class="fa fa-table"></i> Datatables
                     </h2>
-                    <p class="mt-4 text-muted animatable" style="
-                    font-stretch: ultra-expanded;
-                    line-height: 2.25rem;
-                ">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem soluta at esse excepturi sed quaerat maiores placeat? Distinctio commodi consequatur molestias inventore nulla numquam provident accusamus dolore. Aut, tempora voluptas.</p>
+                    <p class="mt-4 text-muted animatable" style=" font-stretch: ultra-expanded; line-height: 2.25rem; ">
+                        Beatifull tables featured with data search, multi-column sorting, pagination, server side processing and more, without having to refresh the page.
+                    </p>
                 </div>
             </div>
             <div class="md:w-50 w-100 invisible md:visible">
-                <div class="h-100" style="background-image: url({{ asset('images/snapshots/tables.png') }}); 
-                    background-position: left top;
-                    background-repeat: no-repeat;
-                    background-size: cover;">
+                <div
+                  class="h-100"
+                  style="background-image: url({{ asset('images/snapshots/tables.png') }}); background-position: left top; background-repeat: no-repeat; background-size: cover;">
                 </div>
             </div>
         </div>
@@ -117,14 +123,17 @@
         <div class="flex flex-column md:flex-row-reverse">
             
             <div class="md:w-50 w-100" data-animation="fade-in-up">
-                <div class="px-15 py-20 md:py-45 animatable" data-animation="fade-in-down" data-delay="0.35s" data-duration="0.85s">
-                    <h2 class="fw-700">
+                <div class="px-15 py-20 md:py-45 " data-animation="fade-in-down">
+                    <h2 class="fw-700 animatable"  data-delay="0.35s" data-duration="0.85s">
                         <i class="fa fa-eye"></i> Record Details
                     </h2>
-                    <p class="mt-4 text-muted animatable" data-animation="from-bottom-right" data-delay="0.05s" style="
-                    font-stretch: ultra-expanded;
-                    line-height: 2.25rem;
-                ">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem soluta at esse excepturi sed quaerat maiores placeat? Distinctio commodi consequatur molestias inventore nulla numquam provident accusamus dolore. Aut, tempora voluptas.</p>
+                    <p
+                      class="mt-4 text-muted animatable"
+                      data-animation="from-bottom-right"
+                      data-delay="0.15s"
+                      style=" font-stretch: ultra-expanded; line-height: 2.25rem; ">
+                        Pages with multiple details related to you data base records. Related records details, ability to create new records, edit or delete based on User Access Level Control. 
+                    </p>
                 </div>
             </div>
             <div class="md:w-50 w-100 invisible md:visible">
@@ -152,9 +161,11 @@
             System Administrator and together create very useful components.</p>                
                     <div>
                         <a
-                            href="/admin"
-                            data-animation="from-bottom"
-                            class="btn btn-primary btn-lg fw-700 from-bottom mt-8"
+                            href="/admin" 
+                            data-animation="fade-in-down"
+                            data-delay="0.5s"
+                            data-duration="1s"
+                            class="btn btn-primary btn-lg fw-700 from-bottom mt-8 animatable"
                             style="box-shadow: rgba(0, 0, 0, 0.5) -2px 2px 2px 0px; text-transform: uppercase; visibility: visible; font-weight: 700;"
                             >
                             <i class="fa fa-sign-in"></i> Go For It!
