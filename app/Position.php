@@ -3,9 +3,12 @@
 namespace App;
 
 use App\DainsysModel as Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Position extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = ['name', 'department_id', 'payment_type_id', 'payment_frequency_id', 'salary'];
 
     protected $appends = [

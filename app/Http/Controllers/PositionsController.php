@@ -153,6 +153,12 @@ class PositionsController extends Controller
      */
     public function destroy(Position $position, Request $request)
     {
+        abort_if(
+            $position->employees()->actives()->count(),
+            403,
+            "Position {$position->name} has active employees, therefore cannot be removed"
+        );
+
         $position->delete();
 
         if ($request->ajax()) {
