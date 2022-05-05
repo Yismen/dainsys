@@ -2,11 +2,13 @@
 
 namespace Tests\Feature\Position;
 
+use App\Employee;
 use App\Position;
 use Tests\TestCase;
+use App\Termination;
+use Illuminate\Support\Arr;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Arr;
 
 class ModuleActionsTest extends TestCase
 {
@@ -66,7 +68,22 @@ class ModuleActionsTest extends TestCase
     }
 
     /** @test */
-    public function authorized_users_can_destroy_position()
+    public function position_cannot_be_destroyed_if_has_active_employees()
+    {
+        $position = create(Position::class);
+        $active_employee = factory(Employee::class)->create(['position_id' => $position->id]);
+
+        $this->actingAs($this->userWithPermission('destroy-positions'));
+        $response = $this->delete(route('admin.positions.destroy', $position->id));
+            
+        $response->assertForbidden();
+
+        $this->assertDatabaseHas('positions', ['id' => $position->id]);
+        $this->assertNotSoftDeleted('positions', ['id' => $position->id]);
+    }
+
+    /** @test */
+    public function authorized_users_can_destroy_position_if_it_doesnot_have_employees_assigned()
     {
         $position = create(Position::class);
 
@@ -76,5 +93,23 @@ class ModuleActionsTest extends TestCase
             ->assertLocation(route('admin.positions.index'));
 
         $this->assertDatabaseMissing('positions', $position->toArray());
+        $this->assertSoftDeleted('positions', ['id' => $position->id]);
+    }
+
+    /** @test */
+    public function authorized_users_can_destroy_position_if_all_its_employees_are_inactive()
+    {
+        $position = create(Position::class);
+        $inactive_employee = factory(Employee::class)->create(['position_id' => $position->id]);
+        factory(Termination::class)->create(['employee_id' => $inactive_employee]);
+
+
+        $this->actingAs($this->userWithPermission('destroy-positions'))
+            ->delete(route('admin.positions.destroy', $position->id))
+            ->assertRedirect()
+            ->assertLocation(route('admin.positions.index'));
+
+        $this->assertDatabaseMissing('positions', $position->toArray());
+        $this->assertSoftDeleted('positions', ['id' => $position->id]);
     }
 }

@@ -7,7 +7,8 @@
 			<div class="box box-warning">
 				<div class="box-header with-border">
 					<h4>
-						Edit Position {{ $position->name }}
+						Edit Position {{ $position->name }} 
+						<span class="badge badge-pill badge-primary" title="Employees Count">{{ $position->employees()->count() }}</span>
 						<a href="{{ route('admin.positions.index') }}" class="pull-right" title="Back to the list"><i class="fa fa-list"></i></a>
 					</h4>
 				</div>
