@@ -89,6 +89,8 @@
 </template>
 
 <script>
+const NOTIFICATIONS_AMOUNT = 25;
+
 export default {
   data() {
     return {
@@ -157,6 +159,9 @@ export default {
         if (result.value) {
           axios.post("/api/notifications/mark-all-as-read").then((response) => {
             this.notificationsData = response.data;
+
+            this.notificationsCount =
+              this.notificationsCount - NOTIFICATIONS_AMOUNT;
           });
         }
       });
