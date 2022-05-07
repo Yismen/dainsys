@@ -40,7 +40,7 @@
 
       <a
         href="#"
-        v-if="count > 0"
+        v-if="notificationsCount > 0"
         @click.prevent="markAllAsRead"
         class="btn btn-danger form-control"
         title="All notifications will be marked as read!"
@@ -161,7 +161,9 @@ export default {
             this.notificationsData = response.data;
 
             this.notificationsCount =
-              this.notificationsCount - NOTIFICATIONS_AMOUNT;
+              this.notificationsCount < NOTIFICATIONS_AMOUNT
+                ? 0
+                : this.notificationsCount - NOTIFICATIONS_AMOUNT;
           });
         }
       });
