@@ -3,14 +3,10 @@
     <form
       role="form"
       class="form-horizontal"
-      @submit.prevent="handleEdit"
+      @submit.prevent="handleForm"
       autocomplete="off"
       @change="form.error.clear($event.target.name)"
     >
-      <div class="box-header with-border">
-        <h4>Información General</h4>
-      </div>
-
       <div class="box-body">
         <div class="row">
           <div class="col-lg-6">
@@ -40,7 +36,7 @@
           <div class="col-lg-6">
             <div
               class="form-group"
-              :class="{ 'has-error': form.error.has('second_first_name') }"
+              :class="{ 'has-error': form.error.has('secon_first_name') }"
             >
               <label for="second_first_name" class="col-sm-4 control-label"
                 >Segundo Nombre:</label
@@ -63,7 +59,7 @@
           </div>
           <!-- ./Second First Name-->
         </div>
-
+        <!-- .row -->
         <div class="row">
           <div class="col-lg-6">
             <div
@@ -115,7 +111,7 @@
           </div>
           <!-- ./Second Last Name-->
         </div>
-
+        <!-- .row -->
         <div class="row">
           <div class="col-lg-6">
             <div
@@ -142,7 +138,6 @@
             </div>
           </div>
           <!-- ./Personal ID-->
-
           <div class="col-lg-6">
             <div
               class="form-group"
@@ -167,7 +162,7 @@
           </div>
           <!-- ./Or Passport-->
         </div>
-
+        <!-- .row -->
         <div class="row">
           <div class="col-lg-6">
             <div
@@ -185,14 +180,13 @@
                   format="MM/dd/yyyy"
                   @updated="updateHireDate"
                 ></date-picker>
+                <span class="text-danger" v-if="form.error.has('hire_date')">{{
+                  form.error.get("hire_date")
+                }}</span>
               </div>
-              <span class="text-danger" v-if="form.error.has('hire_date')">{{
-                form.error.get("hire_date")
-              }}</span>
             </div>
           </div>
           <!-- ./Hire Date-->
-
           <div class="col-lg-6">
             <div
               class="form-group"
@@ -209,17 +203,17 @@
                   format="MM/dd/yyyy"
                   @updated="updateDateOfBirth"
                 ></date-picker>
+                <span
+                  class="text-danger"
+                  v-if="form.error.has('date_of_birth')"
+                  >{{ form.error.get("date_of_birth") }}</span
+                >
               </div>
-              <span
-                class="text-danger"
-                v-if="form.error.has('date_of_birth')"
-                >{{ form.error.get("date_of_birth") }}</span
-              >
             </div>
           </div>
           <!-- ./Date of Birth-->
         </div>
-
+        <!-- .row -->
         <div class="row">
           <div class="col-lg-6">
             <div
@@ -246,7 +240,6 @@
             </div>
           </div>
           <!-- ./Cellphone Number-->
-
           <div class="col-lg-6">
             <div
               class="form-group"
@@ -273,7 +266,7 @@
           </div>
           <!-- ./Secondary Phone #-->
         </div>
-
+        <!-- .row -->
         <div class="row">
           <div class="col-lg-6">
             <div
@@ -291,16 +284,22 @@
                     :options="computedPositionsList"
                     @selectUpdated="selectUpdated"
                   />
-                  <!-- <select class="form-control"
-                                        name="position_id"
-                                        v-model="form.fields.position_id"
-                                    >
-                                        <option
-                                            v-for="position in positions_list"
-                                            :key="position.id" :value="position.id"
-                                        > {{ position.name }} / {{ position.department.name }}, ${{ position.salary }}
-                                        </option>
-                                    </select> -->
+                  <!-- <select
+                    class="form-control select2"
+                    name="position_id"
+                    v-model="form.fields.position_id"
+                  >
+                    <option
+                      v-for="position in positions_list"
+                      :key="position.id"
+                      :value="position.id"
+                    >
+                      {{ position.name }} / {{ position.department.name }}, ${{
+                        position.salary
+                      }}
+                    </option>
+                  </select> -->
+
                   <div class="input-group-addon">
                     <create-position
                       @position-created="addPosition"
@@ -321,7 +320,6 @@
             </div>
           </div>
           <!-- / Position -->
-
           <div class="col-lg-6">
             <div
               class="form-group"
@@ -353,7 +351,6 @@
           </div>
           <!-- ./Gender-->
         </div>
-
         <!-- .row -->
         <div class="row">
           <div class="col-lg-6">
@@ -401,6 +398,8 @@
           </div>
           <!-- ./Project-->
         </div>
+        <!-- .row -->
+        <!-- .row -->
         <div class="row">
           <div class="col-lg-6">
             <div
@@ -432,7 +431,6 @@
             </div>
           </div>
           <!-- ./Marital Status-->
-
           <div class="col-lg-6">
             <div
               class="form-group"
@@ -446,6 +444,7 @@
                   <label>
                     <input
                       type="radio"
+                      name="has_kids"
                       :value="1"
                       v-model="form.fields.has_kids"
                     />
@@ -454,6 +453,7 @@
                   <label>
                     <input
                       type="radio"
+                      name="has_kids"
                       :value="0"
                       v-model="form.fields.has_kids"
                     />
@@ -468,13 +468,43 @@
           </div>
           <!-- ./Has Kids-->
         </div>
+        <!-- .row -->
+        <div class="row" v-if="isUpdating === false">
+          <div class="col-lg-6">
+            <div
+              class="form-group"
+              :class="{ 'has-error': form.error.has('punch') }"
+            >
+              <label for="punch" class="col-sm-4 control-label"
+                >ID de Ponche:</label
+              >
+              <div class="col-sm-8">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="punch"
+                  name="punch"
+                  v-model="form.fields.punch"
+                />
+                <span class="text-danger" v-if="form.error.has('punch')">{{
+                  form.error.get("punch")
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- .row -->
       </div>
 
       <div class="box-footer">
         <div class="form-group">
           <div class="col-sm-10 col-sm-offset-2">
-            <button type="submit" class="btn btn-success text-uppercase">
-              Actualizar
+            <button
+              type="submit"
+              class="btn text-uppercase"
+              :class="[isUpdating ? 'btn-warning' : 'btn-primary']"
+            >
+              {{ isUpdating ? "Actualizar" : "Crear" }}
             </button>
           </div>
         </div>
@@ -485,12 +515,12 @@
 
 <script>
 import DatePicker from "./../DatePicker";
-import EmployeeMixins from "./Mixins";
 import CreatePosition from "../forms/CreatePosition";
-import Select2 from "./../Select2.vue";
+import EmployeeMixins from "./Mixins";
+import Select2 from "../Select2.vue";
 
 export default {
-  name: "EditInfoComponent",
+  name: "EmployeeForm",
 
   data() {
     return {
@@ -502,8 +532,26 @@ export default {
 
   mixins: [EmployeeMixins],
 
+  props: {
+    employee: {
+      type: Object,
+      required: true,
+    },
+    isUpdating: {
+      type: Boolean,
+      default: false,
+    },
+  },
+
+  components: { DatePicker, CreatePosition, Select2 },
+
+  mounted() {
+    this.positions_list = this.employee.positions_list;
+    this.projects_list = this.getProjectsList(this.employee.projects_list);
+  },
+
   computed: {
-    employee() {
+    computedEmployee() {
       this.form.fields.hire_date =
         this.$store.getters["employee/getEmployee"].hire_date;
       return this.$store.getters["employee/getEmployee"];
@@ -519,27 +567,46 @@ export default {
     },
   },
 
-  components: { DatePicker, CreatePosition, Select2 },
-
-  mounted() {
-    this.positions_list = this.employee.positions_list;
-    this.projects_list = this.getProjectsList(this.employee.projects_list);
-  },
-
   methods: {
     /**
      * Respond to the change event from the Select2 component.
      * @param object. The event payload, containing the field name being changed and the value selected for that field
      */
     selectUpdated(payload) {
-      return (this.form.fields[payload.field] = payload.value);
+      this.form.fields[payload.field] = payload.value;
     },
+    /**
+     * Map projects list
+     */
     getProjectsList(projects) {
       return projects.filter(function (element) {
         return element.name.toLowerCase().search("downtime") == -1;
       });
     },
-    handleEdit() {
+    handleForm() {
+      this.isUpdating ? this.updateEmployee() : this.createEmployee();
+    },
+    createEmployee() {
+      this.form.post("/admin/employees").then((response) => {
+        this.form.fields = this.getEmployeeObject();
+
+        this.$swal({
+          type: "success",
+          title: "Sweet",
+          text: "Employee " + response.data.full_name + " was created!",
+          confirmButtonText: '<i class="fa fa-edit"></i> Edit',
+          confirmButtonClass: "btn btn-warning",
+        }).then((result) => {
+          if (result.value) {
+            window.location.assign(
+              "/admin/employees/" + response.data.id + "/edit"
+            );
+          }
+        });
+      });
+    },
+
+    updateEmployee() {
       this.form.put("/admin/employees/" + this.employee.id).then(({ data }) => {
         this.$store.dispatch("employee/set", data);
         return (this.form.fields = this.getEmployeeObject());
@@ -595,6 +662,7 @@ export default {
         project_id: employee.hasOwnProperty("project_id")
           ? employee.project_id
           : "",
+        punch: "",
       };
     },
     updateHireDate(date) {

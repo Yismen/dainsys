@@ -85,7 +85,7 @@ Vue.component('create-afp-form', () => import(/*webpackChunkName: "js/chunks/cre
 Vue.component('flash-message', () => import(/*webpackChunkName: "js/chunks/flashMessages" */ './components/FlashMessage'));
 
 Vue.component('edit-employee', () => import(/*webpackChunkName: "js/chunks/editEmployee" */ './components/employees/Edit'));
-Vue.component('create-employee', () => import(/*webpackChunkName: "js/chunks/createEmployee" */ './components/employees/CreateEmployee'));
+Vue.component('employee-form', () => import(/*webpackChunkName: "js/chunks/EmployeeForm" */ './components/employees/EmployeeForm'));
 Vue.component('employee-row', () => import(/*webpackChunkName: "js/chunks/employeeRow" */ './components/employees/partials/RowCheckBox'));
 Vue.component('employee-check-box', () => import(/*webpackChunkName: "js/chunks/employeeCheckbox" */ './components/employees/partials/DinamicCheckbox'));
 Vue.component('employee-checkbox-list', () => import(/*webpackChunkName: "js/chunks/eployeeCheckboxList" */ './components/employees/partials/DinamicCheckboxList'));

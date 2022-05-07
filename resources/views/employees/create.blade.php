@@ -11,7 +11,7 @@
 						{{ $title }} @include('punches._last_punch_id')
 						<a href="{{ route('admin.employees.index') }}" class="pull-right" title="Return to the employees' list."><i class="fa fa-list"></i></a>
 					</div>
-					<create-employee :employee="{{ $employee }}"></create-employee>
+					<employee-form :is-updating="false" :employee="{{ $employee }}" />
 				</div>
 			</div>
 		</div>

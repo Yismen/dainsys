@@ -139,7 +139,7 @@ class EmployeesController extends Controller
      */
     public function update(Employee $employee, Request $request)
     {
-        $this->validate($request, [
+        $validated = $this->validate($request, [
             'first_name' => 'required',
             'last_name' => 'required',
             'hire_date' => 'required|date',
@@ -156,7 +156,7 @@ class EmployeesController extends Controller
             'position_id' => 'required|exists:positions,id',
         ]);
 
-        $employee->update($request->all());
+        $employee->update($validated);
 
         if ($request->ajax()) {
             return $employee;
