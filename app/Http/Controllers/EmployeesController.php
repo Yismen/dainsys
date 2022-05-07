@@ -127,6 +127,25 @@ class EmployeesController extends Controller
      */
     public function edit(Employee $employee)
     {
+        $employee->append([
+            'ars_list',
+            'afp_list',
+            'banks_list',
+            'departments_list',
+            'genders_list',
+            'has_kids_list',
+            'maritals_list',
+            'positions_list',
+            'projects_list',
+            'payment_types_list',
+            'payment_frequencies_list',
+            'nationalities_list',
+            'sites_list',
+            'supervisors_list',
+            'termination_type_list',
+            'termination_reason_list',
+        ]);
+
         return view('employees.edit', compact('employee'));
     }
 
