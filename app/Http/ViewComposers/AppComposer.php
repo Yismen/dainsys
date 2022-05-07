@@ -41,7 +41,9 @@ class AppComposer
                                     return $query->orderBy('display_name');
                                 }]);
                         },
-                        'unreadNotifications',
+                        'unreadNotifications' => function ($query) {
+                            $query->oldest()->take(25);
+                        },
                     ]);
             });
         }

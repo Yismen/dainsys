@@ -4,11 +4,11 @@
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
       <i class="fa fa-bell-o"></i>
       <span class="label {{ $user->unreadNotifications->count() > 0 ? 'label-info' : 'bg-gray' }}">
-        {{ $user->unreadNotifications->count() }} 
+        {{ $user->unreadNotifications()->count() }} 
       </span>
     </a>
     <ul class="dropdown-menu">
-      <li class="header">You have {{  $user->unreadNotifications->count()  }} new notifications</li>
+      <li class="header">You have {{  $user->unreadNotifications()->count()  }} new notifications</li>
       <li>
         <!-- Inner Menu: contains the notifications -->
         <ul class="menu">
@@ -22,7 +22,7 @@
           @endforeach
         </ul>
       </li>
-      @if ($user->unreadNotifications->count() > 0)
+      @if ($user->unreadNotifications()->count() > 0)
         <a href="{{ route('admin.mark-all-notifications-as-read') }}" 
           class="btn btn-danger form-control"
           title="All notifications will be marked as completed!">
