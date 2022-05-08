@@ -2,14 +2,14 @@
 
 namespace App\Console\Commands\Political;
 
-use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\Political\FlashReportExport;
-use App\Mail\Political\PoliticalFlashMail;
-use App\Repositories\Political\PoliticalFlashRepository;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Mail\Political\PoliticalFlashMail;
+use App\Exports\Political\FlashReportExport;
+use App\Repositories\Political\PoliticalFlashRepository;
+use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
 
 class SendPoliticalFlashReportCommand extends Command
 {
@@ -68,6 +68,8 @@ class SendPoliticalFlashReportCommand extends Command
                 );
 
                 $this->info('Political Hourly Flash sent!');
+            } else {
+                $this->warn('Flash already sent!. Please review old mails in your inbox or run php artisan cache:clear to resend');
             }
         } catch (\Throwable $th) {
             $this->notifyUsersAndLogError($th);

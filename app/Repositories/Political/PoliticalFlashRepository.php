@@ -2,8 +2,9 @@
 
 namespace App\Repositories\Political;
 
-use App\Connections\RingCentralConnection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
+use App\Connections\RingCentralConnection;
 
 class PoliticalFlashRepository extends RingCentralConnection implements PoliticalFlashInterface
 {
@@ -28,9 +29,18 @@ class PoliticalFlashRepository extends RingCentralConnection implements Politica
         $this->answers = $this->getAnswers();
     }
 
-    public function hasHours()
+    public function hasHours(): bool
     {
-        return count($this->hours) > 0;
+        if (count($this->hours) > 0) {
+            $cache_key = "political_flash_{$this->date_from}_{$this->date_to}_" . collect($this->hours)->sum('TotalHours');
+
+            if (!Cache::has($cache_key)) {
+                Cache::put($cache_key, 'some', now()->addHours(3));
+
+                return true;
+            }
+        }
+        return false;
     }
 
     public function getHours()
