@@ -42,7 +42,7 @@ class PoliticalFlashRepository extends RingCentralConnection implements Politica
             return false;
         }
 
-        Cache::put($cache_key, $sum_of_hours, now()->addHours(3));
+        Cache::forever($cache_key, $sum_of_hours);
 
         return true;
     }

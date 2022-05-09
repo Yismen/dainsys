@@ -2,15 +2,15 @@
 
 namespace App\Console\Commands\RingCentralReports\Exports\Sheets;
 
-use App\Console\Commands\RingCentralReports\Exports\Support\Connections\ConnectionContract;
-use App\Console\Commands\RingCentralReports\Exports\Support\Connections\RingCentralConnection;
+use Illuminate\Support\Str;
+use Maatwebsite\Excel\Sheet;
 use App\Exports\RangeFormarter;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Maatwebsite\Excel\Events\AfterSheet;
-use Maatwebsite\Excel\Sheet;
+use App\Console\Commands\RingCentralReports\Exports\Support\Connections\ConnectionContract;
+use App\Console\Commands\RingCentralReports\Exports\Support\Connections\RingCentralConnection;
 
 class ProductionSheet extends BaseRingCentralSheet
 {
@@ -45,7 +45,7 @@ class ProductionSheet extends BaseRingCentralSheet
             $cache_key = $this->exporter->campaign_name . $this->exporter->team . $this->exporter->dates_range['from_date'] . $this->exporter->dates_range['to_date'] . collect($this->data)->sum('login_time');
 
             if (!Cache::has($cache_key)) {
-                Cache::put($cache_key, 'some', now()->addHours(3));
+                Cache::forever($cache_key, 'any');
 
                 info('Cache-key: ' . $cache_key);
 
