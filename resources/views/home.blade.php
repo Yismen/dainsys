@@ -72,12 +72,12 @@
             @include('icons.data-amico')
         </div>    
         <div class="d-flex justify-center md:w-50 w-100">
-            <div class="card w-70 md:w-100">
-                <div class="card-header animatable fs-10 fw-900 text-center md:text-left py-10" data-animation="fade-in-up">
+            <div class="w-70 md:w-100">
+                <div class="animatable fs-10 fw-900 text-center md:text-left" data-animation="fade-in-up">
                     <i class="fa fa-list"></i> Features
                 </div>
 
-                <div class="card-body text-muted">
+                <div class="text-muted mt-12">
                     <ul class="list-group mt-4 animatable" data-animation="fade-in-left" data-delay="0.5s">
                         <li class="list-group-item">
                             <i class="fa fa-key"></i> Authentication
@@ -105,12 +105,12 @@
     
     <div class="flex flex-column align-center gap-column-0 gap-row-5 justify-between justify-space-between lg:px-60 md:flex-row md:gap-column-10 md:gap-row-0 md:px-35 px-20 py-20 md:py-30">     
         <div class="d-flex justify-center md:w-50 w-100">
-            <div class="card w-70 md:w-100">
-                <div class="card-header animatable fs-10 fw-900 text-center md:text-left py-10" data-animation="fade-in-up">
+            <div class="w-70 md:w-100">
+                <div class="animatable fs-10 fw-900 text-center md:text-left" data-animation="fade-in-up">
                     <i class="fa fa-star"></i> Dainsys
                 </div>
 
-                <div class="card-body px-10 py-20">
+                <div class="mt-12">
                     <p class=" text-muted animatable" data-animation="fade-in-right">
                         Process documentation? Collect data? Customize reports? Just ask for it. Get in contact with the System Administrator and together create very useful components.
                     </p>
