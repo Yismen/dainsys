@@ -18,6 +18,8 @@
 // @import url('~select2-bootstrap-theme/dist/select2-bootstrap.css');
 @import "~dainsys-css-utilities/build/css-utilities.css";
 
+$site-primary-color: #0d3164;
+
 html {
     scroll-behavior: smooth;
 }
@@ -106,6 +108,10 @@ img.eclipse-icon {
     }
 }
 
+.hero {
+    background-color: aliceblue;
+}
+
 .intro-heading {
     text-align: center;
     position: relative;
@@ -178,6 +184,29 @@ img.eclipse-icon {
     border-top-width: 1px;
     border-top-style: solid;
     border-top-color: rgb(244, 244, 244);
+}
+
+// Cards
+.card {
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 24%) 0px 3px 8px;
+}
+
+.card-icon {
+    height: 120px;
+}
+
+.card-icon>img {
+    max-height: 90%;
+    max-width: 75%;
+}
+
+.card-header {
+    color: $site-primary-color;
+}
+
+.featured-image {
+    max-height: 400px;
 }
 
 // Keyframe Classes
