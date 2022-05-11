@@ -51,7 +51,7 @@
                 <i class="fa fa-table"></i> Datatables
             </div>
             <div class="card-body animatable mt-8 text-muted text-left">
-                Beatifull tables featured with data search, multi-column sorting, pagination, server side processing and more, without having to refresh the page.
+                Beatiful tables featured with data search, multi-column sorting, pagination, server side processing and more, without having to refresh the page.
             </div>
         </div>
         <div class="card md:w-100 px-10 py-15 text-center w-70">
@@ -90,6 +90,9 @@
                         </li>
                         <li class="list-group-item">
                             <i class="fa fa-envelope"></i> Notifications
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa fa-clock-o"></i> Scheduled Reports
                         </li>
                         <li class="list-group-item">
                             <i class="fa fa-tasks"></i> Automatic Tasks
