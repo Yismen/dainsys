@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <div class="flex justify-center">        
         <img src="{{ asset('images/eclipse_icon.png') }}" alt="Eclipse Icon" class="eclipse-icon">
-        <a  href="#sections" class="btn btn-primary btn-link more-button w-60 animatable"  data-animation="from-top" data-delay="0.9s">
+        <a  href="#sections" class="btn btn-primary btn-link more-button w-60 animatable" id="more-button"  data-animation="from-top" data-delay="0.9s">
             <i class="fa fa-angle-double-down"></i> More
         </a> 
         <img src="{{ asset('images/eclipse.png') }}" alt="Eclipse" class="eclipse w-20 animatable" data-delay="0.35s" data-duration="1s">
@@ -31,7 +31,7 @@
         </div>
     </div>
     
-    <div id="sections" class="flex flex-column align-center gap-column-0 gap-row-5 justify-between justify-space-between lg:px-60 md:flex-row md:gap-column-10 md:gap-row-0 md:px-35 px-20 py-30">
+    <div id="sections" class="flex flex-column align-center gap-column-0 gap-row-5 justify-between justify-space-between px-20 py-30 lg:px-60 md:flex-row md:gap-column-10 md:gap-row-0 md:px-35 md:align-unset md:pt-60">
         <div class="card md:w-100 px-10 py-15 text-center w-70">
             <div class="card-icon animatable" data-delay="0s">
                 <img src="{{ asset('images/snapshots/hh_rr_dashboard.png') }}" class="img-rounded img-thumbnail" alt="Dashboards">
@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="card md:w-100 px-10 py-15 text-center w-70">
-            <div class="card-icon animatable" data-delay="0.2s">
+            <div class="card-icon  animatable" data-delay="0.2s">
                 <img src="{{ asset('images/snapshots/tables.png') }}" class="img-rounded img-thumbnail" alt="Datatables">
             </div>
             <div class="card-header animatable fs-10 fw-900 mt-12">
@@ -73,7 +73,7 @@
         </div>    
         <div class="d-flex justify-center md:w-50 w-100">
             <div class="w-70 md:w-100">
-                <div class="animatable fs-10 fw-900 text-center md:text-left" data-animation="fade-in-up">
+                <div class="card-header animatable fs-10 fw-900 text-center md:text-left" data-animation="fade-in-up">
                     <i class="fa fa-list"></i> Features
                 </div>
 
@@ -106,7 +106,7 @@
     <div class="flex flex-column align-center gap-column-0 gap-row-5 justify-between justify-space-between lg:px-60 md:flex-row md:gap-column-10 md:gap-row-0 md:px-35 px-20 py-20 md:py-30">     
         <div class="d-flex justify-center md:w-50 w-100">
             <div class="w-70 md:w-100">
-                <div class="animatable fs-10 fw-900 text-center md:text-left" data-animation="fade-in-up">
+                <div class="card-header animatable fs-10 fw-900 text-center md:text-left" data-animation="fade-in-up">
                     <i class="fa fa-star"></i> Dainsys
                 </div>
 

@@ -46,3 +46,13 @@ const appSite = new VueSite({
         observer.observe(element);
     });
 })();
+
+document.getElementById('more-button')
+    .addEventListener('click', (e) => {
+        e.preventDefault();
+        let element = document.querySelector(e.target.attributes.href.value);
+
+        // smooth scroll to element and align it at the bottom
+        element.scrollIntoView({ behavior: 'smooth' });
+
+    });

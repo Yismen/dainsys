@@ -189,16 +189,30 @@ img.eclipse-icon {
 // Cards
 .card {
     border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 24%) 0px 3px 8px;
+    // box-shadow: rgba(0, 0, 0, 24%) 0px 3px 8px;
+    border: 1px solid #e2e2e2;
 }
 
 .card-icon {
-    height: 120px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+
+    @include laptop() {
+        height: 40px;
+    }
 }
 
 .card-icon>img {
-    max-height: 90%;
-    max-width: 75%;
+    max-height: 100px;
+    max-width: 200px;
+    position: relative;
+
+    @include laptop() {
+        position: absolute;
+        top: -72px;
+        box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    }
 }
 
 .card-header {
