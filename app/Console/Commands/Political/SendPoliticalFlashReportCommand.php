@@ -69,7 +69,7 @@ class SendPoliticalFlashReportCommand extends Command
 
                 $this->info('Political Hourly Flash sent!');
             } else {
-                $this->warn('Flash already sent!. Please review old mails in your inbox or run php artisan cache:clear to resend');
+                $this->warn('Flash already sent!. Please review old mails in your inbox or run `php artisan cache:clear` to resend');
             }
         } catch (\Throwable $th) {
             $this->notifyUsersAndLogError($th);
