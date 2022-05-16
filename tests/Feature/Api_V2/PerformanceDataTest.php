@@ -26,6 +26,7 @@ class PerformanceDataTest extends TestCase
             ->assertJsonStructure([
                 'data' => [
                     '*' => [
+                        'id',
                         'unique_id',
                         'date',
                         'employee_id',
@@ -252,5 +253,38 @@ class PerformanceDataTest extends TestCase
             ->assertJsonCount(1, 'data')
             ->assertJsonFragment(['supervisor_employee' => $employee->supervisor->name])
             ->assertJsonMissing(['supervisor_employee' => $another_employee->supervisor->name]);
+    }
+
+    /** @test */
+    public function performance_data_can_be_filtered_by_date()
+    {
+        $this->withoutExceptionHandling();
+        $today = factory(Performance::class)->create(['date' => now()]);
+        $not_today = factory(Performance::class)->create(['date' => now()->subDay()]);
+        Passport::actingAs($this->user());
+
+        $response = $this->get("/api/v2/performances?date={$today->date}");
+
+        $response->assertStatus(200);
+        $response->assertJsonCount(1, 'data');
+        $response->assertJsonFragment(['date' => $today->date->format('Y-m-d H:i:s')]);
+        $response->assertJsonMissing(['date' => $not_today->date->format('Y-m-d H:i:s')]);
+    }
+
+    /** @test */
+    public function performance_data_can_be_filtered_by_dates_between()
+    {
+        $from_date = factory(Performance::class)->create(['date' => now()->subDays(5)]);
+        $to_date = factory(Performance::class)->create(['date' => now()->subDay()]);
+        $today = factory(Performance::class)->create(['date' => now()]);
+        Passport::actingAs($this->user());
+
+        $response = $this->get("/api/v2/performances?dates_between={$from_date->date},{$to_date->date}");
+
+        $response->assertStatus(200);
+        $response->assertJsonCount(2, 'data');
+        $response->assertJsonFragment(['id' => $from_date->id]);
+        $response->assertJsonFragment(['id' => $to_date->id]);
+        $response->assertJsonMissing(['id' => $today->id]);
     }
 }

@@ -49,6 +49,26 @@ class PerformanceFilter extends BaseModelFilter
         return $this->filterQuery($request, 'campaign.project.client');
     }
 
+    public function date($request)
+    {
+        return $this->whereDate('date', now()->parse($request)->format('Y-m-d'));
+    }
+
+    public function datesBetween($request)
+    {
+        $dates = explode(',', $request);
+
+        $from_date = $dates[0];
+        $to_date = trim($dates[1] ?? $dates[0]);
+
+        return $this
+            ->where(function ($query) use ($from_date, $to_date) {
+                $query
+                    ->whereDate('date', '>=', now()->parse($from_date)->format('Y-m-d'))
+                    ->whereDate('date', '<=', now()->parse($to_date)->format('Y-m-d'));
+            });
+    }
+
     // public function department($request)
     // {
     //     return $this->filterQuery($request, 'employee.position.department');

@@ -20,6 +20,8 @@ class PerformancesController extends Controller
      *
      * @example /api/v2/performances
      * @queryParam months int Filter data for many months old. Default is 2.
+     * @queryParam date string Filter data for specific date. Date must be included within the amount of months filtere, therefore should be used in combinaton.
+     * @queryParam dates_between string Filter data for specific date range. Example ?dates_between=2022-05-21,2022-05-24. Date must be included within the amount of months filtere, therefore should be used in combinaton.
      * @queryParam campaign string Filter data by campaign name. Example ?campaign=%POL-%.
      * @queryParam employee string Filter data by employee name. Example ?employee=%Yismen Jore%.
      * @queryParam supervisor string Filter data by supervisor name. Example ?supervisor=%Yismen Jore%.
