@@ -1,4 +1,4 @@
-@inject('layout', 'App\Layout')
+@inject('layout', 'App\Models\Layout')
 @extends('layouts.'.$layout->app(), ['page_header'=>'Schedules ID', 'page_description'=>'Current Schedules ID.'])
 
 @section('content')

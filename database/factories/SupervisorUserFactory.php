@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\SupervisorUser::class, function (Faker $faker) {
+$factory->define(App\Models\SupervisorUser::class, function (Faker $faker) {
     return [
         //
     ];

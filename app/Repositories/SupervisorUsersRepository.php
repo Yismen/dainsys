@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Supervisor;
-use App\User;
+use App\Models\Supervisor;
+use App\Models\User;
 
 class SupervisorUsersRepository
 {

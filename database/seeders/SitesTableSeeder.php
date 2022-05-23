@@ -1,7 +1,7 @@
 <?php
 namespace Database\Seeders;
 
-use App\Site;
+use App\Models\Site;
 use Illuminate\Database\Seeder;
 
 class SitesTableSeeder extends Seeder

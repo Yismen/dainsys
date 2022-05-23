@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Employee;
+use App\Models\Employee;
 
 class BirthdaysRepository
 {

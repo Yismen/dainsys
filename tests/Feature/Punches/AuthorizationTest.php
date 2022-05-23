@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewPunch()
     {
-        $punch = create('App\Punch');
+        $punch = create('App\Models\Punch');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.punches.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetPunch()
     {
-        $punch = create('App\Punch');
+        $punch = create('App\Models\Punch');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.punches.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditPunch()
     {
-        $punch = create('App\Punch');
+        $punch = create('App\Models\Punch');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.punches.update', $punch->punch))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyPunch()
     {
-        $punch = create('App\Punch');
+        $punch = create('App\Models\Punch');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.punches.destroy', $punch->punch))

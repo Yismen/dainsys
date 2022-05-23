@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Shift;
+use App\Models\Shift;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 

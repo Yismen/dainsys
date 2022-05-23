@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Employee;
-use App\OvernightHour;
+use App\Models\Employee;
+use App\Models\OvernightHour;
 
 class OvernightHourRepo
 {

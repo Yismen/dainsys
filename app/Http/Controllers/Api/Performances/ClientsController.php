@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\Performances;
 
-use App\Client;
+use App\Models\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ClientResource;
 

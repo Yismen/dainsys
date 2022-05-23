@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
+use Tests\TestCase;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Notification;
-use Tests\TestCase;
 
 class AuthTest extends TestCase
 {
@@ -44,6 +44,7 @@ class AuthTest extends TestCase
     /** @test */
     public function it_authenticates_user()
     {
+        $this->withoutExceptionHandling();
         $password = 'randomPassword';
         $user = $this->user(['password' => bcrypt($password)]);
 

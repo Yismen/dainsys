@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\TerminationReason;
+use App\Models\TerminationReason;
 use App\Http\Requests\TerminationReasonRequest;
 
 class TerminationReasonController extends Controller

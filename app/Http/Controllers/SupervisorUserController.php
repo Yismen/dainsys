@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SupervisorUserRequest;
 use App\Repositories\SupervisorUsersRepository;
-use App\Supervisor;
-use App\SupervisorUser;
-use App\User;
+use App\Models\Supervisor;
+use App\Models\SupervisorUser;
+use App\Models\User;
 
 class SupervisorUserController extends Controller
 {

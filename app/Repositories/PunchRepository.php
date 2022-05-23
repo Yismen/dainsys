@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Punch;
+use App\Models\Punch;
 
 class PunchRepository
 {

@@ -1,8 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Ars;
-use App\Employee;
+use App\Models\Ars;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 

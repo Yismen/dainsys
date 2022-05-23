@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SiteMessagesRequests;
 // use Illuminate\Http\Request;
 
-use App\SiteMessage;
+use App\Models\SiteMessage;
 
 class SiteMessagesController extends Controller
 {

@@ -1,7 +1,7 @@
 <?php
 namespace Database\Seeders;
 
-use App\Gender;
+use App\Models\Gender;
 use Illuminate\Database\Seeder;
 
 class GenderTableSeeder extends Seeder

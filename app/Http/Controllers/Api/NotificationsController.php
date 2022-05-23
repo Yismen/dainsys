@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Notification;
+use App\Models\Notification;
 use Illuminate\Support\Facades\Cache;
 
 class NotificationsController extends Controller

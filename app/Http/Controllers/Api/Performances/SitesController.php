@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\Performances;
 
-use App\Site;
+use App\Models\Site;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SiteResource;
 

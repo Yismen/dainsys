@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Nationality;
+use App\Models\Nationality;
 use App\Http\Controllers\Controller;
 
 class NationalitiesController extends Controller

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Cache;
-use App\Afp;
-use App\Employee;
+use App\Models\Afp;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class AfpsController extends Controller

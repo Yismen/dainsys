@@ -13,7 +13,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer Z1vPd6Dfa5ck3hEe6a8b4gV'
+      Authorization: 'Bearer 5cv8Ea6D4bhPef63gVaZd1k'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -49,7 +49,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 856Vb13kDedZv6fEgahP4ac'
+      Authorization: 'Bearer Vf8aakZ6Pg1db64Eehv3c5D'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -81,7 +81,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer k6vcZVhE45gb8e1fDa36aPd'
+      Authorization: 'Bearer 6Pg5hkD4ab1dfZa3ecV6Ev8'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -117,7 +117,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 3D1a6d4fkhZeg6c8E5VvaPb'
+      Authorization: 'Bearer agZ3VvDhf86eac61kbPd5E4'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -148,7 +148,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer dV4vah1gD5PeE8k6f6a3bZc'
+      Authorization: 'Bearer 4VePD8bgEacdafk3656Z1hv'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -180,7 +180,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer P6a8eEcaVfh4kZDd3bv65g1'
+      Authorization: 'Bearer g8hP5dcbf6EeZa6kva4V13D'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -211,7 +211,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 6ahE3Z14aDdc5gefvP8V6kb'
+      Authorization: 'Bearer PDvVgadh364f1abcZ58e6kE'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -220,28 +220,28 @@ endpoints:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: labore
+        example: perferendis
         type: string
         custom: []
       project:
         name: project
         description: 'Limit results to specific project. Example ?project=%Santiago%'
         required: false
-        example: et
+        example: aut
         type: string
         custom: []
       department:
         name: department
         description: 'Limit results to specific department. Example ?department=%Santiago%'
         required: false
-        example: est
+        example: cupiditate
         type: string
         custom: []
       position:
         name: position
         description: 'Limit results to specific position. Example ?position=%Santiago%'
         required: false
-        example: ea
+        example: consectetur
         type: string
         custom: []
     bodyParameters: []
@@ -273,7 +273,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer a45evEf638V1cZDbgkPh6ad'
+      Authorization: 'Bearer a6ghfdV83baD4P15ZEc6vke'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -282,63 +282,63 @@ endpoints:
         name: campaign
         description: 'Limit results to specific campaign. Example ?campaign=%Santiago%'
         required: false
-        example: dolore
+        example: porro
         type: string
         custom: []
       source:
         name: source
         description: 'Limit results to specific source. Example ?source=%Santiago%'
         required: false
-        example: sed
+        example: et
         type: string
         custom: []
       employee:
         name: employee
         description: 'Limit results to specific employee. Example ?employee=%Santiago%'
         required: false
-        example: eius
+        example: porro
         type: string
         custom: []
       supervisor:
         name: supervisor
         description: 'Limit results to specific supervisor. Example ?supervisor=%Santiago%'
         required: false
-        example: veniam
+        example: occaecati
         type: string
         custom: []
       supervisor_employee:
         name: supervisor_employee
         description: 'Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%'
         required: false
-        example: provident
+        example: eveniet
         type: string
         custom: []
       project_campaign:
         name: project_campaign
         description: 'Limit results to specific project_campaign. Example ?project_campaign=%Santiago%'
         required: false
-        example: dolor
+        example: molestiae
         type: string
         custom: []
       project_employee:
         name: project_employee
         description: 'Limit results to specific project_employee. Example ?project_employee=%Santiago%'
         required: false
-        example: reiciendis
+        example: et
         type: string
         custom: []
       site:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: ea
+        example: eveniet
         type: string
         custom: []
       client:
         name: client
         description: 'Limit results to specific client. Example ?client=%Pub%'
         required: false
-        example: id
+        example: dolorem
         type: string
         custom: []
     bodyParameters: []
@@ -374,7 +374,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer gDZa43b5aVdfe6vEk8c1P6h'
+      Authorization: 'Bearer eZbhPc8Edg56a46v1VkD3af'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -383,7 +383,7 @@ endpoints:
         name: recents
         description: 'optional When present, only login names for employees labeled as recents will be included. Default is true. Example ?recents=true'
         required: false
-        example: iste
+        example: exercitationem
         type: string
         custom: []
     bodyParameters: []
@@ -410,7 +410,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer h16gafE38vae54kZcP6VdbD'
+      Authorization: 'Bearer E1bfcek66V3gZ584avDPadh'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -419,7 +419,7 @@ endpoints:
         name: daysago
         description: 'The amount of days to filter back. Default 90. Example daysago=45'
         required: false
-        example: 20
+        example: 7
         type: integer
         custom: []
     bodyParameters: []
@@ -451,7 +451,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer E6Z6hgPa4fb5d1eavVD8kc3'
+      Authorization: 'Bearer ak6EdaV13c6DhbfPZ45ev8g'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -483,7 +483,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 6aZ5Pf4v3Edg1aDbV8e6chk'
+      Authorization: 'Bearer aEVa1ecDg6b35PdfZv648kh'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -491,7 +491,7 @@ endpoints:
         name: many
         description: 'The amount of months back to filter data. Example /performances/performance_data/last/3/months'
         required: false
-        example: 15
+        example: 7
         type: integer
         custom: []
     queryParameters:
@@ -499,77 +499,77 @@ endpoints:
         name: date
         description: 'Filter data for specific date. Date must be included within the amount of months filtere, therefore should be used in combinaton.'
         required: false
-        example: eum
+        example: ducimus
         type: string
         custom: []
       dates_between:
         name: dates_between
         description: 'Filter data for specific date range. Example ?dates_between=2022-05-21,2022-05-24. Date must be included within the amount of months filtere, therefore should be used in combinaton.'
         required: false
-        example: inventore
+        example: quidem
         type: string
         custom: []
       campaign:
         name: campaign
         description: 'Filter data by campaign name. Example ?campaign=%POL-%.'
         required: false
-        example: sapiente
+        example: similique
         type: string
         custom: []
       employee:
         name: employee
         description: 'Filter data by employee name. Example ?employee=%Yismen Jore%.'
         required: false
-        example: possimus
+        example: quos
         type: string
         custom: []
       supervisor:
         name: supervisor
         description: 'Filter data by supervisor name. Example ?supervisor=%Yismen Jore%.'
         required: false
-        example: fugit
+        example: laborum
         type: string
         custom: []
       project_campaign:
         name: project_campaign
         description: 'Filter data by project_campaign name. Example ?project_campaign=%blackhawk%.'
         required: false
-        example: eos
+        example: laborum
         type: string
         custom: []
       project_employee:
         name: project_employee
         description: 'Filter data by project_employee name. Example ?project_campaign=%blackhawk%.'
         required: false
-        example: nihil
+        example: omnis
         type: string
         custom: []
       site:
         name: site
         description: 'Filter data by site name. Example ?site=%Santiago HQ%.'
         required: false
-        example: fugiat
+        example: eum
         type: string
         custom: []
       source:
         name: source
         description: 'Filter data by source name. Example ?source=%Santiago HQ%.'
         required: false
-        example: minima
+        example: eaque
         type: string
         custom: []
       client:
         name: client
         description: 'Filter data by client name. Example ?client=%blackhawk%.'
         required: false
-        example: quis
+        example: sed
         type: string
         custom: []
       supervisor_employee:
         name: supervisor_employee
         description: 'Filter data by supervisor_employee name. Example ?supervisor_employee=%Yismen Jore%.'
         required: false
-        example: nihil
+        example: a
         type: string
         custom: []
     bodyParameters: []
@@ -636,7 +636,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 6vVbP1Eckeh3a45Za6g8fDd'
+      Authorization: 'Bearer 8a3ZDb6aEk16fgdvVhceP45'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -668,7 +668,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer b8PZka1evgh3D4daE5cVf66'
+      Authorization: 'Bearer e8Z5fPa1dD63gbEac4vhk6V'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -700,7 +700,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer gkP648d15E6fbZv3DaeVhca'
+      Authorization: 'Bearer ag3E416VD6kve8Pf5bacZdh'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -732,7 +732,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 6c6V34hPfadZg1be8DkaEv5'
+      Authorization: 'Bearer Va8ekEhgfbd6v6DPcZ3a154'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -763,7 +763,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer a5begE4Zdk6DahfvV6c3P18'
+      Authorization: 'Bearer EadhkbV6ZD1g8f6Pev4c53a'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -772,7 +772,7 @@ endpoints:
         name: daysago
         description: 'The amount of days to filter back. Default 90. Example daysago=45'
         required: false
-        example: 3
+        example: 14
         type: integer
         custom: []
     bodyParameters: []
@@ -804,7 +804,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer had3ek61ZVc6baDP5fgE48v'
+      Authorization: 'Bearer 4deaP1Dgkhabc6f86EvV53Z'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -814,7 +814,7 @@ endpoints:
         name: name
         description: 'The name of the Supervisor'
         required: true
-        example: at
+        example: explicabo
         type: string
         custom: []
     responses:
@@ -840,7 +840,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 64DcE5ZVaak1b6gd8ev3hfP'
+      Authorization: 'Bearer kg6bcZf5aE46Vav1hPDde38'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -849,7 +849,7 @@ endpoints:
         name: recents
         description: 'optional When present, only login names for employees labeled as recents will be included. Default is true. Example ?recents=true'
         required: false
-        example: sit
+        example: nam
         type: string
         custom: []
     bodyParameters: []
@@ -876,7 +876,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer aVe6Egbc5v41adfZD3P6k8h'
+      Authorization: 'Bearer gc6kDZh3e84avE5aV6bfPd1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -885,35 +885,35 @@ endpoints:
         name: campaign
         description: 'Limit results to specific campaign. Example ?campaign=%Santiago%'
         required: false
-        example: provident
+        example: expedita
         type: string
         custom: []
       client:
         name: client
         description: 'Limit results to specific client. Example ?client=%Pub%'
         required: false
-        example: dignissimos
+        example: non
         type: string
         custom: []
       employee:
         name: employee
         description: 'Limit results to specific employee. Example ?employee=%Santiago%'
         required: false
-        example: ex
+        example: non
         type: string
         custom: []
       project_campaign:
         name: project_campaign
         description: 'Limit results to specific project_campaign. Example ?project_campaign=%Santiago%'
         required: false
-        example: iste
+        example: aliquam
         type: string
         custom: []
       site:
         name: site
         description: 'Limit results to specific site. Example ?site=%Santiago%'
         required: false
-        example: sed
+        example: tenetur
         type: string
         custom: []
       source:
@@ -927,7 +927,7 @@ endpoints:
         name: supervisor
         description: 'Limit results to specific supervisor. Example ?supervisor=%Santiago%'
         required: false
-        example: incidunt
+        example: aperiam
         type: string
         custom: []
     bodyParameters: []
@@ -963,7 +963,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer Z8c65E41heaVaDgvkbPf36d'
+      Authorization: 'Bearer P63hevZ645DaVfgbEkdc81a'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -994,7 +994,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer D8ae164V5aPZEdfk3cv6hbg'
+      Authorization: 'Bearer 4h31cefDVkaZPavd5668Ebg'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -1030,7 +1030,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer hgfV66Z3b1vcadPD8eE45ka'
+      Authorization: 'Bearer Zfb8akEe6463P5d1avcVhgD'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -1066,7 +1066,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer dDg6v6ZfhbPV3e15Ekc4a8a'
+      Authorization: 'Bearer ZkcPde53va168ghfaEV6Db4'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -1075,84 +1075,84 @@ endpoints:
         name: months
         description: 'Filter data for many months old. Default is 2.'
         required: false
-        example: 11
+        example: 14
         type: integer
         custom: []
       date:
         name: date
         description: 'Filter data for specific date. Date must be included within the amount of months filtere, therefore should be used in combinaton.'
         required: false
-        example: hic
+        example: aliquid
         type: string
         custom: []
       dates_between:
         name: dates_between
         description: 'Filter data for specific date range. Example ?dates_between=2022-05-21,2022-05-24. Date must be included within the amount of months filtere, therefore should be used in combinaton.'
         required: false
-        example: et
+        example: cumque
         type: string
         custom: []
       campaign:
         name: campaign
         description: 'Filter data by campaign name. Example ?campaign=%POL-%.'
         required: false
-        example: autem
+        example: quo
         type: string
         custom: []
       employee:
         name: employee
         description: 'Filter data by employee name. Example ?employee=%Yismen Jore%.'
         required: false
-        example: molestias
+        example: alias
         type: string
         custom: []
       supervisor:
         name: supervisor
         description: 'Filter data by supervisor name. Example ?supervisor=%Yismen Jore%.'
         required: false
-        example: eaque
+        example: ducimus
         type: string
         custom: []
       project_campaign:
         name: project_campaign
         description: 'Filter data by project_campaign name. Example ?project_campaign=%blackhawk%.'
         required: false
-        example: voluptatibus
+        example: at
         type: string
         custom: []
       project_employee:
         name: project_employee
         description: 'Filter data by project_employee name. Example ?project_campaign=%blackhawk%.'
         required: false
-        example: sequi
+        example: fuga
         type: string
         custom: []
       site:
         name: site
         description: 'Filter data by site name. Example ?site=%Santiago HQ%.'
         required: false
-        example: dolor
+        example: deleniti
         type: string
         custom: []
       source:
         name: source
         description: 'Filter data by source name. Example ?source=%Santiago HQ%.'
         required: false
-        example: aliquid
+        example: voluptatum
         type: string
         custom: []
       client:
         name: client
         description: 'Filter data by client name. Example ?client=%blackhawk%.'
         required: false
-        example: tempora
+        example: iste
         type: string
         custom: []
       supervisor_employee:
         name: supervisor_employee
         description: 'Filter data by supervisor_employee name. Example ?supervisor_employee=%Yismen Jore%.'
         required: false
-        example: dolores
+        example: pariatur
         type: string
         custom: []
     bodyParameters: []

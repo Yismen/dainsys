@@ -1,4 +1,4 @@
-@inject('layout', 'App\Layout')
+@inject('layout', 'App\Models\Layout')
 @extends('layouts.'.$layout->app(), ['page_header'=>'Projects', 'page_description'=>'Create a new project id.'])
 
 @section('content')

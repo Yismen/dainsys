@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands\Common\HourlyProductionReport;
 
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use App\Console\Commands\Common\HourlyProductionReport\Sheets\DataSheet;
 use App\Console\Commands\Common\HourlyProductionReport\Sheets\DispositionsSheet;
-use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class HourlyProductionReportExport implements WithMultipleSheets
 {

@@ -1,7 +1,7 @@
 <?php
 namespace Database\Seeders;
 
-use App\TerminationReason;
+use App\Models\TerminationReason;
 use Illuminate\Database\Seeder;
 
 class TerminationReasonsTableSeeder extends Seeder

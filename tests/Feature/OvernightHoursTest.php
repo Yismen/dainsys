@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Employee;
-use App\OvernightHour;
+use App\Models\Employee;
+use App\Models\OvernightHour;
 use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -17,7 +17,7 @@ class OvernightHoursTest extends TestCase
     /** Authentication: Prevent access to unauthenticated users */
     public function testGuestCantAccess()
     {
-        $overnight = create('App\OvernightHour');
+        $overnight = create('App\Models\OvernightHour');
 
         $this->get(route('admin.overnight_hours.index'))->assertRedirect('/login');
         // $this->get(route('admin.overnight_hours.show', $overnight->id))->assertRedirect('/login');
@@ -31,7 +31,7 @@ class OvernightHoursTest extends TestCase
     /** Authorization: Prevent access to unauthorizated users */
     public function testUnuthorizedUsersCantAccess()
     {
-        $hour = create('App\OvernightHour');
+        $hour = create('App\Models\OvernightHour');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.overnight_hours.index'))
@@ -132,7 +132,7 @@ class OvernightHoursTest extends TestCase
     /** Authorization: Grant access to authorizated users to see */
     public function testAuthorizedUsersCanSeeOvernightHours()
     {
-        $hour = create('App\OvernightHour');
+        $hour = create('App\Models\OvernightHour');
         $response = $this->actingAs($this->userWithPermission('view-overnight-hours'));
 
         $response->get(route('admin.overnight_hours.index'))

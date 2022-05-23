@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Employee;
 
-use App\Employee;
+use App\Models\Employee;
 use Tests\TestCase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Foundation\Testing\RefreshDatabase;

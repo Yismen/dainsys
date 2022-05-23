@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Holidays;
 
-use App\Holiday;
+use App\Models\Holiday;
 use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;

@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewDepartment()
     {
-        $department = create('App\Department');
+        $department = create('App\Models\Department');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.departments.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetDepartment()
     {
-        $department = create('App\Department');
+        $department = create('App\Models\Department');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.departments.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditDepartment()
     {
-        $department = create('App\Department');
+        $department = create('App\Models\Department');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.departments.update', $department->id))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyDepartment()
     {
-        $department = create('App\Department');
+        $department = create('App\Models\Department');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.departments.destroy', $department->id))

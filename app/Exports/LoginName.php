@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Employee;
+use App\Models\Employee;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Cache;
 use Maatwebsite\Excel\Concerns\FromView;

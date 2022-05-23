@@ -2,8 +2,8 @@
 
 namespace App\Console;
 
-use App\UserLogin;
-use App\Performance;
+use App\Modls\UserLogin;
+use App\Modls\Performance;
 use Illuminate\Console\Scheduling\Schedule;
 use App\Console\Commands\UpdateBillableHours;
 use Illuminate\Database\Console\PruneCommand;

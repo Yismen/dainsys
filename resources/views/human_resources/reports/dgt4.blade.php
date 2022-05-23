@@ -1,4 +1,4 @@
-@inject('layout', 'App\Layout')
+@inject('layout', 'App\Models\Layout')
 @extends('layouts.'.$layout->app(), ['page_header'=>'DGT-4', 'page_description'=>'Select a year to run the DGT4 report.'])
 
 @section('content')

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\Performances;
 
-use App\Schedule;
+use App\Models\Schedule;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ScheduleResource;

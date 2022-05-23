@@ -2,7 +2,7 @@
 
 namespace App\Repositories\HumanResources\Employees;
 
-use App\Employee;
+use App\Models\Employee;
 use Carbon\Carbon;
 
 class Reports

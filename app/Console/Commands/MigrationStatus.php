@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Migration;
+use App\Models\Migration;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 

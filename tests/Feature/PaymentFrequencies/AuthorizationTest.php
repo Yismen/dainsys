@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewPaymentFrequency()
     {
-        $payment_frequency = create('App\PaymentFrequency');
+        $payment_frequency = create('App\Models\PaymentFrequency');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.payment_frequencies.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetPaymentFrequency()
     {
-        $payment_frequency = create('App\PaymentFrequency');
+        $payment_frequency = create('App\Models\PaymentFrequency');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.payment_frequencies.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditPaymentFrequency()
     {
-        $payment_frequency = create('App\PaymentFrequency');
+        $payment_frequency = create('App\Models\PaymentFrequency');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.payment_frequencies.update', $payment_frequency->id))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyPaymentFrequency()
     {
-        $payment_frequency = create('App\PaymentFrequency');
+        $payment_frequency = create('App\Models\PaymentFrequency');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.payment_frequencies.destroy', $payment_frequency->id))

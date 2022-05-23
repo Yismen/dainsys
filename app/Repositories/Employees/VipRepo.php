@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Employees;
 
-use App\Employee;
+use App\Models\Employee;
 
 class VipRepo
 {

@@ -2,8 +2,8 @@
 
 namespace App\Repositories\Attendances;
 
-use App\Attendance;
-use App\AttendanceCode;
+use App\Models\Attendance;
+use App\Models\AttendanceCode;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 

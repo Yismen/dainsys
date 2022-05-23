@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewTerminationTypes()
     {
-        $termination_type = create('App\TerminationType');
+        $termination_type = create('App\Models\TerminationType');
 
         $this->get(route('admin.termination_types.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateTerminationTypes()
     {
-        $termination_type = create('App\TerminationType');
+        $termination_type = create('App\Models\TerminationType');
 
         $this->get(route('admin.termination_types.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateTerminationType()
     {
-        $termination_type = create('App\TerminationType');
+        $termination_type = create('App\Models\TerminationType');
 
         $this->get(route('admin.termination_types.edit', $termination_type->id))
             ->assertStatus(302)

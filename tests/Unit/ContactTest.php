@@ -19,8 +19,8 @@ class ContactTest extends TestCase
     /** @test */
     public function authenticated_users_can_create_contacts()
     {
-        $user = create('App\User');
-        $contact = raw('App\Contact');
+        $user = create('App\Models\User');
+        $contact = raw('App\Models\Contact');
 
         $contact = $user->contacts()->create($contact);
 

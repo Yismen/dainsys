@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewPerformance()
     {
-        $performance = create('App\Performance');
+        $performance = create('App\Models\Performance');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.performances.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditPerformance()
     {
-        $performance = create('App\Performance');
+        $performance = create('App\Models\Performance');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.performances.update', $performance->id))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyPerformance()
     {
-        $performance = create('App\Performance');
+        $performance = create('App\Models\Performance');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.performances.destroy', $performance->id))

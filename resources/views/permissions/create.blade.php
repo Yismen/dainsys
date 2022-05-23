@@ -1,4 +1,4 @@
-@inject('layout', 'App\Layout')
+@inject('layout', 'App\Models\Layout')
 @extends('layouts.'.$layout->app(), ['page_header'=>'Permissions', 'page_description'=>'Create a new permission for your app.'])
 
 @section('content')

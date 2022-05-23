@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewTerminationReasons()
     {
-        $termination_reason = create('App\TerminationReason');
+        $termination_reason = create('App\Models\TerminationReason');
 
         $this->get(route('admin.termination_reasons.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateTerminationReasons()
     {
-        $termination_reason = create('App\TerminationReason');
+        $termination_reason = create('App\Models\TerminationReason');
 
         $this->get(route('admin.termination_reasons.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateTerminationReason()
     {
-        $termination_reason = create('App\TerminationReason');
+        $termination_reason = create('App\Models\TerminationReason');
 
         $this->get(route('admin.termination_reasons.edit', $termination_reason->id))
             ->assertStatus(302)

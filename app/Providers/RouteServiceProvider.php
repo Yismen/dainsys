@@ -68,7 +68,7 @@ class RouteServiceProvider extends ServiceProvider
     public function configureRoutesModelBindings()
     {
         Route::bind('afp', function ($id) {
-            return \App\Afp::with(['employees' => function ($query) {
+            return \App\Models\Afp::with(['employees' => function ($query) {
                 return $query->actives()
                     ->sorted();
             }])
@@ -76,7 +76,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('arss', function ($id) {
-            return \App\Ars::with(['employees' => function ($query) {
+            return \App\Models\Ars::with(['employees' => function ($query) {
                 return $query->actives()
                     ->sorted();
             }])
@@ -84,23 +84,23 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('attendance', function ($id) {
-            return \App\Attendance::with(['employee', 'user', 'attendance_code'])
+            return \App\Models\Attendance::with(['employee', 'user', 'attendance_code'])
                 ->findOrFail($id);
         });
 
         Route::bind('campaign', function ($id) {
-            return \App\Campaign::with(['project', 'revenueType'])
+            return \App\Models\Campaign::with(['project', 'revenueType'])
                 ->findOrFail($id);
         });
 
         Route::bind('card', function ($card) {
-            return \App\Card::whereCard($card)
+            return \App\Models\Card::whereCard($card)
                 ->with('employee')
                 ->firstOrFail();
         });
 
         Route::bind('department', function ($id) {
-            return \App\Department::whereId($id)
+            return \App\Models\Department::whereId($id)
                 ->with(['positions' => function ($query) {
                     $query->orderBy('name');
                 }])
@@ -112,12 +112,12 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('downtime_reason', function ($id) {
-            return \App\DowntimeReason::with('hours:id,downtime_reason_id,login_time,reported_by')
+            return \App\Models\DowntimeReason::with('hours:id,downtime_reason_id,login_time,reported_by')
                 ->findOrFail($id);
         });
 
         Route::bind('employee', function ($id) {
-            return \App\Employee::whereId($id)
+            return \App\Models\Employee::whereId($id)
                 ->with('address')
                 ->with('afp')
                 ->with('ars')
@@ -162,7 +162,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('hour', function ($id) {
-            return \App\Hour::whereId($id)
+            return \App\Models\Hour::whereId($id)
                 ->with(['employees' => function ($query) {
                     return $query->sorted();
                 }])
@@ -170,24 +170,24 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('login_name', function ($login_name) {
-            return \App\LoginName::with('employee')
+            return \App\Models\LoginName::with('employee')
                 ->findOrFail($login_name);
         });
 
         Route::bind('menu', function ($id) {
-            return \App\Menu::with('roles')
+            return \App\Models\Menu::with('roles')
                 ->findOrFail($id)
                 ->append('roles-list');
         });
 
         Route::bind('message', function ($id) {
-            return \App\Message::whereId($id)
+            return \App\Models\Message::whereId($id)
                 ->with('user')
                 ->firstOrFail();
         });
 
         Route::bind('nationality', function ($id) {
-            return \App\Nationality::with(['employees' => function ($query) {
+            return \App\Models\Nationality::with(['employees' => function ($query) {
                 return $query->actives()
                     ->sorted()
                     ->with('position');
@@ -195,25 +195,25 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('payment_type', function ($id) {
-            return \App\PaymentType::whereId($id)
+            return \App\Models\PaymentType::whereId($id)
                 ->firstOrFail();
         });
 
         Route::bind('performance', function ($id) {
-            return \App\Performance::with('employee.supervisor', 'campaign.project', 'supervisor', 'downtimeReason')
+            return \App\Models\Performance::with('employee.supervisor', 'campaign.project', 'supervisor', 'downtimeReason')
                 ->orderBy('date')
                 ->orderBy('updated_at')
                 ->findOrFail($id);
         });
 
         Route::bind('permission', function ($name) {
-            return \App\Permission::whereName($name)
+            return \App\Models\Permission::whereName($name)
                 ->with('roles')
                 ->firstOrFail()->append('roles-list');
         });
 
         Route::bind('position', function ($id) {
-            return \App\Position::whereId($id)
+            return \App\Models\Position::whereId($id)
                 ->with('department')
                 ->with(['employees' => function ($query) {
                     return $query->actives()
@@ -228,7 +228,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('project', function ($id) {
-            return \App\Project::with(['employees' => function ($query) {
+            return \App\Models\Project::with(['employees' => function ($query) {
                 return $query->actives()
                     ->sorted();
             }])
@@ -236,13 +236,13 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('punch', function ($punches) {
-            return \App\Punch::wherePunch($punches)
+            return \App\Models\Punch::wherePunch($punches)
                 ->with('employee')
                 ->firstOrFail();
         });
 
         Route::bind('role', function ($role) {
-            return \App\Role::whereName($role)
+            return \App\Models\Role::whereName($role)
                 ->with(['permissions' => function ($query) {
                     $query->orderBy('resource');
                 }])
@@ -256,7 +256,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('supervisor', function ($id) {
-            return \App\Supervisor::whereId($id)
+            return \App\Models\Supervisor::whereId($id)
                 ->with(['employees' => function ($query) {
                     return $query->actives()
                         ->sorted()
@@ -266,7 +266,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('site', function ($id) {
-            return \App\Site::with(['employees' => function ($query) {
+            return \App\Models\Site::with(['employees' => function ($query) {
                 return $query->actives()
                     ->sorted();
             }])
@@ -274,7 +274,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('user', function ($id) {
-            return \App\User::whereId($id)
+            return \App\Models\User::whereId($id)
                 ->with('roles.permissions')
                 ->with('settings')
                 ->firstOrFail()->append('roles-list');

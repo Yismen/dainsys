@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Universal;
-use App\Employee;
+use App\Models\Universal;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Repositories\Employees\UniversalRepo;
 

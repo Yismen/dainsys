@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
-use App\Campaign;
+use App\Models\Campaign;
 use Tests\TestCase;
-use App\Performance;
-use App\RevenueType;
+use App\Models\Performance;
+use App\Models\RevenueType;
 use Illuminate\Support\Facades\Queue;
 use App\Console\Commands\UpdateBillableHours;
 use Illuminate\Foundation\Testing\RefreshDatabase;

@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewSchedule()
     {
-        $schedule = create('App\Schedule');
+        $schedule = create('App\Models\Schedule');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.schedules.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetSchedule()
     {
-        $schedule = create('App\Schedule');
+        $schedule = create('App\Models\Schedule');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.schedules.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditSchedule()
     {
-        $schedule = create('App\Schedule');
+        $schedule = create('App\Models\Schedule');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.schedules.update', $schedule->id))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroySchedule()
     {
-        $schedule = create('App\Schedule');
+        $schedule = create('App\Models\Schedule');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.schedules.destroy', $schedule->id))

@@ -2,8 +2,8 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\OvernightHour::class, function (Faker $faker) {
-    $employee = factory('App\Employee')->create();
+$factory->define(App\Models\OvernightHour::class, function (Faker $faker) {
+    $employee = factory('App\Models\Employee')->create();
     return [
         'date' => $faker->date,
         'employee_id' => $employee->id,

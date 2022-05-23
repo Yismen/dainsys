@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewPosition()
     {
-        $position = create('App\Position');
+        $position = create('App\Models\Position');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.positions.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetPosition()
     {
-        $position = create('App\Position');
+        $position = create('App\Models\Position');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.positions.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditPosition()
     {
-        $position = create('App\Position');
+        $position = create('App\Models\Position');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.positions.update', $position->id))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyPosition()
     {
-        $position = create('App\Position');
+        $position = create('App\Models\Position');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.positions.destroy', $position->id))

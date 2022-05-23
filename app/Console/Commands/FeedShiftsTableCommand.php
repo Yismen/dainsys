@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Shift;
-use App\Employee;
+use App\Models\Shift;
+use App\Models\Employee;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 

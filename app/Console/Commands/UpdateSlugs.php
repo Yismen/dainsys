@@ -39,7 +39,7 @@ class UpdateSlugs extends Command
      */
     public function handle()
     {
-        $model = 'App\\' . $this->argument('model');
+        $model = 'App\\Models\\' . $this->argument('model');
         $field = $this->option('field');
 
         if (!class_exists($model)) {

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Department;
+use App\Models\Department;
 use App\Http\Controllers\Controller;
 
 class DepartmentsController extends Controller

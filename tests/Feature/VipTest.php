@@ -15,7 +15,7 @@ class VipTest extends TestCase
     /** @test */
     public function it_requries_authentication()
     {
-        $vip = create('App\Vip');
+        $vip = create('App\Models\Vip');
         $this->get(route('admin.vips.index'))->assertRedirect('/login');
         $this->post(route('admin.vips.store', $vip->toArray()))->assertRedirect('/login');
         $this->get(route('admin.vips.edit', $vip->id))->assertRedirect('/login');
@@ -26,8 +26,8 @@ class VipTest extends TestCase
     /** @test */
     public function it_requires_permissions()
     {
-        $this->actingAs(create('App\User'));
-        $vip = create('App\Vip');
+        $this->actingAs(create('App\Models\User'));
+        $vip = create('App\Models\Vip');
 
         $response = $this->get('/admin/vips');
         $response->assertStatus(403);
@@ -49,8 +49,8 @@ class VipTest extends TestCase
     public function authorized_users_can_view_vip_resource()
     {
         $user = $this->userWithPermission('view-vips');
-        $vip = create('App\Vip');
-        $employee = create('App\Employee');
+        $vip = create('App\Models\Vip');
+        $employee = create('App\Models\Employee');
         $this->actingAs($user);
 
         $vip->employee()->associate($employee);
@@ -68,8 +68,8 @@ class VipTest extends TestCase
         $user = $this->userWithPermission('create-vips');
         $this->actingAs($user);
 
-        $vip = create('App\Vip');
-        $employee = create('App\Employee');
+        $vip = create('App\Models\Vip');
+        $employee = create('App\Models\Employee');
 
         $response = $this->post(
             route(
@@ -89,7 +89,7 @@ class VipTest extends TestCase
     {
         // given
         $user = $this->userWithPermission('destroy-vips');
-        $vip = create('App\Vip');
+        $vip = create('App\Models\Vip');
 
         // when
         $this->actingAs($user);
@@ -103,7 +103,7 @@ class VipTest extends TestCase
     /** @test */
     public function a_user_can_create_a_vip()
     {
-        $vip = make('App\Vip');
+        $vip = make('App\Models\Vip');
 
         $this->actingAs($this->userWithPermission('create-vips'))
             ->post(route('admin.vips.store', $vip->toArray()));
@@ -125,7 +125,7 @@ class VipTest extends TestCase
     /** @test */
     public function a_user_can_see_a_form_to_update_a_vip()
     {
-        $vip = create('App\Vip');
+        $vip = create('App\Models\Vip');
 
         $this->actingAs($this->userWithPermission('edit-vips'))
             ->get(route('admin.vips.edit', $vip->id))
@@ -136,7 +136,7 @@ class VipTest extends TestCase
     public function test_validations_to_update()
     {
         $user = $this->userWithPermission('edit-vips');
-        $vip = create('App\Vip');
+        $vip = create('App\Models\Vip');
 
         $this->actingAs($user)
             ->put(route('admin.vips.update', $vip->id), $this->formAttributes(['since' => '']))
@@ -146,7 +146,7 @@ class VipTest extends TestCase
     /** @test */
     public function a_user_can_update_a_vip()
     {
-        $vip = create('App\Vip');
+        $vip = create('App\Models\Vip');
         $date = Carbon::now()->format('Y-m-d 00:00:00');
         $array = ['since' => $date];
 

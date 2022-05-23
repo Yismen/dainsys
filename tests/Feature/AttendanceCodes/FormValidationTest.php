@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\AttendanceCodes;
 
-use App\AttendanceCode;
+use App\Models\AttendanceCode;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

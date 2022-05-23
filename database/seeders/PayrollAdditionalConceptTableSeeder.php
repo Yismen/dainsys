@@ -1,7 +1,7 @@
 <?php
 namespace Database\Seeders;
 
-use App\PayrollAdditionalConcept;
+use App\Models\PayrollAdditionalConcept;
 use Illuminate\Database\Seeder;
 
 class PayrollAdditionalConceptTableSeeder extends Seeder

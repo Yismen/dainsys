@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Site;
+use App\Models\Site;
 
 class SiteRepository
 {

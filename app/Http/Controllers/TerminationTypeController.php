@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\TerminationType;
+use App\Models\TerminationType;
 use Illuminate\Http\Request;
 
 class TerminationTypeController extends Controller

@@ -15,7 +15,7 @@ class UniversalTest extends TestCase
     /** @test */
     public function it_requries_authentication()
     {
-        $universal = create('App\Universal');
+        $universal = create('App\Models\Universal');
         $this->get(route('admin.universals.index'))->assertRedirect('/login');
         $this->post(route('admin.universals.store', $universal->toArray()))->assertRedirect('/login');
         $this->get(route('admin.universals.edit', $universal->id))->assertRedirect('/login');
@@ -26,8 +26,8 @@ class UniversalTest extends TestCase
     /** @test */
     public function it_requires_permissions()
     {
-        $this->actingAs(create('App\User'));
-        $universal = create('App\Universal');
+        $this->actingAs(create('App\Models\User'));
+        $universal = create('App\Models\Universal');
 
         $response = $this->get('/admin/universals');
         $response->assertStatus(403);
@@ -49,10 +49,10 @@ class UniversalTest extends TestCase
     public function authorized_users_can_view_universal_resource()
     {
         $user = $this->userWithPermission('view-universals');
-        $universal = create('App\Universal');
+        $universal = create('App\Models\Universal');
         $this->actingAs($user);
 
-        $employee = create('App\Employee');
+        $employee = create('App\Models\Employee');
         $universal->employee()->associate($employee);
         $universal->save();
 
@@ -68,9 +68,9 @@ class UniversalTest extends TestCase
         $user = $this->userWithPermission('create-universals');
         $this->actingAs($user);
 
-        $universal = create('App\Universal');
+        $universal = create('App\Models\Universal');
 
-        $employee = create('App\Employee');
+        $employee = create('App\Models\Employee');
         $universal->employee()->associate($employee);
         $universal->save();
 
@@ -91,7 +91,7 @@ class UniversalTest extends TestCase
     {
         // given
         $user = $this->userWithPermission('destroy-universals');
-        $universal = create('App\Universal');
+        $universal = create('App\Models\Universal');
 
         // when
         $this->actingAs($user);
@@ -105,9 +105,9 @@ class UniversalTest extends TestCase
     /** @test */
     public function a_user_can_create_a_universal()
     {
-        $universal = create('App\Universal');
+        $universal = create('App\Models\Universal');
 
-        $employee = create('App\Employee');
+        $employee = create('App\Models\Employee');
         $universal->employee()->associate($employee);
         $universal->save();
 
@@ -131,9 +131,9 @@ class UniversalTest extends TestCase
     /** @test */
     public function a_user_can_see_a_form_to_update_a_universal()
     {
-        $universal = create('App\Universal');
+        $universal = create('App\Models\Universal');
 
-        $employee = create('App\Employee');
+        $employee = create('App\Models\Employee');
         $universal->employee()->associate($employee);
         $universal->save();
 
@@ -146,7 +146,7 @@ class UniversalTest extends TestCase
     public function test_validations_to_update()
     {
         $user = $this->userWithPermission('edit-universals');
-        $universal = create('App\Universal');
+        $universal = create('App\Models\Universal');
 
         $this->actingAs($user)
             ->put(route('admin.universals.update', $universal->id), $this->formAttributes(['since' => '']))
@@ -156,7 +156,7 @@ class UniversalTest extends TestCase
     /** @test */
     public function a_user_can_update_a_universal()
     {
-        $universal = create('App\Universal');
+        $universal = create('App\Models\Universal');
         $date = Carbon::now()->format('Y-m-d 00:00:00');
         $array = ['since' => $date];
 

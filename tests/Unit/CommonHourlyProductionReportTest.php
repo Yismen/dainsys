@@ -2,12 +2,12 @@
 
 namespace Tests\Unit;
 
-use App\Console\Commands\Common\HourlyProductionReport\HourlyProductionReportExport;
+use Mockery;
 use App\Mail\CommandsBaseMail;
+use PHPUnit\Framework\TestCase;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
-use Mockery;
-use PHPUnit\Framework\TestCase;
+use App\Console\Commands\Common\HourlyProductionReport\HourlyProductionReportExport;
 
 class CommonHourlyProductionReportTest extends TestCase
 {

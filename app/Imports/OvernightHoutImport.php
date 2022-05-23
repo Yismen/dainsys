@@ -3,7 +3,7 @@
 namespace App\Imports;
 
 use App\Http\Requests\OvernightHour\CreateOvernightHourRequest;
-use App\OvernightHour;
+use App\Models\OvernightHour;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToModel;

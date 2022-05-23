@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Project;
+use App\Models\Project;
 
 class ProjectRepository
 {

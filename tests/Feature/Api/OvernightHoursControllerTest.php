@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Api;
 
-use App\OvernightHour;
+use App\Models\OvernightHour;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
 use Tests\TestCase;

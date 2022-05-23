@@ -3,7 +3,7 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use App\Position;
+use App\Models\Position;
 use Illuminate\Http\Request;
 
 class PositionUnique implements Rule

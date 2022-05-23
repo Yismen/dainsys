@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\SupervisorUser;
 
-use App\Supervisor;
-use App\SupervisorUser;
-use App\User;
+use App\Models\Supervisor;
+use App\Models\SupervisorUser;
+use App\Models\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -16,7 +16,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewSupervisorUser()
     {
-        $user = create('App\User');
+        $user = create('App\Models\User');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.supervisor_users.index'))

@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Because;
 
-use App\BecauseDailyPerformance;
+use App\Models\BecauseDailyPerformance;
 
 class BecausePerformanceReportRepository
 {

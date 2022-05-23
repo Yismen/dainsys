@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Api\Dashboard;
 
-use App\Performance;
+use App\Models\Performance;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
 use Tests\TestCase;

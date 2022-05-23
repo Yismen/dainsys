@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Employee;
-use App\Project;
+use App\Models\Employee;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller

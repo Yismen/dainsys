@@ -2,10 +2,10 @@
 
 namespace Tests\Unit;
 
-use App\Employee;
-use App\Termination;
-use App\Universal;
-use App\Vip;
+use App\Models\Employee;
+use App\Models\Termination;
+use App\Models\Universal;
+use App\Models\Vip;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase as TestsTestCase;
 

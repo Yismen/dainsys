@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\RevenueType;
+use App\Models\RevenueType;
 
 // use Illuminate\Http\Request;
 

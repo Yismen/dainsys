@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\AttendanceCode;
+use App\Models\AttendanceCode;
 use Illuminate\Http\Request;
 
 class AttendanceCodesController extends Controller

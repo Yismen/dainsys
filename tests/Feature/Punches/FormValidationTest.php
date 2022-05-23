@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Punches;
 
-use App\Employee;
-use App\Punch;
+use App\Models\Employee;
+use App\Models\Punch;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

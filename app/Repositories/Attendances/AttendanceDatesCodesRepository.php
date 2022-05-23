@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Attendances;
 
-use App\Attendance;
+use App\Models\Attendance;
 use Carbon\Carbon;
 
 class AttendanceDatesCodesRepository

@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Attendances;
 
-use App\Attendance;
-use App\Employee;
+use App\Models\Attendance;
+use App\Models\Employee;
 use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;

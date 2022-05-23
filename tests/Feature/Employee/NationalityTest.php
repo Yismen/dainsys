@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Employee;
 
-use App\Nationality;
-use App\Employee;
+use App\Models\Nationality;
+use App\Models\Employee;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

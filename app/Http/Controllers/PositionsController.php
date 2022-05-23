@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 // use App\Http\Request;
-use App\Position;
+use App\Models\Position;
 use Illuminate\Http\Request;
 use App\Rules\PositionUnique;
 use Yajra\DataTables\Facades\DataTables;

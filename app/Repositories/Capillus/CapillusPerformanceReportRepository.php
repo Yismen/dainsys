@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Capillus;
 
-use App\CapillusDailyPerformance;
+use App\Models\CapillusDailyPerformance;
 
 class CapillusPerformanceReportRepository
 {

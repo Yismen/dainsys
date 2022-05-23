@@ -3,7 +3,7 @@
 namespace App\Imports;
 
 use Carbon\Carbon;
-use App\Performance;
+use App\Models\Performance;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithEvents;
@@ -28,7 +28,7 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
     /**
      * The user who imported the file.
      *
-     * @var App\User::class
+     * @var App\Models\User::class
      */
     protected $importedBy;
     /**

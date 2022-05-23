@@ -14,7 +14,7 @@ class BankTest extends TestCase
     /** @test */
     public function guests_can_not_visit_any_banks_route()
     {
-        $bank = create('App\Bank');
+        $bank = create('App\Models\Bank');
         $this->get(route('admin.banks.index'))->assertRedirect('/login');
         // $this->get(route('admin.banks.create'))->assertRedirect('/login');
         $this->post(route('admin.banks.store', $bank->toArray()))->assertRedirect('/login');
@@ -26,7 +26,7 @@ class BankTest extends TestCase
     /** @test */
     public function it_requires_view_banks_permissions_to_view_all_banks()
     {
-        $this->actingAs(create('App\User'));
+        $this->actingAs(create('App\Models\User'));
 
         $response = $this->get('/admin/banks');
 
@@ -38,7 +38,7 @@ class BankTest extends TestCase
     {
         // given
         $user = $this->userWithPermission('view-banks');
-        $bank = create('App\Bank');
+        $bank = create('App\Models\Bank');
 
         // when
         $this->actingAs($user);
@@ -52,8 +52,8 @@ class BankTest extends TestCase
     public function it_requires_destroy_banks_permission_to_destroy_a_permission()
     {
         // Given
-        $this->actingAs(create('App\User'));
-        $bank = create('App\Bank');
+        $this->actingAs(create('App\Models\User'));
+        $bank = create('App\Models\Bank');
 
         // When
         $response = $this->delete(route('admin.banks.destroy', $bank->id));
@@ -68,7 +68,7 @@ class BankTest extends TestCase
     {
         // given
         $user = $this->userWithPermission('destroy-banks');
-        $bank = create('App\Bank');
+        $bank = create('App\Models\Bank');
 
         // when
         $this->actingAs($user);
@@ -90,7 +90,7 @@ class BankTest extends TestCase
     /** @test */
     public function a_user_can_create_a_bank()
     {
-        $bank = make('App\Bank');
+        $bank = make('App\Models\Bank');
 
         $this->actingAs($this->userWithPermission('create-banks'))
             ->post(route('admin.banks.store', $bank->toArray()));
@@ -105,7 +105,7 @@ class BankTest extends TestCase
     /** @test */
     public function a_user_can_see_a_form_to_update_a_bank()
     {
-        $bank = create('App\Bank');
+        $bank = create('App\Models\Bank');
 
         $this->actingAs($this->userWithPermission('edit-banks'))
             ->get(route('admin.banks.edit', $bank->id))
@@ -115,7 +115,7 @@ class BankTest extends TestCase
     /** @test */
     public function it_requires_a_name_to_update_a_bank()
     {
-        $bank = create('App\Bank');
+        $bank = create('App\Models\Bank');
 
         $this->actingAs($this->userWithPermission('edit-banks'))
             ->put(route('admin.banks.update', $bank->id), $this->formAttributes(['name' => '']))
@@ -125,7 +125,7 @@ class BankTest extends TestCase
     /** @test */
     public function a_user_can_update_a_bank()
     {
-        $bank = create('App\Bank');
+        $bank = create('App\Models\Bank');
         $bank->name = 'New Name';
 
         $this->actingAs($this->userWithPermission('edit-banks'))

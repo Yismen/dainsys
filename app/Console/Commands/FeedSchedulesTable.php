@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Employee;
-use App\Schedule;
 use Carbon\Carbon;
+use App\Models\Employee;
+use App\Models\Schedule;
 use Illuminate\Console\Command;
 
 class FeedSchedulesTable extends Command

@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Holidays;
 
-use App\Holiday;
+use App\Models\Holiday;
 use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -16,7 +16,7 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_see_holidays_list()
     {
-        $holiday = create('App\Holiday')->toArray();
+        $holiday = create('App\Models\Holiday')->toArray();
         $response = $this->actingAs($this->userWithPermission('view-holidays'));
 
         $response->get(route('admin.holidays.index'))
@@ -30,7 +30,7 @@ class ModuleActionsTest extends TestCase
     public function authorized_users_can_create_a_holiday()
     {
         $response = $this->actingAs($this->userWithPermission('create-holidays'));
-        $holiday = make('App\Holiday')->toArray();
+        $holiday = make('App\Models\Holiday')->toArray();
 
         $response->post(route('admin.holidays.store'), $holiday)
             ->assertRedirect(route('admin.holidays.index'));
@@ -45,7 +45,7 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_see_edit_page()
     {
-        $holiday = create('App\Holiday');
+        $holiday = create('App\Models\Holiday');
         $response = $this->actingAs($this->userWithPermission('edit-holidays'));
 
         $response->get(route('admin.holidays.edit', $holiday->id))
@@ -61,7 +61,7 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_update_holiday()
     {
-        $holiday = create('App\Holiday');
+        $holiday = create('App\Models\Holiday');
         $updated = [
             'name' => 'Updated Name',
             'date' => Carbon::now(),
@@ -79,7 +79,7 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_destroy_holiday()
     {
-        $holiday = create('App\Holiday');
+        $holiday = create('App\Models\Holiday');
         $response = $this->actingAs($this->userWithPermission('destroy-holidays'));
 
         $response->delete(route('admin.holidays.destroy', $holiday->id))
@@ -95,7 +95,7 @@ class ModuleActionsTest extends TestCase
     {
         $months = 6;
         $date = Carbon::now()->subMonths($months)->startOfMonth();
-        $holiday = create('App\Holiday', ['date' => $date]); // create a holiday $months old
+        $holiday = create('App\Models\Holiday', ['date' => $date]); // create a holiday $months old
 
         $this->assertDatabaseHas('holidays', ['name' => $holiday->name]);
 
@@ -109,7 +109,7 @@ class ModuleActionsTest extends TestCase
     {
         $months = 6;
         $date = Carbon::now()->subMonths($months)->startOfMonth();
-        $holiday = raw('App\Holiday', ['date' => $date]);
+        $holiday = raw('App\Models\Holiday', ['date' => $date]);
 
         $response = $this->actingAs($this->userWithPermission('create-holidays'));
         $response->post(route('admin.holidays.store'), $holiday);

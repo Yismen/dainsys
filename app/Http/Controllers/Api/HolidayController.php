@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Holiday;
+use App\Models\Holiday;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\HolidayResource;
 

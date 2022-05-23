@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\Performances;
 
-use App\Employee;
+use App\Models\Employee;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EmployeeResource;
 

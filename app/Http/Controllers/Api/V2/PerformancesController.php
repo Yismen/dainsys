@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\V2;
 
 use Carbon\Carbon;
-use App\Performance;
+use App\Models\Performance;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PerformanceResource;
 use Illuminate\Http\Resources\Json\JsonResource;

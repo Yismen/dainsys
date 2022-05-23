@@ -2,31 +2,31 @@
 
 namespace App\Http\Traits\Relationships;
 
-use App\Afp;
-use App\Ars;
-use App\Vip;
-use App\Card;
-use App\Hour;
-use App\Site;
-use App\Punch;
-use App\Shift;
-use App\Gender;
-use App\Address;
-use App\Marital;
-use App\Project;
-use App\Position;
-use App\Schedule;
-use App\LoginName;
-use App\Universal;
-use App\Attendance;
-use App\Department;
-use App\Supervisor;
-use App\BankAccount;
-use App\Nationality;
-use App\Performance;
-use App\Termination;
-use App\OvernightHour;
-use App\SocialSecurity;
+use App\Models\Afp;
+use App\Models\Ars;
+use App\Models\Vip;
+use App\Models\Card;
+use App\Models\Hour;
+use App\Models\Site;
+use App\Models\Punch;
+use App\Models\Shift;
+use App\Models\Gender;
+use App\Models\Address;
+use App\Models\Marital;
+use App\Models\Project;
+use App\Models\Position;
+use App\Models\Schedule;
+use App\Models\LoginName;
+use App\Models\Universal;
+use App\Models\Attendance;
+use App\Models\Department;
+use App\Models\Supervisor;
+use App\Models\BankAccount;
+use App\Models\Nationality;
+use App\Models\Performance;
+use App\Models\Termination;
+use App\Models\OvernightHour;
+use App\Models\SocialSecurity;
 
 trait EmployeeRelationships
 {

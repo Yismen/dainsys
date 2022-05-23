@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\HumanResources;
 
-use App\Site;
-use App\Employee;
+use App\Models\Site;
+use App\Models\Employee;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

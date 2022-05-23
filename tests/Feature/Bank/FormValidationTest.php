@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Bank;
 
-use App\Bank;
+use App\Models\Bank;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

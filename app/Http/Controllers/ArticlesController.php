@@ -7,8 +7,8 @@ use App\Http\Requests\SaveImageFromURLRequest;
 use App\Http\Requests\SaveImageFromLocalFileRequest;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
-use App\Article;
-use App\Tag;
+use App\Models\Article;
+use App\Models\Tag;
 
 class ArticlesController extends Controller
 {

@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\SupervisorUser;
 
-use App\Supervisor;
-use App\SupervisorUser;
-use App\User;
+use App\Models\Supervisor;
+use App\Models\SupervisorUser;
+use App\Models\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -16,8 +16,8 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewSupervisorUsers()
     {
-        $user = create('App\User');
-        $supervisor = create('App\Supervisor');
+        $user = create('App\Models\User');
+        $supervisor = create('App\Models\Supervisor');
 
         $this->get(route('admin.supervisor_users.index'))->assertRedirect('/login');
     }

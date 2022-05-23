@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 // use App\Http\Requests\SaveContactsRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Contact;
+use App\Models\Contact;
 
 class ContactsController extends Controller
 {

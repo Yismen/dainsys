@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Downtimes;
 
-use App\Downtime;
-use App\Employee;
-use App\Supervisor;
+use App\Models\Downtime;
+use App\Models\Employee;
+use App\Models\Supervisor;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

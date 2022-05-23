@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Profile;
+use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\Repositories\Profiles;
 use Illuminate\Support\Facades\Storage;

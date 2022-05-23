@@ -4,9 +4,9 @@ namespace App\Repositories\Dashboard;
 
 use App\Repositories\EmployeeRepository;
 use App\Repositories\PerformanceRepository;
-use App\Site;
-use App\Department;
-use App\Project;
+use App\Models\Site;
+use App\Models\Department;
+use App\Models\Project;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 

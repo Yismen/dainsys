@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Roles;
 
-use App\Role;
+use App\Models\Role;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

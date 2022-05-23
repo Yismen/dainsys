@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Schedule;
+use App\Models\Schedule;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;

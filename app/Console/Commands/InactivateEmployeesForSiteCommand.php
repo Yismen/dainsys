@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Employee;
-use App\TerminationReason;
-use App\TerminationType;
+use App\Models\Employee;
+use App\Models\TerminationReason;
+use App\Models\TerminationType;
 use Illuminate\Console\Command;
 
 class InactivateEmployeesForSiteCommand extends Command

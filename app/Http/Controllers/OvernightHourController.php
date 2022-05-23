@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\OvernightHour;
+use App\Models\OvernightHour;
 use App\Repositories\OvernightHourRepo;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\OvernightHour\CreateOvernightHourRequest;

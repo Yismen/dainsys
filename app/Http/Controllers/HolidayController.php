@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Holiday;
+use App\Models\Holiday;
 use App\Http\Requests\Holiday\CreateHolidayRequest;
 use App\Http\Requests\Holiday\UpdateHolidayRequest;
 use Yajra\DataTables\Facades\DataTables;

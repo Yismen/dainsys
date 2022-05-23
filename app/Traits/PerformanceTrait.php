@@ -2,11 +2,11 @@
 
 namespace App\Traits;
 
-use App\Campaign;
-use App\Employee;
+use App\Models\Campaign;
+use App\Models\Employee;
 use Carbon\Carbon;
-use App\Supervisor;
-use App\DowntimeReason;
+use App\Models\Supervisor;
+use App\Models\DowntimeReason;
 
 trait PerformanceTrait
 {

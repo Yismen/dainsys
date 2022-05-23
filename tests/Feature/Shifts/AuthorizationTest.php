@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewShift()
     {
-        $shift = create('App\Shift');
+        $shift = create('App\Models\Shift');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.shifts.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetShift()
     {
-        $shift = create('App\Shift');
+        $shift = create('App\Models\Shift');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.shifts.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditShift()
     {
-        $shift = create('App\Shift');
+        $shift = create('App\Models\Shift');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.shifts.update', $shift->id))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyShift()
     {
-        $shift = create('App\Shift');
+        $shift = create('App\Models\Shift');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.shifts.destroy', $shift->id))

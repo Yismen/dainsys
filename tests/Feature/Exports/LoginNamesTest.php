@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Exports;
 
-use App\LoginName;
+use App\Models\LoginName;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Maatwebsite\Excel\Facades\Excel;
 use Tests\TestCase;

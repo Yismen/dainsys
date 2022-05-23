@@ -14,7 +14,7 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_see_attendance_codes_list()
     {
-        $attendance_code = create('App\AttendanceCode')->toArray();
+        $attendance_code = create('App\Models\AttendanceCode')->toArray();
         $response = $this->actingAs($this->userWithPermission('view-attendance-codes'));
 
         $response->get(route('admin.attendance_codes.index'))
@@ -26,7 +26,7 @@ class ModuleActionsTest extends TestCase
     public function authorized_users_can_create_a_attendance_code()
     {
         $response = $this->actingAs($this->userWithPermission('create-attendance-codes'));
-        $attendance_code = make('App\AttendanceCode')->toArray();
+        $attendance_code = make('App\Models\AttendanceCode')->toArray();
 
         $response->post(route('admin.attendance_codes.store'), $attendance_code)
             ->assertRedirect(route('admin.attendance_codes.index'));
@@ -40,7 +40,7 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_see_edit_page()
     {
-        $attendance_code = create('App\AttendanceCode');
+        $attendance_code = create('App\Models\AttendanceCode');
         $response = $this->actingAs($this->userWithPermission('edit-attendance-codes'));
 
         $response->get(route('admin.attendance_codes.edit', $attendance_code->id))
@@ -58,7 +58,7 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_update_attendance_code()
     {
-        $attendance_code = create('App\AttendanceCode');
+        $attendance_code = create('App\Models\AttendanceCode');
         $updated = [
             'name' => 'Updated Name',
             'color' => '#F4f4f4',

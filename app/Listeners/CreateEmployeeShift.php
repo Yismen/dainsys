@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Employee;
+use App\Models\Employee;
 use App\Events\EmployeeCreated;
 
 class CreateEmployeeShift

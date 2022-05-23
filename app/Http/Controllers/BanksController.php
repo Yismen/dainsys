@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Cache;
-use App\Bank;
+use App\Models\Bank;
 use Illuminate\Http\Request;
 
 class BanksController extends Controller

@@ -1,4 +1,4 @@
-@inject('layout', 'App\Layout')
+@inject('layout', 'App\Models\Layout')
 @extends('layouts.'.$layout->app(), ['page_header'=>'Revenue Types', 'page_description'=>'Edit a current revenue_type.'])
 
 @section('content')

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Attendance;
 
-use App\AttendanceCode;
+use App\Models\AttendanceCode;
 use App\Http\Controllers\Controller;
 use App\Repositories\Attendances\AttendanceDatesCodesRepository;
 use App\Repositories\Attendances\AttendanceDatesRepository;

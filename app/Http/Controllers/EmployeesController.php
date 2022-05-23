@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Employee;
+use App\Models\Employee;
 use Carbon\Carbon;
-use App\Termination;
+use App\Models\Termination;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;

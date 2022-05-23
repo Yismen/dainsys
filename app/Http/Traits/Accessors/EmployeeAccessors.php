@@ -2,22 +2,22 @@
 
 namespace App\Http\Traits\Accessors;
 
-use App\Afp;
-use App\Ars;
-use App\Bank;
-use App\Site;
-use App\Gender;
-use App\Marital;
-use App\Project;
-use App\Position;
+use App\Models\Afp;
+use App\Models\Ars;
+use App\Models\Bank;
+use App\Models\Site;
+use App\Models\Gender;
+use App\Models\Marital;
+use App\Models\Project;
+use App\Models\Position;
 use Carbon\Carbon;
-use App\Department;
-use App\Supervisor;
-use App\Nationality;
-use App\PaymentType;
-use App\TerminationType;
-use App\PaymentFrequency;
-use App\TerminationReason;
+use App\Models\Department;
+use App\Models\Supervisor;
+use App\Models\Nationality;
+use App\Models\PaymentType;
+use App\Models\TerminationType;
+use App\Models\PaymentFrequency;
+use App\Models\TerminationReason;
 
 trait EmployeeAccessors
 {

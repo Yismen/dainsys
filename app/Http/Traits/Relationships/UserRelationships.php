@@ -2,15 +2,15 @@
 
 namespace App\Http\Traits\Relationships;
 
-use App\Task;
-use App\Contact;
-use App\Message;
-use App\Profile;
-use App\Password;
-use App\UserLogin;
-use App\Attendance;
-use App\Supervisor;
-use App\UserSetting;
+use App\Models\Task;
+use App\Models\Contact;
+use App\Models\Message;
+use App\Models\Profile;
+use App\Models\Password;
+use App\Models\UserLogin;
+use App\Models\Attendance;
+use App\Models\Supervisor;
+use App\Models\UserSetting;
 
 trait UserRelationships
 {

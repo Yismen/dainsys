@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Str;
-use App\Tag;
+use App\Models\Tag;
 
 class TagsController extends Controller
 {

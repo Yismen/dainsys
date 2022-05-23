@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Employee;
+use App\Models\Employee;
 use Carbon\Carbon;
 
 class EmployeesHiredMail extends EmployeesBaseMail

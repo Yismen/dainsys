@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Holiday;
 
-use App\Holiday;
+use App\Models\Holiday;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateHolidayRequest extends FormRequest

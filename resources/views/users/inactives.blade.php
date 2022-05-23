@@ -1,4 +1,4 @@
-@inject('layout', 'App\Layout')
+@inject('layout', 'App\Models\Layout')
 @extends('layouts.'.$layout->app(), ['page_header'=>'Inactive Users', 'page_description'=>'Handle
 inactive users list']) @section('content')
 <div class="container-fluid">

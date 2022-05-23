@@ -1,4 +1,4 @@
-@inject('layout', 'App\Layout')
+@inject('layout', 'App\Models\Layout')
 @extends('layouts.'.$layout->app(), ['page_header'=>'Revenue Types for Logins', 'page_description'=>'Manage the revenue_types available in order to save the users logins.'])
 
 @section('content')

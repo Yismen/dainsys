@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Permissions;
 
-use App\Permission;
+use App\Models\Permission;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

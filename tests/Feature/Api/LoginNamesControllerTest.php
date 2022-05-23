@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Api;
 
-use App\LoginName;
-use App\Termination;
+use App\Models\LoginName;
+use App\Models\Termination;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
 use Tests\TestCase;

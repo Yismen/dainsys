@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewRevenueType()
     {
-        $revenue_type = create('App\RevenueType');
+        $revenue_type = create('App\Models\RevenueType');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.revenue_types.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetRevenueType()
     {
-        $revenue_type = create('App\RevenueType');
+        $revenue_type = create('App\Models\RevenueType');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.revenue_types.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditRevenueType()
     {
-        $revenue_type = create('App\RevenueType');
+        $revenue_type = create('App\Models\RevenueType');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.revenue_types.update', $revenue_type->id))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyRevenueType()
     {
-        $revenue_type = create('App\RevenueType');
+        $revenue_type = create('App\Models\RevenueType');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.revenue_types.destroy', $revenue_type->id))

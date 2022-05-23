@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Bank;
+use App\Models\Bank;
 use App\Http\Controllers\Controller;
 
 class BanksController extends Controller

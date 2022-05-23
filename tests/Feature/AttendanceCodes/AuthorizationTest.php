@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewAttendanceCode()
     {
-        $attendance_code = create('App\AttendanceCode');
+        $attendance_code = create('App\Models\AttendanceCode');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.attendance_codes.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetAttendanceCode()
     {
-        $attendance_code = create('App\AttendanceCode');
+        $attendance_code = create('App\Models\AttendanceCode');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.attendance_codes.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditAttendanceCode()
     {
-        $attendance_code = create('App\AttendanceCode');
+        $attendance_code = create('App\Models\AttendanceCode');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.attendance_codes.update', $attendance_code->id))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyAttendanceCode()
     {
-        $attendance_code = create('App\AttendanceCode');
+        $attendance_code = create('App\Models\AttendanceCode');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.attendance_codes.destroy', $attendance_code->id))

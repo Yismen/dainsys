@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewPunchs()
     {
-        $punch = create('App\Punch');
+        $punch = create('App\Models\Punch');
 
         $this->get(route('admin.punches.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreatePunchs()
     {
-        $punch = create('App\Punch');
+        $punch = create('App\Models\Punch');
 
         $this->get(route('admin.punches.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdatePunch()
     {
-        $punch = create('App\Punch');
+        $punch = create('App\Models\Punch');
 
         $this->get(route('admin.punches.edit', $punch->punch))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyPunch()
     {
-        $punch = create('App\Punch');
+        $punch = create('App\Models\Punch');
 
         $this->delete(route('admin.punches.destroy', $punch->punch))
             ->assertStatus(302)

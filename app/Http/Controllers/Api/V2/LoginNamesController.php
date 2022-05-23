@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\LoginName;
+use App\Models\LoginName;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\LoginNameResource;
 

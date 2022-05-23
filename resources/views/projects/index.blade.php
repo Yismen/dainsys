@@ -1,7 +1,7 @@
 @php
     use Illuminate\Support\Str;
 @endphp
-@inject('layout', 'App\Layout')
+@inject('layout', 'App\Models\Layout')
 @extends('layouts.'.$layout->app(), ['page_header'=>'Projects', 'page_description'=>'List of projects of production.'])
 
 @section('content')

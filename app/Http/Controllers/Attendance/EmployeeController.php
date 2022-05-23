@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Attendance;
 
-use App\Employee;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Attendances\AttendanceEmployeesRepository;

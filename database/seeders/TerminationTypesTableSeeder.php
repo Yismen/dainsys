@@ -1,7 +1,7 @@
 <?php
 namespace Database\Seeders;
 
-use App\TerminationType;
+use App\Models\TerminationType;
 use Illuminate\Database\Seeder;
 
 class TerminationTypesTableSeeder extends Seeder

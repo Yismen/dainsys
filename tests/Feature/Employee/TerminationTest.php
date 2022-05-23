@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Employee;
 
-use App\Termination;
-use App\Employee;
+use App\Models\Termination;
+use App\Models\Employee;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

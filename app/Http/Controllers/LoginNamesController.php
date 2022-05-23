@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\LoginName;
+use App\Models\LoginName;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Exports\LoginNameEployees;

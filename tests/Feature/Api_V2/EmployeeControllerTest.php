@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Api_V2;
 
-use App\Site;
-use App\Project;
-use App\Employee;
-use App\Department;
+use App\Models\Site;
+use App\Models\Project;
+use App\Models\Employee;
+use App\Models\Department;
 use Tests\TestCase;
-use App\Termination;
+use App\Models\Termination;
 use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

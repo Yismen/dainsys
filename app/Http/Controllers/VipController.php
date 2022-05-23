@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Vip;
-use App\Employee;
+use App\Models\Vip;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Repositories\Employees\VipRepo;
 

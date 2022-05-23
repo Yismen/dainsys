@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Termination;
+use App\Models\Termination;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;

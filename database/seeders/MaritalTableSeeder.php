@@ -1,7 +1,7 @@
 <?php
 namespace Database\Seeders;
 
-use App\Marital;
+use App\Models\Marital;
 use Illuminate\Database\Seeder;
 
 class MaritalTableSeeder extends Seeder

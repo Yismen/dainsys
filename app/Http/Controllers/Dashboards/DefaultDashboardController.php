@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Dashboards;
 
-use App\User;
-use App\Profile;
-use App\Employee;
+use App\Models\User;
+use App\Models\Profile;
+use App\Models\Employee;
 use App\Repositories\SiteRepository;
 use App\Repositories\ProjectRepository;
 use App\Repositories\BirthdaysRepository;

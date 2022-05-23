@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\AppSetting;
+use App\Models\AppSetting;
 use Illuminate\Http\Request;
 use App\Events\CreateUserSettings;
 

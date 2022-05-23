@@ -2,7 +2,7 @@
 
 namespace App\Http\Traits\Accessors;
 
-use App\Role;
+use App\Models\Role;
 
 trait UserAccessors
 {

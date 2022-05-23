@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Schedules;
 
-use App\Schedule;
+use App\Models\Schedule;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

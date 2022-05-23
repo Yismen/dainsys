@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewProfiles()
     {
-        $profile = create('App\Profile');
+        $profile = create('App\Models\Profile');
 
         $this->get(route('admin.profiles.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateProfiles()
     {
-        $profile = create('App\Profile');
+        $profile = create('App\Models\Profile');
 
         $this->get(route('admin.profiles.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateProfile()
     {
-        $profile = create('App\Profile');
+        $profile = create('App\Models\Profile');
 
         $this->get(route('admin.profiles.edit', $profile->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     // public function testGuestCantDestroyProfile()
     // {
-    //     $profile = create('App\Profile');
+    //     $profile = create('App\Models\Profile');
 
     //     $this->delete(route('admin.profiles.destroy', $profile->id))
     //         ->assertStatus(302)

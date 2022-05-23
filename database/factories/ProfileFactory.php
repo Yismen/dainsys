@@ -2,9 +2,9 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Profile::class, function (Faker $faker) {
+$factory->define(App\Models\Profile::class, function (Faker $faker) {
     return [
-        'user_id' => factory(App\User::class)->create(),
+        'user_id' => factory(App\Models\User::class)->create(),
         'gender' => 'male',
         'bio' => $faker->paragraph,
         'phone' => $faker->phoneNumber(),

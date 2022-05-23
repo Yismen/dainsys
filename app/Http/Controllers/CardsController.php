@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Card;
+use App\Models\Card;
 
 // use Illuminate\Http\Request;
 

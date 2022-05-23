@@ -2,14 +2,14 @@
 
 namespace App\Repositories;
 
-use App\Site;
-use App\Gender;
-use App\Project;
-use App\Employee;
-use App\Position;
-use App\Department;
-use App\Supervisor;
-use App\Nationality;
+use App\Models\Site;
+use App\Models\Gender;
+use App\Models\Project;
+use App\Models\Employee;
+use App\Models\Position;
+use App\Models\Department;
+use App\Models\Supervisor;
+use App\Models\Nationality;
 
 class EmployeeRepository
 {

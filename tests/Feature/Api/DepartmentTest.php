@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Api;
 
-use App\Department;
+use App\Models\Department;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
 use Tests\TestCase;

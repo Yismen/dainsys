@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Employee;
-use App\Position;
-use App\Department;
+use App\Models\Employee;
+use App\Models\Position;
+use App\Models\Department;
 
 class Employees
 {

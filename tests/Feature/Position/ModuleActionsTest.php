@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Position;
 
-use App\Employee;
-use App\Position;
+use App\Models\Employee;
+use App\Models\Position;
 use Tests\TestCase;
-use App\Termination;
+use App\Models\Termination;
 use Illuminate\Support\Arr;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

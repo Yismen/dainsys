@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\DowntimeReasons;
 
-use App\DowntimeReason;
+use App\Models\DowntimeReason;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

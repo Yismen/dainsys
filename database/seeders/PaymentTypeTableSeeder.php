@@ -1,7 +1,7 @@
 <?php
 namespace Database\Seeders;
 
-use App\PaymentType;
+use App\Models\PaymentType;
 use Illuminate\Database\Seeder;
 
 class PaymentTypeTableSeeder extends Seeder

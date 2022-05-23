@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\DowntimeReason;
+use App\Models\DowntimeReason;
 
 class DowntimeReasonsController extends Controller
 {

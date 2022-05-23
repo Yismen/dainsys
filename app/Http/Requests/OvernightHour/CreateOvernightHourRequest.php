@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\OvernightHour;
 
-use App\OvernightHour;
+use App\Models\OvernightHour;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 

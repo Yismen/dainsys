@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\PaymentFrequencies;
 
-use App\PaymentFrequency;
+use App\Models\PaymentFrequency;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

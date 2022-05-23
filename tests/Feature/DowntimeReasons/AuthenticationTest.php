@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewDowntimeReasons()
     {
-        $downtime_reason = create('App\DowntimeReason');
+        $downtime_reason = create('App\Models\DowntimeReason');
 
         $this->get(route('admin.downtime_reasons.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateDowntimeReasons()
     {
-        $downtime_reason = create('App\DowntimeReason');
+        $downtime_reason = create('App\Models\DowntimeReason');
 
         $this->get(route('admin.downtime_reasons.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateDowntimeReason()
     {
-        $downtime_reason = create('App\DowntimeReason');
+        $downtime_reason = create('App\Models\DowntimeReason');
 
         $this->get(route('admin.downtime_reasons.edit', $downtime_reason->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyDowntimeReason()
     {
-        $downtime_reason = create('App\DowntimeReason');
+        $downtime_reason = create('App\Models\DowntimeReason');
 
         $this->delete(route('admin.downtime_reasons.destroy', $downtime_reason->id))
             ->assertStatus(302)

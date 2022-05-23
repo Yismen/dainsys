@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Position;
 
-use App\Position;
+use App\Models\Position;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

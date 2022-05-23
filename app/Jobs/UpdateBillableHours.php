@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Performance;
+use App\Models\Performance;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;

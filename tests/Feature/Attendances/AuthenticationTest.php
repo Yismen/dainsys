@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewAttendances()
     {
-        $attendance = create('App\Attendance');
+        $attendance = create('App\Models\Attendance');
 
         $this->get(route('admin.attendances.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateAttendances()
     {
-        $attendance = create('App\Attendance');
+        $attendance = create('App\Models\Attendance');
 
         $this->get(route('admin.attendances.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateAttendance()
     {
-        $attendance = create('App\Attendance');
+        $attendance = create('App\Models\Attendance');
 
         $this->get(route('admin.attendances.edit', $attendance->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyAttendance()
     {
-        $attendance = create('App\Attendance');
+        $attendance = create('App\Models\Attendance');
 
         $this->delete(route('admin.attendances.destroy', $attendance->id))
             ->assertStatus(302)

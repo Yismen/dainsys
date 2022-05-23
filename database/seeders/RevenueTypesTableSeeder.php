@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\RevenueType;
+use App\Models\RevenueType;
 use Illuminate\Database\Seeder;
 
 class RevenueTypesTableSeeder extends Seeder

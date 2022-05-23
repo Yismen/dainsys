@@ -1,7 +1,7 @@
 <?php
 namespace Database\Seeders;
 
-use App\Department;
+use App\Models\Department;
 use Illuminate\Database\Seeder;
 
 class DepartmentsTableSeeder extends Seeder

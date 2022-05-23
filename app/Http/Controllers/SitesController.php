@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Site;
-use App\Employee;
+use App\Models\Site;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 

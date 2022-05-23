@@ -1,4 +1,4 @@
-@inject('layout', 'App\Layout')
+@inject('layout', 'App\Models\Layout')
 @extends('layouts.'.$layout->app(), ['page_header'=>__('Birthday')."s", 'page_description'=>__('Birthday') ."s"])
 
 @section('content')

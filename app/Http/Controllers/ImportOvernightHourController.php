@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OvernightHour\ImportOvernightHourRequest;
 use App\Imports\OvernightHoutImport;
-use App\OvernightHour;
+use App\Models\OvernightHour;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel as MaatwebsiteExcel;
 

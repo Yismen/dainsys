@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Performances;
 
-use App\Performance;
+use App\Models\Performance;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

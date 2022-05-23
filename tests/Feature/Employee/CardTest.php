@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Employee;
 
-use App\Card;
-use App\Employee;
+use App\Models\Card;
+use App\Models\Employee;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

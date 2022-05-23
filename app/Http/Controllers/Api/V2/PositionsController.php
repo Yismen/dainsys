@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Position;
+use App\Models\Position;
 use Illuminate\Http\Request;
 use App\Rules\PositionUnique;
 use App\Http\Controllers\Controller;

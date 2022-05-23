@@ -1,4 +1,4 @@
-@inject('layout', 'App\Layout')
+@inject('layout', 'App\Models\Layout')
 @extends('layouts.'.$layout->app(), ['page_header'=>'Create Supervisor Users', 'page_description'=>'List of Menu Items'])
 
 @section('content')

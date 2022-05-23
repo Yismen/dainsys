@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Employee;
+use App\Models\Employee;
 use Illuminate\Queue\SerializesModels;
 
 class EmployeeCreated extends Event

@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\LoginNames;
 
-use App\LoginName;
+use App\Models\LoginName;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Profile;
+use App\Models\Profile;
 
 class Profiles
 {

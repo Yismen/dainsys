@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewSchedules()
     {
-        $schedule = create('App\Schedule');
+        $schedule = create('App\Models\Schedule');
 
         $this->get(route('admin.schedules.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateSchedules()
     {
-        $schedule = create('App\Schedule');
+        $schedule = create('App\Models\Schedule');
 
         $this->get(route('admin.schedules.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateSchedule()
     {
-        $schedule = create('App\Schedule');
+        $schedule = create('App\Models\Schedule');
 
         $this->get(route('admin.schedules.edit', $schedule->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroySchedule()
     {
-        $schedule = create('App\Schedule');
+        $schedule = create('App\Models\Schedule');
 
         $this->delete(route('admin.schedules.destroy', $schedule->id))
             ->assertStatus(302)

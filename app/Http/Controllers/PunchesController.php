@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 // use App\Http\PunchesCreateRequests\PunchesCreateRequest;
-use App\Punch;
-use App\Employee;
+use App\Models\Punch;
+use App\Models\Employee;
 use App\Http\Requests\PunchesCreateRequest;
 use Yajra\DataTables\Facades\DataTables;
 

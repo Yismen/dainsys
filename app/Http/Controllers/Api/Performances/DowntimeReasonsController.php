@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\Performances;
 
-use App\DowntimeReason;
+use App\Models\DowntimeReason;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DowntimeReasonsResource;
 

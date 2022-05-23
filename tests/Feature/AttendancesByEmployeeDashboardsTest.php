@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Attendance;
+use App\Models\Attendance;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

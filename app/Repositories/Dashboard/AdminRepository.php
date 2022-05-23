@@ -2,10 +2,10 @@
 
 namespace App\Repositories\Dashboard;
 
-use App\Performance;
+use App\Models\Performance;
 use App\Repositories\PerformanceRepository;
-use App\Role;
-use App\User;
+use App\Models\Role;
+use App\Models\User;
 
 class AdminRepository
 {

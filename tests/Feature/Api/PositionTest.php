@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Api;
 
-use App\Position;
+use App\Models\Position;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Arr;
 use Laravel\Passport\Passport;

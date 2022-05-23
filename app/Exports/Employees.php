@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Employee;
+use App\Models\Employee;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithTitle;

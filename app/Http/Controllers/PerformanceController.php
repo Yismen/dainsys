@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Performance;
+use App\Models\Performance;
 use Yajra\DataTables\Facades\DataTables;
 use App\Repositories\PerformanceRepository;
 use App\Http\Requests\Performance\UpdatePerformance;

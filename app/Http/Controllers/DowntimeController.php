@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Downtime;
+use App\Models\Downtime;
 use Yajra\DataTables\Facades\DataTables;
 use App\Repositories\PerformanceRepository;
 use App\Http\Requests\Performance\UpdateDowntimeRequest;

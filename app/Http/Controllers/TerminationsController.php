@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTerminationsRequest;
-use App\Termination;
+use App\Models\Termination;
 
 class TerminationsController extends Controller
 {

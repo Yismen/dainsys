@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands\Common\Traits;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use App\Notifications\UserAppNotification;
 use Illuminate\Support\Facades\Cache;

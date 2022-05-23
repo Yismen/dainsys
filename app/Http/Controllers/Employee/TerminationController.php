@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Employee;
 
-use App\Employee;
+use App\Models\Employee;
 use App\Events\EmployeeReactivated;
 use App\Events\EmployeeTerminated;
 use App\Http\Controllers\Controller;

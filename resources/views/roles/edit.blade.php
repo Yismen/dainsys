@@ -1,4 +1,4 @@
-@inject('layout', 'App\Layout')
+@inject('layout', 'App\Models\Layout')
 @extends('layouts.'.$layout->app(), ['page_header'=>'Roles Management', 'page_description'=>'Edit Roles to change their interaction with the system.'])
 
 @section('content')

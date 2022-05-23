@@ -1,8 +1,9 @@
 <?php
+
 namespace Database\Seeders;
 
-use App\Menu;
-use App\Role;
+use App\Models\Menu;
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Cache;
 

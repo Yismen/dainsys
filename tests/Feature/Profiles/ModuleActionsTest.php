@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Profiles;
 
-use App\Profile;
+use App\Models\Profile;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

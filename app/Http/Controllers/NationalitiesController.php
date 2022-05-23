@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Cache;
-use App\Employee;
-use App\Nationality;
+use App\Models\Employee;
+use App\Models\Nationality;
 use Illuminate\Http\Request;
 
 class NationalitiesController extends Controller

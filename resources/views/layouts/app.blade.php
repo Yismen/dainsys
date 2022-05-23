@@ -55,7 +55,7 @@
     >
         <div class="wrapper" style="height: auto;" id="app">
             <!-- Main Header -->
-            {{-- @inject('user', 'App\Layout') --}}
+            {{-- @inject('user', 'App\Models\Layout') --}}
             @include('layouts.partials.main-header')
             <!-- Left side column. contains the logo and sidebar -->
 

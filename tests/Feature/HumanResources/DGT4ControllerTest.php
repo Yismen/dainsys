@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\HumanResources;
 
-use App\Employee;
+use App\Models\Employee;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Maatwebsite\Excel\Facades\Excel;
 use Tests\TestCase;

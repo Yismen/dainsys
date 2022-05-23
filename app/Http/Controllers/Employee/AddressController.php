@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Employee;
 
-use App\Address;
-use App\Employee;
+use App\Models\Address;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;

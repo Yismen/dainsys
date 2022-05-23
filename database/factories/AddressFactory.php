@@ -1,9 +1,9 @@
 <?php
 
-use App\Employee;
+use App\Models\Employee;
 use Faker\Generator as Faker;
 
-$factory->define(App\Address::class, function (Faker $faker) {
+$factory->define(App\Models\Address::class, function (Faker $faker) {
     return [
         'employee_id' => factory(Employee::class),
         'sector' => $faker->sentence(2),

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Ars;
+use App\Models\Ars;
 use App\Http\Controllers\Controller;
 
 class ArssController extends Controller

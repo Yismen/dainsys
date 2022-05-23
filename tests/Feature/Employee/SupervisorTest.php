@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Employee;
 
-use App\Supervisor;
-use App\Employee;
+use App\Models\Supervisor;
+use App\Models\Employee;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

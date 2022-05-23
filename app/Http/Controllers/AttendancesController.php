@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Attendance;
+use App\Models\Attendance;
 use App\Http\Requests\Attendance\CreateAttendanceRequest;
 use App\Http\Requests\Attendance\EditAttendanceRequest;
 use Illuminate\Support\Facades\Cache;

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Employee;
 
 use Illuminate\Support\Facades\Cache;
-use App\Employee;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Repositories\ImageMaker;
 use App\Http\Controllers\Controller;

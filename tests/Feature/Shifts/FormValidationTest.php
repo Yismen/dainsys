@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Shifts;
 
-use App\Shift;
+use App\Models\Shift;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

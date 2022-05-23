@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Nationalities;
 
-use App\Nationality;
+use App\Models\Nationality;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

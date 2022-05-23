@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Menus;
 
-use App\Menu;
+use App\Models\Menu;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

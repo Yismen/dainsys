@@ -1,4 +1,4 @@
-@inject('layout', 'App\Layout')
+@inject('layout', 'App\Models\Layout')
 @extends('layouts.'.$layout->site(), ['page_header'=>'Home', 'page_description'=>'Home page!',
 'hide_content_header'=>false])
 

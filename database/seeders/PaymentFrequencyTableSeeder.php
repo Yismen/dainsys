@@ -1,7 +1,7 @@
 <?php
 namespace Database\Seeders;
 
-use App\PaymentFrequency;
+use App\Models\PaymentFrequency;
 use Illuminate\Database\Seeder;
 
 class PaymentFrequencyTableSeeder extends Seeder

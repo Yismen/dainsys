@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\PaymentFrequency;
+use App\Models\PaymentFrequency;
 use App\Http\Controllers\Controller;
 
 class PaymentFrequenciesController extends Controller

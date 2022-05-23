@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\OvernightHour;
+use App\Models\OvernightHour;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OvernightHourResource;
 

@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use App\Track;
+use App\Models\Track;
 
 /**
  * summary

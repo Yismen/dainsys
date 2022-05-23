@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewPaymentType()
     {
-        $payment_type = create('App\PaymentType');
+        $payment_type = create('App\Models\PaymentType');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.payment_types.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetPaymentType()
     {
-        $payment_type = create('App\PaymentType');
+        $payment_type = create('App\Models\PaymentType');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.payment_types.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditPaymentType()
     {
-        $payment_type = create('App\PaymentType');
+        $payment_type = create('App\Models\PaymentType');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.payment_types.update', $payment_type->id))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyPaymentType()
     {
-        $payment_type = create('App\PaymentType');
+        $payment_type = create('App\Models\PaymentType');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.payment_types.destroy', $payment_type->id))

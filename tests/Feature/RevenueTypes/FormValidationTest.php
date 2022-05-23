@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\RevenueTypes;
 
-use App\RevenueType;
+use App\Models\RevenueType;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

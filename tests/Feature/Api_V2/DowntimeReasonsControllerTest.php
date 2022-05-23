@@ -3,7 +3,7 @@
 namespace Tests\Feature\Api_V2;
 
 use Tests\TestCase;
-use App\DowntimeReason;
+use App\Models\DowntimeReason;
 use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

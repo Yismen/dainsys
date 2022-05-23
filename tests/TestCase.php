@@ -19,7 +19,7 @@ abstract class TestCase extends BaseTestCase
 
     protected function signIn($user = null)
     {
-        $user = $user ?: create('App\User');
+        $user = $user ?: create('App\Models\User');
         $this->actingAs($user);
 
         return $this;
@@ -57,17 +57,17 @@ abstract class TestCase extends BaseTestCase
 
     protected function user(array $attributes = [])
     {
-        $user = create('App\User', $attributes);
+        $user = create('App\Models\User', $attributes);
 
         return $user;
     }
 
     protected function userWithPermission($permit)
     {
-        $user = create('App\User');
-        $role = create('App\Role');
+        $user = create('App\Models\User');
+        $role = create('App\Models\Role');
         $user->roles()->sync($role->id);
-        $permission = create('App\Permission', ['name' => $permit]);
+        $permission = create('App\Models\Permission', ['name' => $permit]);
         $role->permissions()->sync($permission->id);
 
         return $user;
@@ -75,8 +75,8 @@ abstract class TestCase extends BaseTestCase
 
     protected function userWithRole($role)
     {
-        $user = create('App\User');
-        $role = create('App\Role', ['name' => $role]);
+        $user = create('App\Models\User');
+        $role = create('App\Models\Role', ['name' => $role]);
         $user->roles()->sync($role->id);
 
         return $user;

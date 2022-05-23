@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Supervisor;
+use App\Models\Supervisor;
 use App\Http\Controllers\Controller;
 
 class SupervisorsController extends Controller

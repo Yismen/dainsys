@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api\Performances;
 
-use App\Employee;
+use App\Models\Employee;
 use Carbon\Carbon;
-use App\Performance;
+use App\Models\Performance;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DowntimesResource;
 

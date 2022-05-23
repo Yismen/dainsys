@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Api;
 
-use App\Campaign;
-use App\Employee;
-use App\Supervisor;
+use App\Models\Campaign;
+use App\Models\Employee;
+use App\Models\Supervisor;
 use Tests\TestCase;
-use App\Performance;
+use App\Models\Performance;
 use Illuminate\Support\Arr;
 use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;

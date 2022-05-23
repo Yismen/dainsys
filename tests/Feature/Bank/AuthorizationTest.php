@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewBank()
     {
-        $bank = create('App\Bank');
+        $bank = create('App\Models\Bank');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.banks.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetBank()
     {
-        $bank = create('App\Bank');
+        $bank = create('App\Models\Bank');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.banks.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditBank()
     {
-        $bank = create('App\Bank');
+        $bank = create('App\Models\Bank');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.banks.update', $bank->id))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyBank()
     {
-        $bank = create('App\Bank');
+        $bank = create('App\Models\Bank');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.banks.destroy', $bank->id))

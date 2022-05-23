@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use Carbon\Carbon;
-use App\Performance;
+use App\Models\Performance;
 use Illuminate\Support\Facades\DB;
 
 class PerformanceRepository

@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Api_V2;
 
-use App\Vip;
-use App\Employee;
+use App\Models\Vip;
+use App\Models\Employee;
 use Tests\TestCase;
 use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;

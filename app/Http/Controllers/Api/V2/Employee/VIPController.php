@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\V2\Employee;
 
-use App\Employee;
+use App\Models\Employee;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

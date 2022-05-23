@@ -3,7 +3,7 @@
 namespace Tests\Feature\Api_V2;
 
 use Tests\TestCase;
-use App\Notification;
+use App\Models\Notification;
 use Illuminate\Support\Arr;
 use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;

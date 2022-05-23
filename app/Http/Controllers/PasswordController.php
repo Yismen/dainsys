@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Password;
+use App\Models\Password;
 
 class PasswordController extends Controller
 {

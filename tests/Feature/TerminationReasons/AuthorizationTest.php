@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewTerminationReason()
     {
-        $termination_reason = create('App\TerminationReason');
+        $termination_reason = create('App\Models\TerminationReason');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.termination_reasons.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetTerminationReason()
     {
-        $termination_reason = create('App\TerminationReason');
+        $termination_reason = create('App\Models\TerminationReason');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.termination_reasons.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditTerminationReason()
     {
-        $termination_reason = create('App\TerminationReason');
+        $termination_reason = create('App\Models\TerminationReason');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.termination_reasons.update', $termination_reason->id))

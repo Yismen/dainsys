@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Afp;
+use App\Models\Afp;
 use App\Http\Controllers\Controller;
 
 class AfpsController extends Controller

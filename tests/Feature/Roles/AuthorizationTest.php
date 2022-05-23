@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewRole()
     {
-        $role = create('App\Role');
+        $role = create('App\Models\Role');
         $response = $this->actingAs($this->userWithRole('wrong-role'));
 
         $response->get(route('admin.roles.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetRole()
     {
-        $role = create('App\Role');
+        $role = create('App\Models\Role');
         $response = $this->actingAs($this->userWithRole('wrong-role'));
 
         $response->post(route('admin.roles.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditRole()
     {
-        $role = create('App\Role');
+        $role = create('App\Models\Role');
         $response = $this->actingAs($this->userWithRole('wrong-role'));
 
         $response->put(route('admin.roles.update', $role->name))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyRole()
     {
-        $role = create('App\Role');
+        $role = create('App\Models\Role');
         $response = $this->actingAs($this->userWithRole('wrong-role'));
 
         $response->delete(route('admin.roles.destroy', $role->name))
