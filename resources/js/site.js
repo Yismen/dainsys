@@ -2,7 +2,7 @@ try {
     window.VueSite = require('vue');
     window.$ = window.jQuery = require('jquery');
     window._ = require('lodash');
-    // require('bootstrap');
+    // window.bootstrap = require('bootstrap');
 } catch (e) { console.log(e) }
 
 
@@ -18,7 +18,7 @@ const appSite = new VueSite({
     let elements = document.querySelectorAll('.animatable');
     let options = {
         rootMargin: '0px',
-        threshold: .5
+        threshold: .3
     }
 
     let observer = new IntersectionObserver(entries => {
@@ -47,12 +47,48 @@ const appSite = new VueSite({
     });
 })();
 
-document.getElementById('more-button')
-    .addEventListener('click', (e) => {
-        e.preventDefault();
-        let element = document.querySelector(e.target.attributes.href.value);
+// Observe to toggle active class
+(function () {
+    let links = document.querySelectorAll('.nav-links a');
+    let sections = document.querySelectorAll('section');
 
-        // smooth scroll to element and align it at the bottom
-        element.scrollIntoView({ behavior: 'smooth' });
+    let observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
 
+            if (entry.isIntersecting) {
+
+                let entry_id = entry.target.id
+                links.forEach(link => {
+                    entry_id === link.href.split("#")[1] ?
+                        link.classList.add('active') :
+                        link.classList.remove('active');
+                });
+            }
+
+        });
+
+    }, {
+        threshold: 0.5
     });
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+})();
+
+// Prevent links from updating the url and scroll into their view
+(function () {
+
+    let links_scroll = document.querySelectorAll('.nav-links a, a.brand');
+    const NAVBAR_HEIGHT = document.querySelector('.navbar-fixed-top').offsetHeight;
+
+    links_scroll.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            let element_offset_top = document.querySelector(e.target.attributes.href.value).offsetTop;
+            window.scrollTo(0, element_offset_top - NAVBAR_HEIGHT)
+
+        })
+    });
+})();

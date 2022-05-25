@@ -32,21 +32,9 @@
                 </section>
 
             </div>
-            <footer class="bg-white border-top flex flex-column justify-space-between main-footer md:flex-row px-15 py-10 md:px-20">
-                <div>
-                    <strong>
-                        Copyright &copy; {{ date("Y") }}
-                        <a href="{{ url('/admin') }}">
-                            {{ $app_name }}, {{ $client_name }}
-                        </a>.
-                    </strong> All rights reserved.
-                </div>
-                <div class="md:m-0 mt-7">
-                    @include('layouts.partials.links.webmaster')
-                </div>
-            </footer>
         </div>
         <script src="{{ mix('js/site.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
         @stack('scripts')
     </body>
 
