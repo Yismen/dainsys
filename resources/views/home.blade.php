@@ -8,21 +8,22 @@
             <a href="#home" class="brand animatable">{{ $app_name }}</a>
             <div class="flex gap-15">
                 <div class="d-none fs-8 gap-10 items-center md:d-flex nav-links">
+                    <a href="#home" class="">Home</a>
                     <a href="#about" class="">About</a>
                     <a href="#features" class="">Features</a>
                     <a href="#contact" class="">Contact</a>
                 </div>
-                
-                <a href="/admin" type="button" class="btn bg-secondary"  aria-expanded="false">
-                    @auth
-                        Access
-                    @endauth
-
-                    @guest
-                        Log In
-                    @endguest
-                </a>
             </div>
+                
+            <a href="/admin" type="button" class="btn bg-secondary"  aria-expanded="false">
+                @auth
+                    Access
+                @endauth
+
+                @guest
+                    Log In
+                @endguest
+            </a>
         </div>
     
         <section class="d-flex flex-column gap-row-10 hero items-center justify-space-between px-10 py-15 md:flex-row md:px-25 lg:px-40" id="home">
@@ -36,7 +37,7 @@
                 </div>
             </div>
     
-            <img class="mt-20 w-50 md:w-40 lg:w-30" src="{{ asset('images/main-header.png') }}" alt="Header Image" >
+            <img class="mt-20 w-40 md:w-30 lg:w-20" src="{{ asset('images/main-header.png') }}" alt="Header Image" >
         </section>
 
         <section class="flex flex-column px-10 py-15 md:px-25 lg:px-40" id="about">            
@@ -158,20 +159,28 @@
             <div class="flex flex-row justify-space-between self-center w-80 md:flex-column md:gap-10 md:w-30 md:self-flex-start">
                 <div class="flex flex-column">
                     <h5 class="fs-10 fw-700 ">Yismen Jorge</h5>
-                    <a href="tel:+1-829-521-3304" class="flex footer-link gap-4 items-center">
+                    <a href="tel:+1-829-521-3304" class="flex footer-link gap-4 items-center" target="__new">
                         <i class="fa fa-phone"></i>
                         1-829-521-3304
                     </a>
-                    <a href="mailto:yismen.jorge@gmail.com" class="flex footer-link gap-4 items-center">
+                    <a href="mailto:yismen.jorge@gmail.com" class="flex footer-link gap-4 items-center" target="__new">
                         <i class="fa fa-phone"></i>
                         yismen.jorge@gmail.com
                     </a>
 
                     <div class="flex mt-4 gap-8">
-                        <a href="" class="social-icon"><i class="fa fa-github"></i></a>
-                        <a href="" class="social-icon"><i class="fa fa-instagram"></i></a>
-                        <a href="" class="social-icon"><i class="fa fa-facebook-square"></i></a>
-                        <a href="" class="social-icon"><i class="fa fa-whatsapp"></i></a>
+                        <a target="__new" href="https://github.com/yismen" class="social-icon">
+                            <i class="fa fa-github"></i>
+                        </a>
+                        <a target="__new" href="#" class="social-icon">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a target="__new" href="#" class="social-icon">
+                            <i class="fa fa-facebook-square">
+                                </i></a>
+                        <a target="__new" href="https://wa.me/18295213304?text=Hi!" class="social-icon">
+                            <i class="fa fa-whatsapp"></i>
+                        </a>
                     </div>
                 </div>
 
