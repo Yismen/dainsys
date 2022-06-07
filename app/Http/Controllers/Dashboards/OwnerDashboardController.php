@@ -8,7 +8,8 @@ class OwnerDashboardController extends DashboardAbstractController
 {
     public function __construct()
     {
-        $this->middleware('role:owner');
+        // $this->middleware('role:owner');
+        $this->middleware('authorize:view-owner-dashboard', ['only' => ['index']]);
     }
 
     /**

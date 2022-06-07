@@ -9,8 +9,8 @@ class DainsysAuthorization
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure                 $next
      * @return mixed
      */
     public function handle($request, Closure $next, $permissions = null)
@@ -44,6 +44,7 @@ class DainsysAuthorization
             $this->parsePermissions($permissions)
         )) {
             session()->flash('danger', 'Unauthorized! Permissions Needed: ' . $permissions);
+
             abort(403, 'Unauthorized');
         }
     }

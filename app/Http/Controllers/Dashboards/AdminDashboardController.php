@@ -13,7 +13,8 @@ class AdminDashboardController extends DashboardAbstractController
      */
     public function __construct()
     {
-        $this->middleware('role:admin');
+        // $this->middleware('role:admin');
+        $this->middleware('authorize:view-admin-dashboard', ['only' => ['index']]);
     }
 
     /**

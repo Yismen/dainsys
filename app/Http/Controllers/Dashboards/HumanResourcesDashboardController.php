@@ -14,7 +14,8 @@ class HumanResourcesDashboardController extends DashboardAbstractController
      */
     public function __construct()
     {
-        $this->middleware('role:human-resource');
+        // $this->middleware('role:human-resource');
+        $this->middleware('authorize:view-human-resources-dashboard', ['only' => ['index']]);
     }
 
     public function index()
