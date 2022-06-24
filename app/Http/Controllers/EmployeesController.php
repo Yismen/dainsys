@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
-use Carbon\Carbon;
 use App\Models\Termination;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -15,7 +14,7 @@ class EmployeesController extends Controller
     private $request;
     private $carbon;
 
-    public function __construct(Request $request, Carbon $carbon)
+    public function __construct()
     {
         $this->middleware('authorize:view-employees|edit-employees|create-employees', ['only' => ['index', 'show']]);
         $this->middleware('authorize:edit-employees', ['only' => ['edit', 'update']]);
@@ -175,7 +174,7 @@ class EmployeesController extends Controller
             'position_id' => 'required|exists:positions,id',
         ]);
 
-        $employee->update($validated);
+        $employee->update($request->all());
 
         if ($request->ajax()) {
             return $employee;

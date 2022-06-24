@@ -546,6 +546,7 @@ export default {
   components: { DatePicker, CreatePosition, Select2 },
 
   mounted() {
+    this.$store.dispatch("employee/set", this.employee);
     this.positions_list = this.employee.positions_list;
     this.projects_list = this.getProjectsList(this.employee.projects_list);
   },
@@ -614,6 +615,7 @@ export default {
     },
     addPosition(position) {
       this.positions_list.unshift(position);
+      this.form.fields.position_id = position.id
     },
     getEmployeeObject() {
       let employee = this.$store.getters["employee/getEmployee"];
