@@ -89,7 +89,25 @@ class EmployeesController extends Controller
         $employee->punch()->create($request->only(['punch']));
 
         if ($request->ajax()) {
-            return $employee;
+            return $employee
+            ->append([
+                'ars_list',
+                'afp_list',
+                'banks_list',
+                'departments_list',
+                'genders_list',
+                'has_kids_list',
+                'maritals_list',
+                'positions_list',
+                'projects_list',
+                'payment_types_list',
+                'payment_frequencies_list',
+                'nationalities_list',
+                'sites_list',
+                'supervisors_list',
+                'termination_type_list',
+                'termination_reason_list',
+            ]);
         }
 
         return redirect()->route('admin.employees.edit', $employee->id)
@@ -177,7 +195,25 @@ class EmployeesController extends Controller
         $employee->update($request->all());
 
         if ($request->ajax()) {
-            return $employee;
+            return $employee
+            ->append([
+                'ars_list',
+                'afp_list',
+                'banks_list',
+                'departments_list',
+                'genders_list',
+                'has_kids_list',
+                'maritals_list',
+                'positions_list',
+                'projects_list',
+                'payment_types_list',
+                'payment_frequencies_list',
+                'nationalities_list',
+                'sites_list',
+                'supervisors_list',
+                'termination_type_list',
+                'termination_reason_list',
+            ]);
         }
 
         return redirect()->route('admin.employees.edit', $employee->id)
