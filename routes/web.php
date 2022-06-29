@@ -233,6 +233,5 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
         ->name('users.inactive-users.restore');
     Route::resource('users', UsersController::class);
 
-    Route::resource('vips', \App\Http\Controllers\VipController::class)
-        ->except('create', 'show');
+    Route::get('vips', [\App\Http\Controllers\VipController::class, 'index'])->name('vips.index');
 });
