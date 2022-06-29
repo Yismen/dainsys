@@ -33,23 +33,39 @@ class Vips extends Component
         return view('livewire.vips', [
             'vip_employees' => $this->getEmployees('vips'),
             'non_vip_employees' => $this->getEmployees('noVips'),
-            'sites' => Cache::rememberForever('sites', function () {
+            'sites' => Cache::rememberForever('vip_sites', function () {
                 return Site::query()
+                    ->with('employees')
+                    ->whereHas('employees', function ($quer) {
+                        $quer->actives();
+                    })
                     ->orderBy('name')
                     ->get();
             }),
-            'departments' => Cache::rememberForever('departments', function () {
+            'departments' => Cache::rememberForever('vip_departments', function () {
                 return Department::query()
+                    ->with('employees')
+                    ->whereHas('employees', function ($quer) {
+                        $quer->actives();
+                    })
                     ->orderBy('name')
                     ->get();
             }),
-            'projects' => Cache::rememberForever('projects', function () {
+            'projects' => Cache::rememberForever('vip_projects', function () {
                 return Project::query()
+                    ->with('employees')
+                    ->whereHas('employees', function ($quer) {
+                        $quer->actives();
+                    })
                     ->orderBy('name')
                     ->get();
             }),
-            'positions' => Cache::rememberForever('positions', function () {
+            'positions' => Cache::rememberForever('vip_positions', function () {
                 return Position::query()
+                    ->with('employees')
+                    ->whereHas('employees', function ($quer) {
+                        $quer->actives();
+                    })
                     ->orderBy('name')
                     ->with('department', 'payment_type')
                     ->get();

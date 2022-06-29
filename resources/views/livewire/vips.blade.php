@@ -16,10 +16,10 @@
                         {{-- Site Filter --}}
                         <div class="col-sm-3">
                             <div class="form-group">
-                                <label for="site">
+                                <label for="site" class="d-flex justify-space-between">
                                     Filter By Site 
                                     @if (count($site_list) > 0)
-                                        <button class="btn btn-xs btn-primary" wire:click="$set('site_list', [])">All Sites</button>
+                                        <button class="btn btn-xs btn-primary" wire:click="$set('site_list', [])" title="All Sites">X</button>
                                     @endif
                                 </label>
                                 
@@ -33,10 +33,10 @@
                         {{-- Department Filter --}}
                         <div class="col-sm-3">
                             <div class="form-group">
-                                <label for="department">
+                                <label for="department" class="d-flex justify-space-between">
                                     Filter By Department 
                                     @if (count($department_list) > 0)
-                                        <button class="btn btn-xs btn-primary" wire:click="$set('department_list', [])">All Departments</button>
+                                        <button class="btn btn-xs btn-primary" wire:click="$set('department_list', [])" title="All Departments">X</button>
                                     @endif
                                 </label>
                                 
@@ -50,10 +50,10 @@
                         {{-- Project Filter --}}
                         <div class="col-sm-3">
                             <div class="form-group">
-                                <label for="project">
+                                <label for="project" class="d-flex justify-space-between">
                                     Filter By Project 
                                     @if (count($project_list) > 0)
-                                        <button class="btn btn-xs btn-primary" wire:click="$set('project_list', [])">All Projects</button>
+                                        <button class="btn btn-xs btn-primary" wire:click="$set('project_list', [])" title="All Projects">X</button>
                                     @endif
                                 </label>
                                 
@@ -67,10 +67,10 @@
                         {{-- Position Filter --}}
                         <div class="col-sm-3">                            
                             <div class="form-group">
-                                <label for="position">
+                                <label for="position" class="d-flex justify-space-between">
                                     Filter By Position 
                                     @if (count($position_list) > 0)
-                                        <button class="btn btn-xs btn-primary" wire:click="$set('position_list', [])">All Positions</button>
+                                        <button class="btn btn-xs btn-primary" wire:click="$set('position_list', [])" title="All Positions">X</button>
                                     @endif
                                 </label>
                                 
@@ -91,7 +91,7 @@
                                     <input type="text" class="form-control" wire:model.lazy="search" wire:ignore id="search">
                             
                                     @if (strlen($search) > 0)
-                                        <span class="input-group-btn">
+                                        <span class="input-group-btn" title="Clear search">
                                             <button class="btn btn-default" type="button" wire:click="$set('search', '')">X</button>
                                         </span>
                                     @endif
