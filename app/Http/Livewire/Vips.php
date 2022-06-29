@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use App\Models\Site;
 use Livewire\Component;
 use App\Models\Employee;
+use App\Models\Position;
+use App\Models\Department;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Cache;
 use App\Repositories\Employees\VipRepo;
@@ -17,6 +19,10 @@ class Vips extends Component
 
     public array $site_list = [1];
 
+    public array $department_list = [];
+
+    public array $position_list = [];
+
     public string $search = '';
 
     public function render()
@@ -26,6 +32,16 @@ class Vips extends Component
             'non_vip_employees' => $this->getEmployees('noVips'),
             'sites' => Cache::rememberForever('sites', function () {
                 return Site::query()
+                    ->orderBy('name')
+                    ->get();
+            }),
+            'departments' => Cache::rememberForever('departments', function () {
+                return Department::query()
+                    ->orderBy('name')
+                    ->get();
+            }),
+            'positions' => Cache::rememberForever('positions', function () {
+                return Position::query()
                     ->orderBy('name')
                     ->get();
             })
@@ -47,10 +63,26 @@ class Vips extends Component
         $repo = new VipRepo();
 
         return $repo->$method()
-        ->with('site', 'position.payment_type', 'project')
+        ->with([
+            'site',
+            'project',
+            'position' => function ($query) {
+                $query->with(['payment_type', 'department']);
+            },
+        ])
         ->when(count($this->site_list) > 0, function ($query) {
             $query->whereHas('site', function ($site_query) {
                 $site_query->whereIn('id', $this->site_list);
+            });
+        })
+        ->when(count($this->department_list) > 0, function ($query) {
+            $query->whereHas('position.department', function ($department_query) {
+                $department_query->whereIn('id', $this->department_list);
+            });
+        })
+        ->when(count($this->position_list) > 0, function ($query) {
+            $query->whereHas('position', function ($position_query) {
+                $position_query->whereIn('id', $this->position_list);
             });
         })
         ->when(strlen($this->search) > 0, function ($query) {
