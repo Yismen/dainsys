@@ -59,7 +59,7 @@
                                 
                                 <select class="form-control" multiple wire:model="position_list" id="position">
                                     @foreach ($positions as $position)
-                                        <option value="{{ $position->id }}" wire:key="{{ $position->id }}">{{ $position->name }}</option>
+                                        <option value="{{ $position->id }}" wire:key="{{ $position->id }}">{{ $position->name }}, ${{ $position->pay_per_hours }}</option>
                                     @endforeach
                                 </select>
                             </div>

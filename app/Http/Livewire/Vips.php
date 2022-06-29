@@ -43,6 +43,7 @@ class Vips extends Component
             'positions' => Cache::rememberForever('positions', function () {
                 return Position::query()
                     ->orderBy('name')
+                    ->with('department', 'payment_type')
                     ->get();
             })
         ]);
