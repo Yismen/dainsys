@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Site;
+use App\Models\Project;
 use Livewire\Component;
 use App\Models\Employee;
 use App\Models\Position;
@@ -21,6 +22,8 @@ class Vips extends Component
 
     public array $department_list = [];
 
+    public array $project_list = [];
+
     public array $position_list = [];
 
     public string $search = '';
@@ -37,6 +40,11 @@ class Vips extends Component
             }),
             'departments' => Cache::rememberForever('departments', function () {
                 return Department::query()
+                    ->orderBy('name')
+                    ->get();
+            }),
+            'projects' => Cache::rememberForever('projects', function () {
+                return Project::query()
                     ->orderBy('name')
                     ->get();
             }),
@@ -79,6 +87,11 @@ class Vips extends Component
         ->when(count($this->department_list) > 0, function ($query) {
             $query->whereHas('position.department', function ($department_query) {
                 $department_query->whereIn('id', $this->department_list);
+            });
+        })
+        ->when(count($this->project_list) > 0, function ($query) {
+            $query->whereHas('project', function ($project_query) {
+                $project_query->whereIn('id', $this->project_list);
             });
         })
         ->when(count($this->position_list) > 0, function ($query) {

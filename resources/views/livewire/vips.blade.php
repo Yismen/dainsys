@@ -13,6 +13,7 @@
             <div class="box">
                 <div class="box-body">
                     <div class="row">
+                        {{-- Site Filter --}}
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <label for="site">
@@ -29,7 +30,7 @@
                                 </select>
                             </div>
                         </div>
-                        
+                        {{-- Department Filter --}}
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <label for="department">
@@ -46,9 +47,25 @@
                                 </select>
                             </div>
                         </div>
-
+                        {{-- Project Filter --}}
                         <div class="col-sm-3">
-                            
+                            <div class="form-group">
+                                <label for="project">
+                                    Filter By Project 
+                                    @if (count($project_list) > 0)
+                                        <button class="btn btn-xs btn-primary" wire:click="$set('project_list', [])">All Projects</button>
+                                    @endif
+                                </label>
+                                
+                                <select class="form-control" multiple wire:model="project_list" id="project">
+                                    @foreach ($projects as $project)
+                                        <option value="{{ $project->id }}" wire:key="{{ $project->id }}">{{ $project->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        {{-- Position Filter --}}
+                        <div class="col-sm-3">                            
                             <div class="form-group">
                                 <label for="position">
                                     Filter By Position 
@@ -59,16 +76,18 @@
                                 
                                 <select class="form-control" multiple wire:model="position_list" id="position">
                                     @foreach ($positions as $position)
-                                        <option value="{{ $position->id }}" wire:key="{{ $position->id }}">{{ $position->name }}, ${{ $position->pay_per_hours }}</option>
+                                        <option value="{{ $position->id }}" wire:key="{{ $position->id }}">{{ $position->name }}, ${{ number_format($position->pay_per_hours,0) }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-sm-3">                            
+                    <div class="row">
+                        <div class="col-sm-6">                            
                             <div class="form-group">
                                 <label for="search">Search</label>
-                                <div class="input-group">
+                                <div class="{{ strlen($search) > 0 ? 'input-group' : '' }}">
                                     <input type="text" class="form-control" wire:model.lazy="search" wire:ignore id="search">
                             
                                     @if (strlen($search) > 0)
