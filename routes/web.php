@@ -208,8 +208,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::resource('termination_types', \App\Http\Controllers\TerminationTypeController::class)
         ->except(['destroy']);
 
-    Route::resource('universals', \App\Http\Controllers\UniversalController::class)
-        ->except('create', 'show');
+    Route::get('universals', [\App\Http\Controllers\UniversalController::class, 'index'])->name('vips.index');
 
     Route::get('users/search', UserController::class)
         ->name('users.search');
