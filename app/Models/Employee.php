@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use App\Traits\Trackable;
-use App\Models\DainsysModel as Model;
 use App\ModelFilters\FilterableTrait;
+use App\Models\DainsysModel as Model;
 use App\Http\Traits\Mutators\EmployeeMutators;
 use App\Http\Traits\Accessors\EmployeeAccessors;
 use App\Http\Traits\Relationships\EmployeeRelationships;
@@ -223,7 +223,7 @@ class Employee extends Model
     {
         $default_sites = config('dainsys.limit_queries.sites');
 
-        $query->when(request('site') === null, function ($query) use ($default_sites) {
+        return $query->when(request('site') === null, function ($query) use ($default_sites) {
             $query->whereHas('site', function ($site_query) use ($default_sites) {
                 $site_query->whereIn('name', $default_sites);
             });

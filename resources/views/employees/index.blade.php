@@ -51,7 +51,7 @@
                             <table class="table table-hover table-condensed table-bordered" id="employees-table">
                                 <thead>
                                     <tr>
-                                        <th>ID:</th>
+                                        <th>Photo:</th>
                                         <th>@lang('First Name'):</th>
                                         <th>@lang('Second') @lang('First name'):</th>
                                         <th>@lang('Last Name'):</th>
@@ -91,8 +91,8 @@
                 searchDelay: 800,
                 // "scrollY": "600px",
                 // "scrollCollapse": true,
-                "pageLength": 25,
-                "lengthMenu": [ [25, 100, 200, -1], [25, 100, 200, "All"] ],
+                "pageLength": 10,
+                "lengthMenu": [ [10, 25, 100, -1], [10, 25, 100, "All"] ],
                 "search": { "regex": true },
                 "createdRow": function( row, data, dataIndex){
                     if(! data.active){
@@ -109,16 +109,22 @@
                 "order": [[ 1, "asc" ], [ 2, "asc" ], [ 3, "asc" ], [ 4, "asc" ]],
                 "columns": [
                     {data: 'id', name: 'id', render: function(data, type, full) {
-                        return `<a 
-                            href="/admin/employees/${data}"
-                            title="View employee details"
-                            >
-                            ${data} <i class="fa fa-eye"></i>
-                        </a>`
-                        return '<a href="/admin/employees/'+data+'">'+ data +'</a>'
+                        return `<a href="/${full.photo}" target="_employee-photo">
+                        <div class="widget-user-image">
+                            <img src="/${full.photo}"
+                                    class="img-circle img-responsive center-block" alt="Image" width="50px">
+                        </div>
+                    </a> `
                     }},
                     {data: 'first_name', name: 'first_name', render: function(data, type, full){
-                        return full.full_name.trim();
+                       console.log(full)
+                        return `<a 
+                            href="/admin/employees/${full.id}"
+                            title="View employee details"
+                            >
+                            ${full.full_name.trim()}
+                        </a>`
+
                     }},
                     {data: 'second_first_name', name: 'second_first_name', 'visible': false},
                     {data: 'last_name', name: 'last_name', 'visible': false},

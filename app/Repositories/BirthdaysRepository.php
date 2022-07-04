@@ -8,8 +8,6 @@ class BirthdaysRepository
 {
     protected function query()
     {
-        $default_sites = config('dainsys.limit_queries.sites');
-
         $orderClause = env('DB_CONNECTION') === 'sqlite' ?
             'strftime("%d", date_of_birth) ASC' :
             'Day(date_of_birth) ASC';

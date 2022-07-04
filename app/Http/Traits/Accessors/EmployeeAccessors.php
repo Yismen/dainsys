@@ -2,6 +2,7 @@
 
 namespace App\Http\Traits\Accessors;
 
+use Carbon\Carbon;
 use App\Models\Afp;
 use App\Models\Ars;
 use App\Models\Bank;
@@ -10,7 +11,6 @@ use App\Models\Gender;
 use App\Models\Marital;
 use App\Models\Project;
 use App\Models\Position;
-use Carbon\Carbon;
 use App\Models\Department;
 use App\Models\Supervisor;
 use App\Models\Nationality;
@@ -68,7 +68,7 @@ trait EmployeeAccessors
 
     public function getPhotoAttribute($photo)
     {
-        return '' == $photo ? asset('images/placeholders/300.png') : $photo;
+        return '' == $photo ? 'images/placeholders/300.png' : $photo;
     }
 
     public function getStatusAttribute()

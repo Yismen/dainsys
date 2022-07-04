@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -17,10 +16,6 @@ class UniversalTest extends TestCase
     {
         $universal = create('App\Models\Universal');
         $this->get(route('admin.universals.index'))->assertRedirect('/login');
-        $this->post(route('admin.universals.store', $universal->toArray()))->assertRedirect('/login');
-        $this->get(route('admin.universals.edit', $universal->id))->assertRedirect('/login');
-        $this->put(route('admin.universals.update', $universal->id))->assertRedirect('/login');
-        $this->delete(route('admin.universals.destroy', $universal->id))->assertRedirect('/login');
     }
 
     /** @test */
@@ -31,18 +26,6 @@ class UniversalTest extends TestCase
 
         $response = $this->get('/admin/universals');
         $response->assertStatus(403);
-
-        $response = $this->post(route('admin.universals.store'));
-        $response->assertStatus(403);
-
-        $response = $this->get(route('admin.universals.edit', $universal->id));
-        $response->assertStatus(403);
-
-        $response = $this->put(route('admin.universals.update', $universal->id));
-        $response->assertStatus(403);
-
-        $response = $this->delete(route('admin.universals.destroy', $universal->id));
-        $response->assertStatus(403);
     }
 
     /** @test */
@@ -50,122 +33,18 @@ class UniversalTest extends TestCase
     {
         $user = $this->userWithPermission('view-universals');
         $universal = create('App\Models\Universal');
+        $employee = create('App\Models\Employee');
         $this->actingAs($user);
 
-        $employee = create('App\Models\Employee');
         $universal->employee()->associate($employee);
         $universal->save();
 
         $response = $this->get('/admin/universals');
-        $response->assertSee('Universal List');
-        $response->assertSee('Add to Universals List');
-        $response->assertSee($universal->employee->full_name);
-    }
 
-    /** @test */
-    public function authorized_users_can_create_universal_resource()
-    {
-        $user = $this->userWithPermission('create-universals');
-        $this->actingAs($user);
-
-        $universal = create('App\Models\Universal');
-
-        $employee = create('App\Models\Employee');
-        $universal->employee()->associate($employee);
-        $universal->save();
-
-        $response = $this->post(
-            route(
-                'admin.universals.store',
-                $this->formAttributes(
-                    ['employee_id' => $employee->id, 'since' => Carbon::now()->format('Y-m-d')]
-                )
-            )
-        );
-
-        $response->assertRedirect(route('admin.universals.index'));
-    }
-
-    /** @test */
-    public function it_allows_users_with_destroy_universals_permission_to_destroy_universals()
-    {
-        // given
-        $user = $this->userWithPermission('destroy-universals');
-        $universal = create('App\Models\Universal');
-
-        // when
-        $this->actingAs($user);
-        $response = $this->delete(route('admin.universals.destroy', $universal->id));
-
-        // assert
-        $response->assertRedirect(route('admin.universals.index'));
-        $this->assertDatabaseMissing('universals', ['id' => $universal->id]);
-    }
-
-    /** @test */
-    public function a_user_can_create_a_universal()
-    {
-        $universal = create('App\Models\Universal');
-
-        $employee = create('App\Models\Employee');
-        $universal->employee()->associate($employee);
-        $universal->save();
-
-        $this->actingAs($this->userWithPermission('create-universals'))
-            ->post(route('admin.universals.store', $universal->toArray()));
-
-        $this->assertDatabaseHas('universals', ['employee_id' => $universal->employee_id]);
-
-        $this->get(route('admin.universals.index'))
-            ->assertSee($universal->employee->full_name);
-    }
-
-    /** @test */
-    public function it_requires_a_date_to_create_a_universal()
-    {
-        $this->actingAs($this->userWithPermission('create-universals'))
-            ->post(route('admin.universals.store'), $this->formAttributes(['since' => '']))
-            ->assertSessionHasErrors('since');
-    }
-
-    /** @test */
-    public function a_user_can_see_a_form_to_update_a_universal()
-    {
-        $universal = create('App\Models\Universal');
-
-        $employee = create('App\Models\Employee');
-        $universal->employee()->associate($employee);
-        $universal->save();
-
-        $this->actingAs($this->userWithPermission('edit-universals'))
-            ->get(route('admin.universals.edit', $universal->id))
-            ->assertSee('Edit Universal ' . $universal->employee->full_name);
-    }
-
-    /** @test */
-    public function test_validations_to_update()
-    {
-        $user = $this->userWithPermission('edit-universals');
-        $universal = create('App\Models\Universal');
-
-        $this->actingAs($user)
-            ->put(route('admin.universals.update', $universal->id), $this->formAttributes(['since' => '']))
-            ->assertSessionHasErrors('since');
-    }
-
-    /** @test */
-    public function a_user_can_update_a_universal()
-    {
-        $universal = create('App\Models\Universal');
-        $date = Carbon::now()->format('Y-m-d 00:00:00');
-        $array = ['since' => $date];
-
-        $this->actingAs($this->userWithPermission('edit-universals'))
-            ->put(route('admin.universals.update', $universal->id), $array);
-
-        $this->assertDatabaseHas('universals', $array);
-
-        $this->get(route('admin.universals.index'))
-            ->assertSee(Carbon::parse($date)->diffForHumans());
+        $response->assertOk();
+        $response->assertSee('Universal Employees');
+        $response->assertSee('Non Universal Employees');
+        // $response->assertSee('Add to Universal List');
+        // $response->assertSee($universal->employee->full_name);
     }
 }

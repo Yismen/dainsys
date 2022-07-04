@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Seeders;
 
 use App\Models\Site;
@@ -13,7 +14,7 @@ class SitesTableSeeder extends Seeder
      */
     public function run()
     {
-        Site::create(['name' => 'Santiago - Head Quarter']);
+        Site::create(['name' => 'Santiago-HQ']);
         Site::create(['name' => 'Florida']);
     }
 }

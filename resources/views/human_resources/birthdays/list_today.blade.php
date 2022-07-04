@@ -6,7 +6,7 @@
             <div class="widget-user-header bg-green">
                 <a href="{{ route('admin.employees.show', $employee->id) }}" target="_employee" title="Details">
                     <div class="widget-user-image">
-                        <img class="img-circle" src="{{ $employee->photo }}" alt="User Avatar">
+                        <img class="img-circle" src="{{ asset($employee->photo) }}" alt="User Avatar">
                     </div>
                 </a>
                 <!-- /.widget-user-image -->
