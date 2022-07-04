@@ -13,8 +13,8 @@ class AddressController extends Controller
     /**
      * update employees' address
      *
-     * @param Employee $employee
-     * @param Request $request
+     * @param  Employee $employee
+     * @param  Request  $request
      * @return void
      */
     public function update(Employee $employee, Request $request, Address $address)
@@ -33,6 +33,6 @@ class AddressController extends Controller
 
         $employee->address()->updateOrCreate([], $request->only(['sector', 'street_address', 'city']));
 
-        return $employee->load('address');
+        return $employee->loadLists();
     }
 }

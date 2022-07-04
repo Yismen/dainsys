@@ -117,7 +117,6 @@
                     </a> `
                     }},
                     {data: 'first_name', name: 'first_name', render: function(data, type, full){
-                       console.log(full)
                         return `<a 
                             href="/admin/employees/${full.id}"
                             title="View employee details"

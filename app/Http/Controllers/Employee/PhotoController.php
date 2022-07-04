@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Employee;
 
-use Illuminate\Support\Facades\Cache;
 use App\Models\Employee;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Repositories\ImageMaker;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
@@ -25,6 +26,19 @@ class PhotoController extends Controller
 
         Cache::forget('employees');
 
-        return $employee;
+        return $employee->loadLists();
+    }
+
+    public function destroy(Employee $employee)
+    {
+        $path = Str::replaceFirst('storage/', '', $employee->photo);
+
+        Storage::drive('public')->delete($path);
+
+        $employee->update(['photo' => '']);
+
+        Cache::forget('employees');
+
+        return $employee->loadLists();
     }
 }

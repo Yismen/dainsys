@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Employee;
 
-use Illuminate\Support\Facades\Cache;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 
 class NationalityController extends Controller
 {
@@ -20,7 +20,7 @@ class NationalityController extends Controller
 
         $employee->update($request->only('nationality_id'));
 
-        return $employee->load('nationality');
+        return $employee->loadLists();
 
         return $employee;
     }

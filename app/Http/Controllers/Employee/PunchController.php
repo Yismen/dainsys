@@ -20,6 +20,6 @@ class PunchController extends Controller
         Cache::forget('employees');
         Cache::forget('punches');
 
-        return $employee->load('punch');
+        return $employee->loadLists();
     }
 }

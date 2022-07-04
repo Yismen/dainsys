@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Employee;
 
-use Illuminate\Support\Facades\Cache;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 
 class SocialSecurityController extends Controller
 {
@@ -20,6 +20,6 @@ class SocialSecurityController extends Controller
 
         $employee->socialSecurity()->updateOrCreate([], $request->only('number'));
 
-        return $employee->load('socialSecurity');
+        return $employee->loadLists();
     }
 }

@@ -148,6 +148,8 @@
         reasonIsOther() {
             let currentId = this.form.fields.termination_reason_id;
 
+            console.log("list", this.employee.termination_reason_list);
+
             let currentReason = this.employee.termination_reason_list.filter(function(item) {
                 return item.id == currentId
             });

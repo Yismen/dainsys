@@ -336,4 +336,27 @@ class Employee extends Model
 
         return null;
     }
+
+    public function loadLists()
+    {
+        return $this
+            ->append([
+                'ars_list',
+                'afp_list',
+                'banks_list',
+                'departments_list',
+                'genders_list',
+                'has_kids_list',
+                'maritals_list',
+                'positions_list',
+                'projects_list',
+                'payment_types_list',
+                'payment_frequencies_list',
+                'nationalities_list',
+                'sites_list',
+                'supervisors_list',
+                'termination_type_list',
+                'termination_reason_list',
+            ]);
+    }
 }

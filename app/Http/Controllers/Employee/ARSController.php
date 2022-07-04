@@ -13,7 +13,7 @@ class ARSController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int                       $id
      * @return \Illuminate\Http\Response
      */
     public function assign(Employee $employee, Request $request)
@@ -27,6 +27,6 @@ class ARSController extends Controller
 
         $employee->update($request->only(['ars_id']));
 
-        return $employee->load('ars');
+        return $employee->loadLists();
     }
 }

@@ -13,7 +13,7 @@ class AFPController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int                       $id
      * @return \Illuminate\Http\Response
      */
     public function assign(Request $request, Employee $employee)
@@ -27,6 +27,6 @@ class AFPController extends Controller
 
         $employee->update($request->only('afp_id'));
 
-        return $employee->load('afp');
+        return $employee->loadLists();
     }
 }

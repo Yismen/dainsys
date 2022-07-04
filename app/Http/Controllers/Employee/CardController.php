@@ -18,6 +18,6 @@ class CardController extends Controller
 
         $employee->card()->updateOrCreate([], $request->only('card'));
 
-        return $employee->load('card');
+        return $employee->loadLists();
     }
 }

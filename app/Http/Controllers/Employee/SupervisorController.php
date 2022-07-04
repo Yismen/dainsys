@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Employee;
 
-use Illuminate\Support\Facades\Cache;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 
 class SupervisorController extends Controller
 {
@@ -19,6 +19,6 @@ class SupervisorController extends Controller
 
         $employee->update($request->only('supervisor_id'));
 
-        return $employee->load('supervisor');
+        return $employee->loadLists();
     }
 }

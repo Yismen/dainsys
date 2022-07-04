@@ -3,10 +3,11 @@
         <div class="col-sm-12">
             <div class="box box-widget widget-user">
                 <div class="widget-user-header bg-aqua-active">
+                    <button class="btn btn-danger btn-xs pull-right" v-if="hasPhoto" @click="removePhoto">Remove</button>
                 </div>
-                <a :href="photo" target="_employee_photo" class="view-photo">
+                <a :href="`/${photo}`" target="_employee_photo" class="view-photo">
                     <div class="widget-user-image">
-                        <img :src="photo"
+                        <img :src="`/${photo}`"
                             class="img-circle"
                         >
                     </div>
@@ -70,10 +71,12 @@
                 return this.$store.getters['employee/getEmployee']
             },
             photo() {
-                let time = new Date().getTime()
-                return String(this.employee.photo).substring(0,7).toLowerCase() == "storage" ?
-                    '/' + this.employee.photo + '?' + time  :
-                    this.employee.photo + '?' + time
+                let time = new Date().getTime();
+                
+                return `${this.employee.photo}?${time}`;
+            },
+            hasPhoto() {
+                return String(this.employee.photo).includes('storage');
             }
         },
 
@@ -87,8 +90,32 @@
             submitPhoto () {
                 this.form.post('/admin/employees/' + this.employee.id +'/photo')
                     .then(response => {
-                        this.$store.dispatch('employee/set', response.data)
+                        this.$store.dispatch('employee/set', response.data);
+
+                        this.form.reset()
                     })
+
+            },
+            removePhoto () {
+                
+                this.$swal({
+                    title: "Are you sure?",
+                    text: "This action can not be reverted. It will be gone forever. ",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#d33",
+                    cancelButtonColor: "#3085d6",
+                    confirmButtonText: "Yes, delete it!"
+                }).then(result => {
+                    if (result.value) {                        
+                        this.form.delete(`/admin/employees/${this.employee.id}/photo`)
+                            .then(response => {
+                                this.$store.dispatch('employee/set', response.data)
+
+                                this.form.reset()
+                            })
+                    }
+                });
 
             }
         }

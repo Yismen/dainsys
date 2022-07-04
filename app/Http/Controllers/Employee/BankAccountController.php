@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Employee;
 
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Employee;
 use Illuminate\Support\Facades\Cache;
 
 class BankAccountController extends Controller
@@ -22,6 +22,6 @@ class BankAccountController extends Controller
         $employee->bankAccount()
             ->updateOrCreate([], $request->only('bank_id', 'account_number'));
 
-        return $employee->load('bankAccount');
+        return $employee->loadLists();
     }
 }

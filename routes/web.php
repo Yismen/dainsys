@@ -100,6 +100,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
             ->name('employees.update-punch');
         Route::post('{employee}/photo', [\App\Http\Controllers\Employee\PhotoController::class, 'update'])
             ->name('employees.update-photo');
+        Route::delete('{employee}/photo', [\App\Http\Controllers\Employee\PhotoController::class, 'destroy'])
+                    ->name('employees.update-photo');
         Route::put('{employee}/bank-account', [\App\Http\Controllers\Employee\BankAccountController::class, 'update'])
             ->name('employees.update-bank-account');
         Route::post('{employee}/social-security', [\App\Http\Controllers\Employee\SocialSecurityController::class, 'update'])
