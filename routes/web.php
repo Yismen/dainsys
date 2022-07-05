@@ -199,6 +199,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::post('sites/employees', [SitesController::class, 'assignEmployees']);
     Route::resource('sites', SitesController::class);
 
+    Route::get('steps', [\App\Http\Controllers\StepController::class, 'index'])->name('steps.index');
+
     Route::resource('supervisor_users', \App\Http\Controllers\SupervisorUserController::class);
 
     Route::post('supervisors/employees', [SupervisorsController::class, 'assignEmployees']);

@@ -1,5 +1,6 @@
 <div class="container">
     <x-loading></x-loading>
+    <livewire:processes-form />
     <div class="box box-primary" wire:loading.class="hidden">
         <div class="box-header with-borders">
             <h5 class="row">
@@ -18,7 +19,6 @@
 
                 <div class="col-sm-4">
                     <livewire:search />
-                    <livewire:processes-form />
                 </div>
             </h5>
 

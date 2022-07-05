@@ -17,6 +17,9 @@ class ProcessesForm extends Component
     ];
     public bool $is_editing = false;
     public Process $process;
+    protected $rules = [
+        'fields.name' => 'required|min:3|unique:steps,name',
+    ];
 
     public function render()
     {
@@ -55,6 +58,11 @@ class ProcessesForm extends Component
 
     public function update()
     {
+        $rules = array_merge($this->rules, [
+            'fields.name' => 'required|min:3|unique:processes,name,' . $this->process->id,
+            'fields.description' => 'max:1000',
+        ]);
+        $this->validate($rules);
         $this->process->update($this->fields);
 
         $this->emit('processSaved');

@@ -3,6 +3,7 @@
 namespace Tests\Feature\Http\Controllers;
 
 use Tests\TestCase;
+use App\Http\Livewire\Processes;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ProcessControllerTest extends TestCase
@@ -52,6 +53,7 @@ class ProcessControllerTest extends TestCase
 
         // assert
         $response->assertSee($process->name);
+        $response->assertSeeLivewire(Processes::class);
     }
 
     /** @test */

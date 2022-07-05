@@ -2,7 +2,7 @@
     <div class="form-group">
         <div class="{{ $count > 0 ? 'input-group' : '' }}">
             <input type="text"
-                class="form-control" 
+                class="form-control {{ $count > 0 ? 'bg-blue' : '' }}" 
                 name="" id="" 
                 aria-describedby="helpId" 
                 placeholder="Sarch"

@@ -8,7 +8,7 @@ use App\Models\Process;
 use App\Http\Livewire\ProcessesForm;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ProcessFormTest extends TestCase
+class ProcessesFormTest extends TestCase
 {
     use RefreshDatabase;
 
