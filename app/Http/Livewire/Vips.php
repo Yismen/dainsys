@@ -8,13 +8,13 @@ use Livewire\Component;
 use App\Models\Employee;
 use App\Models\Position;
 use App\Models\Department;
-use Livewire\WithPagination;
 use Illuminate\Support\Facades\Cache;
 use App\Repositories\Employees\VipRepo;
+use App\Http\Livewire\Traits\HasLivewirePagination;
 
 class Vips extends Component
 {
-    use WithPagination;
+    use HasLivewirePagination;
 
     // protected $paginationTheme = 'bootstrap';
 
@@ -126,10 +126,5 @@ class Vips extends Component
             }
         })
         ->paginate(15, ['*'], $method);
-    }
-
-    public function paginationView()
-    {
-        return 'layouts.partials.pagination';
     }
 }

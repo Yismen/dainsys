@@ -174,7 +174,9 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 
     Route::resource('permissions', \App\Http\Controllers\PermissionsController::class);
 
-    Route::resource('positions', \App\Http\Controllers\PositionsController::class);
+    Route::resource('positions', \App\Http\Controllers\PositionsController::class);    
+
+    Route::get('processes', [\App\Http\Controllers\ProcessController::class, 'index'])->name('processes.index');
 
     Route::post('profiles/image/{id}', [ProfileController::class, 'postImage'])
         ->name('profiles.image');
