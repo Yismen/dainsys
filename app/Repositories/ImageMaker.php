@@ -6,53 +6,56 @@ use Intervention\Image\Facades\Image;
 
 class ImageMaker
 {
+    public const MAX_SIZE = 600;
+
     protected static $FILE;
     protected static $SQUARED;
     protected static $ENCODE;
-    protected static $DESIRED_SIZE;
+    protected static $IMAGE;
+    protected static int $WIDTH;
+    protected static int $HEIGHT;
 
-    public const STANDARD_SIZE = 600;
-
-    public static function make($FILE, $SQUARED = null, $ENCODE = null, $DESIRED_SIZE = null)
+    public static function make($FILE, $SQUARED = false, $ENCODE = null, $WIDTH = null, $HEIGHT = null)
     {
         static::$FILE = $FILE;
-        static::$SQUARED = $SQUARED ?? false;
+        static::$IMAGE = Image::make(static::$FILE);
         static::$ENCODE = $ENCODE ?? 'JPG';
-        static::$DESIRED_SIZE = $DESIRED_SIZE;
+        static::$WIDTH = static::getDimension($WIDTH, 'width');
+        static::$HEIGHT = static::getDimension($HEIGHT, 'height');
 
-        $image = Image::make(static::$FILE);
+        static::resizeImage();
 
-        $image = static::resizeImage($image);
-
-        $image = static::wantsSquaredImage($image);
-
-        return $image->encode(static::$ENCODE);
-    }
-
-    private static function wantsSquaredImage($image)
-    {
-        if (static::$SQUARED) {
-            $image = $image->crop(static::$DESIRED_SIZE, static::$DESIRED_SIZE);
+        if ($SQUARED) {
+            static::wantsSquaredImage();
         }
 
-        return $image;
+        return self::$IMAGE->encode(static::$ENCODE);
     }
 
-    private static function resizeImage($image)
+    private static function resizeImage()
     {
-        $max_size = static::$DESIRED_SIZE ? static::$DESIRED_SIZE : self::STANDARD_SIZE;
-        $current_image_width = $image->width();
-        $current_image_height = $image->height();
-        $width = $max_size < $current_image_width ? $max_size : $current_image_width;
-        $height = $max_size < $current_image_height ? $max_size : $current_image_height;
-
-        $image = $image->resize($width, null, function ($constraint) {
-            $constraint->aspectRatio();
-        });
-        $image = $image->resize(null, $height, function ($constraint) {
+        self::$IMAGE = self::$IMAGE->resize(self::$WIDTH, null, function ($constraint) {
             $constraint->aspectRatio();
         });
 
-        return $image;
+        self::$IMAGE = self::$IMAGE->resize(null, self::$HEIGHT, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+    }
+
+    private static function wantsSquaredImage()
+    {
+        $size = min(static::$WIDTH, static::$HEIGHT);
+
+        self::$IMAGE = self::$IMAGE->crop($size, $size);
+    }
+
+    private static function getDimension($dimension, string $method)
+    {
+        if ($dimension) {
+            return $dimension;
+        }
+
+        return self::$IMAGE->$method() < self::MAX_SIZE ? self::$IMAGE->$method() : self::MAX_SIZE;
     }
 }

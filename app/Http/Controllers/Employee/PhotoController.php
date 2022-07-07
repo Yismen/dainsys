@@ -20,7 +20,7 @@ class PhotoController extends Controller
 
         $path = "images/employees/{$employee->id}.png";
 
-        Storage::drive('public')->put($path, ImageMaker::make($request->photo));
+        Storage::drive('public')->put($path, ImageMaker::make($request->photo, $squared = true));
 
         $employee->update(['photo' => "storage/{$path}"]);
 
