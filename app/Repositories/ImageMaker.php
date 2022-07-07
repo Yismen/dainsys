@@ -45,7 +45,7 @@ class ImageMaker
 
     private static function wantsSquaredImage()
     {
-        $size = min(static::$WIDTH, static::$HEIGHT);
+        $size = max(static::$WIDTH, static::$HEIGHT);
 
         self::$IMAGE = self::$IMAGE->crop($size, $size);
     }
