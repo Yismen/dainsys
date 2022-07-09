@@ -14,7 +14,7 @@ class CreateProcessesTable extends Migration
     public function up()
     {
         Schema::create('processes', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name', 300);
             $table->text('description')->nullable();
             $table->timestamps();

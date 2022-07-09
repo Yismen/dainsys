@@ -125,6 +125,6 @@ class Vips extends Component
                 });
             }
         })
-        ->paginate(15, ['*'], $method);
+        ->paginate($this->amount, ['*'], $method);
     }
 }

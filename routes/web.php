@@ -101,7 +101,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
         Route::post('{employee}/photo', [\App\Http\Controllers\Employee\PhotoController::class, 'update'])
             ->name('employees.update-photo');
         Route::delete('{employee}/photo', [\App\Http\Controllers\Employee\PhotoController::class, 'destroy'])
-                    ->name('employees.update-photo');
+                    ->name('employees.remove-photo');
         Route::put('{employee}/bank-account', [\App\Http\Controllers\Employee\BankAccountController::class, 'update'])
             ->name('employees.update-bank-account');
         Route::post('{employee}/social-security', [\App\Http\Controllers\Employee\SocialSecurityController::class, 'update'])
@@ -116,6 +116,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 
     Route::resource('holidays', \App\Http\Controllers\HolidayController::class)
         ->except('show');
+
+    Route::get('employee_process', [\App\Http\Controllers\EmployeeProcessController::class, 'index'])->name('employee-process.index');
 
     Route::group(['prefix' => 'human_resources', 'middleware' => 'authorize:view-human-resources-dashboard'], function () {
         Route::get('employees/dgt3', [DGT3Controller::class, 'dgt3'])
@@ -174,7 +176,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 
     Route::resource('permissions', \App\Http\Controllers\PermissionsController::class);
 
-    Route::resource('positions', \App\Http\Controllers\PositionsController::class);    
+    Route::resource('positions', \App\Http\Controllers\PositionsController::class);
 
     Route::get('processes', [\App\Http\Controllers\ProcessController::class, 'index'])->name('processes.index');
 
