@@ -13,6 +13,7 @@ use App\Models\Shift;
 use App\Models\Gender;
 use App\Models\Address;
 use App\Models\Marital;
+use App\Models\Process;
 use App\Models\Project;
 use App\Models\Position;
 use App\Models\Schedule;
@@ -27,6 +28,7 @@ use App\Models\Performance;
 use App\Models\Termination;
 use App\Models\OvernightHour;
 use App\Models\SocialSecurity;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 trait EmployeeRelationships
 {
@@ -149,6 +151,16 @@ trait EmployeeRelationships
     public function site()
     {
         return $this->belongsTo(Site::class);
+    }
+
+    /**
+     * The processes that belong to the EmployeeRelationships
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function processes(): BelongsToMany
+    {
+        return $this->belongsToMany(Process::class)->withTimestamps();
     }
 
     public function socialSecurity()
