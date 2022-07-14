@@ -1,5 +1,6 @@
 <div class="container">
     <x-loading></x-loading>
+    <livewire:steps-form />
 
     <div wire:loading.class="hidden">
         <div class="box">
@@ -50,7 +51,6 @@
 
 
         @if ($steps)
-        <livewire:steps-form />
         <div class="box box-primary">
             <div class="box-header">
                 Steps Associated to Process <strong>{{ $processes->firstWhere('id', $process_id)->name }}</strong>
