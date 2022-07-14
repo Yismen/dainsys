@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Models\Employee;
 use Tests\TestCase;
+use App\Models\Employee;
 use Illuminate\Support\Arr;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -162,6 +162,7 @@ class EmployeesControllerTest extends TestCase
 
         $response->assertViewIs('employees.show');
         $response->assertViewHas('employee');
+        $response->assertViewHas('employee.processes');
         $response->assertViewHas('previous_terminations');
         $response->assertViewHas('employee.changes');
         $response->assertViewHas('employee.site');

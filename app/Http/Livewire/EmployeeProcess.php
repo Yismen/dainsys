@@ -40,11 +40,13 @@ class EmployeeProcess extends Component
     public function assign(Employee $employee)
     {
         $employee->processes()->attach([$this->process_id]);
+        Cache::flush();
     }
 
     public function unAssign(Employee $employee)
     {
         $employee->processes()->detach([$this->process_id]);
+        Cache::flush();
     }
 
     public function assigAll()

@@ -18,6 +18,8 @@
 							@include('employees._details-termination-info')
 						@endif
 
+						@include('employees._processes')	
+
 						@include('employees._terminations')
 					</div>
 					{{-- /. Photo	 --}}
@@ -27,10 +29,7 @@
 
 					</div>
 
-					<div class="col-md-6"></div>
-
-					<div class="col-md-6">
-						
+					<div class="col-md-6">						
 						@include('employees._changes')
 					</div>
 				</div>

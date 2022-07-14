@@ -123,14 +123,15 @@ class EmployeesController extends Controller
      */
     public function show(Employee $employee)
     {
-        $employee->load(['changes.user']);
+        $employee->load(['changes.user', 'processes']);
 
         $previous_terminations = Termination::query()
-            ->withTrashed()
-            ->latest('updated_at')
-            ->where('employee_id', $employee->id)
-            ->with(['terminationReason', 'terminationType'])
-            ->get();
+        ->withTrashed()
+        ->latest('updated_at')
+        ->where('employee_id', $employee->id)
+        ->with(['terminationReason', 'terminationType'])
+        ->get();
+        // dd($employee->toArray());
 
         return view('employees.show', compact('employee', 'previous_terminations'));
     }

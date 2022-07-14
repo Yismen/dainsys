@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Traits\Trackable;
 use App\ModelFilters\FilterableTrait;
 use App\Models\DainsysModel as Model;
+use Illuminate\Support\Facades\Cache;
 use App\Http\Traits\Mutators\EmployeeMutators;
 use App\Http\Traits\Accessors\EmployeeAccessors;
 use App\Http\Traits\Relationships\EmployeeRelationships;
@@ -358,5 +359,22 @@ class Employee extends Model
                 'termination_type_list',
                 'termination_reason_list',
             ]);
+    }
+
+    public function processProgress(int $process_id)
+    {
+        return Cache::rememberForever("employee-process-progress-{$process_id}-{$this->id}", function () use ($process_id) {
+            $process = Process::query()
+                ->where('id', $process_id)
+                ->withCount('steps')
+                ->first();
+
+            $employee_process_steps_count = $this->steps()->where(
+                'process_id',
+                $process->id
+            )->count();
+
+            return (int)$process->steps_count === 0 ? 0 : (int)$employee_process_steps_count / (int)$process->steps_count * 100;
+        });
     }
 }

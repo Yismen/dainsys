@@ -32,14 +32,16 @@ class StepsTest extends TestCase
         Livewire::test(Steps::class)
             ->assertViewIs('livewire.steps')
             ->assertViewHas('steps')
-            ->assertViewHas('processes')
-            ->assertSee($process->name);
+            ->assertViewHas('processes');
     }
 
     /** @test */
     public function steps_componenet_use_search_component()
     {
+        $step1 = factory(Step::class)->create();
+
         Livewire::test(Steps::class)
+            ->set('process_id', $step1->process_id)
             ->assertSeeLivewire(Search::class);
     }
 
@@ -54,23 +56,14 @@ class StepsTest extends TestCase
     }
 
     /** @test */
-    public function StepsUsePaginationTrait()
-    {
-        $steps = factory(Step::class, 15)->create();
-        $steps2 = factory(Step::class)->create(['name' => 'zzzzz']);
-
-        Livewire::test(Steps::class)
-            ->assertSee('Next')
-            ;
-    }
-
-    /** @test */
     public function steps_limit_by_process()
     {
         $step1 = factory(Step::class)->create();
         $step2 = factory(Step::class)->create();
 
         Livewire::test(Steps::class)
+            ->assertDontSee($step1->name)
+            ->assertDontSee($step2->name)
             ->set('process_id', $step1->process_id)
             ->assertSee($step1->name)
             ->assertDontSee($step2->name)

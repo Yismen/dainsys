@@ -13,6 +13,7 @@ class Confirmation extends Component
     public string $message;
     public string $icon;
     public string $button_text;
+    public string $button_class;
 
     /**
      * Initialize the component
@@ -24,6 +25,7 @@ class Confirmation extends Component
      * @param  string|null $message              modal body message
      * @param  string|null $icon
      * @param  string|null $button_text
+     * @param  string|null $button_class
      * @return void
      */
     public function mount(
@@ -33,7 +35,8 @@ class Confirmation extends Component
         string $title = null,
         string $message = null,
         string $icon = null,
-        string $button_text = null
+        string $button_text = null,
+        string $button_class = null
     ) {
         $this->name = $name;
         $this->model_id = $model_id;
@@ -42,6 +45,7 @@ class Confirmation extends Component
         $this->message = $message ?: 'You may not be able to revert this action. Please proceed carefully or hit on cancel';
         $this->icon = $icon ?: 'fa fa-trash';
         $this->button_text = $button_text ?: 'Delete';
+        $this->button_class = $button_class ?: 'btn btn-xs btn-danger';
     }
 
     /**
@@ -66,6 +70,7 @@ class Confirmation extends Component
 
     /**
      * The modal was confirmed
+     *
      *
      * Emit a livewire event so your component can respond to that event.
      * @return void

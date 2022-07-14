@@ -22,32 +22,37 @@ class Steps extends Component
             'processes' => Cache::rememberForever('steps_processes', function () {
                 return Process::orderBy('name')->get(['name', 'id']);
             }),
-            'steps' => Step::query()
-                ->with(['process'])
-                ->when($this->process_id > 0, function ($query) {
-                    $query->whereHas('process', function ($query) {
-                        return $query->where('id', '=', $this->process_id);
-                    });
-                })
-                ->when(
-                    $this->search,
-                    function ($query) {
-                        $this->resetPage();
-
-                        $query->where(function ($query) {
-                            $query->where('name', 'like', "%{$this->search}%")
-                                ->orWhere('description', 'like', "%{$this->search}%");
-                        });
-                    }
-                )
-                ->orderBy('order')
-                ->orderBy('name')
-                ->paginate($this->amount)
+            'steps' => $this->process_id === 0 ? null : $this->getSteps()
         ]);
     }
 
     public function searchUpdated($search)
     {
         $this->search = $search;
+    }
+
+    protected function getSteps()
+    {
+        return Step::query()
+            ->with(['process'])
+            ->when($this->process_id > 0, function ($query) {
+                $query->whereHas('process', function ($query) {
+                    return $query->where('id', '=', $this->process_id);
+                });
+            })
+            ->when(
+                $this->search,
+                function ($query) {
+                    $this->resetPage();
+
+                    $query->where(function ($query) {
+                        $query->where('name', 'like', "%{$this->search}%")
+                            ->orWhere('description', 'like', "%{$this->search}%");
+                    });
+                }
+            )
+            ->orderBy('order')
+            ->orderBy('name')
+            ->paginate($this->amount);
     }
 }

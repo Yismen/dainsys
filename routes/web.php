@@ -111,13 +111,14 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
         Route::get('missing_photo', \App\Http\Controllers\Employee\MissingPhotoController::class)->name('employees.missing_photo');
     });
 
+    Route::get('employee_process', [\App\Http\Controllers\EmployeeProcessController::class, 'index'])->name('employee-process.index');
+    Route::get('employe/{employee_id}/process/{process_id}', [\App\Http\Controllers\EmployeeProcessController::class, 'show'])->name('employee-process.show');
+
     Route::resource('employees', \App\Http\Controllers\EmployeesController::class)
         ->except(['destroy'])->names('employees');
 
     Route::resource('holidays', \App\Http\Controllers\HolidayController::class)
         ->except('show');
-
-    Route::get('employee_process', [\App\Http\Controllers\EmployeeProcessController::class, 'index'])->name('employee-process.index');
 
     Route::group(['prefix' => 'human_resources', 'middleware' => 'authorize:view-human-resources-dashboard'], function () {
         Route::get('employees/dgt3', [DGT3Controller::class, 'dgt3'])

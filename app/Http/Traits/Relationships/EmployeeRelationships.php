@@ -8,6 +8,7 @@ use App\Models\Vip;
 use App\Models\Card;
 use App\Models\Hour;
 use App\Models\Site;
+use App\Models\Step;
 use App\Models\Punch;
 use App\Models\Shift;
 use App\Models\Gender;
@@ -161,6 +162,16 @@ trait EmployeeRelationships
     public function processes(): BelongsToMany
     {
         return $this->belongsToMany(Process::class)->withTimestamps();
+    }
+
+    /**
+     * The steps that belong to the EmployeeRelationships
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function steps(): BelongsToMany
+    {
+        return $this->belongsToMany(Step::class)->withTimestamps();
     }
 
     public function socialSecurity()

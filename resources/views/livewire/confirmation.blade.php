@@ -1,5 +1,5 @@
-<div>    
-    <a class="btn btn-warning" wire:click.prevent="show()">
+<div style="color: #000!important;">    
+    <a class="{{ $button_class }}" wire:click.prevent="show()">
         <i class="{{ $icon }}"></i>
         {{ $button_text }}
     </a>

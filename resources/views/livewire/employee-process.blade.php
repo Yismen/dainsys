@@ -133,6 +133,10 @@
                                 <h4>
                                     Employees Assigned to Process [{{ $processes->find($process_id)->name }}]
                                     <span class="badge bg-blue-active">{{ $employees_assigned->total() }}</span>
+
+                                    <button class="btn btn-primary btn-xs pull-right" title="Refresh" wire:click="$refresh()">
+                                        <i class="fa fa-refresh"></i> Refresh
+                                    </button>
                                 </h4>
         
                                 <table class="table table-hover table-condensed">
@@ -146,15 +150,25 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($employees_assigned as $employee)
+                                        @php
+                                            $progress = $employee->processProgress($process_id);
+                                        @endphp
                                             <tr>
-                                                <td>{{ $employee->full_name }}</td>
+                                                <td>
+                                                    <a
+                                                        href="{{ route('admin.employee-process.show', ['employee_id' => $employee->id, 'process_id' => $process_id]) }}"
+                                                        target="__new"
+                                                        rel="noopener noreferrer"
+                                                        title="Manage Progress"
+                                                    >{{ $employee->full_name }}</a>
+                                                </td>
                                                 <td>{{ $employee->position->department->name }}</td>
                                                 <td>{{ $employee->project->name }}</td>
                                                 <td>{{ $employee->position->name }}</td>
                                                 <td>
-                                                    <div class="progress">
-                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
-                                                            style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">Progress</div>
+                                                    <div class="progress"  title="{{ $progress }}">
+                                                        <div class="progress-bar progress-bar-animated progress-bar-striped progress-bar-success" role="progressbar"
+                                                            style="width: {{ $progress }}%;" aria-valuenow="{{ $progress }}" aria-valuemin="0" aria-valuemax="100">Progress</div>
                                                     </div>
                                                 </td>
                                                 <td>
