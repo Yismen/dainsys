@@ -5,6 +5,7 @@ namespace App\Console;
 use App\Modls\UserLogin;
 use App\Modls\Performance;
 use Illuminate\Console\Scheduling\Schedule;
+use App\Console\Commands\ClearTempraryFiles;
 use App\Console\Commands\UpdateBillableHours;
 use Illuminate\Database\Console\PruneCommand;
 use Dainsys\Commands\ClearLogs\ClearLogsCommand;
@@ -44,6 +45,10 @@ class Kernel extends ConsoleKernel
             '--clear',
             '--keep=3'
         ])->dailyAt('02:00');
+
+        $schedule->command(ClearTempraryFiles::class, [
+            'remove_files_older_than_days' => 5
+        ])->dailyAt('20:45');
 
         // $schedule->command('dainsys:feed-shifts --hours=7.5 --saturday=1')->dailyAt('14:59');
         // $schedule->command('dainsys:feed-schedules --days=15 --since-days-ago=0')->dailyAt('15:10');
