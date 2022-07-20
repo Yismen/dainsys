@@ -9,9 +9,10 @@
                             <a href="{{ route('admin.employees.show', $employee->id) }}" title="View Profile">
                                 {{ $employee->full_name }}</a>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
-                                    aria-valuenow="{{ $progress }}" aria-valuemin="0" aria-valuemax="100"
-                                    style="width: {{ $progress }}%;" title="{{ $progress }}% of steps completed">
+                                <div class="progress-bar progress-bar-{{ $progress == 100 ? 'success' : 'warning' }} progress-bar-striped"
+                                    role="progressbar" aria-valuenow="{{ $progress }}" aria-valuemin="0"
+                                    aria-valuemax="100" style="width: {{ $progress }}%;"
+                                    title="{{ $progress }}% of steps completed">
                                     <span class="sr-only"> {{ $progress }}% Complete</span>
                                 </div>
                             </div>
