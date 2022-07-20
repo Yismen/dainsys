@@ -79,10 +79,11 @@
                                     </td>
                                     <td>
                                         @if ($step_assigned)
-                                        {{ $employee_step->updated_at->format('d-M-y') }}
-                                        <small class="text-muted text-sm">
-                                            {{ $employee_step->updated_at->diffForHumans() }}
-                                        </small>
+
+                                        <span class="text-muted"
+                                            title="{{ $employee_step->pivot->updated_at->format('d-M-y H:i') }}">
+                                            {{ $employee_step->pivot->updated_at->diffForHumans() }}
+                                        </span>
                                         @endif
                                     </td>
                                     <td>
