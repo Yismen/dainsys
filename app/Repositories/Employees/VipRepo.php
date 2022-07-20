@@ -8,14 +8,16 @@ class VipRepo
 {
     public function vips()
     {
-        return Employee::actives()
+        return Employee::query()
+            ->actives()
             ->sorted()
             ->vips();
     }
 
     public function noVips()
     {
-        return Employee::actives()
+        return Employee::query()
+            ->actives()
             ->sorted()
             ->noVips();
     }

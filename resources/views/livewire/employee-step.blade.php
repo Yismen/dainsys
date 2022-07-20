@@ -59,9 +59,9 @@
                         <table class="table table-condensed table-hover">
                             <thead>
                                 <tr>
-                                    <th>Step</th>
-                                    <th class="col-sm-2">Status</th>
-                                    <th class="col-sm-2">Completed At</th>
+                                    <th>{{ __('Step') }}</th>
+                                    <th class="col-sm-2">{{ __('Status') }}</th>
+                                    <th class="col-sm-2">{{ __('Completed') }} {{ __('At') }}</th>
                                     <th class="col-sm-2">Action</th>
                                 </tr>
                             </thead>
@@ -75,7 +75,12 @@
                                 <tr class="{{ $step_assigned ? 'text-success fw-700' : 'text-danger' }}">
                                     <td>{{ $step->name }}</td>
                                     <td>
-                                        {{ $step_assigned ? "Completed" : "Pending"}}
+                                        @if ($step_assigned)
+                                        {{ __('Done') }}
+                                        <i class="fa fa-check"></i>
+                                        @else
+                                        {{ __('Pending') }}
+                                        @endif
                                     </td>
                                     <td>
                                         @if ($step_assigned)

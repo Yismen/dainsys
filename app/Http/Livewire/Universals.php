@@ -35,7 +35,6 @@ class Universals extends Component
             'non_universal_employees' => $this->getEmployees('noUniversals'),
             'sites' => Cache::rememberForever('universal_sites', function () {
                 return Site::query()
-                    ->with('employees')
                     ->whereHas('employees', function ($quer) {
                         $quer->actives();
                     })
@@ -44,7 +43,6 @@ class Universals extends Component
             }),
             'departments' => Cache::rememberForever('universal_departments', function () {
                 return Department::query()
-                    ->with('employees')
                     ->whereHas('employees', function ($quer) {
                         $quer->actives();
                     })
@@ -53,7 +51,6 @@ class Universals extends Component
             }),
             'projects' => Cache::rememberForever('universal_projects', function () {
                 return Project::query()
-                    ->with('employees')
                     ->whereHas('employees', function ($quer) {
                         $quer->actives();
                     })
@@ -62,7 +59,6 @@ class Universals extends Component
             }),
             'positions' => Cache::rememberForever('universal_positions', function () {
                 return Position::query()
-                    ->with('employees')
                     ->whereHas('employees', function ($quer) {
                         $quer->actives();
                     })
