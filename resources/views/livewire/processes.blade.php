@@ -28,6 +28,7 @@
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Is Default</th>
                         <th>Description</th>
                         <th>
                             Action
@@ -42,6 +43,11 @@
                     @foreach ($processes as $process)
                     <tr>
                         <td scope="row">{{ $process->name }}</td>
+                        <td scope="row">
+                            @if ($process->default)
+                            {{ __('Yes') }} <i class="fa fa-check"></i>
+                            @endif
+                        </td>
                         <td title="{{ $process->description }}">
                             {{ \Illuminate\Support\Str::limit($process->description, 100, '...') }}
                         </td>

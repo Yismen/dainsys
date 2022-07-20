@@ -25,15 +25,18 @@ class ProcessesFormTest extends TestCase
         Livewire::test(ProcessesForm::class)
             ->set('fields.name', 'New name')
             ->assertSet('fields.name', 'New name')
+            ->set('fields.default', true)
+            ->assertSet('fields.default', true)
             ->set('fields.description', 'New description')
             ->assertSet('fields.description', 'New description')
             ->set('is_editing', true)
             ->emit('wantsCreateProcess')
             ->assertSet('fields.name', null)
+            ->assertSet('fields.default', null)
             ->assertSet('fields.description', null)
             ->assertSet('is_editing', false)
             ->assertDispatchedBrowserEvent('showProcessModal')
-            ;
+        ;
     }
 
     /** @test */
@@ -48,7 +51,7 @@ class ProcessesFormTest extends TestCase
             ->assertSet('fields.name', $process->name)
             ->assertSet('fields.description', $process->description)
             ->assertDispatchedBrowserEvent('showProcessModal')
-            ;
+        ;
     }
 
     /** @test */
@@ -57,14 +60,16 @@ class ProcessesFormTest extends TestCase
         Livewire::test(ProcessesForm::class)
             ->emit('wantsCreateProcess')
             ->set('fields.name', 'New name')
+            ->set('fields.default', true)
             ->set('fields.description', 'New description')
             ->call('store')
             ->assertEmitted('processSaved')
             ->assertDispatchedBrowserEvent('hideProcessModal')
-            ;
+        ;
 
         $this->assertDatabaseHas('processes', [
             'name' => 'New name',
+            'default' => true,
             'description' => 'New description',
         ]);
     }
@@ -77,14 +82,16 @@ class ProcessesFormTest extends TestCase
         Livewire::test(ProcessesForm::class)
             ->emit('wantsEditProcess', $process)
             ->set('fields.name', 'New name')
+            ->set('fields.default', true)
             ->set('fields.description', 'New description')
             ->call('update')
             ->assertEmitted('processSaved')
             ->assertDispatchedBrowserEvent('hideProcessModal')
-            ;
+        ;
 
         $this->assertDatabaseHas('processes', [
             'name' => 'New name',
+            'default' => true,
             'description' => 'New description',
         ]);
     }

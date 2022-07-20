@@ -13,12 +13,14 @@ class ProcessesForm extends Component
     protected $listeners = ['wantsCreateProcess', 'wantsEditProcess'];
     public array $fields = [
         'name' => null,
+        'default' => false,
         'description' => null,
     ];
     public bool $is_editing = false;
     public Process $process;
     protected $rules = [
         'fields.name' => 'required|min:3|unique:steps,name',
+        'fields.default' => 'required|boolean',
     ];
 
     public function render()
@@ -38,6 +40,7 @@ class ProcessesForm extends Component
         $this->process = $process;
         $this->is_editing = true;
         $this->fields['name'] = $process->name;
+        $this->fields['default'] = $process->default;
         $this->fields['description'] = $process->description;
         $this->resetValidation();
         $this->dispatchBrowserEvent('showProcessModal');

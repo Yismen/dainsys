@@ -3,8 +3,11 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use App\Models\Process;
 use App\Models\Employee;
 use Illuminate\Support\Arr;
+use App\Events\EmployeeCreated;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -115,14 +118,32 @@ class EmployeesControllerTest extends TestCase
     /** @test */
     public function authorized_users_can_store_employee()
     {
+        Event::fake();
         $employee = make(Employee::class)->toArray();
         $employee['punch'] = random_int(10001, 99999);
-
         $response = $this->actingAs($this->userWithPermission('create-employees'))
-            ->post(route('admin.employees.store'), $employee)
-            ->assertRedirect();
+        ->post(route('admin.employees.store'), $employee)
+        ->assertRedirect();
+
+        Event::assertDispatched(EmployeeCreated::class);
 
         $this->assertDatabaseHas('employees', Arr::only($employee, ['first_name', 'last_name']));
+        $employee = Employee::where('first_name', $employee['first_name'])->first();
+    }
+
+    /** @test */
+    public function automatic_processes_are_assigned_to_employees_when_created()
+    {
+        $process = factory(Process::class)->create(['default' => true]);
+        $employee = make(Employee::class)->toArray();
+        $employee['punch'] = random_int(10001, 99999);
+        $response = $this->actingAs($this->userWithPermission('create-employees'))
+        ->post(route('admin.employees.store'), $employee)
+        ->assertRedirect();
+
+        $employee = Employee::first();
+
+        $this->assertDatabaseHas('employee_process', ['employee_id' => $employee->id, 'process_id' => $process->id]);
     }
 
     /** @test */

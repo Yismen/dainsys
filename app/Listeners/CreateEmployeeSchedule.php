@@ -24,6 +24,5 @@ class CreateEmployeeSchedule
      */
     public function handle(EmployeeCreated $event)
     {
-        dd('Listener', $event);
     }
 }

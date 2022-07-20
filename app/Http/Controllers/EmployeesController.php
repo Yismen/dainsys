@@ -6,6 +6,7 @@ use App\Models\Employee;
 use App\Models\Termination;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Events\EmployeeCreated;
 use Yajra\DataTables\DataTables;
 
 class EmployeesController extends Controller
@@ -86,7 +87,10 @@ class EmployeesController extends Controller
         ]);
 
         $employee = $employee->create($request->all());
+        
         $employee->punch()->create($request->only(['punch']));
+
+        EmployeeCreated::dispatch($employee);
 
         if ($request->ajax()) {
             return $employee

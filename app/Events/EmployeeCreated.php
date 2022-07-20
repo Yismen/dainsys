@@ -4,10 +4,14 @@ namespace App\Events;
 
 use App\Models\Employee;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Broadcasting\InteractsWithSockets;
 
-class EmployeeCreated extends Event
+class EmployeeCreated
 {
-    private $employee;
+    use Dispatchable, InteractsWithSockets, SerializesModels;
+    
+    public $employee;
 
     use SerializesModels;
 

@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\EmployeeCreate;
+use App\Events\EmployeeCreated;
 
 class SemdEmailToHumanResources
 {
@@ -21,7 +22,7 @@ class SemdEmailToHumanResources
      * @param  EmployeeCreate  $event
      * @return void
      */
-    public function handle(EmployeeCreate $event)
+    public function handle(EmployeeCreated $event)
     {
     }
 }

@@ -24,6 +24,5 @@ class CreateEmployeeShift
      */
     public function handle(EmployeeCreated $event)
     {
-        dd('Listener', $event);
     }
 }

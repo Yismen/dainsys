@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Process extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'default', 'description'];
 
     /**
      * The employees that belong to the Process
