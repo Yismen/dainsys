@@ -1,4 +1,4 @@
-{ 
+{
     "Add": "Agregar",
     "Address": "Dirección",
     "Admin": "Administrador",
@@ -22,6 +22,9 @@
     "Count": "Conteo",
     "Create New Employee": "Agregar Empleado Nuevo",
     "Create": "Crear",
+    "Complete": "Completo",
+    "Completed": "Completado",
+    "Done": "Hecho",
     "Dashboard": "Tablero",
     "Date": "Fecha",
     "Department": "Departamento",
@@ -58,6 +61,8 @@
     "List": "Listado",
     "Marital Status": "Estado Civil",
     "Missing": "Falta",
+    "Step": "Paso",
+    "At": "En",
     "Month": "Mes",
     "More info": "Mas Información",
     "Name": "Nombre",
@@ -67,6 +72,7 @@
     "No Birthdays today": "No hay cumpleaños hoy",
     "None of your peers have birthdays today": "Ninguno de tus compañeros está de cumpleaños hoy",
     "On Date": "En Fecha",
+    "Pending": "Pendiente",
     "Passport": "Pasaporte",
     "Past Terminations": "Salidas Anteriores",
     "Personal Id": "# Cédula",

@@ -35,7 +35,6 @@ class Vips extends Component
             'non_vip_employees' => $this->getEmployees('noVips'),
             'sites' => Cache::rememberForever('vip_sites', function () {
                 return Site::query()
-                    ->with('employees')
                     ->whereHas('employees', function ($quer) {
                         $quer->actives();
                     })
@@ -44,7 +43,6 @@ class Vips extends Component
             }),
             'departments' => Cache::rememberForever('vip_departments', function () {
                 return Department::query()
-                    ->with('employees')
                     ->whereHas('employees', function ($quer) {
                         $quer->actives();
                     })
@@ -53,7 +51,6 @@ class Vips extends Component
             }),
             'projects' => Cache::rememberForever('vip_projects', function () {
                 return Project::query()
-                    ->with('employees')
                     ->whereHas('employees', function ($quer) {
                         $quer->actives();
                     })
@@ -62,7 +59,6 @@ class Vips extends Component
             }),
             'positions' => Cache::rememberForever('vip_positions', function () {
                 return Position::query()
-                    ->with('employees')
                     ->whereHas('employees', function ($quer) {
                         $quer->actives();
                     })
