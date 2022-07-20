@@ -6,7 +6,8 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h4>
-                            {{ $employee->full_name }}
+                            <a href="{{ route('admin.employees.show', $employee->id) }}" title="View Profile">
+                                {{ $employee->full_name }}</a>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
                                     aria-valuenow="{{ $progress }}" aria-valuemin="0" aria-valuemax="100"
@@ -22,10 +23,6 @@
                     <div class="box-body">
                         <table class="table table-condensed table-hover">
                             <tbody>
-                                <tr>
-                                    <th>Name:</th>
-                                    <td>{{ $employee->full_name }}</td>
-                                </tr>
                                 <tr>
                                     <th>Site</th>
                                     <td>{{ $employee->site->name }}</td>
