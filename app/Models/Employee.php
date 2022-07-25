@@ -148,8 +148,8 @@ class Employee extends Model
      */
     public function scopeRecents($query, Carbon $date = null)
     {
-        if (null == $date) {
-            $date = Carbon::now()->subMonths(1);
+        if ($date === null) {
+            $date = Carbon::now()->subMonths(3);
         }
 
         return $query->actives()
@@ -157,6 +157,21 @@ class Employee extends Model
                 'termination',
                 function ($query) use ($date) {
                     return $query->where('termination_date', '>=', $date);
+                }
+            );
+    }
+    
+    public function scopeNotRecents($query, Carbon $date = null)
+    {
+        if (null == $date) {
+            $date = Carbon::now()->subMonths(3);
+        }
+
+        return $query->actives()
+            ->orWhereHas(
+                'termination',
+                function ($query) use ($date) {
+                    return $query->where('termination_date', '<', $date);
                 }
             );
     }
