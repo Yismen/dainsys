@@ -331,8 +331,8 @@ a.footer-link:hover {
     aspect-ratio: 1;
     width: 100px;
     filter: blur(75px);
-    // animation-name: lamp-animation-1;
-    animation-duration: 5s;
+    animation-name: lamp-animation-1;
+    animation-duration: 30s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
@@ -344,11 +344,11 @@ a.footer-link:hover {
 
 .lamp::after {
     background-color: yellow;
-    animation-duration: 10s;
     width: 75px;
     filter: blur(65px);
     top: 25%;
     left: 18%;
+    animation-delay: 5s;
 }
 
 
