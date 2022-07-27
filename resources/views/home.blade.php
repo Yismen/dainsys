@@ -30,9 +30,9 @@
 
     {{-- Hero --}}
     <section
-        class="d-flex flex-column gap-row-10 hero items-center justify-space-between px-10 py-15 md:flex-row md:px-25 lg:px-40 md:py:20 lg:py-25"
+        class="lamp d-flex flex-column gap-row-10 hero items-center justify-space-between px-10 py-15 md:flex-row md:px-25 lg:px-40 md:py:20 lg:py-25"
         id="home">
-        <div class="elements red-light d-flex flex-column items-ceter-justify-space-between w-100 md:w-60 lg:w-70">
+        <div class="d-flex flex-column items-ceter-justify-space-between w-100 md:w-60 lg:w-70">
             <h1
                 class="animatable fs-20 fw-900 lg:fs-24 lg:text-left lg:w-70 md:fs-22 md:text md:w-80 text-capitalize text-center w-100">
                 Esential Information <span class="text-primary underlined">Made</span> Accessible
@@ -60,9 +60,9 @@
 
         </div>
         <div class="flex flex-column w-100 md:w-60 lg:w-70">
-            <div class="flex flex-column items-center justify-center py-15 oob-card sm:flex-row animatable"
+            <div class="flex flex-column items-center justify-center oob-card sm:flex-row animatable"
                 data-animation="fade-in-right">
-                <div class="w-100 sm:w-50">
+                <div class="w-100 sm:w-50 p-10">
                     <h5 class="fw-600 fs-10"> Dashboards <i class="fa fa-dashboard"></i></h5>
                     <p class="fs-6 mt-6">Lots of story telling infographics, featured with info cards, bar charts,
                         line
@@ -73,9 +73,9 @@
                     alt="Dashboard">
             </div>
 
-            <div class="flex flex-column items-center justify-center py-15 oob-card sm:flex-row-reverse animatable"
+            <div class="flex flex-column items-center justify-center oob-card sm:flex-row-reverse animatable"
                 data-animation="fade-in-right">
-                <div class="w-100 sm:w-50">
+                <div class="w-100 sm:w-50 p-10">
                     <h5 class="fw-600 fs-10"> Datatables <i class="fa fa-table"></i></h5>
                     <p class="fs-6 mt-6">Beatiful tables featured with data search, multi-column sorting,
                         pagination,
@@ -85,9 +85,9 @@
                     alt="Dashboard">
             </div>
 
-            <div class="flex flex-column items-center justify-center py-15 oob-card sm:flex-row animatable"
+            <div class="flex flex-column items-center justify-center oob-card sm:flex-row animatable"
                 data-animation="fade-in-right">
-                <div class="w-100 sm:w-50">
+                <div class="w-100 sm:w-50 p-10">
                     <h5 class="fw-600 fs-10"> Details <i class="fa fa-eye"></i></h5>
                     <p class="fs-6 mt-6">Pages with multiple details related to you data base records. Related
                         records
@@ -125,9 +125,9 @@
     <section class="flex flex-column px-10 py-10 gap-10 md:px-25 lg:px-40 md:py:20 lg:py-25" id="features">
         <h1 class="fs-16 fw-700 text-center animatable" data-animation="fade-in-right">Features</h1>
         <div
-            class="align-center animatable flex flex-column gap-10 justify-center md:align-baseline md:flex-row md:justify-flex-start">
+            class="align-center animatable flex flex-column gap-0 justify-center sm:gap-column-6 md:align-baseline md:flex-row md:justify-flex-start">
             @foreach ($features->split(2) as $features_chunk)
-            <div class="w-100 md:w-50">
+            <div class="w-100 md:w-50 m-0 p-0">
                 @foreach ($features_chunk as $feature)
                 <div class="card">
                     <div class="card-body">
@@ -160,7 +160,7 @@
                 </p>
             </div>
             <div class="flex align-flex-end flex-column lg:align-flex-start">
-                <h5 class="fs-10 fw-700 ">Yismen Jorge</h5>
+                <h5 class="fs-10 fw-700 m-0 p-0 mb-2">Yismen Jorge</h5>
                 <a href="tel:+1-829-521-3304" class="flex footer-link gap-4 items-center" target="__new">
                     <i class="fa fa-phone"></i>
                     1-829-521-3304
@@ -177,7 +177,7 @@
                     <a target="__new" href="#" class="social-icon">
                         <i class="fa fa-instagram"></i>
                     </a>
-                    <a target="__new" href="#" class="social-icon">
+                    <a target="__new" href="https://www.facebook.com/yismen.jorge32" class="social-icon">
                         <i class="fa fa-facebook-square">
                         </i></a>
                     <a target="__new" href="https://wa.me/18295213304?text=Hi!" class="social-icon">
@@ -186,9 +186,9 @@
                 </div>
             </div>
         </div>
-        <div class="align-flex-start flex flex-row justify-space-between lg:w-50">
+        <div class="align-flex-start flex flex-row justify-space-between lg:w-50 mt-16 lg:mt-0">
             <div class="flex flex-column w-50 text-left">
-                <h5 class="fs-8 fw-700">Highlights</h5>
+                <h5 class="fs-8 fw-700 m-0 p-0 mb-2">Highlights</h5>
                 <a target="__new" href="/admin" class="footer-link">Admin Page</a>
                 <a target="__new" href="/admin/employees" class="footer-link">Employees</a>
                 <a target="__new" href="/telescope" class="footer-link">Telescope</a>
@@ -196,7 +196,7 @@
                 <a target="__new" href="/log-viewer" class="footer-link">Log Viewer</a>
             </div>
             <div class="flex flex-column text-right w-50 lg:text-left">
-                <h5 class="fs-8 fw-700">Resources</h5>
+                <h5 class="fs-8 fw-700 m-0 p-0 mb-2">Resources</h5>
                 <a target="__new" href="https://laravel.com/docs" class="footer-link">Laravel</a>
                 <a target="__new" href="https://laravel-livewire.com/docs" class="footer-link">Livewire</a>
                 <a target="__new" href="https://laravel-excel.com/" class="footer-link">Laravel Excel</a>

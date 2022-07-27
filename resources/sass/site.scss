@@ -168,21 +168,21 @@ html {
     border-radius: 50%;
 }
 
-#niceties {
-    background-image: url("/images/about.png");
-    background-repeat: repeat-y;
-    background-size: contain;
-}
+// #niceties {
+//     background-image: url("/images/about.png");
+//     background-repeat: repeat-y;
+//     background-size: contain;
+// }
 
 #cta {
     background-image: none;
 
     @include tablet() {
-        background-image: url(/images/cta.png);
+        background-image: url("/images/cta.png");
         background-repeat: no-repeat;
         background-size: 25%;
-        background-position-x: right;
-        background-position-y: bottom;
+        background-position-x: 102%;
+        background-position-y: 115%;
     }
 
     @include desktop() {
@@ -190,19 +190,13 @@ html {
     }
 }
 
-.red-light {
-    position: relative;
+.oob-card {
+    background-color: white;
+    box-shadow: -4px 4px 8px #cacaca;
 }
 
-.red-light::after {
-    content: "";
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    left: 20%;
-    top: 20%;
-    background: #FD3939;
-    filter: blur(100px);
+.oob-card:not(:last-child) {
+    margin-bottom: 10px;
 }
 
 .cards-container::-webkit-scrollbar {
@@ -247,6 +241,12 @@ html {
     background-color: $primary-color;
     color: white;
     border-radius: 45px 0 0 0;
+    background-image: url("/images/background.png");
+    background-size: 50%;
+
+    @include laptop() {
+        background-size: 30%;
+    }
 }
 
 a.footer-link {
@@ -317,8 +317,75 @@ a.footer-link:hover {
     background-color: rgb(240, 240, 240);
 }
 
+.lamp {
+    position: relative;
+    // overflow: hidden;
+}
+
+.lamp::before,
+.lamp::after {
+    top: 10%;
+    left: 12%;
+    content: '';
+    position: absolute;
+    aspect-ratio: 1;
+    width: 100px;
+    filter: blur(75px);
+    // animation-name: lamp-animation-1;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.lamp::before {
+    background-color: red;
+}
+
+.lamp::after {
+    background-color: yellow;
+    animation-duration: 10s;
+    width: 75px;
+    filter: blur(65px);
+    top: 25%;
+    left: 18%;
+}
+
 
 // Keyframes
+@keyframes lamp-animation-1 {
+
+    10% {
+        top: 0%;
+        left: 0%;
+    }
+
+    25% {
+        top: 50%;
+        left: 32%;
+    }
+
+    50% {
+        top: 100%;
+        left: 95%;
+    }
+
+    65% {
+        top: 12%;
+        left: 95%;
+    }
+
+    75% {
+        top: 0%;
+        left: 65%;
+    }
+
+    100% {
+        top: 0%;
+        left: 0%;
+    }
+}
+
 @keyframes from-left {
     from {
         transform: translateX(-15px);
