@@ -1,5 +1,13 @@
 <div class="container">
     <x-loading></x-loading>
+    <div class="d-flex justify-flex-end mb-2">
+        <livewire:submenu :links="[
+            ['text' => 'Processes', 'route' => route('admin.processes.index'), 'target' => '_new'],
+            ['text' => 'Steps', 'route' => route('admin.steps.index'), 'target' => '_new'],
+            ['text' => 'Employee Process Assignation', 'route' => route('admin.employee-process.index'), 'target' => '_new'],
+        ]" />
+    </div>
+
     <div wire:loading.class="hidden">
         <div class="box box-primary">
             <div class="box-body">
@@ -226,3 +234,4 @@
         @endif
         @endif
     </div>
+</div>

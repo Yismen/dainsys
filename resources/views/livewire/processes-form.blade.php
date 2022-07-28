@@ -79,19 +79,21 @@
             </form>
         </div>
     </div>
+
+
+
+
+    @push('scripts')
+    <script>
+        (function() {
+            document.addEventListener('showProcessModal', () => {
+                $('#processModal').modal('show');
+            });
+            
+            document.addEventListener('hideProcessModal', () => {
+                $('#processModal').modal('hide');
+            });
+        })()
+    </script>
+    @endpush
 </div>
-
-
-@push('scripts')
-<script>
-    (function() {
-        document.addEventListener('showProcessModal', () => {
-            $('#processModal').modal('show');
-        });
-        
-        document.addEventListener('hideProcessModal', () => {
-            $('#processModal').modal('hide');
-        });
-    })()
-</script>
-@endpush

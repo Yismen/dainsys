@@ -62,6 +62,7 @@ class EmployeeProcess extends Component
             ->pluck('id');
 
         $process->employees()->attach($employees);
+        Cache::flush();
     }
 
     protected function getEmployees()
@@ -77,7 +78,7 @@ class EmployeeProcess extends Component
                 });
             })
             ->paginate($this->amount, ['*'], 'assigned_page')
-            ;
+        ;
     }
 
     protected function getEmployeesNotAssigned()
@@ -93,7 +94,7 @@ class EmployeeProcess extends Component
                 });
             })
             ->paginate($this->amount, ['*'], 'not_assigned_page')
-            ;
+        ;
     }
 
     protected function employeesQuery()
@@ -137,7 +138,7 @@ class EmployeeProcess extends Component
                     });
                 }
             })
-            ;
+        ;
     }
 
     protected function processes()
