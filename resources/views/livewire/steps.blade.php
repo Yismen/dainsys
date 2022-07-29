@@ -3,9 +3,8 @@
     <livewire:steps-form />
     <div class="d-flex justify-flex-end mb-2">
         <livewire:submenu :links="[
-            ['text' => 'Processes', 'route' => route('admin.processes.index'), 'target' => '_new'],
-            ['text' => 'Steps', 'route' => route('admin.steps.index'), 'target' => '_new'],
-            ['text' => 'Employee Process Assignation', 'route' => route('admin.employee-process.index'), 'target' => '_new'],
+            ['text' => 'Processes', 'route' => route('admin.processes.index')],
+            ['text' => 'Employee Process Assignation', 'route' => route('admin.employee-process.index')],
         ]" />
     </div>
 
