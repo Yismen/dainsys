@@ -26,13 +26,22 @@ class Universals extends Component
 
     public array $position_list = [];
 
+    public $universals;
+    public $noUniversals;
+
     public string $search = '';
+
+    protected $listeners = [
+        'confirmation_assign_all_universalsconfirmed' => 'assignAll',
+        'confirmation_remove_all_universalsconfirmed' => 'unAssignAll',
+    ];
 
     public function render()
     {
+        $this->universals = $this->getEmployees('universals');
+        $this->noUniversals = $this->getEmployees('noUniversals');
+
         return view('livewire.universals', [
-            'universal_employees' => $this->getEmployees('universals'),
-            'non_universal_employees' => $this->getEmployees('noUniversals'),
             'sites' => Cache::rememberForever('universal_sites', function () {
                 return Site::query()
                     ->whereHas('employees', function ($quer) {
@@ -83,7 +92,7 @@ class Universals extends Component
     {
         $repo = new UniversalRepo();
 
-        return $repo->$method()
+        $employees = $repo->$method()
         ->with([
             'site',
             'project',
@@ -122,10 +131,33 @@ class Universals extends Component
             }
         })
         ->paginate(15, ['*'], $method);
+
+
+        $this->$method = $employees;
+
+        return $employees;
     }
 
     public function paginationView()
     {
         return 'layouts.partials.pagination';
+    }
+
+    public function assignAll()
+    {
+        $this->noUniversals = $this->getEmployees('noUniversals');
+
+        foreach ($this->noUniversals as $employee) {
+            $employee->universal()->create(['since' => now()]);
+        }
+    }
+
+    public function unAssignAll()
+    {
+        $this->universals = $this->getEmployees('universals');
+
+        foreach ($this->universals as $employee) {
+            $employee->universal->delete();
+        }
     }
 }
