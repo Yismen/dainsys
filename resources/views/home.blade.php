@@ -55,7 +55,7 @@
             <h1 class="fs-16 fw-700 m-0 p-0 text-center animatable text-capitalize md:text-left md:pt-20">Out of the box
             </h1>
             <div class="d-none w-0 md:block">
-                <img class="mt-20 w-100" src="{{ asset('images/niceties.png') }}" alt="Header Image">
+                <img class="mt-20 w-70 w-70" src="{{ asset('images/niceties.png') }}" alt="Header Image">
             </div>
 
         </div>
