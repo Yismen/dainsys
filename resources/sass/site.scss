@@ -183,6 +183,8 @@ html {
         background-size: 25%;
         background-position-x: 102%;
         background-position-y: 115%;
+        // background-blend-mode: soft-light;
+        background-blend-mode: multiply;
     }
 
     @include desktop() {

@@ -160,7 +160,7 @@
                 </p>
             </div>
             <div class="flex align-flex-end flex-column lg:align-flex-start">
-                <h5 class="fs-10 fw-700 m-0 p-0 mb-2">Yismen Jorge</h5>
+                <h5 class="fs-10 fw-700 m-0 p-0 mb-4">Yismen Jorge</h5>
                 <a href="tel:+1-829-521-3304" class="flex footer-link gap-4 items-center" target="__new">
                     <i class="fa fa-phone"></i>
                     1-829-521-3304
@@ -170,7 +170,7 @@
                     yismen.jorge@gmail.com
                 </a>
 
-                <div class="flex mt-4 gap-8">
+                <div class="flex mt-8 gap-8">
                     <a target="__new" href="https://github.com/yismen" class="social-icon">
                         <i class="fa fa-github"></i>
                     </a>
