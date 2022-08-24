@@ -2,13 +2,7 @@
 
 namespace App\Console;
 
-use App\Modls\UserLogin;
-use App\Modls\Performance;
 use Illuminate\Console\Scheduling\Schedule;
-use App\Console\Commands\ClearTempraryFiles;
-use App\Console\Commands\UpdateBillableHours;
-use Illuminate\Database\Console\PruneCommand;
-use Dainsys\Commands\ClearLogs\ClearLogsCommand;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
@@ -41,56 +35,45 @@ class Kernel extends ConsoleKernel
     {
         $date = now();
 
-        $schedule->command(ClearLogsCommand::class, [
+        $schedule->command(\Dainsys\Commands\ClearLogs\ClearLogsCommand::class, [
             '--clear',
             '--keep=3'
         ])->dailyAt('02:00');
 
-        $schedule->command(ClearTempraryFiles::class, [
+        $schedule->command(\App\Console\Commands\ClearTempraryFiles::class, [
             'remove_files_older_than_days' => 5
         ])->dailyAt('20:45');
 
-        // $schedule->command('dainsys:feed-shifts --hours=7.5 --saturday=1')->dailyAt('14:59');
-        // $schedule->command('dainsys:feed-schedules --days=15 --since-days-ago=0')->dailyAt('15:10');
+        $schedule->command(\App\Console\Commands\EmployeesHired::class, ['--months' => 2, '--site' => 'santiago-hq'])->weeklyOn(2, '15:58');
+        $schedule->command(\App\Console\Commands\EmployeesHired::class, ['--months' => 2, '--site' => 'santiago-hq'])->weeklyOn(5, '15:58');
+        $schedule->command(\App\Console\Commands\EmployeesTerminated::class, ['--months' => 2,  '--site' => 'santiago-hq'])->weeklyOn(2, '15:59');
+        $schedule->command(\App\Console\Commands\EmployeesTerminated::class, ['--months' => 2,  '--site' => 'santiago-hq'])->weeklyOn(5, '15:59');
 
-        $schedule->command('dainsys:employees-hired --months=2 --site=santiago-hq')
-            ->weeklyOn(2, '15:58');
-        $schedule->command('dainsys:employees-hired --months=2 --site=santiago-hq')
-            ->weeklyOn(5, '15:58');
-        $schedule->command('dainsys:employees-terminated --months=2 --site=santiago-hq')
-            ->weeklyOn(2, '15:59');
-        $schedule->command('dainsys:employees-terminated --months=2 --site=santiago-hq')
-            ->weeklyOn(5, '15:59');
+        $schedule->command(\App\Console\Commands\General\SendGeneralDailyProductionReportCommand::class, ['--team' => 'ECC'])->dailyAt('05:25');
+        $schedule->command(\App\Console\Commands\General\SendGeneralDailyRawReportCommand::class, ['--team' => 'ECC'])->dailyAt('05:45');
 
-        $schedule->command('dainsys:general-rc-production-report --team=ECC')->dailyAt('05:25');
-        $schedule->command('dainsys:general-rc-raw-report --team=ECC')->dailyAt('05:45');
+        $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Publishing\SendPublishingProductionReportCommand::class)->hourlyAt(59);
 
-        $schedule->command('publishing:send-production-report')->hourlyAt(58);
+        $schedule->command(\App\Console\Commands\Political\SendPoliticalFlashReportCommand::class)->hourly();
+        $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalProductionReportCommand::class)->hourlyAt(59);
+        $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalTextCampaignReportCommand::class)->dailyAt('07:20');
 
-        $schedule->command('dainsys:political-send-hourly-flash')->hourly();
-        $schedule->command('political:send-production-report')->hourlyAt(59);
-        $schedule->command('political:send-text-campaign-report')->dailyAt('07:20');
+        $schedule->command(\App\Console\Commands\Inbound\SendDailySummaryCommand::class)->dailyAt('06:20');
+        $schedule->command(\App\Console\Commands\Inbound\SendWTDSummaryCommand::class)->dailyAt('06:30');
 
-        $schedule->command('inbound:send-daily-summary')->dailyAt('06:20');
-        $schedule->command('inbound:send-wtd-summary')->dailyAt('06:30');
+        $schedule->command(\Spatie\Backup\Commands\BackupCommand::class)->dailyAt('21:15');
+        $schedule->command(\Spatie\Backup\Commands\CleanupCommand::class)->dailyAt('22:15');
 
-        $schedule->command('dmr:send-hourly-report')->hourlyAt(59);
-        // $schedule->command('ooma:send-production-report')->dailyAt('20:05');
-        // $schedule->command('ooma:send-mtd-calls-report')->dailyAt('20:15');
-
-        $schedule->command('backup:run')->dailyAt('21:15');
-        $schedule->command('backup:clean')->dailyAt('22:15');
-
-        $schedule->command(UpdateBillableHours::class, [
+        $schedule->command(\App\Console\Commands\UpdateBillableHours::class, [
             '--days' => 1
         ])->dailyAt('01:15');
-        $schedule->command(PruneCommand::class, [
+        $schedule->command(\Illuminate\Database\Console\PruneCommand::class, [
             '--model' => [
-                Performance::class,
-                UserLogin::class,
+                \App\Models\Performance::class,
+                \App\Models\UserLogin::class,
             ]
         ])->dailyAt('02:15');
-        $schedule->command('telescope:prune --hours=72')->dailyAt('06:40');
+        $schedule->command(\Laravel\Telescope\Console\PruneCommand::class, ['--hours' => 72])->dailyAt('06:40');
     }
 
     /**
