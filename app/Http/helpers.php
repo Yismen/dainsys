@@ -1,20 +1,18 @@
 <?php
 
-function personName($name)
-{
-    return ucwords(
-        trim(
-            str_replace(['-', '_'], ' ', $name)
-        )
-    );
+if (function_exists('str') === false) {
+    function str(string $string)
+    {
+        return \Illuminate\Support\Str::of($string);
+    }
 }
 
 /**
  * allows to create a delete button
- * @param  $route    route name where point to
- * @param  $resource the id or slug of the resource to be added to the delete
+ * @param $route    route name where point to
+ * @param $resource the id or slug of the resource to be added to the delete
  * @param  [array] $options  with this array we can override the defaults
- * @return            html form
+ * @return html form
  */
 function deleteForm($route, $resource, $options = null)
 {
@@ -40,10 +38,10 @@ function deleteForm($route, $resource, $options = null)
 
 /**
  * allows to create a delete button link
- * @param  $route    route name where point to
- * @param  $resource the id or slug of the resource to be added to the delete
+ * @param $route    route name where point to
+ * @param $resource the id or slug of the resource to be added to the delete
  * @param  [array] $options  with this array we can override the defaults
- * @return            html form
+ * @return html form
  */
 function deleteFormLink($route, $resource, $options = null)
 {

@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 // use App\Http\PunchesCreateRequests\PunchesCreateRequest;
 use App\Models\Punch;
 use App\Models\Employee;
-use App\Http\Requests\PunchesCreateRequest;
 use Yajra\DataTables\Facades\DataTables;
+use App\Http\Requests\PunchesCreateRequest;
 
 class PunchesController extends Controller
 {
@@ -33,7 +33,7 @@ class PunchesController extends Controller
             return view('punches.index', compact('employees_missing_punch'));
         }
 
-        $punches = Punch::with('employee');
+        $punches = Punch::with('employee.termination');
 
         return DataTables::of($punches)
             ->orderColumn('employee', 'slug $1')
@@ -96,11 +96,6 @@ class PunchesController extends Controller
      */
     public function update(Punch $punch, PunchesCreateRequest $request)
     {
-        // $this->validate($request, [
-        //     'punch' => "required|digits:5|unique:punches,punch,$punch->id,id",
-        //     'employee_id' => "required|exists:employees,id|unique:punches,employee_id,$punch->id,id",
-        // ]);
-
         $punch->update($request->only('punch', 'employee_id'));
 
         return redirect()

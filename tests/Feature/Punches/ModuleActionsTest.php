@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Punches;
 
-use App\Models\Employee;
 use Tests\TestCase;
+use App\Models\Employee;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -43,7 +43,7 @@ class ModuleActionsTest extends TestCase
     {
         $punch = create('App\Models\Punch');
         $response = $this->actingAs($this->userWithPermission('edit-punches'));
-
+        
         $response->get(route('admin.punches.edit', $punch->punch))
             ->assertOk()
             ->assertViewIs('punches.edit')

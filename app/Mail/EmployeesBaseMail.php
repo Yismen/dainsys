@@ -13,7 +13,7 @@ abstract class EmployeesBaseMail extends Mailable
 
     public $months;
 
-    protected $markdown;
+    public $markdown;
 
     public $title;
 

@@ -24,7 +24,7 @@ class PunchesCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'punch' => 'required|min:4|max:90|unique:punches,punch',
+            'punch' => 'required|min:4|max:5|unique:punches,punch',
             'employee_id' => 'required|exists:employees,id|unique:punches,employee_id',
         ];
     }

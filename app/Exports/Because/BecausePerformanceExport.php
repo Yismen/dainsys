@@ -2,14 +2,11 @@
 
 namespace App\Exports\Because;
 
-use App\Console\Commands\Because\BecauseCommandsTrait;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class BecausePerformanceExport implements WithMultipleSheets
 {
-    use BecauseCommandsTrait;
-
     public function __construct(Carbon $date)
     {
         $this->date = $date;

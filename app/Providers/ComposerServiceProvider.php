@@ -13,7 +13,11 @@ class ComposerServiceProvider extends ServiceProvider
     {
         view()->composer(['layouts.app', 'app', 'home'], AppComposer::class);
         view()->composer(['human_resources.reports.dgt3', 'human_resources.reports.dgt4'], DgtComposer::class);
-        view()->composer(['punches._last_punch_id'], LatestPunchComposer::class);
+        view()->composer([
+            'punches._last_punch_id',
+            'employees.create',
+            'punches._form',
+        ], LatestPunchComposer::class);
     }
 
     public function register()
