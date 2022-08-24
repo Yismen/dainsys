@@ -2,15 +2,15 @@
 
 namespace App\Console\Commands\General;
 
-use App\Console\Commands\General\DailyRawReport\GeneralDailyRawReportExport;
-use App\Console\Commands\General\DailyRawReport\GeneralDailyRawReportRepository;
-use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
-use App\Mail\CommandsBaseMail;
 use Carbon\Carbon;
+use App\Mail\CommandsBaseMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
+use App\Console\Commands\General\DailyRawReport\GeneralDailyRawReportExport;
+use App\Console\Commands\General\DailyRawReport\GeneralDailyRawReportRepository;
 
 class SendGeneralDailyRawReportCommand extends Command
 {
@@ -110,10 +110,9 @@ class SendGeneralDailyRawReportCommand extends Command
      */
     protected function getDistroList(): array
     {
-        $list = config('dainsys.workforce.distro') ??
-            abort(404, 'Invalid distro list. Set it up in the .env, separated by pipe (|).');
+        $service = new \App\Services\DainsysConfigService();
 
-        return explode('|', $list);
+        return $service->getDistro('dainsys.workforce.distro');
     }
 
     /**

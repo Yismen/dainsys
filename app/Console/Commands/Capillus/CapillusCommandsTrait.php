@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands\Capillus;
 
-use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
 use Exception;
+use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
 
 trait CapillusCommandsTrait
 {
@@ -27,10 +27,9 @@ trait CapillusCommandsTrait
      */
     protected function distroList(): array
     {
-        $list = config('dainsys.capillus.distro') ??
-            abort(404, 'Invalid distro list. Set it up in the .env, separated by pipe (|).');
+        $service = new \App\Services\DainsysConfigService();
 
-        return explode('|', $list);
+        return $service->getDistro('dainsys.capullus.distro');
     }
 
     protected function getArrayFields($results)

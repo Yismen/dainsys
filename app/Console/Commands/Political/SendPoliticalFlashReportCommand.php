@@ -80,10 +80,9 @@ class SendPoliticalFlashReportCommand extends Command
 
     protected function distroList()
     {
-        $list = config('dainsys.political.distro') ??
-            abort(404, 'Invalid distro list. Set it up in the .env, separated by pipe (|).');
+        $service = new \App\Services\DainsysConfigService();
 
-        return explode('|', $list);
+        return $service->getDistro('dainsys.political.distro');
     }
 
     protected function initialBoot()
