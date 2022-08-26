@@ -7,6 +7,7 @@ use App\Models\Punch;
 use App\Models\Employee;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\PunchesCreateRequest;
+use App\Http\Requests\PunchesUpdateRequest;
 
 class PunchesController extends Controller
 {
@@ -94,7 +95,7 @@ class PunchesController extends Controller
      *
      * @return Response
      */
-    public function update(Punch $punch, PunchesCreateRequest $request)
+    public function update(Punch $punch, PunchesUpdateRequest $request)
     {
         $punch->update($request->only('punch', 'employee_id'));
 
