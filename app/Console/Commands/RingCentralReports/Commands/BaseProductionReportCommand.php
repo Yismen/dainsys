@@ -23,10 +23,9 @@ abstract class BaseProductionReportCommand extends Command
      */
     protected function getDistroList(string $config_key): array
     {
-        $list = config($config_key) ??
-            abort(404, 'Invalid distro list. Set it up in the .env, separated by pipe (|).');
+        $service = new \App\Services\DainsysConfigService();
 
-        return (array) explode('|', $list);
+        return $service->getDistro($config_key);
     }
 
     /**

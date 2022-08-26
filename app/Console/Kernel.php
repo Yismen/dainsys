@@ -54,7 +54,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Publishing\SendPublishingProductionReportCommand::class)->hourlyAt(59);
 
-        $schedule->command(\App\Console\Commands\Political\SendPoliticalFlashReportCommand::class)->hourly();
+        $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalFlashReportCommand::class)->hourly();
         $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalProductionReportCommand::class)->hourlyAt(59);
         $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalTextCampaignReportCommand::class)->dailyAt('07:20');
 

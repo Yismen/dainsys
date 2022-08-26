@@ -56,8 +56,6 @@ class SendGeneralDailyRawReportCommand extends Command
         $this->mail_subject = 'General Daily Raw Report';
 
         $this->file_name = $this->mail_subject . now()->subDay()->format('Ymd_His') . '.xlsx';
-
-        $this->distro = $this->getDistroList();
     }
 
     /**
@@ -67,6 +65,7 @@ class SendGeneralDailyRawReportCommand extends Command
      */
     public function handle()
     {
+        $this->distro = $this->getDistroList();
         try {
             $this->init();
 

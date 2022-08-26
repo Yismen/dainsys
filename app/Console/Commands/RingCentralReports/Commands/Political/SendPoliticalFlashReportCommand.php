@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\Political;
+namespace App\Console\Commands\RingCentralReports\Commands\Political;
 
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -19,7 +19,7 @@ class SendPoliticalFlashReportCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'dainsys:political-send-hourly-flash {--date=default} {--from=default}';
+    protected $signature = 'political:send-hourly-flash {--date=default} {--from=default}';
 
     /**
      * The console command description.
@@ -80,9 +80,10 @@ class SendPoliticalFlashReportCommand extends Command
 
     protected function distroList()
     {
-        $service = new \App\Services\DainsysConfigService();
+        $list = config('dainsys.political.distro') ??
+            abort(404, 'Invalid distro list. Set it up in the .env, separated by pipe (|).');
 
-        return $service->getDistro('dainsys.political.distro');
+        return explode('|', $list);
     }
 
     protected function initialBoot()
