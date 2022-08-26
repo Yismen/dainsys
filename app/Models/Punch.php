@@ -64,6 +64,7 @@ class Punch extends Model
             ->sorted()
             ->actives()
             ->whereDoesntHave('punch')
+            ->orWhere('id', $this->employee->id)
             ->get();
     }
 
