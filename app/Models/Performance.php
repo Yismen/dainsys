@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use App\Traits\Trackable;
-use App\Models\DainsysModel as Model;
 use App\Traits\PerformanceTrait;
 use App\ModelFilters\FilterableTrait;
+use App\Models\DainsysModel as Model;
 use Illuminate\Database\Eloquent\Prunable;
 
 class Performance extends Model
@@ -65,7 +65,7 @@ class Performance extends Model
      */
     public function prunable()
     {
-        return static::where('created_at', '<=', now()->subYears(2)->startOfMonth());
+        return static::where('created_at', '<=', now()->subYears(3)->startOfMonth());
     }
 
     /**

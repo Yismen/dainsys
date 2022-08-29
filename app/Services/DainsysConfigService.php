@@ -2,19 +2,30 @@
 
 namespace App\Services;
 
+use App\Repositories\DatabaseRepository;
+
 class DainsysConfigService
 {
-    public function get(string $key, $default = null)
+    protected $repository;
+
+    public function __construct()
     {
-        return config($key, $default);
+        $this->repository = new DatabaseRepository();
+    }
+
+    protected function get(string $key, $default = null): array
+    {
+        return $this->repository->get($key, $default);
     }
 
     public function getDistro(string $key)
     {
         $distro = $this->get($key);
 
-        $distro ?: abort(403, 'Unable to find a distro list for config ' . $key . '. Did you set it up in your .env file?');
+        if ($distro === null || count($distro) === 0) {
+            throw new \Exception("Unable to find recipients for key {$key}. Did you add them?", 404);
+        }
 
-        return explode('|', $distro);
+        return $distro;
     }
 }

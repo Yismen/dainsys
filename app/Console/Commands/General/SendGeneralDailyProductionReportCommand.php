@@ -56,8 +56,6 @@ class SendGeneralDailyProductionReportCommand extends Command
         $this->mail_subject = 'General Daily Production Report';
 
         $this->file_name = $this->mail_subject . now()->subDay()->format('Ymd_His') . '.xlsx';
-
-        $this->distro = $this->getDistroList();
     }
 
     /**
@@ -67,6 +65,7 @@ class SendGeneralDailyProductionReportCommand extends Command
      */
     public function handle()
     {
+        $this->distro = $this->getDistroList();
         try {
             $this->init();
 
@@ -112,7 +111,7 @@ class SendGeneralDailyProductionReportCommand extends Command
     {
         $service = new \App\Services\DainsysConfigService();
 
-        return $service->getDistro('dainsys.workforce.distro');
+        return $service->getDistro($this->name);
     }
 
     /**

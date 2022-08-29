@@ -3,9 +3,9 @@
 namespace Tests;
 
 use App\Exceptions\Handler;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use Illuminate\Support\Facades\DB;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -54,6 +54,18 @@ abstract class TestCase extends BaseTestCase
 
     //     return $this;
     // }
+
+    protected function mockRepo(string $class, $data, array $methods = [])
+    {
+        $methods = array_merge(['getData'], $methods);
+        $this->partialMock($class, function ($mock) use ($data, $methods) {
+            foreach ($methods as $method) {
+                $mock
+                ->shouldReceive($method)
+                ->andReturn(['data' => $data]);
+            }
+        });
+    }
 
     protected function user(array $attributes = [])
     {

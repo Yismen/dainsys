@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands\RingCentralReports\Commands\Ooma;
 
-use App\Console\Commands\RingCentralReports\Commands\BaseProductionReportCommand;
-use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
+use App\Console\Commands\RingCentralReports\Commands\BaseProductionReportCommand;
 
 class SendOomaMTDCallsReportCommand extends BaseProductionReportCommand
 {
@@ -35,7 +35,7 @@ class SendOomaMTDCallsReportCommand extends BaseProductionReportCommand
             $client_name,
             $campaign_name = 'INT - OOM - OOM_Out',
             $dates_range,
-            $distro_array = $this->getDistroList('dainsys.ooma.internal_distro'),
+            $distro_array = $this->getDistroList($this->name),
             $team = 'ECC%',
             $subject_sufix = 'MTD Calls Report'
         );

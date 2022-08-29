@@ -1,39 +1,55 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Feature;
 
-use App\Console\Commands\Inbound\Support\InboundDataRepository;
-use App\Console\Commands\Inbound\Support\InboundSummaryExport;
-use App\Mail\CommandsBaseMail;
 use Tests\TestCase;
+use App\Mail\CommandsBaseMail;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Console\Commands\Inbound\SendDailySummaryCommand;
+use App\Console\Commands\Inbound\Support\InboundSummaryExport;
+use App\Console\Commands\Inbound\Support\InboundDataRepository;
 
-class DMRHourlyReportTest extends TestCase
+class InboundDailyCommandsTest extends TestCase
 {
+    use RefreshDatabase;
+
     /** @test */
     public function daily_summary_command_exists()
     {
         Excel::fake();
         Mail::fake();
+        $report = factory(\App\Models\Report::class)->create(['key' => 'inbound:send-daily-summary']);
+        $recipients = factory(\App\Models\Recipient::class, 2)->create();
+        $report->recipients()->sync($recipients->pluck('id')->toArray());
 
-        $this->artisan('dmr:send-hourly-report')
-            ->assertExitCode(0);
+        $this->mockRepo(InboundDataRepository::class, []);
+        $this->artisan(SendDailySummaryCommand::class)
+            ->assertExitCode(0)
+            ->expectsOutput('Kipany Inbound Daily Report sent!');
     }
 
     /** @test */
-    // public function daily_summary_command_executes()
-    // {
-    // Excel::fake();
-    // Mail::fake();
-    // $subject = "Fake Name";
-    // $file_name = "{$subject}.xlsx";
-    // $this->artisan('dmr:send-hourly-report');
+    public function daily_summary_command_executes()
+    {
+        Excel::fake();
+        Mail::fake();
+        $subject = 'Fake Name';
+        $file_name = "{$subject}.xlsx";
+        $report = factory(\App\Models\Report::class)->create(['key' => 'inbound:send-daily-summary']);
+        $recipients = factory(\App\Models\Recipient::class, 2)->create();
+        $report->recipients()->sync($recipients->pluck('id')->toArray());
 
-    // Mail::assertSent(
-    //     CommandsBaseMail::class
-    // );
-    // }
+        $this->mockRepo(InboundDataRepository::class, []);
+
+        $this->mockRepo(InboundDataRepository::class, []);
+        $this->artisan(SendDailySummaryCommand::class);
+
+        Mail::assertSent(
+            CommandsBaseMail::class
+        );
+    }
 
     /** @test */
     // public function repository_returns_data()

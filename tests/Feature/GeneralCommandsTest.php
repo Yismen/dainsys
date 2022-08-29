@@ -1,36 +1,57 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Feature;
 
-use Mockery;
+use Tests\TestCase;
+use App\Models\Report;
+use App\Models\Recipient;
 use App\Mail\CommandsBaseMail;
-use PHPUnit\Framework\TestCase;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Console\Commands\Common\HourlyProductionReport\HourlyProductionReportExport;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Console\Commands\General\SendGeneralDailyProductionReportCommand;
+use App\Console\Commands\General\DailyProductionReport\GeneralDailyProductionReportExport;
+use App\Console\Commands\General\DailyProductionReport\GeneralDailyProductionReportRepository;
 
-class CommonHourlyProductionReportTest extends TestCase
+class GeneralCommandsTest extends TestCase
 {
+    use RefreshDatabase;
+    use WithFaker;
+
     /** @test */
-    public function excel_file_is_stored()
+    public function it_sends_the_general_daily_production_report()
     {
         Mail::fake();
         Excel::fake();
+        $report = factory(Report::class)->create(['key' => 'dainsys:general-rc-production-report']);
+        $recipients = factory(Recipient::class, 2)->create();
+        $report->recipients()->sync($recipients->pluck('id')->toArray());
+
+        $this->mockRepo(GeneralDailyProductionReportRepository::class, $this->getData());
+        $this->artisan(SendGeneralDailyProductionReportCommand::class)
+            // ->expectsOutput("General Daily Production Report Sent")
+            ->assertExitCode(0);
+
+        // Mail::assertSent(CommandsBaseMail::class);
+    }
+
+    /** @test */
+    public function excel_file_is_stored()
+    {
+        Excel::fake();
+
         $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
-        $repo = Mockery::mock(HourlyProductionReportRepository::class);
-        $repo->shouldReceive('getData')
-            ->once()
-            ->andReturn($this->getData());
 
         Excel::store(
-            new HourlyProductionReportExport(
-                $repo->getData()
+            new GeneralDailyProductionReportExport(
+                ['data' => 'some']
             ),
             $file_name
         );
 
-        Excel::assertStored($file_name, function (HourlyProductionReportExport $export) {
+        Excel::assertStored($file_name, function (GeneralDailyProductionReportExport $export) {
             return true;
         });
     }
@@ -40,17 +61,14 @@ class CommonHourlyProductionReportTest extends TestCase
     {
         Excel::fake();
         Mail::fake();
+
         $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
         $recipient = 'someone@fake.email';
-        $repo = Mockery::mock(HourlyProductionReportRepository::class);
-        $repo->shouldReceive('getData')
-            ->once()
-            ->andReturn($this->getData());
 
         Excel::store(
-            new HourlyProductionReportExport(
-                $repo->getData()
+            new GeneralDailyProductionReportExport(
+                $this->getData()
             ),
             $file_name
         );

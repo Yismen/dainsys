@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\Political;
+namespace App\Console\Commands\RingCentralReports\Commands\Political;
 
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -19,7 +19,7 @@ class SendPoliticalFlashReportCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'dainsys:political-send-hourly-flash {--date=default} {--from=default}';
+    protected $signature = 'political:send-hourly-flash {--date=default} {--from=default}';
 
     /**
      * The console command description.
@@ -55,10 +55,10 @@ class SendPoliticalFlashReportCommand extends Command
             $instance = Carbon::now()->format('Ymd_His');
             $file_name = "Political Flash Report {$instance}.xlsx";
 
-            $flash = (new PoliticalFlashRepository([
+            $flash = new PoliticalFlashRepository([
                 'date_from' => $this->date_from,
                 'date_to' => $this->date_to,
-            ]));
+            ]);
 
             if ($flash->hasHours()) {
                 Excel::store(new FlashReportExport($flash), $file_name);
@@ -82,7 +82,7 @@ class SendPoliticalFlashReportCommand extends Command
     {
         $service = new \App\Services\DainsysConfigService();
 
-        return $service->getDistro('dainsys.political.distro');
+        return $service->getDistro($this->name);
     }
 
     protected function initialBoot()
