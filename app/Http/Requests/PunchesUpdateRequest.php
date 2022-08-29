@@ -24,7 +24,6 @@ class PunchesUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        // dd(request()->all());
         return [
             'punch' => [
                 'required',
