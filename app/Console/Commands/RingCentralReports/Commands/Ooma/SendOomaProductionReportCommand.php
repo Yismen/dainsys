@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands\RingCentralReports\Commands\Ooma;
 
-use App\Console\Commands\RingCentralReports\Commands\BaseProductionReportCommand;
-use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
+use App\Console\Commands\RingCentralReports\Commands\BaseProductionReportCommand;
 
 class SendOomaProductionReportCommand extends BaseProductionReportCommand
 {
@@ -38,7 +38,7 @@ class SendOomaProductionReportCommand extends BaseProductionReportCommand
             $client_name,
             $campaign_name = 'INT - OOM - OOM_Out',
             $dates_range,
-            $distro_array = $this->getDistroList('dainsys.ooma.distro'),
+            $distro_array = $this->getDistroList($this->name),
             $team = '%',
             // $team = 'ECC%',
             $subject_sufix = 'Daily Production Report'

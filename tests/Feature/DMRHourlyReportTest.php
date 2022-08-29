@@ -1,40 +1,48 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Feature;
 
-use App\Console\Commands\Inbound\Support\InboundDataRepository;
-use App\Console\Commands\Inbound\Support\InboundSummaryExport;
-use App\Mail\CommandsBaseMail;
 use Tests\TestCase;
+use App\Models\Report;
+use App\Models\Recipient;
+use App\Mail\CommandsBaseMail;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Console\Commands\Inbound\Support\InboundSummaryExport;
+use App\Console\Commands\Inbound\Support\InboundDataRepository;
+use App\Console\Commands\RingCentralReports\Commands\DMR\SendDMRProductionReportCommand;
 
-class InboundDailyCommandsTest extends TestCase
+class DMRHourlyReportTest extends TestCase
 {
+    use RefreshDatabase;
+
     /** @test */
     public function daily_summary_command_exists()
     {
         Excel::fake();
         Mail::fake();
+        $report = factory(Report::class)->create(['key' => 'dmr:send-hourly-report']);
+        $recipients = factory(Recipient::class, 2)->create();
+        $report->recipients()->sync($recipients->pluck('id')->toArray());
 
-        $this->artisan('inbound:send-daily-summary')
-            ->assertExitCode(0)
-            ->expectsOutput('Kipany Inbound Daily Report sent!');
+        $this->artisan(SendDMRProductionReportCommand::class)
+            ->assertExitCode(0);
     }
 
     /** @test */
-    public function daily_summary_command_executes()
-    {
-        Excel::fake();
-        Mail::fake();
-        $subject = 'Fake Name';
-        $file_name = "{$subject}.xlsx";
-        $this->artisan('inbound:send-daily-summary');
+    // public function daily_summary_command_executes()
+    // {
+    // Excel::fake();
+    // Mail::fake();
+    // $subject = "Fake Name";
+    // $file_name = "{$subject}.xlsx";
+    // $this->artisan('dmr:send-hourly-report');
 
-        Mail::assertSent(
-            CommandsBaseMail::class
-        );
-    }
+    // Mail::assertSent(
+    //     CommandsBaseMail::class
+    // );
+    // }
 
     /** @test */
     // public function repository_returns_data()

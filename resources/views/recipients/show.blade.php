@@ -33,6 +33,14 @@
                             <tr>
                                 <th class="text-right">Reports: </th>
                                 <td>
+                                    @foreach ($recipient->reports as $report)
+                                    <span class="badge bg-gray" title="{{ $report->email }}">
+                                        <a href="{{ route('admin.reports.show', $report->id) }}" target="_blank"
+                                            rel="noopener noreferrer">
+                                            {{ $report->name }}
+                                        </a>
+                                    </span>
+                                    @endforeach
                                 </td>
                             </tr>
                         </tbody>

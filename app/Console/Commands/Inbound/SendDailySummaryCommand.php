@@ -2,13 +2,13 @@
 
 namespace App\Console\Commands\Inbound;
 
-use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
-use App\Console\Commands\Inbound\Support\InboundDataRepository;
-use App\Console\Commands\Inbound\Support\InboundSummaryExport;
 use App\Mail\CommandsBaseMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Console\Commands\Inbound\Support\InboundSummaryExport;
+use App\Console\Commands\Inbound\Support\InboundDataRepository;
+use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
 
 class SendDailySummaryCommand extends Command
 {
@@ -27,10 +27,6 @@ class SendDailySummaryCommand extends Command
      * @var string
      */
     protected $description = 'Send a daily summary report for Kipany inbound calls';
-    /**
-     * The config path to the distribution list;
-     */
-    protected string $distro_config_path = 'dainsys.inbound.distro';
 
     protected string $client = 'Kipany';
 
@@ -106,16 +102,15 @@ class SendDailySummaryCommand extends Command
      */
     protected function getDistroList(): array
     {
-        $list = config($this->distro_config_path) ??
-            abort(404, 'Invalid distro list. Set it up in the .env, separated by pipe (|).');
+        $service = new \App\Services\DainsysConfigService();
 
-        return explode('|', $list);
+        return $service->getDistro($this->name);
     }
 
     /**
      * Check if any of the data arrays have at least one row.
      *
-     * @param array $data
+     * @param  array   $data
      * @return boolean
      */
     protected function hasAnyData(array $data): bool
@@ -123,7 +118,7 @@ class SendDailySummaryCommand extends Command
         foreach ($data as $value) {
             if (count($value) > 0 || !empty($value)) {
                 return true;
-            };
+            }
         }
 
         return false;

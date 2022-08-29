@@ -2,19 +2,19 @@
 
 namespace App\Repositories;
 
-use App\Models\Report;
+use App\Models\Recipient;
+use Illuminate\Database\Eloquent\Builder;
 
 class DatabaseRepository
 {
     public function get(string $key, $default = null): array
     {
-//         $list = Report::query()
-//             ->where('key', $key)
-//             ->with('contacts')
-//             ->pluck('');
+        $contacts = Recipient::query()
+        ->whereHas('reports', function (Builder $report) use ($key) {
+            $report->where('key', $key);
+        })
+            ->get()->pluck('email', 'name')->toArray();
 
-        // dd($list);
-//         return config($key, $default);
-        return [];
+        return $contacts;
     }
 }

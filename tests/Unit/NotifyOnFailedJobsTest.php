@@ -2,13 +2,13 @@
 
 namespace Tests\Unit;
 
-use App\Jobs\NotifyBirthdays;
-use App\Notifications\UserAppNotification;
 use Exception;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Queue\Events\JobFailed;
-use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
+use App\Jobs\NotifyBirthdays;
+use Illuminate\Queue\Events\JobFailed;
+use App\Notifications\UserAppNotification;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class NotifyOnFailedJobsTest extends TestCase
 {

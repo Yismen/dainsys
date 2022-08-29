@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands\RingCentralReports\Commands\DMR;
 
-use App\Console\Commands\RingCentralReports\Commands\BaseProductionReportCommand;
-use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
+use App\Console\Commands\RingCentralReports\Commands\BaseProductionReportCommand;
 
 class SendDMRProductionReportCommand extends BaseProductionReportCommand
 {
@@ -36,7 +36,7 @@ class SendDMRProductionReportCommand extends BaseProductionReportCommand
             $client_name,
             $campaign_name = 'DMR%',
             $dates_range,
-            $distro_array = $this->getDistroList('dainsys.publishing.distro'),
+            $distro_array = $this->getDistroList($this->name),
             $team = 'ECC%',
             $subject_sufix = 'Hourly Production Report'
         );

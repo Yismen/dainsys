@@ -1,24 +1,34 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Feature;
 
-use App\Console\Commands\Inbound\Support\DataParsers\Periods\PeriodHoursParser;
-use App\Console\Commands\Inbound\Support\InboundDataRepository;
-use App\Console\Commands\Inbound\Support\InboundSummaryExport;
-use App\Mail\CommandsBaseMail;
 use Tests\TestCase;
+use App\Models\Report;
+use App\Models\Recipient;
+use App\Mail\CommandsBaseMail;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Console\Commands\Inbound\SendWTDSummaryCommand;
+use App\Console\Commands\Inbound\Support\InboundSummaryExport;
+use App\Console\Commands\Inbound\Support\InboundDataRepository;
+use App\Console\Commands\Inbound\Support\DataParsers\Periods\PeriodHoursParser;
 
 class InboundWTDCommandTest extends TestCase
 {
+    use RefreshDatabase;
+
     /** @test */
     public function wtd_summary_command_exists()
     {
         Excel::fake();
         Mail::fake();
+        $report = factory(Report::class)->create(['key' => 'inbound:send-wtd-summary']);
+        $recipients = factory(Recipient::class, 2)->create();
+        $report->recipients()->sync($recipients->pluck('id')->toArray());
 
-        $this->artisan('inbound:send-wtd-summary')
+        $this->mockRepo(InboundDataRepository::class, []);
+        $this->artisan(SendWTDSummaryCommand::class)
             ->assertExitCode(0)
             ->expectsOutput('Kipany Inbound WTD Report sent!');
     }
@@ -30,7 +40,12 @@ class InboundWTDCommandTest extends TestCase
         Mail::fake();
         $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
-        $this->artisan('inbound:send-wtd-summary');
+        $report = factory(Report::class)->create(['key' => 'inbound:send-wtd-summary']);
+        $recipients = factory(Recipient::class, 2)->create();
+        $report->recipients()->sync($recipients->pluck('id')->toArray());
+
+        $this->mockRepo(InboundDataRepository::class, []);
+        $this->artisan(SendWTDSummaryCommand::class);
 
         Mail::assertSent(
             CommandsBaseMail::class

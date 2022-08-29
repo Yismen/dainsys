@@ -55,10 +55,10 @@ class SendPoliticalFlashReportCommand extends Command
             $instance = Carbon::now()->format('Ymd_His');
             $file_name = "Political Flash Report {$instance}.xlsx";
 
-            $flash = (new PoliticalFlashRepository([
+            $flash = new PoliticalFlashRepository([
                 'date_from' => $this->date_from,
                 'date_to' => $this->date_to,
-            ]));
+            ]);
 
             if ($flash->hasHours()) {
                 Excel::store(new FlashReportExport($flash), $file_name);
@@ -80,10 +80,9 @@ class SendPoliticalFlashReportCommand extends Command
 
     protected function distroList()
     {
-        $list = config('dainsys.political.distro') ??
-            abort(404, 'Invalid distro list. Set it up in the .env, separated by pipe (|).');
+        $service = new \App\Services\DainsysConfigService();
 
-        return explode('|', $list);
+        return $service->getDistro($this->name);
     }
 
     protected function initialBoot()

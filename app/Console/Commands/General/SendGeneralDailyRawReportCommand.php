@@ -111,7 +111,7 @@ class SendGeneralDailyRawReportCommand extends Command
     {
         $service = new \App\Services\DainsysConfigService();
 
-        return $service->getDistro('dainsys.workforce.distro');
+        return $service->getDistro($this->name);
     }
 
     /**

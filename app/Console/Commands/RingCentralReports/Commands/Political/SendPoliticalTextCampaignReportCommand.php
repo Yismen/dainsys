@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands\RingCentralReports\Commands\Political;
 
-use App\Console\Commands\RingCentralReports\Commands\BaseProductionReportCommand;
-use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
+use App\Console\Commands\RingCentralReports\Commands\BaseProductionReportCommand;
 
 class SendPoliticalTextCampaignReportCommand extends BaseProductionReportCommand
 {
@@ -35,7 +35,7 @@ class SendPoliticalTextCampaignReportCommand extends BaseProductionReportCommand
             $client_name,
             $campaign_name = 'POL - Text%',
             $dates_range,
-            $distro_array = $this->getDistroList('dainsys.political.text_distro'),
+            $distro_array = $this->getDistroList($this->name),
             $team = '%',
             $subject_sufix = 'Daily Production Report'
         );

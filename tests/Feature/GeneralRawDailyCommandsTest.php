@@ -1,14 +1,18 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Feature;
 
-use App\Console\Commands\General\DailyRawReport\GeneralDailyRawReportExport;
-use App\Mail\CommandsBaseMail;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\Report;
+use App\Models\Recipient;
+use App\Mail\CommandsBaseMail;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Console\Commands\General\SendGeneralDailyRawReportCommand;
+use App\Console\Commands\General\DailyRawReport\GeneralDailyRawReportExport;
+use App\Console\Commands\General\DailyRawReport\GeneralDailyRawReportRepository;
 
 class GeneralRawDailyCommandsTest extends TestCase
 {
@@ -20,11 +24,15 @@ class GeneralRawDailyCommandsTest extends TestCase
     {
         Mail::fake();
         Excel::fake();
+        $report = factory(Report::class)->create(['key' => 'dainsys:general-rc-raw-report']);
+        $recipients = factory(Recipient::class, 2)->create();
+        $report->recipients()->sync($recipients->pluck('id')->toArray());
 
         $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
 
-        $this->artisan('dainsys:general-rc-raw-report')
+        $this->mockRepo(GeneralDailyRawReportRepository::class, $this->getData());
+        $this->artisan(SendGeneralDailyRawReportCommand::class)
             ->expectsOutput('General Daily Raw Report Sent!')
             ->assertExitCode(0);
 

@@ -29,7 +29,7 @@ trait CapillusCommandsTrait
     {
         $service = new \App\Services\DainsysConfigService();
 
-        return $service->getDistro('dainsys.capullus.distro');
+        return $service->getDistro($this->name);
     }
 
     protected function getArrayFields($results)
