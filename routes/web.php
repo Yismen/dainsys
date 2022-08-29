@@ -191,6 +191,10 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 
     Route::resource('punches', \App\Http\Controllers\PunchesController::class);
 
+    Route::resource('recipients', \App\Http\Controllers\RecipientsController::class);
+
+    Route::resource('reports', \App\Http\Controllers\ReportsController::class);
+
     Route::resource('revenue_types', \App\Http\Controllers\RevenueTypesController::class);
 
     Route::resource('roles', \App\Http\Controllers\RolesController::class);
