@@ -12,8 +12,6 @@
 	</div>
 </div>
 
-
-
 <div class="row">
 	<div class="col-md-6">
 		<!-- Key -->
@@ -28,7 +26,8 @@
 	</div>
 	<div class="col-md-6">
 		<!-- Active -->
-		<div class="form-group {{ $errors->has('active') ? 'has-error' : null }}">
+		<div
+			class="form-group {{ $errors->has('active') ? 'has-error' : null }} {{ isset($report) && $report->active ? 'bg-success' : '' }}">
 			{!! Form::label('active', ' Active:', ['class'=>'col-sm-2 control-label']) !!}
 			<div class="col-sm-10">
 				{!! Form::checkbox('active', 1, null, ['class'=>'for-control']) !!}
@@ -56,15 +55,18 @@
 
 <h5>Recipients:</h5>
 
-<div class="row" style="max-height: 200px;
+<div class="row" style="padding: 12px 0;
+max-height: 200px;
 overflow-y: auto;
-margin-bottom: 20px;
-background-color: beige;">
+margin-bottom: 12px;
+border-top: 1px solid #d2d2d2;
+border-bottom: 1px solid #d2d2d2;">
 	@foreach ($recipients->split(2) as $recipient_split)
 	<div class="col-sm-6">
 		@foreach ($recipient_split as $recipient)
 
-		<div class="checkbox">
+		<div
+			class="checkbox {{ isset($report) && $report->recipients->contains('id', $recipient->id) ? 'bg-success' : ''}}">
 			<label>
 				{!! Form::checkbox('recipients[]', $recipient->id) !!}
 				{{ $recipient->name }}

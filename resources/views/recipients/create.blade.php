@@ -9,21 +9,19 @@
 
 				{!! Form::open(['route'=>['admin.recipients.store'], 'method'=>'POST', 'class'=>'form-horizontal',
 				'role'=>'form']) !!}
-				<legend>New Recipient</legend>
+				<legend>New Recipient
+
+					<a href="/admin/recipients" class="pull-right fs-6">
+						Back to the list
+						<i class="fa fa-list"></i>
+					</a>
+				</legend>
 
 				@include('recipients._form')
 
 				<div class="form-group">
 					<div class="col-sm-10 col-sm-offset-2">
 						<button type="submit" class="btn btn-primary">Create</button>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-12">
-						<a href="{{ route('admin.recipients.index') }}">
-							Recipients List
-							<i class="fa fa-list"> </i>
-						</a>
 					</div>
 				</div>
 

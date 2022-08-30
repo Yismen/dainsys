@@ -12,6 +12,11 @@
 						[<a href="{{ route('admin.recipients.show', $recipient->id) }}" title="See Details">{{
 							$recipient->name
 							}}</a>]
+
+						<a href="/admin/recipients" class="pull-right fs-6">
+							Back to the list
+							<i class="fa fa-list"></i>
+						</a>
 					</h4>
 				</div>
 
@@ -36,13 +41,6 @@
 				<div class="box-footer">
 					<delete-request-button url="{{ route('admin.recipients.destroy', $recipient->id) }}"
 						redirect-url="{{ route('admin.recipients.index') }}"></delete-request-button>
-				</div>
-
-				<div class="form-group col-sm-offset-4">
-					<a href="/admin/recipients" class="push-right">
-						Back to the list
-						<i class="fa fa-list"></i>
-					</a>
 				</div>
 
 			</div>

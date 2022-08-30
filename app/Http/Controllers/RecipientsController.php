@@ -41,7 +41,7 @@ class RecipientsController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:recipients',
             'email' => 'required|email|unique:recipients',
-            'title' => 'sometimes|min:3'
+            'title' => 'nullable|min:3'
         ]);
 
         $recipient = Recipient::create($request->only(['name', 'email', 'title']));
@@ -71,7 +71,7 @@ class RecipientsController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:recipients,name,' . $recipient->id,
             'email' => 'required|email|unique:recipients,email,' . $recipient->id,
-            'title' => 'min:3'
+            'title' => 'nullable|min:3'
         ]);
 
         $recipient->update($request->only(['name', 'email', 'title']));
