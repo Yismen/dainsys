@@ -114,7 +114,8 @@ class PerformanceRepository
                 sum(transactions) as sales,
                 sum(production_time) as production_time,
                 sum(transactions) / sum(production_time) as sph,
-                sum(production_time) / sum(login_time) as efficiency,
+                sum(billable_hours) / sum(login_time) as efficiency,
+                sum(production_time) / sum(login_time) as efficiency_over_production,
                 sum(sph_goal * production_time) / sum(production_time) as sph_goal
             ')
             )

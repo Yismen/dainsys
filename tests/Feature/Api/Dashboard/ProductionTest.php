@@ -29,6 +29,7 @@ class ProductionTest extends TestCase
                     'production_time',
                     'sph',
                     'efficiency',
+                    'efficiency_over_production',
                     'sph_goal',
                     'month',
                 ],
