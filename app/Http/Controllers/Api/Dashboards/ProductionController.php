@@ -42,6 +42,7 @@ class ProductionController extends Controller
             'revenue_mtd' => number_format($mtdData->sum('revenue'), 2),
             'login_hours_mtd' => number_format($mtdData->sum('login_time'), 2),
             'production_hours_mtd' => number_format($mtdData->sum('production_time'), 2),
+            'billable_hours_mtd' => number_format($mtdData->sum('billable_time'), 2),
         ];
     }
 

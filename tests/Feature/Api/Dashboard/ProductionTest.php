@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Api\Dashboard;
 
-use App\Models\Performance;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Laravel\Passport\Passport;
 use Tests\TestCase;
+use App\Models\Performance;
+use Laravel\Passport\Passport;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ProductionTest extends TestCase
 {
@@ -48,6 +48,7 @@ class ProductionTest extends TestCase
                 'revenue_mtd',
                 'login_hours_mtd',
                 'production_hours_mtd',
+                'billable_hours_mtd',
             ]);
     }
 }

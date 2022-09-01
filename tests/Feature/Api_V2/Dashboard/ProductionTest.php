@@ -48,6 +48,7 @@ class ProductionTest extends TestCase
                 'revenue_mtd',
                 'login_hours_mtd',
                 'production_hours_mtd',
+                'billable_hours_mtd',
             ]);
     }
 }
