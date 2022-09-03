@@ -3,9 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Jobs\UpdateBillableHours as JobsUpdateBillableHours;
+use App\Jobs\UpdateBillableHoursAndRevenue as JobsUpdateBillableHoursAndRevenue;
 
-class UpdateBillableHours extends Command
+class UpdateBillableHoursAndRevenue extends Command
 {
     /**
      * The name and signature of the console command.
@@ -14,7 +14,9 @@ class UpdateBillableHours extends Command
      */
     protected $signature = 'dainsys:update-billable-hours-by-revenue-type
                             {--R|revenue_type= : string|optional. update for a specific revenue type. If not provided, all records will be updated.}
-                            {--D|days= : int|optional. The amount of days to update the data. Default is 1 days old.}';
+                            {--D|days= : int|optional. The amount of days to update the data. Default is 1 days old.}
+                            {--C|campaign= : string|optional. The campaign you want apply.}'
+    ;
 
     /**
      * The console command description.
@@ -41,7 +43,7 @@ class UpdateBillableHours extends Command
     public function handle()
     {
         dispatch(
-            new JobsUpdateBillableHours($this->option('days'), $this->option('revenue_type'))
+            new JobsUpdateBillableHoursAndRevenue($this->option('days'), $this->option('revenue_type'), $this->option('campaign'))
         );
     }
 }

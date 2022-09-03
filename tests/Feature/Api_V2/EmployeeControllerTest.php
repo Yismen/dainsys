@@ -2,11 +2,10 @@
 
 namespace Tests\Feature\Api_V2;
 
+use Tests\TestCase;
 use App\Models\Site;
 use App\Models\Project;
 use App\Models\Employee;
-use App\Models\Department;
-use Tests\TestCase;
 use App\Models\Termination;
 use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -183,7 +182,7 @@ class EmployeeControllerTest extends TestCase
             'hire_date' => now()
         ]);
         $response = $this->get("/api/v2/employees?department={$employee_department_1->position->department->name}");
-        
+
         $response->assertOk();
         $response->assertJsonFragment([
             'first_name' => $employee_department_1->first_name,
@@ -207,7 +206,7 @@ class EmployeeControllerTest extends TestCase
             'hire_date' => now()
         ]);
         $response = $this->get("/api/v2/employees?position={$employee_position_1->position->name}");
-        
+
         $response->assertOk();
         $response->assertJsonFragment([
             'first_name' => $employee_position_1->first_name,

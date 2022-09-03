@@ -64,7 +64,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(\Spatie\Backup\Commands\BackupCommand::class)->dailyAt('21:15');
         $schedule->command(\Spatie\Backup\Commands\CleanupCommand::class)->dailyAt('22:15');
 
-        $schedule->command(\App\Console\Commands\UpdateBillableHours::class, [
+        $schedule->command(\App\Console\Commands\UpdateBillableHoursAndRevenue::class, [
             '--days' => 1
         ])->dailyAt('01:15');
         $schedule->command(\Illuminate\Database\Console\PruneCommand::class, [

@@ -9,15 +9,15 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class UpdateBillableHours implements ShouldQueue
+class UpdateBillableHoursAndRevenue implements ShouldQueue
 {
     use Dispatchable;
     use InteractsWithQueue;
     use Queueable;
     use SerializesModels;
 
-    public string $revenue_type;
-
+    public $revenue_type;
+    public $campaign;
     public int $days;
 
     /**
@@ -25,10 +25,11 @@ class UpdateBillableHours implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($days = 0, $revenue_type = null)
+    public function __construct($days = 0, $revenue_type = null, $campaign = null)
     {
-        $this->revenue_type = (string)$revenue_type;
         $this->days = (int)$days;
+        $this->revenue_type = $revenue_type;
+        $this->campaign = $campaign;
     }
 
     /**
@@ -48,12 +49,19 @@ class UpdateBillableHours implements ShouldQueue
                 )
             )
             ->when(
+                $this->campaign,
+                fn ($query) => $query->whereHas(
+                    'campaign',
+                    fn ($q) => $q->where('name', 'like', "{$this->campaign}%")
+                )
+            )
+            ->when(
                 $this->days > 0,
                 fn ($query) => $query->whereDate('date', '>=', now()->subDays($this->days)),
                 fn ($query) => $query->whereDate('date', '>=', now()->subDay())
             )
             ->get();
 
-        $performances->each(fn (Performance $q) => $q->parseBillableHours());
+        $performances->each(fn (Performance $q) => $q->parseBillableHoursAndRevenue());
     }
 }

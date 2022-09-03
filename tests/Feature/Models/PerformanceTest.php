@@ -43,7 +43,7 @@ class PerformanceTest extends TestCase
             'billable_hours' => 4,
         ]);
 
-        $performance->parseBillableHours();
+        $performance->parseBillableHoursAndRevenue();
 
         $this->assertDatabaseHas('performances', [
             'billable_hours' => $performance->production_time,
@@ -67,7 +67,7 @@ class PerformanceTest extends TestCase
             'billable_hours' => 4,
         ]);
 
-        $performance->parseBillableHours();
+        $performance->parseBillableHoursAndRevenue();
 
         $this->assertDatabaseHas('performances', [
             'billable_hours' => $performance->production_time,
@@ -91,7 +91,7 @@ class PerformanceTest extends TestCase
             'billable_hours' => 4,
         ]);
 
-        $performance->parseBillableHours();
+        $performance->parseBillableHoursAndRevenue();
 
         $this->assertDatabaseHas('performances', [
             'billable_hours' => $performance->talk_time,
@@ -115,7 +115,7 @@ class PerformanceTest extends TestCase
             'billable_hours' => 4,
         ]);
 
-        $performance->parseBillableHours();
+        $performance->parseBillableHoursAndRevenue();
 
         $this->assertDatabaseHas('performances', [
             'billable_hours' => $performance->login_time,
@@ -139,7 +139,7 @@ class PerformanceTest extends TestCase
             'billable_hours' => 4,
         ]);
 
-        $performance->parseBillableHours();
+        $performance->parseBillableHoursAndRevenue();
 
         $this->assertDatabaseHas('performances', [
             'billable_hours' => 0,

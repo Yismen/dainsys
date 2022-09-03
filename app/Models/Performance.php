@@ -54,7 +54,7 @@ class Performance extends Model
             $model->unique_id = $model->date . '-' . $model->employee_id . '-' . $model->campaign_id;
             $model->name = $employee->fullName;
 
-            $model->parseBillableHours();
+            $model->parseBillableHoursAndRevenue();
         });
     }
 
@@ -73,25 +73,30 @@ class Performance extends Model
      *
      * @return void
      */
-    public function parseBillableHours()
+    public function parseBillableHoursAndRevenue()
     {
         $this->load('campaign.revenueType');
 
         switch ($this->campaign->revenueType->name) {
             case 'Sales Or Production':
                 $this->billable_hours = $this->production_time;
+                $this->revenue = $this->transactions * $this->campaign->revenue_rate;
                 break;
             case 'Login Time':
                 $this->billable_hours = $this->login_time;
+                $this->revenue = $this->login_time * $this->campaign->revenue_rate;
                 break;
             case 'Production Time':
                 $this->billable_hours = $this->production_time;
+                $this->revenue = $this->production_time * $this->campaign->revenue_rate;
                 break;
             case 'Talk Time':
                 $this->billable_hours = $this->talk_time;
+                $this->revenue = $this->talk_time * $this->campaign->revenue_rate;
                 break;
             case 'Downtime':
                 $this->billable_hours = 0;
+                $this->revenue = 0;
                 break;
             default:
                 // code...
