@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <a href="/admin" type="button" class="btn btn-primary" aria-expanded="false">
+        <a href="/admin" type="button" class="btn btn-primary-outline" aria-expanded="false">
             @auth
             Access
             @endauth
@@ -46,20 +46,26 @@
             </div>
         </div>
 
-        <img class="mt-20 w-40 md:w-30 lg:w-20" src="{{ asset('images/main-header.png') }}" alt="Header Image">
+        {{-- <img class="mt-20 w-40 md:w-30 lg:w-20" src="{{ asset('images/main-header.gif') }}" alt="Header Image">
+        --}}
+        <div class="mt-20 w-40 md:w-30 lg:w-20">
+            @include('layouts.partials.hero')
+        </div>
     </section>
 
     {{-- Content --}}
     <section class="flex flex-column px-10 py-15 md:px-25 lg:px-40 md:flex-row md:py:20 lg:py-25" id="niceties">
         <div class="flex flex-column w-100 md:w-40 md:pr-20 lg:w-30">
-            <h1 class="fs-16 fw-700 m-0 p-0 text-center animatable text-capitalize md:text-left md:pt-20">Out of the box
+            <h1 class="fs-16 fw-700 m-0 mb-15 p-0 text-center animatable text-capitalize md:text-left md:mb-0 md:pt-20">
+                Out of the box
             </h1>
-            <div class="d-none w-0 md:block">
-                <img class="mt-20 w-70 w-70" src="{{ asset('images/niceties.png') }}" alt="Header Image">
+            <div class="d-none md:block mt-20 w-70 animatable">
+                {{-- <img class="mt-20 w-70 w-70" src="{{ asset('images/niceties.png') }}" alt="Header Image"> --}}
+                @include('layouts.partials.niceties')
             </div>
 
         </div>
-        <div class="flex flex-column w-100 md:w-60 lg:w-70">
+        <div class="flex flex-column w-100 md:w-60 lg:w-70 first-card relative">
             <div class="flex flex-column items-center justify-center oob-card sm:flex-row animatable"
                 data-animation="fade-in-right">
                 <div class="w-100 sm:w-50 p-10">
@@ -194,6 +200,7 @@
                 <a target="__new" href="/telescope" class="footer-link">Telescope</a>
                 <a target="__new" href="/docs" class="footer-link">API Docs</a>
                 <a target="__new" href="/log-viewer" class="footer-link">Log Viewer</a>
+                <a target="__new" href="https://storyset.com/web" class="footer-link">Web illustrations by Storyset</a>
             </div>
             <div class="flex flex-column text-right w-50 lg:text-left">
                 <h5 class="fs-8 fw-700 m-0 p-0 mb-2">Resources</h5>
