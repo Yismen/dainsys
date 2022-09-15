@@ -56,7 +56,9 @@ class Performance extends Model
             $model->unique_id = $model->date . '-' . $model->employee_id . '-' . $model->campaign_id;
             $model->name = $employee->fullName;
 
-            $model->parseBillableHoursAndRevenue();
+            $model->load('campaign.revenueType');
+
+            $model->parseBillableHoursAndRevenue($model);
         }));
     }
 
@@ -75,30 +77,28 @@ class Performance extends Model
      *
      * @return void
      */
-    public function parseBillableHoursAndRevenue()
+    public function parseBillableHoursAndRevenue(Performance $model)
     {
-        $this->load('campaign.revenueType');
-
-        switch (strtolower($this->campaign->revenueType->name)) {
+        switch (strtolower($model->campaign->revenueType->name)) {
             case 'sales or production':
-                $this->billable_hours = $this->production_time;
-                $this->revenue = $this->transactions * $this->campaign->revenue_rate;
+                $model->billable_hours = $model->production_time;
+                $model->revenue = $model->transactions * $model->campaign->revenue_rate;
                 break;
             case 'login time':
-                $this->billable_hours = $this->login_time;
-                $this->revenue = $this->login_time * $this->campaign->revenue_rate;
+                $model->billable_hours = $model->login_time;
+                $model->revenue = $model->login_time * $model->campaign->revenue_rate;
                 break;
             case 'production time':
-                $this->billable_hours = $this->production_time;
-                $this->revenue = $this->production_time * $this->campaign->revenue_rate;
+                $model->billable_hours = $model->production_time;
+                $model->revenue = $model->production_time * $model->campaign->revenue_rate;
                 break;
             case 'talk time':
-                $this->billable_hours = $this->talk_time;
-                $this->revenue = $this->talk_time * $this->campaign->revenue_rate;
+                $model->billable_hours = $model->talk_time;
+                $model->revenue = $model->talk_time * $model->campaign->revenue_rate;
                 break;
             case 'downtime':
-                $this->billable_hours = 0;
-                $this->revenue = 0;
+                $model->billable_hours = 0;
+                $model->revenue = 0;
                 break;
             default:
                 // code...
