@@ -52,8 +52,9 @@ class UpdateBillableHoursAndRevenue extends Command
             'revenue_type' => $this->option('revenue_type'),
             'campaign' => $this->option('campaign')
         ])->query();
+        $count = $this->serviceData->count();
 
-        $bar = $this->output->createProgressBar($this->serviceData->count());
+        $bar = $this->output->createProgressBar($count);
         $bar->start();
 
         if ($this->option('test')) {
@@ -63,6 +64,8 @@ class UpdateBillableHoursAndRevenue extends Command
         }
 
         $bar->finish();
+
+        $this->line('Total records: ' . $count);
     }
 
     protected function dispatchBatchedJobs($bar)
@@ -93,7 +96,7 @@ class UpdateBillableHoursAndRevenue extends Command
 
             ];
         });
-        
+
         $this->table(
             ['Date', 'Campaign', 'Revenue Type', 'Login Hours', 'Work Hours', 'Talk Time', 'Sales', 'Billable Hours', 'Rate', 'Revenue'],
             $records->toArray()
