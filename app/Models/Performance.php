@@ -6,6 +6,8 @@ use App\Traits\Trackable;
 use App\Traits\PerformanceTrait;
 use App\ModelFilters\FilterableTrait;
 use App\Models\DainsysModel as Model;
+use function Illuminate\Events\queueable;
+
 use Illuminate\Database\Eloquent\Prunable;
 
 class Performance extends Model
@@ -48,14 +50,14 @@ class Performance extends Model
     {
         parent::boot();
 
-        static::saving(function (self $model) {
+        static::saving(queueable(function (self $model) {
             $employee = Employee::findOrfail($model->employee_id);
 
             $model->unique_id = $model->date . '-' . $model->employee_id . '-' . $model->campaign_id;
             $model->name = $employee->fullName;
 
             $model->parseBillableHoursAndRevenue();
-        });
+        }));
     }
 
     /**
@@ -77,24 +79,24 @@ class Performance extends Model
     {
         $this->load('campaign.revenueType');
 
-        switch ($this->campaign->revenueType->name) {
-            case 'Sales Or Production':
+        switch (strtolower($this->campaign->revenueType->name)) {
+            case 'sales or production':
                 $this->billable_hours = $this->production_time;
                 $this->revenue = $this->transactions * $this->campaign->revenue_rate;
                 break;
-            case 'Login Time':
+            case 'login time':
                 $this->billable_hours = $this->login_time;
                 $this->revenue = $this->login_time * $this->campaign->revenue_rate;
                 break;
-            case 'Production Time':
+            case 'production time':
                 $this->billable_hours = $this->production_time;
                 $this->revenue = $this->production_time * $this->campaign->revenue_rate;
                 break;
-            case 'Talk Time':
+            case 'talk time':
                 $this->billable_hours = $this->talk_time;
                 $this->revenue = $this->talk_time * $this->campaign->revenue_rate;
                 break;
-            case 'Downtime':
+            case 'downtime':
                 $this->billable_hours = 0;
                 $this->revenue = 0;
                 break;
@@ -108,3 +110,4 @@ class Performance extends Model
         });
     }
 }
+Performance::where('date', '>', '2022-08-01')->whereHas('campaign', fn ($c) => $c->where('name', 'like', 'Ecc - LiveV'))->count();

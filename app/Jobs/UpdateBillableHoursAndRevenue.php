@@ -8,6 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Database\Eloquent\Collection;
 
 class UpdateBillableHoursAndRevenue implements ShouldQueue
 {
@@ -16,20 +17,16 @@ class UpdateBillableHoursAndRevenue implements ShouldQueue
     use Queueable;
     use SerializesModels;
 
-    public $revenue_type;
-    public $campaign;
-    public int $days;
+    public $performances;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($days = 0, $revenue_type = null, $campaign = null)
+    public function __construct(Collection $performances)
     {
-        $this->days = (int)$days;
-        $this->revenue_type = $revenue_type;
-        $this->campaign = $campaign;
+        $this->performances = $performances;
     }
 
     /**
@@ -39,29 +36,8 @@ class UpdateBillableHoursAndRevenue implements ShouldQueue
      */
     public function handle()
     {
-        $performances = Performance::query()
-            ->with('campaign.revenueType')
-            ->when(
-                $this->revenue_type,
-                fn ($query) => $query->whereHas(
-                    'campaign.revenueType',
-                    fn ($q) => $q->where('name', 'like', "{$this->revenue_type}%")
-                )
-            )
-            ->when(
-                $this->campaign,
-                fn ($query) => $query->whereHas(
-                    'campaign',
-                    fn ($q) => $q->where('name', 'like', "{$this->campaign}%")
-                )
-            )
-            ->when(
-                $this->days > 0,
-                fn ($query) => $query->whereDate('date', '>=', now()->subDays($this->days)),
-                fn ($query) => $query->whereDate('date', '>=', now()->subDay())
-            )
-            ->get();
-
-        $performances->each(fn (Performance $q) => $q->parseBillableHoursAndRevenue());
+        $this->performances->each(function (Performance $performance) {
+            $performance->parseBillableHoursAndRevenue();
+        });
     }
 }

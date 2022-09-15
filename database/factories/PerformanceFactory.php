@@ -8,7 +8,7 @@ $factory->define(App\Models\Performance::class, function (Faker $faker) {
 
     return [
         'unique_id' => "{$date->format('Y-m-d')}-{$faker->randomDigitNotZero()}-{$faker->randomDigitNotZero()}",
-        'date' => $date->format('Y-m-d'),
+        'date' => now(),
         'employee_id' => factory(App\Models\Employee::class),
         'name' => $faker->name(),
         'campaign_id' => factory(App\Models\Campaign::class),
