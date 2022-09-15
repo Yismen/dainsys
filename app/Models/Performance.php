@@ -110,4 +110,3 @@ class Performance extends Model
         });
     }
 }
-Performance::where('date', '>', '2022-08-01')->whereHas('campaign', fn ($c) => $c->where('name', 'like', 'Ecc - LiveV'))->count();
