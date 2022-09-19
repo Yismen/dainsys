@@ -16,10 +16,14 @@ use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 class Employees implements FromQuery, WithTitle, ShouldAutoSize, WithColumnFormatting, WithMapping, WithHeadings
 {
     protected $scope;
+    protected $date_from;
+    protected $date_to;
 
-    public function __construct($scope)
+    public function __construct($scope, $date_from = null, $date_to = null)
     {
         $this->scope = $scope;
+        $this->date_from = $date_from;
+        $this->date_to = $date_to;
     }
 
     /**
@@ -51,6 +55,8 @@ class Employees implements FromQuery, WithTitle, ShouldAutoSize, WithColumnForma
                 'supervisor',
                 'termination',
             ])
+            ->when($this->date_from, fn ($q) => $q->where('hire_date', '>=', $this->date_from))
+            ->when($this->date_to, fn ($q) => $q->where('hire_date', '<=', $this->date_to))
             ->$status();
     }
 

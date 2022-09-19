@@ -35,20 +35,27 @@ class Kernel extends ConsoleKernel
     {
         $date = now();
 
-        $schedule->command(\Dainsys\Commands\ClearLogs\ClearLogsCommand::class, [
-            '--clear',
-            '--keep=3'
-        ])->dailyAt('02:00');
+        /**
+         * Employees
+         * -------------------------------------------------------------------------------------------------------------
+         */
+        $schedule->command(\App\Console\Commands\EmployeesHired::class, [
+            'dates' => $date->copy()->subDay(), '--site' => 'santiago-hq'
+        ])->dailyAt('05:55'); // Daily for the previous day
+        $schedule->command(\App\Console\Commands\EmployeesHired::class, [
+            'dates' => $date->copy()->subDay()->startOfWeek()->format('Y-m-d') . $date->copy()->subDay()->endOfWeek()->format('Y-m-d'), '--site' => 'santiago-hq'
+        ])->weeklyOn(1, '05:57'); // Every monday for the previous week
+        $schedule->command(\App\Console\Commands\EmployeesHired::class, [
+            'dates' => $date->copy()->subDay()->startOfMonth()->format('Y-m-d') . $date->copy()->subDay()->endOfMonth()->format('Y-m-d'), '--site' => 'santiago-hq'
+        ])->weeklyOn(1, '05:57'); // Monthly for the previous month
 
-        $schedule->command(\App\Console\Commands\ClearTempraryFiles::class, [
-            'remove_files_older_than_days' => 5
-        ])->dailyAt('20:45');
-
-        $schedule->command(\App\Console\Commands\EmployeesHired::class, ['--months' => 2, '--site' => 'santiago-hq'])->weeklyOn(2, '15:58');
-        $schedule->command(\App\Console\Commands\EmployeesHired::class, ['--months' => 2, '--site' => 'santiago-hq'])->weeklyOn(5, '15:58');
         $schedule->command(\App\Console\Commands\EmployeesTerminated::class, ['--months' => 2,  '--site' => 'santiago-hq'])->weeklyOn(2, '15:59');
         $schedule->command(\App\Console\Commands\EmployeesTerminated::class, ['--months' => 2,  '--site' => 'santiago-hq'])->weeklyOn(5, '15:59');
 
+        /**
+         * Ring Central Commands
+         * ---------------------------------------------------------------------------------
+         */
         $schedule->command(\App\Console\Commands\General\SendGeneralDailyProductionReportCommand::class, ['--team' => 'ECC'])->dailyAt('05:25');
         $schedule->command(\App\Console\Commands\General\SendGeneralDailyRawReportCommand::class, ['--team' => 'ECC'])->dailyAt('05:45');
 
@@ -60,6 +67,19 @@ class Kernel extends ConsoleKernel
 
         $schedule->command(\App\Console\Commands\Inbound\SendDailySummaryCommand::class)->dailyAt('06:20');
         $schedule->command(\App\Console\Commands\Inbound\SendWTDSummaryCommand::class)->dailyAt('06:30');
+
+        /**
+         * Clean up commands
+         * ----------------------------------------------------------------------
+         */
+        $schedule->command(\Dainsys\Commands\ClearLogs\ClearLogsCommand::class, [
+            '--clear',
+            '--keep=3'
+        ])->dailyAt('02:00');
+
+        $schedule->command(\App\Console\Commands\ClearTempraryFiles::class, [
+            'remove_files_older_than_days' => 5
+        ])->dailyAt('20:45');
 
         $schedule->command(\Spatie\Backup\Commands\BackupCommand::class)->dailyAt('21:15');
         $schedule->command(\Spatie\Backup\Commands\CleanupCommand::class)->dailyAt('22:15');
@@ -73,6 +93,7 @@ class Kernel extends ConsoleKernel
                 \App\Models\UserLogin::class,
             ]
         ])->dailyAt('02:15');
+
         $schedule->command(\Laravel\Telescope\Console\PruneCommand::class, ['--hours' => 72])->dailyAt('06:40');
     }
 

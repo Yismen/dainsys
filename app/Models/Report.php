@@ -21,4 +21,13 @@ class Report extends Model
     {
         return $this->belongsToMany(Recipient::class);
     }
+
+    public function mailableRecipients()
+    {
+        if (!$this->active) {
+            throw new \Exception('Report ' . $this->name . ' is inactive!', 403);
+        }
+
+        return $this->recipients()->pluck('email', 'name')->all();
+    }
 }

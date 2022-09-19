@@ -2,10 +2,10 @@
 
 namespace App\Listeners;
 
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Mail\Events\MessageSent;
 use Illuminate\Support\Arr;
+use Illuminate\Mail\Events\MessageSent;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Queue\InteractsWithQueue;
 
 class RemoveTemporaryMailAttachments
 {
@@ -23,7 +23,7 @@ class RemoveTemporaryMailAttachments
     /**
      * Handle the event.
      *
-     * @param  object  $event
+     * @param  object $event
      * @return void
      */
     public function handle(MessageSent $event)
@@ -35,12 +35,17 @@ class RemoveTemporaryMailAttachments
     {
         if (Arr::has($event->data, 'temporary_mail_attachment') && Storage::exists($event->data['temporary_mail_attachment'])) {
             Storage::delete($event->data['temporary_mail_attachment']);
+        }
 
-            // foreach ($event->message->getChildren() as $attachment) {
-            //     $file_name  = $attachment->getFilename() ?? '';
-            //     if (Storage::exists($file_name)) {
-            //         Storage::delete($file_name);
-            //     }
+        foreach ($event->message->getChildren() as $attachment) {
+            try {
+                $file_name = $attachment->getFilename() ?? '';
+                if (Storage::exists($file_name)) {
+                    Storage::delete($file_name);
+                }
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
         }
     }
 }

@@ -2,44 +2,43 @@
 
 namespace App\Mail;
 
-use App\Models\Employee;
 use Carbon\Carbon;
+use App\Models\Report;
+use Illuminate\Mail\Mailable;
+use App\Exports\EmployeesHired;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EmployeesHiredMail extends EmployeesBaseMail
+class EmployeesHiredMail extends Mailable implements ShouldQueue
 {
     protected $site;
+    protected $date_from;
+    protected $date_to;
 
-    public function __construct(int $months, $site = '%')
+    protected string $report_key;
+
+    public function __construct(string $report_key, string $dates, $site = '%')
     {
-        $this->months = (int) $months;
+        $dates = preg_split('/[\s,|]/', $dates, -1, PREG_SPLIT_NO_EMPTY);
+        $this->date_from = Carbon::parse($dates[0])->startOfDay();
+        $this->date_to = Carbon::parse($dates[1] ?? $dates[0])->endOfDay();
         $this->site = $site;
-
-        $this->markdown = 'emails.employees-hired';
-
-        // $months = $months + 1;
-        $this->title = 'Employees Hired ' . ($months > 1 ? "Last {$months} Months" : 'This Month');
-
-        $this->employees = $this->getEmployees();
+        $this->report_key = $report_key;
     }
 
-    protected function getEmployees()
+    public function build()
     {
-        return Employee::whereDate('hire_date', '>=', Carbon::now()->subMonths($this->months)->startOfMonth())
-            ->orderBy('hire_date', 'DESC')
-            ->orderBy('site_id')
-            ->sorted()
-            ->whereHas('site', function ($query) {
-                $query->where('name', 'like', $this->site);
-            })
-            ->with([
-                'termination',
-                'supervisor',
-                'project',
-                'site',
-            ])
-            ->with(['position' => function ($query) {
-                return $query->with(['department', 'payment_type']);
-            }])
-            ->get();
+        $file_name = 'employees_hired_from_' . $this->date_from->format('Y-m-d') . '_to_' . $this->date_to->format('Y-m-d') . '.xlsx';
+
+        Excel::store(new EmployeesHired($this->date_from, $this->date_to), $file_name);
+        $title = str($file_name)->beforeLast('.xlsx')->headline();
+
+        // send
+        $report = Report::query()->where('key', $this->report_key)->firstOrFail();
+
+        return $this->markdown('emails.employees-hired', ['title' => $title])
+            ->to($report->mailableRecipients())
+            ->attachFromStorage($file_name)
+            ->subject($title);
     }
 }

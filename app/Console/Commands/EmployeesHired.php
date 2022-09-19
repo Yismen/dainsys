@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Mail\EmployeesHiredMail;
 use Illuminate\Console\Command;
+use App\Mail\EmployeesHiredMail;
 use Illuminate\Support\Facades\Mail;
 
 class EmployeesHired extends Command
@@ -13,7 +13,7 @@ class EmployeesHired extends Command
      *
      * @var string
      */
-    protected $signature = 'dainsys:employees-hired {--months=1} {--site=%}';
+    protected $signature = 'dainsys:employees-hired {dates} {--site=%}';
 
     /**
      * The console command description.
@@ -37,9 +37,9 @@ class EmployeesHired extends Command
      */
     public function handle()
     {
-        $months = $this->option('months');
+        $dates = $this->argument('dates');
 
-        Mail::send(new EmployeesHiredMail($months, $this->option('site')));
+        Mail::send(new EmployeesHiredMail($this->name, $dates, $this->option('site')));
 
         $this->info('Employees hired email sent!');
     }
