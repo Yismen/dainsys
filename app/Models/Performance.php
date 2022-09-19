@@ -69,7 +69,7 @@ class Performance extends Model
      */
     public function prunable()
     {
-        return static::where('created_at', '<=', now()->subYears(3)->startOfMonth());
+        return static::where('created_at', '<=', now()->subYears(3)->startOfYear());
     }
 
     /**
