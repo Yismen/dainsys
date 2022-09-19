@@ -16,7 +16,8 @@ class PerformanceFilter extends BaseModelFilter
 
     public function employee($request)
     {
-        return $this->filterQuery($request, 'employee');
+        return $this->where('name', $request);
+        // return $this->filterQuery($request, 'employee');
     }
 
     public function supervisor($request)

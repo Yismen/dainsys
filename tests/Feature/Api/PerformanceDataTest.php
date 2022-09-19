@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Api;
 
+use Tests\TestCase;
 use App\Models\Campaign;
 use App\Models\Employee;
 use App\Models\Supervisor;
-use Tests\TestCase;
 use App\Models\Performance;
 use Illuminate\Support\Arr;
 use Laravel\Passport\Passport;
@@ -80,10 +80,10 @@ class PerformanceDataTest extends TestCase
 
         $response = $this->get('/api/performances/performance_data/last/1/months');
 
-        $response->assertStatus(200)
-            ->assertJsonCount(1, 'data')
-            ->assertJsonFragment(Arr::only($this_month_performance->toArray(), ['unique_id', 'employee_name']))
-            ->assertJsonMissing(Arr::only($last_month_performance->toArray(), ['unique_id', 'employee_name']));
+        $response->assertStatus(200);
+        $response->assertJsonCount(1, 'data');
+        $response->assertJsonFragment(Arr::only($this_month_performance->toArray(), ['unique_id', 'employee_name']));
+        $response->assertJsonMissing(Arr::only($last_month_performance->toArray(), ['unique_id', 'employee_name']));
     }
 
     /** @test */
@@ -108,8 +108,8 @@ class PerformanceDataTest extends TestCase
     {
         $employee = factory(Employee::class)->create();
         $another_employee = factory(Employee::class)->create();
-        factory(Performance::class)->create(['employee_id' => $employee->id]);
-        factory(Performance::class)->create(['employee_id' => $another_employee->id]);
+        factory(Performance::class)->create(['employee_id' => $employee->id, 'name' => $employee->full_name]);
+        factory(Performance::class)->create(['employee_id' => $another_employee->id, 'name' => $another_employee->full_name]);
         Passport::actingAs($this->user());
 
         $response = $this->get("/api/performances/performance_data/last/1/months?employee={$employee->full_name}");

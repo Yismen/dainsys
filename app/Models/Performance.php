@@ -53,12 +53,12 @@ class Performance extends Model
         static::saving(queueable(function (self $model) {
             $employee = Employee::findOrfail($model->employee_id);
 
-            $model->unique_id = $model->date . '-' . $model->employee_id . '-' . $model->campaign_id;
-            $model->name = $employee->fullName;
-
-            $model->load('campaign.revenueType');
-
-            $model->parseBillableHoursAndRevenue($model);
+            // $model->unique_id = $model->date . '-' . $model->employee_id . '-' . $model->campaign_id;
+            $model->updateQuietly([
+                'unique_id' => $model->date . '-' . $model->employee_id . '-' . $model->campaign_id,
+                'name' => $employee->fullName,
+            ]);
+            $model->parseBillableHoursAndRevenue();
         }));
     }
 
@@ -69,7 +69,7 @@ class Performance extends Model
      */
     public function prunable()
     {
-        return static::where('created_at', '<=', now()->subYears(3)->startOfMonth());
+        return static::where('created_at', '<=', now()->subYears(3)->startOfYear());
     }
 
     /**
@@ -77,36 +77,36 @@ class Performance extends Model
      *
      * @return void
      */
-    public function parseBillableHoursAndRevenue(Performance $model)
+    public function parseBillableHoursAndRevenue()
     {
-        switch (strtolower($model->campaign->revenueType->name)) {
+        $this->load('campaign.revenueType');
+        $data = [];
+        switch (strtolower($this->campaign->revenueType->name)) {
             case 'sales or production':
-                $model->billable_hours = $model->production_time;
-                $model->revenue = $model->transactions * $model->campaign->revenue_rate;
+                $data['billable_hours'] = $this->production_time;
+                $data['revenue'] = $this->transactions * $this->campaign->revenue_rate;
                 break;
             case 'login time':
-                $model->billable_hours = $model->login_time;
-                $model->revenue = $model->login_time * $model->campaign->revenue_rate;
+                $data['billable_hours'] = $this->login_time;
+                $data['revenue'] = $this->login_time * $this->campaign->revenue_rate;
                 break;
             case 'production time':
-                $model->billable_hours = $model->production_time;
-                $model->revenue = $model->production_time * $model->campaign->revenue_rate;
+                $data['billable_hours'] = $this->production_time;
+                $data['revenue'] = $this->production_time * $this->campaign->revenue_rate;
                 break;
             case 'talk time':
-                $model->billable_hours = $model->talk_time;
-                $model->revenue = $model->talk_time * $model->campaign->revenue_rate;
+                $data['billable_hours'] = $this->talk_time;
+                $data['revenue'] = $this->talk_time * $this->campaign->revenue_rate;
                 break;
             case 'downtime':
-                $model->billable_hours = 0;
-                $model->revenue = 0;
+                $data['billable_hours'] = 0;
+                $data['revenue'] = 0;
                 break;
             default:
                 // code...
                 break;
         }
 
-        $this->withoutEvents(function () {
-            $this->save();
-        });
+        $this->updateQuietly($data);
     }
 }

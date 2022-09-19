@@ -31,17 +31,17 @@ class PoliticalFlashRepository extends RingCentralConnection implements Politica
 
     public function hasHours(): bool
     {
-        $sum_of_hours = collect($this->dispositions)->sum('num_leads');
-        $cache_key = "political_flash_{$this->date_from->format('Y-m-d')}_{$this->date_to->format('Y-m-d')}_" . $sum_of_hours;
+        $unique_count = collect($this->dispositions)->sum('num_leads') + collect($this->hours)->sum('TotalHours');
+        $cache_key = "political_flash_{$this->date_from->format('Y-m-d')}_{$this->date_to->format('Y-m-d')}_" . $unique_count;
 
         if (
-            $sum_of_hours === 0 ||
+            $unique_count === 0 ||
             Cache::has($cache_key)
         ) {
             return false;
         }
 
-        Cache::forever($cache_key, $sum_of_hours);
+        Cache::forever($cache_key, $unique_count);
 
         return true;
     }
