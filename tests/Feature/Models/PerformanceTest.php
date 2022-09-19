@@ -2,8 +2,9 @@
 
 namespace Tests\Feature\Models;
 
-use App\Models\Campaign;
 use Tests\TestCase;
+use App\Models\Campaign;
+use App\Models\Employee;
 use App\Models\Performance;
 use App\Models\RevenueType;
 use Illuminate\Database\Console\PruneCommand;
@@ -16,14 +17,13 @@ class PerformanceTest extends TestCase
     /** @test */
     public function performance_model_is_prunable()
     {
-        $not_prunable = factory(Performance::class)->create(['created_at' => now()->subYear()]);
-        $prunable = factory(Performance::class)->create(['created_at' => now()->subYears(4)]);
-
-        $this->artisan(PruneCommand::class, [
-            '--model' => [
-                Performance::class
-            ]
-        ]);
+        $not_prunable = factory(Performance::class)->create();
+        $prunable = factory(Performance::class)->create(['created_at' => now()->subYears(4)->startOfYear()]);
+$this->artisan(PruneCommand::class, [
+    '--model' => [
+        Performance::class
+        ]
+    ]);
 
         $this->assertDatabaseHas('performances', ['id' => $not_prunable->id]);
         $this->assertDatabaseMissing('performances', ['id' => $prunable->id]);
@@ -41,16 +41,19 @@ class PerformanceTest extends TestCase
             'production_time' => 9,
             'talk_time' => 8,
             'billable_hours' => 4,
+            'revenue' => 4,
         ]);
 
         $performance->parseBillableHoursAndRevenue();
 
         $this->assertDatabaseHas('performances', [
             'billable_hours' => $performance->production_time,
+            'revenue' => $performance->transactions * $performance->campaign->revenue_rate,
         ]);
 
         $this->assertDatabaseMissing('performances', [
             'billable_hours' => 4,
+            'revenue' => 4,
         ]);
     }
 
@@ -65,16 +68,19 @@ class PerformanceTest extends TestCase
             'production_time' => 9,
             'talk_time' => 8,
             'billable_hours' => 4,
+            'revenue' => 4,
         ]);
 
         $performance->parseBillableHoursAndRevenue();
 
         $this->assertDatabaseHas('performances', [
             'billable_hours' => $performance->production_time,
+            'revenue' => $performance->production_time * $performance->campaign->revenue_rate,
         ]);
 
         $this->assertDatabaseMissing('performances', [
             'billable_hours' => 4,
+            'revenue' => 4,
         ]);
     }
 
@@ -89,16 +95,19 @@ class PerformanceTest extends TestCase
             'production_time' => 9,
             'talk_time' => 8,
             'billable_hours' => 4,
+            'revenue' => 4,
         ]);
 
         $performance->parseBillableHoursAndRevenue();
 
         $this->assertDatabaseHas('performances', [
             'billable_hours' => $performance->talk_time,
+            'revenue' =>  $performance->talk_time * $performance->campaign->revenue_rate,
         ]);
 
         $this->assertDatabaseMissing('performances', [
             'billable_hours' => 4,
+            'revenue' => 4,
         ]);
     }
 
@@ -113,16 +122,19 @@ class PerformanceTest extends TestCase
             'production_time' => 9,
             'talk_time' => 8,
             'billable_hours' => 4,
+            'revenue' => 4,
         ]);
 
         $performance->parseBillableHoursAndRevenue();
 
         $this->assertDatabaseHas('performances', [
             'billable_hours' => $performance->login_time,
+            'revenue' => $performance->login_time * $performance->campaign->revenue_rate,
         ]);
 
         $this->assertDatabaseMissing('performances', [
             'billable_hours' => 4,
+            'revenue' => 4,
         ]);
     }
 
@@ -137,15 +149,18 @@ class PerformanceTest extends TestCase
             'production_time' => 9,
             'talk_time' => 8,
             'billable_hours' => 4,
+            'billable_hours' => 4,
         ]);
 
         $performance->parseBillableHoursAndRevenue();
 
         $this->assertDatabaseHas('performances', [
             'billable_hours' => 0,
+            'billable_hours' => 0,
         ]);
 
         $this->assertDatabaseMissing('performances', [
+            'billable_hours' => 4,
             'billable_hours' => 4,
         ]);
     }

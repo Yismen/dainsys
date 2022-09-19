@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Api_V2;
 
+use Tests\TestCase;
 use App\Models\Campaign;
 use App\Models\Employee;
 use App\Models\Supervisor;
-use Tests\TestCase;
 use App\Models\Performance;
 use Illuminate\Support\Arr;
 use Laravel\Passport\Passport;
@@ -124,8 +124,8 @@ class PerformanceDataTest extends TestCase
     {
         $employee = factory(Employee::class)->create();
         $another_employee = factory(Employee::class)->create();
-        factory(Performance::class)->create(['employee_id' => $employee->id]);
-        factory(Performance::class)->create(['employee_id' => $another_employee->id]);
+        factory(Performance::class)->create(['employee_id' => $employee->id, 'name' => $employee->full_name]);
+        factory(Performance::class)->create(['employee_id' => $another_employee->id, 'name' => $another_employee->full_name]);
         Passport::actingAs($this->user());
 
         $response = $this->get("/api/v2/performances?employee={$employee->full_name}");

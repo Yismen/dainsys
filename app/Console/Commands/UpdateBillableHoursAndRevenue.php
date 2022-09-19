@@ -17,7 +17,7 @@ class UpdateBillableHoursAndRevenue extends Command
                             {dates : Default is yesterday\'s date. You can pass multiple dates divided by (,|). }
                             {--revenue_type= : string|optional. update for a specific revenue type. If not provided, all records of any type will be updated.}
                             {--campaign= : string|optional. The campaign you want apply.}
-                            {--T|test : If activated, nothing will be changed, but records will be console logged.}
+                            {--t|test : If activated, nothing will be changed, but records will be console logged.}
                             {--chunk_size=3000 : Amount of records per job.}'
     ;
 
@@ -83,6 +83,7 @@ class UpdateBillableHoursAndRevenue extends Command
     {
         $records = $this->serviceData->take(50)->reorder()->inRandomOrder()->get()->map(function ($performance) {
             return [
+                $performance->id,
                 $performance->date,
                 $performance->campaign->name,
                 $performance->campaign->revenueType->name,
@@ -98,7 +99,7 @@ class UpdateBillableHoursAndRevenue extends Command
         });
 
         $this->table(
-            ['Date', 'Campaign', 'Revenue Type', 'Login Hours', 'Work Hours', 'Talk Time', 'Sales', 'Billable Hours', 'Rate', 'Revenue'],
+            ['Id', 'Date', 'Campaign', 'Revenue Type', 'Login Hours', 'Work Hours', 'Talk Time', 'Sales', 'Billable Hours', 'Rate', 'Revenue'],
             $records->toArray()
         );
     }

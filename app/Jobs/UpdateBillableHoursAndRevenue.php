@@ -37,7 +37,7 @@ class UpdateBillableHoursAndRevenue implements ShouldQueue
     public function handle()
     {
         $this->performances->each(function (Performance $performance) {
-            $performance->parseBillableHoursAndRevenue($performance->load('campaign.revenueType'));
+            $performance->parseBillableHoursAndRevenue();
         });
     }
 }
