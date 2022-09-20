@@ -20,7 +20,7 @@ class EmployeesHired extends Command
      *
      * @var string
      */
-    protected $description = 'Send an email with all the employees hired since the given month';
+    protected $description = 'Send an email with all the employees hired in a given period!';
 
     /**
      * Create a new command instance.
