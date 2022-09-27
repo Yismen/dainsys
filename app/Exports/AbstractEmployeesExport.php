@@ -3,17 +3,20 @@
 namespace App\Exports;
 
 use App\Models\Employee;
-use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\Builder;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
+use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Events\BeforeWriting;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 
-class Employees implements FromQuery, WithTitle, ShouldAutoSize, WithColumnFormatting, WithMapping, WithHeadings
+class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAutoSize, WithColumnFormatting, WithMapping, WithHeadings, WithEvents
 {
     protected $scope;
     protected $date_from;
@@ -26,35 +29,25 @@ class Employees implements FromQuery, WithTitle, ShouldAutoSize, WithColumnForma
         $this->date_to = $date_to;
     }
 
-    /**
-     * : View.
-     *
-     * @return Excel file
-     */
+    public function registerEvents(): array
+    {
+        return [
+            //         // Array callable, refering to a static method.
+            //         BeforeWriting::class => function (BeforeWriting $event) {
+            //             // Log::info($event->getDelegate());
+            //             if ($this->query()->count() === 0) {
+            //                 $this->dont;
+            //             }
+            //         // dd( get_class_methods($event->getDelegate()), get_class_methods($this), $this->query()->count() );
+            //         },
+        ];
+    }
+
     public function query()
     {
         $status = $this->scope;
 
-        return Employee::query()
-            ->orderBy('first_name')
-            ->with([
-                'punch',
-                'address',
-                'gender',
-                'marital',
-                'nationality',
-                'site',
-                'project',
-                'position' => function ($query) {
-                    $query->with([
-                        'department',
-                        'payment_type',
-                    ]);
-                },
-                'bankAccount',
-                'supervisor',
-                'termination',
-            ])
+        return $this->baseQuery()
             ->when($this->date_from, fn ($q) => $q->where('hire_date', '>=', $this->date_from))
             ->when($this->date_to, fn ($q) => $q->where('hire_date', '<=', $this->date_to))
             ->$status();
@@ -63,6 +56,30 @@ class Employees implements FromQuery, WithTitle, ShouldAutoSize, WithColumnForma
     public function title(): string
     {
         return 'Employees';
+    }
+
+    public function baseQuery(): Builder
+    {
+        return Employee::query()
+        ->orderBy('first_name')
+        ->with([
+            'punch',
+            'address',
+            'gender',
+            'marital',
+            'nationality',
+            'site',
+            'project',
+            'position' => function ($query) {
+                $query->with([
+                    'department',
+                    'payment_type',
+                ]);
+            },
+            'bankAccount',
+            'supervisor',
+            'termination',
+        ]);
     }
 
     public function map($employee): array

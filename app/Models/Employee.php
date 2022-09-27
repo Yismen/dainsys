@@ -160,7 +160,7 @@ class Employee extends Model
                 }
             );
     }
-    
+
     public function scopeNotRecents($query, Carbon $date = null)
     {
         if (null == $date) {

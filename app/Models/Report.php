@@ -28,6 +28,12 @@ class Report extends Model
             throw new \Exception('Report ' . $this->name . ' is inactive!', 403);
         }
 
-        return $this->recipients()->pluck('email', 'name')->all();
+        $recipients = $this->recipients()->pluck('email', 'name')->all();
+
+        if (empty($recipients)) {
+            throw new \Exception('Report ' . $this->name . ' has no recipients assigned. Please assign some!', 403);
+        }
+
+        return $recipients;
     }
 }

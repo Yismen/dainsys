@@ -2,48 +2,24 @@
 
 namespace App\Mail;
 
-use Carbon\Carbon;
-use App\Models\Termination;
-use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
+use App\Exports\EmployeesTerminated;
+use Maatwebsite\Excel\Facades\Excel;
 
-class EmployeesTerminatedMail extends EmployeesBaseMail
+class EmployeesTerminatedMail extends AbstractEmployeesMail
 {
-    use Queueable;
-    use SerializesModels;
-    /**
-     * Create a new message instance.
-     */
-    protected $site;
-
-    public function __construct(int $months, $site = '%')
+    public function build()
     {
-        $this->months = (int) $months;
+        $file_name = 'employees_terminated_from_' . $this->date_from->format('Y-m-d') . '_to_' . $this->date_to->format('Y-m-d') . '.xlsx';
 
-        $this->markdown = 'emails.employees-terminated';
-        $this->site = $site;
+        $file = Excel::store(new EmployeesTerminated($this->date_from, $this->date_to), $file_name);
 
-        $this->title = 'Employees Terminated ' . ($months > 1 ? "Last {$months} Months" : 'This Month');
+        $title = str($file_name)->beforeLast('.xlsx')->headline();
 
-        $this->employees = $this->getEmployees();
-    }
+        $recipients = $this->getRecipients();
 
-    protected function getEmployees()
-    {
-        $startOfMonth = Carbon::now()->subMonths($this->months)->startOfMonth();
-
-        return Termination::orderBy('termination_date', 'DESC')
-            ->where('termination_date', '>=', $startOfMonth)
-            ->whereHas('employee', function ($query) {
-                $query->whereHas('site', function ($query) {
-                    $query->where('name', 'like', $this->site);
-                });
-            })
-            ->with([
-                'terminationType',
-                'terminationReason',
-                'employee',
-            ])
-            ->get();
+        return $this->markdown('emails.employees', ['title' => $title])
+            ->to($recipients)
+            ->attachFromStorage($file_name)
+            ->subject($title);
     }
 }

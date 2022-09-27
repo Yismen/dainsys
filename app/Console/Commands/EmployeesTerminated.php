@@ -13,14 +13,14 @@ class EmployeesTerminated extends Command
      *
      * @var string
      */
-    protected $signature = 'dainsys:employees-terminated {--months=1} {--site=%}';
+    protected $signature = 'dainsys:employees-terminated {dates} {--site=%}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Send an email with all the employees terminated since the given month';
+    protected $description = 'Send an email with all the employees terminated in a given period!';
 
     /**
      * Create a new command instance.
@@ -37,9 +37,9 @@ class EmployeesTerminated extends Command
      */
     public function handle()
     {
-        $months = $this->option('months');
+        $dates = $this->argument('dates');
 
-        Mail::send(new EmployeesTerminatedMail($months, $this->option('site')));
+        Mail::send(new EmployeesTerminatedMail($this->name, $dates, $this->option('site')));
 
         $this->info('Employees terminated email sent!');
     }

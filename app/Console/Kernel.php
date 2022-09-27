@@ -40,17 +40,30 @@ class Kernel extends ConsoleKernel
          * -------------------------------------------------------------------------------------------------------------
          */
         $schedule->command(\App\Console\Commands\EmployeesHired::class, [
-            'dates' => $date->copy()->subDay(), '--site' => 'santiago-hq'
+            'dates' => $date->copy()->subDay()->format('Y-m-d'),
+            '--site' => 'santiago-hq'
         ])->dailyAt('05:55'); // Daily for the previous day
         $schedule->command(\App\Console\Commands\EmployeesHired::class, [
-            'dates' => $date->copy()->subDay()->startOfWeek()->format('Y-m-d') . $date->copy()->subDay()->endOfWeek()->format('Y-m-d'), '--site' => 'santiago-hq'
-        ])->weeklyOn(1, '05:57'); // Every monday for the previous week
+            'dates' => $date->copy()->subDay()->startOfWeek()->format('Y-m-d') . ',' . $date->copy()->subDay()->endOfWeek()->format('Y-m-d'),
+            '--site' => 'santiago-hq'
+        ])->weeklyOn(1, '05:56'); // Every monday for the previous week
         $schedule->command(\App\Console\Commands\EmployeesHired::class, [
-            'dates' => $date->copy()->subDay()->startOfMonth()->format('Y-m-d') . $date->copy()->subDay()->endOfMonth()->format('Y-m-d'), '--site' => 'santiago-hq'
-        ])->weeklyOn(1, '05:57'); // Monthly for the previous month
+            'dates' => now()->subMonth()->startOfMonth()->format('Y-m-d') . ',' . now()->subMonth()->endOfMonth()->format('Y-m-d'),
+            '--site' => 'santiago-hq'
+        ])->monthlyOn(1, '05:57'); // Monthly for the previous month
 
-        $schedule->command(\App\Console\Commands\EmployeesTerminated::class, ['--months' => 2,  '--site' => 'santiago-hq'])->weeklyOn(2, '15:59');
-        $schedule->command(\App\Console\Commands\EmployeesTerminated::class, ['--months' => 2,  '--site' => 'santiago-hq'])->weeklyOn(5, '15:59');
+        $schedule->command(\App\Console\Commands\EmployeesTerminated::class, [
+            'dates' => $date->copy()->subDay()->format('Y-m-d'),
+            '--site' => 'santiago-hq'
+        ])->dailyAt('05:55'); // Daily for the previous day
+        $schedule->command(\App\Console\Commands\EmployeesTerminated::class, [
+            'dates' => $date->copy()->subDay()->startOfWeek()->format('Y-m-d') . ',' . $date->copy()->subDay()->endOfWeek()->format('Y-m-d'),
+            '--site' => 'santiago-hq'
+        ])->weeklyOn(1, '05:56'); // Every monday for the previous week
+        $schedule->command(\App\Console\Commands\EmployeesTerminated::class, [
+            'dates' => now()->subMonth()->startOfMonth()->format('Y-m-d') . ',' . now()->subMonth()->endOfMonth()->format('Y-m-d'),
+            '--site' => 'santiago-hq'
+        ])->monthlyOn(1, '05:57'); // Monthly for the previous month
 
         /**
          * Ring Central Commands

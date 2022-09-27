@@ -3,10 +3,10 @@
 namespace App\Providers;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\Paginator;
-use Illuminate\Queue\Events\JobFailed;
 use Illuminate\Support\Facades\Queue;
+use Illuminate\Queue\Events\JobFailed;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 use App\Notifications\UserAppNotification;
 
@@ -24,7 +24,9 @@ class AppServiceProvider extends ServiceProvider
         Model::preventLazyLoading(!$this->app->isProduction());
 
         Queue::failing(function (JobFailed $event) {
-            $users = User::role(['admin'])->get();
+            $users = User::whereHas('roles', function ($query) {
+                $query->where('name', 'like', 'admin');
+            })->get();
 
             foreach ($users as $user) {
                 $job = class_basename($event->job);

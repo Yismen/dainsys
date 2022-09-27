@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Exports;
 
-use App\Models\Employee;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Maatwebsite\Excel\Facades\Excel;
 use Tests\TestCase;
+use App\Models\Employee;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class EmployeesTest extends TestCase
 {
@@ -39,6 +39,7 @@ class EmployeesTest extends TestCase
     /** @test */
     public function it_download_all_employees()
     {
+        $this->withoutExceptionHandling();
         Excel::fake();
         $this->actingAs($this->userWithPermission('view-employees'));
         factory(Employee::class)->create();
