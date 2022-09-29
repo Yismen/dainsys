@@ -16,8 +16,7 @@ class ClearTempraryFiles extends Command
      *
      * @var string
      */
-    protected $signature = 'dainsys:clear-temp-files 
-        {remove_files_older_than_days=0 : The amount of days back to delete. 0 for today, 1 for yesterday and so on.} 
+    protected $signature = 'dainsys:clear-temp-files {remove_files_older_than_days=0 : The amount of days back to delete. 0 for today, 1 for yesterday and so on.} 
         {--test : If passed, a list of deleteable files will be displayed, but files would not be deleted. }
         {--additional_dirs=* : If passed, array of these directories will be added to be removed. }';
 

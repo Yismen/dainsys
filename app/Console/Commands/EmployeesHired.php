@@ -13,7 +13,9 @@ class EmployeesHired extends Command
      *
      * @var string
      */
-    protected $signature = 'dainsys:employees-hired {dates} {--site=%}';
+    protected $signature = 'dainsys:employees-hired 
+                                                    {dates : Default is yesterday\'s date. You can pass multiple dates divided by (,|).} 
+                                                    {--site=%}';
 
     /**
      * The console command description.
