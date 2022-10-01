@@ -6,10 +6,10 @@ use Carbon\Carbon;
 use App\Models\Report;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
-abstract class AbstractEmployeesMail extends Mailable implements ShouldQueue
+abstract class AbstractEmployeesMail extends Mailable
 {
     use Queueable;
     use SerializesModels;
@@ -49,5 +49,36 @@ abstract class AbstractEmployeesMail extends Mailable implements ShouldQueue
         $report = Report::query()->where('key', $this->report_key)->firstOrFail();
 
         return $report->mailableRecipients();
+    }
+
+    protected function getFileName()
+    {
+        return $this->file_prefix . $this->date_from->format('Y-m-d') . '_to_' . $this->date_to->format('Y-m-d') . '.xlsx';
+    }
+
+    protected function getMailTitle()
+    {
+        return join(' ', [
+            str($this->file_prefix)->headline(),
+            $this->date_from->format('Y-m-d'),
+            'To',
+            $this->date_to->format('Y-m-d')
+        ]);
+    }
+
+    protected function getBuild()
+    {
+        $file_name = $this->getFileName();
+
+        Excel::store(new $this->exporter($this->date_from, $this->date_to), $file_name);
+
+        $title = $this->getMailTitle();
+
+        $recipients = $this->getRecipients();
+
+        return $this->markdown('emails.employees', ['title' => $title])
+            ->to($recipients)
+            ->attachFromStorage($file_name)
+            ->subject($title);
     }
 }
