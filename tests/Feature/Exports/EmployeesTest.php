@@ -46,6 +46,6 @@ class EmployeesTest extends TestCase
 
         $this->get(route('admin.employees.export_to_excel', 'all'));
 
-        Excel::assertDownloaded('employees.xlsx');
+        Excel::assertDownloaded('employees-all.xlsx');
     }
 }
