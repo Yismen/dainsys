@@ -3,10 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Mail\EmployeesHiredMail;
-use Illuminate\Support\Facades\Mail;
+use App\Exports\EmployeesHired as ExportsEmployeesHired;
 
-class EmployeesHired extends Command
+class EmployeesHired extends EmployeesAbstractCommand
 {
     /**
      * The name and signature of the console command.
@@ -24,9 +23,6 @@ class EmployeesHired extends Command
      */
     protected $description = 'Send an email with all the employees hired in a given period!';
 
-    /**
-     * Create a new command instance.
-     */
     public function __construct()
     {
         parent::__construct();
@@ -39,10 +35,10 @@ class EmployeesHired extends Command
      */
     public function handle()
     {
-        $dates = $this->argument('dates');
-
-        Mail::send(new EmployeesHiredMail($this->name, $dates, $this->option('site')));
-
-        $this->info('Employees hired email sent!');
+        if ($this->createAndSend(ExportsEmployeesHired::class)) {
+            $this->info('Employees hired email sent!');
+        } else {
+            $this->warn('Nothing to send');
+        }
     }
 }

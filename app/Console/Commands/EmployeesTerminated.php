@@ -3,10 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\EmployeesTerminatedMail;
+use App\Exports\EmployeesTerminated as ExportsEmployeesTerminated;
 
-class EmployeesTerminated extends Command
+class EmployeesTerminated extends EmployeesAbstractCommand
 {
     /**
      * The name and signature of the console command.
@@ -37,10 +36,10 @@ class EmployeesTerminated extends Command
      */
     public function handle()
     {
-        $dates = $this->argument('dates');
-
-        Mail::send(new EmployeesTerminatedMail($this->name, $dates, $this->option('site')));
-
-        $this->info('Employees terminated email sent!');
+        if ($this->createAndSend(ExportsEmployeesTerminated::class)) {
+            $this->info('Employees terminated email sent!');
+        } else {
+            $this->warn('Nothing to send');
+        }
     }
 }

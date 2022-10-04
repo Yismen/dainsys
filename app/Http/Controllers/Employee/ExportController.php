@@ -21,6 +21,8 @@ class ExportController extends Controller
      */
     public function toExcel($status)
     {
-        return Excel::download(new EmployeesExport($status), 'employees.xlsx');
+        $file_name = 'employees-' . $status . '.xlsx';
+
+        return Excel::download(new EmployeesExport($status), $file_name);
     }
 }

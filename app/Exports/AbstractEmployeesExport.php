@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
+use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Events\BeforeWriting;
@@ -16,17 +17,19 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 
-class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAutoSize, WithColumnFormatting, WithMapping, WithHeadings, WithEvents
+abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAutoSize, WithColumnFormatting, WithMapping, WithHeadings, WithEvents
 {
-    protected $scope;
-    protected $date_from;
-    protected $date_to;
+    use Exportable;
 
-    public function __construct($scope, $date_from = null, $date_to = null)
+    protected $date_from = null;
+    protected $date_to = null;
+    protected $site = null;
+
+    public function __construct($date_from = null, $date_to = null, string $site = null)
     {
-        $this->scope = $scope;
         $this->date_from = $date_from;
         $this->date_to = $date_to;
+        $this->site = $site;
     }
 
     public function registerEvents(): array
@@ -43,16 +46,6 @@ class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAutoSize, W
         ];
     }
 
-    public function query()
-    {
-        $status = $this->scope;
-
-        return $this->baseQuery()
-            ->when($this->date_from, fn ($q) => $q->where('hire_date', '>=', $this->date_from))
-            ->when($this->date_to, fn ($q) => $q->where('hire_date', '<=', $this->date_to))
-            ->$status();
-    }
-
     public function title(): string
     {
         return 'Employees';
@@ -62,6 +55,11 @@ class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAutoSize, W
     {
         return Employee::query()
         ->orderBy('first_name')
+        ->when($this->site, function ($query) {
+            $query->whereHas('site', function ($query) {
+                $query->where('name', 'like', "{$this->site}%");
+            });
+        })
         ->with([
             'punch',
             'address',
@@ -163,5 +161,10 @@ class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAutoSize, W
             'Termination Date',
             'Termination Type',
         ];
+    }
+
+    public function hasData(): bool
+    {
+        return $this->query()->count() > 0;
     }
 }

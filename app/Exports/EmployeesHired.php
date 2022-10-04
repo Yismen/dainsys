@@ -4,15 +4,6 @@ namespace App\Exports;
 
 class EmployeesHired extends AbstractEmployeesExport
 {
-    protected $date_from;
-    protected $date_to;
-
-    public function __construct($date_from = null, $date_to = null)
-    {
-        $this->date_from = $date_from;
-        $this->date_to = $date_to;
-    }
-
     /**
      * : View.
      *
