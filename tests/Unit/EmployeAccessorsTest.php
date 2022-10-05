@@ -19,7 +19,7 @@ class EmployeAccessorsTest extends TestsTestCase
         $activeEmployee = create(Employee::class);
 
         $this->assertEquals('Active', $activeEmployee->status);
-
+        
         $inactiveEmployee = create(Termination::class)->employee;
 
         $this->assertEquals('Inactive', $inactiveEmployee->status);

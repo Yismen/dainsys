@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Employee;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
-use App\Events\EmployeeTerminated;
 use App\Events\EmployeeReactivated;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
@@ -24,13 +23,19 @@ class TerminationController extends Controller
         Cache::forget('terminations');
 
         $employee->termination()->updateOrCreate(
-            [],
+            [
+                'employee_id' => $employee->id
+            ],
             $request->only(['termination_date', 'termination_type_id', 'termination_reason_id', 'can_be_rehired', 'comments'])
         );
 
-        event(new EmployeeTerminated());
-
-        return $employee->load('termination');
+        return $employee->load(
+            'termination'
+        )
+        ->append([
+            'termination_type_list',
+            'termination_reason_list'
+        ]);
     }
 
     public function reactivate(Request $request, Employee $employee)
