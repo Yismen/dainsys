@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Models\Report;
 use App\Mail\EmployeeTerminatedMail;
 use Illuminate\Support\Facades\Mail;
 use App\Events\EmployeeTerminated as Event;
@@ -25,6 +26,10 @@ class EmployeeTerminated
      */
     public function handle(Event $event)
     {
-        Mail::send(new EmployeeTerminatedMail($event->employee));
+        $report = Report::query()->where('key', 'dainsys:employees-terminated')->first();
+
+        if ($report) {
+            Mail::send(new EmployeeTerminatedMail($event->employee, $report->mailableRecipients()));
+        }
     }
 }

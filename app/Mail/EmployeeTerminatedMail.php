@@ -2,7 +2,6 @@
 
 namespace App\Mail;
 
-use App\Models\Report;
 use App\Models\Employee;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -20,12 +19,12 @@ class EmployeeTerminatedMail extends Mailable
      */
     public Employee $employee;
 
-    protected string $report_key ;
+    protected array $recipients ;
 
-    public function __construct(Employee $employee, string $report_key = 'dainsys:employees-terminated')
+    public function __construct(Employee $employee, array $recipients)
     {
         $this->employee = $employee;
-        $this->report_key = $report_key;
+        $this->recipients = $recipients;
     }
 
     /**
@@ -35,12 +34,10 @@ class EmployeeTerminatedMail extends Mailable
      */
     public function build()
     {
-        $report = Report::query()->where('key', $this->report_key)->firstOrFail();
-
         return $this->markdown('mail.employee-terminated-mail', [
             'employee' => $this->employee->load('termination')
         ])
-        ->to($report->mailableRecipients())
+        ->to($this->recipients)
         ;
     }
 }
