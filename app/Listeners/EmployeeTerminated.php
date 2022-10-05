@@ -2,6 +2,8 @@
 
 namespace App\Listeners;
 
+use App\Mail\EmployeeTerminatedMail;
+use Illuminate\Support\Facades\Mail;
 use App\Events\EmployeeTerminated as Event;
 
 class EmployeeTerminated
@@ -18,10 +20,11 @@ class EmployeeTerminated
     /**
      * Handle the event.
      *
-     * @param  EmployeeTerminated  $event
+     * @param  EmployeeTerminated $event
      * @return void
      */
     public function handle(Event $event)
     {
+        Mail::send(new EmployeeTerminatedMail($event->employee));
     }
 }
