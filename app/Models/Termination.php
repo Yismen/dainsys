@@ -19,13 +19,6 @@ class Termination extends Model
         'can_be_rehired' => 'boolean',
     ];
 
-    protected static function booted()
-    {
-        static::created(function ($termination) {
-            event(new EmployeeTerminated($termination->employee));
-        });
-    }
-
     public function employee()
     {
         return $this->belongsTo('App\Models\Employee');

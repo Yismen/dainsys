@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\DainsysModel as Model;
 use Carbon\Carbon;
+use App\Models\DainsysModel as Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
 class Article extends Model
@@ -66,14 +66,12 @@ class Article extends Model
      */
     public function setBodyAttribute($body)
     {
-        // dd(\Auth::user()->username);
         $this->attributes['body'] = ucfirst(trim($body));
     }
 
     public function setUsernameAttribute()
     {
-        // dd(\Auth::user()->username);
-        $this->attributes['username'] = \Auth::user()->username;
+        $this->attributes['username'] = auth()->user()->username;
     }
 
     /**

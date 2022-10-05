@@ -28,7 +28,7 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\EmployeeReactivated::class,
         ],
         \App\Events\EmployeeCreated::class => [
-            \App\Listeners\SemdEmailToHumanResources::class,
+            \App\Listeners\EmployeeCreatedListener::class,
             \App\Listeners\CreateEmployeeShift::class,
             \App\Listeners\CreateEmployeeSchedule::class,
             \App\Listeners\AssignEmployeeToAutomaticProcesses::class,

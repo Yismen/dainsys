@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Downtime;
 use Yajra\DataTables\Facades\DataTables;
 use App\Repositories\PerformanceRepository;
-use App\Http\Requests\Performance\UpdateDowntimeRequest;
 use App\Http\Requests\Performance\CreateDowntimeRequest;
+use App\Http\Requests\Performance\UpdateDowntimeRequest;
 
 class DowntimeController extends Controller
 {
@@ -80,13 +80,12 @@ class DowntimeController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Downtime         $downtime
+     * @param \App\Downtime            $downtime
      *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateDowntimeRequest $request, Downtime $downtime)
     {
-        // dd($request->all());
         $downtime->update($request->all());
 
         return redirect()->route('admin.downtimes.edit', $downtime->id)

@@ -7,7 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class EmployeeTerminatedMail extends Mailable
+class EmployeeCreatedMail extends Mailable
 {
     use Queueable;
     use SerializesModels;
@@ -34,8 +34,8 @@ class EmployeeTerminatedMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.employee-terminated-mail', [
-            'employee' => $this->employee->load('termination')
+        return $this->markdown('mail.employee-created-mail', [
+            'employee' => $this->employee
         ])
         ->to($this->recipients)
         ;
