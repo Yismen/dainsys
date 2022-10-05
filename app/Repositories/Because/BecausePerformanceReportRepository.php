@@ -22,8 +22,6 @@ class BecausePerformanceReportRepository
             'mtd' => $this->mtd(),
             'ptd' => $this->ptd(),
         ];
-
-        // dd($this->data);
     }
 
     protected function baseQuery()

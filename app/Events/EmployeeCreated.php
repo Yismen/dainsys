@@ -9,11 +9,11 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 
 class EmployeeCreated
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
-    
-    public $employee;
-
+    use Dispatchable;
+    use InteractsWithSockets;
     use SerializesModels;
+
+    public $employee;
 
     /**
      * Create a new event instance.

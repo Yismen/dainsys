@@ -87,10 +87,10 @@ class EmployeesController extends Controller
         ]);
 
         $employee = $employee->create($request->all());
-        
+
         $employee->punch()->create($request->only(['punch']));
 
-        EmployeeCreated::dispatch($employee);
+        event(new EmployeeCreated($employee));
 
         if ($request->ajax()) {
             return $employee
@@ -135,7 +135,6 @@ class EmployeesController extends Controller
         ->where('employee_id', $employee->id)
         ->with(['terminationReason', 'terminationType'])
         ->get();
-        // dd($employee->toArray());
 
         return view('employees.show', compact('employee', 'previous_terminations'));
     }

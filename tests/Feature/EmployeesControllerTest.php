@@ -3,10 +3,14 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use App\Models\Report;
 use App\Models\Process;
 use App\Models\Employee;
+use App\Models\Recipient;
 use Illuminate\Support\Arr;
 use App\Events\EmployeeCreated;
+use App\Mail\EmployeeCreatedMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -118,17 +122,48 @@ class EmployeesControllerTest extends TestCase
     /** @test */
     public function authorized_users_can_store_employee()
     {
-        Event::fake();
         $employee = make(Employee::class)->toArray();
         $employee['punch'] = random_int(10001, 99999);
         $response = $this->actingAs($this->userWithPermission('create-employees'))
         ->post(route('admin.employees.store'), $employee)
         ->assertRedirect();
 
-        Event::assertDispatched(EmployeeCreated::class);
-
         $this->assertDatabaseHas('employees', Arr::only($employee, ['first_name', 'last_name']));
         $employee = Employee::where('first_name', $employee['first_name'])->first();
+    }
+
+    /** @test */
+    public function employee_controller_dispatch_event_when_employee_is_created()
+    {
+        Event::fake();
+
+        $recipients = factory(Recipient::class)->create();
+        $report = factory(Report::class)->create(['key' => 'dainsys:employees-hired']);
+        $report->recipients()->sync([$recipients->id]);
+
+        $employee = make(Employee::class)->toArray();
+        $employee['punch'] = random_int(10001, 99999);
+        $response = $this->actingAs($this->userWithPermission('create-employees'))
+            ->post(route('admin.employees.store'), $employee);
+            
+        Event::assertDispatched(EmployeeCreated::class);
+    }
+
+    /** @test */
+    public function employee_controller_send_email_when_employee_is_created()
+    {
+        Mail::fake();
+
+        $recipients = factory(Recipient::class)->create();
+        $report = factory(Report::class)->create(['key' => 'dainsys:employees-hired']);
+        $report->recipients()->sync([$recipients->id]);
+
+        $employee = make(Employee::class)->toArray();
+        $employee['punch'] = random_int(10001, 99999);
+        $response = $this->actingAs($this->userWithPermission('create-employees'))
+            ->post(route('admin.employees.store'), $employee);
+
+        Mail::assertSent(EmployeeCreatedMail::class);
     }
 
     /** @test */

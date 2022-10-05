@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
+use App\Models\Article;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use App\Http\Requests\ArticlesRequest;
 use App\Http\Requests\SaveImageFromURLRequest;
 use App\Http\Requests\SaveImageFromLocalFileRequest;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Http\Request;
-use App\Models\Article;
-use App\Models\Tag;
 
 class ArticlesController extends Controller
 {
@@ -58,12 +58,6 @@ class ArticlesController extends Controller
      */
     public function store(Article $article, ArticlesRequest $request, Tag $tag)
     {
-        // dd($request->all());
-
-        // $article = new $article($request->all());
-
-        // \Auth::user()->articles()->save($article);
-
         $this->createArticle($article, $request, $tag);
 
         return \Redirect::route('articles.index')->withSuccess("$request->title has been created successfully!");
@@ -72,7 +66,7 @@ class ArticlesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int      $id
      * @return Response
      */
     public function show(Article $article, Request $request)
@@ -83,7 +77,7 @@ class ArticlesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int      $id
      * @return Response
      */
     public function edit(Article $article, Tag $tags)
@@ -96,7 +90,7 @@ class ArticlesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  int      $id
      * @return Response
      */
     public function update(Article $article, ArticlesRequest $request)
@@ -109,7 +103,7 @@ class ArticlesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int      $id
      * @return Response
      */
     public function destroy(Article $article)
@@ -135,8 +129,8 @@ class ArticlesController extends Controller
     /**
      * Sync the given tagas in the database
      *
-     * @param  Article    $article [Article Model]
-     * @param  Array|null $tagIDs  [The IDs of the tags]
+     * @param Article    $article [Article Model]
+     * @param Array|null $tagIDs  [The IDs of the tags]
      * @return [type]              [object]
      */
     public function syncTags(Article $article, array $tagIDs = null)
@@ -147,8 +141,8 @@ class ArticlesController extends Controller
     /**
      * Create a new article model
      *
-     * @param  Article      $article [the model to be create]
-     * @param  ArticlesRequest $request [data passed by the user]
+     * @param Article         $article [the model to be create]
+     * @param ArticlesRequest $request [data passed by the user]
      * @return [type]                [object]
      */
     public function createArticle(Article $article, ArticlesRequest $request, Tag $tag)
@@ -163,8 +157,8 @@ class ArticlesController extends Controller
     /**
      * Update current article model
      *
-     * @param  Article      $article [the model to be updated]
-     * @param  ArticlesRequest $request [data passed by user]
+     * @param Article         $article [the model to be updated]
+     * @param ArticlesRequest $request [data passed by user]
      * @return [type]                [object]
      */
     public function updateArticle(Article $article, ArticlesRequest $request)
@@ -177,7 +171,7 @@ class ArticlesController extends Controller
     /**
      * search for articles
      *
-     * @param  Request $requests [requests object]
+     * @param Request $requests [requests object]
      * @return [type]            [view]
      */
     public function search(Request $requests, Article $article)
@@ -202,7 +196,7 @@ class ArticlesController extends Controller
     /**
      * Receive the content of a local file and save an image to the server
      *
-     * @param  ArticlesRequest $request The request with the fields
+     * @param ArticlesRequest $request The request with the fields
      * @return [type]                   location of the save image
      */
     public function saveImageFromLocalFile(Article $article, SaveImageFromLocalFileRequest $request)
@@ -241,7 +235,7 @@ class ArticlesController extends Controller
     /**
      * Receive the content of a url and save an image to the server
      *
-     * @param  ArticlesRequest $request The request with the fields
+     * @param ArticlesRequest $request The request with the fields
      * @return [type]                   location of the save image
      */
     public function saveImageFromURL(Article $article, SaveImageFromURLRequest $request)
@@ -281,7 +275,7 @@ class ArticlesController extends Controller
      * Interset the tags object and save to the database
      * those that has not been saved yet
      *
-     * @param  Array  $selected  [description]
+     * @param Array $selected [description]
      * @param  [type] $tagObject [description]
      * @return [type]            [description]
      */
