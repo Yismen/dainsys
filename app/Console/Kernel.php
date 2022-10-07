@@ -69,17 +69,17 @@ class Kernel extends ConsoleKernel
          * Ring Central Commands
          * ---------------------------------------------------------------------------------
          */
-        $schedule->command(\App\Console\Commands\General\SendGeneralDailyProductionReportCommand::class, ['--team' => 'ECC'])->dailyAt('05:25');
-        $schedule->command(\App\Console\Commands\General\SendGeneralDailyRawReportCommand::class, ['--team' => 'ECC'])->dailyAt('05:45');
+        // $schedule->command(\App\Console\Commands\General\SendGeneralDailyProductionReportCommand::class, ['--team' => 'ECC'])->dailyAt('05:25');
+        // $schedule->command(\App\Console\Commands\General\SendGeneralDailyRawReportCommand::class, ['--team' => 'ECC'])->dailyAt('05:45');
 
-        $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Publishing\SendPublishingProductionReportCommand::class)->hourlyAt(59);
+        // $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Publishing\SendPublishingProductionReportCommand::class)->hourlyAt(59);
 
-        $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalFlashReportCommand::class)->hourly();
-        $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalProductionReportCommand::class)->hourlyAt(59);
-        $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalTextCampaignReportCommand::class)->dailyAt('07:20');
+        // $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalFlashReportCommand::class)->hourly();
+        // $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalProductionReportCommand::class)->hourlyAt(59);
+        // $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalTextCampaignReportCommand::class)->dailyAt('07:20');
 
-        $schedule->command(\App\Console\Commands\Inbound\SendDailySummaryCommand::class)->dailyAt('06:20');
-        $schedule->command(\App\Console\Commands\Inbound\SendWTDSummaryCommand::class)->dailyAt('06:30');
+        // $schedule->command(\App\Console\Commands\Inbound\SendDailySummaryCommand::class)->dailyAt('06:20');
+        // $schedule->command(\App\Console\Commands\Inbound\SendWTDSummaryCommand::class)->dailyAt('06:30');
 
         /**
          * Clean up commands
