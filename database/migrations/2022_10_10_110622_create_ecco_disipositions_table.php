@@ -18,14 +18,18 @@ class CreateEccoDisipositionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ecco_dispositions', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->string('name', 400)->unique();
-            $table->smallInteger('contacts')->unsigned()->default(0);
-            $table->smallInteger('sales')->unsigned()->default(0);
-            $table->softDeletes();
-        });
+        if (!Schema::hasTable('ecco_dispositions')) {
+            Schema::create('ecco_dispositions', function (Blueprint $table) {
+                $table->id();
+                $table->timestamps();
+                $table->string('name', 400)->unique();
+                $table->smallInteger('contacts')->unsigned()->default(0);
+                $table->smallInteger('sales')->unsigned()->default(0);
+                $table->smallInteger('upsales')->unsigned()->default(0);
+                $table->smallInteger('cc_sales')->unsigned()->default(0);
+                $table->softDeletes();
+            });
+        }
     }
 
     /**
@@ -35,6 +39,6 @@ class CreateEccoDisipositionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ecco_disipositions');
+        // Schema::dropIfExists('ecco_disipositions');
     }
 }
