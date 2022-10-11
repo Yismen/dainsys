@@ -77,6 +77,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 
     Route::resource('downtime_reasons', \App\Http\Controllers\DowntimeReasonsController::class);
 
+    Route::resource('dispositions', \App\Http\Controllers\RingCentral\DispositionController::class);
+
     Route::prefix('employees')->group(function () {
         Route::post('{employee}/address', [\App\Http\Controllers\Employee\AddressController::class, 'update'])
             ->name('employees.update-address');
