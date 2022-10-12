@@ -87,6 +87,7 @@ Route::prefix('v2')->group(function () {
         Route::get('clients', \App\Http\Controllers\Api\V2\ClientsController::class);
         Route::get('downtime_reasons', \App\Http\Controllers\Api\V2\DowntimeReasonsController::class);
         Route::get('downtimes', \App\Http\Controllers\Api\V2\DowntimesController::class);
+        Route::get('dispositions', \App\Http\Controllers\Api\V2\DispositionsController::class);
         Route::get('login_names', \App\Http\Controllers\Api\V2\LoginNamesController::class);
         Route::get('projects', \App\Http\Controllers\Api\V2\ProjectsController::class);
         Route::get('schedules', \App\Http\Controllers\Api\V2\SchedulesController::class);
