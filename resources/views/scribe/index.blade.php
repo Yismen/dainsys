@@ -26,13 +26,13 @@
             </style>
 
     <script>
-        var baseUrl = "dainsys.test";
+        var baseUrl = "http://localhost";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
-    <script src="{{ asset("/vendor/scribe/js/tryitout-3.29.1.js") }}"></script>
+    <script src="{{ asset("/vendor/scribe/js/tryitout-3.37.2.js") }}"></script>
 
-    <script src="{{ asset("/vendor/scribe/js/theme-default-3.29.1.js") }}"></script>
+    <script src="{{ asset("/vendor/scribe/js/theme-default-3.37.2.js") }}"></script>
 
 </head>
 
@@ -45,7 +45,7 @@
     </span>
 </a>
 <div class="tocify-wrapper">
-            <img src="images/logo-with-text.png" alt="logo" class="logo" style="padding-top: 10px;" width="230px"/>
+            <img src="images/logo-with-text.png" alt="logo" class="logo" style="padding-top: 10px;" width="100%"/>
     
             <div class="lang-selector">
                                             <button type="button" class="lang-button" data-language-name="bash">bash</button>
@@ -151,12 +151,6 @@
                                     <li class="tocify-item level-2" data-unique="endpoints-POSTapi-nationalities">
                         <a href="#endpoints-POSTapi-nationalities">Store Nationalities</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-employees--employee--vip">
-                        <a href="#endpoints-POSTapi-employees--employee--vip">Update VIP</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-employees--employee--universal">
-                        <a href="#endpoints-POSTapi-employees--employee--universal">Update Universal</a>
-                    </li>
                                     <li class="tocify-item level-2" data-unique="endpoints-GETapi-employees">
                         <a href="#endpoints-GETapi-employees">Employees All</a>
                     </li>
@@ -181,14 +175,8 @@
                                     <li class="tocify-item level-2" data-unique="endpoints-POSTapi-notifications-mark-all-as-read">
                         <a href="#endpoints-POSTapi-notifications-mark-all-as-read">Notifications Mark all as Read</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-notifications-show--notification-">
-                        <a href="#endpoints-GETapi-notifications-show--notification-">Notification Details</a>
-                    </li>
                                     <li class="tocify-item level-2" data-unique="endpoints-GETapi-v2-user">
                         <a href="#endpoints-GETapi-v2-user">Authenticated User</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v2-employees--employee--vip">
-                        <a href="#endpoints-POSTapi-v2-employees--employee--vip">Update VIP</a>
                     </li>
                                     <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v2-notifications-mark-all-as-read">
                         <a href="#endpoints-POSTapi-v2-notifications-mark-all-as-read">Notifications Mark all as Read</a>
@@ -226,9 +214,6 @@
                                     <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v2-afps">
                         <a href="#endpoints-POSTapi-v2-afps">Store Afps</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v2-employees--employee--universal">
-                        <a href="#endpoints-POSTapi-v2-employees--employee--universal">Update Universal</a>
-                    </li>
                                     <li class="tocify-item level-2" data-unique="endpoints-GETapi-v2-employees-recents">
                         <a href="#endpoints-GETapi-v2-employees-recents">Employees Recents</a>
                     </li>
@@ -238,8 +223,23 @@
                                     <li class="tocify-item level-2" data-unique="endpoints-GETapi-v2-employees-actives">
                         <a href="#endpoints-GETapi-v2-employees-actives">Employees Actives</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-v2-notifications-show--notification-">
-                        <a href="#endpoints-GETapi-v2-notifications-show--notification-">Notification Details</a>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-notifications-show--notification_id-">
+                        <a href="#endpoints-GETapi-notifications-show--notification_id-">Notification Details</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v2-employees--employee_id--vip">
+                        <a href="#endpoints-POSTapi-v2-employees--employee_id--vip">Update VIP</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v2-employees--employee_id--universal">
+                        <a href="#endpoints-POSTapi-v2-employees--employee_id--universal">Update Universal</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-employees--employee_id--universal">
+                        <a href="#endpoints-POSTapi-employees--employee_id--universal">Update Universal</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-employees--employee_id--vip">
+                        <a href="#endpoints-POSTapi-employees--employee_id--vip">Update VIP</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-v2-notifications-show--notification_id-">
+                        <a href="#endpoints-GETapi-v2-notifications-show--notification_id-">Notification Details</a>
                     </li>
                                                     </ul>
                             </ul>
@@ -320,6 +320,9 @@
                                     <li class="tocify-item level-2" data-unique="performances-GETapi-v2-performances">
                         <a href="#performances-GETapi-v2-performances">Performances Data</a>
                     </li>
+                                    <li class="tocify-item level-2" data-unique="performances-GETapi-v2-dispositions">
+                        <a href="#performances-GETapi-v2-dispositions">Performances Dispositions</a>
+                    </li>
                                                     </ul>
                             </ul>
         
@@ -332,7 +335,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
         <ul class="toc-footer" id="last-updated">
-        <li>Last updated: May 23 2022</li>
+        <li>Last updated: October 12 2022</li>
     </ul>
 </div>
 
@@ -346,7 +349,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 <blockquote>
 <p>Base URL</p>
 </blockquote>
-<pre><code class="language-yaml">http://localhost:8000</code></pre>
+<pre><code class="language-yaml">http://localhost</code></pre>
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>To authenticate requests, include an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer your-token"</code></strong>.</p>
@@ -371,28 +374,28 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/dashboards/human_resources/head_counts?site=a&amp;project=dolores&amp;department=modi&amp;position=libero" \
-    --header "Authorization: Bearer 6gh4vZ38DdkbfEePVa6a5c1" \
+    --get "http://localhost/api/dashboards/human_resources/head_counts?site=eligendi&amp;project=esse&amp;department=provident&amp;position=eum" \
+    --header "Authorization: Bearer f65cV6eZD3aE1dvhba4k8Pg" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/dashboards/human_resources/head_counts"
+    "http://localhost/api/dashboards/human_resources/head_counts"
 );
 
 const params = {
-    "site": "a",
-    "project": "dolores",
-    "department": "modi",
-    "position": "libero",
+    "site": "eligendi",
+    "project": "esse",
+    "department": "provident",
+    "position": "eum",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer 6gh4vZ38DdkbfEePVa6a5c1",
+    "Authorization": "Bearer f65cV6eZD3aE1dvhba4k8Pg",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -433,7 +436,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 6gh4vZ38DdkbfEePVa6a5c1","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer f65cV6eZD3aE1dvhba4k8Pg","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-dashboards-human_resources-head_counts', this);">
     <h3>
@@ -471,7 +474,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-human_resources-head_counts"
-               value="a"
+               value="eligendi"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -481,7 +484,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-dashboards-human_resources-head_counts"
-               value="dolores"
+               value="esse"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -491,7 +494,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-dashboards-human_resources-head_counts"
-               value="modi"
+               value="provident"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -501,7 +504,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-dashboards-human_resources-head_counts"
-               value="libero"
+               value="eum"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -522,28 +525,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/dashboards/human_resources/attritions?site=expedita&amp;project=repellat&amp;department=aperiam&amp;position=officia" \
-    --header "Authorization: Bearer PZbe6aDag8Vfdv5h3461ckE" \
+    --get "http://localhost/api/dashboards/human_resources/attritions?site=dolores&amp;project=ea&amp;department=quas&amp;position=omnis" \
+    --header "Authorization: Bearer hbV8agD53e6v4fdkZaEc1P6" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/dashboards/human_resources/attritions"
+    "http://localhost/api/dashboards/human_resources/attritions"
 );
 
 const params = {
-    "site": "expedita",
-    "project": "repellat",
-    "department": "aperiam",
-    "position": "officia",
+    "site": "dolores",
+    "project": "ea",
+    "department": "quas",
+    "position": "omnis",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer PZbe6aDag8Vfdv5h3461ckE",
+    "Authorization": "Bearer hbV8agD53e6v4fdkZaEc1P6",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -592,7 +595,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer PZbe6aDag8Vfdv5h3461ckE","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer hbV8agD53e6v4fdkZaEc1P6","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-dashboards-human_resources-attritions', this);">
     <h3>
@@ -630,7 +633,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-human_resources-attritions"
-               value="expedita"
+               value="dolores"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -640,7 +643,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-dashboards-human_resources-attritions"
-               value="repellat"
+               value="ea"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -650,7 +653,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-dashboards-human_resources-attritions"
-               value="aperiam"
+               value="quas"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -660,7 +663,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-dashboards-human_resources-attritions"
-               value="officia"
+               value="omnis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -681,28 +684,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/dashboards/human_resources/hc_by_project?site=ullam&amp;project=eos&amp;department=deserunt&amp;position=sequi" \
-    --header "Authorization: Bearer fkda5e1hPb48a3cE6vVZgD6" \
+    --get "http://localhost/api/dashboards/human_resources/hc_by_project?site=ipsa&amp;project=voluptas&amp;department=illum&amp;position=sapiente" \
+    --header "Authorization: Bearer a5av3hg168kVc6ZDfdePb4E" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/dashboards/human_resources/hc_by_project"
+    "http://localhost/api/dashboards/human_resources/hc_by_project"
 );
 
 const params = {
-    "site": "ullam",
-    "project": "eos",
-    "department": "deserunt",
-    "position": "sequi",
+    "site": "ipsa",
+    "project": "voluptas",
+    "department": "illum",
+    "position": "sapiente",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer fkda5e1hPb48a3cE6vVZgD6",
+    "Authorization": "Bearer a5av3hg168kVc6ZDfdePb4E",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -747,7 +750,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer fkda5e1hPb48a3cE6vVZgD6","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer a5av3hg168kVc6ZDfdePb4E","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-dashboards-human_resources-hc_by_project', this);">
     <h3>
@@ -785,7 +788,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_project"
-               value="ullam"
+               value="ipsa"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -795,7 +798,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_project"
-               value="eos"
+               value="voluptas"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -805,7 +808,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_project"
-               value="deserunt"
+               value="illum"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -815,7 +818,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_project"
-               value="sequi"
+               value="sapiente"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -836,28 +839,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/dashboards/human_resources/hc_by_gender?site=est&amp;project=beatae&amp;department=adipisci&amp;position=quis" \
-    --header "Authorization: Bearer g45aZ16edVDbvf6Ec3k8Pha" \
+    --get "http://localhost/api/dashboards/human_resources/hc_by_gender?site=neque&amp;project=voluptatem&amp;department=omnis&amp;position=ut" \
+    --header "Authorization: Bearer chEge61v54ZD36kaaPf8bdV" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/dashboards/human_resources/hc_by_gender"
+    "http://localhost/api/dashboards/human_resources/hc_by_gender"
 );
 
 const params = {
-    "site": "est",
-    "project": "beatae",
-    "department": "adipisci",
-    "position": "quis",
+    "site": "neque",
+    "project": "voluptatem",
+    "department": "omnis",
+    "position": "ut",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer g45aZ16edVDbvf6Ec3k8Pha",
+    "Authorization": "Bearer chEge61v54ZD36kaaPf8bdV",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -901,7 +904,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer g45aZ16edVDbvf6Ec3k8Pha","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer chEge61v54ZD36kaaPf8bdV","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-dashboards-human_resources-hc_by_gender', this);">
     <h3>
@@ -939,7 +942,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_gender"
-               value="est"
+               value="neque"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -949,7 +952,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_gender"
-               value="beatae"
+               value="voluptatem"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -959,7 +962,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_gender"
-               value="adipisci"
+               value="omnis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -969,7 +972,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_gender"
-               value="quis"
+               value="ut"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -990,28 +993,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/dashboards/human_resources/hc_by_department?site=ut&amp;project=qui&amp;department=voluptates&amp;position=commodi" \
-    --header "Authorization: Bearer 1k85evcEgfd6h3aZaDb4VP6" \
+    --get "http://localhost/api/dashboards/human_resources/hc_by_department?site=ut&amp;project=fuga&amp;department=error&amp;position=consequatur" \
+    --header "Authorization: Bearer k6e46gvhc8VadfED3bPZ51a" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/dashboards/human_resources/hc_by_department"
+    "http://localhost/api/dashboards/human_resources/hc_by_department"
 );
 
 const params = {
     "site": "ut",
-    "project": "qui",
-    "department": "voluptates",
-    "position": "commodi",
+    "project": "fuga",
+    "department": "error",
+    "position": "consequatur",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer 1k85evcEgfd6h3aZaDb4VP6",
+    "Authorization": "Bearer k6e46gvhc8VadfED3bPZ51a",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1055,7 +1058,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 1k85evcEgfd6h3aZaDb4VP6","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer k6e46gvhc8VadfED3bPZ51a","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-dashboards-human_resources-hc_by_department', this);">
     <h3>
@@ -1103,7 +1106,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_department"
-               value="qui"
+               value="fuga"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -1113,7 +1116,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_department"
-               value="voluptates"
+               value="error"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -1123,7 +1126,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-dashboards-human_resources-hc_by_department"
-               value="commodi"
+               value="consequatur"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -1144,33 +1147,33 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/dashboards/production/mtd_stats?campaign=itaque&amp;source=ex&amp;employee=ratione&amp;supervisor=sint&amp;supervisor_employee=dolorum&amp;project_campaign=eveniet&amp;project_employee=rerum&amp;site=sint&amp;client=asperiores" \
-    --header "Authorization: Bearer 4k1hDdfVce3P68bZag6E5va" \
+    --get "http://localhost/api/dashboards/production/mtd_stats?campaign=et&amp;source=quo&amp;employee=laboriosam&amp;supervisor=qui&amp;supervisor_employee=odit&amp;project_campaign=laudantium&amp;project_employee=ea&amp;site=laborum&amp;client=qui" \
+    --header "Authorization: Bearer 3Va81gadeDEc6v6PkZ4bhf5" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/dashboards/production/mtd_stats"
+    "http://localhost/api/dashboards/production/mtd_stats"
 );
 
 const params = {
-    "campaign": "itaque",
-    "source": "ex",
-    "employee": "ratione",
-    "supervisor": "sint",
-    "supervisor_employee": "dolorum",
-    "project_campaign": "eveniet",
-    "project_employee": "rerum",
-    "site": "sint",
-    "client": "asperiores",
+    "campaign": "et",
+    "source": "quo",
+    "employee": "laboriosam",
+    "supervisor": "qui",
+    "supervisor_employee": "odit",
+    "project_campaign": "laudantium",
+    "project_employee": "ea",
+    "site": "laborum",
+    "client": "qui",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer 4k1hDdfVce3P68bZag6E5va",
+    "Authorization": "Bearer 3Va81gadeDEc6v6PkZ4bhf5",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1210,7 +1213,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 4k1hDdfVce3P68bZag6E5va","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 3Va81gadeDEc6v6PkZ4bhf5","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-dashboards-production-mtd_stats', this);">
     <h3>
@@ -1248,7 +1251,7 @@ fetch(url, {
                 <input type="text"
                name="campaign"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="itaque"
+               value="et"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific campaign. Example ?campaign=%Santiago%</p>
@@ -1258,7 +1261,7 @@ fetch(url, {
                 <input type="text"
                name="source"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="ex"
+               value="quo"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific source. Example ?source=%Santiago%</p>
@@ -1268,7 +1271,7 @@ fetch(url, {
                 <input type="text"
                name="employee"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="ratione"
+               value="laboriosam"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific employee. Example ?employee=%Santiago%</p>
@@ -1278,7 +1281,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="sint"
+               value="qui"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor. Example ?supervisor=%Santiago%</p>
@@ -1288,7 +1291,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor_employee"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="dolorum"
+               value="odit"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%</p>
@@ -1298,7 +1301,7 @@ fetch(url, {
                 <input type="text"
                name="project_campaign"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="eveniet"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_campaign. Example ?project_campaign=%Santiago%</p>
@@ -1308,7 +1311,7 @@ fetch(url, {
                 <input type="text"
                name="project_employee"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="rerum"
+               value="ea"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_employee. Example ?project_employee=%Santiago%</p>
@@ -1318,7 +1321,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="sint"
+               value="laborum"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -1328,7 +1331,7 @@ fetch(url, {
                 <input type="text"
                name="client"
                data-endpoint="GETapi-dashboards-production-mtd_stats"
-               value="asperiores"
+               value="qui"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific client. Example ?client=%Pub%</p>
@@ -1349,33 +1352,33 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/dashboards/production/monthly_stats?campaign=magni&amp;source=voluptatem&amp;employee=et&amp;supervisor=voluptas&amp;supervisor_employee=nobis&amp;project_campaign=voluptatum&amp;project_employee=quidem&amp;site=placeat&amp;client=sapiente" \
-    --header "Authorization: Bearer 5v6aZha14d6cg83EePkVfbD" \
+    --get "http://localhost/api/dashboards/production/monthly_stats?campaign=consequuntur&amp;source=delectus&amp;employee=repellat&amp;supervisor=omnis&amp;supervisor_employee=in&amp;project_campaign=sit&amp;project_employee=exercitationem&amp;site=eaque&amp;client=pariatur" \
+    --header "Authorization: Bearer vgE6daV351cah8e4bDfP6Zk" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/dashboards/production/monthly_stats"
+    "http://localhost/api/dashboards/production/monthly_stats"
 );
 
 const params = {
-    "campaign": "magni",
-    "source": "voluptatem",
-    "employee": "et",
-    "supervisor": "voluptas",
-    "supervisor_employee": "nobis",
-    "project_campaign": "voluptatum",
-    "project_employee": "quidem",
-    "site": "placeat",
-    "client": "sapiente",
+    "campaign": "consequuntur",
+    "source": "delectus",
+    "employee": "repellat",
+    "supervisor": "omnis",
+    "supervisor_employee": "in",
+    "project_campaign": "sit",
+    "project_employee": "exercitationem",
+    "site": "eaque",
+    "client": "pariatur",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer 5v6aZha14d6cg83EePkVfbD",
+    "Authorization": "Bearer vgE6daV351cah8e4bDfP6Zk",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1423,7 +1426,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 5v6aZha14d6cg83EePkVfbD","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer vgE6daV351cah8e4bDfP6Zk","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-dashboards-production-monthly_stats', this);">
     <h3>
@@ -1461,7 +1464,7 @@ fetch(url, {
                 <input type="text"
                name="campaign"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="magni"
+               value="consequuntur"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific campaign. Example ?campaign=%Santiago%</p>
@@ -1471,7 +1474,7 @@ fetch(url, {
                 <input type="text"
                name="source"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="voluptatem"
+               value="delectus"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific source. Example ?source=%Santiago%</p>
@@ -1481,7 +1484,7 @@ fetch(url, {
                 <input type="text"
                name="employee"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="et"
+               value="repellat"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific employee. Example ?employee=%Santiago%</p>
@@ -1491,7 +1494,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="voluptas"
+               value="omnis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor. Example ?supervisor=%Santiago%</p>
@@ -1501,7 +1504,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor_employee"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="nobis"
+               value="in"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%</p>
@@ -1511,7 +1514,7 @@ fetch(url, {
                 <input type="text"
                name="project_campaign"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="voluptatum"
+               value="sit"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_campaign. Example ?project_campaign=%Santiago%</p>
@@ -1521,7 +1524,7 @@ fetch(url, {
                 <input type="text"
                name="project_employee"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="quidem"
+               value="exercitationem"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_employee. Example ?project_employee=%Santiago%</p>
@@ -1531,7 +1534,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="placeat"
+               value="eaque"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -1541,7 +1544,7 @@ fetch(url, {
                 <input type="text"
                name="client"
                data-endpoint="GETapi-dashboards-production-monthly_stats"
-               value="sapiente"
+               value="pariatur"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific client. Example ?client=%Pub%</p>
@@ -1562,28 +1565,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/dashboards/human_resources/head_counts?site=quisquam&amp;project=numquam&amp;department=ab&amp;position=ipsa" \
-    --header "Authorization: Bearer ZDEk6gc13fvadh46ePba8V5" \
+    --get "http://localhost/api/v2/dashboards/human_resources/head_counts?site=tempora&amp;project=repudiandae&amp;department=tempora&amp;position=aut" \
+    --header "Authorization: Bearer cave6dg8Z3f1P6Vb4a5khED" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/dashboards/human_resources/head_counts"
+    "http://localhost/api/v2/dashboards/human_resources/head_counts"
 );
 
 const params = {
-    "site": "quisquam",
-    "project": "numquam",
-    "department": "ab",
-    "position": "ipsa",
+    "site": "tempora",
+    "project": "repudiandae",
+    "department": "tempora",
+    "position": "aut",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer ZDEk6gc13fvadh46ePba8V5",
+    "Authorization": "Bearer cave6dg8Z3f1P6Vb4a5khED",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1624,7 +1627,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer ZDEk6gc13fvadh46ePba8V5","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer cave6dg8Z3f1P6Vb4a5khED","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-dashboards-human_resources-head_counts', this);">
     <h3>
@@ -1662,7 +1665,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-v2-dashboards-human_resources-head_counts"
-               value="quisquam"
+               value="tempora"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -1672,7 +1675,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-v2-dashboards-human_resources-head_counts"
-               value="numquam"
+               value="repudiandae"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -1682,7 +1685,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-v2-dashboards-human_resources-head_counts"
-               value="ab"
+               value="tempora"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -1692,7 +1695,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-v2-dashboards-human_resources-head_counts"
-               value="ipsa"
+               value="aut"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -1713,28 +1716,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/dashboards/human_resources/attritions?site=laborum&amp;project=sunt&amp;department=cupiditate&amp;position=ad" \
-    --header "Authorization: Bearer 466aEa85ZVdPkv1fceg3bDh" \
+    --get "http://localhost/api/v2/dashboards/human_resources/attritions?site=rerum&amp;project=accusamus&amp;department=odio&amp;position=harum" \
+    --header "Authorization: Bearer PVZ41vage53dEk6baDh8fc6" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/dashboards/human_resources/attritions"
+    "http://localhost/api/v2/dashboards/human_resources/attritions"
 );
 
 const params = {
-    "site": "laborum",
-    "project": "sunt",
-    "department": "cupiditate",
-    "position": "ad",
+    "site": "rerum",
+    "project": "accusamus",
+    "department": "odio",
+    "position": "harum",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer 466aEa85ZVdPkv1fceg3bDh",
+    "Authorization": "Bearer PVZ41vage53dEk6baDh8fc6",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1783,7 +1786,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 466aEa85ZVdPkv1fceg3bDh","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer PVZ41vage53dEk6baDh8fc6","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-dashboards-human_resources-attritions', this);">
     <h3>
@@ -1821,7 +1824,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-v2-dashboards-human_resources-attritions"
-               value="laborum"
+               value="rerum"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -1831,7 +1834,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-v2-dashboards-human_resources-attritions"
-               value="sunt"
+               value="accusamus"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -1841,7 +1844,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-v2-dashboards-human_resources-attritions"
-               value="cupiditate"
+               value="odio"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -1851,7 +1854,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-v2-dashboards-human_resources-attritions"
-               value="ad"
+               value="harum"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -1872,28 +1875,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/dashboards/human_resources/hc_by_project?site=eius&amp;project=sed&amp;department=unde&amp;position=accusantium" \
-    --header "Authorization: Bearer g3f1Da8V54k6P6bvZheEcda" \
+    --get "http://localhost/api/v2/dashboards/human_resources/hc_by_project?site=et&amp;project=cum&amp;department=blanditiis&amp;position=magni" \
+    --header "Authorization: Bearer hfcZ3ae8dD46V5EPv61kabg" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/dashboards/human_resources/hc_by_project"
+    "http://localhost/api/v2/dashboards/human_resources/hc_by_project"
 );
 
 const params = {
-    "site": "eius",
-    "project": "sed",
-    "department": "unde",
-    "position": "accusantium",
+    "site": "et",
+    "project": "cum",
+    "department": "blanditiis",
+    "position": "magni",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer g3f1Da8V54k6P6bvZheEcda",
+    "Authorization": "Bearer hfcZ3ae8dD46V5EPv61kabg",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1938,7 +1941,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer g3f1Da8V54k6P6bvZheEcda","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer hfcZ3ae8dD46V5EPv61kabg","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-dashboards-human_resources-hc_by_project', this);">
     <h3>
@@ -1976,7 +1979,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-v2-dashboards-human_resources-hc_by_project"
-               value="eius"
+               value="et"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -1986,7 +1989,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-v2-dashboards-human_resources-hc_by_project"
-               value="sed"
+               value="cum"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -1996,7 +1999,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-v2-dashboards-human_resources-hc_by_project"
-               value="unde"
+               value="blanditiis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -2006,7 +2009,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-v2-dashboards-human_resources-hc_by_project"
-               value="accusantium"
+               value="magni"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -2027,28 +2030,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/dashboards/human_resources/hc_by_gender?site=quisquam&amp;project=qui&amp;department=aut&amp;position=qui" \
-    --header "Authorization: Bearer Eag68aekVfPdvb6h14Z5D3c" \
+    --get "http://localhost/api/v2/dashboards/human_resources/hc_by_gender?site=aut&amp;project=totam&amp;department=harum&amp;position=facere" \
+    --header "Authorization: Bearer gcbaDaE66V84d3v1fhZP5ke" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/dashboards/human_resources/hc_by_gender"
+    "http://localhost/api/v2/dashboards/human_resources/hc_by_gender"
 );
 
 const params = {
-    "site": "quisquam",
-    "project": "qui",
-    "department": "aut",
-    "position": "qui",
+    "site": "aut",
+    "project": "totam",
+    "department": "harum",
+    "position": "facere",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer Eag68aekVfPdvb6h14Z5D3c",
+    "Authorization": "Bearer gcbaDaE66V84d3v1fhZP5ke",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -2092,7 +2095,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer Eag68aekVfPdvb6h14Z5D3c","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer gcbaDaE66V84d3v1fhZP5ke","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-dashboards-human_resources-hc_by_gender', this);">
     <h3>
@@ -2130,7 +2133,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-v2-dashboards-human_resources-hc_by_gender"
-               value="quisquam"
+               value="aut"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -2140,7 +2143,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-v2-dashboards-human_resources-hc_by_gender"
-               value="qui"
+               value="totam"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -2150,7 +2153,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-v2-dashboards-human_resources-hc_by_gender"
-               value="aut"
+               value="harum"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -2160,7 +2163,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-v2-dashboards-human_resources-hc_by_gender"
-               value="qui"
+               value="facere"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -2181,28 +2184,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/dashboards/human_resources/hc_by_department?site=blanditiis&amp;project=recusandae&amp;department=possimus&amp;position=nostrum" \
-    --header "Authorization: Bearer 6cP6k4Vfd1Egaae35Zv8hDb" \
+    --get "http://localhost/api/v2/dashboards/human_resources/hc_by_department?site=facere&amp;project=dolor&amp;department=et&amp;position=amet" \
+    --header "Authorization: Bearer 4f35dvkaDg16aEe8ZP6Vbhc" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/dashboards/human_resources/hc_by_department"
+    "http://localhost/api/v2/dashboards/human_resources/hc_by_department"
 );
 
 const params = {
-    "site": "blanditiis",
-    "project": "recusandae",
-    "department": "possimus",
-    "position": "nostrum",
+    "site": "facere",
+    "project": "dolor",
+    "department": "et",
+    "position": "amet",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer 6cP6k4Vfd1Egaae35Zv8hDb",
+    "Authorization": "Bearer 4f35dvkaDg16aEe8ZP6Vbhc",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -2246,7 +2249,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 6cP6k4Vfd1Egaae35Zv8hDb","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 4f35dvkaDg16aEe8ZP6Vbhc","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-dashboards-human_resources-hc_by_department', this);">
     <h3>
@@ -2284,7 +2287,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-v2-dashboards-human_resources-hc_by_department"
-               value="blanditiis"
+               value="facere"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -2294,7 +2297,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-v2-dashboards-human_resources-hc_by_department"
-               value="recusandae"
+               value="dolor"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -2304,7 +2307,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-v2-dashboards-human_resources-hc_by_department"
-               value="possimus"
+               value="et"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -2314,7 +2317,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-v2-dashboards-human_resources-hc_by_department"
-               value="nostrum"
+               value="amet"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -2335,33 +2338,33 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/dashboards/production/mtd_stats?campaign=provident&amp;source=non&amp;employee=eius&amp;supervisor=eos&amp;supervisor_employee=iure&amp;project_campaign=ab&amp;project_employee=totam&amp;site=non&amp;client=qui" \
-    --header "Authorization: Bearer 3P5ZEaV8aD61bdh4cegvf6k" \
+    --get "http://localhost/api/v2/dashboards/production/mtd_stats?campaign=libero&amp;source=quo&amp;employee=illo&amp;supervisor=neque&amp;supervisor_employee=nihil&amp;project_campaign=ex&amp;project_employee=odio&amp;site=incidunt&amp;client=enim" \
+    --header "Authorization: Bearer 3ZevcbP85hkEfdag661aVD4" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/dashboards/production/mtd_stats"
+    "http://localhost/api/v2/dashboards/production/mtd_stats"
 );
 
 const params = {
-    "campaign": "provident",
-    "source": "non",
-    "employee": "eius",
-    "supervisor": "eos",
-    "supervisor_employee": "iure",
-    "project_campaign": "ab",
-    "project_employee": "totam",
-    "site": "non",
-    "client": "qui",
+    "campaign": "libero",
+    "source": "quo",
+    "employee": "illo",
+    "supervisor": "neque",
+    "supervisor_employee": "nihil",
+    "project_campaign": "ex",
+    "project_employee": "odio",
+    "site": "incidunt",
+    "client": "enim",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer 3P5ZEaV8aD61bdh4cegvf6k",
+    "Authorization": "Bearer 3ZevcbP85hkEfdag661aVD4",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -2383,6 +2386,7 @@ fetch(url, {
     &quot;revenue_mtd&quot;: &quot;0.00&quot;,
     &quot;login_hours_mtd&quot;: &quot;8.00&quot;,
     &quot;production_hours_mtd&quot;: &quot;0.00&quot;
+    &quot;billable_hours_mtd&quot;: &quot;0.00&quot;
 }</code>
  </pre>
     </span>
@@ -2401,7 +2405,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 3P5ZEaV8aD61bdh4cegvf6k","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 3ZevcbP85hkEfdag661aVD4","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-dashboards-production-mtd_stats', this);">
     <h3>
@@ -2439,7 +2443,7 @@ fetch(url, {
                 <input type="text"
                name="campaign"
                data-endpoint="GETapi-v2-dashboards-production-mtd_stats"
-               value="provident"
+               value="libero"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific campaign. Example ?campaign=%Santiago%</p>
@@ -2449,7 +2453,7 @@ fetch(url, {
                 <input type="text"
                name="source"
                data-endpoint="GETapi-v2-dashboards-production-mtd_stats"
-               value="non"
+               value="quo"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific source. Example ?source=%Santiago%</p>
@@ -2459,7 +2463,7 @@ fetch(url, {
                 <input type="text"
                name="employee"
                data-endpoint="GETapi-v2-dashboards-production-mtd_stats"
-               value="eius"
+               value="illo"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific employee. Example ?employee=%Santiago%</p>
@@ -2469,7 +2473,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor"
                data-endpoint="GETapi-v2-dashboards-production-mtd_stats"
-               value="eos"
+               value="neque"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor. Example ?supervisor=%Santiago%</p>
@@ -2479,7 +2483,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor_employee"
                data-endpoint="GETapi-v2-dashboards-production-mtd_stats"
-               value="iure"
+               value="nihil"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%</p>
@@ -2489,7 +2493,7 @@ fetch(url, {
                 <input type="text"
                name="project_campaign"
                data-endpoint="GETapi-v2-dashboards-production-mtd_stats"
-               value="ab"
+               value="ex"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_campaign. Example ?project_campaign=%Santiago%</p>
@@ -2499,7 +2503,7 @@ fetch(url, {
                 <input type="text"
                name="project_employee"
                data-endpoint="GETapi-v2-dashboards-production-mtd_stats"
-               value="totam"
+               value="odio"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_employee. Example ?project_employee=%Santiago%</p>
@@ -2509,7 +2513,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-v2-dashboards-production-mtd_stats"
-               value="non"
+               value="incidunt"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -2519,7 +2523,7 @@ fetch(url, {
                 <input type="text"
                name="client"
                data-endpoint="GETapi-v2-dashboards-production-mtd_stats"
-               value="qui"
+               value="enim"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific client. Example ?client=%Pub%</p>
@@ -2540,33 +2544,33 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/dashboards/production/monthly_stats?campaign=consectetur&amp;source=odit&amp;employee=sunt&amp;supervisor=corporis&amp;supervisor_employee=qui&amp;project_campaign=sed&amp;project_employee=tenetur&amp;site=voluptate&amp;client=suscipit" \
-    --header "Authorization: Bearer k6aZDva6c8431d5hVEPbegf" \
+    --get "http://localhost/api/v2/dashboards/production/monthly_stats?campaign=ad&amp;source=rem&amp;employee=provident&amp;supervisor=qui&amp;supervisor_employee=magnam&amp;project_campaign=fuga&amp;project_employee=et&amp;site=voluptatem&amp;client=beatae" \
+    --header "Authorization: Bearer 5V8DehbdfZvEPac664ag31k" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/dashboards/production/monthly_stats"
+    "http://localhost/api/v2/dashboards/production/monthly_stats"
 );
 
 const params = {
-    "campaign": "consectetur",
-    "source": "odit",
-    "employee": "sunt",
-    "supervisor": "corporis",
-    "supervisor_employee": "qui",
-    "project_campaign": "sed",
-    "project_employee": "tenetur",
-    "site": "voluptate",
-    "client": "suscipit",
+    "campaign": "ad",
+    "source": "rem",
+    "employee": "provident",
+    "supervisor": "qui",
+    "supervisor_employee": "magnam",
+    "project_campaign": "fuga",
+    "project_employee": "et",
+    "site": "voluptatem",
+    "client": "beatae",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer k6aZDva6c8431d5hVEPbegf",
+    "Authorization": "Bearer 5V8DehbdfZvEPac664ag31k",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -2614,7 +2618,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer k6aZDva6c8431d5hVEPbegf","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 5V8DehbdfZvEPac664ag31k","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-dashboards-production-monthly_stats', this);">
     <h3>
@@ -2652,7 +2656,7 @@ fetch(url, {
                 <input type="text"
                name="campaign"
                data-endpoint="GETapi-v2-dashboards-production-monthly_stats"
-               value="consectetur"
+               value="ad"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific campaign. Example ?campaign=%Santiago%</p>
@@ -2662,7 +2666,7 @@ fetch(url, {
                 <input type="text"
                name="source"
                data-endpoint="GETapi-v2-dashboards-production-monthly_stats"
-               value="odit"
+               value="rem"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific source. Example ?source=%Santiago%</p>
@@ -2672,7 +2676,7 @@ fetch(url, {
                 <input type="text"
                name="employee"
                data-endpoint="GETapi-v2-dashboards-production-monthly_stats"
-               value="sunt"
+               value="provident"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific employee. Example ?employee=%Santiago%</p>
@@ -2682,7 +2686,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor"
                data-endpoint="GETapi-v2-dashboards-production-monthly_stats"
-               value="corporis"
+               value="qui"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor. Example ?supervisor=%Santiago%</p>
@@ -2692,7 +2696,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor_employee"
                data-endpoint="GETapi-v2-dashboards-production-monthly_stats"
-               value="qui"
+               value="magnam"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%</p>
@@ -2702,7 +2706,7 @@ fetch(url, {
                 <input type="text"
                name="project_campaign"
                data-endpoint="GETapi-v2-dashboards-production-monthly_stats"
-               value="sed"
+               value="fuga"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_campaign. Example ?project_campaign=%Santiago%</p>
@@ -2712,7 +2716,7 @@ fetch(url, {
                 <input type="text"
                name="project_employee"
                data-endpoint="GETapi-v2-dashboards-production-monthly_stats"
-               value="tenetur"
+               value="et"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_employee. Example ?project_employee=%Santiago%</p>
@@ -2722,7 +2726,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-v2-dashboards-production-monthly_stats"
-               value="voluptate"
+               value="voluptatem"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -2732,7 +2736,7 @@ fetch(url, {
                 <input type="text"
                name="client"
                data-endpoint="GETapi-v2-dashboards-production-monthly_stats"
-               value="suscipit"
+               value="beatae"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific client. Example ?client=%Pub%</p>
@@ -2757,19 +2761,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/user" \
-    --header "Authorization: Bearer a8536khVDcvaPE4fb1de6Zg" \
+    --get "http://localhost/api/user" \
+    --header "Authorization: Bearer a8hD61gecE5Va6Pkf4bdZv3" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/user"
+    "http://localhost/api/user"
 );
 
 const headers = {
-    "Authorization": "Bearer a8536khVDcvaPE4fb1de6Zg",
+    "Authorization": "Bearer a8hD61gecE5Va6Pkf4bdZv3",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -2815,7 +2819,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer a8536khVDcvaPE4fb1de6Zg","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer a8hD61gecE5Va6Pkf4bdZv3","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-user', this);">
     <h3>
@@ -2863,29 +2867,29 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/afps" \
-    --header "Authorization: Bearer bkfg6EZV68vPdDe13ch5a4a" \
+    "http://localhost/api/afps" \
+    --header "Authorization: Bearer ghvPek4DZb3Vc6f6Eda18a5" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"porro\"
+    \"name\": \"dolores\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/afps"
+    "http://localhost/api/afps"
 );
 
 const headers = {
-    "Authorization": "Bearer bkfg6EZV68vPdDe13ch5a4a",
+    "Authorization": "Bearer ghvPek4DZb3Vc6f6Eda18a5",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "porro"
+    "name": "dolores"
 };
 
 fetch(url, {
@@ -2926,7 +2930,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer bkfg6EZV68vPdDe13ch5a4a","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer ghvPek4DZb3Vc6f6Eda18a5","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-afps', this);">
     <h3>
@@ -2964,7 +2968,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-afps"
-               value="porro"
+               value="dolores"
                data-component="body" hidden>
     <br>
 <p>The name of the Afp</p>
@@ -2985,29 +2989,29 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/arss" \
-    --header "Authorization: Bearer fkav4hPa1DVe6E6c85gb3Zd" \
+    "http://localhost/api/arss" \
+    --header "Authorization: Bearer gaVk6ZPcD65bfv4E1ae83dh" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"quis\"
+    \"name\": \"fugiat\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/arss"
+    "http://localhost/api/arss"
 );
 
 const headers = {
-    "Authorization": "Bearer fkav4hPa1DVe6E6c85gb3Zd",
+    "Authorization": "Bearer gaVk6ZPcD65bfv4E1ae83dh",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "quis"
+    "name": "fugiat"
 };
 
 fetch(url, {
@@ -3048,7 +3052,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer fkav4hPa1DVe6E6c85gb3Zd","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer gaVk6ZPcD65bfv4E1ae83dh","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-arss', this);">
     <h3>
@@ -3086,7 +3090,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-arss"
-               value="quis"
+               value="fugiat"
                data-component="body" hidden>
     <br>
 <p>The name of the Ars</p>
@@ -3107,29 +3111,29 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/banks" \
-    --header "Authorization: Bearer 6P1hakV3ZdEa5cfe4bDv86g" \
+    "http://localhost/api/banks" \
+    --header "Authorization: Bearer h8aab6g1kedV564EPDZv3cf" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"dolor\"
+    \"name\": \"amet\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/banks"
+    "http://localhost/api/banks"
 );
 
 const headers = {
-    "Authorization": "Bearer 6P1hakV3ZdEa5cfe4bDv86g",
+    "Authorization": "Bearer h8aab6g1kedV564EPDZv3cf",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "dolor"
+    "name": "amet"
 };
 
 fetch(url, {
@@ -3166,7 +3170,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 6P1hakV3ZdEa5cfe4bDv86g","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer h8aab6g1kedV564EPDZv3cf","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-banks', this);">
     <h3>
@@ -3204,7 +3208,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-banks"
-               value="dolor"
+               value="amet"
                data-component="body" hidden>
     <br>
 <p>The name of the Banks</p>
@@ -3225,37 +3229,37 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/positions" \
-    --header "Authorization: Bearer D6bv4cd1aaVZ5hfkPe6g8E3" \
+    "http://localhost/api/positions" \
+    --header "Authorization: Bearer 6Evha41afZ5Dd8VcPe36gkb" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"cumque\",
-    \"department_id\": \"provident\",
-    \"payment_type_id\": \"ea\",
-    \"payment_frequency_id\": \"nihil\",
-    \"salary\": \"consequatur\"
+    \"name\": \"non\",
+    \"department_id\": \"omnis\",
+    \"payment_type_id\": \"consequatur\",
+    \"payment_frequency_id\": \"tempore\",
+    \"salary\": \"qui\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/positions"
+    "http://localhost/api/positions"
 );
 
 const headers = {
-    "Authorization": "Bearer D6bv4cd1aaVZ5hfkPe6g8E3",
+    "Authorization": "Bearer 6Evha41afZ5Dd8VcPe36gkb",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "cumque",
-    "department_id": "provident",
-    "payment_type_id": "ea",
-    "payment_frequency_id": "nihil",
-    "salary": "consequatur"
+    "name": "non",
+    "department_id": "omnis",
+    "payment_type_id": "consequatur",
+    "payment_frequency_id": "tempore",
+    "salary": "qui"
 };
 
 fetch(url, {
@@ -3314,7 +3318,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer D6bv4cd1aaVZ5hfkPe6g8E3","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 6Evha41afZ5Dd8VcPe36gkb","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-positions', this);">
     <h3>
@@ -3352,7 +3356,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-positions"
-               value="cumque"
+               value="non"
                data-component="body" hidden>
     <br>
 <p>The name of the Position</p>
@@ -3362,7 +3366,7 @@ fetch(url, {
                 <input type="text"
                name="department_id"
                data-endpoint="POSTapi-positions"
-               value="provident"
+               value="omnis"
                data-component="body" hidden>
     <br>
 <p>The department_id of the Position</p>
@@ -3372,7 +3376,7 @@ fetch(url, {
                 <input type="text"
                name="payment_type_id"
                data-endpoint="POSTapi-positions"
-               value="ea"
+               value="consequatur"
                data-component="body" hidden>
     <br>
 <p>The payment_type_id of the Position</p>
@@ -3382,7 +3386,7 @@ fetch(url, {
                 <input type="text"
                name="payment_frequency_id"
                data-endpoint="POSTapi-positions"
-               value="nihil"
+               value="tempore"
                data-component="body" hidden>
     <br>
 <p>The payment_frequency_id of the Position</p>
@@ -3392,7 +3396,7 @@ fetch(url, {
                 <input type="text"
                name="salary"
                data-endpoint="POSTapi-positions"
-               value="consequatur"
+               value="qui"
                data-component="body" hidden>
     <br>
 <p>The salary of the Position</p>
@@ -3413,29 +3417,29 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/supervisors" \
-    --header "Authorization: Bearer a6Db8PdV453f16hckZgvaEe" \
+    "http://localhost/api/supervisors" \
+    --header "Authorization: Bearer D6V8d1v35cZ6ghakfabeP4E" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"omnis\"
+    \"name\": \"vitae\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/supervisors"
+    "http://localhost/api/supervisors"
 );
 
 const headers = {
-    "Authorization": "Bearer a6Db8PdV453f16hckZgvaEe",
+    "Authorization": "Bearer D6V8d1v35cZ6ghakfabeP4E",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "omnis"
+    "name": "vitae"
 };
 
 fetch(url, {
@@ -3475,7 +3479,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer a6Db8PdV453f16hckZgvaEe","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer D6V8d1v35cZ6ghakfabeP4E","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-supervisors', this);">
     <h3>
@@ -3513,7 +3517,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-supervisors"
-               value="omnis"
+               value="vitae"
                data-component="body" hidden>
     <br>
 <p>The name of the Supervisor</p>
@@ -3534,29 +3538,29 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/departments" \
-    --header "Authorization: Bearer 8d4aPh56c3EDVZ16efakvbg" \
+    "http://localhost/api/departments" \
+    --header "Authorization: Bearer fD8a1bZPagcvEk64e6dh3V5" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"provident\"
+    \"name\": \"delectus\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/departments"
+    "http://localhost/api/departments"
 );
 
 const headers = {
-    "Authorization": "Bearer 8d4aPh56c3EDVZ16efakvbg",
+    "Authorization": "Bearer fD8a1bZPagcvEk64e6dh3V5",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "provident"
+    "name": "delectus"
 };
 
 fetch(url, {
@@ -3596,7 +3600,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 8d4aPh56c3EDVZ16efakvbg","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer fD8a1bZPagcvEk64e6dh3V5","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-departments', this);">
     <h3>
@@ -3634,7 +3638,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-departments"
-               value="provident"
+               value="delectus"
                data-component="body" hidden>
     <br>
 <p>The name of the Department</p>
@@ -3655,29 +3659,29 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/payment_frequencies" \
-    --header "Authorization: Bearer aZvD16cPagh586kb3EfV4de" \
+    "http://localhost/api/payment_frequencies" \
+    --header "Authorization: Bearer 4Zv5fE68kV6ghbdaDcPae31" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"ipsam\"
+    \"name\": \"maxime\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/payment_frequencies"
+    "http://localhost/api/payment_frequencies"
 );
 
 const headers = {
-    "Authorization": "Bearer aZvD16cPagh586kb3EfV4de",
+    "Authorization": "Bearer 4Zv5fE68kV6ghbdaDcPae31",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "ipsam"
+    "name": "maxime"
 };
 
 fetch(url, {
@@ -3717,7 +3721,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer aZvD16cPagh586kb3EfV4de","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 4Zv5fE68kV6ghbdaDcPae31","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-payment_frequencies', this);">
     <h3>
@@ -3755,7 +3759,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-payment_frequencies"
-               value="ipsam"
+               value="maxime"
                data-component="body" hidden>
     <br>
 <p>The name of the Payment Frequency</p>
@@ -3776,29 +3780,29 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/nationalities" \
-    --header "Authorization: Bearer PVch664eZEfD1gb8v5akd3a" \
+    "http://localhost/api/nationalities" \
+    --header "Authorization: Bearer e5vP4aZdh361bcEfgk8DVa6" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"corrupti\"
+    \"name\": \"cumque\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/nationalities"
+    "http://localhost/api/nationalities"
 );
 
 const headers = {
-    "Authorization": "Bearer PVch664eZEfD1gb8v5akd3a",
+    "Authorization": "Bearer e5vP4aZdh361bcEfgk8DVa6",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "corrupti"
+    "name": "cumque"
 };
 
 fetch(url, {
@@ -3835,7 +3839,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer PVch664eZEfD1gb8v5akd3a","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer e5vP4aZdh361bcEfgk8DVa6","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-nationalities', this);">
     <h3>
@@ -3873,356 +3877,10 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-nationalities"
-               value="corrupti"
+               value="cumque"
                data-component="body" hidden>
     <br>
 <p>The name of the Nationality     *</p>
-        </p>
-        </form>
-
-            <h2 id="endpoints-POSTapi-employees--employee--vip">Update VIP</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Update VIP information for a given employee.</p>
-
-<span id="example-requests-POSTapi-employees--employee--vip">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/employees/11/vip" \
-    --header "Authorization: Bearer PE15dba3hck6fgva8eD4Z6V" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"is_vip\": true
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/employees/11/vip"
-);
-
-const headers = {
-    "Authorization": "Bearer PE15dba3hck6fgva8eD4Z6V",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "is_vip": true
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-employees--employee--vip">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;id&quot;: 10006,
-    &quot;first_name&quot;: &quot;August&quot;,
-    &quot;second_first_name&quot;: &quot;Nicklaus&quot;,
-    &quot;last_name&quot;: &quot;Schaefer&quot;,
-    &quot;second_last_name&quot;: &quot;Wuckert&quot;,
-    &quot;full_name&quot;: &quot;August Nicklaus Schaefer Wuckert&quot;,
-    &quot;hire_date&quot;: &quot;1990-08-30&quot;,
-    &quot;personal_id&quot;: &quot;40546748566&quot;,
-    &quot;passport&quot;: null,
-    &quot;date_of_birth&quot;: &quot;1996-10-15&quot;,
-    &quot;cellphone_number&quot;: &quot;8095607690&quot;,
-    &quot;secondary_phone&quot;: null,
-    &quot;site&quot;: &quot;Prof. Quincy Lockman DVM&quot;,
-    &quot;project&quot;: &quot;Gustave Homenick&quot;,
-    &quot;position&quot;: &quot;Dr. Arlo Walter Dds&quot;,
-    &quot;salary&quot;: 125,
-    &quot;salary_type&quot;: &quot;Kaylah Ratke&quot;,
-    &quot;pay_per_hours&quot;: 125,
-    &quot;department&quot;: &quot;Malachi Feeney I&quot;,
-    &quot;supervisor&quot;: &quot;Yismen Jorge&quot;,
-    &quot;gender&quot;: &quot;Ms. Kamille Hagenes MD&quot;,
-    &quot;marital&quot;: &quot;Miss Brenda Will&quot;,
-    &quot;ars&quot;: &quot;Adan Friesen&quot;,
-    &quot;afp&quot;: &quot;Devonte Goyette DDS&quot;,
-    &quot;nationality&quot;: &quot;Guam_662326&quot;,
-    &quot;has_kids&quot;: 0,
-    &quot;photo&quot;: &quot;storage/images/employees/10006.png&quot;,
-    &quot;active&quot;: true,
-    &quot;status&quot;: &quot;Active&quot;,
-    &quot;punch&quot;: null,
-    &quot;account_number&quot;: null,
-    &quot;is_vip&quot;: true,
-    &quot;is_universal&quot;: false,
-    &quot;termination_date&quot;: null
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-employees--employee--vip" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-employees--employee--vip"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-employees--employee--vip"></code></pre>
-</span>
-<span id="execution-error-POSTapi-employees--employee--vip" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-employees--employee--vip"></code></pre>
-</span>
-<form id="form-POSTapi-employees--employee--vip" data-method="POST"
-      data-path="api/employees/{employee}/vip"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer PE15dba3hck6fgva8eD4Z6V","Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-employees--employee--vip', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-employees--employee--vip"
-                    onclick="tryItOut('POSTapi-employees--employee--vip');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-employees--employee--vip"
-                    onclick="cancelTryOut('POSTapi-employees--employee--vip');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-employees--employee--vip" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/employees/{employee}/vip</code></b>
-        </p>
-                <p>
-            <label id="auth-POSTapi-employees--employee--vip" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="POSTapi-employees--employee--vip"
-                                                                data-component="header"></label>
-        </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>employee</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
-                <input type="number"
-               name="employee"
-               data-endpoint="POSTapi-employees--employee--vip"
-               value="11"
-               data-component="url" hidden>
-    <br>
-
-            </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <p>
-            <b><code>is_vip</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
-                <label data-endpoint="POSTapi-employees--employee--vip" hidden>
-            <input type="radio" name="is_vip"
-                   value="true"
-                   data-endpoint="POSTapi-employees--employee--vip"
-                   data-component="body"
-            >
-            <code>true</code>
-        </label>
-        <label data-endpoint="POSTapi-employees--employee--vip" hidden>
-            <input type="radio" name="is_vip"
-                   value="false"
-                   data-endpoint="POSTapi-employees--employee--vip"
-                   data-component="body"
-            >
-            <code>false</code>
-        </label>
-    <br>
-<p>Indicates if the employee should be added to or removed from the Vip list</p>
-        </p>
-        </form>
-
-            <h2 id="endpoints-POSTapi-employees--employee--universal">Update Universal</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Update Universal information for a given employee.</p>
-
-<span id="example-requests-POSTapi-employees--employee--universal">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/employees/9/universal" \
-    --header "Authorization: Bearer P31bdfhgc46E5a6k8DvaZeV" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"is_vip\": false
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/employees/9/universal"
-);
-
-const headers = {
-    "Authorization": "Bearer P31bdfhgc46E5a6k8DvaZeV",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "is_vip": false
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-employees--employee--universal">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;id&quot;: 10006,
-    &quot;first_name&quot;: &quot;August&quot;,
-    &quot;second_first_name&quot;: &quot;Nicklaus&quot;,
-    &quot;last_name&quot;: &quot;Schaefer&quot;,
-    &quot;second_last_name&quot;: &quot;Wuckert&quot;,
-    &quot;full_name&quot;: &quot;August Nicklaus Schaefer Wuckert&quot;,
-    &quot;hire_date&quot;: &quot;1990-08-30&quot;,
-    &quot;personal_id&quot;: &quot;40546748566&quot;,
-    &quot;passport&quot;: null,
-    &quot;date_of_birth&quot;: &quot;1996-10-15&quot;,
-    &quot;cellphone_number&quot;: &quot;8095607690&quot;,
-    &quot;secondary_phone&quot;: null,
-    &quot;site&quot;: &quot;Prof. Quincy Lockman DVM&quot;,
-    &quot;project&quot;: &quot;Gustave Homenick&quot;,
-    &quot;position&quot;: &quot;Dr. Arlo Walter Dds&quot;,
-    &quot;salary&quot;: 125,
-    &quot;salary_type&quot;: &quot;Kaylah Ratke&quot;,
-    &quot;pay_per_hours&quot;: 125,
-    &quot;department&quot;: &quot;Malachi Feeney I&quot;,
-    &quot;supervisor&quot;: &quot;Yismen Jorge&quot;,
-    &quot;gender&quot;: &quot;Ms. Kamille Hagenes MD&quot;,
-    &quot;marital&quot;: &quot;Miss Brenda Will&quot;,
-    &quot;ars&quot;: &quot;Adan Friesen&quot;,
-    &quot;afp&quot;: &quot;Devonte Goyette DDS&quot;,
-    &quot;nationality&quot;: &quot;Guam_662326&quot;,
-    &quot;has_kids&quot;: 0,
-    &quot;photo&quot;: &quot;storage/images/employees/10006.png&quot;,
-    &quot;active&quot;: true,
-    &quot;status&quot;: &quot;Active&quot;,
-    &quot;punch&quot;: null,
-    &quot;account_number&quot;: null,
-    &quot;is_vip&quot;: true,
-    &quot;is_universal&quot;: false,
-    &quot;termination_date&quot;: null
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-employees--employee--universal" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-employees--employee--universal"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-employees--employee--universal"></code></pre>
-</span>
-<span id="execution-error-POSTapi-employees--employee--universal" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-employees--employee--universal"></code></pre>
-</span>
-<form id="form-POSTapi-employees--employee--universal" data-method="POST"
-      data-path="api/employees/{employee}/universal"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer P31bdfhgc46E5a6k8DvaZeV","Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-employees--employee--universal', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-employees--employee--universal"
-                    onclick="tryItOut('POSTapi-employees--employee--universal');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-employees--employee--universal"
-                    onclick="cancelTryOut('POSTapi-employees--employee--universal');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-employees--employee--universal" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/employees/{employee}/universal</code></b>
-        </p>
-                <p>
-            <label id="auth-POSTapi-employees--employee--universal" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="POSTapi-employees--employee--universal"
-                                                                data-component="header"></label>
-        </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>employee</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
-                <input type="number"
-               name="employee"
-               data-endpoint="POSTapi-employees--employee--universal"
-               value="9"
-               data-component="url" hidden>
-    <br>
-
-            </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <p>
-            <b><code>is_vip</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
-                <label data-endpoint="POSTapi-employees--employee--universal" hidden>
-            <input type="radio" name="is_vip"
-                   value="true"
-                   data-endpoint="POSTapi-employees--employee--universal"
-                   data-component="body"
-            >
-            <code>true</code>
-        </label>
-        <label data-endpoint="POSTapi-employees--employee--universal" hidden>
-            <input type="radio" name="is_vip"
-                   value="false"
-                   data-endpoint="POSTapi-employees--employee--universal"
-                   data-component="body"
-            >
-            <code>false</code>
-        </label>
-    <br>
-<p>Indicates if the employee should be added to or removed from the Universal list</p>
         </p>
         </form>
 
@@ -4240,28 +3898,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/employees?site=fugiat&amp;project=dolore&amp;department=tenetur&amp;position=laborum" \
-    --header "Authorization: Bearer cV65PvkfZDad6heb8Ega143" \
+    --get "http://localhost/api/employees?site=numquam&amp;project=aperiam&amp;department=exercitationem&amp;position=iste" \
+    --header "Authorization: Bearer DVa51c4bhakdfg8v36EP6eZ" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/employees"
+    "http://localhost/api/employees"
 );
 
 const params = {
-    "site": "fugiat",
-    "project": "dolore",
-    "department": "tenetur",
-    "position": "laborum",
+    "site": "numquam",
+    "project": "aperiam",
+    "department": "exercitationem",
+    "position": "iste",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer cV65PvkfZDad6heb8Ega143",
+    "Authorization": "Bearer DVa51c4bhakdfg8v36EP6eZ",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4336,7 +3994,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer cV65PvkfZDad6heb8Ega143","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer DVa51c4bhakdfg8v36EP6eZ","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-employees', this);">
     <h3>
@@ -4374,7 +4032,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-employees"
-               value="fugiat"
+               value="numquam"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -4384,7 +4042,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-employees"
-               value="dolore"
+               value="aperiam"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -4394,7 +4052,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-employees"
-               value="tenetur"
+               value="exercitationem"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -4404,7 +4062,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-employees"
-               value="laborum"
+               value="iste"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -4425,28 +4083,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/employees/all?site=maxime&amp;project=et&amp;department=deserunt&amp;position=voluptatem" \
-    --header "Authorization: Bearer afgV6h58D1v6cdZebaPkE43" \
+    --get "http://localhost/api/employees/all?site=tempora&amp;project=quis&amp;department=blanditiis&amp;position=accusamus" \
+    --header "Authorization: Bearer 1adZ6hb84EDfc53Vgv6Peka" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/employees/all"
+    "http://localhost/api/employees/all"
 );
 
 const params = {
-    "site": "maxime",
-    "project": "et",
-    "department": "deserunt",
-    "position": "voluptatem",
+    "site": "tempora",
+    "project": "quis",
+    "department": "blanditiis",
+    "position": "accusamus",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer afgV6h58D1v6cdZebaPkE43",
+    "Authorization": "Bearer 1adZ6hb84EDfc53Vgv6Peka",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4521,7 +4179,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer afgV6h58D1v6cdZebaPkE43","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 1adZ6hb84EDfc53Vgv6Peka","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-employees-all', this);">
     <h3>
@@ -4559,7 +4217,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-employees-all"
-               value="maxime"
+               value="tempora"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -4569,7 +4227,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-employees-all"
-               value="et"
+               value="quis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -4579,7 +4237,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-employees-all"
-               value="deserunt"
+               value="blanditiis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -4589,7 +4247,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-employees-all"
-               value="voluptatem"
+               value="accusamus"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -4610,28 +4268,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/employees/actives?site=inventore&amp;project=et&amp;department=aliquam&amp;position=architecto" \
-    --header "Authorization: Bearer E4f8aeVa56Db6v31PZcgkdh" \
+    --get "http://localhost/api/employees/actives?site=consequatur&amp;project=delectus&amp;department=aut&amp;position=iusto" \
+    --header "Authorization: Bearer VeEh851aP6Zfg4D6dca3bvk" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/employees/actives"
+    "http://localhost/api/employees/actives"
 );
 
 const params = {
-    "site": "inventore",
-    "project": "et",
-    "department": "aliquam",
-    "position": "architecto",
+    "site": "consequatur",
+    "project": "delectus",
+    "department": "aut",
+    "position": "iusto",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer E4f8aeVa56Db6v31PZcgkdh",
+    "Authorization": "Bearer VeEh851aP6Zfg4D6dca3bvk",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4706,7 +4364,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer E4f8aeVa56Db6v31PZcgkdh","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer VeEh851aP6Zfg4D6dca3bvk","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-employees-actives', this);">
     <h3>
@@ -4744,7 +4402,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-employees-actives"
-               value="inventore"
+               value="consequatur"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -4754,7 +4412,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-employees-actives"
-               value="et"
+               value="delectus"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -4764,7 +4422,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-employees-actives"
-               value="aliquam"
+               value="aut"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -4774,7 +4432,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-employees-actives"
-               value="architecto"
+               value="iusto"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -4795,28 +4453,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/employees/recents?site=cupiditate&amp;project=et&amp;department=quia&amp;position=eos" \
-    --header "Authorization: Bearer ebPh4k1Efv653cg6Zaa8VDd" \
+    --get "http://localhost/api/employees/recents?site=facilis&amp;project=occaecati&amp;department=sunt&amp;position=autem" \
+    --header "Authorization: Bearer dbZa1k6a45VhegfE3DPv6c8" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/employees/recents"
+    "http://localhost/api/employees/recents"
 );
 
 const params = {
-    "site": "cupiditate",
-    "project": "et",
-    "department": "quia",
-    "position": "eos",
+    "site": "facilis",
+    "project": "occaecati",
+    "department": "sunt",
+    "position": "autem",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer ebPh4k1Efv653cg6Zaa8VDd",
+    "Authorization": "Bearer dbZa1k6a45VhegfE3DPv6c8",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4891,7 +4549,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer ebPh4k1Efv653cg6Zaa8VDd","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer dbZa1k6a45VhegfE3DPv6c8","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-employees-recents', this);">
     <h3>
@@ -4929,7 +4587,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-employees-recents"
-               value="cupiditate"
+               value="facilis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -4939,7 +4597,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-employees-recents"
-               value="et"
+               value="occaecati"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -4949,7 +4607,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-employees-recents"
-               value="quia"
+               value="sunt"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -4959,7 +4617,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-employees-recents"
-               value="eos"
+               value="autem"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -4980,25 +4638,25 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/holidays?year=qui" \
-    --header "Authorization: Bearer Zae4D6Vf315hk8dva6PbcgE" \
+    --get "http://localhost/api/holidays?year=repellat" \
+    --header "Authorization: Bearer e468k3h6v1cdDgZaVbEaP5f" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/holidays"
+    "http://localhost/api/holidays"
 );
 
 const params = {
-    "year": "qui",
+    "year": "repellat",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer Zae4D6Vf315hk8dva6PbcgE",
+    "Authorization": "Bearer e468k3h6v1cdDgZaVbEaP5f",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -5042,7 +4700,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer Zae4D6Vf315hk8dva6PbcgE","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer e468k3h6v1cdDgZaVbEaP5f","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-holidays', this);">
     <h3>
@@ -5080,7 +4738,7 @@ fetch(url, {
                 <input type="text"
                name="year"
                data-endpoint="GETapi-holidays"
-               value="qui"
+               value="repellat"
                data-component="query" hidden>
     <br>
 <p>Limit the results to a specific year. Default to previous year. Example ?year=2021.</p>
@@ -5101,27 +4759,27 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/overnight_hours?date=et&amp;months=12&amp;days=3" \
-    --header "Authorization: Bearer dk4eh615fgZDbavcP3aV68E" \
+    --get "http://localhost/api/overnight_hours?date=quod&amp;months=13&amp;days=15" \
+    --header "Authorization: Bearer hZEfck614d8g5VePb3a6Dva" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/overnight_hours"
+    "http://localhost/api/overnight_hours"
 );
 
 const params = {
-    "date": "et",
-    "months": "12",
-    "days": "3",
+    "date": "quod",
+    "months": "13",
+    "days": "15",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer dk4eh615fgZDbavcP3aV68E",
+    "Authorization": "Bearer hZEfck614d8g5VePb3a6Dva",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -5166,7 +4824,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer dk4eh615fgZDbavcP3aV68E","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer hZEfck614d8g5VePb3a6Dva","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-overnight_hours', this);">
     <h3>
@@ -5204,7 +4862,7 @@ fetch(url, {
                 <input type="text"
                name="date"
                data-endpoint="GETapi-overnight_hours"
-               value="et"
+               value="quod"
                data-component="query" hidden>
     <br>
 <p>Limit the results ot a specific date. Example ?date=2021-11-24.</p>
@@ -5214,7 +4872,7 @@ fetch(url, {
                 <input type="number"
                name="months"
                data-endpoint="GETapi-overnight_hours"
-               value="12"
+               value="13"
                data-component="query" hidden>
     <br>
 <p>Defines how many months back should the data limited to. Example ?months=2 will get data between current date and last two months.</p>
@@ -5224,7 +4882,7 @@ fetch(url, {
                 <input type="number"
                name="days"
                data-endpoint="GETapi-overnight_hours"
-               value="3"
+               value="15"
                data-component="query" hidden>
     <br>
 <p>Defines how many days back should the data limited to. Example ?days=2 will get data between current date and last two days.</p>
@@ -5245,25 +4903,25 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/notifications/unread?max_items=17" \
-    --header "Authorization: Bearer egvcD13P5khVd4a68baZEf6" \
+    --get "http://localhost/api/notifications/unread?max_items=5" \
+    --header "Authorization: Bearer 5EgecbZavf3dDk6a618VPh4" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/notifications/unread"
+    "http://localhost/api/notifications/unread"
 );
 
 const params = {
-    "max_items": "17",
+    "max_items": "5",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer egvcD13P5khVd4a68baZEf6",
+    "Authorization": "Bearer 5EgecbZavf3dDk6a618VPh4",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -5310,7 +4968,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer egvcD13P5khVd4a68baZEf6","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 5EgecbZavf3dDk6a618VPh4","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-notifications-unread', this);">
     <h3>
@@ -5348,7 +5006,7 @@ fetch(url, {
                 <input type="number"
                name="max_items"
                data-endpoint="GETapi-notifications-unread"
-               value="17"
+               value="5"
                data-component="query" hidden>
     <br>
 <p>Max amount of notifications to take. Default is 25.</p>
@@ -5369,25 +5027,25 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/notifications/mark-all-as-read?max_items=19" \
-    --header "Authorization: Bearer 65D6k4aPfEcbhga3Vdve18Z" \
+    "http://localhost/api/notifications/mark-all-as-read?max_items=18" \
+    --header "Authorization: Bearer D5akP3ghE6fveV61bcdZ4a8" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/notifications/mark-all-as-read"
+    "http://localhost/api/notifications/mark-all-as-read"
 );
 
 const params = {
-    "max_items": "19",
+    "max_items": "18",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer 65D6k4aPfEcbhga3Vdve18Z",
+    "Authorization": "Bearer D5akP3ghE6fveV61bcdZ4a8",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -5434,7 +5092,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 65D6k4aPfEcbhga3Vdve18Z","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer D5akP3ghE6fveV61bcdZ4a8","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-notifications-mark-all-as-read', this);">
     <h3>
@@ -5472,129 +5130,13 @@ fetch(url, {
                 <input type="number"
                name="max_items"
                data-endpoint="POSTapi-notifications-mark-all-as-read"
-               value="19"
+               value="18"
                data-component="query" hidden>
     <br>
 <p>Max amount of notifications to mark as read. Default is 25. This will also affect the amount of
 unread notifications to return. Also, this will return the next batch of unread notifications for the authenticated user.</p>
             </p>
                 </form>
-
-            <h2 id="endpoints-GETapi-notifications-show--notification-">Notification Details</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Show details for a user notification. This will also mark the given notification as read.</p>
-
-<span id="example-requests-GETapi-notifications-show--notification-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/notifications/show/iste" \
-    --header "Authorization: Bearer 3hg1f5aEakP6vVc8ZdD4b6e" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/notifications/show/iste"
-);
-
-const headers = {
-    "Authorization": "Bearer 3hg1f5aEakP6vVc8ZdD4b6e",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-notifications-show--notification-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;id&quot;: &quot;d8e62834-828a-482d-a279-bb113fcaaa53&quot;,
-    &quot;type&quot;: &quot;App\\Notifications\\UserCreatedNotification&quot;,
-    &quot;notifiable_type&quot;: &quot;App\\User&quot;,
-    &quot;notifiable_id&quot;: 1,
-    &quot;data&quot;: &quot;[]&quot;,
-    &quot;read_at&quot;: &quot;2021-12-01T22:29:34.797992Z&quot;,
-    &quot;created_at&quot;: &quot;2021-11-24T14:33:44.000000Z&quot;,
-    &quot;updated_at&quot;: &quot;2021-12-01T22:29:34.000000Z&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-notifications-show--notification-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-notifications-show--notification-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-notifications-show--notification-"></code></pre>
-</span>
-<span id="execution-error-GETapi-notifications-show--notification-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-notifications-show--notification-"></code></pre>
-</span>
-<form id="form-GETapi-notifications-show--notification-" data-method="GET"
-      data-path="api/notifications/show/{notification}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 3hg1f5aEakP6vVc8ZdD4b6e","Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-notifications-show--notification-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-notifications-show--notification-"
-                    onclick="tryItOut('GETapi-notifications-show--notification-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-notifications-show--notification-"
-                    onclick="cancelTryOut('GETapi-notifications-show--notification-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-notifications-show--notification-" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/notifications/show/{notification}</code></b>
-        </p>
-                <p>
-            <label id="auth-GETapi-notifications-show--notification-" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="GETapi-notifications-show--notification-"
-                                                                data-component="header"></label>
-        </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>notification</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
-                <input type="text"
-               name="notification"
-               data-endpoint="GETapi-notifications-show--notification-"
-               value="iste"
-               data-component="url" hidden>
-    <br>
-<p>Uuid of the stored notification</p>
-            </p>
-                    </form>
 
             <h2 id="endpoints-GETapi-v2-user">Authenticated User</h2>
 
@@ -5610,19 +5152,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/user" \
-    --header "Authorization: Bearer V6cdh6egEP8Z3aDf51ak4vb" \
+    --get "http://localhost/api/v2/user" \
+    --header "Authorization: Bearer Edvk3cg14efaDhP5a8Z6bV6" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/user"
+    "http://localhost/api/v2/user"
 );
 
 const headers = {
-    "Authorization": "Bearer V6cdh6egEP8Z3aDf51ak4vb",
+    "Authorization": "Bearer Edvk3cg14efaDhP5a8Z6bV6",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -5668,7 +5210,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer V6cdh6egEP8Z3aDf51ak4vb","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer Edvk3cg14efaDhP5a8Z6bV6","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-user', this);">
     <h3>
@@ -5702,179 +5244,6 @@ fetch(url, {
         </p>
                 </form>
 
-            <h2 id="endpoints-POSTapi-v2-employees--employee--vip">Update VIP</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Update VIP information for a given employee.</p>
-
-<span id="example-requests-POSTapi-v2-employees--employee--vip">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/v2/employees/10/vip" \
-    --header "Authorization: Bearer 3gZvdchb68aEVeP1k4f5D6a" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"is_vip\": false
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/employees/10/vip"
-);
-
-const headers = {
-    "Authorization": "Bearer 3gZvdchb68aEVeP1k4f5D6a",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "is_vip": false
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-v2-employees--employee--vip">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;id&quot;: 10006,
-    &quot;first_name&quot;: &quot;August&quot;,
-    &quot;second_first_name&quot;: &quot;Nicklaus&quot;,
-    &quot;last_name&quot;: &quot;Schaefer&quot;,
-    &quot;second_last_name&quot;: &quot;Wuckert&quot;,
-    &quot;full_name&quot;: &quot;August Nicklaus Schaefer Wuckert&quot;,
-    &quot;hire_date&quot;: &quot;1990-08-30&quot;,
-    &quot;personal_id&quot;: &quot;40546748566&quot;,
-    &quot;passport&quot;: null,
-    &quot;date_of_birth&quot;: &quot;1996-10-15&quot;,
-    &quot;cellphone_number&quot;: &quot;8095607690&quot;,
-    &quot;secondary_phone&quot;: null,
-    &quot;site&quot;: &quot;Prof. Quincy Lockman DVM&quot;,
-    &quot;project&quot;: &quot;Gustave Homenick&quot;,
-    &quot;position&quot;: &quot;Dr. Arlo Walter Dds&quot;,
-    &quot;salary&quot;: 125,
-    &quot;salary_type&quot;: &quot;Kaylah Ratke&quot;,
-    &quot;pay_per_hours&quot;: 125,
-    &quot;department&quot;: &quot;Malachi Feeney I&quot;,
-    &quot;supervisor&quot;: &quot;Yismen Jorge&quot;,
-    &quot;gender&quot;: &quot;Ms. Kamille Hagenes MD&quot;,
-    &quot;marital&quot;: &quot;Miss Brenda Will&quot;,
-    &quot;ars&quot;: &quot;Adan Friesen&quot;,
-    &quot;afp&quot;: &quot;Devonte Goyette DDS&quot;,
-    &quot;nationality&quot;: &quot;Guam_662326&quot;,
-    &quot;has_kids&quot;: 0,
-    &quot;photo&quot;: &quot;storage/images/employees/10006.png&quot;,
-    &quot;active&quot;: true,
-    &quot;status&quot;: &quot;Active&quot;,
-    &quot;punch&quot;: null,
-    &quot;account_number&quot;: null,
-    &quot;is_vip&quot;: true,
-    &quot;is_universal&quot;: false,
-    &quot;termination_date&quot;: null
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-v2-employees--employee--vip" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-v2-employees--employee--vip"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-v2-employees--employee--vip"></code></pre>
-</span>
-<span id="execution-error-POSTapi-v2-employees--employee--vip" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-v2-employees--employee--vip"></code></pre>
-</span>
-<form id="form-POSTapi-v2-employees--employee--vip" data-method="POST"
-      data-path="api/v2/employees/{employee}/vip"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 3gZvdchb68aEVeP1k4f5D6a","Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v2-employees--employee--vip', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-v2-employees--employee--vip"
-                    onclick="tryItOut('POSTapi-v2-employees--employee--vip');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-v2-employees--employee--vip"
-                    onclick="cancelTryOut('POSTapi-v2-employees--employee--vip');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-v2-employees--employee--vip" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/v2/employees/{employee}/vip</code></b>
-        </p>
-                <p>
-            <label id="auth-POSTapi-v2-employees--employee--vip" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="POSTapi-v2-employees--employee--vip"
-                                                                data-component="header"></label>
-        </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>employee</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
-                <input type="number"
-               name="employee"
-               data-endpoint="POSTapi-v2-employees--employee--vip"
-               value="10"
-               data-component="url" hidden>
-    <br>
-
-            </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <p>
-            <b><code>is_vip</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
-                <label data-endpoint="POSTapi-v2-employees--employee--vip" hidden>
-            <input type="radio" name="is_vip"
-                   value="true"
-                   data-endpoint="POSTapi-v2-employees--employee--vip"
-                   data-component="body"
-            >
-            <code>true</code>
-        </label>
-        <label data-endpoint="POSTapi-v2-employees--employee--vip" hidden>
-            <input type="radio" name="is_vip"
-                   value="false"
-                   data-endpoint="POSTapi-v2-employees--employee--vip"
-                   data-component="body"
-            >
-            <code>false</code>
-        </label>
-    <br>
-<p>Indicates if the employee should be added to or removed from the Vip list</p>
-        </p>
-        </form>
-
             <h2 id="endpoints-POSTapi-v2-notifications-mark-all-as-read">Notifications Mark all as Read</h2>
 
 <p>
@@ -5889,25 +5258,25 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/v2/notifications/mark-all-as-read?max_items=8" \
-    --header "Authorization: Bearer 4gcaEPdvDhba86eVZk51f63" \
+    "http://localhost/api/v2/notifications/mark-all-as-read?max_items=19" \
+    --header "Authorization: Bearer a3habP6gk8VDZdc4ve1f5E6" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/notifications/mark-all-as-read"
+    "http://localhost/api/v2/notifications/mark-all-as-read"
 );
 
 const params = {
-    "max_items": "8",
+    "max_items": "19",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer 4gcaEPdvDhba86eVZk51f63",
+    "Authorization": "Bearer a3habP6gk8VDZdc4ve1f5E6",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -5954,7 +5323,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 4gcaEPdvDhba86eVZk51f63","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer a3habP6gk8VDZdc4ve1f5E6","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-v2-notifications-mark-all-as-read', this);">
     <h3>
@@ -5992,7 +5361,7 @@ fetch(url, {
                 <input type="number"
                name="max_items"
                data-endpoint="POSTapi-v2-notifications-mark-all-as-read"
-               value="8"
+               value="19"
                data-component="query" hidden>
     <br>
 <p>Max amount of notifications to mark as read. Default is 25. This will also affect the amount of
@@ -6014,25 +5383,25 @@ unread notifications to return. Also, this will return the next batch of unread 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/notifications/unread?max_items=14" \
-    --header "Authorization: Bearer fcgPkE1aDdeZ3Vh6b5va648" \
+    --get "http://localhost/api/v2/notifications/unread?max_items=18" \
+    --header "Authorization: Bearer 4Zk53ha6ceDdgfP16abvV8E" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/notifications/unread"
+    "http://localhost/api/v2/notifications/unread"
 );
 
 const params = {
-    "max_items": "14",
+    "max_items": "18",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer fcgPkE1aDdeZ3Vh6b5va648",
+    "Authorization": "Bearer 4Zk53ha6ceDdgfP16abvV8E",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -6079,7 +5448,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer fcgPkE1aDdeZ3Vh6b5va648","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 4Zk53ha6ceDdgfP16abvV8E","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-notifications-unread', this);">
     <h3>
@@ -6117,7 +5486,7 @@ fetch(url, {
                 <input type="number"
                name="max_items"
                data-endpoint="GETapi-v2-notifications-unread"
-               value="14"
+               value="18"
                data-component="query" hidden>
     <br>
 <p>Max amount of notifications to take. Default is 25.</p>
@@ -6138,27 +5507,27 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/overnight_hours?date=magni&amp;months=15&amp;days=10" \
-    --header "Authorization: Bearer ZE4g6dvD13P6cfhbaae85Vk" \
+    --get "http://localhost/api/v2/overnight_hours?date=consequatur&amp;months=19&amp;days=12" \
+    --header "Authorization: Bearer kcE61efaP4Zgh8d53VDbva6" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/overnight_hours"
+    "http://localhost/api/v2/overnight_hours"
 );
 
 const params = {
-    "date": "magni",
-    "months": "15",
-    "days": "10",
+    "date": "consequatur",
+    "months": "19",
+    "days": "12",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer ZE4g6dvD13P6cfhbaae85Vk",
+    "Authorization": "Bearer kcE61efaP4Zgh8d53VDbva6",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -6203,7 +5572,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer ZE4g6dvD13P6cfhbaae85Vk","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer kcE61efaP4Zgh8d53VDbva6","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-overnight_hours', this);">
     <h3>
@@ -6241,7 +5610,7 @@ fetch(url, {
                 <input type="text"
                name="date"
                data-endpoint="GETapi-v2-overnight_hours"
-               value="magni"
+               value="consequatur"
                data-component="query" hidden>
     <br>
 <p>Limit the results ot a specific date. Example ?date=2021-11-24.</p>
@@ -6251,7 +5620,7 @@ fetch(url, {
                 <input type="number"
                name="months"
                data-endpoint="GETapi-v2-overnight_hours"
-               value="15"
+               value="19"
                data-component="query" hidden>
     <br>
 <p>Defines how many months back should the data limited to. Example ?months=2 will get data between current date and last two months.</p>
@@ -6261,7 +5630,7 @@ fetch(url, {
                 <input type="number"
                name="days"
                data-endpoint="GETapi-v2-overnight_hours"
-               value="10"
+               value="12"
                data-component="query" hidden>
     <br>
 <p>Defines how many days back should the data limited to. Example ?days=2 will get data between current date and last two days.</p>
@@ -6282,25 +5651,25 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/holidays?year=dolorem" \
-    --header "Authorization: Bearer 4Zve1a6h3DVcgEa8P6f5dkb" \
+    --get "http://localhost/api/v2/holidays?year=eum" \
+    --header "Authorization: Bearer 6e58ZD4hkv6acbPa3df1EVg" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/holidays"
+    "http://localhost/api/v2/holidays"
 );
 
 const params = {
-    "year": "dolorem",
+    "year": "eum",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer 4Zve1a6h3DVcgEa8P6f5dkb",
+    "Authorization": "Bearer 6e58ZD4hkv6acbPa3df1EVg",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -6344,7 +5713,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 4Zve1a6h3DVcgEa8P6f5dkb","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 6e58ZD4hkv6acbPa3df1EVg","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-holidays', this);">
     <h3>
@@ -6382,7 +5751,7 @@ fetch(url, {
                 <input type="text"
                name="year"
                data-endpoint="GETapi-v2-holidays"
-               value="dolorem"
+               value="eum"
                data-component="query" hidden>
     <br>
 <p>Limit the results to a specific year. Default to previous year. Example ?year=2021.</p>
@@ -6403,37 +5772,37 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/v2/positions" \
-    --header "Authorization: Bearer 6PcadeE48hDkVab1vfZ6g53" \
+    "http://localhost/api/v2/positions" \
+    --header "Authorization: Bearer 854Pv6EZVagD3dae1fh6kbc" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"optio\",
-    \"department_id\": \"qui\",
-    \"payment_type_id\": \"similique\",
-    \"payment_frequency_id\": \"voluptas\",
-    \"salary\": \"praesentium\"
+    \"name\": \"error\",
+    \"department_id\": \"sed\",
+    \"payment_type_id\": \"consequuntur\",
+    \"payment_frequency_id\": \"deleniti\",
+    \"salary\": \"in\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/positions"
+    "http://localhost/api/v2/positions"
 );
 
 const headers = {
-    "Authorization": "Bearer 6PcadeE48hDkVab1vfZ6g53",
+    "Authorization": "Bearer 854Pv6EZVagD3dae1fh6kbc",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "optio",
-    "department_id": "qui",
-    "payment_type_id": "similique",
-    "payment_frequency_id": "voluptas",
-    "salary": "praesentium"
+    "name": "error",
+    "department_id": "sed",
+    "payment_type_id": "consequuntur",
+    "payment_frequency_id": "deleniti",
+    "salary": "in"
 };
 
 fetch(url, {
@@ -6492,7 +5861,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 6PcadeE48hDkVab1vfZ6g53","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 854Pv6EZVagD3dae1fh6kbc","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-v2-positions', this);">
     <h3>
@@ -6530,7 +5899,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-v2-positions"
-               value="optio"
+               value="error"
                data-component="body" hidden>
     <br>
 <p>The name of the Position</p>
@@ -6540,7 +5909,7 @@ fetch(url, {
                 <input type="text"
                name="department_id"
                data-endpoint="POSTapi-v2-positions"
-               value="qui"
+               value="sed"
                data-component="body" hidden>
     <br>
 <p>The department_id of the Position</p>
@@ -6550,7 +5919,7 @@ fetch(url, {
                 <input type="text"
                name="payment_type_id"
                data-endpoint="POSTapi-v2-positions"
-               value="similique"
+               value="consequuntur"
                data-component="body" hidden>
     <br>
 <p>The payment_type_id of the Position</p>
@@ -6560,7 +5929,7 @@ fetch(url, {
                 <input type="text"
                name="payment_frequency_id"
                data-endpoint="POSTapi-v2-positions"
-               value="voluptas"
+               value="deleniti"
                data-component="body" hidden>
     <br>
 <p>The payment_frequency_id of the Position</p>
@@ -6570,7 +5939,7 @@ fetch(url, {
                 <input type="text"
                name="salary"
                data-endpoint="POSTapi-v2-positions"
-               value="praesentium"
+               value="in"
                data-component="body" hidden>
     <br>
 <p>The salary of the Position</p>
@@ -6591,29 +5960,29 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/v2/payment_frequencies" \
-    --header "Authorization: Bearer E6ZVdekcPf4186ghvb3a5aD" \
+    "http://localhost/api/v2/payment_frequencies" \
+    --header "Authorization: Bearer 6PhEefg58kDac6da3ZV4vb1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"et\"
+    \"name\": \"aliquid\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/payment_frequencies"
+    "http://localhost/api/v2/payment_frequencies"
 );
 
 const headers = {
-    "Authorization": "Bearer E6ZVdekcPf4186ghvb3a5aD",
+    "Authorization": "Bearer 6PhEefg58kDac6da3ZV4vb1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "et"
+    "name": "aliquid"
 };
 
 fetch(url, {
@@ -6653,7 +6022,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer E6ZVdekcPf4186ghvb3a5aD","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 6PhEefg58kDac6da3ZV4vb1","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-v2-payment_frequencies', this);">
     <h3>
@@ -6691,7 +6060,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-v2-payment_frequencies"
-               value="et"
+               value="aliquid"
                data-component="body" hidden>
     <br>
 <p>The name of the Payment Frequency</p>
@@ -6712,29 +6081,29 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/v2/nationalities" \
-    --header "Authorization: Bearer hvgfd6bPa36aDZ4E81kceV5" \
+    "http://localhost/api/v2/nationalities" \
+    --header "Authorization: Bearer 6DbPhag3E58fv1eaVZd6c4k" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"omnis\"
+    \"name\": \"necessitatibus\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/nationalities"
+    "http://localhost/api/v2/nationalities"
 );
 
 const headers = {
-    "Authorization": "Bearer hvgfd6bPa36aDZ4E81kceV5",
+    "Authorization": "Bearer 6DbPhag3E58fv1eaVZd6c4k",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "omnis"
+    "name": "necessitatibus"
 };
 
 fetch(url, {
@@ -6771,7 +6140,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer hvgfd6bPa36aDZ4E81kceV5","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 6DbPhag3E58fv1eaVZd6c4k","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-v2-nationalities', this);">
     <h3>
@@ -6809,7 +6178,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-v2-nationalities"
-               value="omnis"
+               value="necessitatibus"
                data-component="body" hidden>
     <br>
 <p>The name of the Nationality     *</p>
@@ -6830,29 +6199,29 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/v2/departments" \
-    --header "Authorization: Bearer ca4dbEZk8a3DVe1fhgv5P66" \
+    "http://localhost/api/v2/departments" \
+    --header "Authorization: Bearer ZDVae34P6fh6k18E5acvbdg" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"ad\"
+    \"name\": \"aliquid\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/departments"
+    "http://localhost/api/v2/departments"
 );
 
 const headers = {
-    "Authorization": "Bearer ca4dbEZk8a3DVe1fhgv5P66",
+    "Authorization": "Bearer ZDVae34P6fh6k18E5acvbdg",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "ad"
+    "name": "aliquid"
 };
 
 fetch(url, {
@@ -6892,7 +6261,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer ca4dbEZk8a3DVe1fhgv5P66","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer ZDVae34P6fh6k18E5acvbdg","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-v2-departments', this);">
     <h3>
@@ -6930,7 +6299,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-v2-departments"
-               value="ad"
+               value="aliquid"
                data-component="body" hidden>
     <br>
 <p>The name of the Department</p>
@@ -6951,28 +6320,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/employees?site=illum&amp;project=delectus&amp;department=et&amp;position=sit" \
-    --header "Authorization: Bearer Phak813bDcZE6favVd4ge65" \
+    --get "http://localhost/api/v2/employees?site=maiores&amp;project=qui&amp;department=molestiae&amp;position=qui" \
+    --header "Authorization: Bearer 3ad6gheaDvbV84Efk65c1PZ" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/employees"
+    "http://localhost/api/v2/employees"
 );
 
 const params = {
-    "site": "illum",
-    "project": "delectus",
-    "department": "et",
-    "position": "sit",
+    "site": "maiores",
+    "project": "qui",
+    "department": "molestiae",
+    "position": "qui",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer Phak813bDcZE6favVd4ge65",
+    "Authorization": "Bearer 3ad6gheaDvbV84Efk65c1PZ",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -7047,7 +6416,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer Phak813bDcZE6favVd4ge65","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 3ad6gheaDvbV84Efk65c1PZ","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-employees', this);">
     <h3>
@@ -7085,7 +6454,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-v2-employees"
-               value="illum"
+               value="maiores"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -7095,7 +6464,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-v2-employees"
-               value="delectus"
+               value="qui"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -7105,7 +6474,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-v2-employees"
-               value="et"
+               value="molestiae"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -7115,7 +6484,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-v2-employees"
-               value="sit"
+               value="qui"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -7136,29 +6505,29 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/v2/banks" \
-    --header "Authorization: Bearer E84V3he65k6dfvDPgb1Zaca" \
+    "http://localhost/api/v2/banks" \
+    --header "Authorization: Bearer 31vf6h8gdkED56bP4aceVaZ" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"amet\"
+    \"name\": \"doloribus\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/banks"
+    "http://localhost/api/v2/banks"
 );
 
 const headers = {
-    "Authorization": "Bearer E84V3he65k6dfvDPgb1Zaca",
+    "Authorization": "Bearer 31vf6h8gdkED56bP4aceVaZ",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "amet"
+    "name": "doloribus"
 };
 
 fetch(url, {
@@ -7195,7 +6564,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer E84V3he65k6dfvDPgb1Zaca","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 31vf6h8gdkED56bP4aceVaZ","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-v2-banks', this);">
     <h3>
@@ -7233,7 +6602,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-v2-banks"
-               value="amet"
+               value="doloribus"
                data-component="body" hidden>
     <br>
 <p>The name of the Banks</p>
@@ -7254,29 +6623,29 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/v2/arss" \
-    --header "Authorization: Bearer Pka65eZ6cd3vfgEVbh4a1D8" \
+    "http://localhost/api/v2/arss" \
+    --header "Authorization: Bearer dDP85aVgv341Z6aehkfb6Ec" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"dignissimos\"
+    \"name\": \"nulla\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/arss"
+    "http://localhost/api/v2/arss"
 );
 
 const headers = {
-    "Authorization": "Bearer Pka65eZ6cd3vfgEVbh4a1D8",
+    "Authorization": "Bearer dDP85aVgv341Z6aehkfb6Ec",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "dignissimos"
+    "name": "nulla"
 };
 
 fetch(url, {
@@ -7317,7 +6686,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer Pka65eZ6cd3vfgEVbh4a1D8","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer dDP85aVgv341Z6aehkfb6Ec","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-v2-arss', this);">
     <h3>
@@ -7355,7 +6724,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-v2-arss"
-               value="dignissimos"
+               value="nulla"
                data-component="body" hidden>
     <br>
 <p>The name of the Ars</p>
@@ -7376,29 +6745,29 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/v2/afps" \
-    --header "Authorization: Bearer DPfhcVd1egk4E66a3b85Zav" \
+    "http://localhost/api/v2/afps" \
+    --header "Authorization: Bearer 8aZfPv6Dbd1hVg536aEeck4" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"eius\"
+    \"name\": \"odit\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/afps"
+    "http://localhost/api/v2/afps"
 );
 
 const headers = {
-    "Authorization": "Bearer DPfhcVd1egk4E66a3b85Zav",
+    "Authorization": "Bearer 8aZfPv6Dbd1hVg536aEeck4",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "eius"
+    "name": "odit"
 };
 
 fetch(url, {
@@ -7439,7 +6808,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer DPfhcVd1egk4E66a3b85Zav","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 8aZfPv6Dbd1hVg536aEeck4","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-v2-afps', this);">
     <h3>
@@ -7477,183 +6846,10 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-v2-afps"
-               value="eius"
+               value="odit"
                data-component="body" hidden>
     <br>
 <p>The name of the Afp</p>
-        </p>
-        </form>
-
-            <h2 id="endpoints-POSTapi-v2-employees--employee--universal">Update Universal</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Update Universal information for a given employee.</p>
-
-<span id="example-requests-POSTapi-v2-employees--employee--universal">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/v2/employees/10/universal" \
-    --header "Authorization: Bearer acV4fdkeD1avgE3hZb566P8" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"is_vip\": false
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/employees/10/universal"
-);
-
-const headers = {
-    "Authorization": "Bearer acV4fdkeD1avgE3hZb566P8",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "is_vip": false
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-v2-employees--employee--universal">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;id&quot;: 10006,
-    &quot;first_name&quot;: &quot;August&quot;,
-    &quot;second_first_name&quot;: &quot;Nicklaus&quot;,
-    &quot;last_name&quot;: &quot;Schaefer&quot;,
-    &quot;second_last_name&quot;: &quot;Wuckert&quot;,
-    &quot;full_name&quot;: &quot;August Nicklaus Schaefer Wuckert&quot;,
-    &quot;hire_date&quot;: &quot;1990-08-30&quot;,
-    &quot;personal_id&quot;: &quot;40546748566&quot;,
-    &quot;passport&quot;: null,
-    &quot;date_of_birth&quot;: &quot;1996-10-15&quot;,
-    &quot;cellphone_number&quot;: &quot;8095607690&quot;,
-    &quot;secondary_phone&quot;: null,
-    &quot;site&quot;: &quot;Prof. Quincy Lockman DVM&quot;,
-    &quot;project&quot;: &quot;Gustave Homenick&quot;,
-    &quot;position&quot;: &quot;Dr. Arlo Walter Dds&quot;,
-    &quot;salary&quot;: 125,
-    &quot;salary_type&quot;: &quot;Kaylah Ratke&quot;,
-    &quot;pay_per_hours&quot;: 125,
-    &quot;department&quot;: &quot;Malachi Feeney I&quot;,
-    &quot;supervisor&quot;: &quot;Yismen Jorge&quot;,
-    &quot;gender&quot;: &quot;Ms. Kamille Hagenes MD&quot;,
-    &quot;marital&quot;: &quot;Miss Brenda Will&quot;,
-    &quot;ars&quot;: &quot;Adan Friesen&quot;,
-    &quot;afp&quot;: &quot;Devonte Goyette DDS&quot;,
-    &quot;nationality&quot;: &quot;Guam_662326&quot;,
-    &quot;has_kids&quot;: 0,
-    &quot;photo&quot;: &quot;storage/images/employees/10006.png&quot;,
-    &quot;active&quot;: true,
-    &quot;status&quot;: &quot;Active&quot;,
-    &quot;punch&quot;: null,
-    &quot;account_number&quot;: null,
-    &quot;is_vip&quot;: true,
-    &quot;is_universal&quot;: false,
-    &quot;termination_date&quot;: null
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-v2-employees--employee--universal" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-v2-employees--employee--universal"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-v2-employees--employee--universal"></code></pre>
-</span>
-<span id="execution-error-POSTapi-v2-employees--employee--universal" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-v2-employees--employee--universal"></code></pre>
-</span>
-<form id="form-POSTapi-v2-employees--employee--universal" data-method="POST"
-      data-path="api/v2/employees/{employee}/universal"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer acV4fdkeD1avgE3hZb566P8","Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v2-employees--employee--universal', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-v2-employees--employee--universal"
-                    onclick="tryItOut('POSTapi-v2-employees--employee--universal');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-v2-employees--employee--universal"
-                    onclick="cancelTryOut('POSTapi-v2-employees--employee--universal');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-v2-employees--employee--universal" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/v2/employees/{employee}/universal</code></b>
-        </p>
-                <p>
-            <label id="auth-POSTapi-v2-employees--employee--universal" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="POSTapi-v2-employees--employee--universal"
-                                                                data-component="header"></label>
-        </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>employee</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
-                <input type="number"
-               name="employee"
-               data-endpoint="POSTapi-v2-employees--employee--universal"
-               value="10"
-               data-component="url" hidden>
-    <br>
-
-            </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <p>
-            <b><code>is_vip</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
-                <label data-endpoint="POSTapi-v2-employees--employee--universal" hidden>
-            <input type="radio" name="is_vip"
-                   value="true"
-                   data-endpoint="POSTapi-v2-employees--employee--universal"
-                   data-component="body"
-            >
-            <code>true</code>
-        </label>
-        <label data-endpoint="POSTapi-v2-employees--employee--universal" hidden>
-            <input type="radio" name="is_vip"
-                   value="false"
-                   data-endpoint="POSTapi-v2-employees--employee--universal"
-                   data-component="body"
-            >
-            <code>false</code>
-        </label>
-    <br>
-<p>Indicates if the employee should be added to or removed from the Universal list</p>
         </p>
         </form>
 
@@ -7671,28 +6867,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/employees/recents?site=molestiae&amp;project=et&amp;department=voluptatem&amp;position=aspernatur" \
-    --header "Authorization: Bearer 3VdcDvb6E1Za65agh4Pk8ef" \
+    --get "http://localhost/api/v2/employees/recents?site=sunt&amp;project=dolores&amp;department=harum&amp;position=laboriosam" \
+    --header "Authorization: Bearer ebEZdfD6avaV3chg14P6k85" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/employees/recents"
+    "http://localhost/api/v2/employees/recents"
 );
 
 const params = {
-    "site": "molestiae",
-    "project": "et",
-    "department": "voluptatem",
-    "position": "aspernatur",
+    "site": "sunt",
+    "project": "dolores",
+    "department": "harum",
+    "position": "laboriosam",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer 3VdcDvb6E1Za65agh4Pk8ef",
+    "Authorization": "Bearer ebEZdfD6avaV3chg14P6k85",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -7767,7 +6963,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 3VdcDvb6E1Za65agh4Pk8ef","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer ebEZdfD6avaV3chg14P6k85","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-employees-recents', this);">
     <h3>
@@ -7805,7 +7001,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-v2-employees-recents"
-               value="molestiae"
+               value="sunt"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -7815,7 +7011,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-v2-employees-recents"
-               value="et"
+               value="dolores"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -7825,7 +7021,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-v2-employees-recents"
-               value="voluptatem"
+               value="harum"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -7835,7 +7031,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-v2-employees-recents"
-               value="aspernatur"
+               value="laboriosam"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -7856,28 +7052,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/employees/all?site=non&amp;project=facilis&amp;department=quia&amp;position=blanditiis" \
-    --header "Authorization: Bearer aDv1g5dE4k6Pf6e8V3Zchba" \
+    --get "http://localhost/api/v2/employees/all?site=aut&amp;project=nulla&amp;department=velit&amp;position=ut" \
+    --header "Authorization: Bearer 56adP34fZDVcE18gbe6vhak" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/employees/all"
+    "http://localhost/api/v2/employees/all"
 );
 
 const params = {
-    "site": "non",
-    "project": "facilis",
-    "department": "quia",
-    "position": "blanditiis",
+    "site": "aut",
+    "project": "nulla",
+    "department": "velit",
+    "position": "ut",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer aDv1g5dE4k6Pf6e8V3Zchba",
+    "Authorization": "Bearer 56adP34fZDVcE18gbe6vhak",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -7952,7 +7148,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer aDv1g5dE4k6Pf6e8V3Zchba","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 56adP34fZDVcE18gbe6vhak","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-employees-all', this);">
     <h3>
@@ -7990,7 +7186,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-v2-employees-all"
-               value="non"
+               value="aut"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -8000,7 +7196,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-v2-employees-all"
-               value="facilis"
+               value="nulla"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -8010,7 +7206,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-v2-employees-all"
-               value="quia"
+               value="velit"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -8020,7 +7216,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-v2-employees-all"
-               value="blanditiis"
+               value="ut"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
@@ -8041,28 +7237,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/employees/actives?site=quia&amp;project=hic&amp;department=ex&amp;position=sapiente" \
-    --header "Authorization: Bearer 3abc4feD81gPvd65kha6EVZ" \
+    --get "http://localhost/api/v2/employees/actives?site=numquam&amp;project=corrupti&amp;department=molestiae&amp;position=qui" \
+    --header "Authorization: Bearer ca5vb1Z6d4Dk683VPEfhgae" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/employees/actives"
+    "http://localhost/api/v2/employees/actives"
 );
 
 const params = {
-    "site": "quia",
-    "project": "hic",
-    "department": "ex",
-    "position": "sapiente",
+    "site": "numquam",
+    "project": "corrupti",
+    "department": "molestiae",
+    "position": "qui",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer 3abc4feD81gPvd65kha6EVZ",
+    "Authorization": "Bearer ca5vb1Z6d4Dk683VPEfhgae",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -8137,7 +7333,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 3abc4feD81gPvd65kha6EVZ","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer ca5vb1Z6d4Dk683VPEfhgae","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-employees-actives', this);">
     <h3>
@@ -8175,7 +7371,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-v2-employees-actives"
-               value="quia"
+               value="numquam"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -8185,7 +7381,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-v2-employees-actives"
-               value="hic"
+               value="corrupti"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Pub%</p>
@@ -8195,7 +7391,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-v2-employees-actives"
-               value="ex"
+               value="molestiae"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Product%</p>
@@ -8205,14 +7401,14 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-v2-employees-actives"
-               value="sapiente"
+               value="qui"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Agente%</p>
             </p>
                 </form>
 
-            <h2 id="endpoints-GETapi-v2-notifications-show--notification-">Notification Details</h2>
+            <h2 id="endpoints-GETapi-notifications-show--notification_id-">Notification Details</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -8220,25 +7416,25 @@ fetch(url, {
 
 <p>Show details for a user notification. This will also mark the given notification as read.</p>
 
-<span id="example-requests-GETapi-v2-notifications-show--notification-">
+<span id="example-requests-GETapi-notifications-show--notification_id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/notifications/show/repellendus" \
-    --header "Authorization: Bearer 84hk6ZV1f6gdD3e5vcPEbaa" \
+    --get "http://localhost/api/notifications/show/00281610-5c1a-4260-b01c-c621d9ff083a" \
+    --header "Authorization: Bearer v1gdbVZ6eac4a5kE3Df68Ph" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/notifications/show/repellendus"
+    "http://localhost/api/notifications/show/00281610-5c1a-4260-b01c-c621d9ff083a"
 );
 
 const headers = {
-    "Authorization": "Bearer 84hk6ZV1f6gdD3e5vcPEbaa",
+    "Authorization": "Bearer v1gdbVZ6eac4a5kE3Df68Ph",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -8250,7 +7446,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-v2-notifications-show--notification-">
+<span id="example-responses-GETapi-notifications-show--notification_id-">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -8268,60 +7464,934 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-v2-notifications-show--notification-" hidden>
+<span id="execution-results-GETapi-notifications-show--notification_id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-v2-notifications-show--notification-"></span>:
+                id="execution-response-status-GETapi-notifications-show--notification_id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-v2-notifications-show--notification-"></code></pre>
+    <pre class="json"><code id="execution-response-content-GETapi-notifications-show--notification_id-"></code></pre>
 </span>
-<span id="execution-error-GETapi-v2-notifications-show--notification-" hidden>
+<span id="execution-error-GETapi-notifications-show--notification_id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-v2-notifications-show--notification-"></code></pre>
+    <pre><code id="execution-error-message-GETapi-notifications-show--notification_id-"></code></pre>
 </span>
-<form id="form-GETapi-v2-notifications-show--notification-" data-method="GET"
-      data-path="api/v2/notifications/show/{notification}"
+<form id="form-GETapi-notifications-show--notification_id-" data-method="GET"
+      data-path="api/notifications/show/{notification_id}"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 84hk6ZV1f6gdD3e5vcPEbaa","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer v1gdbVZ6eac4a5kE3Df68Ph","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-notifications-show--notification-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-notifications-show--notification_id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-v2-notifications-show--notification-"
-                    onclick="tryItOut('GETapi-v2-notifications-show--notification-');">Try it out ⚡
+                    id="btn-tryout-GETapi-notifications-show--notification_id-"
+                    onclick="tryItOut('GETapi-notifications-show--notification_id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-v2-notifications-show--notification-"
-                    onclick="cancelTryOut('GETapi-v2-notifications-show--notification-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-notifications-show--notification_id-"
+                    onclick="cancelTryOut('GETapi-notifications-show--notification_id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-v2-notifications-show--notification-" hidden>Send Request 💥
+                    id="btn-executetryout-GETapi-notifications-show--notification_id-" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/v2/notifications/show/{notification}</code></b>
+            <b><code>api/notifications/show/{notification_id}</code></b>
         </p>
                 <p>
-            <label id="auth-GETapi-v2-notifications-show--notification-" hidden>Authorization header:
+            <label id="auth-GETapi-notifications-show--notification_id-" hidden>Authorization header:
                 <b><code>Bearer </code></b><input type="text"
                                                                 name="Authorization"
                                                                 data-prefix="Bearer "
-                                                                data-endpoint="GETapi-v2-notifications-show--notification-"
+                                                                data-endpoint="GETapi-notifications-show--notification_id-"
                                                                 data-component="header"></label>
         </p>
                 <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <p>
+                <b><code>notification_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="notification_id"
+               data-endpoint="GETapi-notifications-show--notification_id-"
+               value="00281610-5c1a-4260-b01c-c621d9ff083a"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the notification.</p>
+            </p>
+                    <p>
                 <b><code>notification</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="notification"
-               data-endpoint="GETapi-v2-notifications-show--notification-"
-               value="repellendus"
+               data-endpoint="GETapi-notifications-show--notification_id-"
+               value="magni"
+               data-component="url" hidden>
+    <br>
+<p>Uuid of the stored notification</p>
+            </p>
+                    </form>
+
+            <h2 id="endpoints-POSTapi-v2-employees--employee_id--vip">Update VIP</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Update VIP information for a given employee.</p>
+
+<span id="example-requests-POSTapi-v2-employees--employee_id--vip">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v2/employees/10001/vip" \
+    --header "Authorization: Bearer 4Dhdac8vPE3aV656efb1kgZ" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"is_vip\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v2/employees/10001/vip"
+);
+
+const headers = {
+    "Authorization": "Bearer 4Dhdac8vPE3aV656efb1kgZ",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "is_vip": true
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v2-employees--employee_id--vip">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;id&quot;: 10006,
+    &quot;first_name&quot;: &quot;August&quot;,
+    &quot;second_first_name&quot;: &quot;Nicklaus&quot;,
+    &quot;last_name&quot;: &quot;Schaefer&quot;,
+    &quot;second_last_name&quot;: &quot;Wuckert&quot;,
+    &quot;full_name&quot;: &quot;August Nicklaus Schaefer Wuckert&quot;,
+    &quot;hire_date&quot;: &quot;1990-08-30&quot;,
+    &quot;personal_id&quot;: &quot;40546748566&quot;,
+    &quot;passport&quot;: null,
+    &quot;date_of_birth&quot;: &quot;1996-10-15&quot;,
+    &quot;cellphone_number&quot;: &quot;8095607690&quot;,
+    &quot;secondary_phone&quot;: null,
+    &quot;site&quot;: &quot;Prof. Quincy Lockman DVM&quot;,
+    &quot;project&quot;: &quot;Gustave Homenick&quot;,
+    &quot;position&quot;: &quot;Dr. Arlo Walter Dds&quot;,
+    &quot;salary&quot;: 125,
+    &quot;salary_type&quot;: &quot;Kaylah Ratke&quot;,
+    &quot;pay_per_hours&quot;: 125,
+    &quot;department&quot;: &quot;Malachi Feeney I&quot;,
+    &quot;supervisor&quot;: &quot;Yismen Jorge&quot;,
+    &quot;gender&quot;: &quot;Ms. Kamille Hagenes MD&quot;,
+    &quot;marital&quot;: &quot;Miss Brenda Will&quot;,
+    &quot;ars&quot;: &quot;Adan Friesen&quot;,
+    &quot;afp&quot;: &quot;Devonte Goyette DDS&quot;,
+    &quot;nationality&quot;: &quot;Guam_662326&quot;,
+    &quot;has_kids&quot;: 0,
+    &quot;photo&quot;: &quot;storage/images/employees/10006.png&quot;,
+    &quot;active&quot;: true,
+    &quot;status&quot;: &quot;Active&quot;,
+    &quot;punch&quot;: null,
+    &quot;account_number&quot;: null,
+    &quot;is_vip&quot;: true,
+    &quot;is_universal&quot;: false,
+    &quot;termination_date&quot;: null
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v2-employees--employee_id--vip" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v2-employees--employee_id--vip"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v2-employees--employee_id--vip"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v2-employees--employee_id--vip" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v2-employees--employee_id--vip"></code></pre>
+</span>
+<form id="form-POSTapi-v2-employees--employee_id--vip" data-method="POST"
+      data-path="api/v2/employees/{employee_id}/vip"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer 4Dhdac8vPE3aV656efb1kgZ","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v2-employees--employee_id--vip', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v2-employees--employee_id--vip"
+                    onclick="tryItOut('POSTapi-v2-employees--employee_id--vip');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v2-employees--employee_id--vip"
+                    onclick="cancelTryOut('POSTapi-v2-employees--employee_id--vip');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v2-employees--employee_id--vip" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v2/employees/{employee_id}/vip</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTapi-v2-employees--employee_id--vip" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-v2-employees--employee_id--vip"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>employee_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="employee_id"
+               data-endpoint="POSTapi-v2-employees--employee_id--vip"
+               value="10001"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the employee.</p>
+            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>is_vip</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+                <label data-endpoint="POSTapi-v2-employees--employee_id--vip" hidden>
+            <input type="radio" name="is_vip"
+                   value="true"
+                   data-endpoint="POSTapi-v2-employees--employee_id--vip"
+                   data-component="body"
+            >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-v2-employees--employee_id--vip" hidden>
+            <input type="radio" name="is_vip"
+                   value="false"
+                   data-endpoint="POSTapi-v2-employees--employee_id--vip"
+                   data-component="body"
+            >
+            <code>false</code>
+        </label>
+    <br>
+<p>Indicates if the employee should be added to or removed from the Vip list</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-POSTapi-v2-employees--employee_id--universal">Update Universal</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Update Universal information for a given employee.</p>
+
+<span id="example-requests-POSTapi-v2-employees--employee_id--universal">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v2/employees/10001/universal" \
+    --header "Authorization: Bearer DVvdek6aP8h3ba16g5cfEZ4" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"is_universal\": true,
+    \"is_vip\": false
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v2/employees/10001/universal"
+);
+
+const headers = {
+    "Authorization": "Bearer DVvdek6aP8h3ba16g5cfEZ4",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "is_universal": true,
+    "is_vip": false
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v2-employees--employee_id--universal">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;id&quot;: 10006,
+    &quot;first_name&quot;: &quot;August&quot;,
+    &quot;second_first_name&quot;: &quot;Nicklaus&quot;,
+    &quot;last_name&quot;: &quot;Schaefer&quot;,
+    &quot;second_last_name&quot;: &quot;Wuckert&quot;,
+    &quot;full_name&quot;: &quot;August Nicklaus Schaefer Wuckert&quot;,
+    &quot;hire_date&quot;: &quot;1990-08-30&quot;,
+    &quot;personal_id&quot;: &quot;40546748566&quot;,
+    &quot;passport&quot;: null,
+    &quot;date_of_birth&quot;: &quot;1996-10-15&quot;,
+    &quot;cellphone_number&quot;: &quot;8095607690&quot;,
+    &quot;secondary_phone&quot;: null,
+    &quot;site&quot;: &quot;Prof. Quincy Lockman DVM&quot;,
+    &quot;project&quot;: &quot;Gustave Homenick&quot;,
+    &quot;position&quot;: &quot;Dr. Arlo Walter Dds&quot;,
+    &quot;salary&quot;: 125,
+    &quot;salary_type&quot;: &quot;Kaylah Ratke&quot;,
+    &quot;pay_per_hours&quot;: 125,
+    &quot;department&quot;: &quot;Malachi Feeney I&quot;,
+    &quot;supervisor&quot;: &quot;Yismen Jorge&quot;,
+    &quot;gender&quot;: &quot;Ms. Kamille Hagenes MD&quot;,
+    &quot;marital&quot;: &quot;Miss Brenda Will&quot;,
+    &quot;ars&quot;: &quot;Adan Friesen&quot;,
+    &quot;afp&quot;: &quot;Devonte Goyette DDS&quot;,
+    &quot;nationality&quot;: &quot;Guam_662326&quot;,
+    &quot;has_kids&quot;: 0,
+    &quot;photo&quot;: &quot;storage/images/employees/10006.png&quot;,
+    &quot;active&quot;: true,
+    &quot;status&quot;: &quot;Active&quot;,
+    &quot;punch&quot;: null,
+    &quot;account_number&quot;: null,
+    &quot;is_vip&quot;: true,
+    &quot;is_universal&quot;: false,
+    &quot;termination_date&quot;: null
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v2-employees--employee_id--universal" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v2-employees--employee_id--universal"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v2-employees--employee_id--universal"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v2-employees--employee_id--universal" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v2-employees--employee_id--universal"></code></pre>
+</span>
+<form id="form-POSTapi-v2-employees--employee_id--universal" data-method="POST"
+      data-path="api/v2/employees/{employee_id}/universal"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer DVvdek6aP8h3ba16g5cfEZ4","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v2-employees--employee_id--universal', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v2-employees--employee_id--universal"
+                    onclick="tryItOut('POSTapi-v2-employees--employee_id--universal');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v2-employees--employee_id--universal"
+                    onclick="cancelTryOut('POSTapi-v2-employees--employee_id--universal');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v2-employees--employee_id--universal" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v2/employees/{employee_id}/universal</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTapi-v2-employees--employee_id--universal" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-v2-employees--employee_id--universal"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>employee_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="employee_id"
+               data-endpoint="POSTapi-v2-employees--employee_id--universal"
+               value="10001"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the employee.</p>
+            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>is_universal</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+                <label data-endpoint="POSTapi-v2-employees--employee_id--universal" hidden>
+            <input type="radio" name="is_universal"
+                   value="true"
+                   data-endpoint="POSTapi-v2-employees--employee_id--universal"
+                   data-component="body"
+            >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-v2-employees--employee_id--universal" hidden>
+            <input type="radio" name="is_universal"
+                   value="false"
+                   data-endpoint="POSTapi-v2-employees--employee_id--universal"
+                   data-component="body"
+            >
+            <code>false</code>
+        </label>
+    <br>
+
+        </p>
+                <p>
+            <b><code>is_vip</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+                <label data-endpoint="POSTapi-v2-employees--employee_id--universal" hidden>
+            <input type="radio" name="is_vip"
+                   value="true"
+                   data-endpoint="POSTapi-v2-employees--employee_id--universal"
+                   data-component="body"
+            >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-v2-employees--employee_id--universal" hidden>
+            <input type="radio" name="is_vip"
+                   value="false"
+                   data-endpoint="POSTapi-v2-employees--employee_id--universal"
+                   data-component="body"
+            >
+            <code>false</code>
+        </label>
+    <br>
+<p>Indicates if the employee should be added to or removed from the Universal list</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-POSTapi-employees--employee_id--universal">Update Universal</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Update Universal information for a given employee.</p>
+
+<span id="example-requests-POSTapi-employees--employee_id--universal">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/employees/10001/universal" \
+    --header "Authorization: Bearer a48b1edvVhP36g65faDcEkZ" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"is_universal\": true,
+    \"is_vip\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/employees/10001/universal"
+);
+
+const headers = {
+    "Authorization": "Bearer a48b1edvVhP36g65faDcEkZ",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "is_universal": true,
+    "is_vip": true
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-employees--employee_id--universal">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;id&quot;: 10006,
+    &quot;first_name&quot;: &quot;August&quot;,
+    &quot;second_first_name&quot;: &quot;Nicklaus&quot;,
+    &quot;last_name&quot;: &quot;Schaefer&quot;,
+    &quot;second_last_name&quot;: &quot;Wuckert&quot;,
+    &quot;full_name&quot;: &quot;August Nicklaus Schaefer Wuckert&quot;,
+    &quot;hire_date&quot;: &quot;1990-08-30&quot;,
+    &quot;personal_id&quot;: &quot;40546748566&quot;,
+    &quot;passport&quot;: null,
+    &quot;date_of_birth&quot;: &quot;1996-10-15&quot;,
+    &quot;cellphone_number&quot;: &quot;8095607690&quot;,
+    &quot;secondary_phone&quot;: null,
+    &quot;site&quot;: &quot;Prof. Quincy Lockman DVM&quot;,
+    &quot;project&quot;: &quot;Gustave Homenick&quot;,
+    &quot;position&quot;: &quot;Dr. Arlo Walter Dds&quot;,
+    &quot;salary&quot;: 125,
+    &quot;salary_type&quot;: &quot;Kaylah Ratke&quot;,
+    &quot;pay_per_hours&quot;: 125,
+    &quot;department&quot;: &quot;Malachi Feeney I&quot;,
+    &quot;supervisor&quot;: &quot;Yismen Jorge&quot;,
+    &quot;gender&quot;: &quot;Ms. Kamille Hagenes MD&quot;,
+    &quot;marital&quot;: &quot;Miss Brenda Will&quot;,
+    &quot;ars&quot;: &quot;Adan Friesen&quot;,
+    &quot;afp&quot;: &quot;Devonte Goyette DDS&quot;,
+    &quot;nationality&quot;: &quot;Guam_662326&quot;,
+    &quot;has_kids&quot;: 0,
+    &quot;photo&quot;: &quot;storage/images/employees/10006.png&quot;,
+    &quot;active&quot;: true,
+    &quot;status&quot;: &quot;Active&quot;,
+    &quot;punch&quot;: null,
+    &quot;account_number&quot;: null,
+    &quot;is_vip&quot;: true,
+    &quot;is_universal&quot;: false,
+    &quot;termination_date&quot;: null
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-employees--employee_id--universal" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-employees--employee_id--universal"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-employees--employee_id--universal"></code></pre>
+</span>
+<span id="execution-error-POSTapi-employees--employee_id--universal" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-employees--employee_id--universal"></code></pre>
+</span>
+<form id="form-POSTapi-employees--employee_id--universal" data-method="POST"
+      data-path="api/employees/{employee_id}/universal"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer a48b1edvVhP36g65faDcEkZ","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-employees--employee_id--universal', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-employees--employee_id--universal"
+                    onclick="tryItOut('POSTapi-employees--employee_id--universal');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-employees--employee_id--universal"
+                    onclick="cancelTryOut('POSTapi-employees--employee_id--universal');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-employees--employee_id--universal" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/employees/{employee_id}/universal</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTapi-employees--employee_id--universal" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-employees--employee_id--universal"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>employee_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="employee_id"
+               data-endpoint="POSTapi-employees--employee_id--universal"
+               value="10001"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the employee.</p>
+            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>is_universal</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+                <label data-endpoint="POSTapi-employees--employee_id--universal" hidden>
+            <input type="radio" name="is_universal"
+                   value="true"
+                   data-endpoint="POSTapi-employees--employee_id--universal"
+                   data-component="body"
+            >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-employees--employee_id--universal" hidden>
+            <input type="radio" name="is_universal"
+                   value="false"
+                   data-endpoint="POSTapi-employees--employee_id--universal"
+                   data-component="body"
+            >
+            <code>false</code>
+        </label>
+    <br>
+
+        </p>
+                <p>
+            <b><code>is_vip</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+                <label data-endpoint="POSTapi-employees--employee_id--universal" hidden>
+            <input type="radio" name="is_vip"
+                   value="true"
+                   data-endpoint="POSTapi-employees--employee_id--universal"
+                   data-component="body"
+            >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-employees--employee_id--universal" hidden>
+            <input type="radio" name="is_vip"
+                   value="false"
+                   data-endpoint="POSTapi-employees--employee_id--universal"
+                   data-component="body"
+            >
+            <code>false</code>
+        </label>
+    <br>
+<p>Indicates if the employee should be added to or removed from the Universal list</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-POSTapi-employees--employee_id--vip">Update VIP</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Update VIP information for a given employee.</p>
+
+<span id="example-requests-POSTapi-employees--employee_id--vip">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/employees/10001/vip" \
+    --header "Authorization: Bearer deh1DgcEZfVaba56P6kv348" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"is_vip\": false
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/employees/10001/vip"
+);
+
+const headers = {
+    "Authorization": "Bearer deh1DgcEZfVaba56P6kv348",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "is_vip": false
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-employees--employee_id--vip">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;id&quot;: 10006,
+    &quot;first_name&quot;: &quot;August&quot;,
+    &quot;second_first_name&quot;: &quot;Nicklaus&quot;,
+    &quot;last_name&quot;: &quot;Schaefer&quot;,
+    &quot;second_last_name&quot;: &quot;Wuckert&quot;,
+    &quot;full_name&quot;: &quot;August Nicklaus Schaefer Wuckert&quot;,
+    &quot;hire_date&quot;: &quot;1990-08-30&quot;,
+    &quot;personal_id&quot;: &quot;40546748566&quot;,
+    &quot;passport&quot;: null,
+    &quot;date_of_birth&quot;: &quot;1996-10-15&quot;,
+    &quot;cellphone_number&quot;: &quot;8095607690&quot;,
+    &quot;secondary_phone&quot;: null,
+    &quot;site&quot;: &quot;Prof. Quincy Lockman DVM&quot;,
+    &quot;project&quot;: &quot;Gustave Homenick&quot;,
+    &quot;position&quot;: &quot;Dr. Arlo Walter Dds&quot;,
+    &quot;salary&quot;: 125,
+    &quot;salary_type&quot;: &quot;Kaylah Ratke&quot;,
+    &quot;pay_per_hours&quot;: 125,
+    &quot;department&quot;: &quot;Malachi Feeney I&quot;,
+    &quot;supervisor&quot;: &quot;Yismen Jorge&quot;,
+    &quot;gender&quot;: &quot;Ms. Kamille Hagenes MD&quot;,
+    &quot;marital&quot;: &quot;Miss Brenda Will&quot;,
+    &quot;ars&quot;: &quot;Adan Friesen&quot;,
+    &quot;afp&quot;: &quot;Devonte Goyette DDS&quot;,
+    &quot;nationality&quot;: &quot;Guam_662326&quot;,
+    &quot;has_kids&quot;: 0,
+    &quot;photo&quot;: &quot;storage/images/employees/10006.png&quot;,
+    &quot;active&quot;: true,
+    &quot;status&quot;: &quot;Active&quot;,
+    &quot;punch&quot;: null,
+    &quot;account_number&quot;: null,
+    &quot;is_vip&quot;: true,
+    &quot;is_universal&quot;: false,
+    &quot;termination_date&quot;: null
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-employees--employee_id--vip" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-employees--employee_id--vip"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-employees--employee_id--vip"></code></pre>
+</span>
+<span id="execution-error-POSTapi-employees--employee_id--vip" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-employees--employee_id--vip"></code></pre>
+</span>
+<form id="form-POSTapi-employees--employee_id--vip" data-method="POST"
+      data-path="api/employees/{employee_id}/vip"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer deh1DgcEZfVaba56P6kv348","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-employees--employee_id--vip', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-employees--employee_id--vip"
+                    onclick="tryItOut('POSTapi-employees--employee_id--vip');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-employees--employee_id--vip"
+                    onclick="cancelTryOut('POSTapi-employees--employee_id--vip');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-employees--employee_id--vip" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/employees/{employee_id}/vip</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTapi-employees--employee_id--vip" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-employees--employee_id--vip"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>employee_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="employee_id"
+               data-endpoint="POSTapi-employees--employee_id--vip"
+               value="10001"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the employee.</p>
+            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>is_vip</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+                <label data-endpoint="POSTapi-employees--employee_id--vip" hidden>
+            <input type="radio" name="is_vip"
+                   value="true"
+                   data-endpoint="POSTapi-employees--employee_id--vip"
+                   data-component="body"
+            >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-employees--employee_id--vip" hidden>
+            <input type="radio" name="is_vip"
+                   value="false"
+                   data-endpoint="POSTapi-employees--employee_id--vip"
+                   data-component="body"
+            >
+            <code>false</code>
+        </label>
+    <br>
+<p>Indicates if the employee should be added to or removed from the Vip list</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-GETapi-v2-notifications-show--notification_id-">Notification Details</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Show details for a user notification. This will also mark the given notification as read.</p>
+
+<span id="example-requests-GETapi-v2-notifications-show--notification_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/v2/notifications/show/00281610-5c1a-4260-b01c-c621d9ff083a" \
+    --header "Authorization: Bearer gV6avdP1c6f84ZbkD5hEea3" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v2/notifications/show/00281610-5c1a-4260-b01c-c621d9ff083a"
+);
+
+const headers = {
+    "Authorization": "Bearer gV6avdP1c6f84ZbkD5hEea3",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v2-notifications-show--notification_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;id&quot;: &quot;d8e62834-828a-482d-a279-bb113fcaaa53&quot;,
+    &quot;type&quot;: &quot;App\\Notifications\\UserCreatedNotification&quot;,
+    &quot;notifiable_type&quot;: &quot;App\\User&quot;,
+    &quot;notifiable_id&quot;: 1,
+    &quot;data&quot;: &quot;[]&quot;,
+    &quot;read_at&quot;: &quot;2021-12-01T22:29:34.797992Z&quot;,
+    &quot;created_at&quot;: &quot;2021-11-24T14:33:44.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2021-12-01T22:29:34.000000Z&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v2-notifications-show--notification_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v2-notifications-show--notification_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v2-notifications-show--notification_id-"></code></pre>
+</span>
+<span id="execution-error-GETapi-v2-notifications-show--notification_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v2-notifications-show--notification_id-"></code></pre>
+</span>
+<form id="form-GETapi-v2-notifications-show--notification_id-" data-method="GET"
+      data-path="api/v2/notifications/show/{notification_id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer gV6avdP1c6f84ZbkD5hEea3","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-notifications-show--notification_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v2-notifications-show--notification_id-"
+                    onclick="tryItOut('GETapi-v2-notifications-show--notification_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v2-notifications-show--notification_id-"
+                    onclick="cancelTryOut('GETapi-v2-notifications-show--notification_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v2-notifications-show--notification_id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v2/notifications/show/{notification_id}</code></b>
+        </p>
+                <p>
+            <label id="auth-GETapi-v2-notifications-show--notification_id-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-v2-notifications-show--notification_id-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>notification_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="notification_id"
+               data-endpoint="GETapi-v2-notifications-show--notification_id-"
+               value="00281610-5c1a-4260-b01c-c621d9ff083a"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the notification.</p>
+            </p>
+                    <p>
+                <b><code>notification</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="notification"
+               data-endpoint="GETapi-v2-notifications-show--notification_id-"
+               value="voluptas"
                data-component="url" hidden>
     <br>
 <p>Uuid of the stored notification</p>
@@ -8346,19 +8416,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/performances/clients" \
-    --header "Authorization: Bearer 5cv8Ea6D4bhPef63gVaZd1k" \
+    --get "http://localhost/api/performances/clients" \
+    --header "Authorization: Bearer daZ3vacDb56fEg8k6PV1he4" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/performances/clients"
+    "http://localhost/api/performances/clients"
 );
 
 const headers = {
-    "Authorization": "Bearer 5cv8Ea6D4bhPef63gVaZd1k",
+    "Authorization": "Bearer daZ3vacDb56fEg8k6PV1he4",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -8406,7 +8476,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 5cv8Ea6D4bhPef63gVaZd1k","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer daZ3vacDb56fEg8k6PV1he4","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-clients', this);">
     <h3>
@@ -8454,19 +8524,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/performances/projects" \
-    --header "Authorization: Bearer Vf8aakZ6Pg1db64Eehv3c5D" \
+    --get "http://localhost/api/performances/projects" \
+    --header "Authorization: Bearer daP418aDb6fVkvEgceZ56h3" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/performances/projects"
+    "http://localhost/api/performances/projects"
 );
 
 const headers = {
-    "Authorization": "Bearer Vf8aakZ6Pg1db64Eehv3c5D",
+    "Authorization": "Bearer daP418aDb6fVkvEgceZ56h3",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -8510,7 +8580,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer Vf8aakZ6Pg1db64Eehv3c5D","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer daP418aDb6fVkvEgceZ56h3","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-projects', this);">
     <h3>
@@ -8558,19 +8628,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/performances/campaigns" \
-    --header "Authorization: Bearer 6Pg5hkD4ab1dfZa3ecV6Ev8" \
+    --get "http://localhost/api/performances/campaigns" \
+    --header "Authorization: Bearer 3f5ac18vehgkdZP6V4abDE6" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/performances/campaigns"
+    "http://localhost/api/performances/campaigns"
 );
 
 const headers = {
-    "Authorization": "Bearer 6Pg5hkD4ab1dfZa3ecV6Ev8",
+    "Authorization": "Bearer 3f5ac18vehgkdZP6V4abDE6",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -8618,7 +8688,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 6Pg5hkD4ab1dfZa3ecV6Ev8","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 3f5ac18vehgkdZP6V4abDE6","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-campaigns', this);">
     <h3>
@@ -8666,19 +8736,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/performances/sites" \
-    --header "Authorization: Bearer agZ3VvDhf86eac61kbPd5E4" \
+    --get "http://localhost/api/performances/sites" \
+    --header "Authorization: Bearer 3aaEPc5e1d4fgDvkhb66VZ8" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/performances/sites"
+    "http://localhost/api/performances/sites"
 );
 
 const headers = {
-    "Authorization": "Bearer agZ3VvDhf86eac61kbPd5E4",
+    "Authorization": "Bearer 3aaEPc5e1d4fgDvkhb66VZ8",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -8721,7 +8791,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer agZ3VvDhf86eac61kbPd5E4","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 3aaEPc5e1d4fgDvkhb66VZ8","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-sites', this);">
     <h3>
@@ -8769,19 +8839,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/performances/supervisors" \
-    --header "Authorization: Bearer 4VePD8bgEacdafk3656Z1hv" \
+    --get "http://localhost/api/performances/supervisors" \
+    --header "Authorization: Bearer gva4d6bZ6hEkP3cVf8De15a" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/performances/supervisors"
+    "http://localhost/api/performances/supervisors"
 );
 
 const headers = {
-    "Authorization": "Bearer 4VePD8bgEacdafk3656Z1hv",
+    "Authorization": "Bearer gva4d6bZ6hEkP3cVf8De15a",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -8825,7 +8895,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 4VePD8bgEacdafk3656Z1hv","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer gva4d6bZ6hEkP3cVf8De15a","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-supervisors', this);">
     <h3>
@@ -8873,19 +8943,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/performances/downtime_reasons" \
-    --header "Authorization: Bearer g8hP5dcbf6EeZa6kva4V13D" \
+    --get "http://localhost/api/performances/downtime_reasons" \
+    --header "Authorization: Bearer g51vbek84VachaD6dEf3Z6P" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/performances/downtime_reasons"
+    "http://localhost/api/performances/downtime_reasons"
 );
 
 const headers = {
-    "Authorization": "Bearer g8hP5dcbf6EeZa6kva4V13D",
+    "Authorization": "Bearer g51vbek84VachaD6dEf3Z6P",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -8928,7 +8998,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer g8hP5dcbf6EeZa6kva4V13D","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer g51vbek84VachaD6dEf3Z6P","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-downtime_reasons', this);">
     <h3>
@@ -8976,28 +9046,28 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/performances/employees?site=perferendis&amp;project=aut&amp;department=cupiditate&amp;position=consectetur" \
-    --header "Authorization: Bearer PDvVgadh364f1abcZ58e6kE" \
+    --get "http://localhost/api/performances/employees?site=suscipit&amp;project=eius&amp;department=nesciunt&amp;position=rem" \
+    --header "Authorization: Bearer 16ZVDP6a3kbE5ghaevd84fc" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/performances/employees"
+    "http://localhost/api/performances/employees"
 );
 
 const params = {
-    "site": "perferendis",
-    "project": "aut",
-    "department": "cupiditate",
-    "position": "consectetur",
+    "site": "suscipit",
+    "project": "eius",
+    "department": "nesciunt",
+    "position": "rem",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer PDvVgadh364f1abcZ58e6kE",
+    "Authorization": "Bearer 16ZVDP6a3kbE5ghaevd84fc",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -9043,7 +9113,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer PDvVgadh364f1abcZ58e6kE","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 16ZVDP6a3kbE5ghaevd84fc","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-employees', this);">
     <h3>
@@ -9081,7 +9151,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-performances-employees"
-               value="perferendis"
+               value="suscipit"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -9091,7 +9161,7 @@ fetch(url, {
                 <input type="text"
                name="project"
                data-endpoint="GETapi-performances-employees"
-               value="aut"
+               value="eius"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project. Example ?project=%Santiago%</p>
@@ -9101,7 +9171,7 @@ fetch(url, {
                 <input type="text"
                name="department"
                data-endpoint="GETapi-performances-employees"
-               value="cupiditate"
+               value="nesciunt"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific department. Example ?department=%Santiago%</p>
@@ -9111,7 +9181,7 @@ fetch(url, {
                 <input type="text"
                name="position"
                data-endpoint="GETapi-performances-employees"
-               value="consectetur"
+               value="rem"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific position. Example ?position=%Santiago%</p>
@@ -9132,33 +9202,33 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/performances/downtimes?campaign=porro&amp;source=et&amp;employee=porro&amp;supervisor=occaecati&amp;supervisor_employee=eveniet&amp;project_campaign=molestiae&amp;project_employee=et&amp;site=eveniet&amp;client=dolorem" \
-    --header "Authorization: Bearer a6ghfdV83baD4P15ZEc6vke" \
+    --get "http://localhost/api/performances/downtimes?campaign=molestiae&amp;source=architecto&amp;employee=ea&amp;supervisor=quod&amp;supervisor_employee=mollitia&amp;project_campaign=omnis&amp;project_employee=aut&amp;site=qui&amp;client=cum" \
+    --header "Authorization: Bearer faeD6E53c164vVh8gPabkdZ" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/performances/downtimes"
+    "http://localhost/api/performances/downtimes"
 );
 
 const params = {
-    "campaign": "porro",
-    "source": "et",
-    "employee": "porro",
-    "supervisor": "occaecati",
-    "supervisor_employee": "eveniet",
-    "project_campaign": "molestiae",
-    "project_employee": "et",
-    "site": "eveniet",
-    "client": "dolorem",
+    "campaign": "molestiae",
+    "source": "architecto",
+    "employee": "ea",
+    "supervisor": "quod",
+    "supervisor_employee": "mollitia",
+    "project_campaign": "omnis",
+    "project_employee": "aut",
+    "site": "qui",
+    "client": "cum",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer a6ghfdV83baD4P15ZEc6vke",
+    "Authorization": "Bearer faeD6E53c164vVh8gPabkdZ",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -9208,7 +9278,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer a6ghfdV83baD4P15ZEc6vke","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer faeD6E53c164vVh8gPabkdZ","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-downtimes', this);">
     <h3>
@@ -9246,7 +9316,7 @@ fetch(url, {
                 <input type="text"
                name="campaign"
                data-endpoint="GETapi-performances-downtimes"
-               value="porro"
+               value="molestiae"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific campaign. Example ?campaign=%Santiago%</p>
@@ -9256,7 +9326,7 @@ fetch(url, {
                 <input type="text"
                name="source"
                data-endpoint="GETapi-performances-downtimes"
-               value="et"
+               value="architecto"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific source. Example ?source=%Santiago%</p>
@@ -9266,7 +9336,7 @@ fetch(url, {
                 <input type="text"
                name="employee"
                data-endpoint="GETapi-performances-downtimes"
-               value="porro"
+               value="ea"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific employee. Example ?employee=%Santiago%</p>
@@ -9276,7 +9346,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor"
                data-endpoint="GETapi-performances-downtimes"
-               value="occaecati"
+               value="quod"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor. Example ?supervisor=%Santiago%</p>
@@ -9286,7 +9356,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor_employee"
                data-endpoint="GETapi-performances-downtimes"
-               value="eveniet"
+               value="mollitia"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor_employee. Example ?supervisor_employee=%Santiago%</p>
@@ -9296,7 +9366,7 @@ fetch(url, {
                 <input type="text"
                name="project_campaign"
                data-endpoint="GETapi-performances-downtimes"
-               value="molestiae"
+               value="omnis"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_campaign. Example ?project_campaign=%Santiago%</p>
@@ -9306,7 +9376,7 @@ fetch(url, {
                 <input type="text"
                name="project_employee"
                data-endpoint="GETapi-performances-downtimes"
-               value="et"
+               value="aut"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_employee. Example ?project_employee=%Santiago%</p>
@@ -9316,7 +9386,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-performances-downtimes"
-               value="eveniet"
+               value="qui"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -9326,7 +9396,7 @@ fetch(url, {
                 <input type="text"
                name="client"
                data-endpoint="GETapi-performances-downtimes"
-               value="dolorem"
+               value="cum"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific client. Example ?client=%Pub%</p>
@@ -9347,25 +9417,25 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/performances/login_names?recents=exercitationem" \
-    --header "Authorization: Bearer eZbhPc8Edg56a46v1VkD3af" \
+    --get "http://localhost/api/performances/login_names?recents=ut" \
+    --header "Authorization: Bearer v61dah6Dabg8k3PV5fc4ZEe" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/performances/login_names"
+    "http://localhost/api/performances/login_names"
 );
 
 const params = {
-    "recents": "exercitationem",
+    "recents": "ut",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer eZbhPc8Edg56a46v1VkD3af",
+    "Authorization": "Bearer v61dah6Dabg8k3PV5fc4ZEe",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -9406,7 +9476,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer eZbhPc8Edg56a46v1VkD3af","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer v61dah6Dabg8k3PV5fc4ZEe","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-login_names', this);">
     <h3>
@@ -9444,7 +9514,7 @@ fetch(url, {
                 <input type="text"
                name="recents"
                data-endpoint="GETapi-performances-login_names"
-               value="exercitationem"
+               value="ut"
                data-component="query" hidden>
     <br>
 <p>optional When present, only login names for employees labeled as recents will be included. Default is true. Example ?recents=true</p>
@@ -9465,25 +9535,25 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/performances/schedules?daysago=7" \
-    --header "Authorization: Bearer E1bfcek66V3gZ584avDPadh" \
+    --get "http://localhost/api/performances/schedules?daysago=3" \
+    --header "Authorization: Bearer 3Vk6Ee15Z8P6dcva4Dbagfh" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/performances/schedules"
+    "http://localhost/api/performances/schedules"
 );
 
 const params = {
-    "daysago": "7",
+    "daysago": "3",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer E1bfcek66V3gZ584avDPadh",
+    "Authorization": "Bearer 3Vk6Ee15Z8P6dcva4Dbagfh",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -9529,7 +9599,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer E1bfcek66V3gZ584avDPadh","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 3Vk6Ee15Z8P6dcva4Dbagfh","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-schedules', this);">
     <h3>
@@ -9567,7 +9637,7 @@ fetch(url, {
                 <input type="number"
                name="daysago"
                data-endpoint="GETapi-performances-schedules"
-               value="7"
+               value="3"
                data-component="query" hidden>
     <br>
 <p>The amount of days to filter back. Default 90. Example daysago=45</p>
@@ -9588,19 +9658,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/performances/supervisors/actives" \
-    --header "Authorization: Bearer ak6EdaV13c6DhbfPZ45ev8g" \
+    --get "http://localhost/api/performances/supervisors/actives" \
+    --header "Authorization: Bearer 5gab6kfV4ecvP683dDhZ1Ea" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/performances/supervisors/actives"
+    "http://localhost/api/performances/supervisors/actives"
 );
 
 const headers = {
-    "Authorization": "Bearer ak6EdaV13c6DhbfPZ45ev8g",
+    "Authorization": "Bearer 5gab6kfV4ecvP683dDhZ1Ea",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -9644,7 +9714,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer ak6EdaV13c6DhbfPZ45ev8g","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 5gab6kfV4ecvP683dDhZ1Ea","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-supervisors-actives', this);">
     <h3>
@@ -9692,35 +9762,35 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/performances/performance_data/last/7/months?date=ducimus&amp;dates_between=quidem&amp;campaign=similique&amp;employee=quos&amp;supervisor=laborum&amp;project_campaign=laborum&amp;project_employee=omnis&amp;site=eum&amp;source=eaque&amp;client=sed&amp;supervisor_employee=a" \
-    --header "Authorization: Bearer aEVa1ecDg6b35PdfZv648kh" \
+    --get "http://localhost/api/performances/performance_data/last/10/months?date=ut&amp;dates_between=eum&amp;campaign=consequatur&amp;employee=ut&amp;supervisor=temporibus&amp;project_campaign=et&amp;project_employee=corrupti&amp;site=amet&amp;source=asperiores&amp;client=tenetur&amp;supervisor_employee=sed" \
+    --header "Authorization: Bearer 8ce6b65fVE3ZkdvahgD1a4P" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/performances/performance_data/last/7/months"
+    "http://localhost/api/performances/performance_data/last/10/months"
 );
 
 const params = {
-    "date": "ducimus",
-    "dates_between": "quidem",
-    "campaign": "similique",
-    "employee": "quos",
-    "supervisor": "laborum",
-    "project_campaign": "laborum",
-    "project_employee": "omnis",
-    "site": "eum",
-    "source": "eaque",
-    "client": "sed",
-    "supervisor_employee": "a",
+    "date": "ut",
+    "dates_between": "eum",
+    "campaign": "consequatur",
+    "employee": "ut",
+    "supervisor": "temporibus",
+    "project_campaign": "et",
+    "project_employee": "corrupti",
+    "site": "amet",
+    "source": "asperiores",
+    "client": "tenetur",
+    "supervisor_employee": "sed",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer aEVa1ecDg6b35PdfZv648kh",
+    "Authorization": "Bearer 8ce6b65fVE3ZkdvahgD1a4P",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -9801,7 +9871,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer aEVa1ecDg6b35PdfZv648kh","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 8ce6b65fVE3ZkdvahgD1a4P","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-performances-performance_data-last--many--months', this);">
     <h3>
@@ -9839,7 +9909,7 @@ fetch(url, {
                 <input type="number"
                name="many"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="7"
+               value="10"
                data-component="url" hidden>
     <br>
 <p>The amount of months back to filter data. Example /performances/performance_data/last/3/months</p>
@@ -9850,7 +9920,7 @@ fetch(url, {
                 <input type="text"
                name="date"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="ducimus"
+               value="ut"
                data-component="query" hidden>
     <br>
 <p>Filter data for specific date. Date must be included within the amount of months filtere, therefore should be used in combinaton.</p>
@@ -9860,7 +9930,7 @@ fetch(url, {
                 <input type="text"
                name="dates_between"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="quidem"
+               value="eum"
                data-component="query" hidden>
     <br>
 <p>Filter data for specific date range. Example ?dates_between=2022-05-21,2022-05-24. Date must be included within the amount of months filtere, therefore should be used in combinaton.</p>
@@ -9870,7 +9940,7 @@ fetch(url, {
                 <input type="text"
                name="campaign"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="similique"
+               value="consequatur"
                data-component="query" hidden>
     <br>
 <p>Filter data by campaign name. Example ?campaign=%POL-%.</p>
@@ -9880,7 +9950,7 @@ fetch(url, {
                 <input type="text"
                name="employee"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="quos"
+               value="ut"
                data-component="query" hidden>
     <br>
 <p>Filter data by employee name. Example ?employee=%Yismen Jore%.</p>
@@ -9890,7 +9960,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="laborum"
+               value="temporibus"
                data-component="query" hidden>
     <br>
 <p>Filter data by supervisor name. Example ?supervisor=%Yismen Jore%.</p>
@@ -9900,7 +9970,7 @@ fetch(url, {
                 <input type="text"
                name="project_campaign"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="laborum"
+               value="et"
                data-component="query" hidden>
     <br>
 <p>Filter data by project_campaign name. Example ?project_campaign=%blackhawk%.</p>
@@ -9910,7 +9980,7 @@ fetch(url, {
                 <input type="text"
                name="project_employee"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="omnis"
+               value="corrupti"
                data-component="query" hidden>
     <br>
 <p>Filter data by project_employee name. Example ?project_campaign=%blackhawk%.</p>
@@ -9920,7 +9990,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="eum"
+               value="amet"
                data-component="query" hidden>
     <br>
 <p>Filter data by site name. Example ?site=%Santiago HQ%.</p>
@@ -9930,7 +10000,7 @@ fetch(url, {
                 <input type="text"
                name="source"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="eaque"
+               value="asperiores"
                data-component="query" hidden>
     <br>
 <p>Filter data by source name. Example ?source=%Santiago HQ%.</p>
@@ -9940,7 +10010,7 @@ fetch(url, {
                 <input type="text"
                name="client"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="sed"
+               value="tenetur"
                data-component="query" hidden>
     <br>
 <p>Filter data by client name. Example ?client=%blackhawk%.</p>
@@ -9950,7 +10020,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor_employee"
                data-endpoint="GETapi-performances-performance_data-last--many--months"
-               value="a"
+               value="sed"
                data-component="query" hidden>
     <br>
 <p>Filter data by supervisor_employee name. Example ?supervisor_employee=%Yismen Jore%.</p>
@@ -9971,19 +10041,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/projects" \
-    --header "Authorization: Bearer 8a3ZDb6aEk16fgdvVhceP45" \
+    --get "http://localhost/api/v2/projects" \
+    --header "Authorization: Bearer g836dcv1VPabZkEa5h6e4fD" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/projects"
+    "http://localhost/api/v2/projects"
 );
 
 const headers = {
-    "Authorization": "Bearer 8a3ZDb6aEk16fgdvVhceP45",
+    "Authorization": "Bearer g836dcv1VPabZkEa5h6e4fD",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -10027,7 +10097,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 8a3ZDb6aEk16fgdvVhceP45","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer g836dcv1VPabZkEa5h6e4fD","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-projects', this);">
     <h3>
@@ -10075,19 +10145,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/supervisors/actives" \
-    --header "Authorization: Bearer e8Z5fPa1dD63gbEac4vhk6V" \
+    --get "http://localhost/api/v2/supervisors/actives" \
+    --header "Authorization: Bearer E46ve8Z1b6gf5Pka3VhaDdc" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/supervisors/actives"
+    "http://localhost/api/v2/supervisors/actives"
 );
 
 const headers = {
-    "Authorization": "Bearer e8Z5fPa1dD63gbEac4vhk6V",
+    "Authorization": "Bearer E46ve8Z1b6gf5Pka3VhaDdc",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -10131,7 +10201,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer e8Z5fPa1dD63gbEac4vhk6V","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer E46ve8Z1b6gf5Pka3VhaDdc","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-supervisors-actives', this);">
     <h3>
@@ -10179,19 +10249,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/supervisors" \
-    --header "Authorization: Bearer ag3E416VD6kve8Pf5bacZdh" \
+    --get "http://localhost/api/v2/supervisors" \
+    --header "Authorization: Bearer 8aakD6ZPb3eghfV6vd1c4E5" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/supervisors"
+    "http://localhost/api/v2/supervisors"
 );
 
 const headers = {
-    "Authorization": "Bearer ag3E416VD6kve8Pf5bacZdh",
+    "Authorization": "Bearer 8aakD6ZPb3eghfV6vd1c4E5",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -10235,7 +10305,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer ag3E416VD6kve8Pf5bacZdh","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 8aakD6ZPb3eghfV6vd1c4E5","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-supervisors', this);">
     <h3>
@@ -10283,19 +10353,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/sites" \
-    --header "Authorization: Bearer Va8ekEhgfbd6v6DPcZ3a154" \
+    --get "http://localhost/api/v2/sites" \
+    --header "Authorization: Bearer da3gDE6PfZba81eVvkc465h" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/sites"
+    "http://localhost/api/v2/sites"
 );
 
 const headers = {
-    "Authorization": "Bearer Va8ekEhgfbd6v6DPcZ3a154",
+    "Authorization": "Bearer da3gDE6PfZba81eVvkc465h",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -10338,7 +10408,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer Va8ekEhgfbd6v6DPcZ3a154","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer da3gDE6PfZba81eVvkc465h","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-sites', this);">
     <h3>
@@ -10386,25 +10456,25 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/schedules?daysago=14" \
-    --header "Authorization: Bearer EadhkbV6ZD1g8f6Pev4c53a" \
+    --get "http://localhost/api/v2/schedules?daysago=5" \
+    --header "Authorization: Bearer 1c6536aPhe4bfdZEVg8kavD" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/schedules"
+    "http://localhost/api/v2/schedules"
 );
 
 const params = {
-    "daysago": "14",
+    "daysago": "5",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer EadhkbV6ZD1g8f6Pev4c53a",
+    "Authorization": "Bearer 1c6536aPhe4bfdZEVg8kavD",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -10450,7 +10520,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer EadhkbV6ZD1g8f6Pev4c53a","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 1c6536aPhe4bfdZEVg8kavD","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-schedules', this);">
     <h3>
@@ -10488,7 +10558,7 @@ fetch(url, {
                 <input type="number"
                name="daysago"
                data-endpoint="GETapi-v2-schedules"
-               value="14"
+               value="5"
                data-component="query" hidden>
     <br>
 <p>The amount of days to filter back. Default 90. Example daysago=45</p>
@@ -10509,29 +10579,29 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "dainsys.test/api/v2/supervisors" \
-    --header "Authorization: Bearer 4deaP1Dgkhabc6f86EvV53Z" \
+    "http://localhost/api/v2/supervisors" \
+    --header "Authorization: Bearer bfEVk6g8Dhae1dP54Z6va3c" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"explicabo\"
+    \"name\": \"dolorem\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/supervisors"
+    "http://localhost/api/v2/supervisors"
 );
 
 const headers = {
-    "Authorization": "Bearer 4deaP1Dgkhabc6f86EvV53Z",
+    "Authorization": "Bearer bfEVk6g8Dhae1dP54Z6va3c",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "explicabo"
+    "name": "dolorem"
 };
 
 fetch(url, {
@@ -10571,7 +10641,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 4deaP1Dgkhabc6f86EvV53Z","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer bfEVk6g8Dhae1dP54Z6va3c","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-v2-supervisors', this);">
     <h3>
@@ -10609,7 +10679,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-v2-supervisors"
-               value="explicabo"
+               value="dolorem"
                data-component="body" hidden>
     <br>
 <p>The name of the Supervisor</p>
@@ -10630,25 +10700,25 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/login_names?recents=nam" \
-    --header "Authorization: Bearer kg6bcZf5aE46Vav1hPDde38" \
+    --get "http://localhost/api/v2/login_names?recents=repudiandae" \
+    --header "Authorization: Bearer e56f1aVcb6Zk8P3hagdEvD4" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/login_names"
+    "http://localhost/api/v2/login_names"
 );
 
 const params = {
-    "recents": "nam",
+    "recents": "repudiandae",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer kg6bcZf5aE46Vav1hPDde38",
+    "Authorization": "Bearer e56f1aVcb6Zk8P3hagdEvD4",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -10689,7 +10759,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer kg6bcZf5aE46Vav1hPDde38","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer e56f1aVcb6Zk8P3hagdEvD4","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-login_names', this);">
     <h3>
@@ -10727,7 +10797,7 @@ fetch(url, {
                 <input type="text"
                name="recents"
                data-endpoint="GETapi-v2-login_names"
-               value="nam"
+               value="repudiandae"
                data-component="query" hidden>
     <br>
 <p>optional When present, only login names for employees labeled as recents will be included. Default is true. Example ?recents=true</p>
@@ -10748,31 +10818,31 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/downtimes?campaign=expedita&amp;client=non&amp;employee=non&amp;project_campaign=aliquam&amp;site=tenetur&amp;source=qui&amp;supervisor=aperiam" \
-    --header "Authorization: Bearer gc6kDZh3e84avE5aV6bfPd1" \
+    --get "http://localhost/api/v2/downtimes?campaign=et&amp;client=quasi&amp;employee=officia&amp;project_campaign=modi&amp;site=amet&amp;source=est&amp;supervisor=quia" \
+    --header "Authorization: Bearer h66fkba85v3Dc4Zge1EPdaV" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/downtimes"
+    "http://localhost/api/v2/downtimes"
 );
 
 const params = {
-    "campaign": "expedita",
-    "client": "non",
-    "employee": "non",
-    "project_campaign": "aliquam",
-    "site": "tenetur",
-    "source": "qui",
-    "supervisor": "aperiam",
+    "campaign": "et",
+    "client": "quasi",
+    "employee": "officia",
+    "project_campaign": "modi",
+    "site": "amet",
+    "source": "est",
+    "supervisor": "quia",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer gc6kDZh3e84avE5aV6bfPd1",
+    "Authorization": "Bearer h66fkba85v3Dc4Zge1EPdaV",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -10822,7 +10892,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer gc6kDZh3e84avE5aV6bfPd1","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer h66fkba85v3Dc4Zge1EPdaV","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-downtimes', this);">
     <h3>
@@ -10860,7 +10930,7 @@ fetch(url, {
                 <input type="text"
                name="campaign"
                data-endpoint="GETapi-v2-downtimes"
-               value="expedita"
+               value="et"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific campaign. Example ?campaign=%Santiago%</p>
@@ -10870,7 +10940,7 @@ fetch(url, {
                 <input type="text"
                name="client"
                data-endpoint="GETapi-v2-downtimes"
-               value="non"
+               value="quasi"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific client. Example ?client=%Pub%</p>
@@ -10880,7 +10950,7 @@ fetch(url, {
                 <input type="text"
                name="employee"
                data-endpoint="GETapi-v2-downtimes"
-               value="non"
+               value="officia"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific employee. Example ?employee=%Santiago%</p>
@@ -10890,7 +10960,7 @@ fetch(url, {
                 <input type="text"
                name="project_campaign"
                data-endpoint="GETapi-v2-downtimes"
-               value="aliquam"
+               value="modi"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific project_campaign. Example ?project_campaign=%Santiago%</p>
@@ -10900,7 +10970,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-v2-downtimes"
-               value="tenetur"
+               value="amet"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific site. Example ?site=%Santiago%</p>
@@ -10910,7 +10980,7 @@ fetch(url, {
                 <input type="text"
                name="source"
                data-endpoint="GETapi-v2-downtimes"
-               value="qui"
+               value="est"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific source. Example ?source=%Santiago%</p>
@@ -10920,7 +10990,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor"
                data-endpoint="GETapi-v2-downtimes"
-               value="aperiam"
+               value="quia"
                data-component="query" hidden>
     <br>
 <p>Limit results to specific supervisor. Example ?supervisor=%Santiago%</p>
@@ -10941,19 +11011,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/downtime_reasons" \
-    --header "Authorization: Bearer P63hevZ645DaVfgbEkdc81a" \
+    --get "http://localhost/api/v2/downtime_reasons" \
+    --header "Authorization: Bearer 4e8v6P51bfgZdacE63hVDka" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/downtime_reasons"
+    "http://localhost/api/v2/downtime_reasons"
 );
 
 const headers = {
-    "Authorization": "Bearer P63hevZ645DaVfgbEkdc81a",
+    "Authorization": "Bearer 4e8v6P51bfgZdacE63hVDka",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -10996,7 +11066,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer P63hevZ645DaVfgbEkdc81a","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 4e8v6P51bfgZdacE63hVDka","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-downtime_reasons', this);">
     <h3>
@@ -11044,19 +11114,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/clients" \
-    --header "Authorization: Bearer 4h31cefDVkaZPavd5668Ebg" \
+    --get "http://localhost/api/v2/clients" \
+    --header "Authorization: Bearer 36ab6cgek5dE41fVDh8PvZa" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/clients"
+    "http://localhost/api/v2/clients"
 );
 
 const headers = {
-    "Authorization": "Bearer 4h31cefDVkaZPavd5668Ebg",
+    "Authorization": "Bearer 36ab6cgek5dE41fVDh8PvZa",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -11104,7 +11174,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer 4h31cefDVkaZPavd5668Ebg","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer 36ab6cgek5dE41fVDh8PvZa","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-clients', this);">
     <h3>
@@ -11152,19 +11222,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/campaigns" \
-    --header "Authorization: Bearer Zfb8akEe6463P5d1avcVhgD" \
+    --get "http://localhost/api/v2/campaigns" \
+    --header "Authorization: Bearer ed6aPahv5b1V3f4cD68ZgkE" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/campaigns"
+    "http://localhost/api/v2/campaigns"
 );
 
 const headers = {
-    "Authorization": "Bearer Zfb8akEe6463P5d1avcVhgD",
+    "Authorization": "Bearer ed6aPahv5b1V3f4cD68ZgkE",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -11212,7 +11282,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer Zfb8akEe6463P5d1avcVhgD","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer ed6aPahv5b1V3f4cD68ZgkE","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-campaigns', this);">
     <h3>
@@ -11260,36 +11330,36 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "dainsys.test/api/v2/performances?months=14&amp;date=aliquid&amp;dates_between=cumque&amp;campaign=quo&amp;employee=alias&amp;supervisor=ducimus&amp;project_campaign=at&amp;project_employee=fuga&amp;site=deleniti&amp;source=voluptatum&amp;client=iste&amp;supervisor_employee=pariatur" \
-    --header "Authorization: Bearer ZkcPde53va168ghfaEV6Db4" \
+    --get "http://localhost/api/v2/performances?months=10&amp;date=id&amp;dates_between=quas&amp;campaign=harum&amp;employee=expedita&amp;supervisor=sunt&amp;project_campaign=nemo&amp;project_employee=impedit&amp;site=est&amp;source=doloremque&amp;client=ducimus&amp;supervisor_employee=sint" \
+    --header "Authorization: Bearer Z4beV186hgfvd6EackDP5a3" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "dainsys.test/api/v2/performances"
+    "http://localhost/api/v2/performances"
 );
 
 const params = {
-    "months": "14",
-    "date": "aliquid",
-    "dates_between": "cumque",
-    "campaign": "quo",
-    "employee": "alias",
-    "supervisor": "ducimus",
-    "project_campaign": "at",
-    "project_employee": "fuga",
-    "site": "deleniti",
-    "source": "voluptatum",
-    "client": "iste",
-    "supervisor_employee": "pariatur",
+    "months": "10",
+    "date": "id",
+    "dates_between": "quas",
+    "campaign": "harum",
+    "employee": "expedita",
+    "supervisor": "sunt",
+    "project_campaign": "nemo",
+    "project_employee": "impedit",
+    "site": "est",
+    "source": "doloremque",
+    "client": "ducimus",
+    "supervisor_employee": "sint",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "Authorization": "Bearer ZkcPde53va168ghfaEV6Db4",
+    "Authorization": "Bearer Z4beV186hgfvd6EackDP5a3",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -11370,7 +11440,7 @@ fetch(url, {
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer ZkcPde53va168ghfaEV6Db4","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer Z4beV186hgfvd6EackDP5a3","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-performances', this);">
     <h3>
@@ -11408,7 +11478,7 @@ fetch(url, {
                 <input type="number"
                name="months"
                data-endpoint="GETapi-v2-performances"
-               value="14"
+               value="10"
                data-component="query" hidden>
     <br>
 <p>Filter data for many months old. Default is 2.</p>
@@ -11418,7 +11488,7 @@ fetch(url, {
                 <input type="text"
                name="date"
                data-endpoint="GETapi-v2-performances"
-               value="aliquid"
+               value="id"
                data-component="query" hidden>
     <br>
 <p>Filter data for specific date. Date must be included within the amount of months filtere, therefore should be used in combinaton.</p>
@@ -11428,7 +11498,7 @@ fetch(url, {
                 <input type="text"
                name="dates_between"
                data-endpoint="GETapi-v2-performances"
-               value="cumque"
+               value="quas"
                data-component="query" hidden>
     <br>
 <p>Filter data for specific date range. Example ?dates_between=2022-05-21,2022-05-24. Date must be included within the amount of months filtere, therefore should be used in combinaton.</p>
@@ -11438,7 +11508,7 @@ fetch(url, {
                 <input type="text"
                name="campaign"
                data-endpoint="GETapi-v2-performances"
-               value="quo"
+               value="harum"
                data-component="query" hidden>
     <br>
 <p>Filter data by campaign name. Example ?campaign=%POL-%.</p>
@@ -11448,7 +11518,7 @@ fetch(url, {
                 <input type="text"
                name="employee"
                data-endpoint="GETapi-v2-performances"
-               value="alias"
+               value="expedita"
                data-component="query" hidden>
     <br>
 <p>Filter data by employee name. Example ?employee=%Yismen Jore%.</p>
@@ -11458,7 +11528,7 @@ fetch(url, {
                 <input type="text"
                name="supervisor"
                data-endpoint="GETapi-v2-performances"
-               value="ducimus"
+               value="sunt"
                data-component="query" hidden>
     <br>
 <p>Filter data by supervisor name. Example ?supervisor=%Yismen Jore%.</p>
@@ -11468,7 +11538,7 @@ fetch(url, {
                 <input type="text"
                name="project_campaign"
                data-endpoint="GETapi-v2-performances"
-               value="at"
+               value="nemo"
                data-component="query" hidden>
     <br>
 <p>Filter data by project_campaign name. Example ?project_campaign=%blackhawk%.</p>
@@ -11478,7 +11548,7 @@ fetch(url, {
                 <input type="text"
                name="project_employee"
                data-endpoint="GETapi-v2-performances"
-               value="fuga"
+               value="impedit"
                data-component="query" hidden>
     <br>
 <p>Filter data by project_employee name. Example ?project_campaign=%blackhawk%.</p>
@@ -11488,7 +11558,7 @@ fetch(url, {
                 <input type="text"
                name="site"
                data-endpoint="GETapi-v2-performances"
-               value="deleniti"
+               value="est"
                data-component="query" hidden>
     <br>
 <p>Filter data by site name. Example ?site=%Santiago HQ%.</p>
@@ -11498,7 +11568,7 @@ fetch(url, {
                 <input type="text"
                name="source"
                data-endpoint="GETapi-v2-performances"
-               value="voluptatum"
+               value="doloremque"
                data-component="query" hidden>
     <br>
 <p>Filter data by source name. Example ?source=%Santiago HQ%.</p>
@@ -11508,7 +11578,7 @@ fetch(url, {
                 <input type="text"
                name="client"
                data-endpoint="GETapi-v2-performances"
-               value="iste"
+               value="ducimus"
                data-component="query" hidden>
     <br>
 <p>Filter data by client name. Example ?client=%blackhawk%.</p>
@@ -11518,11 +11588,117 @@ fetch(url, {
                 <input type="text"
                name="supervisor_employee"
                data-endpoint="GETapi-v2-performances"
-               value="pariatur"
+               value="sint"
                data-component="query" hidden>
     <br>
 <p>Filter data by supervisor_employee name. Example ?supervisor_employee=%Yismen Jore%.</p>
             </p>
+                </form>
+
+            <h2 id="performances-GETapi-v2-dispositions">Performances Dispositions</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Collection of dispositions information</p>
+
+<span id="example-requests-GETapi-v2-dispositions">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/v2/dispositions" \
+    --header "Authorization: Bearer dgc6PevE165f4b8Z3hVDaka" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v2/dispositions"
+);
+
+const headers = {
+    "Authorization": "Bearer dgc6PevE165f4b8Z3hVDaka",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v2-dispositions">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+     &quot;data&quot;: [
+         {
+             &quot;name&quot;,
+             &quot;contacts&quot;,
+             &quot;sales&quot;,
+             &quot;upsales&quot;,
+             &quot;cc_sales&quot;,
+         }
+     ]
+ }</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v2-dispositions" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v2-dispositions"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v2-dispositions"></code></pre>
+</span>
+<span id="execution-error-GETapi-v2-dispositions" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v2-dispositions"></code></pre>
+</span>
+<form id="form-GETapi-v2-dispositions" data-method="GET"
+      data-path="api/v2/dispositions"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer dgc6PevE165f4b8Z3hVDaka","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v2-dispositions', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v2-dispositions"
+                    onclick="tryItOut('GETapi-v2-dispositions');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v2-dispositions"
+                    onclick="cancelTryOut('GETapi-v2-dispositions');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v2-dispositions" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v2/dispositions</code></b>
+        </p>
+                <p>
+            <label id="auth-GETapi-v2-dispositions" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-v2-dispositions"
+                                                                data-component="header"></label>
+        </p>
                 </form>
 
     
