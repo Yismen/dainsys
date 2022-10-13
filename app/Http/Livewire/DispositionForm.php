@@ -54,7 +54,7 @@ class DispositionForm extends Component
 
     public function wantsCreate($disposition)
     {
-        $this->name = $disposition['agent_disposition'];
+        $this->name = $disposition['agent_disposition'] ?? '';
         $this->contacts = 0;
         $this->sales = 0;
         $this->upsales = 0;
