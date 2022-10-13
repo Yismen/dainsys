@@ -27,18 +27,19 @@
             </thead>
             <tbody>
                 @foreach ($dispositions as $disposition)
-                <tr class="text-center ">
+                <tr class="">
                     <td class="fw-600">{{ $disposition->name }}</td>
-                    <td class="{{ $disposition->contacts ?  'bg-info fw-700' : 'text-gray' }}">{{
+                    <td class="text-center {{ $disposition->contacts ?  'bg-info fw-700' : 'text-gray' }}">{{
                         $disposition->contacts
                         }}</td>
-                    <td class="{{ $disposition->sales ?  'bg-info fw-700' : 'text-gray' }}">{{ $disposition->sales
+                    <td class="text-center {{ $disposition->sales ?  'bg-info fw-700' : 'text-gray' }}">{{
+                        $disposition->sales
                         }}
                     </td>
-                    <td class="{{ $disposition->upsales ?  'bg-info fw-700' : 'text-gray' }}">{{
+                    <td class="text-center {{ $disposition->upsales ?  'bg-info fw-700' : 'text-gray' }}">{{
                         $disposition->upsales
                         }}</td>
-                    <td class="{{ $disposition->cc_sales ?  'bg-info fw-700' : 'text-gray' }}">{{
+                    <td class="text-center {{ $disposition->cc_sales ?  'bg-info fw-700' : 'text-gray' }}">{{
                         $disposition->cc_sales
                         }}</td>
                     <td>
