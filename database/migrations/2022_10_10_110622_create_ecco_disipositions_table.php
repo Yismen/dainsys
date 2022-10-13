@@ -39,6 +39,8 @@ class CreateEccoDisipositionsTable extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('ecco_disipositions');
+        if (app()->isProduction() == false) {
+            Schema::dropIfExists('ecco_disipositions');
+        }
     }
 }

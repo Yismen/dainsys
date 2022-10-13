@@ -27,12 +27,20 @@
             </thead>
             <tbody>
                 @foreach ($dispositions as $disposition)
-                <tr>
-                    <td>{{ $disposition->name }}</td>
-                    <td>{{ $disposition->contacts }}</td>
-                    <td>{{ $disposition->sales }}</td>
-                    <td>{{ $disposition->upsales }}</td>
-                    <td>{{ $disposition->cc_sales }}</td>
+                <tr class="text-center ">
+                    <td class="fw-600">{{ $disposition->name }}</td>
+                    <td class="{{ $disposition->contacts ?  'bg-info fw-700' : 'text-gray' }}">{{
+                        $disposition->contacts
+                        }}</td>
+                    <td class="{{ $disposition->sales ?  'bg-info fw-700' : 'text-gray' }}">{{ $disposition->sales
+                        }}
+                    </td>
+                    <td class="{{ $disposition->upsales ?  'bg-info fw-700' : 'text-gray' }}">{{
+                        $disposition->upsales
+                        }}</td>
+                    <td class="{{ $disposition->cc_sales ?  'bg-info fw-700' : 'text-gray' }}">{{
+                        $disposition->cc_sales
+                        }}</td>
                     <td>
                         <button class="btn btn-warning btn-xs"
                             wire:click='$emit("wantsEdit", {{ $disposition }})'>Edit</button>
