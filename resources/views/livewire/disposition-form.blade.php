@@ -1,4 +1,7 @@
 <div>
+    <div class="d-flex justify-flex-end">
+        <button wire:click='$emit("wantsCreate", [])' class="btn btn-primary btn-sm mb-3">Add</button>
+    </div>
     <div class="modal fade" tabindex="-1" role="dialog" id="dispositionModal" wire:ignore.self>
         <div class="modal-dialog" role="document">
             <div class="modal-content">

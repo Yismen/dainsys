@@ -80,7 +80,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->command(\App\Console\Commands\Inbound\SendDailySummaryCommand::class)->dailyAt('06:20');
         $schedule->command(\App\Console\Commands\Inbound\SendWTDSummaryCommand::class)->dailyAt('06:30');
-
+        // check for dispositions
         $schedule->command(\App\Console\Commands\CheckForDispositionsPendingIdentification::class)->everyThreeHours();
 
         /**
