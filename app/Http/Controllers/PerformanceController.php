@@ -29,12 +29,13 @@ class PerformanceController extends Controller
      */
     public function index(PerformanceRepository $repo)
     {
-        if (!request()->ajax()) {
-            return view('performances.index');
-        }
+        return view('performances.index');
+        // if (!request()->ajax()) {
+        //     return view('performances.index');
+        // }
 
-        return DataTables::of($repo->datatables())
-            ->toJson(true);
+        // return DataTables::of($repo->datatables())
+        //     ->toJson(true);
     }
 
     /**
