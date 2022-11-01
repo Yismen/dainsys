@@ -41,7 +41,7 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <label for="search">Search {{ $search }}</label>
+                            <label for="search">Search:</label>
                             <div class="{{ strlen($search) > 0 ? 'input-group' : '' }}">
                                 <input type="text" class="form-control" wire:model="search" wire:ignore id="search">
 
