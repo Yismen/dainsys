@@ -95,13 +95,13 @@
                                 </a>
                             </td>
                             <td scope="row">
-                                {{ $performance->supervisor->name }}
+                                {{ optional($performance->supervisor)->name }}
                             </td>
                             <td scope="row">
-                                {{ $performance->campaign->project->name }}
+                                {{ optional($performance->campaign->project)->name }}
                             </td>
                             <td scope="row">
-                                {{ $performance->campaign->name }}
+                                {{ optional($performance->campaign)->name }}
                             </td>
                             <td scope="row">
                                 {{ $performance->login_time }}
@@ -126,7 +126,24 @@
             </div>
             <div class="box-footer">
                 {{ $performances->links() }}
+                <div class="row">
+                    <div class="col-sm-6 col-md-4 ">
+                        <div class="form-group">
+                            <div class="row">
+                                <label for="records" class="col-sm-3">Records:</label>
+                                <select id="records" class="col-sm-9" wire:model='records'>
+                                    @foreach ([10, 25, 50, 100] as $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
 </div>
