@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Project;
 use Livewire\Component;
 use App\Models\Campaign;
+use Illuminate\Support\Facades\Cache;
 use App\Http\Livewire\Traits\WithSearch;
 use App\Http\Livewire\Traits\WithSorting;
 use App\Models\Performance as ModelsPerformance;
@@ -19,6 +20,7 @@ class Performance extends Component
     public $date;
     public $project;
     public $campaign;
+    public $records = 10;
 
     public function updatingSearch()
     {
@@ -84,7 +86,7 @@ class Performance extends Component
             'revenue',
         ])
         ->orderBy('date', 'DESC')
-        ->paginate();
+        ->paginate($this->records);
     }
 
     protected function getDates()
@@ -98,22 +100,24 @@ class Performance extends Component
 
     protected function getProjects()
     {
-        return Project::query()
-            ->orderBy('name')
-            ->select(['name', 'id'])
-            // ->take(10)
-            ->get();
+        return Cache::rememberForever('performances_projects', function () {
+            return Project::query()
+                ->orderBy('name')
+                ->select(['name', 'id'])
+                ->get();
+        });
     }
 
     protected function getCampaigns()
     {
-        return Campaign::query()
+        return Cache::rememberForever('performances_campaigns', function () {
+            return Campaign::query()
             ->orderBy('name')
             ->select(['name', 'id'])
             ->when($this->project, function ($query) {
                 $query->where('project_id', $this->project);
             })
-            // ->take(10)
             ->get();
+        });
     }
 }
