@@ -330,7 +330,7 @@ export default {
       default: false,
     },
     nextPunchId: {
-      required: true
+      required: false
     }
   },
 
@@ -469,4 +469,5 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
 </style>
