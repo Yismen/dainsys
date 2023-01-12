@@ -66,7 +66,7 @@ class PerformanceRepository
     public function downtimes()
     {
         return $this->performance
-            ->with('employee', 'campaign.project', 'downtimeReason')
+            ->with('employee.termination', 'campaign.project', 'downtimeReason')
             ->whereHas('downtimeReason')
             ->whereHas(
                 'campaign',
