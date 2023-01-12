@@ -60,6 +60,8 @@ class DowntimeController extends Controller
 
         $downtime = $downtime->create($request->all());
 
+        request()->flashExcept(['employee_id', '_token']);
+
         return redirect()->route('admin.downtimes.create')
             ->withSuccess('Data Created! for ' . $downtime->name);
     }
