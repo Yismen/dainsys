@@ -82,4 +82,14 @@ class RecipientsController extends Controller
         return redirect()->route('admin.recipients.index')
             ->withSuccess('Recipient ' . $recipient->name . ' has been updated!');
     }
+
+    protected function destroy(Recipient $recipient)
+    {
+        Cache::forget('recipients');
+
+        $recipient->delete();
+
+        return redirect()->route('admin.recipients.index')
+            ->withDanger('Recipient ' . $recipient->name . ' has been removed!');
+    }
 }
