@@ -29,7 +29,7 @@ mix
             path.join(__dirname, 'resources/**/*.blade.php'),
             path.join(__dirname, 'resources/**/*.vue')
         ],
-        whitelistPatterns: [
+        safelist: [
             /dataTable/,
             /dt/,
             /select2/,
