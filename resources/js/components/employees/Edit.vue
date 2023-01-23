@@ -4,80 +4,36 @@
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active">
-          <a
-            href="#info-employee"
-            aria-controls="info-employee"
-            role="tab"
-            data-toggle="tab"
-            >Editar</a
-          >
+          <a href="#info-employee" aria-controls="info-employee" role="tab" data-toggle="tab">Editar</a>
         </li>
         <li role="presentation">
-          <a
-            href="#termination"
-            aria-controls="termination"
-            role="tab"
-            data-toggle="tab"
-            >Salida</a
-          >
+          <a href="#termination" aria-controls="termination" role="tab" data-toggle="tab">Salida</a>
         </li>
         <li role="presentation">
-          <a
-            href="#photo-and-address"
-            aria-controls="photo-and-address"
-            role="tab"
-            data-toggle="tab"
-            >Foto y Dirección</a
-          >
+          <a href="#photo-and-address" aria-controls="photo-and-address" role="tab" data-toggle="tab">Foto y
+            Dirección</a>
         </li>
         <li role="presentation">
-          <a
-            href="#card_and_punch"
-            aria-controls="card_and_punch"
-            role="tab"
-            data-toggle="tab"
-            >IDs Tarjeta y Ponche</a
-          >
+          <a href="#card_and_punch" aria-controls="card_and_punch" role="tab" data-toggle="tab">IDs Tarjeta y Ponche</a>
         </li>
         <li role="presentation">
-          <a href="#tss" aria-controls="tss" role="tab" data-toggle="tab"
-            >TSS</a
-          >
+          <a href="#tss" aria-controls="tss" role="tab" data-toggle="tab">TSS</a>
         </li>
         <li role="presentation">
-          <a
-            href="#login-names"
-            aria-controls="login-names"
-            role="tab"
-            data-toggle="tab"
-            >Logins</a
-          >
+          <a href="#login-names" aria-controls="login-names" role="tab" data-toggle="tab">Logins</a>
         </li>
         <li role="presentation">
-          <a
-            href="#bank_account"
-            aria-controls="bank_account"
-            role="tab"
-            data-toggle="tab"
-            >Cuenta Banco</a
-          >
+          <a href="#bank_account" aria-controls="bank_account" role="tab" data-toggle="tab">Cuenta Banco</a>
         </li>
         <li role="presentation">
-          <a href="#others" aria-controls="others" role="tab" data-toggle="tab"
-            >Otros</a
-          >
+          <a href="#others" aria-controls="others" role="tab" data-toggle="tab">Otros</a>
         </li>
         <li class="pull-right">
-          <a href="/admin/employees" title="Back to List"
-            ><i class="fa fa-home"></i> Listado</a
-          >
+          <a href="/admin/employees" title="Back to List"><i class="fa fa-home"></i> Listado</a>
         </li>
       </ul>
       <div class="row">
-        <div
-          class="col-sm-10 col-sm-offset-1"
-          :class="{ 'bg-danger': !isActive }"
-        >
+        <div class="col-sm-10 col-sm-offset-1" :class="{ 'bg-danger': !isActive }">
           <h4>
             <a :href="'/admin/employees/' + employee.id">
               {{ employee.id }}, {{ employee.full_name }}
@@ -89,10 +45,7 @@
       <!-- Tab panes -->
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="info-employee">
-          <employee-form
-            :is-updating="true"
-            :employee="employee"
-          ></employee-form>
+          <employee-form :is-updating="true" :employee="employee"></employee-form>
         </div>
         <div role="tabpanel" class="tab-pane" id="termination">
           <EmployeeTermination />
@@ -209,4 +162,5 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
 </style>

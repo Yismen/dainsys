@@ -11,7 +11,7 @@
                 <input type="text" id="first_name" name="first_name" class="form-control input-sm"
                   v-model="form.fields.first_name" />
                 <span class="text-danger" v-if="form.error.has('first_name')">{{
-                    form.error.get("first_name")
+                  form.error.get("first_name")
                 }}</span>
               </div>
             </div>
@@ -25,7 +25,7 @@
                 <input type="text" id="second_first_name" name="second_first_name" class="form-control input-sm"
                   v-model="form.fields.second_first_name" />
                 <span class="text-danger" v-if="form.error.has('second_first_name')">{{
-                    form.error.get("second_first_name")
+                  form.error.get("second_first_name")
                 }}</span>
               </div>
             </div>
@@ -41,7 +41,7 @@
                 <input type="text" id="last_name" name="last_name" class="form-control input-sm"
                   v-model="form.fields.last_name" />
                 <span class="text-danger" v-if="form.error.has('last_name')">{{
-                    form.error.get("last_name")
+                  form.error.get("last_name")
                 }}</span>
               </div>
             </div>
@@ -55,7 +55,7 @@
                 <input type="text" id="second_last_name" name="second_last_name" class="form-control input-sm"
                   v-model="form.fields.second_last_name" />
                 <span class="text-danger" v-if="form.error.has('second_last_name')">{{
-                    form.error.get("second_last_name")
+                  form.error.get("second_last_name")
                 }}</span>
               </div>
             </div>
@@ -70,7 +70,8 @@
               <div class="col-sm-8">
                 <input type="text" id="personal_id" name="personal_id" class="form-control input-sm"
                   v-model="form.fields.personal_id" />
-                <span class="text-danger" v-if="form.error.has('personal_id')">{{ form.error.get("personal_id")
+                <span class="text-danger" v-if="form.error.has('personal_id')">{{
+                  form.error.get("personal_id")
                 }}</span>
               </div>
             </div>
@@ -83,7 +84,7 @@
                 <input type="text" id="passport" name="passport" class="form-control input-sm"
                   v-model="form.fields.passport" />
                 <span class="text-danger" v-if="form.error.has('passport')">{{
-                    form.error.get("passport")
+                  form.error.get("passport")
                 }}</span>
               </div>
             </div>
@@ -99,7 +100,7 @@
                 <date-picker input-class="form-control input-sm" v-model="form.fields.hire_date" name="hire_date"
                   format="MM/dd/yyyy" @updated="updateHireDate"></date-picker>
                 <span class="text-danger" v-if="form.error.has('hire_date')">{{
-                    form.error.get("hire_date")
+                  form.error.get("hire_date")
                 }}</span>
               </div>
             </div>
@@ -111,7 +112,8 @@
               <div class="col-sm-8">
                 <date-picker input-class="form-control input-sm" name="date_of_birth"
                   v-model="form.fields.date_of_birth" format="MM/dd/yyyy" @updated="updateDateOfBirth"></date-picker>
-                <span class="text-danger" v-if="form.error.has('date_of_birth')">{{ form.error.get("date_of_birth")
+                <span class="text-danger" v-if="form.error.has('date_of_birth')">{{
+                  form.error.get("date_of_birth")
                 }}</span>
               </div>
             </div>
@@ -127,7 +129,7 @@
                 <input type="text" id="cellphone_number" name="cellphone_number" class="form-control input-sm"
                   v-model="form.fields.cellphone_number" />
                 <span class="text-danger" v-if="form.error.has('cellphone_number')">{{
-                    form.error.get("cellphone_number")
+                  form.error.get("cellphone_number")
                 }}</span>
               </div>
             </div>
@@ -139,7 +141,8 @@
               <div class="col-sm-8">
                 <input type="text" id="secondary_phone" name="secondary_phone" class="form-control input-sm"
                   v-model="form.fields.secondary_phone" />
-                <span class="text-danger" v-if="form.error.has('secondary_phone')">{{ form.error.get("secondary_phone")
+                <span class="text-danger" v-if="form.error.has('secondary_phone')">{{
+                  form.error.get("secondary_phone")
                 }}</span>
               </div>
             </div>
@@ -178,7 +181,8 @@
                       "></create-position>
                   </div>
                 </div>
-                <span class="text-danger" v-if="form.error.has('position_id')">{{ form.error.get("position_id")
+                <span class="text-danger" v-if="form.error.has('position_id')">{{
+                  form.error.get("position_id")
                 }}</span>
               </div>
             </div>
@@ -194,7 +198,7 @@
                   </option>
                 </select>
                 <span class="text-danger" v-if="form.error.has('gender_id')">{{
-                    form.error.get("gender_id")
+                  form.error.get("gender_id")
                 }}</span>
               </div>
             </div>
@@ -210,7 +214,7 @@
                 <Select2 v-model="form.fields.site_id" name="site_id" :options="employee.sites_list"
                   @selectUpdated="selectUpdated" />
                 <span class="text-danger" v-if="form.error.has('site_id')">{{
-                    form.error.get("site_id")
+                  form.error.get("site_id")
                 }}</span>
               </div>
             </div>
@@ -223,7 +227,7 @@
                 <Select2 v-model="form.fields.project_id" name="project_id" :options="employee.projects_list"
                   @selectUpdated="selectUpdated" />
                 <span class="text-danger" v-if="form.error.has('project_id')">{{
-                    form.error.get("project_id")
+                  form.error.get("project_id")
                 }}</span>
               </div>
             </div>
@@ -243,7 +247,7 @@
                   </option>
                 </select>
                 <span class="text-danger" v-if="form.error.has('marital_id')">{{
-                    form.error.get("marital_id")
+                  form.error.get("marital_id")
                 }}</span>
               </div>
             </div>
@@ -264,7 +268,7 @@
                   </label>
                 </div>
                 <span class="text-danger" v-if="form.error.has('has_kids')">{{
-                    form.error.get("has_kids")
+                  form.error.get("has_kids")
                 }}</span>
               </div>
             </div>
@@ -279,7 +283,7 @@
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="punch" name="punch" v-model="form.fields.punch" />
                 <span class="text-danger" v-if="form.error.has('punch')">{{
-                    form.error.get("punch")
+                  form.error.get("punch")
                 }}</span>
               </div>
             </div>
@@ -292,7 +296,7 @@
         <div class="form-group">
           <div class="col-sm-10 col-sm-offset-2">
             <button type="submit" class="btn text-uppercase" :class="[isUpdating ? 'btn-warning' : 'btn-primary']">
-              {{ isUpdating ? "Actualizar" : "Crear" }}
+              {{ isUpdating? "Actualizar": "Crear" }}
             </button>
           </div>
         </div>
@@ -330,7 +334,7 @@ export default {
       default: false,
     },
     nextPunchId: {
-      required: true
+      required: false
     }
   },
 
@@ -391,7 +395,7 @@ export default {
         }).then((result) => {
           if (result.value) {
             window.location.assign(
-              "/admin/employees/" + response.data.id + "/edit"
+              `/admin/employees/${response.data.id}/edit`
             );
           }
         });
@@ -401,6 +405,17 @@ export default {
     updateEmployee() {
       this.form.put("/admin/employees/" + this.employee.id).then(({ data }) => {
         this.$store.dispatch("employee/set", data);
+
+        this.$swal({
+          type: "success",
+          toast: true,
+          position: 'bottom-end',
+          title: 'Updated!',
+          timer: 10000,
+          timerProgressBar: true
+
+        });
+
         return (this.form.fields = this.getEmployeeObject());
       });
     },
@@ -469,4 +484,5 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
 </style>

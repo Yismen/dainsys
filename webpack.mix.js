@@ -20,8 +20,8 @@ if (mix.inProduction()) {
 mix
     .sass('resources/sass/app.scss', 'public/css/app.css')
     .sass('resources/sass/site.scss', 'public/css/site.css')
-    .js('resources/js/app.js/', 'public/js/app.js')
-    .js('resources/js/site.js/', 'public/js/site.js')
+    .js('resources/js/site.js/', 'public/js/site.js').vue()
+    .js('resources/js/app.js/', 'public/js/app.js').vue()
     .purgeCss({
         rejected: true,
         // enabled: true, // If enabled, will purge css on development
@@ -29,7 +29,7 @@ mix
             path.join(__dirname, 'resources/**/*.blade.php'),
             path.join(__dirname, 'resources/**/*.vue')
         ],
-        whitelistPatterns: [
+        safelist: [
             /dataTable/,
             /dt/,
             /select2/,

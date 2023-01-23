@@ -1,5 +1,6 @@
+import Vue from 'vue/dist/vue'
 try {
-    window.VueSite = require('vue');
+    window.VueSite = Vue;
     window.$ = window.jQuery = require('jquery');
     window._ = require('lodash');
     // window.bootstrap = require('bootstrap');

@@ -1,4 +1,5 @@
-window.Vue = require('vue');
+import Vue from 'vue'
+window.Vue = Vue;
 window.Popper = require('popper.js').default;
 
 /**
@@ -18,6 +19,7 @@ Vue.$ioc.register('Datepicker', Datepicker);
  * Documentation: https://sweetalert2.github.io/#examples
  */
 import VueSweetalert2 from 'vue-sweetalert2';
+// import 'sweetalert2/dist/sweetalert2.min.css';
 Vue.use(VueSweetalert2);
 
 /**

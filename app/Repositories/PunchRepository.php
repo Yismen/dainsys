@@ -13,6 +13,6 @@ class PunchRepository
             ->whereRaw('length(punch) = ?', 4)
             ->first();
 
-        return str(++$punch->punch)->padLeft(4, '0');
+        return $punch ? str(++$punch->punch)->padLeft(4, '0') : '0001';
     }
 }

@@ -1,41 +1,40 @@
 <template>
-    <div class="_Termination" >
+    <div class="_Termination">
 
         <div class="box-header with-border bg-disabled" :class="[isActive ? 'bg-green' : 'bg-yellow']">
             <h4>Estado actual es {{ employee.status }}</h4>
         </div>
 
         <div class="box box-info">
-            <form class="" role="form" method="post"
-                @submit.prevent="terminate"
-                autocomplete="off"
-                @keydown="form.error.clear($event.target.name)"
-                @change="form.error.clear($event.target.name)"
-            >
+            <form class="" role="form" method="post" @submit.prevent="terminate" autocomplete="off"
+                @keydown="form.error.clear($event.target.name)" @change="form.error.clear($event.target.name)">
 
                 <div class="box-body">
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="form-group" :class="{'has-error': form.error.has('termination_date')}">
+                            <div class="form-group" :class="{ 'has-error': form.error.has('termination_date') }">
                                 <label for="input" class="">Fecha:</label>
-                                <date-picker input-class="form-control input-sm"
-                                    v-model="form.fields.termination_date"
-                                    @updated="updateTerminationDate"
-                                    :allowFutureDates="true"
-                                ></date-picker>
-                                <span class="text-danger" v-if="form.error.has('termination_date')">{{ form.error.get('termination_date') }}</span>
+                                <date-picker input-class="form-control input-sm" v-model="form.fields.termination_date"
+                                    @updated="updateTerminationDate" :allowFutureDates="true"></date-picker>
+                                <span class="text-danger" v-if="form.error.has('termination_date')">{{
+                                        form.error.get('termination_date')
+                                }}</span>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="form-group" :class="{'has-error': form.error.has('termination_type_id')}">
+                            <div class="form-group" :class="{ 'has-error': form.error.has('termination_type_id') }">
                                 <label for="input" class="">Tipo de Salida:</label>
                                 <div class="">
-                                    <select name="termination_type_id" id="termination_type_id" class="form-control input-sm" v-model="form.fields.termination_type_id">
-                                        <option v-for="type in employee.termination_type_list" :value="type.id" :key="type.id">
+                                    <select name="termination_type_id" id="termination_type_id"
+                                        class="form-control input-sm" v-model="form.fields.termination_type_id">
+                                        <option v-for="type in employee.termination_type_list" :value="type.id"
+                                            :key="type.id">
                                             {{ type.name }}
                                         </option>
                                     </select>
-                                    <span class="text-danger" v-if="form.error.has('termination_type_id')">{{ form.error.get('termination_type_id') }}</span>
+                                    <span class="text-danger" v-if="form.error.has('termination_type_id')">{{
+                                            form.error.get('termination_type_id')
+                                    }}</span>
                                 </div>
                             </div>
                         </div>
@@ -44,37 +43,42 @@
 
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="form-group" :class="{'has-error': form.error.has('termination_reason_id')}">
+                            <div class="form-group" :class="{ 'has-error': form.error.has('termination_reason_id') }">
                                 <label for="input" class="">Motivo Salida:</label>
                                 <div class="">
-                                    <select name="termination_reason_id" id="termination_reason_id" class="form-control input-sm"
-                                        v-model="form.fields.termination_reason_id">
-                                        <option v-for="reason in employee.termination_reason_list" :value="reason.id" :key="reason.id">
+                                    <select name="termination_reason_id" id="termination_reason_id"
+                                        class="form-control input-sm" v-model="form.fields.termination_reason_id">
+                                        <option v-for="reason in employee.termination_reason_list" :value="reason.id"
+                                            :key="reason.id">
                                             {{ reason.reason }}
                                         </option>
                                     </select>
-                                    <span class="text-danger" v-if="form.error.has('termination_reason_id')">{{ form.error.get('termination_reason_id') }}</span>
+                                    <span class="text-danger" v-if="form.error.has('termination_reason_id')">{{
+                                            form.error.get('termination_reason_id')
+                                    }}</span>
                                 </div>
                             </div>
                         </div>
                         <!-- ./Termination Reason-->
                         <div class="col-sm-6">
-                            <div class="form-group" :class="{'has-error': form.error.has('can_be_rehired')}">
+                            <div class="form-group" :class="{ 'has-error': form.error.has('can_be_rehired') }">
                                 <label for="input" class="">Recontratar?:</label>
-                                <div class="pad"
-                                     :class="[! form.fields.can_be_rehired ? 'bg-warning' :'bg-success']"
-                                >
+                                <div class="pad" :class="[!form.fields.can_be_rehired ? 'bg-warning' : 'bg-success']">
                                     <div class="radio">
                                         <label class="text-success">
-                                            <input type="radio" name="can_be_rehired" :value="true" v-model="form.fields.can_be_rehired">
+                                            <input type="radio" name="can_be_rehired" :value="true"
+                                                v-model="form.fields.can_be_rehired">
                                             Sí, se puede.
                                         </label>
                                         <label class="text-warning">
-                                            <input type="radio" name="can_be_rehired" :value="false" v-model="form.fields.can_be_rehired">
+                                            <input type="radio" name="can_be_rehired" :value="false"
+                                                v-model="form.fields.can_be_rehired">
                                             No, no lo haga.
                                         </label>
                                     </div>
-                                    <span class="text-danger" v-if="form.error.has('can_be_rehired')">{{ form.error.get('can_be_rehired') }}</span>
+                                    <span class="text-danger" v-if="form.error.has('can_be_rehired')">{{
+                                            form.error.get('can_be_rehired')
+                                    }}</span>
                                 </div>
                             </div>
                         </div>
@@ -82,17 +86,15 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-6" :class="{'has-error': form.error.has('comments')}">
+                        <div class="col-sm-6" :class="{ 'has-error': form.error.has('comments') }">
                             <div class="form-group" v-if="reasonIsOther">
                                 <label for="input" class="">Comentarios:</label>
                                 <div class="">
-                                    <textarea
-                                        id="comments"
-                                        name="comments" class="form-control input-sm"
-                                        v-model="form.fields.comments" rows="5"
-                                        :required="reasonIsOther"
-                                    ></textarea>
-                                    <span class="text-danger" v-if="form.error.has('comments')">{{ form.error.get('comments') }}</span>
+                                    <textarea id="comments" name="comments" class="form-control input-sm"
+                                        v-model="form.fields.comments" rows="5" :required="reasonIsOther"></textarea>
+                                    <span class="text-danger" v-if="form.error.has('comments')">{{
+                                            form.error.get('comments')
+                                    }}</span>
                                 </div>
                             </div> <!-- ./Comments-->
                         </div>
@@ -115,25 +117,23 @@
             </form>
         </div>
 
-        <EmployeeReactivation
-            :current="employee.hire_date"
-            @employee-reactivated="reactivated"/>
+        <EmployeeReactivation :current="employee.hire_date" @employee-reactivated="reactivated" />
     </div>
 </template>
 
 <script>
-    import EmployeeReactivation from './ReactivationComponent';
-    import DatePicker from './../DatePicker'
+import EmployeeReactivation from './ReactivationComponent';
+import DatePicker from './../DatePicker'
 
-    export default {
+export default {
 
     name: 'TerminationComponent',
 
-    data () {
+    data() {
         return {
-            form: new (this.$ioc.resolve('Form')) (
+            form: new (this.$ioc.resolve('Form'))(
                 this.getTermination(),
-                {reset: false}
+                { reset: false }
             )
         };
     },
@@ -148,9 +148,7 @@
         reasonIsOther() {
             let currentId = this.form.fields.termination_reason_id;
 
-            console.log("list", this.employee.termination_reason_list);
-
-            let currentReason = this.employee.termination_reason_list.filter(function(item) {
+            let currentReason = this.employee.termination_reason_list.filter(function (item) {
                 return item.id == currentId
             });
 
@@ -171,12 +169,12 @@
         },
         getTermination() {
             return this.$store.getters['employee/getEmployee'].termination ?
-                    this.$store.getters['employee/getEmployee'].termination :
-                    {
-                        termination_date: new Date,
-                        termination_type_id: null,
-                        termination_reason_id: null
-                    }
+                this.$store.getters['employee/getEmployee'].termination :
+                {
+                    termination_date: new Date,
+                    termination_type_id: null,
+                    termination_reason_id: null
+                }
         },
         reactivated(data) {
             console.log(data)
@@ -197,4 +195,5 @@
 </script>
 
 <style lang="css" scoped>
+
 </style>
