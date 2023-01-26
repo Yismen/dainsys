@@ -107,6 +107,7 @@ class Kernel extends ConsoleKernel
             '--model' => [
                 \App\Models\Performance::class,
                 \App\Models\UserLogin::class,
+                \App\Models\Notification::class,
             ]
         ])->dailyAt('02:15');
 
