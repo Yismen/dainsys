@@ -4,9 +4,10 @@ namespace Tests\Unit;
 
 use Exception;
 use Tests\TestCase;
-use App\Jobs\NotifyBirthdays;
+use App\Models\Performance;
 use Illuminate\Queue\Events\JobFailed;
 use App\Notifications\UserAppNotification;
+use App\Jobs\UpdateBillableHoursAndRevenue;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -20,7 +21,7 @@ class NotifyOnFailedJobsTest extends TestCase
         Notification::fake();
 
         $user = $this->userWithRole('admin');
-        $job = new NotifyBirthdays();
+        $job = new UpdateBillableHoursAndRevenue(Performance::all());
 
         event(new JobFailed('test', $job, new Exception()));
 

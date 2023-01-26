@@ -5,7 +5,6 @@ namespace App\Console\Commands\General;
 use Carbon\Carbon;
 use App\Mail\CommandsBaseMail;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
@@ -43,6 +42,8 @@ class SendGeneralDailyRawReportCommand extends Command
      * Report subject name
      */
     protected string $mail_subject;
+
+    protected string $file_name;
 
     /**
      * Create a new command instance.
@@ -95,8 +96,6 @@ class SendGeneralDailyRawReportCommand extends Command
             }
         } catch (\Throwable $th) {
             $this->error('Something went wrong');
-
-            Log::debug($th);
 
             $this->notifyUsersAndLogError($th);
         }
