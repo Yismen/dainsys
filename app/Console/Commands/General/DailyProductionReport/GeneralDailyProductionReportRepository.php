@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands\General\DailyProductionReport;
 
-use App\Connections\RingCentralConnection;
 use Illuminate\Support\Facades\DB;
+use App\Connections\RingCentralConnection;
 
 class GeneralDailyProductionReportRepository extends RingCentralConnection
 {
@@ -12,6 +12,7 @@ class GeneralDailyProductionReportRepository extends RingCentralConnection
     protected $date_from;
 
     protected $date_to;
+    protected $dispositions;
 
     protected string $team_group;
 

@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 use App\Mail\Political\PoliticalFlashMail;
 use App\Exports\Political\FlashReportExport;
 use App\Repositories\Political\PoliticalFlashRepository;
@@ -69,6 +70,9 @@ class SendPoliticalFlashReportCommand extends Command
 
                 $this->info('Political Hourly Flash sent!');
             } else {
+                if (Storage::exists($file_name)) {
+                    Storage::delete($file_name);
+                }
                 $this->warn('Flash already sent!. Please review old mails in your inbox or run `php artisan cache:clear` to resend');
             }
         } catch (\Throwable $th) {

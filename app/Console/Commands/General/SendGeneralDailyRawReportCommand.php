@@ -7,6 +7,7 @@ use App\Mail\CommandsBaseMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
 use App\Console\Commands\General\DailyRawReport\GeneralDailyRawReportExport;
 use App\Console\Commands\General\DailyRawReport\GeneralDailyRawReportRepository;
@@ -92,6 +93,10 @@ class SendGeneralDailyRawReportCommand extends Command
 
                 $this->line("{$this->mail_subject} Sent!");
             } else {
+                if (Storage::exists($this->file_name)) {
+                    Storage::delete($this->file_name);
+                }
+
                 $this->warn('No data for this date. Nothing sent');
             }
         } catch (\Throwable $th) {

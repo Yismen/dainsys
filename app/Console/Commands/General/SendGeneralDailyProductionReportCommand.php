@@ -7,6 +7,7 @@ use App\Mail\CommandsBaseMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
 use App\Console\Commands\General\DailyProductionReport\GeneralDailyProductionReportExport;
 use App\Console\Commands\General\DailyProductionReport\GeneralDailyProductionReportRepository;
@@ -96,6 +97,10 @@ class SendGeneralDailyProductionReportCommand extends Command
             }
         } catch (\Throwable $th) {
             $this->error('Something went wrong');
+
+            if (Storage::exists($this->file_name)) {
+                Storage::delete($this->file_name);
+            }
 
             $this->notifyUsersAndLogError($th);
         }
