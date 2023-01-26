@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use SplFileInfo;
 use Carbon\Carbon;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -68,8 +67,6 @@ class ClearTempraryFiles extends Command
         $count = count($this->files);
 
         if ($count === 0) {
-            $this->
-            info("Nothing to delete!");
             return;
         }
 
@@ -81,8 +78,8 @@ class ClearTempraryFiles extends Command
     {
         foreach ($this->option('additional_dirs') as $value) {
             $this->directories[$value] = '*';
-        };
-        
+        }
+
         foreach ($this->directories as $directory => $pattern) {
             if ($this->filesystem->exists(storage_path($directory))) {
                 foreach ($this->filesystem->files(storage_path($directory)) as $file) {
@@ -105,7 +102,7 @@ class ClearTempraryFiles extends Command
         if (strlen($pattern) === 0) {
             return true;
         }
-        
+
         return Str::startsWith($file_name, $pattern);
     }
 
@@ -119,16 +116,15 @@ class ClearTempraryFiles extends Command
     protected function interactWithFiles()
     {
         foreach ($this->files as $file) {
-            ;
             $file_name = $file->getPathname();
-            
+
             if ($this->option('test')) {
                 $this->info($file_name);
             } else {
                 $this->filesystem->delete($file);
 
                 $this->warn($file_name);
-            };
+            }
         }
     }
 }

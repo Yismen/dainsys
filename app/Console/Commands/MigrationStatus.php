@@ -40,7 +40,6 @@ class MigrationStatus extends Command
      */
     public function handle()
     {
-        \Log::error('Error Message');
         $this->setMigrationsArray()
             ->setHeaders()
             ->table($this->headers, $this->migration_array);

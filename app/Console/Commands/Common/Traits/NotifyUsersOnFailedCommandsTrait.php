@@ -4,8 +4,8 @@ namespace App\Console\Commands\Common\Traits;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
-use App\Notifications\UserAppNotification;
 use Illuminate\Support\Facades\Cache;
+use App\Notifications\UserAppNotification;
 
 trait NotifyUsersOnFailedCommandsTrait
 {
@@ -20,7 +20,7 @@ trait NotifyUsersOnFailedCommandsTrait
     /**
      * Notify all queried users;
      *
-     * @param \Throwable $th
+     * @param  \Throwable $th
      * @return object
      */
     protected function notifyUsers($th)
@@ -48,20 +48,18 @@ trait NotifyUsersOnFailedCommandsTrait
     /**
      * Save the exception to a log.
      *
-     * @param \Throwable $th
+     * @param  \Throwable $th
      * @return object
      */
     protected function logError(\Throwable $th)
     {
-        Log::error($th);
-
         return $this;
     }
 
     /**
      * Wrapper to Notify all desired users and log the errors
      *
-     * @param \Throwable $th
+     * @param  \Throwable $th
      * @return void
      */
     protected function notifyUsersAndLogError(\Throwable $th)

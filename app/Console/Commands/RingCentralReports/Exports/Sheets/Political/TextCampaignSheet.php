@@ -66,8 +66,6 @@ class TextCampaignSheet extends BaseRingCentralSheet
             if (!Cache::has($cache_key)) {
                 Cache::forever($cache_key, 'any');
 
-                info('Cache-key: ' . $cache_key);
-
                 $this->exporter->data_is_new = true;
             }
         }
