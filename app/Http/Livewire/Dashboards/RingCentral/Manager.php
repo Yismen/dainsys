@@ -30,6 +30,7 @@ class Manager extends Component
 
     public function render()
     {
+        Cache::flush();
         return view('livewire.dashboards.ring-central.manager', [
             'teams' => $this->teams(),
             'clients' => $this->clients(),
@@ -46,22 +47,21 @@ class Manager extends Component
                 $parse = new stdClass();
 
                 $parse->client = $key;
-                $parse->total_login_time = number_format($prod->sum('total_login_time_mins') / 60, 2);
-                $parse->total_work_time = number_format($prod->sum('total_work_time_mins') / 60, 2);
+                $parse->total_login_time = $prod->sum('total_login_time_mins') / 60;
+                $parse->total_work_time = $prod->sum('total_work_time_mins') / 60;
 
-                $parse->total_talk_time_mins = number_format($prod->sum('total_talk_time_mins'), 2);
-                $parse->total_pending_disp_time_mins = number_format($prod->sum('total_pending_disp_time_mins'), 2);
+                $parse->total_talk_time_mins = $prod->sum('total_talk_time_mins');
+                $parse->total_pending_disp_time_mins = $prod->sum('total_pending_disp_time_mins');
 
                 $parse->total_calls = $prod->sum('total_calls');
                 $parse->total_contacts = $prod->sum('total_contacts');
                 $parse->total_sales = $prod->sum('total_sales');
-
-                $parse->talk_time_avg_mins = $parse->total_calls > 0 ? number_format($parse->total_talk_time_mins / $parse->total_calls, 2) : 0;
-                $parse->dispo_avg_mins = $parse->total_calls > 0 ? number_format($parse->total_pending_disp_time_mins / $parse->total_calls, 2) : 0;
-                $parse->efficiency_rate = $parse->total_login_time > 0 ? number_format($parse->total_work_time / $parse->total_login_time, 2) : 0;
-                $parse->contact_ratio = $parse->total_calls > 0 ? number_format($parse->total_contacts / $parse->total_contacts, 2) : 0;
-                $parse->conversion_ratio = $parse->total_contacts > 0 ? number_format($parse->total_sales / $parse->total_contacts, 2) : 0;
-                $parse->sph = $parse->total_work_time > 0 ? number_format($parse->total_sales / $parse->total_work_time, 2) : 0;
+                $parse->talk_time_avg_mins = $parse->total_calls === 0 ? 0 : $parse->total_talk_time_mins / $parse->total_calls;
+                $parse->dispo_avg_mins = $parse->total_calls === 0 ? 0 : $parse->total_pending_disp_time_mins / $parse->total_calls;
+                $parse->efficiency_rate = $parse->total_login_time === 0 ? 0 : $parse->total_work_time / $parse->total_login_time * 100;
+                $parse->contact_ratio = $parse->total_calls === 0 ? 0 : $parse->total_contacts / $parse->total_calls * 100;
+                $parse->conversion_ratio = $parse->total_contacts === 0 ? 0 : $parse->total_sales / $parse->total_contacts * 100;
+                $parse->sph = $parse->total_work_time === 0 ? 0 : $parse->total_sales / $parse->total_work_time;
 
                 return $parse;
             });
@@ -86,13 +86,13 @@ class Manager extends Component
                     );
             });
 
-            $prod->total_duration = $parsedCalls->sum('total_duration');
-            $prod->total_sec_on_hold = $parsedCalls->sum('total_sec_on_hold');
-            $prod->total_agent_wait_time = $parsedCalls->sum('total_agent_wait_time');
-            $prod->total_agent_wrap_time = $parsedCalls->sum('total_agent_wrap_time');
-            $prod->total_calls = $parsedCalls->sum('total_calls');
-            $prod->total_contacts = $parsedCalls->sum('total_contacts');
-            $prod->total_sales = $parsedCalls->sum('total_sales');
+            $prod->total_duration = $parsedCalls->sum('total_duration') ?? 0;
+            $prod->total_sec_on_hold = $parsedCalls->sum('total_sec_on_hold') ?? 0;
+            $prod->total_agent_wait_time = $parsedCalls->sum('total_agent_wait_time') ?? 0;
+            $prod->total_agent_wrap_time = $parsedCalls->sum('total_agent_wrap_time') ?? 0;
+            $prod->total_calls = $parsedCalls->sum('total_calls') ?? 0;
+            $prod->total_contacts = $parsedCalls->sum('total_contacts') ?? 0;
+            $prod->total_sales = $parsedCalls->sum('total_sales') ?? 0;
 
             return $prod;
         });

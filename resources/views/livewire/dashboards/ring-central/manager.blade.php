@@ -19,7 +19,7 @@
                 <div class="input-group">
                     <label for="date-from">Date From:</label>
                     <input type="date" name="" id="date-from" class="form-control" pattern="" title=""
-                        wire:model.lazy='date_from'>
+                        wire:model.defer='date_from'>
                 </div>
             </div>
 
@@ -27,7 +27,7 @@
                 <div class="input-group">
                     <label for="date-to">Date To:</label>
                     <input type="date" name="" id="date-to" class="form-control" pattern="" title=""
-                        wire:model.lazy='date_to'>
+                        wire:model.defer='date_to'>
                 </div>
             </div>
 
@@ -90,37 +90,37 @@
                     <tr>
                         <td>{{ $item->client }}</td>
                         <td>
-                            {{ $item->total_login_time === 0 ? '-' : $item->total_login_time }}
+                            {{ $item->total_login_time === 0 ? '-' : number_format($item->total_login_time, 2) }}
                         </td>
                         <td>
-                            {{ $item->total_work_time === 0 ? '-' : $item->total_work_time }}
+                            {{ $item->total_work_time === 0 ? '-' : number_format($item->total_work_time, 2) }}
                         </td>
                         <td>
-                            {{ $item->total_calls === 0 ? '-' : $item->total_calls }}
+                            {{ $item->total_calls === 0 ? '-' : number_format($item->total_calls, 0) }}
                         </td>
                         <td>
-                            {{ $item->total_contacts === 0 ? '-' : $item->total_contacts }}
+                            {{ $item->total_contacts === 0 ? '-' : number_format($item->total_contacts, 0) }}
                         </td>
                         <td>
-                            {{ $item->total_sales === 0 ? '-' : $item->total_sales }}
+                            {{ $item->total_sales === 0 ? '-' : number_format($item->total_sales, 0) }}
                         </td>
                         <td>
-                            {{ $item->talk_time_avg_mins === 0 ? '-' : $item->talk_time_avg_mins }}
+                            {{ $item->talk_time_avg_mins === 0 ? '-' : number_format($item->talk_time_avg_mins, 2) }}
                         </td>
                         <td>
-                            {{ $item->dispo_avg_mins === 0 ? '-' : $item->dispo_avg_mins }}
+                            {{ $item->dispo_avg_mins === 0 ? '-' : number_format($item->dispo_avg_mins, 2) }}
                         </td>
                         <td>
-                            {{ $item->efficiency_rate === 0 ? '-' : $item->efficiency_rate }}%
+                            {{ $item->efficiency_rate === 0 ? '-' : number_format($item->efficiency_rate, 2) . '%' }}
                         </td>
                         <td>
-                            {{ $item->contact_ratio === 0 ? '-' : $item->contact_ratio }}%
+                            {{ $item->contact_ratio === 0 ? '-' : number_format($item->contact_ratio) . '%' }}
                         </td>
                         <td>
-                            {{ $item->conversion_ratio === 0 ? '-' : $item->conversion_ratio }}%
+                            {{ $item->conversion_ratio === 0 ? '-' : number_format($item->conversion_ratio, 2) . '%' }}
                         </td>
                         <td>
-                            {{ $item->sph == 0 ? '-' : $item->sph }}
+                            {{ $item->sph == 0 ? '-' : number_format($item->sph, 2) }}
                         </td>
                     </tr>
                     @endforeach
@@ -136,8 +136,8 @@
                     $total_talk_time = $total_calls * $production_data->sum('total_sales');
                     @endphp
                     <th>Totals:</th>
-                    <th>{{ $total_login_time }}</th>
-                    <th>{{ $total_work_time }}</th>
+                    <th>{{ number_format($total_login_time, 2) }}</th>
+                    <th>{{ number_format($total_work_time, 2) }}</th>
                     <th>{{ $total_calls }}</th>
                     <th>{{ $total_contacts }}</th>
                     <th>{{ $total_sales }}</th>
