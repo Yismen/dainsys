@@ -68,6 +68,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
             ->name('admin_dashboard');
         Route::get('default', [\App\Http\Controllers\Dashboards\DefaultDashboardController::class, 'index'])
             ->name('default_dashboard');
+        Route::get('ring_central/manager', [\App\Http\Controllers\Dashboards\RingCentral\ManagerController::class, 'index'])
+            ->name('dashboards.ring_central');
     });
 
     Route::resource('departments', \App\Http\Controllers\DepartmentsController::class);

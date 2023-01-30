@@ -2,21 +2,15 @@
 
 namespace App\Services\RingCentral\Tables;
 
-use Illuminate\Support\Facades\DB;
 use App\Models\RingCentral\SessionRaw;
 use Illuminate\Database\Eloquent\Builder;
 
 class SessionRawService extends AbstractRingCentralService
 {
-    public function make(array $fields): Builder
+    protected function baseQuery(): Builder
     {
-        return $this->build($fields, new SessionRaw());
-    }
-
-    public function aggregates(): string
-    {
-        return DB::raw('            
-            SUM(login_time_mins) AS total_login_time_mins
+        return SessionRaw::query()
+            ->selectRaw('SUM(login_time_mins) AS total_login_time_mins
             ,SUM(work_time_mins) AS total_work_time_mins
             ,SUM(talk_time_mins) AS total_talk_time_mins
             ,SUM(off_hook_time_mins) AS total_off_hook_time_mins
@@ -33,14 +27,6 @@ class SessionRawService extends AbstractRingCentralService
             ,SUM(presented) AS total_presented
             ,SUM(accepted) AS total_accepted
             ,SUM(calls_placed_on_hold) AS total_calls_placed_on_hold
-            ,SUM(monitoring_sessions) AS total_monitoring_sessions    
-        ');
-    }
-
-    protected function defaultFields(): array
-    {
-        return [
-            'agent_id', 'agent_name', 'team', 'date', 'dial_group'
-        ];
+            ,SUM(monitoring_sessions) AS total_monitoring_sessions');
     }
 }
