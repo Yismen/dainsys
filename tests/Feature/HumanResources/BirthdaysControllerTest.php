@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\HumanResources;
 
+use Tests\TestCase;
 use App\Models\Site;
 use App\Models\Employee;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class BirthdaysControllerTest extends TestCase
@@ -138,7 +138,7 @@ class BirthdaysControllerTest extends TestCase
         ]);
         $employee_with_birthday_next_month = factory(Employee::class)->create([
             'site_id' => $site->id,
-            'date_of_birth' => now()->startOfMonth()->addMonth()
+            'date_of_birth' => now()->addMonth()
         ]);
         $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
 
