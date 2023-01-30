@@ -22,20 +22,24 @@ class Manager extends Component
 
     public function mount()
     {
-        $this->date_from = now()->format('Y-m-d');
-        $this->date_to = now()->format('Y-m-d');
-        $this->team = 'ECC%'; //'ECC-SD'
-        $this->client = '%';
+        $this->resetFilters();
     }
 
     public function render()
     {
-        Cache::flush();
         return view('livewire.dashboards.ring-central.manager', [
             'teams' => $this->teams(),
             'clients' => $this->clients(),
             'production_data' => $this->transformProductionData(),
         ]);
+    }
+
+    public function resetFilters()
+    {
+        $this->date_from = now()->format('Y-m-d');
+        $this->date_to = now()->format('Y-m-d');
+        $this->team = 'ECC%'; //'ECC-SD'
+        $this->client = '%';
     }
 
     protected function transformProductionData()
@@ -47,6 +51,7 @@ class Manager extends Component
                 $parse = new stdClass();
 
                 $parse->client = $key;
+                $parse->count = $prod->count();
                 $parse->total_login_time = $prod->sum('total_login_time_mins') / 60;
                 $parse->total_work_time = $prod->sum('total_work_time_mins') / 60;
 

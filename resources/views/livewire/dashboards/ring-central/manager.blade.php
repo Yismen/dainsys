@@ -56,6 +56,10 @@
                     <i class="fa fa-refresh"></i>
                     Refresh
                 </button>
+                <button type="button" class="btn btn-default ml-8" wire:click='resetFilters()'>
+                    <i class="fa fa-recycle"></i>
+                    Reset Filters
+                </button>
             </div>
 
         </div>
@@ -72,6 +76,7 @@
                 <thead>
                     <tr>
                         <th>Client</th>
+                        <th>Agents</th>
                         <th>Login Time</th>
                         <th>Work Time</th>
                         <th>Calls</th>
@@ -89,6 +94,7 @@
                     @foreach ($production_data as $item)
                     <tr>
                         <td>{{ $item->client }}</td>
+                        <td>{{ $item->count }}</td>
                         <td>
                             {{ $item->total_login_time === 0 ? '-' : number_format($item->total_login_time, 2) }}
                         </td>
@@ -133,9 +139,10 @@
                     $total_calls = $production_data->sum('total_calls');
                     $total_contacts = $production_data->sum('total_contacts');
                     $total_sales = $production_data->sum('total_sales');
-                    $total_talk_time = $total_calls * $production_data->sum('total_sales');
+                    $total_talk_time = $total_calls * $production_data->sum('totl_sales');
                     @endphp
                     <th>Totals:</th>
+                    <th>{{ number_format($production_data->sum('count')) }}</th>
                     <th>{{ number_format($total_login_time, 2) }}</th>
                     <th>{{ number_format($total_work_time, 2) }}</th>
                     <th>{{ $total_calls }}</th>
