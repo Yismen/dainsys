@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Models\Employee;
+use App\Models\Termination;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -19,10 +20,12 @@ class EmployeeTerminated
      * @return void
      */
     public Employee $employee;
+    public Termination $termination;
 
-    public function __construct(Employee $employee)
+    public function __construct(Employee $employee, Termination $termination)
     {
         $this->employee = $employee;
+        $this->termination = $termination;
     }
 
     /**

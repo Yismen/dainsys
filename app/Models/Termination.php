@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use App\Events\EmployeeTerminated;
 use App\Models\DainsysModel as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -11,7 +10,7 @@ class Termination extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['employee_id', 'termination_date', 'termination_type_id', 'termination_reason_id', 'can_be_rehired', 'comments'];
+    protected $fillable = ['employee_id', 'termination_date', 'termination_type_id', 'termination_reason_id', 'can_be_rehired', 'comments', 'employee_data'];
 
     protected $dates = ['termination_date'];
 

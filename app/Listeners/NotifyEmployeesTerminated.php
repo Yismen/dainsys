@@ -2,7 +2,10 @@
 
 namespace App\Listeners;
 
-use App\Events\EmployeesUpdates;
+use App\Models\Report;
+use App\Events\EmployeeTerminated;
+use App\Mail\EmployeeTerminatedMail;
+use Illuminate\Support\Facades\Mail;
 
 class NotifyEmployeesTerminated
 {
@@ -18,10 +21,15 @@ class NotifyEmployeesTerminated
     /**
      * Handle the event.
      *
-     * @param  EmployeesUpdates $event
+     * @param  EmployeeTerminated $event
      * @return void
      */
-    public function handle(EmployeesUpdates $event)
+    public function handle(EmployeeTerminated $event)
     {
+        $report = Report::query()->where('key', 'dainsys:employees-terminated')->first();
+
+        if ($report) {
+            Mail::send(new EmployeeTerminatedMail($event->employee, $report->mailableRecipients()));
+        }
     }
 }

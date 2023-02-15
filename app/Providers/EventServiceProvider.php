@@ -22,7 +22,8 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\SemdEmailToHumanResources::class,
         ],
         \App\Events\EmployeeTerminated::class => [
-            \App\Listeners\EmployeeTerminated::class,
+            \App\Listeners\UpdateTerminationDataField::class,
+            \App\Listeners\NotifyEmployeesTerminated::class,
         ],
         \App\Events\EmployeeReactivated::class => [
             \App\Listeners\EmployeeReactivated::class,
@@ -43,7 +44,6 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\UpdateUserSettings::class,
         ],
         \App\Events\EmployeesUpdates::class => [
-            \App\Listeners\NotifyEmployeesTerminated::class,
             \App\Listeners\NotifyEmployeesHired::class,
         ],
         \Illuminate\Auth\Events\Login::class => [
