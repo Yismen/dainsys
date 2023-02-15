@@ -132,7 +132,6 @@ class Universals extends Component
         })
         ->paginate(15, ['*'], $method);
 
-
         $this->$method = $employees;
 
         return $employees;
@@ -159,5 +158,11 @@ class Universals extends Component
         foreach ($this->universals as $employee) {
             $employee->universal->delete();
         }
+    }
+
+    public function updatingSearch(string $search)
+    {
+        $this->resetPage('universals');
+        $this->resetPage('noUniversals');
     }
 }
