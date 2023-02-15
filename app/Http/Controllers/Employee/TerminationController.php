@@ -25,8 +25,8 @@ class TerminationController extends Controller
         if ($employee->termination()->exists()) {
             $employee->termination()->update($request->only(['termination_date', 'termination_type_id', 'termination_reason_id', 'can_be_rehired', 'comments']));
         } else {
-            $employee->termination()->create($request->only(['termination_date', 'termination_type_id', 'termination_reason_id', 'can_be_rehired', 'comments']));
-            event(new EmployeeTerminated($employee));
+            $termination = $employee->termination()->create($request->only(['termination_date', 'termination_type_id', 'termination_reason_id', 'can_be_rehired', 'comments']));
+            event(new EmployeeTerminated($employee, $termination));
         }
 
         return $employee->load(

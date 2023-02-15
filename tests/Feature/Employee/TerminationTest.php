@@ -30,7 +30,7 @@ class TerminationTest extends TestCase
 
     /** @test */
     public function employee_termination_is_created()
-    {        
+    {
         $employee = create(Employee::class);
         $termination = make(Termination::class)->toArray();
 
@@ -44,7 +44,7 @@ class TerminationTest extends TestCase
 
     /** @test */
     public function employee_termination_data_is_validated()
-    {        
+    {
         $termination = create(Termination::class);
         $updated_attributes = [
             'employee_id' => '',
@@ -78,7 +78,7 @@ class TerminationTest extends TestCase
     public function employee_termination_send_email_when_employee_is_terminated()
     {
         Mail::fake();
-        
+
         $employee = create(Employee::class);
         $termination = make(Termination::class)->toArray();
 
@@ -87,5 +87,30 @@ class TerminationTest extends TestCase
             ->post(route('admin.employees.terminate', $employee->id), $termination);
 
         Mail::assertSent(EmployeeTerminatedMail::class);
+    }
+
+    /** @test */
+    public function employee_termination_saves_employee_data_when_created()
+    {
+        $employee = create(Employee::class);
+        $termination = make(Termination::class)->toArray();
+
+        $employee_data = json_encode([
+            'name' => $employee->full_name,
+            'hire_date' => $employee->hire_date,
+            'site' => optional($employee)->site->name,
+            'department' => optional($employee->position->department)->name,
+            'project' => optional($employee->project)->name,
+            'supervisor' => optional($employee->supervisor)->name,
+            'salary' => optional($employee->position)->salary,
+            'payment_type' => optional($employee->position->payment_type)->name,
+        ]);
+
+        $response = $this
+            ->actingAs($this->user())
+            ->post(route('admin.employees.terminate', $employee->id), $termination);
+
+        $response->assertOk();
+        $this->assertDatabaseHas('terminations', ['employee_id' => $employee->id, 'employee_data' => $employee_data]);
     }
 }

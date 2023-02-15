@@ -94,8 +94,8 @@
                             <div class="form-group">
                                 <label for="search">Search</label>
                                 <div class="{{ strlen($search) > 0 ? 'input-group' : '' }}">
-                                    <input type="text" class="form-control" wire:model.lazy="search" wire:ignore
-                                        id="search">
+                                    <input type="text" class="form-control" wire:model.debounce.750ms="search"
+                                        wire:ignore id="search">
 
                                     @if (strlen($search) > 0)
                                     <span class="input-group-btn" title="Clear search">
