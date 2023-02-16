@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="row">
-	<div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1">
+	<div class="col-lg-10 col-lg-offset-1">
 		<div class="box box-primary">
 			<div class="box-body">
 				<div class="row">
