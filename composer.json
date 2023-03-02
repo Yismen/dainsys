@@ -10,6 +10,7 @@
         "barryvdh/laravel-debugbar": "^3.4",
         "cviebrock/eloquent-sluggable": "8.*",
         "dainsys/clear-laravel-logs": "^2.1",
+        "dainsys/ring_central": "^0.2.0",
         "doctrine/dbal": "^2.8",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
