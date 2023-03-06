@@ -4,15 +4,15 @@ namespace App\Console\Commands;
 
 use Dainsys\RingCentral\Console\Commands\ProductionReportCommand;
 
-class PublishingProductionReport extends ProductionReportCommand
+class HTLProductionReport extends ProductionReportCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'publishing:production-report 
-    {dates? : Range of dates between the data will be queried. Exc: 2023-01-01 or 2023-01-01,2023-01-02. Today\'s date will be assumed if not passed!}
+    protected $signature = 'htl:production-report 
+        {dates? : Range of dates between the data will be queried. Exc: 2023-01-01 or 2023-01-01,2023-01-02. Today\'s date will be assumed if not passed! }
         ';
 
     /**
@@ -22,7 +22,7 @@ class PublishingProductionReport extends ProductionReportCommand
         */
     public function dialGroups(): array
     {
-        return ['PUB%'];
+        return ['HTL%', 'AKP%', 'BCM%', 'EMB%'];
     }
 
     /**
@@ -40,6 +40,7 @@ class PublishingProductionReport extends ProductionReportCommand
     */
     public function subject(): string
     {
-        return str($this->name)->replace(':', ' ')->headline();
+        return 'HTL Production Report';
+        // return str($this->name)->replace(':', ' ')->headline();
     }
 }
