@@ -77,7 +77,10 @@ class Kernel extends ConsoleKernel
         ])->everyThirtyMinutes();
 
         $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalFlashReportCommand::class)->hourly();
-        $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalProductionReportCommand::class)->hourly();
+
+        $schedule->command(\App\Console\Commands\PoliticalProductionReport::class, [
+            now()->format('Y-m-d')
+        ])->hourly();
         $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalTextCampaignReportCommand::class)->dailyAt('07:20');
 
         $schedule->command(\App\Console\Commands\Inbound\SendDailySummaryCommand::class)->dailyAt('06:20');
