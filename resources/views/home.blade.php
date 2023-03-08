@@ -1,4 +1,4 @@
-@extends('layouts.'.$layout->site(), ['page_header'=>'Home', 'page_description'=>'Home page!',
+@extends('layouts.site', ['page_header'=>'Home', 'page_description'=>'Home page!',
 'hide_content_header'=>false])
 
 @section('content')
