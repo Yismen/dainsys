@@ -28,7 +28,7 @@ class SchedulesController extends Controller
      */
     public function index()
     {
-        if (!request()->ajax()) {
+        if (! request()->ajax()) {
             $employees_missing_schedule = Employee::actives()
                 ->whereDoesntHave(
                     'schedules',

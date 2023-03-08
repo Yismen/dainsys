@@ -26,7 +26,7 @@ class BecausePerformanceReportExport implements FromView, WithTitle, WithEvents,
 
     public function __construct(array $options)
     {
-        $this->sheet = $options['campaign'] == '%' ? 'Overall' : $options['campaign'];
+        $this->sheet = $options['campaign'] === '%' ? 'Overall' : $options['campaign'];
 
         $this->repo = new BecausePerformanceReportRepository([
             'date' => $options['date'],
@@ -85,7 +85,7 @@ class BecausePerformanceReportExport implements FromView, WithTitle, WithEvents,
 
         foreach (range('B', 'H') as $col) {
             $this->sheet->getColumnDimension($col)
-                    ->setWidth(10);
+                ->setWidth(10);
         }
 
         foreach (range('I', 'K') as $col) {

@@ -20,6 +20,7 @@ class SemdEmailToHumanResources
      * Handle the event.
      *
      * @param  EmployeeCreate  $event
+     *
      * @return void
      */
     public function handle(EmployeeCreated $event)

@@ -1,49 +1,48 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Attendances', 'page_description'=>'Your Employees\' Attendances.'])
+@extends('layouts.app', ['page_header'=>'Attendances', 'page_description'=>'Your Employees\' Attendances.'])
 
 @section('content')
-	<div class="container-fluid">
-    	<div class="row">
-            <div class="col-sm-10 col-sm-offset-1">
-                
-                <div class="box box-primary">
-					@include('attendances.create')
-                </div>
-                
-            </div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
 
-			<div class="col-sm-10 col-sm-offset-1">
-				<div class="box box-primary">
+			<div class="box box-primary">
+				@include('attendances.create')
+			</div>
 
-					<div class="box-header with-border">
-						<h4>
-							Attendances List
-						</h4>
-					</div>
+		</div>
 
-					<div class="box-body">
-						<table class="table table-condensed table-hover table-bordered" id="attendances-table">
-							<thead>
-								<tr>
-									<th>Date</th>
-									<th>Employee</th>
-									<th>Employee</th>
-									<th>Employee</th>
-									<th>Employee</th>
-									<th>Code</th>
-									<th>Actions</th>
-								</tr>
-							</thead>
-						</table>
-					</div>
+		<div class="col-sm-10 col-sm-offset-1">
+			<div class="box box-primary">
+
+				<div class="box-header with-border">
+					<h4>
+						Attendances List
+					</h4>
+				</div>
+
+				<div class="box-body">
+					<table class="table table-condensed table-hover table-bordered" id="attendances-table">
+						<thead>
+							<tr>
+								<th>Date</th>
+								<th>Employee</th>
+								<th>Employee</th>
+								<th>Employee</th>
+								<th>Employee</th>
+								<th>Code</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+					</table>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 @endsection
 @push('scripts')
-	<script>
-		(function($){
+<script>
+	(function($){
 	        $(document).ready(function($) {
 
 	            let dTable = $('#attendances-table').DataTable({
@@ -104,5 +103,5 @@
 	        });
 
 	    })(jQuery);
-	</script>
+</script>
 @endpush

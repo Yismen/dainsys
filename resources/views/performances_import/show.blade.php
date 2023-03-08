@@ -1,58 +1,57 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Performances', 'page_description'=>'Details.'])
+@extends('layouts.app', ['page_header'=>'Performances', 'page_description'=>'Details.'])
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="box box-info">
-                    <div class="box-header">
-                        <h4>
-                            Details for date {{ $date }}
-                            <a href="{{ route('admin.performances_import.index') }}" class="pull-right">
-                                <i class="fa fa-home"></i> List
-                            </a>
-                        </h4>
-                    </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h4>
+                        Details for date {{ $date }}
+                        <a href="{{ route('admin.performances_import.index') }}" class="pull-right">
+                            <i class="fa fa-home"></i> List
+                        </a>
+                    </h4>
+                </div>
 
-                    <div class="box-body table-responsive">
-                        <table class="table table-condensed table-bordered" id="performances_import-table">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Employee</th>
-                                    <th>Supervisor</th>
-                                    <th>Project</th>
-                                    <th>Campaign</th>
-                                    <th>Login Time</th>
-                                    <th>Prod. Time</th>
-                                    <th>Sales</th>
-                                    <th>Revenue</th>
-                                    <th>Actions</th>
-                                    <th>File Name</th>
-                                </tr>
-                            </thead>
+                <div class="box-body table-responsive">
+                    <table class="table table-condensed table-bordered" id="performances_import-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Employee</th>
+                                <th>Supervisor</th>
+                                <th>Project</th>
+                                <th>Campaign</th>
+                                <th>Login Time</th>
+                                <th>Prod. Time</th>
+                                <th>Sales</th>
+                                <th>Revenue</th>
+                                <th>Actions</th>
+                                <th>File Name</th>
+                            </tr>
+                        </thead>
 
-                            <tfoot>
-                                <tr>
-                                    <th colspan="5" style="text-align:right">Total:</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
+                        <tfoot>
+                            <tr>
+                                <th colspan="5" style="text-align:right">Total:</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 @push('scripts')
-    <script>
-        (function($){
+<script>
+    (function($){
             $(document).ready(function($) {
 
                 let dTable = $('#performances_import-table').DataTable({
@@ -120,5 +119,5 @@
             });
 
         })(jQuery);
-    </script>
+</script>
 @endpush

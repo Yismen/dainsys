@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\V2\Employee;
 
-use App\Models\Employee;
 use Carbon\Carbon;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
@@ -16,6 +16,7 @@ class UniversalController extends Controller
      * Update Universal information for a given employee.
      *
      * @bodyParam is_vip boolean required Indicates if the employee should be added to or removed from the Universal list
+     *
      * @response 200 {
      *     "id": 10006,
      *     "first_name": "August",
@@ -61,7 +62,7 @@ class UniversalController extends Controller
 
         Cache::forget('employees');
 
-        if ($request->get('is_universal') == 1) {
+        if ($request->get('is_universal')) {
             $employee->universal()->create(['since' => Carbon::now()]);
         } else {
             $employee->universal()->delete();

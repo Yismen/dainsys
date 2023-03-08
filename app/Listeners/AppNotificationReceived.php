@@ -21,11 +21,12 @@ class AppNotificationReceived
      * Handle the event.
      *
      * @param  NotificationSent  $event
+     *
      * @return void
      */
     public function handle(NotificationSent $event)
     {
-        if ($event->channel == 'database') {
+        if ($event->channel === 'database') {
             Cache::flush();
 
             event(new UserAppNotificationSent($event->notifiable, $event->response));

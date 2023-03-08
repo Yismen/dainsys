@@ -47,7 +47,7 @@ class HourlyProductionReportRepository extends RingCentralConnection implements 
 
     public function getDispositions(): object
     {
-        $this->dispositions = \config('app.env') == 'testing' ?
+        $this->dispositions = \config('app.env') === 'testing' ?
             $this->getFakedDispositions() :
             $this->connection()->select(
                 DB::raw("        

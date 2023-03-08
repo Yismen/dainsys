@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api\V2\Dashboards;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\EmployeeRepository;
 use App\Repositories\AttritionRepository;
+use App\Repositories\EmployeeRepository;
+use Illuminate\Http\Request;
 
 /**
  * @group Dashboards
@@ -21,6 +21,7 @@ class HumanResourcesController extends Controller
      * @queryParam project string Limit results to specific project. Example ?project=%Pub%
      * @queryParam department string Limit results to specific department. Example ?department=%Product%
      * @queryParam position string Limit results to specific position. Example ?position=%Agente%
+     *
      * @response 200 {
      *   "head_count": 75,
      *   "attrition_mtd": 1.33,
@@ -47,6 +48,7 @@ class HumanResourcesController extends Controller
      * @queryParam project string Limit results to specific project. Example ?project=%Pub%
      * @queryParam department string Limit results to specific department. Example ?department=%Product%
      * @queryParam position string Limit results to specific position. Example ?position=%Agente%
+     *
      * @response 200 [
      *   {
      *     "id": 13,
@@ -60,7 +62,7 @@ class HumanResourcesController extends Controller
      */
     public function hc_by_project(Request $request)
     {
-        return  EmployeeRepository::byProject();
+        return EmployeeRepository::byProject();
     }
 
     /**
@@ -72,6 +74,7 @@ class HumanResourcesController extends Controller
      * @queryParam project string Limit results to specific project. Example ?project=%Pub%
      * @queryParam department string Limit results to specific department. Example ?department=%Product%
      * @queryParam position string Limit results to specific position. Example ?position=%Agente%
+     *
      * @response 200 [
      *     {
      *        "id": 3,
@@ -84,7 +87,7 @@ class HumanResourcesController extends Controller
      */
     public function hc_by_gender(Request $request)
     {
-        return  EmployeeRepository::byGender();
+        return EmployeeRepository::byGender();
     }
 
     /**
@@ -96,6 +99,7 @@ class HumanResourcesController extends Controller
      * @queryParam project string Limit results to specific project. Example ?project=%Pub%
      * @queryParam department string Limit results to specific department. Example ?department=%Product%
      * @queryParam position string Limit results to specific position. Example ?position=%Agente%
+     *
      * @response 200 [
      *  {
      *      "id": 5,
@@ -108,7 +112,7 @@ class HumanResourcesController extends Controller
      */
     public function hc_by_department(Request $request)
     {
-        return  EmployeeRepository::byDepartment();
+        return EmployeeRepository::byDepartment();
     }
 
     /**
@@ -120,6 +124,7 @@ class HumanResourcesController extends Controller
      * @queryParam project string Limit results to specific project. Example ?project=%Pub%
      * @queryParam department string Limit results to specific department. Example ?department=%Product%
      * @queryParam position string Limit results to specific position. Example ?position=%Agente%
+     *
      * @response 200 [
      *   {
      *       "month": "2021-01",
@@ -137,8 +142,6 @@ class HumanResourcesController extends Controller
      */
     public function attritions(Request $request)
     {
-        $monthly_attrition = collect(AttritionRepository::monthly());
-
-        return $monthly_attrition;
+        return collect(AttritionRepository::monthly());
     }
 }

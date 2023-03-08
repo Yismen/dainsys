@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Report;
 use App\Models\Recipient;
+use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -32,7 +32,7 @@ class ReportsController extends Controller
         $recipients = Recipient::query()->orderBy('name')->get(['name', 'id']);
 
         return view('reports.create')->with([
-            'recipients' => $recipients
+            'recipients' => $recipients,
         ]);
     }
 
@@ -41,7 +41,7 @@ class ReportsController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:reports',
             'key' => 'required|unique:reports',
-            'active' => 'sometimes|boolean'
+            'active' => 'sometimes|boolean',
         ]);
 
         $report = Report::create($request->only(['name', 'key', 'active', 'description']));
@@ -71,10 +71,10 @@ class ReportsController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:reports,name,' . $report->id,
             'key' => 'required|unique:reports,key,' . $report->id,
-            'active' => 'sometimes|boolean'
+            'active' => 'sometimes|boolean',
         ]);
 
-        if (!request('active')) {
+        if (! request('active')) {
             request()->merge(['active' => false]);
         }
 

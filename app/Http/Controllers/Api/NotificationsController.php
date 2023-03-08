@@ -14,6 +14,7 @@ class NotificationsController extends Controller
      * Return a list of unread notifications for the authenticated user.
      *
      * @queryParam max_items integer Max amount of notifications to take. Default is 25.
+     *
      * @response 200 [
      *     {
      *         "id": "d8e62834-828a-482d-a279-bb113fcaaa53",
@@ -31,7 +32,7 @@ class NotificationsController extends Controller
     {
         $max_items = request()->max_items ?: 25;
 
-        return auth()->user()->unreadNotifications()->take((int)$max_items)->get();
+        return auth()->user()->unreadNotifications()->take((int) $max_items)->get();
     }
 
     /**
@@ -41,6 +42,7 @@ class NotificationsController extends Controller
      *
      * @queryParam max_items integer Max amount of notifications to mark as read. Default is 25. This will also affect the amount of
      * unread notifications to return. Also, this will return the next batch of unread notifications for the authenticated user.
+     *
      * @response 200 [
      *     {
      *         "id": "d8e62834-828a-482d-a279-bb113fcaaa53",
@@ -58,7 +60,7 @@ class NotificationsController extends Controller
     {
         $max_items = request()->max_items ?: 25;
 
-        foreach (auth()->user()->unreadNotifications()->take((int)$max_items)->get() as $notification) {
+        foreach (auth()->user()->unreadNotifications()->take((int) $max_items)->get() as $notification) {
             $notification->markAsRead();
         }
 
@@ -73,6 +75,7 @@ class NotificationsController extends Controller
      * Show details for a user notification. This will also mark the given notification as read.
      *
      * @urlParam notification string Uuid of the stored notification
+     *
      * @response {
      *      "id": "d8e62834-828a-482d-a279-bb113fcaaa53",
      *      "type": "App\\Notifications\\UserCreatedNotification",

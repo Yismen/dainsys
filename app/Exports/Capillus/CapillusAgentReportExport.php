@@ -42,6 +42,47 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
         $this->last_column = 'T';
     }
 
+    public function view(): View
+    {
+        return view('exports.capillus.agent-report', [
+            'data' => $this->repo->data,
+        ]);
+    }
+
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class => function (AfterSheet $event) {
+                // auto
+                $this->sheet = $event->sheet->getDelegate();
+
+                $this->configurePage()
+                    ->setColumnsWidth()
+                    ->formatHeaders()
+                    ->formatSubHeaders()
+                    ->mergeCells()
+                    ->setVerticalBorders()
+                    ->applySpecialFormats()
+                ;
+
+                (new ConditionalFontsColor([
+                    'sheet' => $this->sheet,
+                    'range' => "A3:T{$this->rows}",
+                    'condition' => 0,
+                ]))->apply();
+
+                // $event->sheet->getDelegate()->getStyle('A1:k1')->applyFromArray($this->headerStyle());
+                // $event->sheet->getDelegate()->getStyle('A1:A70')->applyFromArray($this->setBold());
+                // $event->sheet->getDelegate()->getStyle('I1:K70')->applyFromArray($this->setBold());
+            },
+        ];
+    }
+
+    public function title(): string
+    {
+        return $this->sheet_name;
+    }
+
     protected function getFormatedDate($date)
     {
         return Carbon::parse($date);
@@ -80,47 +121,6 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
 
                 break;
         }
-    }
-
-    public function view(): View
-    {
-        return view('exports.capillus.agent-report', [
-            'data' => $this->repo->data,
-        ]);
-    }
-
-    public function registerEvents(): array
-    {
-        return [
-            AfterSheet::class => function (AfterSheet $event) {
-                // auto
-                $this->sheet = $event->sheet->getDelegate();
-
-                $this->configurePage()
-                    ->setColumnsWidth()
-                    ->formatHeaders()
-                    ->formatSubHeaders()
-                    ->mergeCells()
-                    ->setVerticalBorders()
-                    ->applySpecialFormats()
-                    ;
-
-                (new ConditionalFontsColor([
-                    'sheet' => $this->sheet,
-                    'range' => "A3:T{$this->rows}",
-                    'condition' => 0,
-                ]))->apply();
-
-            // $event->sheet->getDelegate()->getStyle('A1:k1')->applyFromArray($this->headerStyle());
-                // $event->sheet->getDelegate()->getStyle('A1:A70')->applyFromArray($this->setBold());
-                // $event->sheet->getDelegate()->getStyle('I1:K70')->applyFromArray($this->setBold());
-            },
-        ];
-    }
-
-    public function title(): string
-    {
-        return $this->sheet_name;
     }
 
     protected function setColumnsWidth()
@@ -179,9 +179,9 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
 
         $this->sheet->getStyle("A1:{$this->last_column}{$this->rows}")
             ->getAlignment()
-                ->setHorizontal(Alignment::HORIZONTAL_CENTER)
-                ->setVertical(Alignment::VERTICAL_CENTER)
-                ->setWrapText(true);
+            ->setHorizontal(Alignment::HORIZONTAL_CENTER)
+            ->setVertical(Alignment::VERTICAL_CENTER)
+            ->setWrapText(true);
 
         $this->sheet->freezePane('B3');
 
@@ -230,7 +230,7 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
             ->mergeCells('M1:N1')
             ->mergeCells('O1:Q1')
             ->mergeCells('R1:T1')
-            ;
+        ;
 
         return $this;
     }
@@ -248,7 +248,7 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
 
         foreach (range('A', 'F') as $col) {
             $this->sheet
-            ->getStyle("{$col}1:{$col}{$this->rows}")->applyFromArray($format);
+                ->getStyle("{$col}1:{$col}{$this->rows}")->applyFromArray($format);
         }
 
         $this->sheet->getStyle("I1:I{$this->rows}")->applyFromArray($format);

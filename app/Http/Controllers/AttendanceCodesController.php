@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AttendanceCode;
 use Illuminate\Http\Request;
+use App\Models\AttendanceCode;
 
 class AttendanceCodesController extends Controller
 {
@@ -15,11 +15,6 @@ class AttendanceCodesController extends Controller
         $this->middleware('authorize:destroy-attendance-codes', ['only' => ['destroy']]);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $attendance_codes = AttendanceCode::orderBy('name')->get();
@@ -30,7 +25,8 @@ class AttendanceCodesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -50,7 +46,8 @@ class AttendanceCodesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\AttendanceCode  $attendanceCode
+     * @param \App\AttendanceCode $attendanceCode
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(AttendanceCode $attendanceCode)
@@ -61,8 +58,9 @@ class AttendanceCodesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\AttendanceCode  $attendanceCode
+     * @param \Illuminate\Http\Request $request
+     * @param \App\AttendanceCode      $attendanceCode
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, AttendanceCode $attendanceCode)

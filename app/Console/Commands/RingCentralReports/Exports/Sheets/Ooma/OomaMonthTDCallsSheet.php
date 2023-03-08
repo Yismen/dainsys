@@ -8,9 +8,7 @@ use App\Console\Commands\RingCentralReports\Exports\Support\Connections\RingCent
 use App\Exports\RangeFormarter;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Maatwebsite\Excel\Events\AfterSheet;
-use Maatwebsite\Excel\Sheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
 class OomaMonthTDCallsSheet extends DispositionsSheet
@@ -19,7 +17,7 @@ class OomaMonthTDCallsSheet extends DispositionsSheet
      * Report this sheet if it has data. For some sheets it make no sense to send a report
      * if they are the only one with data.
      *
-     * @var boolean
+     * @var bool
      */
     protected $reportable = true;
 
@@ -32,7 +30,7 @@ class OomaMonthTDCallsSheet extends DispositionsSheet
 
         $this->data = $this->getData(new RingCentralConnection(), $this->exporter->dates_range['from_date'], $this->exporter->dates_range['to_date']);
 
-        if (count($this->data) > 0 && $this->reportable == true) {
+        if (count($this->data) > 0 && $this->reportable === true) {
             $this->exporter->has_data = true;
         }
 

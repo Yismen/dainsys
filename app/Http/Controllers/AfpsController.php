@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Cache;
 use App\Models\Afp;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class AfpsController extends Controller
 {
@@ -36,7 +36,8 @@ class AfpsController extends Controller
                     ->orderBy('last_name')
                     ->orderBy('second_last_name')
                     ->actives();
-            }])->orderBy('name')->get();
+            },
+            ])->orderBy('name')->get();
         });
 
         if ($request->ajax()) {
@@ -60,6 +61,7 @@ class AfpsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -78,13 +80,14 @@ class AfpsController extends Controller
         }
 
         return redirect()->route('admin.afps.index')
-            ->withSuccess("AFP $afp->name created!");
+            ->withSuccess("AFP {$afp->name} created!");
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  Afp $afp
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Afp $afp)
@@ -96,6 +99,7 @@ class AfpsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  Afp $afp
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Afp $afp)
@@ -108,6 +112,7 @@ class AfpsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  Afp $afp
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Afp $afp)
@@ -122,13 +127,14 @@ class AfpsController extends Controller
         $afp->update($request->only(['name']));
 
         return redirect()->route('admin.afps.index')
-            ->withSuccess("AFP $afp->name Updated!");
+            ->withSuccess("AFP {$afp->name} Updated!");
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  Afp $afp
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Afp $afp, Request $request)
@@ -138,11 +144,11 @@ class AfpsController extends Controller
 
         if ($afp->employees->count()) {
             if ($request->ajax()) {
-                return abort(403, "AFP $afp->name has employees therefore it can't be deleted!");
+                return abort(403, "AFP {$afp->name} has employees therefore it can't be deleted!");
             }
 
             return redirect()->back()
-                ->withDanger("AFP $afp->name has employees therefore it can't be deleted!");
+                ->withDanger("AFP {$afp->name} has employees therefore it can't be deleted!");
         }
 
         $afp->delete();
@@ -152,7 +158,7 @@ class AfpsController extends Controller
         }
 
         return redirect()->route('admin.afps.index')
-            ->withDanger("AFP $afp->name have been eliminated!");
+            ->withDanger("AFP {$afp->name} have been eliminated!");
     }
 
     public function assignEmployees(Request $request)

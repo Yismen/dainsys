@@ -6,10 +6,6 @@ use App\Models\Position;
 
 class PositionRepository
 {
-    protected function query()
-    {
-        return Position::orderBy('name');
-    }
 
     public static function all()
     {
@@ -25,6 +21,10 @@ class PositionRepository
         return $instance->query()->whereHas('employees', function ($query) {
             return $query->actives();
         })
-        ->get();
+            ->get();
+    }
+    protected function query()
+    {
+        return Position::orderBy('name');
     }
 }

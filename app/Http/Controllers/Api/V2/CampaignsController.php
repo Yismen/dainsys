@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Models\Campaign;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CampaignResource;
+use App\Models\Campaign;
 
 /**
  * @group Performances

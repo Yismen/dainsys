@@ -27,9 +27,11 @@ class ProjectsController extends Controller
                 ->with('supervisor', 'nationality')
                 ->with(['position' => function ($query) {
                     return $query->with(['department', 'payment_type']);
-                }])
+                },
+                ])
                 ->actives();
-        }])
+        },
+        ])
             ->orderBy('name')
             ->get();
 
@@ -110,7 +112,7 @@ class ProjectsController extends Controller
         $project->update($request->only(['name', 'client_id']));
 
         return redirect()->route('admin.projects.index')
-            ->withWarning("Project $project->name has been updated");
+            ->withWarning("Project {$project->name} has been updated");
     }
 
     /**

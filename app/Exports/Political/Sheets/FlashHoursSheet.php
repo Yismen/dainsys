@@ -45,7 +45,7 @@ class FlashHoursSheet implements FromView, WithTitle, WithEvents, WithPreCalcula
 
                 $this->configurePage()
                     ->setColumnsWidth()
-                    ;
+                ;
 
                 $this->sheet->getStyle('A1:B1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
                 $this->sheet->getStyle('A1:B1')->applyFromArray($this->headerStyle());

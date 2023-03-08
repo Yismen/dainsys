@@ -1,57 +1,56 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Performances', 'page_description'=>'Details.'])
+@extends('layouts.app', ['page_header'=>'Performances', 'page_description'=>'Details.'])
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="box box-primary">
-                    <div class="box-header">
-                        <h4>
-                            Performance Data
-                            <a href="{{ route('admin.performances.create') }}" class="pull-right">
-                                <i class="fa fa-plus"></i> Add
-                            </a>
-                        </h4>
-                    </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h4>
+                        Performance Data
+                        <a href="{{ route('admin.performances.create') }}" class="pull-right">
+                            <i class="fa fa-plus"></i> Add
+                        </a>
+                    </h4>
+                </div>
 
-                    <div class="box-body table-responsive">
-                        <table class="table table-condensed table-bordered" id="performances-table">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Employee</th>
-                                    <th>Supervisor</th>
-                                    <th>Project</th>
-                                    <th>Campaign</th>
-                                    <th>Login Time</th>
-                                    <th>Prod. Time</th>
-                                    <th>Sales</th>
-                                    <th>Revenue</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
+                <div class="box-body table-responsive">
+                    <table class="table table-condensed table-bordered" id="performances-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Employee</th>
+                                <th>Supervisor</th>
+                                <th>Project</th>
+                                <th>Campaign</th>
+                                <th>Login Time</th>
+                                <th>Prod. Time</th>
+                                <th>Sales</th>
+                                <th>Revenue</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
 
-                            <tfoot>
-                                <tr>
-                                    <th colspan="5" style="text-align:right">Total:</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
+                        <tfoot>
+                            <tr>
+                                <th colspan="5" style="text-align:right">Total:</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 @push('scripts')
-    <script>
-        (function($){
+<script>
+    (function($){
             $(document).ready(function($) {
 
                 let dTable = $('#performances-table').DataTable({
@@ -116,5 +115,5 @@
             });
 
         })(jQuery);
-    </script>
+</script>
 @endpush

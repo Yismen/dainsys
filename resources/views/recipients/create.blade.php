@@ -1,5 +1,4 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Recipients', 'page_description'=>'Create a new recipient id.'])
+@extends('layouts.app', ['page_header'=>'Recipients', 'page_description'=>'Create a new recipient id.'])
 
 @section('content')
 <div class="container-fluid">

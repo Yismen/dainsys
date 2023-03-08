@@ -2,22 +2,22 @@
 
 namespace App\Console\Commands\RingCentralReports\Exports\Sheets\Political;
 
-use Illuminate\View\View;
-use Illuminate\Support\Str;
-use Maatwebsite\Excel\Sheet;
-use App\Exports\RangeFormarter;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Cache;
-use Maatwebsite\Excel\Events\AfterSheet;
 use App\Console\Commands\RingCentralReports\Exports\Sheets\BaseRingCentralSheet;
 use App\Console\Commands\RingCentralReports\Exports\Support\Connections\ConnectionContract;
 use App\Console\Commands\RingCentralReports\Exports\Support\Connections\RingCentralConnection;
+use App\Exports\RangeFormarter;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\View\View;
+use Maatwebsite\Excel\Events\AfterSheet;
+use Maatwebsite\Excel\Sheet;
 
 class TextCampaignSheet extends BaseRingCentralSheet
 {
     public function getData(ConnectionContract $connection, string $date_from, string $date_to): array
     {
-        $data = $connection->connect()
+        return $connection->connect()
             ->select(
                 DB::raw("
                     SELECT        
@@ -45,8 +45,6 @@ class TextCampaignSheet extends BaseRingCentralSheet
 						, [Last Name]
                 ")
             );
-
-        return $data;
     }
 
     /**
@@ -63,7 +61,7 @@ class TextCampaignSheet extends BaseRingCentralSheet
 
             $cache_key = $this->exporter->campaign_name . $this->exporter->team . $this->exporter->dates_range['from_date'] . $this->exporter->dates_range['to_date'] . collect($this->data)->sum('login_time');
 
-            if (!Cache::has($cache_key)) {
+            if (! Cache::has($cache_key)) {
                 Cache::forever($cache_key, 'any');
 
                 $this->exporter->data_is_new = true;

@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PunchesUpdateRequest extends FormRequest
 {
@@ -29,12 +29,12 @@ class PunchesUpdateRequest extends FormRequest
                 'required',
                 'min:4',
                 'max:5',
-                Rule::unique('punches', 'punch')->ignore(request('punch'), 'punch')
+                Rule::unique('punches', 'punch')->ignore(request('punch'), 'punch'),
             ],
             'employee_id' => [
                 'required',
                 'exists:employees,id',
-                Rule::unique('punches', 'employee_id')->ignore(request('punch'), 'punch')
+                Rule::unique('punches', 'employee_id')->ignore(request('punch'), 'punch'),
             ],
         ];
     }

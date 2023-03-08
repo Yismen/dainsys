@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Dashboards;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -23,6 +22,7 @@ class DashboardController extends Controller
      * User must have 'view-dashboard' permissions. Otherwise will be denied!
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function __invoke(Request $request)

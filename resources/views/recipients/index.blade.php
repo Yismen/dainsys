@@ -1,5 +1,4 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Recipients', 'page_description'=>'List of recipients of
+@extends('layouts.app', ['page_header'=>'Recipients', 'page_description'=>'List of recipients of
 production.'])
 
 @section('content')

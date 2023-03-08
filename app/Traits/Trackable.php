@@ -9,6 +9,11 @@ use App\Models\Track;
  */
 trait Trackable
 {
+
+    public function changes()
+    {
+        return $this->morphMany(Track::class, 'trackable')->latest()->take(35);
+    }
     protected static function boot()
     {
         parent::boot();
@@ -34,10 +39,5 @@ trait Trackable
             'before' => json_encode(array_intersect_key(optional($this->fresh())->toArray() ?? $this->toArray(), $after)),
             'after' => json_encode($after),
         ];
-    }
-
-    public function changes()
-    {
-        return $this->morphMany(Track::class, 'trackable')->latest()->take(35);
     }
 }

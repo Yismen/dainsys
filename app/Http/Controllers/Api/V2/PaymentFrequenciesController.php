@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Models\PaymentFrequency;
 use App\Http\Controllers\Controller;
+use App\Models\PaymentFrequency;
 
 class PaymentFrequenciesController extends Controller
 {
@@ -13,6 +13,7 @@ class PaymentFrequenciesController extends Controller
      * Save a Payment Frequency model to database.
      *
      * @bodyParam name string required The name of the Payment Frequency
+     *
      * @response 201 {
      *      "name": "Asdfasdf",
      *      "updated_at": "2021-12-01T19:05:29.000000Z",

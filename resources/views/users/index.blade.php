@@ -1,5 +1,4 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Users', 'page_description'=>'Handle
+@extends('layouts.app', ['page_header'=>'Users', 'page_description'=>'Handle
 the users configurations and setting.']) @section('content')
 <div class="container-fluid">
     <div class="row">
@@ -7,46 +6,48 @@ the users configurations and setting.']) @section('content')
             <div class="row">
                 <div class="col-md-3">
                     @if (isset($users))
-                        <div class="box box-success">
-                            <div class="box-header">
-                                <h4>Online Users</h4>
-                            </div>
+                    <div class="box box-success">
+                        <div class="box-header">
+                            <h4>Online Users</h4>
+                        </div>
 
-                            <ul class="list-group">
-                                @foreach ($users as $user)
-                                    @if ($user->isOnline())
-                                        <li class="list-group-item">
-                                            <a href="{{ route('admin.profiles.show', $user->id) }}">
-                                                <i class="fa fa-user"></i> 
-                                                {{ $user->name }}
-                                                @if ($last_open_session = $user->lastOpenSession())
-                                                    <span class="float-right text-muted text-sm">Active since {{ $last_open_session->logged_in_at->diffForHumans() ?? '' }}</span>
-                                                @endif
-                                            </a>
-                                        </li>
+                        <ul class="list-group">
+                            @foreach ($users as $user)
+                            @if ($user->isOnline())
+                            <li class="list-group-item">
+                                <a href="{{ route('admin.profiles.show', $user->id) }}">
+                                    <i class="fa fa-user"></i>
+                                    {{ $user->name }}
+                                    @if ($last_open_session = $user->lastOpenSession())
+                                    <span class="float-right text-muted text-sm">Active since {{
+                                        $last_open_session->logged_in_at->diffForHumans() ?? '' }}</span>
                                     @endif
-                                @endforeach
-                            </ul>
-                        </div>
+                                </a>
+                            </li>
+                            @endif
+                            @endforeach
+                        </ul>
+                    </div>
 
-                        <div class="box box-primary">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-aqua">
-                                    <i class="fa fa-users"></i>
-                                </span>
+                    <div class="box box-primary">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-aqua">
+                                <i class="fa fa-users"></i>
+                            </span>
 
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Active Users</span>
-                                    <span class="info-box-number">{{ $users->count() }}</span>
-                                </div>
-                            </div>
-                        </div>                        
-
-                        <div class="row">
-                            <div class="col-12">
-                                <a href="{{ route('admin.users.inactive-users') }}" class="text-danger">Manage Inactive Users +</a>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Active Users</span>
+                                <span class="info-box-number">{{ $users->count() }}</span>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="{{ route('admin.users.inactive-users') }}" class="text-danger">Manage Inactive
+                                Users +</a>
+                        </div>
+                    </div>
                     @endif
                 </div>
 
@@ -103,8 +104,8 @@ the users configurations and setting.']) @section('content')
 </div>
 @stop
 @push('scripts')
-    <script defer>
-        (function() {
+<script defer>
+    (function() {
             document.getElementById('js-search')
                 .addEventListener('input', _.debounce(function(e) {
                     fetch(`{{ route('admin.users.search') }}?q=${e.target.value}`)
@@ -112,5 +113,5 @@ the users configurations and setting.']) @section('content')
                         .then(html => document.getElementById('js-results').innerHTML = html)
                 }, 700))
         })()
-    </script>
+</script>
 @endpush

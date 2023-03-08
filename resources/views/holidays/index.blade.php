@@ -1,5 +1,4 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Holidays', 'page_description'=>'List of holidays of
+@extends('layouts.app', ['page_header'=>'Holidays', 'page_description'=>'List of holidays of
 production.'])
 
 @section('content')

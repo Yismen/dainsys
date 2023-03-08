@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use Carbon\Carbon;
-use App\Models\Performance;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PerformanceResource;
+use App\Models\Performance;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
@@ -19,6 +19,7 @@ class PerformancesController extends Controller
      * Collection of performances data for many months back.
      *
      * @example /api/v2/performances
+     *
      * @queryParam months int Filter data for many months old. Default is 2.
      * @queryParam date string Filter data for specific date. Date must be included within the amount of months filtere, therefore should be used in combinaton.
      * @queryParam dates_between string Filter data for specific date range. Example ?dates_between=2022-05-21,2022-05-24. Date must be included within the amount of months filtere, therefore should be used in combinaton.
@@ -87,18 +88,20 @@ class PerformancesController extends Controller
         $performances = Performance::with(['supervisor', 'downtimeReason'])
             ->with(['campaign' => function ($query) {
                 $query->with(['source', 'project.client']);
-            }])
+            },
+            ])
             ->with(['employee' => function ($query) {
                 $query
                     ->with(['supervisor', 'site', 'termination', 'position.department', 'project', 'punch']);
-            }])
+            },
+            ])
             ->when(
                 request('months'),
                 function ($performance_query) {
                     $performance_query->whereDate(
                         'date',
                         '>=',
-                        Carbon::now()->subMonths((int)request('months'))->startOfMonth()
+                        Carbon::now()->subMonths((int) request('months'))->startOfMonth()
                     );
                 },
                 function ($performance_query) {

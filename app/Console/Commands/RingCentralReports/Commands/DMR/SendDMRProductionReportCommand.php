@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands\RingCentralReports\Commands\DMR;
 
-use Maatwebsite\Excel\Facades\Excel;
-use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
 use App\Console\Commands\RingCentralReports\Commands\BaseProductionReportCommand;
+use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SendDMRProductionReportCommand extends BaseProductionReportCommand
 {

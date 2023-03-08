@@ -2,24 +2,17 @@
 
 namespace App\Repositories;
 
-use App\Models\Site;
-use App\Models\Gender;
-use App\Models\Project;
-use App\Models\Employee;
-use App\Models\Position;
 use App\Models\Department;
-use App\Models\Supervisor;
+use App\Models\Employee;
+use App\Models\Gender;
 use App\Models\Nationality;
+use App\Models\Position;
+use App\Models\Project;
+use App\Models\Site;
+use App\Models\Supervisor;
 
 class EmployeeRepository
 {
-    protected function query()
-    {
-        return Employee::query()
-            ->sorted()
-            ->filter(request()->all())
-            ->forDefaultSites();
-    }
 
     public static function all()
     {
@@ -90,6 +83,13 @@ class EmployeeRepository
 
         return $static->constrained(Nationality::class);
     }
+    protected function query()
+    {
+        return Employee::query()
+            ->sorted()
+            ->filter(request()->all())
+            ->forDefaultSites();
+    }
 
     protected function constrained($class)
     {
@@ -101,9 +101,9 @@ class EmployeeRepository
 
     protected function constrainCallback()
     {
-        return  function ($query) {
+        return function ($query) {
             return $query->actives()
-            ->filter(request()->all());
+                ->filter(request()->all());
         };
     }
 }

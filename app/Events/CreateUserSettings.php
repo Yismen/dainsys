@@ -6,9 +6,9 @@ use Illuminate\Queue\SerializesModels;
 
 class CreateUserSettings extends Event
 {
-    public $user;
 
     use SerializesModels;
+    public $user;
 
     /**
      * Create a new event instance.

@@ -16,6 +16,7 @@ class UniversalController extends Controller
      * Update Universal information for a given employee.
      *
      * @bodyParam is_vip boolean required Indicates if the employee should be added to or removed from the Universal list
+     *
      * @response 200 {
      *     "id": 10006,
      *     "first_name": "August",
@@ -58,10 +59,10 @@ class UniversalController extends Controller
         $this->validate($request, [
             'is_universal' => 'required|boolean',
         ]);
-
+        
         Cache::forget('employees');
-
-        if ($request->get('is_universal') == 1) {
+        
+        if ($request->get('is_universal')) {
             $employee->universal()->create(['since' => Carbon::now()]);
         } else {
             $employee->universal()->delete();

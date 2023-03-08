@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Employee;
 
+use App\Events\EmployeeReactivated;
+use App\Events\EmployeeTerminated;
+use App\Http\Controllers\Controller;
 use App\Models\Employee;
 use Illuminate\Http\Request;
-use App\Events\EmployeeTerminated;
-use App\Events\EmployeeReactivated;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 
 class TerminationController extends Controller
@@ -32,10 +32,10 @@ class TerminationController extends Controller
         return $employee->load(
             'termination'
         )
-        ->append([
-            'termination_type_list',
-            'termination_reason_list'
-        ]);
+            ->append([
+                'termination_type_list',
+                'termination_reason_list',
+            ]);
     }
 
     public function reactivate(Request $request, Employee $employee)

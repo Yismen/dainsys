@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 class UpdateSlugs extends Command
 {
@@ -42,11 +42,11 @@ class UpdateSlugs extends Command
         $model = 'App\\Models\\' . $this->argument('model');
         $field = $this->option('field');
 
-        if (!class_exists($model)) {
+        if (! class_exists($model)) {
             return $this->error("Model {$model} Not Found...");
         }
 
-        if (!Schema::hasColumn((new $model())->getTable(), $field)) {
+        if (! Schema::hasColumn((new $model())->getTable(), $field)) {
             return $this->error("Field {$field} does not exists in model {$model}");
         }
 

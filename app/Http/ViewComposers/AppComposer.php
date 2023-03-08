@@ -39,7 +39,8 @@ class AppComposer
                             return $query->orderBy('name')
                                 ->with(['menus' => function ($query) {
                                     return $query->orderBy('display_name');
-                                }]);
+                                },
+                                ]);
                         },
                         'unreadNotifications' => function ($query) {
                             $query->oldest()->take(25);

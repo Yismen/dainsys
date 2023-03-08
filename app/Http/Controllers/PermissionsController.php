@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Permission;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -26,7 +26,7 @@ class PermissionsController extends Controller
      */
     public function index()
     {
-        if (!request()->ajax()) {
+        if (! request()->ajax()) {
             return view('permissions.index');
         }
 
@@ -39,7 +39,7 @@ class PermissionsController extends Controller
             ->addColumn('delete', function ($query) {
                 return "
                 <delete-request-button
-                url='{route('admin.permissions.destroy', $query->name)}'
+                url='{route('admin.permissions.destroy', {$query->name})}'
                 redirect-url='{route('admin.permissions.index')}'
             ></delete-request-button>
             ";
@@ -82,6 +82,7 @@ class PermissionsController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function show(Permission $permission)
@@ -93,6 +94,7 @@ class PermissionsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function edit(Permission $permission)
@@ -104,6 +106,7 @@ class PermissionsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function update(Permission $permission, Request $request)
@@ -118,13 +121,14 @@ class PermissionsController extends Controller
         Cache::flush();
 
         return redirect()->route('admin.permissions.show', $permission->name)
-            ->withSuccess("Menu $permission->name has been updated.");
+            ->withSuccess("Menu {$permission->name} has been updated.");
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function destroy(Permission $permission)
@@ -134,6 +138,6 @@ class PermissionsController extends Controller
         Cache::flush();
 
         return redirect()->route('admin.permissions.index')
-            ->withWarning("Permission [$permission->name] has been removed!");
+            ->withWarning("Permission [{$permission->name}] has been removed!");
     }
 }

@@ -2,17 +2,15 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Step;
-use App\Models\Process;
-use Livewire\Component;
-use Illuminate\Support\Facades\Cache;
 use App\Http\Livewire\Traits\HasLivewirePagination;
+use App\Models\Process;
+use App\Models\Step;
+use Illuminate\Support\Facades\Cache;
+use Livewire\Component;
 
 class StepsForm extends Component
 {
     use HasLivewirePagination;
-
-    protected $listeners = ['wantsCreateStep', 'wantsEditStep'];
     public array $fields = [
         'name' => null,
         'process_id' => null,
@@ -21,6 +19,8 @@ class StepsForm extends Component
     ];
     public bool $is_editing = false;
     public Step $step;
+
+    protected $listeners = ['wantsCreateStep', 'wantsEditStep'];
     protected $rules = [
         'fields.name' => 'required|min:3|unique:steps,name',
         'fields.process_id' => 'required|exists:processes,id',

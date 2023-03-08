@@ -24,7 +24,7 @@ class UpdateRecipientRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+
         ];
     }
 }

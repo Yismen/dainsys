@@ -2,13 +2,13 @@
 
 namespace App\Http\Livewire\Dashboards\RingCentral;
 
-use stdClass;
-use Livewire\Component;
-use Illuminate\Support\Facades\Cache;
 use App\Models\RingCentral\SessionRaw;
-use Illuminate\Database\Eloquent\Collection;
 use App\Services\RingCentral\Tables\CallsService;
 use App\Services\RingCentral\Tables\SessionRawService;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Cache;
+use Livewire\Component;
+use stdClass;
 
 class Manager extends Component
 {
@@ -47,7 +47,7 @@ class Manager extends Component
         return Cache::remember("ring-central-production-data-{$this->team}-{$this->client}-{$this->date_from}-{$this->date_to}", 60 * 10, function () {
             $production = $this->parseProduction()->groupBy('dial_group_prefix');
 
-            $parse = $production->map(function ($prod, $key) {
+            return $production->map(function ($prod, $key) {
                 $parse = new stdClass();
 
                 $parse->client = $key;
@@ -70,8 +70,6 @@ class Manager extends Component
 
                 return $parse;
             });
-
-            return $parse;
         });
     }
 
@@ -84,11 +82,9 @@ class Manager extends Component
             $parsedCalls = $calls->filter(function ($calls) use ($prod) {
                 return $prod->agent_name === $calls->agent_name
                     && $prod->date === $calls->date
-                    && (
-                        $prod->dial_group_prefix == 'HTL'
+                    && ($prod->dial_group_prefix === 'HTL'
                             ? in_array($calls->dial_group_prefix, ['HTL', 'AKP', 'BCM'])
-                            : $prod->dial_group_prefix === $calls->dial_group_prefix
-                    );
+                            : $prod->dial_group_prefix === $calls->dial_group_prefix);
             });
 
             $prod->total_duration = $parsedCalls->sum('total_duration') ?? 0;

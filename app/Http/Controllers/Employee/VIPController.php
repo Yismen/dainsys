@@ -16,6 +16,7 @@ class VIPController extends Controller
      * Update VIP information for a given employee.
      *
      * @bodyParam is_vip boolean required Indicates if the employee should be added to or removed from the Vip list
+     *
      * @response 200 {
      *     "id": 10006,
      *     "first_name": "August",
@@ -61,7 +62,7 @@ class VIPController extends Controller
 
         Cache::forget('employees');
 
-        if ($request->get('is_vip') == 1) {
+        if ($request->get('is_vip')) {
             $employee->vip()->create(['since' => Carbon::now()]);
         } else {
             $employee->vip()->delete();

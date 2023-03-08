@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use Carbon\Carbon;
 use App\Models\Performance;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 
 class BillableHoursAndRevenueService
@@ -16,7 +16,7 @@ class BillableHoursAndRevenueService
 
     public function __construct(string $dates, $revenue_type, $campaign)
     {
-        $this->dates = preg_split("/[,|]+/", $dates, -1, PREG_SPLIT_NO_EMPTY);
+        $this->dates = preg_split('/[,|]+/', $dates, -1, PREG_SPLIT_NO_EMPTY);
 
         $this->revenue_type = $revenue_type;
         $this->campaign = $campaign;
@@ -34,7 +34,7 @@ class BillableHoursAndRevenueService
                 function ($query) {
                     $query->whereBetween('date', [
                         Carbon::parse($this->dates[0])->startOfDay(),
-                        Carbon::parse($this->dates[1])->endOfDay()
+                        Carbon::parse($this->dates[1])->endOfDay(),
                     ]);
                 }
             )

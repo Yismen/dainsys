@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
-use Livewire\WithPagination;
 use App\Http\Livewire\Traits\WithSearch;
 use App\Http\Livewire\Traits\WithSorting;
 use App\Services\RingCentral\DispositionsService;
+use Livewire\Component;
+use Livewire\WithPagination;
 
 class DispositionTable extends Component
 {
@@ -34,7 +34,7 @@ class DispositionTable extends Component
                 ->when($this->search, function ($query) {
                     $query->where('name', 'like', "%{$this->search}%");
                 })
-                ->paginate(10, ['*'], $this->pageName)
+                ->paginate(10, ['*'], $this->pageName),
         ]);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Ars;
 use App\Http\Controllers\Controller;
+use App\Models\Ars;
 
 class ArssController extends Controller
 {
@@ -13,6 +13,7 @@ class ArssController extends Controller
      * Save a Ars model to database.
      *
      * @bodyParam name string required The name of the Ars
+     *
      * @response 201 {
      *      "name": "Asdfasdf",
      *      "slug": "asdfasdf",

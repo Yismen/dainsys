@@ -24,7 +24,7 @@ class StoreRecipientRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+
         ];
     }
 }

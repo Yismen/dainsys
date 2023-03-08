@@ -35,7 +35,7 @@ class Profile extends Model
             array_push($returned, ucwords(trim($skill)));
         }
 
-        return (object)$returned;
+        return (object) $returned;
     }
 
     /**

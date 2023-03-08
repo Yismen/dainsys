@@ -9,6 +9,7 @@ class Reports
 {
     /**
      * List of the lasts 5 years
+     *
      * @var array
      */
     public $last_five_years;
@@ -57,7 +58,8 @@ class Reports
             ->with('nationality')
             ->with(['position' => function ($query) {
                 return $query->with('payment_type')->with('payment_frequency');
-            }])
+            },
+            ])
             ->with('gender')
 
             // ->whereMonth('hire_date', '=', $month)

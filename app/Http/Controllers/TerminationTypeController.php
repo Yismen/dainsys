@@ -41,6 +41,7 @@ class TerminationTypeController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -54,13 +55,14 @@ class TerminationTypeController extends Controller
         );
 
         return redirect()->route('admin.termination_types.index')
-            ->withSuccess("Termination Type $termination_type->name created!");
+            ->withSuccess("Termination Type {$termination_type->name} created!");
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  TerminationType $termination_type
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(TerminationType $termination_type)
@@ -71,6 +73,7 @@ class TerminationTypeController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  TerminationType $termination_type
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(TerminationType $termination_type)
@@ -83,6 +86,7 @@ class TerminationTypeController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  TerminationType $termination_type
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, TerminationType $termination_type)
@@ -96,6 +100,6 @@ class TerminationTypeController extends Controller
         );
 
         return redirect()->route('admin.termination_types.index')
-            ->withWarning("Termination name $termination_type->name Updated!");
+            ->withWarning("Termination name {$termination_type->name} Updated!");
     }
 }

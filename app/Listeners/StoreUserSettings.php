@@ -2,9 +2,9 @@
 
 namespace App\Listeners;
 
+use App\Events\CreateUserSettings;
 use App\Models\AppSetting;
 use Illuminate\Http\Request;
-use App\Events\CreateUserSettings;
 
 class StoreUserSettings
 {
@@ -24,6 +24,7 @@ class StoreUserSettings
      * Handle the event.
      *
      * @param  CreateUserSettings  $event
+     *
      * @return void
      */
     public function handle(CreateUserSettings $event)

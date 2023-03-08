@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Models\Afp;
 use App\Http\Controllers\Controller;
+use App\Models\Afp;
 
 class AfpsController extends Controller
 {
@@ -13,6 +13,7 @@ class AfpsController extends Controller
      * Save a Afp model to database.
      *
      * @bodyParam name string required The name of the Afp
+     *
      * @response 201 {
      *      "name": "Asdfasdf",
      *      "slug": "asdfasdf",

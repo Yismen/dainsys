@@ -6,10 +6,6 @@ use App\Models\Project;
 
 class ProjectRepository
 {
-    protected function query()
-    {
-        return Project::orderBy('name');
-    }
 
     public static function all()
     {
@@ -25,5 +21,9 @@ class ProjectRepository
         return $instance->query()->whereHas('employees', function ($query) {
             return $query->actives();
         })->get();
+    }
+    protected function query()
+    {
+        return Project::orderBy('name');
     }
 }

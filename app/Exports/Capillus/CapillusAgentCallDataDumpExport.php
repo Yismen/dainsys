@@ -57,7 +57,7 @@ class CapillusAgentCallDataDumpExport implements FromView, WithTitle, WithEvents
                     ->formatDateColumn()
                     ->formatTimecolumns()
                     ->setColumnsWidth()
-                    ;
+                ;
 
                 $this->sheet->setAutoFilter("A1:M{$this->count}");
                 $this->sheet->freezePane('A2');
@@ -133,9 +133,9 @@ class CapillusAgentCallDataDumpExport implements FromView, WithTitle, WithEvents
 
         $this->sheet
             ->getStyle('A1:M1')
-                ->applyFromArray($format)
-                ->getAlignment()
-                    ->setWrapText(true);
+            ->applyFromArray($format)
+            ->getAlignment()
+            ->setWrapText(true);
 
         return $this;
     }

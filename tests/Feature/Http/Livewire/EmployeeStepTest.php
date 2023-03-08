@@ -17,7 +17,6 @@ class EmployeeStepTest extends TestCase
     /** @test */
     public function StepIndexContainsLivewireStepComponent()
     {
-        $this->withoutExceptionHandling();
         $process = factory(Process::class)->create();
         $employee = factory(Employee::class)->create();
         $employee->processes()->attach($process->id);
@@ -47,7 +46,7 @@ class EmployeeStepTest extends TestCase
             ->assertViewHas('process', $process)
             ->assertSee($employee->full_name)
             ->assertSee($process->name)
-            ;
+        ;
     }
 
     /** @test */
@@ -60,7 +59,7 @@ class EmployeeStepTest extends TestCase
 
         Livewire::test(EmployeeStep::class, ['employee_id' => $employee->id, 'process_id' => $process->id])
             ->call('complete', $step->id)
-            ;
+        ;
 
         $this->assertDatabaseHas('employee_step', ['employee_id' => $employee->id, 'step_id' => $step->id]);
     }
@@ -76,7 +75,7 @@ class EmployeeStepTest extends TestCase
 
         Livewire::test(EmployeeStep::class, ['employee_id' => $employee->id, 'process_id' => $process->id])
             ->call('remove', $employee->id)
-            ;
+        ;
 
         $this->assertDatabaseMissing('employee_step', ['employee_id' => $employee->id, 'process_id' => $process->id]);
     }

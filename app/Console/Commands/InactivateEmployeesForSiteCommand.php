@@ -57,7 +57,7 @@ class InactivateEmployeesForSiteCommand extends Command
             ->actives()
             ->get();
 
-        if ($employees->count() == 0) {
+        if ($employees->count() === 0) {
             return $this->warn("No active employees found for site {$site}");
         }
 

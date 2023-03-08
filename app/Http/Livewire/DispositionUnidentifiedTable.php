@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
-use Livewire\WithPagination;
 use App\Http\Livewire\Traits\WithSearch;
 use App\Http\Livewire\Traits\WithSorting;
 use App\Services\RingCentral\DispositionsPendingIdentificationService;
+use Livewire\Component;
+use Livewire\WithPagination;
 
 class DispositionUnidentifiedTable extends Component
 {
@@ -19,7 +19,7 @@ class DispositionUnidentifiedTable extends Component
     protected $pageName = 'pendingPage';
 
     protected $listeners = [
-        'dispositionsCreated' => '$refresh'
+        'dispositionsCreated' => '$refresh',
     ];
 
     public function render(DispositionsPendingIdentificationService $service)
@@ -32,7 +32,7 @@ class DispositionUnidentifiedTable extends Component
                 ->when($this->search, function ($query) {
                     $query->where('agent_disposition', 'like', "%{$this->search}%");
                 })
-                ->paginate(10, ['*'], $this->pageName)
+                ->paginate(10, ['*'], $this->pageName),
         ]);
     }
 }

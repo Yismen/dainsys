@@ -13,7 +13,7 @@ class AttendanceEmployeesRepository
 
     public function __construct(int $employee, bool $current_user = true)
     {
-        $this->current_user = $current_user == true ? auth()->user()->id : '%';
+        $this->current_user = $current_user === true ? auth()->user()->id : '%';
 
         $this->employee = $employee;
     }
@@ -23,14 +23,15 @@ class AttendanceEmployeesRepository
         return AttendanceCode::query()
             ->whereHas('attendances', function ($query) {
                 $query->where('employee_id', $this->employee)
-                        ->whereDate('date', '>=', Carbon::now()->subMonths(2)->startOfMonth());
+                    ->whereDate('date', '>=', Carbon::now()->subMonths(2)->startOfMonth());
             })
             ->with(['attendances' => function ($query) {
                 $query->where('employee_id', $this->employee)
-                ->whereDate('date', '>=', Carbon::now()->subMonths(2)->startOfMonth());
-            }])
+                    ->whereDate('date', '>=', Carbon::now()->subMonths(2)->startOfMonth());
+            },
+            ])
             ->get()
-            ;
+        ;
     }
 
     public function codes()

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Models\Employee;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EmployeesResource;
+use App\Models\Employee;
 
 class EmployeesController extends Controller
 {
@@ -17,6 +17,7 @@ class EmployeesController extends Controller
      * @queryParam project string Limit results to specific project. Example ?project=%Pub%
      * @queryParam department string Limit results to specific department. Example ?department=%Product%
      * @queryParam position string Limit results to specific position. Example ?position=%Agente%
+     *
      * @response 200 {
      *      "data": [
      *          {
@@ -75,6 +76,7 @@ class EmployeesController extends Controller
      * @queryParam project string Limit results to specific project. Example ?project=%Pub%
      * @queryParam department string Limit results to specific department. Example ?department=%Product%
      * @queryParam position string Limit results to specific position. Example ?position=%Agente%
+     *
      * @response 200 {
      *      "data": [
      *          {
@@ -134,6 +136,7 @@ class EmployeesController extends Controller
      * @queryParam project string Limit results to specific project. Example ?project=%Pub%
      * @queryParam department string Limit results to specific department. Example ?department=%Product%
      * @queryParam position string Limit results to specific position. Example ?position=%Agente%
+     *
      * @response 200 {
      *      "data": [
      *          {

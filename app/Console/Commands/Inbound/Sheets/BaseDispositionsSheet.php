@@ -47,7 +47,7 @@ abstract class BaseDispositionsSheet implements FromView, WithTitle, WithEvents,
         $this->date_to = $date_to;
 
         $this->rows = count($this->data) + 2;
-        $this->sheetName = $sheet_name ?: Str::of(\class_basename($this))->snake()->replace('_', ' ')->title();
+        $this->sheetName = $sheet_name ? $sheet_name : Str::of(\class_basename($this))->snake()->replace('_', ' ')->title();
         $this->title_line = "Inbound {$this->sheetName} Report" . ($this->date_from && $this->date_to ? ", from {$this->date_from} to {$this->date_to}" : '');
         $this->view = $this->view ?: 'exports.inbound.' . Str::of(\class_basename($this))->snake();
         $this->sheet_name = $sheet_name;
@@ -98,7 +98,7 @@ abstract class BaseDispositionsSheet implements FromView, WithTitle, WithEvents,
 
     protected function addSubTotals()
     {
-        $totalsRow = ($this->rows + 1);
+        $totalsRow = $this->rows + 1;
         $totalCallsColumn = $this->total_calls_column;
 
         // Sum

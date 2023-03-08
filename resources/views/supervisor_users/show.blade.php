@@ -1,5 +1,4 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>config('dainsys.app_name'), 'page_description'=>'Shifts'])
+@extends('layouts.app', ['page_header'=>config('dainsys.app_name'), 'page_description'=>'Shifts'])
 
 @section('content')
 @if ($shift)

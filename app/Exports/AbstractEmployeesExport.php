@@ -4,16 +4,16 @@ namespace App\Exports;
 
 use App\Models\Employee;
 use Illuminate\Database\Eloquent\Builder;
+use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
-use Maatwebsite\Excel\Concerns\Exportable;
-use Maatwebsite\Excel\Concerns\WithEvents;
-use Maatwebsite\Excel\Concerns\WithMapping;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
-use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 
 abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAutoSize, WithColumnFormatting, WithMapping, WithHeadings, WithEvents
 {
@@ -23,7 +23,7 @@ abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAu
     protected $date_to = null;
     protected $site = null;
 
-    public function __construct($date_from = null, $date_to = null, string $site = null)
+    public function __construct($date_from = null, $date_to = null, ?string $site = null)
     {
         $this->date_from = $date_from;
         $this->date_to = $date_to;
@@ -44,30 +44,30 @@ abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAu
     public function baseQuery(): Builder
     {
         return Employee::query()
-        ->orderBy('first_name')
-        ->when($this->site, function ($query) {
-            $query->whereHas('site', function ($query) {
-                $query->where('name', 'like', "{$this->site}%");
-            });
-        })
-        ->with([
-            'punch',
-            'address',
-            'gender',
-            'marital',
-            'nationality',
-            'site',
-            'project',
-            'position' => function ($query) {
-                $query->with([
-                    'department',
-                    'payment_type',
-                ]);
-            },
-            'bankAccount',
-            'supervisor',
-            'termination',
-        ]);
+            ->orderBy('first_name')
+            ->when($this->site, function ($query) {
+                $query->whereHas('site', function ($query) {
+                    $query->where('name', 'like', "{$this->site}%");
+                });
+            })
+            ->with([
+                'punch',
+                'address',
+                'gender',
+                'marital',
+                'nationality',
+                'site',
+                'project',
+                'position' => function ($query) {
+                    $query->with([
+                        'department',
+                        'payment_type',
+                    ]);
+                },
+                'bankAccount',
+                'supervisor',
+                'termination',
+            ]);
     }
 
     public function map($employee): array
@@ -85,7 +85,7 @@ abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAu
             Date::dateTimeToExcel($employee->date_of_birth),
             substr($employee->cellphone_number, 0, 3),
             substr($employee->cellphone_number, -7),
-            null == $employee->address ? '' :
+            $employee->address === null ? '' :
                 $employee->address->street_address . ', ' . $employee->address->sector . ', ' . $employee->address->city,
             substr(optional($employee->gender)->name, 0, 1),
             optional($employee->marital)->name,

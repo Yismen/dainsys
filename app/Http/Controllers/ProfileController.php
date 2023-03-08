@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Profile;
-use Illuminate\Http\Request;
-use App\Repositories\Profiles;
-use Illuminate\Support\Facades\Storage;
+use App\Models\User;
 use App\Repositories\ImageMaker;
+use App\Repositories\Profiles;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -20,7 +20,7 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
 
-        if (!$user->profile()) {
+        if (! $user->profile()) {
             return redirect()->route('admin.profiles.create')
                 ->withInfo('You have not created a profile, please create one now.');
         }
@@ -54,6 +54,7 @@ class ProfileController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -80,7 +81,9 @@ class ProfileController extends Controller
 
     /**
      * show current user's profile
+     *
      * @param  Profile $profile current profile model
+     *
      * @return view           [description]
      */
     public function show(Profile $profile, Profiles $profiles)
@@ -94,11 +97,12 @@ class ProfileController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Profile $profile)
     {
-        if (!auth()->user()->owns($profile)) {
+        if (! auth()->user()->owns($profile)) {
             return redirect()->route('admin.profiles.index')
                 ->withWarning('Forbidden. You can only update your own profile!?');
         }
@@ -113,6 +117,7 @@ class ProfileController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Profile $profile)
@@ -141,6 +146,7 @@ class ProfileController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -152,13 +158,13 @@ class ProfileController extends Controller
      */
     public function saveImage(Request $request, User $user)
     {
-        if (!$request->hasFile('photo')) {
+        if (! $request->hasFile('photo')) {
             if ($user->profile) {
                 return $user->profile->photo;
             }
 
             return null;
-        };
+        }
 
         $extension = $request->file('photo')->getClientOriginalExtension();
 

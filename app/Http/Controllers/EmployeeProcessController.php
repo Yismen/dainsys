@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Process;
-use App\Models\Employee;
-
 class EmployeeProcessController extends Controller
 {
     public function __construct()

@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\DainsysModel as Model;
 use App\ModelFilters\FilterableTrait;
+use App\Models\DainsysModel as Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
 class LoginName extends Model

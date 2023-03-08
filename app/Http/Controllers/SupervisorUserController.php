@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SupervisorUserRequest;
-use App\Repositories\SupervisorUsersRepository;
 use App\Models\Supervisor;
 use App\Models\SupervisorUser;
 use App\Models\User;
+use App\Repositories\SupervisorUsersRepository;
 
 class SupervisorUserController extends Controller
 {
@@ -20,7 +20,7 @@ class SupervisorUserController extends Controller
         $this->middleware('authorize:destroy-supervisor-users', ['only' => ['destroy']]);
         $this->middleware('authorize:assign-supervisor-users-employees', ['only' => ['reAssign']]);
 
-        $this->repo = new SupervisorUsersRepository;
+        $this->repo = new SupervisorUsersRepository();
     }
 
     /**
@@ -47,6 +47,7 @@ class SupervisorUserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\SupervisorUserRequest  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(SupervisorUserRequest $request, SupervisorUser $supervisor_user)
@@ -64,6 +65,7 @@ class SupervisorUserController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -74,6 +76,7 @@ class SupervisorUserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(SupervisorUser $supervisor_user)
@@ -89,6 +92,7 @@ class SupervisorUserController extends Controller
      *
      * @param  \Illuminate\Http\SupervisorUserRequest  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(SupervisorUserRequest $request, SupervisorUser $supervisor_user)
@@ -106,6 +110,7 @@ class SupervisorUserController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(SupervisorUser $supervisor_user)

@@ -33,12 +33,12 @@ class BecausePerformanceReportRepository
     protected function wtd()
     {
         return BecauseDailyPerformance::select('date')
-        ->selectRaw($this->rawString())
-        ->orderBy('date')
-        ->groupBy('date')
-        ->wtd($this->date)
-        ->where('campaign', 'like', "{$this->campaign}")
-        ->get();
+            ->selectRaw($this->rawString())
+            ->orderBy('date')
+            ->groupBy('date')
+            ->wtd($this->date)
+            ->where('campaign', 'like', "{$this->campaign}")
+            ->get();
     }
 
     protected function mtd()

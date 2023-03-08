@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use Carbon\Carbon;
-use App\Models\Performance;
 use App\Http\Controllers\Controller;
+use App\Models\Performance;
+use Carbon\Carbon;
 
 /**
  * @group Performances
@@ -47,7 +47,7 @@ class DowntimesController extends Controller
                 'campaign.project',
                 'downtimeReason',
                 'employee',
-                'supervisor'
+                'supervisor',
             ])
             ->whereHas('campaign', function ($campaign_query) {
                 return $campaign_query->whereHas('project', function ($project_query) {
@@ -73,7 +73,7 @@ class DowntimesController extends Controller
                     $performance_query->whereDate(
                         'date',
                         '>=',
-                        Carbon::now()->subMonths((int)request('months'))->startOfMonth()
+                        Carbon::now()->subMonths((int) request('months'))->startOfMonth()
                     );
                 },
                 function ($performance_query) {

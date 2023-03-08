@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Spatie\Permission\Models\Permission as EmpatiePermission;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Permission as EmpatiePermission;
 
 class Permission extends EmpatiePermission
 {

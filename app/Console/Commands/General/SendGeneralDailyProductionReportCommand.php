@@ -2,15 +2,15 @@
 
 namespace App\Console\Commands\General;
 
-use Carbon\Carbon;
-use App\Mail\CommandsBaseMail;
-use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Mail;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Support\Facades\Storage;
 use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
 use App\Console\Commands\General\DailyProductionReport\GeneralDailyProductionReportExport;
 use App\Console\Commands\General\DailyProductionReport\GeneralDailyProductionReportRepository;
+use App\Mail\CommandsBaseMail;
+use Carbon\Carbon;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SendGeneralDailyProductionReportCommand extends Command
 {
@@ -125,11 +125,11 @@ class SendGeneralDailyProductionReportCommand extends Command
      */
     protected function init()
     {
-        $this->date_to = !$this->option('date') ?
+        $this->date_to = ! $this->option('date') ?
             now()->subDay()->format('m/d/Y') :
             Carbon::parse($this->option('date'))->format('m/d/Y');
 
-        $this->date_from = !$this->option('from') ?
+        $this->date_from = ! $this->option('from') ?
             $this->date_to :
             Carbon::parse($this->option('from'))->format('m/d/Y');
 

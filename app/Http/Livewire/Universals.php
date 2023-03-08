@@ -2,15 +2,15 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Site;
-use App\Models\Project;
-use Livewire\Component;
+use App\Models\Department;
 use App\Models\Employee;
 use App\Models\Position;
-use App\Models\Department;
-use Livewire\WithPagination;
-use Illuminate\Support\Facades\Cache;
+use App\Models\Project;
+use App\Models\Site;
 use App\Repositories\Employees\UniversalRepo;
+use Illuminate\Support\Facades\Cache;
+use Livewire\Component;
+use Livewire\WithPagination;
 
 class Universals extends Component
 {
@@ -74,7 +74,7 @@ class Universals extends Component
                     ->orderBy('name')
                     ->with('department', 'payment_type')
                     ->get();
-            })
+            }),
         ]);
     }
 
@@ -86,55 +86,6 @@ class Universals extends Component
     public function remove(Employee $employee)
     {
         $employee->universal->delete();
-    }
-
-    protected function getEmployees(string $method)
-    {
-        $repo = new UniversalRepo();
-
-        $employees = $repo->$method()
-        ->with([
-            'site',
-            'project',
-            'position' => function ($query) {
-                $query->with(['payment_type', 'department']);
-            },
-        ])
-        ->when(count($this->site_list) > 0, function ($query) {
-            $query->whereHas('site', function ($site_query) {
-                $site_query->whereIn('id', $this->site_list);
-            });
-        })
-        ->when(count($this->department_list) > 0, function ($query) {
-            $query->whereHas('position.department', function ($department_query) {
-                $department_query->whereIn('id', $this->department_list);
-            });
-        })
-        ->when(count($this->project_list) > 0, function ($query) {
-            $query->whereHas('project', function ($project_query) {
-                $project_query->whereIn('id', $this->project_list);
-            });
-        })
-        ->when(count($this->position_list) > 0, function ($query) {
-            $query->whereHas('position', function ($position_query) {
-                $position_query->whereIn('id', $this->position_list);
-            });
-        })
-        ->when(strlen($this->search) > 0, function ($query) {
-            foreach (preg_split("/[\s,]+/", $this->search, -1, PREG_SPLIT_NO_EMPTY) as $search_value) {
-                $query->where(function ($query) use ($search_value) {
-                    $query->where('first_name', 'like', "%{$search_value}%")
-                        ->orWhere('last_name', 'like', "%{$search_value}%")
-                        ->orWhere('second_first_name', 'like', "%{$search_value}%")
-                        ->orWhere('second_last_name', 'like', "%{$search_value}%");
-                });
-            }
-        })
-        ->paginate(15, ['*'], $method);
-
-        $this->$method = $employees;
-
-        return $employees;
     }
 
     public function paginationView()
@@ -164,5 +115,54 @@ class Universals extends Component
     {
         $this->resetPage('universals');
         $this->resetPage('noUniversals');
+    }
+
+    protected function getEmployees(string $method)
+    {
+        $repo = new UniversalRepo();
+
+        $employees = $repo->$method()
+            ->with([
+                'site',
+                'project',
+                'position' => function ($query) {
+                    $query->with(['payment_type', 'department']);
+                },
+            ])
+            ->when(count($this->site_list) > 0, function ($query) {
+                $query->whereHas('site', function ($site_query) {
+                    $site_query->whereIn('id', $this->site_list);
+                });
+            })
+            ->when(count($this->department_list) > 0, function ($query) {
+                $query->whereHas('position.department', function ($department_query) {
+                    $department_query->whereIn('id', $this->department_list);
+                });
+            })
+            ->when(count($this->project_list) > 0, function ($query) {
+                $query->whereHas('project', function ($project_query) {
+                    $project_query->whereIn('id', $this->project_list);
+                });
+            })
+            ->when(count($this->position_list) > 0, function ($query) {
+                $query->whereHas('position', function ($position_query) {
+                    $position_query->whereIn('id', $this->position_list);
+                });
+            })
+            ->when(strlen($this->search) > 0, function ($query) {
+                foreach (preg_split("/[\s,]+/", $this->search, -1, PREG_SPLIT_NO_EMPTY) as $search_value) {
+                    $query->where(function ($query) use ($search_value) {
+                        $query->where('first_name', 'like', "%{$search_value}%")
+                            ->orWhere('last_name', 'like', "%{$search_value}%")
+                            ->orWhere('second_first_name', 'like', "%{$search_value}%")
+                            ->orWhere('second_last_name', 'like', "%{$search_value}%");
+                    });
+                }
+            })
+            ->paginate(15, ['*'], $method);
+
+        $this->$method = $employees;
+
+        return $employees;
     }
 }

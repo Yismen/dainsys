@@ -17,6 +17,7 @@ class ExportController extends Controller
      * Allows to export employees to excel by status
      *
      * @param  string   $status
+     *
      * @return download file
      */
     public function toExcel($status)

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Holiday;
 use App\Http\Requests\Holiday\CreateHolidayRequest;
 use App\Http\Requests\Holiday\UpdateHolidayRequest;
+use App\Models\Holiday;
 use Yajra\DataTables\Facades\DataTables;
 
 class HolidayController extends Controller
@@ -27,7 +27,7 @@ class HolidayController extends Controller
      */
     public function index()
     {
-        if (!request()->ajax()) {
+        if (! request()->ajax()) {
             return view('holidays.index');
         }
 
@@ -48,6 +48,7 @@ class HolidayController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\HolidayRequest  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(CreateHolidayRequest $request)
@@ -62,6 +63,7 @@ class HolidayController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Holiday  $holiday
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Holiday $holiday)
@@ -72,6 +74,7 @@ class HolidayController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Holiday  $holiday
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Holiday $holiday)
@@ -84,6 +87,7 @@ class HolidayController extends Controller
      *
      * @param  \Illuminate\Http\Holiday\CreateHolidayRequest  $request
      * @param  \App\Holiday  $holiday
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateHolidayRequest $request, Holiday $holiday)
@@ -98,6 +102,7 @@ class HolidayController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Holiday  $holiday
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Holiday $holiday)

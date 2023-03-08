@@ -1,5 +1,4 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Dashboard', 'page_description'=>'Ring Central Manager'])
+@extends('layouts.app', ['page_header'=>'Dashboard', 'page_description'=>'Ring Central Manager'])
 
 @section('content')
 <div class="container-fluid">

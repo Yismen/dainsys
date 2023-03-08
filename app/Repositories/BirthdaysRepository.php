@@ -6,27 +6,6 @@ use App\Models\Employee;
 
 class BirthdaysRepository
 {
-    protected function query()
-    {
-        $orderClause = env('DB_CONNECTION') === 'sqlite' ?
-            'strftime("%d", date_of_birth) ASC' :
-            'Day(date_of_birth) ASC';
-
-        return Employee::query()
-            ->actives()
-            ->filter(request()->all())
-            ->with([
-                'site',
-                'position' => function ($query) {
-                    $query->with([
-                        'department',
-                        'payment_type'
-                    ]);
-                },
-            ])
-            ->forDefaultSites()
-            ->orderByRaw($orderClause);
-    }
 
     public static function today()
     {
@@ -63,5 +42,26 @@ class BirthdaysRepository
 
         return $static->query()
             ->whereMonth('date_of_birth', $date->month);
+    }
+    protected function query()
+    {
+        $orderClause = env('DB_CONNECTION') === 'sqlite' ?
+            'strftime("%d", date_of_birth) ASC' :
+            'Day(date_of_birth) ASC';
+
+        return Employee::query()
+            ->actives()
+            ->filter(request()->all())
+            ->with([
+                'site',
+                'position' => function ($query) {
+                    $query->with([
+                        'department',
+                        'payment_type',
+                    ]);
+                },
+            ])
+            ->forDefaultSites()
+            ->orderByRaw($orderClause);
     }
 }

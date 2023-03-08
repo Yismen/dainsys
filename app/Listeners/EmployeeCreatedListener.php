@@ -2,10 +2,9 @@
 
 namespace App\Listeners;
 
-use App\Models\Report;
 use App\Mail\EmployeeCreatedMail;
+use App\Models\Report;
 use Illuminate\Support\Facades\Mail;
-use App\Events\EmployeeTerminated as Event;
 
 class EmployeeCreatedListener
 {
@@ -21,7 +20,7 @@ class EmployeeCreatedListener
     public function handle($event)
     {
         $report = Report::query()->where('key', 'dainsys:employees-hired')->first();
-        
+
         if ($report) {
             Mail::send(new EmployeeCreatedMail($event->employee, $report->mailableRecipients()));
         }

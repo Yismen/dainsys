@@ -17,7 +17,7 @@ class DropNullColumns
                 return collect($item)->reject(function ($item, $key) {
                     $this->getValidKeys($key, $item);
 
-                    return $item == null;
+                    return $item === null;
                 });
             });
         });
@@ -30,9 +30,10 @@ class DropNullColumns
      * with valid value.
      *
      * @param string $set_last_key
+     *
      * @return void
      */
-    public function padKeys(string $set_last_key = null)
+    public function padKeys(?string $set_last_key = null)
     {
         $this->data = $this->data->map(function ($item) use ($set_last_key) {
             return $item->map(function ($item) use ($set_last_key) {
@@ -56,11 +57,12 @@ class DropNullColumns
      *
      * @param String $key
      * @param Array $item
+     *
      * @return void
      */
     private function getValidKeys($key, $item)
     {
-        if (!in_array($key, $this->keys) && $item !== null) {
+        if (! in_array($key, $this->keys) && $item !== null) {
             return $this->keys[$key] = null;
         }
     }

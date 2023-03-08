@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Card;
+use Illuminate\Http\Request;
 
 // use Illuminate\Http\Request;
 
@@ -56,13 +56,14 @@ class CardsController extends Controller
         $card = $card->create($request->only('card', 'employee_id'));
 
         return redirect()->route('admin.cards.index')
-            ->withSuccess("Card number $card->card has been created!");
+            ->withSuccess("Card number {$card->card} has been created!");
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  Card $card
+     *
      * @return Response
      */
     public function show(Card $card)
@@ -74,6 +75,7 @@ class CardsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  Card $card
+     *
      * @return Response
      */
     public function edit(Card $card)
@@ -85,25 +87,27 @@ class CardsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  Card $card
+     *
      * @return Response
      */
     public function update(Card $card, Request $request)
     {
         $this->validate($request, [
-            'card' => "required|digits_between:5,8|unique:cards,card,$card->id,id",
-            'employee_id' => "required|exists:employees,id|unique:cards,employee_id,$card->id,id",
+            'card' => "required|digits_between:5,8|unique:cards,card,{$card->id},id",
+            'employee_id' => "required|exists:employees,id|unique:cards,employee_id,{$card->id},id",
         ]);
 
         $card->update($request->only('card', 'employee_id'));
 
         return redirect()->route('admin.cards.index')
-            ->withSuccess("Card $card->card has been updated");
+            ->withSuccess("Card {$card->card} has been updated");
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  Card $card
+     *
      * @return Response
      */
     public function destroy(Card $card)
@@ -111,6 +115,6 @@ class CardsController extends Controller
         $card->delete();
 
         return redirect()->route('admin.cards.index')
-            ->withDanger("Card $card->card has been removed.");
+            ->withDanger("Card {$card->card} has been removed.");
     }
 }

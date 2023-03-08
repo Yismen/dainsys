@@ -16,28 +16,28 @@ class PoliticalProductionReport extends ProductionReportCommand
         ';
 
     /**
-        * List of dialGroups to query. Provide all dialGroups.
-        *
-        * @return array
-        */
+     * List of dialGroups to query. Provide all dialGroups.
+     *
+     * @return array
+     */
     public function dialGroups(): array
     {
         return ['POL%'];
     }
 
     /**
-        * List of teams to query.
-        *
-        * @return array
-        */
+     * List of teams to query.
+     *
+     * @return array
+     */
     public function teams(): array
     {
         return ['ECC%'];
     }
 
     /**
-    * Email subject
-    */
+     * Email subject
+     */
     public function subject(): string
     {
         return str($this->name)->replace(':', ' ')->headline();

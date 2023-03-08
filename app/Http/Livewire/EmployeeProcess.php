@@ -2,27 +2,27 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Site;
-use App\Models\Process;
-use App\Models\Project;
-use Livewire\Component;
+use App\Http\Livewire\Traits\HasLivewirePagination;
+use App\Models\Department;
 use App\Models\Employee;
 use App\Models\Position;
-use App\Models\Department;
+use App\Models\Process;
+use App\Models\Project;
+use App\Models\Site;
 use Illuminate\Support\Facades\Cache;
-use App\Http\Livewire\Traits\HasLivewirePagination;
+use Livewire\Component;
 
 class EmployeeProcess extends Component
 {
     use HasLivewirePagination;
-
-    protected $listeners = ['searchUpdated'];
-    protected $search = null;
     public int $process_id = 0;
     public int $site_id = 0;
     public int $department_id = 0;
     public int $project_id = 0;
     public int $position_id = 0;
+
+    protected $listeners = ['searchUpdated'];
+    protected $search = null;
 
     public function render()
     {
@@ -63,6 +63,11 @@ class EmployeeProcess extends Component
 
         $process->employees()->attach($employees);
         Cache::flush();
+    }
+
+    public function searchUpdated($search)
+    {
+        $this->search = $search;
     }
 
     protected function getEmployees()
@@ -194,10 +199,5 @@ class EmployeeProcess extends Component
                 })
                 ->get(['name', 'id']);
         });
-    }
-
-    public function searchUpdated($search)
-    {
-        $this->search = $search;
     }
 }

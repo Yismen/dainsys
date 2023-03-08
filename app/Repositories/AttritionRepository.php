@@ -29,7 +29,8 @@ class AttritionRepository
     /**
      * Calculate MTD attrition for any given month. 0 means, current month. 1 means last month.
      *
-     * @param  integer $months
+     * @param int $months
+     *
      * @return void
      */
     public static function mtd(int $months = 0)
@@ -52,9 +53,9 @@ class AttritionRepository
             ->forDefaultSites()
             ->where(function ($query) use ($start_of_month) {
                 $query->actives()
-                ->orWhereHas('termination', function ($query) use ($start_of_month) {
-                    $query->where('termination_date', '>', $start_of_month);
-                });
+                    ->orWhereHas('termination', function ($query) use ($start_of_month) {
+                        $query->where('termination_date', '>', $start_of_month);
+                    });
             })->count();
     }
 
@@ -83,6 +84,6 @@ class AttritionRepository
 
     protected function calculate($terminations, $actives)
     {
-        return number_format($actives == 0 ? 0 : $terminations / $actives * 100, 2);
+        return number_format($actives === 0 ? 0 : $terminations / $actives * 100, 2);
     }
 }

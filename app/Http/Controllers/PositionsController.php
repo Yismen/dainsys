@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 // use App\Http\Request;
 use App\Models\Position;
-use Illuminate\Http\Request;
 use App\Rules\PositionUnique;
+use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class PositionsController extends Controller
@@ -28,13 +28,14 @@ class PositionsController extends Controller
         if ($request->ajax()) {
             return DataTables::of(
                 Position::with('department')
-                ->withCount(['employees' => function ($query) {
-                    return $query->actives();
-                }])
-                ->with('payment_type')
-                ->with('payment_frequency')
+                    ->withCount(['employees' => function ($query) {
+                        return $query->actives();
+                    },
+                    ])
+                    ->with('payment_type')
+                    ->with('payment_frequency')
             )
-            ->toJson(true);
+                ->toJson(true);
         }
 
         return view('positions.index');
@@ -82,7 +83,7 @@ class PositionsController extends Controller
         }
 
         return redirect()->route('admin.positions.index')
-            ->withSuccess("Position $position->name has been created!");
+            ->withSuccess("Position {$position->name} has been created!");
     }
 
     /**
@@ -141,7 +142,7 @@ class PositionsController extends Controller
         }
 
         return redirect()->route('admin.positions.index')
-            ->withSuccess("Position $position->name updated!");
+            ->withSuccess("Position {$position->name} updated!");
     }
 
     /**
@@ -166,6 +167,6 @@ class PositionsController extends Controller
         }
 
         return redirect()->route('admin.positions.index')
-            ->withWarning("Position $position->name has been removed!");
+            ->withWarning("Position {$position->name} has been removed!");
     }
 }

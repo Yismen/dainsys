@@ -65,7 +65,7 @@ class Position extends Model
         $salary = $this->salary;
 
         if ($this->payment_type) {
-            if (strtolower($this->payment_type->name) == 'salary') {
+            if (strtolower($this->payment_type->name) === 'salary') {
                 return $salary / 23.83 / 8;
             }
         }

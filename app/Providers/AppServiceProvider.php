@@ -3,12 +3,12 @@
 namespace App\Providers;
 
 use App\Models\User;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\Queue;
-use Illuminate\Queue\Events\JobFailed;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\ServiceProvider;
 use App\Notifications\UserAppNotification;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Queue\Events\JobFailed;
+use Illuminate\Support\Facades\Queue;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        Model::preventLazyLoading(!$this->app->isProduction());
+        Model::preventLazyLoading(! $this->app->isProduction());
 
         Queue::failing(function (JobFailed $event) {
             $users = User::whereHas('roles', function ($query) {
@@ -49,7 +49,7 @@ class AppServiceProvider extends ServiceProvider
         /**
          * Local providers here.
          */
-        if ($this->app->environment() == 'local') {
+        if ($this->app->environment() === 'local') {
             // $this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
         }
     }

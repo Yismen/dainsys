@@ -19,7 +19,7 @@ class EmployeeTerminatedMail extends Mailable
      */
     public Employee $employee;
 
-    protected array $recipients ;
+    protected array $recipients;
 
     public function __construct(Employee $employee, array $recipients)
     {
@@ -35,9 +35,9 @@ class EmployeeTerminatedMail extends Mailable
     public function build()
     {
         return $this->markdown('mail.employee-terminated-mail', [
-            'employee' => $this->employee->load('termination')
+            'employee' => $this->employee->load('termination'),
         ])
-        ->to($this->recipients)
+            ->to($this->recipients)
         ;
     }
 }

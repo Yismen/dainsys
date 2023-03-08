@@ -3,9 +3,8 @@
 namespace App\Console\Commands\Common\Traits;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Cache;
 use App\Notifications\UserAppNotification;
+use Illuminate\Support\Facades\Cache;
 
 trait NotifyUsersOnFailedCommandsTrait
 {
@@ -21,6 +20,7 @@ trait NotifyUsersOnFailedCommandsTrait
      * Notify all queried users;
      *
      * @param  \Throwable $th
+     *
      * @return object
      */
     protected function notifyUsers($th)
@@ -30,7 +30,7 @@ trait NotifyUsersOnFailedCommandsTrait
         try {
             $users = User::role($this->notifiable_roles)->get();
             $time = now();
-            $class_name = get_class($this);
+            $class_name = static::class;
 
             foreach ($users as $user) {
                 $user->notify(new UserAppNotification(
@@ -49,6 +49,7 @@ trait NotifyUsersOnFailedCommandsTrait
      * Save the exception to a log.
      *
      * @param  \Throwable $th
+     *
      * @return object
      */
     protected function logError(\Throwable $th)
@@ -60,6 +61,7 @@ trait NotifyUsersOnFailedCommandsTrait
      * Wrapper to Notify all desired users and log the errors
      *
      * @param  \Throwable $th
+     *
      * @return void
      */
     protected function notifyUsersAndLogError(\Throwable $th)

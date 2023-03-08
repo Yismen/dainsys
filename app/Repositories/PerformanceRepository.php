@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use Carbon\Carbon;
 use App\Models\Performance;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class PerformanceRepository
@@ -105,7 +105,7 @@ class PerformanceRepository
 
     protected function baseQeury()
     {
-        $performance_query = Performance::filter(request()->all())
+        return Performance::filter(request()->all())
             ->select(
                 DB::raw('
                 sum(revenue) as revenue,
@@ -120,7 +120,5 @@ class PerformanceRepository
             ')
             )
             ->orderBy('date');
-
-        return $performance_query;
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Exports\ConditionalFormats;
 
-use PhpOffice\PhpSpreadsheet\Style\Conditional;
 use PhpOffice\PhpSpreadsheet\Style\Color;
+use PhpOffice\PhpSpreadsheet\Style\Conditional;
 
 class ConditionalFontsColor implements ConditionalFormatsInterface
 {
