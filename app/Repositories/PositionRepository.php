@@ -6,7 +6,6 @@ use App\Models\Position;
 
 class PositionRepository
 {
-
     public static function all()
     {
         $instance = new self();

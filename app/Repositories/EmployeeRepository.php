@@ -13,7 +13,6 @@ use App\Models\Supervisor;
 
 class EmployeeRepository
 {
-
     public static function all()
     {
         $instance = new self();

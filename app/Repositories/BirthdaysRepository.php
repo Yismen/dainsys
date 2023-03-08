@@ -6,7 +6,6 @@ use App\Models\Employee;
 
 class BirthdaysRepository
 {
-
     public static function today()
     {
         $static = new self();

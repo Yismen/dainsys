@@ -6,7 +6,6 @@ use Illuminate\Queue\SerializesModels;
 
 class EmployeesUpdates extends Event
 {
-
     use SerializesModels;
     private $employees;
 

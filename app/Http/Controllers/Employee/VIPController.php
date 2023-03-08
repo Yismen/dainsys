@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Employee;
 
-use Carbon\Carbon;
-use App\Models\Employee;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class VIPController extends Controller

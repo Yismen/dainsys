@@ -6,7 +6,6 @@ use App\Models\Project;
 
 class ProjectRepository
 {
-
     public static function all()
     {
         $instance = new self();

@@ -6,7 +6,6 @@ use App\Models\Department;
 
 class DepartmentRepository
 {
-
     public static function actives()
     {
         $instance = new self();

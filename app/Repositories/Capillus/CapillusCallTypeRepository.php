@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 
 class CapillusCallTypeRepository extends RingCentralConnection
 {
-
     public $call_types_count;
 
     public $call_types_results;

@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use App\Http\ViewComposers\AppComposer;
 use App\Http\ViewComposers\DgtComposer;
-use Illuminate\Support\ServiceProvider;
 use App\Http\ViewComposers\LatestPunchComposer;
+use Illuminate\Support\ServiceProvider;
 
 class ViewServiceProvider extends ServiceProvider
 {

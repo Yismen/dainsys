@@ -9,7 +9,6 @@ use App\Models\Track;
  */
 trait Trackable
 {
-
     public function changes()
     {
         return $this->morphMany(Track::class, 'trackable')->latest()->take(35);
