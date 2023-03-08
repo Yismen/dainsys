@@ -2,22 +2,34 @@
 
 namespace App\Imports;
 
-use Carbon\Carbon;
 use App\Models\Performance;
-use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\Importable;
-use Maatwebsite\Excel\Concerns\WithEvents;
+use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Maatwebsite\Excel\Concerns\WithMapping;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\WithValidation;
 
 class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, WithBatchInserts, WithEvents, WithChunkReading, ShouldQueue, WithMapping
 {
     use Importable;
     use ExcelImportTrait;
+    /**
+     * The number of times the job may be attempted.
+     *
+     * @var int
+     */
+    public $tries = 5;
+    /**
+     * The number of seconds the job can run before timing out.
+     *
+     * @var int
+     */
+    public $timeout = 120;
 
     /**
      * The name with the file will be saved.
@@ -31,18 +43,6 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
      * @var App\Models\User::class
      */
     protected $importedBy;
-    /**
-     * The number of times the job may be attempted.
-     *
-     * @var int
-     */
-    public $tries = 5;
-    /**
-     * The number of seconds the job can run before timing out.
-     *
-     * @var int
-     */
-    public $timeout = 120;
 
     /**
      * class constructor
@@ -92,6 +92,7 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
      * Use ToModel logic to save the data
      *
      * @param  array            $row
+     *
      * @return \App\Performance instance
      */
     public function model(array $row)

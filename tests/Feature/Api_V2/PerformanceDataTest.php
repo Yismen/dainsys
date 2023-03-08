@@ -258,7 +258,6 @@ class PerformanceDataTest extends TestCase
     /** @test */
     public function performance_data_can_be_filtered_by_date()
     {
-        $this->withoutExceptionHandling();
         $today = factory(Performance::class)->create(['date' => now()]);
         $not_today = factory(Performance::class)->create(['date' => now()->subDay()]);
         Passport::actingAs($this->user());

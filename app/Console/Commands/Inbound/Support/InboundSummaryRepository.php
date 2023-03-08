@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands\Inbound\Support;
 
-use Illuminate\Support\Facades\DB;
 use App\Connections\RingCentralConnection;
+use Illuminate\Support\Facades\DB;
 
 class InboundSummaryRepository extends RingCentralConnection implements InboundSummaryInterface
 {
@@ -42,7 +42,7 @@ class InboundSummaryRepository extends RingCentralConnection implements InboundS
 
     public function getHoursData(): array
     {
-        return \config('app.env') == 'testing' ?
+        return \config('app.env') === 'testing' ?
             $this->getFakedHours() :
             $this->connection()->select(
                 DB::raw("        

@@ -2,8 +2,8 @@
 
 namespace App\Listeners;
 
-use App\Models\Employee;
 use App\Events\EmployeeCreated;
+use App\Models\Employee;
 
 class CreateEmployeeSchedule
 {

@@ -9,7 +9,7 @@ trait WithSorting
 
     public function orderBy($field)
     {
-        $this->orderDirection = $this->orderBy === $field ? !$this->orderDirection : true;
+        $this->orderDirection = $this->orderBy === $field ? ! $this->orderDirection : true;
         $this->orderBy = $field;
     }
 }

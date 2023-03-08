@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Models\Schedule;
-use Carbon\Carbon;
-use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ScheduleResource;
+use App\Models\Schedule;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**

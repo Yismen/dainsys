@@ -2,8 +2,8 @@
 
 namespace App\Listeners;
 
-use Illuminate\Http\Request;
 use App\Events\EditUserSettings;
+use Illuminate\Http\Request;
 
 class UpdateUserSettings
 {
@@ -23,6 +23,7 @@ class UpdateUserSettings
      * Handle the event.
      *
      * @param  EditUserSettings  $event
+     *
      * @return void
      */
     public function handle(EditUserSettings $event)

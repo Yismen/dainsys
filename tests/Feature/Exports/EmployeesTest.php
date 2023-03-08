@@ -39,7 +39,6 @@ class EmployeesTest extends TestCase
     /** @test */
     public function it_download_all_employees()
     {
-        $this->withoutExceptionHandling();
         Excel::fake();
         $this->actingAs($this->userWithPermission('view-employees'));
         factory(Employee::class)->create();

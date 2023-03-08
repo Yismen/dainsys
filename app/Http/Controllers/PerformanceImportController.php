@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Performance;
-use Yajra\DataTables\Facades\DataTables;
 use App\Services\PerformancesImportService;
+use Yajra\DataTables\Facades\DataTables;
 
 class PerformanceImportController extends Controller
 {
@@ -28,7 +28,7 @@ class PerformanceImportController extends Controller
      */
     public function index()
     {
-        if (!request()->ajax()) {
+        if (! request()->ajax()) {
             return view('performances_import.index');
         }
 
@@ -64,7 +64,7 @@ class PerformanceImportController extends Controller
      */
     public function show($perf_date)
     {
-        if (!request()->ajax()) {
+        if (! request()->ajax()) {
             return view('performances_import.show')->with(['date' => $perf_date]);
         }
 

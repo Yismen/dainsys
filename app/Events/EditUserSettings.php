@@ -6,9 +6,8 @@ use Illuminate\Queue\SerializesModels;
 
 class EditUserSettings extends Event
 {
-    public $user;
-
     use SerializesModels;
+    public $user;
 
     /**
      * Create a new event instance.

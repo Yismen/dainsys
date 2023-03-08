@@ -1,51 +1,50 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Shifts', 'page_description'=>'Control shift items'])
+@extends('layouts.app', ['page_header'=>'Shifts', 'page_description'=>'Control shift items'])
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="panel-title">
-                            Shifts
-                            <a href="{{ route('admin.shifts.create') }}" class="pull-right">
-                                <i class="fa fa-plus"></i>
-                                 Add Shift Item
-                            </a>
-                        </h3>
-                    </div>
-                    {{-- .box-bheader --}}
-                    <div class="box-body table-responsive">
-                        <table class="table table-bordered table-condensed table-striped" id="shifts-table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Slug</th>
-                                    <th>Start At</th>
-                                    <th>End At</th>
-                                    <th>Monday</th>
-                                    <th>Tuesday</th>
-                                    <th>Wednesday</th>
-                                    <th>Thursday</th>
-                                    <th>Friday</th>
-                                    <th>Saturday</th>
-                                    <th>Sunday</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    {{-- .box-body --}}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="panel-title">
+                        Shifts
+                        <a href="{{ route('admin.shifts.create') }}" class="pull-right">
+                            <i class="fa fa-plus"></i>
+                            Add Shift Item
+                        </a>
+                    </h3>
                 </div>
-                {{-- .box --}}
+                {{-- .box-bheader --}}
+                <div class="box-body table-responsive">
+                    <table class="table table-bordered table-condensed table-striped" id="shifts-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Slug</th>
+                                <th>Start At</th>
+                                <th>End At</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                                <th>Sunday</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                {{-- .box-body --}}
             </div>
+            {{-- .box --}}
         </div>
     </div>
+</div>
 @endsection
 @push('scripts')
-    <script>
-        (function($){
+<script>
+    (function($){
             $(document).ready(function($) {
 
                 let dTable = $('#shifts-table').DataTable({
@@ -87,5 +86,5 @@
             });
 
         })(jQuery);
-    </script>
+</script>
 @endpush

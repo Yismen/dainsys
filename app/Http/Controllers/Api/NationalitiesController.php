@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Nationality;
 use App\Http\Controllers\Controller;
+use App\Models\Nationality;
 
 class NationalitiesController extends Controller
 {
@@ -13,6 +13,7 @@ class NationalitiesController extends Controller
      * Save a Nationality model to database.
      *
      * @bodyParam name string required The name of the Nationality     *
+     *
      * @response 201 {
      *      "name": "Asdfasdf",
      *  }

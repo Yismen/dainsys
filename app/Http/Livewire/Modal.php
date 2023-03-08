@@ -9,9 +9,9 @@ class Modal extends Component
     public $component;
     public $params = [];
 
-    protected $listeners = ['showModal', 'resetModal'];
-
     public $title;
+
+    protected $listeners = ['showModal', 'resetModal'];
 
     public function render()
     {

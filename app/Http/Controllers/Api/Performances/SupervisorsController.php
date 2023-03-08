@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api\Performances;
 
-use App\Models\Supervisor;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SupervisorsResource;
+use App\Models\Supervisor;
 
 /**
  * @group Performances

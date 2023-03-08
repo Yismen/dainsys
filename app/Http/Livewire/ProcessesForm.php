@@ -2,15 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Livewire\Traits\HasLivewirePagination;
 use App\Models\Process;
 use Livewire\Component;
-use App\Http\Livewire\Traits\HasLivewirePagination;
 
 class ProcessesForm extends Component
 {
     use HasLivewirePagination;
-
-    protected $listeners = ['wantsCreateProcess', 'wantsEditProcess'];
     public array $fields = [
         'name' => null,
         'default' => false,
@@ -18,6 +16,8 @@ class ProcessesForm extends Component
     ];
     public bool $is_editing = false;
     public Process $process;
+
+    protected $listeners = ['wantsCreateProcess', 'wantsEditProcess'];
     protected $rules = [
         'fields.name' => 'required|min:3|unique:steps,name',
         'fields.default' => 'required|boolean',

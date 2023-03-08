@@ -32,6 +32,7 @@ class Card extends Model
 
     /**
      * get employees with no cards added
+     *
      * @return [type] [description]
      */
     public function getEmployeesListAttribute()

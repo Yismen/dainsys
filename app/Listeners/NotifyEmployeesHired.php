@@ -19,6 +19,7 @@ class NotifyEmployeesHired
      * Handle the event.
      *
      * @param  EmployeesUpdates  $event
+     *
      * @return void
      */
     public function handle(EmployeesUpdates $event)

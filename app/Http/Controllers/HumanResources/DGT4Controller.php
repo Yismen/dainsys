@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\HumanResources;
 
 use App\Exports\DGT4Export;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\HumanResources\Employees\Reports;
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 class DGT4Controller extends Controller

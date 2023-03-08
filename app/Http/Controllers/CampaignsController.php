@@ -19,7 +19,7 @@ class CampaignsController extends Controller
 
     public function index()
     {
-        if (!request()->ajax()) {
+        if (! request()->ajax()) {
             return view('campaigns.index');
         }
 

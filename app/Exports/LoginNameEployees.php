@@ -5,8 +5,8 @@ namespace App\Exports;
 use App\Models\Employee;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
-use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithTitle;
 
 class LoginNameEployees implements FromView, WithTitle, ShouldAutoSize
 {

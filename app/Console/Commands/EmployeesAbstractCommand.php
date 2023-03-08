@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands;
 
-use Carbon\Carbon;
-use App\Models\Report;
-use Illuminate\Console\Command;
 use App\Mail\EmployeesAfiliation;
+use App\Models\Report;
+use Carbon\Carbon;
+use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 
 abstract class EmployeesAbstractCommand extends Command
@@ -29,7 +29,7 @@ abstract class EmployeesAbstractCommand extends Command
             'from',
             $this->dates['date_from']->format('Y-m-d'),
             'to',
-            $this->dates['date_to']->format('Y-m-d')
+            $this->dates['date_to']->format('Y-m-d'),
         ]) . '.xlsx';
     }
 
@@ -55,7 +55,7 @@ abstract class EmployeesAbstractCommand extends Command
 
         $exporter = new $exporter($this->dates['date_from'], $this->dates['date_to'], $this->option('site'));
 
-        if (!$exporter->hasData()) {
+        if (! $exporter->hasData()) {
             return false;
         }
 

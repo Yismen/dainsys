@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\RevenueType;
+use Illuminate\Http\Request;
 
 // use Illuminate\Http\Request;
 
@@ -55,13 +55,14 @@ class RevenueTypesController extends Controller
         );
 
         return redirect()->route('admin.revenue_types.index')
-            ->withSuccess("RevenueType [$revenue_type->name] has been Created");
+            ->withSuccess("RevenueType [{$revenue_type->name}] has been Created");
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function show(RevenueType $revenue_type)
@@ -73,6 +74,7 @@ class RevenueTypesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function edit(RevenueType $revenue_type)
@@ -84,6 +86,7 @@ class RevenueTypesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function update(RevenueType $revenue_type, Request $request)
@@ -97,13 +100,14 @@ class RevenueTypesController extends Controller
         ]));
 
         return redirect()->route('admin.revenue_types.index')
-            ->withSuccess("Information for revenue_type [$revenue_type->name] has been updated");
+            ->withSuccess("Information for revenue_type [{$revenue_type->name}] has been updated");
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function destroy(RevenueType $revenue_type)
@@ -111,6 +115,6 @@ class RevenueTypesController extends Controller
         $revenue_type->delete();
 
         return redirect()->route('admin.revenue_types.index')
-            ->withDanger("Information for revenue_type [$revenue_type->name] has been deleted");
+            ->withDanger("Information for revenue_type [{$revenue_type->name}] has been deleted");
     }
 }

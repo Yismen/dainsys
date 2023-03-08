@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V2;
 
 use App\Http\Controllers\Controller;
-use App\Models\RingCentral\Disposition;
 use App\Http\Resources\DispositionResource;
+use App\Models\RingCentral\Disposition;
 
 /**
  * @group Performances

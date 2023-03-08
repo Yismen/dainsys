@@ -50,7 +50,7 @@ class WowDispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCa
                     ->applyBorders("A3:{$this->last_column}{$this->rows}")
                     // ->applyNumberFormats("E2:G{$this->rows}", '#,##0.00')
                     ->applyNumberFormats("{$this->last_column}2:{$this->last_column}{$this->rows}", NumberFormat::FORMAT_PERCENTAGE_00)
-                    ;
+                ;
             },
         ];
     }

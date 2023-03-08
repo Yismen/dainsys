@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\HumanResources;
 
 use App\Exports\DGT3Export;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Repositories\HumanResources\Employees\Reports;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DGT3Controller extends Controller
 {

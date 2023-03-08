@@ -1,5 +1,4 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>config('dainsys.app_name'), 'page_description'=>'No Description'])
+@extends('layouts.app', ['page_header'=>config('dainsys.app_name'), 'page_description'=>'No Description'])
 
 @section('content')
 <div class="container ">

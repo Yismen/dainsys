@@ -1,6 +1,5 @@
-@inject('layout', 'App\Models\Layout')
 @php $title = __('Create New Employee') @endphp
-@extends('layouts.'.$layout->app(), ['page_header'=>'Employees', 'page_description'=>"{$title}!"])
+@extends('layouts.app', ['page_header'=>'Employees', 'page_description'=>"{$title}!"])
 
 @section('content')
 <div class="container-fluid">

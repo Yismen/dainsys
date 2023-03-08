@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Livewire\Traits\HasLivewirePagination;
 use App\Models\Process;
 use Livewire\Component;
-use App\Http\Livewire\Traits\HasLivewirePagination;
 
 class Processes extends Component
 {
@@ -29,7 +29,7 @@ class Processes extends Component
                     }
                 )
                 ->orderBy('name')
-                ->paginate($this->amount)
+                ->paginate($this->amount),
         ]);
     }
 

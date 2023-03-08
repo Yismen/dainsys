@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role as EmpatieRole;
-use Illuminate\Support\Facades\Cache;
 
 class Role extends EmpatieRole
 {
@@ -69,6 +69,7 @@ class Role extends EmpatieRole
      *
      * @param  [object] $menu     [description]
      * @param  [object] $request [description]
+     *
      * @return [process]           [the action of syncing the menu-roles]
      */
     public function updateRole($request)
@@ -91,6 +92,7 @@ class Role extends EmpatieRole
      *
      * @param  Menu   $menu  [description]
      * @param  Array  $roles [description]
+     *
      * @return [type]        [description]
      */
     protected function syncRelations($role, $request)

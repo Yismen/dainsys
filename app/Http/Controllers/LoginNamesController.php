@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\LoginName as LoginNameExport;
+use App\Exports\LoginNameEployees;
 use App\Models\LoginName;
 use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables;
-use App\Exports\LoginNameEployees;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Cache;
-use App\Exports\LoginName as LoginNameExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Yajra\DataTables\DataTables;
 
 class LoginNamesController extends Controller
 {
@@ -28,7 +28,7 @@ class LoginNamesController extends Controller
      */
     public function index()
     {
-        if (!request()->ajax()) {
+        if (! request()->ajax()) {
             return view('login_names.index');
         }
 
@@ -67,7 +67,7 @@ class LoginNamesController extends Controller
         $login->create($request->all());
 
         return redirect()->route('admin.login_names.index')
-            ->withSuccess("LoginName $login->login has been created!");
+            ->withSuccess("LoginName {$login->login} has been created!");
     }
 
     /**
@@ -118,7 +118,7 @@ class LoginNamesController extends Controller
         }
 
         return redirect()->route('admin.login_names.index')
-            ->withSuccess("LoginName $login->login has been updated!");
+            ->withSuccess("LoginName {$login->login} has been updated!");
     }
 
     /**
@@ -136,7 +136,7 @@ class LoginNamesController extends Controller
         Cache::forget('login-names');
 
         return redirect()->route('admin.login_names.index')
-            ->withDanger("LoginName $login->login has been removed.");
+            ->withDanger("LoginName {$login->login} has been removed.");
     }
 
     public function toExcel(Request $request)

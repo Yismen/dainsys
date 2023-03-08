@@ -23,7 +23,7 @@ class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateForm
 
     protected $title;
 
-    protected String $view;
+    protected string $view;
 
     public function __construct(array $data, $sheetName, $title, string $view = 'exports.data')
     {
@@ -84,7 +84,7 @@ class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateForm
 
     protected function addSubTotals()
     {
-        $totalsRow = ($this->rows + 1);
+        $totalsRow = $this->rows + 1;
         $loginTimeColumn = 'F';
         $workTimeColumn = 'G';
         $talkTimeColumn = 'H';

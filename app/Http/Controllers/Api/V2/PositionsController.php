@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Models\Position;
-use Illuminate\Http\Request;
-use App\Rules\PositionUnique;
 use App\Http\Controllers\Controller;
+use App\Models\Position;
+use App\Rules\PositionUnique;
+use Illuminate\Http\Request;
 
 class PositionsController extends Controller
 {

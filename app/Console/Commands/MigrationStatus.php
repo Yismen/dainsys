@@ -45,6 +45,13 @@ class MigrationStatus extends Command
             ->table($this->headers, $this->migration_array);
     }
 
+    public function setHeaders()
+    {
+        $this->headers = ['Name', 'Batch'];
+
+        return $this;
+    }
+
     /**
      * Update the migrations array.
      */
@@ -68,13 +75,6 @@ class MigrationStatus extends Command
             }
             array_push($this->migration_array, $array);
         }
-
-        return $this;
-    }
-
-    public function setHeaders()
-    {
-        $this->headers = ['Name', 'Batch'];
 
         return $this;
     }

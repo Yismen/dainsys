@@ -1,5 +1,4 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Overnight Hours', 'page_description'=>'List of overnight hours of
+@extends('layouts.app', ['page_header'=>'Overnight Hours', 'page_description'=>'List of overnight hours of
 production.'])
 
 @section('content')

@@ -2,10 +2,10 @@
 
 namespace App\Listeners;
 
-use Illuminate\Support\Arr;
 use Illuminate\Mail\Events\MessageSent;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 class RemoveTemporaryMailAttachments
 {
@@ -24,6 +24,7 @@ class RemoveTemporaryMailAttachments
      * Handle the event.
      *
      * @param  object $event
+     *
      * @return void
      */
     public function handle(MessageSent $event)

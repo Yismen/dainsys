@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Employee;
 
+use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\Employee;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 
 class AddressController extends Controller
@@ -15,6 +15,7 @@ class AddressController extends Controller
      *
      * @param  Employee $employee
      * @param  Request  $request
+     *
      * @return void
      */
     public function update(Employee $employee, Request $request, Address $address)

@@ -26,7 +26,7 @@ class GeneralDailyRawReportRepository extends RingCentralConnection
 
     public function getData()
     {
-        if (\config('app.env') == 'testing') {
+        if (\config('app.env') === 'testing') {
             return $this->getFakeData();
         }
 

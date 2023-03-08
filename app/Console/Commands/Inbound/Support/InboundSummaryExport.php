@@ -41,7 +41,7 @@ class InboundSummaryExport implements WithMultipleSheets
                 $sheetClass = "\\App\\Console\\Commands\\Inbound\\Sheets\\{$class_name}";
 
                 $sheets[] = new $sheetClass($value, $class_name, $this->date_from, $this->date_to);
-            };
+            }
         }
 
         return $sheets;

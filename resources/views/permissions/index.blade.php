@@ -1,40 +1,39 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>config('dainsys.app_name'), 'page_description'=>'No Description'])
+@extends('layouts.app', ['page_header'=>config('dainsys.app_name'), 'page_description'=>'No Description'])
 
 @section('content')
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-10 col-sm-offset-1">
-				<div class="box box-primary">
-					<h4 class="box-header">
-						Permissions Items List
-						<a href="{{ route('admin.permissions.create') }}" class="pull-right">
-							<i class="fa fa-plus"></i>
-							New Permission
-						</a>
-					</h4>
-					<div class="box-body table-responsive">
-						<table class="table table-condensed table-hover table-striped" id="permissions-table">
-							<thead>
-								<tr>
-									<th>Name</th>
-									<th>Resource</th>
-									<th>Guard</th>
-									<th>Roles</th>
-									<th class="col-xs-2">Actions</th>
-								</tr>
-							</thead>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="box box-primary">
+                <h4 class="box-header">
+                    Permissions Items List
+                    <a href="{{ route('admin.permissions.create') }}" class="pull-right">
+                        <i class="fa fa-plus"></i>
+                        New Permission
+                    </a>
+                </h4>
+                <div class="box-body table-responsive">
+                    <table class="table table-condensed table-hover table-striped" id="permissions-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Resource</th>
+                                <th>Guard</th>
+                                <th>Roles</th>
+                                <th class="col-xs-2">Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	</div>
+</div>
 @stop
 
 @push('scripts')
-	
+
 <script>
     (function($){
         $(document).ready(function($) {
@@ -85,4 +84,3 @@
 
 </script>
 @endpush
-

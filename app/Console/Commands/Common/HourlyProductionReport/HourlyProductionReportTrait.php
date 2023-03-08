@@ -65,6 +65,7 @@ trait HourlyProductionReportTrait
      *
      * @param string $mail_subject
      * @param array $distro
+     *
      * @return void
      */
     protected function createAndSendReport(string $mail_subject, array $distro): void
@@ -123,11 +124,11 @@ trait HourlyProductionReportTrait
      */
     protected function bootOptionVariables(): object
     {
-        $this->date_to = $this->option('date') == 'default' ?
+        $this->date_to = $this->option('date') === 'default' ?
             now()->format('m/d/Y') :
             Carbon::parse($this->option('date'))->format('m/d/Y');
 
-        $this->date_from = $this->option('from') == 'default' ?
+        $this->date_from = $this->option('from') === 'default' ?
             $this->date_to :
             Carbon::parse($this->option('from'))->format('m/d/Y');
 

@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use App\Models\DainsysModel as Model;
+use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 
 class Schedule extends Model
@@ -63,7 +63,7 @@ class Schedule extends Model
                 $weekDay = strtolower($date->format('l'));
                 $data['date'] = $date->format('Y-m-d');
 
-                if (!$this->exists($data)) {
+                if (! $this->exists($data)) {
                     $shift = Shift::where('employee_id', $data['employee_id'])->first();
                     $data['hours'] = $shift->$weekDay;
 

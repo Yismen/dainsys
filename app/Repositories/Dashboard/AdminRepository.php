@@ -3,9 +3,9 @@
 namespace App\Repositories\Dashboard;
 
 use App\Models\Performance;
-use App\Repositories\PerformanceRepository;
 use App\Models\Role;
 use App\Models\User;
+use App\Repositories\PerformanceRepository;
 
 class AdminRepository
 {
@@ -27,13 +27,16 @@ class AdminRepository
     {
         return Role::with(['users' => function ($query) {
             return $query->orderBy('name');
-        }])
+        },
+        ])
             ->with(['permissions' => function ($query) {
                 return $query->orderBy('resource');
-            }])
+            },
+            ])
             ->with(['menus' => function ($query) {
                 return $query->orderBy('name');
-            }])
+            },
+            ])
             ->orderBy('name')->get();
     }
 }

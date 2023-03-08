@@ -6,8 +6,8 @@ use App\Models\Employee;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Cache;
 use Maatwebsite\Excel\Concerns\FromView;
-use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithTitle;
 
 class LoginName implements FromView, WithTitle, ShouldAutoSize
 {
@@ -15,7 +15,7 @@ class LoginName implements FromView, WithTitle, ShouldAutoSize
     {
         $employees = Cache::rememberForever('login-names', function () {
             return Employee::select('id', 'first_name', 'second_first_name', 'last_name', 'second_last_name')
-            ->orderBy('first_name')->with(['loginNames', 'supervisor'])->whereHas('loginNames')->get();
+                ->orderBy('first_name')->with(['loginNames', 'supervisor'])->whereHas('loginNames')->get();
         });
 
         return view('login_names.partials.results-to-excel', compact('employees'));

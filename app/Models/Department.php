@@ -12,6 +12,7 @@ class Department extends Model
      * Update the Department name field to be ucwords
      *
      * @param  [string] $name the name name's field
+     *
      * @return string             converted string
      */
     public function setNameAttribute($name)
@@ -26,6 +27,7 @@ class Department extends Model
 
     /**
      * many to many relationship with the employee model
+     *
      * @return [array] [employees associated to current Department]
      */
     public function employees()
@@ -40,7 +42,8 @@ class Department extends Model
 
     /**
      * Return the count of employees assigned to the current name
-     * @return integer Count of employees assigned to the current name
+     *
+     * @return int Count of employees assigned to the current name
      */
     public function employees_count()
     {

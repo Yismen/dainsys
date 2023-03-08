@@ -15,7 +15,7 @@ class AttendanceCodesRepository
 
     public function __construct(int $code, bool $current_user = true)
     {
-        $this->current_user = $current_user == true ? auth()->user()->id : '%';
+        $this->current_user = $current_user === true ? auth()->user()->id : '%';
 
         $this->code = $code;
     }

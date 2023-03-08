@@ -3,7 +3,6 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use Illuminate\Database\Eloquent\Model;
 
 class UniqueInDBRule implements Rule
 {
@@ -12,15 +11,16 @@ class UniqueInDBRule implements Rule
     protected $fields;
 
     protected $except_id;
+    protected $dates;
 
     /**
      * Create a new instance
      *
-     * @param String class representing the model $model
+     * @param string class representing the model $model
      * @param array $fields
-     * @param integer $except_id
+     * @param int   $except_id
      */
-    public function __construct($model, array $fields, int $except_id = 0, array $dates = [])
+    public function __construct(string $model, array $fields, int $except_id = 0, array $dates = [])
     {
         $this->model = $this->getModelInstance($model);
         $this->fields = $fields;
@@ -31,8 +31,9 @@ class UniqueInDBRule implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed  $value
+     *
      * @return bool
      */
     public function passes($attribute, $value)
@@ -45,7 +46,7 @@ class UniqueInDBRule implements Rule
 
         $model = $this->model->first();
 
-        return $model == null || $model->id == $this->except_id;
+        return $model === null || $model->id === $this->except_id;
     }
 
     /**
@@ -61,7 +62,7 @@ class UniqueInDBRule implements Rule
     protected function getModelInstance($model)
     {
         if (is_string($model)) {
-            return new $model;
+            return new $model();
         }
 
         return $model;

@@ -2,8 +2,8 @@
 
 namespace App\Http\ViewComposers;
 
-use Illuminate\View\View;
 use App\Repositories\HumanResources\Employees\Reports;
+use Illuminate\View\View;
 
 class DgtComposer
 {
@@ -18,6 +18,7 @@ class DgtComposer
      * Create a new profile composer.
      *
      * @param  Reports  $reports
+     *
      * @return void
      */
     public function __construct(Reports $reports)
@@ -30,6 +31,7 @@ class DgtComposer
      * Bind data to the view.
      *
      * @param  View  $view
+     *
      * @return void
      */
     public function compose(View $view)

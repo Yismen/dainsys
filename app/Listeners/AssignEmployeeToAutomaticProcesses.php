@@ -2,10 +2,8 @@
 
 namespace App\Listeners;
 
-use App\Models\Process;
 use App\Events\EmployeeCreated;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Models\Process;
 
 class AssignEmployeeToAutomaticProcesses
 {
@@ -22,6 +20,7 @@ class AssignEmployeeToAutomaticProcesses
      * Handle the event.
      *
      * @param  \App\Events\EmployeeCreated  $event
+     *
      * @return void
      */
     public function handle(EmployeeCreated $event)

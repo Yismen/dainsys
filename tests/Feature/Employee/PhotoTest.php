@@ -14,7 +14,6 @@ class PhotoTest extends TestCase
     /** @test */
     public function employee_photo_is_created()
     {
-        $this->withoutExceptionHandling();
         $photo_array = ['photo' => UploadedFile::fake()->image('avatarForTesting.jpg', 200)];
         $employee = create(Employee::class);
 

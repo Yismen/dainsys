@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Str;
 use App\Models\Tag;
+use Illuminate\Support\Str;
 
 class TagsController extends Controller
 {
@@ -50,6 +50,7 @@ class TagsController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function show(Tag $tag)
@@ -63,6 +64,7 @@ class TagsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function edit($id)
@@ -73,6 +75,7 @@ class TagsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function update($id)
@@ -83,6 +86,7 @@ class TagsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function destroy($id)

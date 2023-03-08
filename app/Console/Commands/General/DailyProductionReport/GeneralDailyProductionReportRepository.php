@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands\General\DailyProductionReport;
 
-use Illuminate\Support\Facades\DB;
 use App\Connections\RingCentralConnection;
+use Illuminate\Support\Facades\DB;
 
 class GeneralDailyProductionReportRepository extends RingCentralConnection
 {
@@ -27,7 +27,7 @@ class GeneralDailyProductionReportRepository extends RingCentralConnection
 
     public function getData()
     {
-        return $this->dispositions = \config('app.env') == 'testing' ?
+        return $this->dispositions = \config('app.env') === 'testing' ?
             true :
             $this->connection()->select(
                 DB::raw("

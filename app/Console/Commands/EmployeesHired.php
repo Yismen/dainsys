@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use App\Exports\EmployeesHired as ExportsEmployeesHired;
 
 class EmployeesHired extends EmployeesAbstractCommand

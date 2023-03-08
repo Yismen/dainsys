@@ -2,9 +2,8 @@
 
 namespace App\Http\ViewComposers;
 
-use Illuminate\View\View;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\View\View;
 
 class AppComposer
 {
@@ -18,8 +17,10 @@ class AppComposer
     public function compose(View $view)
     {
         return $view->with([
-            'logged' => auth()->check(),
+            'logged' => $this->user,
             'user' => $this->user,
+            'user_notifications' => $this->userNotifications(),
+            'user_notifications_count' => $this->userNotificationsCount(),
             'app_name' => ucwords(config('dainsys.app_name', 'Dainsys')),
             'client_name' => ucwords(config('dainsys.client_name', 'Dainsys\' Client')),
             'client_name_mini' => strtoupper(config('dainsys.client_name_mini', 'DAINSYS')),
@@ -30,25 +31,47 @@ class AppComposer
 
     private function user()
     {
-        if (Auth::check()) {
-            return Cache::rememberForEver('user-' . Auth::user()->id, function () {
-                return Auth::user()
+        if (auth()->check()) {
+            $this->user = auth()->user();
+
+            return Cache::rememberForEver('user-' . $this->user->id, function () {
+                return $this->user
                     ->load([
                         'settings',
                         'roles' => function ($query) {
                             return $query->orderBy('name')
                                 ->with(['menus' => function ($query) {
                                     return $query->orderBy('display_name');
-                                }]);
-                        },
-                        'unreadNotifications' => function ($query) {
-                            $query->oldest()->take(25);
+                                },
+                                ]);
                         },
                     ]);
             });
         }
 
         return null;
+    }
+
+    private function userNotifications()
+    {
+        if ($this->user) {
+            return Cache::rememberForEver('user-notifications-' . $this->user->id, function () {
+                return $this->user->unreadNotifications()->take(10)->get();
+            });
+        }
+
+        return null;
+    }
+
+    private function userNotificationsCount(): int
+    {
+        if ($this->user) {
+            return Cache::rememberForEver('user-notifications-count-' . auth()->user()->id, function () {
+                return auth()->user()->unreadNotifications()->count();
+            });
+        }
+
+        return 0;
     }
 
     private function settings()

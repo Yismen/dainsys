@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Site;
 use App\Models\Employee;
+use App\Models\Site;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -32,7 +32,8 @@ class SitesController extends Controller
                         'project',
                     ])
                     ->actives();
-            }])
+            },
+            ])
                 ->get();
         });
 

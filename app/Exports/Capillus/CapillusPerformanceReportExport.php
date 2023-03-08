@@ -23,7 +23,7 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
 
     public function __construct(array $options)
     {
-        $this->sheet = $options['campaign'] == '%' ? 'Overall' : $options['campaign'];
+        $this->sheet = $options['campaign'] === '%' ? 'Overall' : $options['campaign'];
 
         $this->repo = new CapillusPerformanceReportRepository([
             'date' => $options['date'],

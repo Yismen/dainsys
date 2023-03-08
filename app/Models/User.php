@@ -1,25 +1,24 @@
 <?php
 
-
 namespace App\Models;
 
-use App\Traits\Trackable;
-use Illuminate\Support\Str;
+use App\Http\Traits\Accessors\UserAccessors;
+use App\Http\Traits\Mutators\UserMutators;
+use App\Http\Traits\Relationships\UserRelationships;
 use App\Mail\NewUserCreated;
 use App\Mail\UpdatedPassword;
-use Laravel\Passport\HasApiTokens;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Cache;
-use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Notifications\Notifiable;
-use App\Http\Traits\Mutators\UserMutators;
-use App\Http\Traits\Accessors\UserAccessors;
+use App\Traits\Trackable;
+use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Contracts\Auth\CanResetPassword;
-use App\Http\Traits\Relationships\UserRelationships;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use Laravel\Passport\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements CanResetPassword
 {
@@ -60,7 +59,7 @@ class User extends Authenticatable implements CanResetPassword
 
     public function owns($model)
     {
-        return $this->id == $model->user_id;
+        return $this->id === $model->user_id;
     }
 
     public function userHasProfileOrCreate()
@@ -119,11 +118,11 @@ class User extends Authenticatable implements CanResetPassword
 
     public function updateUser($request)
     {
-        if ($this->id == auth()->user()->id && $request->is_active == 0) {
+        if ($this->id === auth()->user()->id && $request->is_active === 0) {
             abort(401, 'You cant inactivate Your self. No changes made.');
         }
 
-        if ($this->id == auth()->user()->id && $this->is_admin == 0 && $request->is_admin == 1) {
+        if ($this->id === auth()->user()->id && $this->is_admin === 0 && $request->is_admin === 1) {
             abort(401, 'You cant set your self as Admin. No changes made.');
         }
 
@@ -134,11 +133,11 @@ class User extends Authenticatable implements CanResetPassword
 
     public function forceChangePassword($request)
     {
-        if ($this->id == auth()->user()->id && $request->is_active == 0) {
+        if ($this->id === auth()->user()->id && $request->is_active === 0) {
             abort(401, 'You cant inactivate Your self. No changes made.');
         }
 
-        if ($this->id == auth()->user()->id && $this->is_admin == 0 && $request->is_admin == 1) {
+        if ($this->id === auth()->user()->id && $this->is_admin === 0 && $request->is_admin === 1) {
             abort(401, 'You cant set your self as Admin. No changes made.');
         }
 

@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use App\Models\DainsysModel as Model;
+use Carbon\Carbon;
 
 class Attendance extends Model
 {
@@ -45,7 +45,8 @@ class Attendance extends Model
     {
         return auth()->user()->supervisors->load(['employees' => function ($query) {
             return $query->actives()->sorted();
-        }])->map(function ($item, $key) {
+        },
+        ])->map(function ($item, $key) {
             return $item->employees;
         })->collapse();
     }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Cache;
 use App\Models\Employee;
 use App\Models\Nationality;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class NationalitiesController extends Controller
 {
@@ -42,7 +42,8 @@ class NationalitiesController extends Controller
                         ->orderBy('last_name')
                         ->orderBy('second_last_name')
                         ->actives();
-                }])->get();
+                },
+                ])->get();
         });
 
         if ($request->ajax()) {

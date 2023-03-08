@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api\V2\Dashboards;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\PerformanceRepository;
+use Illuminate\Http\Request;
 
 /**
  * @group Dashboards

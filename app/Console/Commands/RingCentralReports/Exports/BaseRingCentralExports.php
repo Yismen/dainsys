@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands\RingCentralReports\Exports;
 
+use App\Console\Commands\RingCentralReports\Exports\Support\Mails\BaseRingCentralMails;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
-use App\Console\Commands\RingCentralReports\Exports\Support\Mails\BaseRingCentralMails;
 
 abstract class BaseRingCentralExports implements RingCentralExportsContract, WithMultipleSheets
 {

@@ -25,7 +25,7 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
 
     protected $sheetName;
 
-    protected String $view;
+    protected string $view;
 
     protected string $client;
 
@@ -56,7 +56,7 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
 
         $this->dates = $this->hours_data->pluck('Report Date')->unique()->sort();
         $this->names = $this->hours_data->pluck('agent_name')->unique()->sort()->filter(function ($name) {
-            $calls = ($this->calls_data->first(fn ($item) => $item->agent_name == $name));
+            $calls = $this->calls_data->first(fn ($item) => $item->agent_name === $name);
 
             return $calls->total_calls ?? 0 > 0;
         });
@@ -110,7 +110,7 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
 
                 $this->sheet->setAutoFilter("A2:{$this->last_column}{$this->rows}");
 
-            // Adjust DialGroup column width
+                // Adjust DialGroup column width
             },
         ];
     }

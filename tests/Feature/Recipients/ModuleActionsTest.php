@@ -27,7 +27,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_store_recipient()
     {
-        $this->withoutExceptionHandling();
         $recipient = make(Recipient::class)->toArray();
 
         $this->actingAs($this->userWithPermission('create-recipients'))

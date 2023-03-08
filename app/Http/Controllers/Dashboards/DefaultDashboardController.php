@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Dashboards;
 
-use App\Models\User;
-use App\Models\Profile;
 use App\Models\Employee;
-use App\Repositories\SiteRepository;
-use App\Repositories\ProjectRepository;
+use App\Models\Profile;
+use App\Models\User;
 use App\Repositories\BirthdaysRepository;
+use App\Repositories\ProjectRepository;
+use App\Repositories\SiteRepository;
 
 class DefaultDashboardController extends DashboardAbstractController
 {
@@ -15,6 +15,7 @@ class DefaultDashboardController extends DashboardAbstractController
      * Handle the incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function index()

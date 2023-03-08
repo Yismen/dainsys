@@ -1,5 +1,4 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Process', 'page_description'=>'List of processes of production.'])
+@extends('layouts.app', ['page_header'=>'Process', 'page_description'=>'List of processes of production.'])
 
 @section('content')
 <div class="container-fluid">

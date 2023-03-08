@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Models\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ClientResource;
+use App\Models\Client;
 
 /**
  * @group Performances

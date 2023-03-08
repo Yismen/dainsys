@@ -2,9 +2,9 @@
 
 namespace App\Repositories\Political;
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Cache;
 use App\Connections\RingCentralConnection;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class PoliticalFlashRepository extends RingCentralConnection implements PoliticalFlashInterface
 {

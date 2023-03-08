@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OvernightHour\CreateOvernightHourRequest;
+use App\Http\Requests\OvernightHour\UpdateOvernightHourRequest;
 use App\Models\OvernightHour;
 use App\Repositories\OvernightHourRepo;
 use Yajra\DataTables\Facades\DataTables;
-use App\Http\Requests\OvernightHour\CreateOvernightHourRequest;
-use App\Http\Requests\OvernightHour\UpdateOvernightHourRequest;
 
 class OvernightHourController extends Controller
 {
@@ -28,7 +28,7 @@ class OvernightHourController extends Controller
      */
     public function index(OvernightHourRepo $overnight_repo)
     {
-        if (!request()->ajax()) {
+        if (! request()->ajax()) {
             $employees = $overnight_repo->employees()->get();
 
             return view('overnight-hours.index', compact('employees'));
@@ -53,6 +53,7 @@ class OvernightHourController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(CreateOvernightHourRequest $request)
@@ -67,6 +68,7 @@ class OvernightHourController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\OvernightHour  $overnightHour
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(OvernightHour $overnightHour)
@@ -79,6 +81,7 @@ class OvernightHourController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\OvernightHour  $overnightHour
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateOvernightHourRequest $request, OvernightHour $overnightHour)
@@ -93,6 +96,7 @@ class OvernightHourController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\OvernightHour  $overnightHour
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(OvernightHour $overnightHour)

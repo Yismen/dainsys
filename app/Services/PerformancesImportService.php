@@ -12,7 +12,7 @@ class PerformancesImportService
         foreach (request()->file('excel_file') as $key => $file) {
             $file_name = $file->getClientOriginalName();
 
-            if (!\Illuminate\Support\Str::contains($file_name, '_performance_daily_data_')) {
+            if (! \Illuminate\Support\Str::contains($file_name, '_performance_daily_data_')) {
                 $message = 'Wrong file selected. Please make sure you pick a file which the correct naming convention _performance_daily_data_...';
                 if (request()->ajax()) {
                     return response($message, 422);

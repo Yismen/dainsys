@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Models\Department;
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 
 class DepartmentsController extends Controller
 {
@@ -13,6 +13,7 @@ class DepartmentsController extends Controller
      * Save a Department model to database.
      *
      * @bodyParam name string required The name of the Department
+     *
      * @response 201 {
      *      "name": "Asdfasdf",
      *      "updated_at": "2021-12-01T19:05:29.000000Z",

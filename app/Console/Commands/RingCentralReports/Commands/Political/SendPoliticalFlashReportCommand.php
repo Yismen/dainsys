@@ -2,15 +2,15 @@
 
 namespace App\Console\Commands\RingCentralReports\Commands\Political;
 
+use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
+use App\Exports\Political\FlashReportExport;
+use App\Mail\Political\PoliticalFlashMail;
+use App\Repositories\Political\PoliticalFlashRepository;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
-use App\Mail\Political\PoliticalFlashMail;
-use App\Exports\Political\FlashReportExport;
-use App\Repositories\Political\PoliticalFlashRepository;
-use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SendPoliticalFlashReportCommand extends Command
 {
@@ -91,11 +91,11 @@ class SendPoliticalFlashReportCommand extends Command
 
     protected function initialBoot()
     {
-        $this->date_to = $this->option('date') == 'default' ?
+        $this->date_to = $this->option('date') === 'default' ?
             Carbon::now() :
             Carbon::parse($this->option('date'));
 
-        $this->date_from = $this->option('from') == 'default' ?
+        $this->date_from = $this->option('from') === 'default' ?
             $this->date_to :
             Carbon::parse($this->option('from'));
 

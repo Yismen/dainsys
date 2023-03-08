@@ -7,11 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class CapillusCallTypeRepository extends RingCentralConnection
 {
-    protected $options;
-
     public $call_types_count;
 
     public $call_types_results;
+    protected $options;
 
     public function __construct(array $options)
     {

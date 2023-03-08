@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use App\Models\DainsysModel as Model;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 class Menu extends Model
 {
@@ -118,7 +118,7 @@ class Menu extends Model
         foreach ($names as $key => $value) {
             $new_name = $value . '-' . $name;
 
-            if (!Permission::where('name', $new_name)->first()) {
+            if (! Permission::where('name', $new_name)->first()) {
                 Permission::create([
                     'name' => $new_name,
                     'resource' => $name,

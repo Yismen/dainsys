@@ -25,7 +25,7 @@ class EmployeesExport extends AbstractEmployeesExport
     {
         return str(join(' ', [
             'Employees',
-            $this->scope
+            $this->scope,
         ]))->headline();
     }
 }

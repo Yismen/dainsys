@@ -69,11 +69,12 @@ class RangeFormarter
      *
      * @param string $from_column
      * @param $to_column, if null asumes $from_column
+     *
      * @return $this
      */
     public function setAutoSizeRange(string $from_column, $to_column = null)
     {
-        $to_column = $to_column ?: $from_column;
+        $to_column = $to_column ? $to_column : $from_column;
 
         foreach (range($from_column, $to_column) as $col) {
             $this->sheet->getColumnDimension($col)
@@ -195,8 +196,9 @@ class RangeFormarter
     /**
      * Set Height Row.
      *
-     * @param integer $row
-     * @param integer $height. -1 for Auto
+     * @param int $row
+     * @param int $height . -1 for Auto
+     *
      * @return object
      */
     public function setRowHeight(int $row, int $height = 12)
@@ -209,8 +211,9 @@ class RangeFormarter
     /**
      * Set Height Row.
      *
-     * @param integer $row
-     * @param integer $height. -1 for Auto
+     * @param int $row
+     * @param int $height . -1 for Auto
+     *
      * @return object
      */
     public function setMultipleRowsHeight(int $from_row, int $to_row, int $height = 12)
@@ -257,7 +260,7 @@ class RangeFormarter
         preg_match_all('!\d+!', $range, $rows);
 
         foreach (range($rows[0][0], $rows[0][1] ?? $rows[0][0]) as $row) {
-            $this->sheet->getRowDimension((int)$row)->setRowHeight($row_height);
+            $this->sheet->getRowDimension((int) $row)->setRowHeight($row_height);
         }
 
         return $this;

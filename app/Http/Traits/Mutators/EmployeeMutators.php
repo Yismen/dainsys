@@ -8,6 +8,7 @@ trait EmployeeMutators
 {
     /**
      * transform the first name attribute before saving to the database
+     *
      * @param [string] $first_name [employee's first name]
      */
     public function setFirstNameAttribute($first_name)

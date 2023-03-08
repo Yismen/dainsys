@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Attendance;
 
-use App\Models\Employee;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
 use App\Repositories\Attendances\AttendanceEmployeesRepository;
+use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {

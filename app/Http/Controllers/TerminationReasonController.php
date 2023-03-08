@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TerminationReason;
 use App\Http\Requests\TerminationReasonRequest;
+use App\Models\TerminationReason;
 
 class TerminationReasonController extends Controller
 {
@@ -41,6 +41,7 @@ class TerminationReasonController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(TerminationReasonRequest $request)
@@ -50,13 +51,14 @@ class TerminationReasonController extends Controller
         );
 
         return redirect()->route('admin.termination_reasons.index')
-            ->withSuccess("Termination Reason $termination_reason->reason created!");
+            ->withSuccess("Termination Reason {$termination_reason->reason} created!");
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  TerminationReason $termination_reason
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(TerminationReason $termination_reason)
@@ -67,6 +69,7 @@ class TerminationReasonController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  TerminationReason $termination_reason
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(TerminationReason $termination_reason)
@@ -79,6 +82,7 @@ class TerminationReasonController extends Controller
      *
      * @param  \Illuminate\Http\TerminationReasonRequest  $request
      * @param  int  TerminationReason $termination_reason
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(TerminationReasonRequest $request, TerminationReason $termination_reason)
@@ -88,6 +92,6 @@ class TerminationReasonController extends Controller
         );
 
         return redirect()->route('admin.termination_reasons.index')
-            ->withWarning("Termination reason $termination_reason->reason Updated!");
+            ->withWarning("Termination reason {$termination_reason->reason} Updated!");
     }
 }

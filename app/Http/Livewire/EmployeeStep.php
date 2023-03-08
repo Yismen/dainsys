@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Step;
-use App\Models\Process;
-use Livewire\Component;
 use App\Models\Employee;
+use App\Models\Process;
+use App\Models\Step;
 use Illuminate\Support\Facades\Cache;
+use Livewire\Component;
 
 class EmployeeStep extends Component
 {
@@ -14,7 +14,7 @@ class EmployeeStep extends Component
     public int $process_id;
 
     protected $listeners = [
-        'stepconfirmed' => 'remove'
+        'stepconfirmed' => 'remove',
     ];
 
     public function mount(int $employee_id, int $process_id)
@@ -39,7 +39,7 @@ class EmployeeStep extends Component
             'employee_steps' => $employee->steps->pluck('id')->toArray(),
             'employee' => $employee,
             'process' => $process,
-            'progress' => number_format($employee->processProgress($process->id))
+            'progress' => number_format($employee->processProgress($process->id)),
             // 'progress' => $this->process->steps->count() === 0 ? 0 : number_format($this->employee->steps->count() / $this->process->steps->count() * 100)
         ]);
     }

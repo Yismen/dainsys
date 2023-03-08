@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-use App\Services\BillableHoursAndRevenueService;
 use App\Jobs\UpdateBillableHoursAndRevenue as JobsUpdateBillableHoursAndRevenue;
+use App\Services\BillableHoursAndRevenueService;
+use Illuminate\Console\Command;
 
 class UpdateBillableHoursAndRevenue extends Command
 {
@@ -50,7 +50,7 @@ class UpdateBillableHoursAndRevenue extends Command
         $this->serviceData = resolve(BillableHoursAndRevenueService::class, [
             'dates' => $this->argument('dates'),
             'revenue_type' => $this->option('revenue_type'),
-            'campaign' => $this->option('campaign')
+            'campaign' => $this->option('campaign'),
         ])->query();
         $count = $this->serviceData->count();
 
@@ -70,7 +70,7 @@ class UpdateBillableHoursAndRevenue extends Command
 
     protected function dispatchBatchedJobs($bar)
     {
-        foreach ($this->serviceData->get()->chunk((int)$this->option('chunk_size')) as $chunk) {
+        foreach ($this->serviceData->get()->chunk((int) $this->option('chunk_size')) as $chunk) {
             dispatch(
                 new JobsUpdateBillableHoursAndRevenue($chunk)
             );

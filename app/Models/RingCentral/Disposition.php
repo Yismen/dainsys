@@ -10,7 +10,7 @@ class Disposition extends Model
 
     public function getConnectionName()
     {
-        return app()->isProduction() ? 'poliscript' : config('database.default') ;
+        return app()->isProduction() ? 'poliscript' : config('database.default');
     }
 
     public function getTable()

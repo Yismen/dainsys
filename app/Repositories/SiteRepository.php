@@ -8,11 +8,6 @@ class SiteRepository
 {
     public $data;
 
-    protected function query()
-    {
-        return Site::orderBy('name');
-    }
-
     public function all()
     {
         $instance = new self();
@@ -27,5 +22,10 @@ class SiteRepository
         return $instance->query()->whereHas('employees', function ($query) {
             $query->actives();
         })->get();
+    }
+
+    protected function query()
+    {
+        return Site::orderBy('name');
     }
 }
