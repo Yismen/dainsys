@@ -12,14 +12,13 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_see_attendance_codes_list()
     {
-        // $this->withoutExceptionHandling();
         $attendance_code = create('App\Models\AttendanceCode')->toArray();
         $this->actingAs($this->userWithPermission('view-attendance-codes'));
 
         $response = $this->get(route('admin.attendance_codes.index'));
 
         $response->assertOk();
-        // $response->assertViewIs('attendance_codes.index');
+        $response->assertViewIs('attendance_codes.index');
     }
 
     /** @test */

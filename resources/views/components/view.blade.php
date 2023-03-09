@@ -1,6 +1,5 @@
 @props(['pageHeader', 'appLayout'])
 
-@inject('layout', $appLayout ?? 'App\Models\Layout')
 @extends('layouts.app', ['page_header'=> $pageHeader, 'page_description'=> $pageDescription ?? $pageHeader])
 
 @section('content')
