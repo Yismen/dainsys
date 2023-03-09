@@ -71,7 +71,7 @@ class DainsysInit extends Command
 
     protected function askForEnv()
     {
-        if (!file_exists('.env') && file_exists('.env.example')) {
+        if (! file_exists('.env') && file_exists('.env.example')) {
             if ($this->confirm('Do you want to copy env file?')) {
                 copy('.env.example', '.env');
 

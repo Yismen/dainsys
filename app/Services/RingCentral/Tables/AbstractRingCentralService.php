@@ -19,9 +19,7 @@ abstract class AbstractRingCentralService
         $this->query = $this->baseQuery();
     }
 
-    abstract protected function baseQuery(): Builder;
-
-    public function datesBetween(string $date_from, string $to = null): self
+    public function datesBetween(string $date_from, ?string $to = null): self
     {
         $this->date_from = Carbon::parse($date_from);
         $this->date_to = $to ? Carbon::parse($to) : $this->date_from;
@@ -53,4 +51,6 @@ abstract class AbstractRingCentralService
 
         return $this->query;
     }
+
+    abstract protected function baseQuery(): Builder;
 }

@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use App\Traits\Trackable;
-use App\Traits\PerformanceTrait;
 use App\ModelFilters\FilterableTrait;
 use App\Models\DainsysModel as Model;
-use function Illuminate\Events\queueable;
-
+use App\Traits\PerformanceTrait;
+use App\Traits\Trackable;
 use Illuminate\Database\Eloquent\Prunable;
+use function Illuminate\Events\queueable;
 
 class Performance extends Model
 {

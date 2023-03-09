@@ -11,7 +11,7 @@ class OomaDailyProductionSheet extends BaseOomaProductionSheet
      * Report this sheet if it has data. For some sheets it make no sense to send a report
      * if they are the only one with data.
      *
-     * @var boolean
+     * @var bool
      */
     protected $reportable = true;
 

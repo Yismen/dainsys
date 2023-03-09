@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tag;
+use App\Http\Requests\ArticlesRequest;
+use App\Http\Requests\SaveImageFromLocalFileRequest;
+use App\Http\Requests\SaveImageFromURLRequest;
 use App\Models\Article;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use App\Http\Requests\ArticlesRequest;
-use App\Http\Requests\SaveImageFromURLRequest;
-use App\Http\Requests\SaveImageFromLocalFileRequest;
 
 class ArticlesController extends Controller
 {
@@ -60,13 +60,14 @@ class ArticlesController extends Controller
     {
         $this->createArticle($article, $request, $tag);
 
-        return \Redirect::route('articles.index')->withSuccess("$request->title has been created successfully!");
+        return \Redirect::route('articles.index')->withSuccess("{$request->title} has been created successfully!");
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int      $id
+     *
      * @return Response
      */
     public function show(Article $article, Request $request)
@@ -78,6 +79,7 @@ class ArticlesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int      $id
+     *
      * @return Response
      */
     public function edit(Article $article, Tag $tags)
@@ -91,6 +93,7 @@ class ArticlesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int      $id
+     *
      * @return Response
      */
     public function update(Article $article, ArticlesRequest $request)
@@ -104,17 +107,17 @@ class ArticlesController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int      $id
+     *
      * @return Response
      */
     public function destroy(Article $article)
     {
         $article->delete();
 
-        return \Redirect::route('articles.index')->withSuccess("Article [$article->title] has been removed");
+        return \Redirect::route('articles.index')->withSuccess("Article [{$article->title}] has been removed");
     }
 
     /**
-     *
      * Retrieve Posts made by the current user that are set to be published for the future
      *
      * @return [array]
@@ -131,9 +134,10 @@ class ArticlesController extends Controller
      *
      * @param Article    $article [Article Model]
      * @param Array|null $tagIDs  [The IDs of the tags]
+     *
      * @return [type]              [object]
      */
-    public function syncTags(Article $article, array $tagIDs = null)
+    public function syncTags(Article $article, ?array $tagIDs = null)
     {
         return $article->tags()->sync((array) $tagIDs);
     }
@@ -143,6 +147,7 @@ class ArticlesController extends Controller
      *
      * @param Article         $article [the model to be create]
      * @param ArticlesRequest $request [data passed by the user]
+     *
      * @return [type]                [object]
      */
     public function createArticle(Article $article, ArticlesRequest $request, Tag $tag)
@@ -159,6 +164,7 @@ class ArticlesController extends Controller
      *
      * @param Article         $article [the model to be updated]
      * @param ArticlesRequest $request [data passed by user]
+     *
      * @return [type]                [object]
      */
     public function updateArticle(Article $article, ArticlesRequest $request)
@@ -172,6 +178,7 @@ class ArticlesController extends Controller
      * search for articles
      *
      * @param Request $requests [requests object]
+     *
      * @return [type]            [view]
      */
     public function search(Request $requests, Article $article)
@@ -179,7 +186,7 @@ class ArticlesController extends Controller
         $search = $requests->get('search');
 
         $articles = $article
-            ->where('title', 'LIKE', "%$search%")->orWhere('body', 'LIKE', "%$search%")
+            ->where('title', 'LIKE', "%{$search}%")->orWhere('body', 'LIKE', "%{$search}%")
             ->with('user')
             ->latest('published_at')
             ->published()
@@ -197,6 +204,7 @@ class ArticlesController extends Controller
      * Receive the content of a local file and save an image to the server
      *
      * @param ArticlesRequest $request The request with the fields
+     *
      * @return [type]                   location of the save image
      */
     public function saveImageFromLocalFile(Article $article, SaveImageFromLocalFileRequest $request)
@@ -218,9 +226,8 @@ class ArticlesController extends Controller
 
             $article->main_image = $extendedName;
             $article->update();
-        } else {
-            // code...
         }
+        // code...
 
         if ($request->ajax()) {
             return response()->json([
@@ -236,6 +243,7 @@ class ArticlesController extends Controller
      * Receive the content of a url and save an image to the server
      *
      * @param ArticlesRequest $request The request with the fields
+     *
      * @return [type]                   location of the save image
      */
     public function saveImageFromURL(Article $article, SaveImageFromURLRequest $request)
@@ -277,6 +285,7 @@ class ArticlesController extends Controller
      *
      * @param Array $selected [description]
      * @param  [type] $tagObject [description]
+     *
      * @return [type]            [description]
      */
     public function insertNewTags($tagsArray, Tag $tags)
@@ -286,7 +295,7 @@ class ArticlesController extends Controller
         $newTags = array_diff($tagsArray, $tags->pluck('id')); // get the tags that are missing
 
         foreach ($newTags as $key => $value) {
-            if (!$tags->find($value)) {
+            if (! $tags->find($value)) {
                 if (isset($tagsArray[$key])) {
                     unset($tagsArray[$key]);
                 }

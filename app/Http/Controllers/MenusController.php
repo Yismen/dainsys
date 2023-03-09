@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Menu;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class MenusController extends Controller
@@ -58,13 +58,14 @@ class MenusController extends Controller
         Cache::flush();
 
         return redirect()->route('admin.menus.index')
-            ->withSuccess("Menu $menu->display_name has bee created.");
+            ->withSuccess("Menu {$menu->display_name} has bee created.");
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function show(Menu $menu)
@@ -76,6 +77,7 @@ class MenusController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function edit(Menu $menu)
@@ -87,6 +89,7 @@ class MenusController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function update(Menu $menu, Request $request)
@@ -102,13 +105,14 @@ class MenusController extends Controller
         Cache::flush();
 
         return redirect()->route('admin.menus.show', $menu->id)
-            ->withSuccess("Menu $menu->display_name has been updated.");
+            ->withSuccess("Menu {$menu->display_name} has been updated.");
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function destroy(Menu $menu)
@@ -118,6 +122,6 @@ class MenusController extends Controller
         Cache::flush();
 
         return redirect()->route('admin.menus.index')
-            ->withWarning("Menu collection [$menu->display_name] has been removed!");
+            ->withWarning("Menu collection [{$menu->display_name}] has been removed!");
     }
 }

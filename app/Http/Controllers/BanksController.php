@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Cache;
 use App\Models\Bank;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class BanksController extends Controller
 {
@@ -38,6 +38,7 @@ class BanksController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Bank $bank)
@@ -56,13 +57,14 @@ class BanksController extends Controller
         }
 
         return redirect()->route('admin.banks.index')
-            ->withSuccess("Bank $bank->name created!!!");
+            ->withSuccess("Bank {$bank->name} created!!!");
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  Bank $bank
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Bank $bank)
@@ -75,6 +77,7 @@ class BanksController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  Bank $bank
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Bank $bank)
@@ -93,13 +96,14 @@ class BanksController extends Controller
         }
 
         return redirect()->route('admin.banks.index')
-            ->withSuccess("Bank $bank->name Updated!!!");
+            ->withSuccess("Bank {$bank->name} Updated!!!");
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  Bank $bank
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Bank $bank, Request $request)

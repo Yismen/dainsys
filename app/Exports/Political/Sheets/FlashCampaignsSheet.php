@@ -33,7 +33,7 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
         $this->rowsDispo = count($dispositions) + 3;
         $this->rowsAnswers = count($answers);
 
-        $this->dispositions = $dispositions ;
+        $this->dispositions = $dispositions;
         $this->answers = $answers;
         $this->campaign = $campaign;
         $this->answersLastColumn = $this->answersLastColumn();
@@ -57,7 +57,7 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
 
                 $this->configurePage()
                     ->setColumnsWidth()
-                    ;
+                ;
 
                 $this->sheet->freezePane('A2');
                 $this->sheet->getStyle("A3:B{$this->rowsDispo}")->applyFromArray([
@@ -108,7 +108,7 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
     {
         $range = [];
         $firstLetter = 'A';
-        for ($i = 1 ; $i <= 200; $i++) {
+        for ($i = 1; $i <= 200; $i++) {
             $range[] = $firstLetter++;
         }
 

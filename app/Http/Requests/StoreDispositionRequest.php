@@ -24,7 +24,7 @@ class StoreDispositionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+
         ];
     }
 }

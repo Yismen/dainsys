@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Shift;
 use App\Models\Employee;
-use Illuminate\Support\Str;
+use App\Models\Shift;
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 
 class FeedShiftsTableCommand extends Command
 {
@@ -57,8 +57,8 @@ class FeedShiftsTableCommand extends Command
                     'wednesday' => $this->option('hours'),
                     'thursday' => $this->option('hours'),
                     'friday' => $this->option('hours'),
-                    'saturday' => true == (bool) $this->option('saturday') ? $this->option('hours') : 0,
-                    'sunday' => true == (bool) $this->option('sunday') ? $this->option('hours') : 0,
+                    'saturday' => (bool) $this->option('saturday') === true ? $this->option('hours') : 0,
+                    'sunday' => (bool) $this->option('sunday') === true ? $this->option('hours') : 0,
                 ]
             );
 

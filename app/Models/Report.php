@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use App\Models\DainsysModel as Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Report extends Model
 {
@@ -24,7 +24,7 @@ class Report extends Model
 
     public function mailableRecipients(): array
     {
-        if (!$this->active) {
+        if (! $this->active) {
             throw new \Exception('Report ' . $this->name . ' is inactive!', 403);
         }
 

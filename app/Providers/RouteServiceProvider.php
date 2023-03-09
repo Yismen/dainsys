@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Cache\RateLimiting\Limit;
-use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -14,8 +14,6 @@ class RouteServiceProvider extends ServiceProvider
      * The path to the "home" route for your application.
      *
      * This is used by Laravel authentication to redirect users after login.
-     *
-     * @var string
      */
     public const HOME = '/admin';
     /**
@@ -49,18 +47,6 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Configure the rate limiters for the application.
-     *
-     * @return void
-     */
-    protected function configureRateLimiting()
-    {
-        RateLimiter::for('api', function (Request $request) {
-            return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
-        });
-    }
-
-    /**
      * Configure the Route Model Bindings.
      *
      * @return void
@@ -71,7 +57,8 @@ class RouteServiceProvider extends ServiceProvider
             return \App\Models\Afp::with(['employees' => function ($query) {
                 return $query->actives()
                     ->sorted();
-            }])
+            },
+            ])
                 ->findOrFail($id);
         });
 
@@ -79,7 +66,8 @@ class RouteServiceProvider extends ServiceProvider
             return \App\Models\Ars::with(['employees' => function ($query) {
                 return $query->actives()
                     ->sorted();
-            }])
+            },
+            ])
                 ->findOrFail($id);
         });
 
@@ -103,11 +91,13 @@ class RouteServiceProvider extends ServiceProvider
             return \App\Models\Department::whereId($id)
                 ->with(['positions' => function ($query) {
                     $query->orderBy('name');
-                }])
+                },
+                ])
                 ->with(['employees' => function ($query) {
                     return $query->actives()
                         ->sorted();
-                }])
+                },
+                ])
                 ->firstOrFail();
         });
 
@@ -133,7 +123,8 @@ class RouteServiceProvider extends ServiceProvider
                 ->with('project')
                 ->with(['termination' => function ($query) {
                     return $query->with(['terminationType', 'terminationReason']);
-                }])
+                },
+                ])
                 ->with('supervisor')
                 ->with('site')
                 ->with('changes')
@@ -165,7 +156,8 @@ class RouteServiceProvider extends ServiceProvider
             return \App\Models\Hour::whereId($id)
                 ->with(['employees' => function ($query) {
                     return $query->sorted();
-                }])
+                },
+                ])
                 ->firstOrFail();
         });
 
@@ -191,7 +183,8 @@ class RouteServiceProvider extends ServiceProvider
                 return $query->actives()
                     ->sorted()
                     ->with('position');
-            }])->findOrFail($id);
+            },
+            ])->findOrFail($id);
         });
 
         Route::bind('payment_type', function ($id) {
@@ -221,7 +214,8 @@ class RouteServiceProvider extends ServiceProvider
                         ->orderBy('project_id')
                         ->sorted()
                         ->with(['site', 'supervisor', 'project']);
-                }])
+                },
+                ])
                 ->with('payment_type')
                 ->with('payment_frequency')
                 ->firstOrFail();
@@ -231,7 +225,8 @@ class RouteServiceProvider extends ServiceProvider
             return \App\Models\Project::with(['employees' => function ($query) {
                 return $query->actives()
                     ->sorted();
-            }])
+            },
+            ])
                 ->findOrFail($id);
         });
 
@@ -245,13 +240,16 @@ class RouteServiceProvider extends ServiceProvider
             return \App\Models\Role::whereName($role)
                 ->with(['permissions' => function ($query) {
                     $query->orderBy('resource');
-                }])
+                },
+                ])
                 ->with(['users' => function ($query) {
                     $query->orderBy('name');
-                }])
+                },
+                ])
                 ->with(['menus' => function ($query) {
                     $query->orderBy('display_name');
-                }])
+                },
+                ])
                 ->firstOrFail();
         });
 
@@ -261,7 +259,8 @@ class RouteServiceProvider extends ServiceProvider
                     return $query->actives()
                         ->sorted()
                         ->with('position.department');
-                }])
+                },
+                ])
                 ->firstOrFail();
         });
 
@@ -269,7 +268,8 @@ class RouteServiceProvider extends ServiceProvider
             return \App\Models\Site::with(['employees' => function ($query) {
                 return $query->actives()
                     ->sorted();
-            }])
+            },
+            ])
                 ->findOrFail($id);
         });
 
@@ -278,6 +278,18 @@ class RouteServiceProvider extends ServiceProvider
                 ->with('roles.permissions')
                 ->with('settings')
                 ->firstOrFail()->append('roles-list');
+        });
+    }
+
+    /**
+     * Configure the rate limiters for the application.
+     *
+     * @return void
+     */
+    protected function configureRateLimiting()
+    {
+        RateLimiter::for('api', function (Request $request) {
+            return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
     }
 }

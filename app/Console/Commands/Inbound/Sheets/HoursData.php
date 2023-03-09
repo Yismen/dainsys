@@ -4,12 +4,12 @@ namespace App\Console\Commands\Inbound\Sheets;
 
 use App\Exports\RangeFormarter;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithPreCalculateFormulas;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Events\AfterSheet;
-use Illuminate\Support\Str;
 
 class HoursData implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
 {
@@ -24,7 +24,7 @@ class HoursData implements FromView, WithTitle, WithEvents, WithPreCalculateForm
 
     protected $title;
 
-    protected String $view;
+    protected string $view;
 
     public function __construct(array $data)
     {
@@ -82,7 +82,7 @@ class HoursData implements FromView, WithTitle, WithEvents, WithPreCalculateForm
 
     protected function addSubTotals()
     {
-        $totalsRow = ($this->rows + 1);
+        $totalsRow = $this->rows + 1;
         $loginTimeColumn = 'D';
 
         foreach (range($loginTimeColumn, $loginTimeColumn) as $letter) {

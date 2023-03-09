@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Mail;
 use App\Mail\DispositionsNeedingIdentificationMail;
 use App\Services\RingCentral\DispositionsPendingIdentificationService;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
 
 class CheckForDispositionsPendingIdentification extends Command
 {

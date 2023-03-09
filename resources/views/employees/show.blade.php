@@ -1,5 +1,4 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Employees', 'page_description'=>'Show Details'])
+@extends('layouts.app', ['page_header'=>'Employees', 'page_description'=>'Show Details'])
 
 @section('content')
 <div class="row">

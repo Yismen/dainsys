@@ -4,8 +4,8 @@ namespace App\Http\Controllers\User;
 
 // use App\Http\Requests\SaveContactsRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Contact;
+use Illuminate\Http\Request;
 
 class ContactsController extends Controller
 {
@@ -51,7 +51,7 @@ class ContactsController extends Controller
         );
 
         return redirect()->route('admin.contacts.index')
-            ->withSuccess("Your contact $contact->name has been crated!");
+            ->withSuccess("Your contact {$contact->name} has been crated!");
     }
 
     /**
@@ -66,6 +66,7 @@ class ContactsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function edit(Contact $contact)
@@ -77,6 +78,7 @@ class ContactsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function update(Contact $contact, Request $request)
@@ -90,13 +92,14 @@ class ContactsController extends Controller
         $contact->update($request->only(['name', 'phone', 'works_at', 'position', 'secondary_phone', 'email']));
 
         return \Redirect::route('admin.contacts.index')
-            ->withSuccess("Your contact $contact->name has been updated succesffully!");
+            ->withSuccess("Your contact {$contact->name} has been updated succesffully!");
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function destroy(Contact $contact)
@@ -104,6 +107,6 @@ class ContactsController extends Controller
         $contact->delete();
 
         return redirect()->route('admin.contacts.index')
-            ->withDanger("Your contact $contact->name has been remvoved!");
+            ->withDanger("Your contact {$contact->name} has been remvoved!");
     }
 }

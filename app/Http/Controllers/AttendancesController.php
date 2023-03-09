@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Attendance;
 use App\Http\Requests\Attendance\CreateAttendanceRequest;
 use App\Http\Requests\Attendance\EditAttendanceRequest;
+use App\Models\Attendance;
 use Illuminate\Support\Facades\Cache;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -25,7 +25,7 @@ class AttendancesController extends Controller
      */
     public function index(Attendance $attendance)
     {
-        if (!request()->ajax()) {
+        if (! request()->ajax()) {
             return view('attendances.index', compact('attendance'));
         }
 
@@ -48,6 +48,7 @@ class AttendancesController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Requests\Attendance\CreateAttendanceRequest  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(CreateAttendanceRequest $request)
@@ -62,7 +63,7 @@ class AttendancesController extends Controller
                 ->where('employee_id', $newAttendance['employee_id'])
                 ->first();
 
-            if (!$exists) {
+            if (! $exists) {
                 // $exists->delete();
 
                 auth()->user()
@@ -80,6 +81,7 @@ class AttendancesController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Attendance  $attendance
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Attendance $attendance)
@@ -90,6 +92,7 @@ class AttendancesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Attendance  $attendance
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Attendance $attendance)
@@ -102,6 +105,7 @@ class AttendancesController extends Controller
      *
      * @param  \Illuminate\Http\Requests\Attendance\CreateAttendanceRequest  $request
      * @param  \App\Attendance  $attendance
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(EditAttendanceRequest $request, Attendance $attendance)
@@ -118,6 +122,7 @@ class AttendancesController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Attendance  $attendance
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Attendance $attendance)

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Models\Bank;
 use App\Http\Controllers\Controller;
+use App\Models\Bank;
 
 class BanksController extends Controller
 {
@@ -11,7 +11,9 @@ class BanksController extends Controller
      * Store Banks
      *
      * Save a Banks model to database.
+     *
      * @bodyParam name string required The name of the Banks
+     *
      * @response 201 {
      *      "name": "Asdfasdf",
      *  }

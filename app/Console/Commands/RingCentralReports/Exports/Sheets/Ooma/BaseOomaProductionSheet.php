@@ -138,7 +138,7 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
             $date_to,
         );
 
-        if (count($this->data) > 0 && $this->reportable == true) {
+        if (count($this->data) > 0 && $this->reportable === true) {
             $this->exporter->has_data = true;
         }
 

@@ -1,40 +1,39 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Positions', 'page_description'=>'Positions list!'])
+@extends('layouts.app', ['page_header'=>'Positions', 'page_description'=>'Positions list!'])
 
 @section('content')
 <div class="container-fluid">
-		<div class="col-lg-10 col-lg-offset-1">
-			<div class="box box-primary">
+	<div class="col-lg-10 col-lg-offset-1">
+		<div class="box box-primary">
 
-				<div class="box-header with-border">
-					<h3 class="box-title">
-						Positions List
-					</h3>
-				 	<a href="{{ route('admin.positions.create') }}" class="pull-right">
-				 		<i class="fa fa-plus"></i> Add
-				 	</a>
-				</div>
+			<div class="box-header with-border">
+				<h3 class="box-title">
+					Positions List
+				</h3>
+				<a href="{{ route('admin.positions.create') }}" class="pull-right">
+					<i class="fa fa-plus"></i> Add
+				</a>
+			</div>
 
-				<div class="box-body">
-					<div class="table-responsive">
-						<table class="table table-condensed table-striped" id="positions-table">
-							<thead>
-								<tr>
-									<th>Position Name</th>
-									<th>Employees</th>
-									<th>Department</th>
-									<th>Salary</th>
-									<th>Payment Type</th>
-									<th>Payment Frequency</th>
-									<th>Actions</th>
-								</tr>
-							</thead>
-						</table>
-					</div>
+			<div class="box-body">
+				<div class="table-responsive">
+					<table class="table table-condensed table-striped" id="positions-table">
+						<thead>
+							<tr>
+								<th>Position Name</th>
+								<th>Employees</th>
+								<th>Department</th>
+								<th>Salary</th>
+								<th>Payment Type</th>
+								<th>Payment Frequency</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+					</table>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 @stop
 
 @push('scripts')

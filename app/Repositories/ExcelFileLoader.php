@@ -2,25 +2,28 @@
 
 namespace App\Repositories;
 
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ExcelFileLoader
 {
     /**
      * Data upload from files
+     *
      * @var array
      */
     private $data = [];
 
     /**
      * Validation errors found on the file
+     *
      * @var array
      */
     private $errors = [];
 
     /**
      * rules to validate each line of data.
+     *
      * @var array
      */
     private $validation_rules = [];
@@ -49,15 +52,6 @@ class ExcelFileLoader
         return $this;
     }
 
-    private function handleLoad($file)
-    {
-        Excel::load($file, function ($reader) {
-            foreach ($reader->toArray() as $index => $data) {
-                $this->handleRow($reader, $data, $index);
-            }
-        });
-    }
-
     public function data()
     {
         return $this->data;
@@ -75,6 +69,15 @@ class ExcelFileLoader
         }
 
         return false;
+    }
+
+    private function handleLoad($file)
+    {
+        Excel::load($file, function ($reader) {
+            foreach ($reader->toArray() as $index => $data) {
+                $this->handleRow($reader, $data, $index);
+            }
+        });
     }
 
     private function handleRow($reader, $data, $index)

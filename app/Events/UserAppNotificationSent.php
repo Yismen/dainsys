@@ -13,9 +13,9 @@ class UserAppNotificationSent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    protected $user;
-
     public $notification;
+
+    protected $user;
 
     /**
      * Create a new event instance.

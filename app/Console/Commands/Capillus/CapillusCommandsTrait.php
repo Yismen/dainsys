@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands\Capillus;
 
-use Exception;
 use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
+use Exception;
 
 trait CapillusCommandsTrait
 {
@@ -13,7 +13,7 @@ trait CapillusCommandsTrait
     {
         $campaigns = config('dainsys.capillus.campaigns');
 
-        if (!$campaigns) {
+        if (! $campaigns) {
             throw new Exception('Capillus Campaigns not set in config.dainsys.capillus array!');
         }
 

@@ -47,7 +47,7 @@ class CapillusCallsTypeCountSheet implements FromView, WithTitle, WithEvents, Wi
 
                 $this->configurePage()
                     ->setColumnsWidth()
-                    ;
+                ;
 
                 $this->sheet->setAutoFilter("A1:H{$this->count}");
                 $this->sheet->freezePane('D2');

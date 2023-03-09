@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Employee;
 
-use App\Models\Employee;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use App\Repositories\ImageMaker;
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
+use App\Repositories\ImageMaker;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PhotoController extends Controller
 {

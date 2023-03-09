@@ -2,13 +2,13 @@
 
 namespace App\Console\Commands\RingCentralReports\Exports\Sheets;
 
-use Maatwebsite\Excel\Sheet;
-use Maatwebsite\Excel\Concerns\FromView;
-use Maatwebsite\Excel\Concerns\WithTitle;
-use Maatwebsite\Excel\Concerns\WithEvents;
-use Maatwebsite\Excel\Concerns\WithPreCalculateFormulas;
 use App\Console\Commands\RingCentralReports\Exports\RingCentralExportsContract;
 use App\Console\Commands\RingCentralReports\Exports\Support\Connections\ConnectionContract;
+use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Concerns\WithPreCalculateFormulas;
+use Maatwebsite\Excel\Concerns\WithTitle;
+use Maatwebsite\Excel\Sheet;
 
 abstract class BaseRingCentralSheet implements FromView, WithTitle, WithPreCalculateFormulas, WithEvents
 {

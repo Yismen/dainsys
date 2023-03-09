@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Report;
 use App\Models\Recipient;
+use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -32,7 +32,7 @@ class RecipientsController extends Controller
         $reports = Report::query()->orderBy('name')->get(['name', 'id']);
 
         return view('recipients.create')->with([
-            'reports' => $reports
+            'reports' => $reports,
         ]);
     }
 
@@ -41,7 +41,7 @@ class RecipientsController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:recipients',
             'email' => 'required|email|unique:recipients',
-            'title' => 'nullable|min:3'
+            'title' => 'nullable|min:3',
         ]);
 
         $recipient = Recipient::create($request->only(['name', 'email', 'title']));
@@ -71,7 +71,7 @@ class RecipientsController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:recipients,name,' . $recipient->id,
             'email' => 'required|email|unique:recipients,email,' . $recipient->id,
-            'title' => 'nullable|min:3'
+            'title' => 'nullable|min:3',
         ]);
 
         $recipient->update($request->only(['name', 'email', 'title']));

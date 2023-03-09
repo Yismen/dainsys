@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Supervisor;
 use App\Http\Controllers\Controller;
+use App\Models\Supervisor;
 
 class SupervisorsController extends Controller
 {
@@ -13,6 +13,7 @@ class SupervisorsController extends Controller
      * Save a Supervisor model to database.
      *
      * @bodyParam name string required The name of the Supervisor
+     *
      * @response 201 {
      *      "name": "Asdfasdf",
      *      "updated_at": "2021-12-01T19:05:29.000000Z",

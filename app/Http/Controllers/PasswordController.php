@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Password;
+use Illuminate\Http\Request;
 
 class PasswordController extends Controller
 {
@@ -17,6 +17,7 @@ class PasswordController extends Controller
 
     /**
      * Main Entry poit for the API
+     *
      * @return [type] [description]
      */
     public function home(Password $passwords)
@@ -58,6 +59,7 @@ class PasswordController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -68,6 +70,7 @@ class PasswordController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -78,6 +81,7 @@ class PasswordController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -89,6 +93,7 @@ class PasswordController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -99,6 +104,7 @@ class PasswordController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Ars;
@@ -35,7 +36,8 @@ class ArsController extends Controller
                     ->orderBy('last_name')
                     ->orderBy('second_last_name')
                     ->actives();
-            }])->orderBy('name')->get();
+            },
+            ])->orderBy('name')->get();
         });
 
         if ($request->ajax()) {
@@ -59,6 +61,7 @@ class ArsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Ars $ars)
@@ -77,13 +80,14 @@ class ArsController extends Controller
         }
 
         return redirect()->route('admin.arss.index')
-            ->withSuccess("ARS $ars->name created!");
+            ->withSuccess("ARS {$ars->name} created!");
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  Ars $ars
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Ars $ars)
@@ -95,6 +99,7 @@ class ArsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  Ars $ars
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Ars $ars)
@@ -107,6 +112,7 @@ class ArsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  Ars $ars
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Ars $ars)
@@ -121,13 +127,14 @@ class ArsController extends Controller
         $ars->update($request->only(['name']));
 
         return redirect()->route('admin.arss.index')
-            ->withSuccess("ARS $ars->name Updated!");
+            ->withSuccess("ARS {$ars->name} Updated!");
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  Ars $ars
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Ars $ars, Request $request)
@@ -137,11 +144,11 @@ class ArsController extends Controller
 
         if ($ars->employees->count()) {
             if ($request->ajax()) {
-                return abort(403, "ARS $ars->name has employees therefore it can't be deleted!");
+                return abort(403, "ARS {$ars->name} has employees therefore it can't be deleted!");
             }
 
             return redirect()->back()
-                ->withDanger("ARS $ars->name has employees therefore it can't be deleted!");
+                ->withDanger("ARS {$ars->name} has employees therefore it can't be deleted!");
         }
 
         $ars->delete();
@@ -151,7 +158,7 @@ class ArsController extends Controller
         }
 
         return redirect()->route('admin.arss.index')
-            ->withWarning("ARS $ars->name have been eliminated!");
+            ->withWarning("ARS {$ars->name} have been eliminated!");
     }
 
     public function assignEmployees(Request $request)

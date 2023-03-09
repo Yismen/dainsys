@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands\RingCentralReports\Commands\Political;
 
-use Maatwebsite\Excel\Facades\Excel;
-use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
 use App\Console\Commands\RingCentralReports\Commands\BaseProductionReportCommand;
+use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SendPoliticalTextCampaignReportCommand extends BaseProductionReportCommand
 {
@@ -64,11 +64,9 @@ class SendPoliticalTextCampaignReportCommand extends BaseProductionReportCommand
             $date->copy()->parse($this->option('from_date')) : // parse given date
             $to_date->copy(); // use date option
 
-        $ranges = [
+        return [
             'from_date' => $from_date->format('Y-m-d'),
             'to_date' => $to_date->format('Y-m-d'),
         ];
-
-        return $ranges;
     }
 }

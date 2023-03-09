@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class PasswordController extends Controller
@@ -40,14 +40,14 @@ class PasswordController extends Controller
 
     public function force_reset(User $user)
     {
-        abort_if(!auth()->user()->isAdmin(), 401, 'Unauthorized');
+        abort_if(! auth()->user()->isAdmin(), 401, 'Unauthorized');
 
         return view('users.force_reset', compact('user'));
     }
 
     public function force_change(User $user, Request $request)
     {
-        abort_if(!auth()->user()->isAdmin(), 401, 'Unauthorized');
+        abort_if(! auth()->user()->isAdmin(), 401, 'Unauthorized');
 
         if ($user->id === auth()->user()->id) {
             return redirect()->back()->withErrors(['error' => 'You are not allowed to change your own password here!']);

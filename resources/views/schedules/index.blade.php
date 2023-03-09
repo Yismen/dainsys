@@ -1,50 +1,49 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Schedules ID', 'page_description'=>'Current Schedules ID.'])
+@extends('layouts.app', ['page_header'=>'Schedules ID', 'page_description'=>'Current Schedules ID.'])
 
 @section('content')
-	<div class="container-fluid">
-    	<div class="row">
-			<div class="col-sm-8">
-				<div class="box box-primary">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-8">
+			<div class="box box-primary">
 
-					<div class="box-header with-border">
-						<h4>
-							Schedules Items List, Based on
-							<a href="{{ route('admin.shifts.index') }}" target="_shifts">
-								Shifts <i class="fa fa-angle-double-right"></i>
-							</a>
-						 	<a href="{{ route('admin.schedules.create') }}" class="pull-right">
-						 		<i class="fa fa-plus"></i> Add
-						 	</a>
-						</h4>
-					</div>
+				<div class="box-header with-border">
+					<h4>
+						Schedules Items List, Based on
+						<a href="{{ route('admin.shifts.index') }}" target="_shifts">
+							Shifts <i class="fa fa-angle-double-right"></i>
+						</a>
+						<a href="{{ route('admin.schedules.create') }}" class="pull-right">
+							<i class="fa fa-plus"></i> Add
+						</a>
+					</h4>
+				</div>
 
-					<div class="box-body table-responsive">
-						<table class="table table-condensed table-hover" id="schedules-table">
-							<thead>
-								<tr>
-									<th>Employee</th>
-									<th>Slug</th>
-									<th>Date</th>
-									<th>Hours</th>
-									<th>Action</th>
-								</tr>
-							</thead>
-						</table>
-					</div>
+				<div class="box-body table-responsive">
+					<table class="table table-condensed table-hover" id="schedules-table">
+						<thead>
+							<tr>
+								<th>Employee</th>
+								<th>Slug</th>
+								<th>Date</th>
+								<th>Hours</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+					</table>
 				</div>
 			</div>
+		</div>
 
 
-			<div class="col-sm-4">
-				@include('schedules._missing_schedules')
-			</div>
+		<div class="col-sm-4">
+			@include('schedules._missing_schedules')
 		</div>
 	</div>
+</div>
 @endsection
 @push('scripts')
-	<script>
-		(function($){
+<script>
+	(function($){
 	        $(document).ready(function($) {
 
 	            let dTable = $('#schedules-table').DataTable({
@@ -85,5 +84,5 @@
 	        });
 
 	    })(jQuery);
-	</script>
+</script>
 @endpush

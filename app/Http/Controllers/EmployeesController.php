@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\EmployeeCreated;
 use App\Models\Employee;
 use App\Models\Termination;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Events\EmployeeCreated;
+use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
 
 class EmployeesController extends Controller
@@ -32,7 +32,7 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        if (!request()->ajax()) {
+        if (! request()->ajax()) {
             return view('employees.index');
         }
 
@@ -94,28 +94,28 @@ class EmployeesController extends Controller
 
         if ($request->ajax()) {
             return $employee
-            ->append([
-                'ars_list',
-                'afp_list',
-                'banks_list',
-                'departments_list',
-                'genders_list',
-                'has_kids_list',
-                'maritals_list',
-                'positions_list',
-                'projects_list',
-                'payment_types_list',
-                'payment_frequencies_list',
-                'nationalities_list',
-                'sites_list',
-                'supervisors_list',
-                'termination_type_list',
-                'termination_reason_list',
-            ]);
+                ->append([
+                    'ars_list',
+                    'afp_list',
+                    'banks_list',
+                    'departments_list',
+                    'genders_list',
+                    'has_kids_list',
+                    'maritals_list',
+                    'positions_list',
+                    'projects_list',
+                    'payment_types_list',
+                    'payment_frequencies_list',
+                    'nationalities_list',
+                    'sites_list',
+                    'supervisors_list',
+                    'termination_type_list',
+                    'termination_reason_list',
+                ]);
         }
 
         return redirect()->route('admin.employees.edit', $employee->id)
-            ->withSuccess("Succesfully added employee [$employee->first_name $employee->last_name];");
+            ->withSuccess("Succesfully added employee [{$employee->first_name} {$employee->last_name}];");
     }
 
     /**
@@ -130,11 +130,11 @@ class EmployeesController extends Controller
         $employee->load(['changes.user', 'processes']);
 
         $previous_terminations = Termination::query()
-        ->withTrashed()
-        ->latest('updated_at')
-        ->where('employee_id', $employee->id)
-        ->with(['terminationReason', 'terminationType'])
-        ->get();
+            ->withTrashed()
+            ->latest('updated_at')
+            ->where('employee_id', $employee->id)
+            ->with(['terminationReason', 'terminationType'])
+            ->get();
 
         return view('employees.show', compact('employee', 'previous_terminations'));
     }
@@ -200,28 +200,28 @@ class EmployeesController extends Controller
 
         if ($request->ajax()) {
             return $employee
-            ->append([
-                'ars_list',
-                'afp_list',
-                'banks_list',
-                'departments_list',
-                'genders_list',
-                'has_kids_list',
-                'maritals_list',
-                'positions_list',
-                'projects_list',
-                'payment_types_list',
-                'payment_frequencies_list',
-                'nationalities_list',
-                'sites_list',
-                'supervisors_list',
-                'termination_type_list',
-                'termination_reason_list',
-            ]);
+                ->append([
+                    'ars_list',
+                    'afp_list',
+                    'banks_list',
+                    'departments_list',
+                    'genders_list',
+                    'has_kids_list',
+                    'maritals_list',
+                    'positions_list',
+                    'projects_list',
+                    'payment_types_list',
+                    'payment_frequencies_list',
+                    'nationalities_list',
+                    'sites_list',
+                    'supervisors_list',
+                    'termination_type_list',
+                    'termination_reason_list',
+                ]);
         }
 
         return redirect()->route('admin.employees.edit', $employee->id)
-            ->withSuccess("Succesfully updated employee [$request->first_name $request->last_name]");
+            ->withSuccess("Succesfully updated employee [{$request->first_name} {$request->last_name}]");
     }
 
     protected function getDatatables()

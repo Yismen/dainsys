@@ -1,83 +1,83 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>__('Employees'), 'page_description'=>__('List')])
+@extends('layouts.app', ['page_header'=>__('Employees'), 'page_description'=>__('List')])
 
 @section('content')
-    <div class="container-fluids">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
+<div class="container-fluids">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
 
-                        <div class="col-sm-6">
-                            <h3>@lang('List') @lang('Employees')</h3>
+                    <div class="col-sm-6">
+                        <h3>@lang('List') @lang('Employees')</h3>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <!-- Single button -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-file-excel-o"></i> Descargar Excel <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ route('admin.employees.export_to_excel', 'actives') }}" class="">
+                                        <i class="fa fa-download"></i> Actives
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.employees.export_to_excel', 'inactives') }}" class="">
+                                        <i class="fa fa-download"></i> Inactives
+                                    </a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <a href="{{ route('admin.employees.export_to_excel', 'all') }}" class="">
+                                        <i class="fa fa-download"></i> @lang('All')
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
 
-                        <div class="col-sm-6">
-                            <!-- Single button -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-file-excel-o"></i> Descargar Excel <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('admin.employees.export_to_excel', 'actives') }}" class="">
-                                            <i class="fa fa-download"></i> Actives
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin.employees.export_to_excel', 'inactives') }}" class="">
-                                            <i class="fa fa-download"></i> Inactives
-                                        </a>
-                                    </li>
-                                    <li role="separator" class="divider"></li>
-                                    <li>
-                                        <a href="{{ route('admin.employees.export_to_excel', 'all') }}" class="">
-                                            <i class="fa fa-download"></i> @lang('All')
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <a href="{{ route('admin.employees.create') }}" class="pull-right">
-                                <i class="fa fa-plus"></i> @lang('Create')
-                            </a>
-
-                        </div>
+                        <a href="{{ route('admin.employees.create') }}" class="pull-right">
+                            <i class="fa fa-plus"></i> @lang('Create')
+                        </a>
 
                     </div>
 
-                    <div class="box-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-condensed table-bordered" id="employees-table">
-                                <thead>
-                                    <tr>
-                                        <th>Photo:</th>
-                                        <th>@lang('First Name'):</th>
-                                        <th>@lang('Second') @lang('First name'):</th>
-                                        <th>@lang('Last Name'):</th>
-                                        <th>@lang('Second') @lang('Last Name'):</th>
-                                        <th>@lang('Hire Date')</th>
-                                        <th>@lang('Status')</th>
-                                        <th>@lang('Position'):</th> 
-                                        <th>@lang('Project'):</th> 
-                                        <th>@lang('Site'):</th> 
-                                        <th class="col-xs-1">@lang('Personal Id') / @lang('Passport'):</th>
-                                        <th>@lang('Passport'):</th>
-                                        <th class="col-xs-1">@lang('Punch Id'):</th>
-                                        <th>@lang('Cell Phone'):</th>
-                                        <th>Other Phone:</th>
-                                        <th>@lang('Edit'):</th>
+                </div>
 
-                                    </tr>
-                                </thead>
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-condensed table-bordered" id="employees-table">
+                            <thead>
+                                <tr>
+                                    <th>Photo:</th>
+                                    <th>@lang('First Name'):</th>
+                                    <th>@lang('Second') @lang('First name'):</th>
+                                    <th>@lang('Last Name'):</th>
+                                    <th>@lang('Second') @lang('Last Name'):</th>
+                                    <th>@lang('Hire Date')</th>
+                                    <th>@lang('Status')</th>
+                                    <th>@lang('Position'):</th>
+                                    <th>@lang('Project'):</th>
+                                    <th>@lang('Site'):</th>
+                                    <th class="col-xs-1">@lang('Personal Id') / @lang('Passport'):</th>
+                                    <th>@lang('Passport'):</th>
+                                    <th class="col-xs-1">@lang('Punch Id'):</th>
+                                    <th>@lang('Cell Phone'):</th>
+                                    <th>Other Phone:</th>
+                                    <th>@lang('Edit'):</th>
 
-                            </table>
-                        </div>
+                                </tr>
+                            </thead>
+
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 @push('scripts')

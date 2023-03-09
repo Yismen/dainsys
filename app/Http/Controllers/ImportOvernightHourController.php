@@ -37,11 +37,12 @@ class ImportOvernightHourController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\ImportOvernightHourRequest  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(ImportOvernightHourRequest $request)
     {
-        MaatwebsiteExcel::import(new OvernightHoutImport, $request->file('_file_'));
+        MaatwebsiteExcel::import(new OvernightHoutImport(), $request->file('_file_'));
 
         return redirect()->route('admin.overnight_hours.index')
             ->withSuccess('File imported');
@@ -51,6 +52,7 @@ class ImportOvernightHourController extends Controller
      * Display the specified resource.
      *
      * @param  \App\OvernightHour  $overnightHour
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(OvernightHour $overnightHour)
@@ -61,6 +63,7 @@ class ImportOvernightHourController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\OvernightHour  $overnightHour
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(OvernightHour $overnightHour)
@@ -72,6 +75,7 @@ class ImportOvernightHourController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\OvernightHour  $overnightHour
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, OvernightHour $overnightHour)
@@ -82,6 +86,7 @@ class ImportOvernightHourController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\OvernightHour  $overnightHour
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(OvernightHour $overnightHour)

@@ -1,54 +1,53 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Import Performances Data', 'page_description'=>'description'])
+@extends('layouts.app', ['page_header'=>'Import Performances Data', 'page_description'=>'description'])
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-                <div class="box box-primary">
-                    <div class="box-body">
-                        @include('performances_import._import-form')
-                        @include('layouts.partials.errors')
-                    </div>
-
-                    @if (Session::has('imported_files'))
-                        <div class="box-footer">
-                            <ul>
-                                @foreach (session()->get('imported_files') as $file)
-                                    <li>{{ $file }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+            <div class="box box-primary">
+                <div class="box-body">
+                    @include('performances_import._import-form')
+                    @include('layouts.partials.errors')
                 </div>
+
+                @if (Session::has('imported_files'))
+                <div class="box-footer">
+                    <ul>
+                        @foreach (session()->get('imported_files') as $file)
+                        <li>{{ $file }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box box-info">
-                    <div class="box-body">
-                        <div class="box-header">
-                            <h4>Imported Dates</h4>
-                        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-body">
+                    <div class="box-header">
+                        <h4>Imported Dates</h4>
+                    </div>
 
-                        <div class="box-body table-responsive">
-                            <table class="table table-condensed table-bordered table-hover" id="performances-table">
-                                <thead>
-                                    <tr>
-                                        <th>Performance Date</th>
-                                        <th>File Name</th>
-                                        <th>Project</th>
-                                        <th>Created At</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
+                    <div class="box-body table-responsive">
+                        <table class="table table-condensed table-bordered table-hover" id="performances-table">
+                            <thead>
+                                <tr>
+                                    <th>Performance Date</th>
+                                    <th>File Name</th>
+                                    <th>Project</th>
+                                    <th>Created At</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection
 @push('scripts')
 

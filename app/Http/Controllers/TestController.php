@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Employee;
+use App\Models\User;
 use Carbon\Carbon;
+use GrahamCampbell\Flysystem\Facades\Flysystem;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Facades\Datatables;
-use GrahamCampbell\Flysystem\Facades\Flysystem as Flysystem;
 
 class TestController extends Controller
 {
@@ -73,7 +73,7 @@ class TestController extends Controller
         //     $carbon->year => 'This Year',
         //     $carbon->subYear(1) => 'Last Year'
         // ];
-        return ($data = [
+        return $data = [
             'today' => $carbon->toDateString(),
             'yesterday' => $carbon->yesterday(),
             'this_week' => $carbon->weekOfYear,
@@ -82,7 +82,7 @@ class TestController extends Controller
             'last_month' => $carbon->subMonth(),
             'this_year' => $carbon->year,
             'last_year' => $carbon->subYear(1),
-        ]);
+        ];
 
         return view('test.component', compact('data'));
     }

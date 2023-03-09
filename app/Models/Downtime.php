@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\Traits\Trackable;
-use App\Traits\PerformanceTrait;
 use App\Models\DainsysModel as Model;
+use App\Traits\PerformanceTrait;
+use App\Traits\Trackable;
 
 class Downtime extends Model
 {

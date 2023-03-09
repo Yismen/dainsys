@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\DainsysModel as Model;
 use App\ModelFilters\FilterableTrait;
+use App\Models\DainsysModel as Model;
 
 class OvernightHour extends Model
 {
@@ -20,13 +20,13 @@ class OvernightHour extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            if (!$model->unique_id) {
+            if (! $model->unique_id) {
                 $model->unique_id = join('-', [$model->date->format('Y-m-d'), $model->employee_id, 'punch']);
             }
         });
 
         static::updating(function ($model) {
-            if (!$model->unique_id) {
+            if (! $model->unique_id) {
                 $model->unique_id = join('-', [$model->date->format('Y-m-d'), $model->employee_id, 'punch']);
             }
         });
@@ -41,7 +41,8 @@ class OvernightHour extends Model
      * During import remove any data previously captured
      *
      * @param date text $date
-     * @param integer $employee_id
+     * @param int $employee_id
+     *
      * @return void
      */
     public function removeDuplicated($unique_id)

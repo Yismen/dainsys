@@ -11,6 +11,7 @@ class DainsysAuthorization
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \Closure                 $next
+     *
      * @return mixed
      */
     public function handle($request, Closure $next, $permissions = null)
@@ -33,14 +34,14 @@ class DainsysAuthorization
 
     protected function guardAgainstUnauthenticated()
     {
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             abort(401, 'Unauthenticated');
         }
     }
 
     protected function guardAgainstUnauthorizedUsers($request, $permissions)
     {
-        if (!$request->user()->hasAnyPermission(
+        if (! $request->user()->hasAnyPermission(
             $this->parsePermissions($permissions)
         )) {
             session()->flash('danger', 'Unauthorized! Permissions Needed: ' . $permissions);

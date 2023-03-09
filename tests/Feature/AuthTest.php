@@ -44,7 +44,6 @@ class AuthTest extends TestCase
     /** @test */
     public function it_authenticates_user()
     {
-        $this->withoutExceptionHandling();
         $password = 'randomPassword';
         $user = $this->user(['password' => bcrypt($password)]);
 

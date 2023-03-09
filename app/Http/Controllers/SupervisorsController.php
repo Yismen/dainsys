@@ -33,7 +33,8 @@ class SupervisorsController extends Controller
             ->with('site', 'project', 'nationality')
             ->with(['position' => function ($query) {
                 return $query->with(['department', 'payment_type']);
-            }])
+            },
+            ])
             ->actives()
             ->get();
 
@@ -54,9 +55,11 @@ class SupervisorsController extends Controller
                     ->with('project', 'nationality', 'site')
                     ->with(['position' => function ($query) {
                         return $query->with(['department', 'payment_type']);
-                    }])
+                    },
+                    ])
                     ->actives();
-            }])
+            },
+            ])
             ->get();
 
         return view('supervisors.index', compact('supervisors', 'free_employees', 'active_supervisors', 'inactive_supervisors'));
@@ -95,7 +98,7 @@ class SupervisorsController extends Controller
         }
 
         return redirect()->route('admin.supervisors.index')
-            ->withSuccess("Supervisor $supervisor->name created!!");
+            ->withSuccess("Supervisor {$supervisor->name} created!!");
     }
 
     /**
@@ -132,7 +135,7 @@ class SupervisorsController extends Controller
      */
     public function update(Request $request, Supervisor $supervisor)
     {
-        if (!$request->has('active')) {
+        if (! $request->has('active')) {
             $request->merge(['active' => '0']);
         }
 
@@ -150,7 +153,7 @@ class SupervisorsController extends Controller
         $supervisor->update($request->only(['name', 'active']));
 
         return redirect()->route('admin.supervisors.index')
-            ->withSuccess("Supervisor $supervisor->name Updated!!");
+            ->withSuccess("Supervisor {$supervisor->name} Updated!!");
     }
 
     /**
@@ -172,7 +175,7 @@ class SupervisorsController extends Controller
         }
 
         return redirect()->route('admin.supervisors.index')
-            ->withDanger("Supervisor $supervisor->name have been eliminated!");
+            ->withDanger("Supervisor {$supervisor->name} have been eliminated!");
     }
 
     public function assignEmployees(Request $request)

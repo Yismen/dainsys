@@ -18,6 +18,7 @@ class OvernightHourFilter extends ModelFilter
      * Filter by date
      *
      * @param string $request
+     *
      * @return void
      */
     public function date($request): OvernightHourFilter
@@ -29,6 +30,7 @@ class OvernightHourFilter extends ModelFilter
      * Filter by date
      *
      * @param string $request
+     *
      * @return void
      */
     public function months(int $request): OvernightHourFilter
@@ -43,6 +45,7 @@ class OvernightHourFilter extends ModelFilter
      * Filter by date
      *
      * @param string $request
+     *
      * @return void
      */
     public function days(int $request): OvernightHourFilter

@@ -3,7 +3,6 @@
 namespace Tests\Feature\Http\Controllers;
 
 use Tests\TestCase;
-use App\Models\Step;
 use App\Models\Process;
 use App\Models\Employee;
 use App\Http\Livewire\EmployeeStep;
@@ -66,7 +65,6 @@ class EmployeeProcessControllerTest extends TestCase
     /** @test */
     public function it_allows_users_to_view_employee_process_details_if_they_have_view_employee_process_permission()
     {
-        $this->withoutExceptionHandling();
         // given
         $user = $this->userWithPermission('view-employee-process');
         $employee = factory(Employee::class)->create();

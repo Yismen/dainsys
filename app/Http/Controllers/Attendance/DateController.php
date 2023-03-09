@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Attendance;
 
-use App\Models\AttendanceCode;
 use App\Http\Controllers\Controller;
+use App\Models\AttendanceCode;
 use App\Repositories\Attendances\AttendanceDatesCodesRepository;
 use App\Repositories\Attendances\AttendanceDatesRepository;
 use Carbon\Carbon;

@@ -1,86 +1,86 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Punches ID', 'page_description'=>'Current Punches ID.'])
+@extends('layouts.app', ['page_header'=>'Punches ID', 'page_description'=>'Current Punches ID.'])
 
 @section('content')
-	<div class="container-fluid">
-    	<div class="row">
-			<div class="col-sm-8">
-				<div class="box box-primary">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-8">
+			<div class="box box-primary">
 
-					<div class="box-header with-border">
-						<h4>
-							Punches Items List
-						 	<a href="{{ route('admin.punches.create') }}" class="pull-right">
-						 		<i class="fa fa-plus"></i> Add
-						 	</a>
-						</h4>
-					</div>
+				<div class="box-header with-border">
+					<h4>
+						Punches Items List
+						<a href="{{ route('admin.punches.create') }}" class="pull-right">
+							<i class="fa fa-plus"></i> Add
+						</a>
+					</h4>
+				</div>
 
-					<div class="box-body">
-						<table class="table table-condensed table-hover" id="punches-table">
-							<thead>
-								<tr>
-									<th>Punch ID</th>
-									<th>Employee</th>
-									<th>Slug</th>
-									<th class="col-xs-3">Actions</th>
-								</tr>
-							</thead>
-						</table>
-					</div>
+				<div class="box-body">
+					<table class="table table-condensed table-hover" id="punches-table">
+						<thead>
+							<tr>
+								<th>Punch ID</th>
+								<th>Employee</th>
+								<th>Slug</th>
+								<th class="col-xs-3">Actions</th>
+							</tr>
+						</thead>
+					</table>
 				</div>
 			</div>
+		</div>
 
 
-			<div class="col-sm-4">
-				<div class="box box-danger">
+		<div class="col-sm-4">
+			<div class="box box-danger">
 
-					<div class="box-header with-border">
-						<h4>
-							List of Employees Missing Punch ID
-						 	<a href="{{ route('admin.punches.create') }}" class="pull-right">
-						 		<i class="fa fa-plus"></i> Add
-						 	</a>
-						</h4>
-					</div>
+				<div class="box-header with-border">
+					<h4>
+						List of Employees Missing Punch ID
+						<a href="{{ route('admin.punches.create') }}" class="pull-right">
+							<i class="fa fa-plus"></i> Add
+						</a>
+					</h4>
+				</div>
 
-					<div class="box-body">
-						<table class="table table-condensed table-hover">
-							<thead>
-								<tr>
-									<th>Employee</th>
-									<th class="col-xs-3">Actions</th>
-								</tr>
-							</thead>
+				<div class="box-body">
+					<table class="table table-condensed table-hover">
+						<thead>
+							<tr>
+								<th>Employee</th>
+								<th class="col-xs-3">Actions</th>
+							</tr>
+						</thead>
 
-							<tbody>
-								@foreach ($employees_missing_punch as $employee)
-									<tr>
-										<td>
-											<a href="{{ route('admin.employees.show', $employee->id) }}" target="_employee">{{ $employee->full_name }}</a>
-										</td>
-										<td>
-											<a href="{{ route('admin.employees.edit', $employee->id) }}" target="_employee">
-												<i class="fa fa-pencil"></i> Edit
-											</a>
-										</td>
-									</tr>
-								@endforeach
-							</tbody>
-						</table>
-					</div>
+						<tbody>
+							@foreach ($employees_missing_punch as $employee)
+							<tr>
+								<td>
+									<a href="{{ route('admin.employees.show', $employee->id) }}" target="_employee">{{
+										$employee->full_name }}</a>
+								</td>
+								<td>
+									<a href="{{ route('admin.employees.edit', $employee->id) }}" target="_employee">
+										<i class="fa fa-pencil"></i> Edit
+									</a>
+								</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+				</div>
 
-					<div class="box-footer">
-						{{ $employees_missing_punch->render() }}
-					</div>
+				<div class="box-footer">
+					{{ $employees_missing_punch->render() }}
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 @endsection
 @push('scripts')
-	<script>
-		(function($){
+<script>
+	(function($){
 	        $(document).ready(function($) {
 
 	            let dTable = $('#punches-table').DataTable({
@@ -123,5 +123,5 @@
 	        });
 
 	    })(jQuery);
-	</script>
+</script>
 @endpush

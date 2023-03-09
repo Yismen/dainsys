@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
+use App\Models\Department;
 use App\Models\Employee;
 use App\Models\Position;
-use App\Models\Department;
 
 class Employees
 {
@@ -28,7 +28,8 @@ class Employees
         return Department::with(['employees' => function ($query) {
             return $query->orderBy('first_name', 'asc', 'second_first_name', 'asc')->actives()
                 ->with('position.department');
-        }])->findOrFail($id);
+        },
+        ])->findOrFail($id);
     }
 
     public function employeesByPosition($id)
@@ -36,6 +37,7 @@ class Employees
         return Position::with(['employees' => function ($query) {
             return $query->orderBy('first_name', 'asc', 'second_first_name', 'asc')->actives()
                 ->with('position.department');
-        }])->findOrFail($id);
+        },
+        ])->findOrFail($id);
     }
 }

@@ -1,68 +1,69 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Users', 'page_description'=>'Edit user information and config.'])
+@extends('layouts.app', ['page_header'=>'Users', 'page_description'=>'Edit user information and config.'])
 
 @section('content')
-	<div class="container ">
-		<div class="col-sm-8 col-sm-offset-2">
-			<div class="box box-primary pad">
-				<div class="row">
-					<div class="col-sm-12">
-						{!! Form::model($user, ['route'=>['admin.users.update', $user->id], 'method'=>'PUT', 'class'=>'form-horizontal', 'role'=>'form']) !!}		
-							<div class="form-groups">
-								<legend>
-									Edit user - {{ $user->name }}
-									<a href="{{ route('admin.users.index') }}" class="pull-right"><i class="fa fa-list"></i></a>
-								</legend>
-							</div>
-						
-							@include('users._form')
-							<hr>
-							<div class="form-group">
-								<div class="col-sm-10 col-sm-offset-2">
-									<button type="submit" class="btn btn-primary">SAVE UPDATES</button>
-									<a href="/admin/users" class="btn btn-default">
-										<i class="fa fa-home"></i> Cancel
-									</a>
-								</div>
+<div class="container ">
+	<div class="col-sm-8 col-sm-offset-2">
+		<div class="box box-primary pad">
+			<div class="row">
+				<div class="col-sm-12">
+					{!! Form::model($user, ['route'=>['admin.users.update', $user->id], 'method'=>'PUT',
+					'class'=>'form-horizontal', 'role'=>'form']) !!}
+					<div class="form-groups">
+						<legend>
+							Edit user - {{ $user->name }}
+							<a href="{{ route('admin.users.index') }}" class="pull-right"><i class="fa fa-list"></i></a>
+						</legend>
+					</div>
 
-							</div>
-						
-						{!! Form::close() !!}
+					@include('users._form')
+					<hr>
+					<div class="form-group">
+						<div class="col-sm-10 col-sm-offset-2">
+							<button type="submit" class="btn btn-primary">SAVE UPDATES</button>
+							<a href="/admin/users" class="btn btn-default">
+								<i class="fa fa-home"></i> Cancel
+							</a>
+						</div>
 
-						<hr>
+					</div>
 
-						<div class="form-group">
-							<div class="col-sm-10 col-sm-offset-2">
+					{!! Form::close() !!}
 
-								<form action="{{ url('/admin/users', $user->id) }}" method="POST" class="inactivate-user" style="display: inline-block;">
-								    {!! csrf_field() !!}
-								    {!! method_field('DELETE') !!}
-								
-								    <button type="submit" id="delete-user" class="btn btn-danger"  name="deleteBtn">
-								        <i class="fa fa-btn fa-trash"></i> Delete/Inactivate User
-								    </button>
-								</form>
+					<hr>
 
-								<a href="/admin/users/force_reset/{{ $user->id }}" class="btn btn-warning pull-right">
-									<i class="fa fa-pencil"></i> Forcely reset password
-								</a>
+					<div class="form-group">
+						<div class="col-sm-10 col-sm-offset-2">
 
-							</div>
+							<form action="{{ url('/admin/users', $user->id) }}" method="POST" class="inactivate-user"
+								style="display: inline-block;">
+								{!! csrf_field() !!}
+								{!! method_field('DELETE') !!}
+
+								<button type="submit" id="delete-user" class="btn btn-danger" name="deleteBtn">
+									<i class="fa fa-btn fa-trash"></i> Delete/Inactivate User
+								</button>
+							</form>
+
+							<a href="/admin/users/force_reset/{{ $user->id }}" class="btn btn-warning pull-right">
+								<i class="fa fa-pencil"></i> Forcely reset password
+							</a>
+
 						</div>
 					</div>
 				</div>
-
-
-						
 			</div>
-		</div>
 
+
+
+		</div>
 	</div>
+
+</div>
 @stop
 
 @push('scripts')
-	<script>
-		const form = document.querySelector('.inactivate-user');
+<script>
+	const form = document.querySelector('.inactivate-user');
 		form.addEventListener('submit', (el) => {
 			el.preventDefault();
 			const confirmation = confirm('This action will inactivate this user, preventing it from accessing anything in your application. Are you sure you want to continue?');
@@ -71,5 +72,5 @@
 				el.target.submit();
 			}
 		})
-	</script>
+</script>
 @endpush

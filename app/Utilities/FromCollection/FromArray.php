@@ -17,14 +17,14 @@ class FromArray
     {
         $this->data_array = array_map(function ($item) {
             foreach ($item as $key => $value) {
-                $return[] = array_filter($item, function ($elem) use ($key, $value) {
-                    if (!in_array($key, $this->keys)) {
+                $return[] = array_filter($item, function ($elem) use ($key) {
+                    if (! in_array($key, $this->keys)) {
                         $this->keys[$key] = null;
                     }
 
                     return $elem !== null;
                 });
-            };
+            }
 
             return $return;
         }, $this->data_array);

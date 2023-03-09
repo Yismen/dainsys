@@ -2,13 +2,13 @@
 
 namespace App\Repositories\Dashboard;
 
-use App\Repositories\SiteRepository;
-use App\Repositories\ProjectRepository;
-use App\Repositories\EmployeeRepository;
 use App\Repositories\AttritionRepository;
 use App\Repositories\BirthdaysRepository;
 use App\Repositories\DepartmentRepository;
+use App\Repositories\EmployeeRepository;
 use App\Repositories\MissingInfoRepository;
+use App\Repositories\ProjectRepository;
+use App\Repositories\SiteRepository;
 
 class HumanResourcesRepository
 {

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\DowntimeReason;
+use Illuminate\Http\Request;
 
 class DowntimeReasonsController extends Controller
 {
@@ -62,6 +62,7 @@ class DowntimeReasonsController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function show(DowntimeReason $downtime_reason)
@@ -73,6 +74,7 @@ class DowntimeReasonsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function edit(DowntimeReason $downtime_reason)
@@ -84,6 +86,7 @@ class DowntimeReasonsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function update(DowntimeReason $downtime_reason, Request $request)
@@ -95,6 +98,6 @@ class DowntimeReasonsController extends Controller
         $downtime_reason->update($request->only(['name']));
 
         return redirect()->route('admin.downtime_reasons.index')
-            ->withSuccess("Downtime Reason $downtime_reason->name has been updated");
+            ->withSuccess("Downtime Reason {$downtime_reason->name} has been updated");
     }
 }

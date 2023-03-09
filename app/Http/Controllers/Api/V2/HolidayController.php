@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Models\Holiday;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\HolidayResource;
+use App\Models\Holiday;
 
 class HolidayController extends Controller
 {
@@ -14,6 +14,7 @@ class HolidayController extends Controller
      * Collection of holidays. If year is not especified in the query string, it will return all holidays for previous year, current year and futuristic holidays.
      *
      * @queryParam year string Limit the results to a specific year. Default to previous year. Example ?year=2021.
+     *
      * @response 200 {
      *      "data": [
      *          {

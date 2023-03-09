@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 // use App\Http\Request;
-use Illuminate\Http\Request;
 use App\Models\PaymentType;
+use Illuminate\Http\Request;
 
 class PaymentTypesController extends Controller
 {
@@ -62,13 +62,14 @@ class PaymentTypesController extends Controller
         $payment_type = $payment_type->create($request->only(['name']));
 
         return redirect()->route('admin.payment_types.index')
-            ->withSuccess("PaymentType $payment_type->name has been created!");
+            ->withSuccess("PaymentType {$payment_type->name} has been created!");
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
 
@@ -76,6 +77,7 @@ class PaymentTypesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function edit(PaymentType $payment_type)
@@ -87,24 +89,26 @@ class PaymentTypesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function update(PaymentType $payment_type, Request $request)
     {
         $this->validate($request, [
-            'name' => "required|unique:payment_types,name,$payment_type->id,id",
+            'name' => "required|unique:payment_types,name,{$payment_type->id},id",
         ]);
 
         $payment_type->update($request->only(['name']));
 
         return redirect()->route('admin.payment_types.show', $payment_type->id)
-            ->withSuccess("payment $payment_type->name has been ubdated!!");
+            ->withSuccess("payment {$payment_type->name} has been ubdated!!");
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function destroy(PaymentType $payment_type, Request $request)
@@ -112,6 +116,6 @@ class PaymentTypesController extends Controller
         $payment_type->delete();
 
         return redirect()->route('admin.payment_types.index')
-            ->withWarning("payment $payment_type->name has been removed!");
+            ->withWarning("payment {$payment_type->name} has been removed!");
     }
 }

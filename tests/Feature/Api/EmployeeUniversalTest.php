@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Api;
 
+use Tests\TestCase;
 use App\Models\Employee;
 use App\Models\Universal;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class EmployeeUniversalTest extends TestCase
 {

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Api\Performances;
 
-use App\Models\Schedule;
-use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ScheduleResource;
+use App\Models\Schedule;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Collection;
 
 /**
  * @group Performances

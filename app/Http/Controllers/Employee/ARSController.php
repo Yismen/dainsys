@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Employee;
 
+use App\Http\Controllers\Controller;
 use App\Models\Employee;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 
 class ARSController extends Controller
@@ -14,6 +14,7 @@ class ARSController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int                       $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function assign(Employee $employee, Request $request)

@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Process;
 use App\Models\Employee;
+use App\Models\Process;
 use Illuminate\Console\Command;
 
 class AutomaticProcessAssignation extends Command

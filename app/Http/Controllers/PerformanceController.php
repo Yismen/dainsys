@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Performance;
-use Yajra\DataTables\Facades\DataTables;
-use App\Repositories\PerformanceRepository;
 use App\Http\Requests\Performance\UpdatePerformance;
+use App\Models\Performance;
+use App\Repositories\PerformanceRepository;
 
 class PerformanceController extends Controller
 {

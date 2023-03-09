@@ -6,14 +6,13 @@ use App\Notifications\UserAppNotification;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Events\AfterImport;
 use Maatwebsite\Excel\Events\ImportFailed;
-use Maatwebsite\Excel\Importer;
 
 trait ExcelImportTrait
 {
     /**
      * The size of file chunks
      *
-     * @return integer
+     * @return int
      */
     public function chunkSize(): int
     {
@@ -23,7 +22,7 @@ trait ExcelImportTrait
     /**
      * The size of batches to insert.
      *
-     * @return integer
+     * @return int
      */
     public function batchSize(): int
     {

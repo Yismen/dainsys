@@ -13,11 +13,6 @@ class DainsysConfigService
         $this->repository = new DatabaseRepository();
     }
 
-    protected function get(string $key, $default = null): array
-    {
-        return $this->repository->get($key, $default);
-    }
-
     public function getDistro(string $key)
     {
         $distro = $this->get($key);
@@ -27,5 +22,10 @@ class DainsysConfigService
         }
 
         return $distro;
+    }
+
+    protected function get(string $key, $default = null): array
+    {
+        return $this->repository->get($key, $default);
     }
 }

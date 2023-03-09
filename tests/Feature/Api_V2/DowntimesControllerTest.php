@@ -14,16 +14,15 @@ class DowntimesControllerTest extends TestCase
     /** @test */
     public function it_returns_a_downtimes_collection()
     {
-        $this->withoutExceptionHandling();
         $downtimes = factory(Downtime::class, 3)->create(['date' => now()]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/downtimes');
 
         $response->assertOk();
-        
+
         $response->assertJsonCount(3, 'data');
-        
+
         $response->assertJsonStructure([
             'data' => [
                 '*' => [

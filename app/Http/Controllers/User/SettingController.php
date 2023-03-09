@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Models\User;
-use Illuminate\Http\Request;
-use App\Events\EditUserSettings;
-use App\Events\CreateUserSettings;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 
@@ -26,7 +22,7 @@ class SettingController extends Controller
             'data' => json_encode(request()->only('layout', 'skin', 'sidebar', 'sidebar_mini')),
         ];
 
-        if (!$user->settings) {
+        if (! $user->settings) {
             $user->settings()->create($settings);
         } else {
             $user->settings()->update($settings);

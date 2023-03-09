@@ -32,7 +32,9 @@ class LayoutServiceProvider extends ServiceProvider
 
     /**
      * returns current value of site property. Allows for override optionally.
+     *
      * @param  string $site new name of the site's layout. can be null o be overridden.
+     *
      * @return string       site's name
      */
     public function site($site = null)
@@ -46,7 +48,9 @@ class LayoutServiceProvider extends ServiceProvider
 
     /**
      * returns current value of app property. Allows for override optionally.
+     *
      * @param  string $app new name of the app's layout. can be null o be overridden.
+     *
      * @return string       app's name
      */
     public function app($app = null)

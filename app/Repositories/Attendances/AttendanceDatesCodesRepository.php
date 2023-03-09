@@ -17,11 +17,11 @@ class AttendanceDatesCodesRepository
      * Return data and dates for all attendances for a given date
      *
      * @param Carbon\date $date
-     * @param boolean $current_user false to query data for all users
+     * @param bool $current_user false to query data for all users
      */
     public function __construct(Carbon $date, int $code, bool $current_user = true)
     {
-        $this->current_user = $current_user == true ? auth()->user()->id : '%';
+        $this->current_user = $current_user === true ? auth()->user()->id : '%';
 
         $this->date = $date;
         $this->code = $code;

@@ -40,6 +40,7 @@ class InboundDataRepository
      * @param array $data_parsers
      * @param string $team
      * @param string|array $gate
+     *
      * @return void
      */
     public static function getData(string $date_from, string $date_to, array $data_parsers = [], string $team = 'ECC%', $gate = '%')
@@ -50,7 +51,7 @@ class InboundDataRepository
         self::$gate = $gate;
 
         foreach ($data_parsers as $parser_class) {
-            $parser_instance = new $parser_class;
+            $parser_instance = new $parser_class();
 
             self::$data_parsers[Str::snake(\class_basename($parser_class))] = self::handleGetData($parser_instance);
         }
@@ -62,6 +63,7 @@ class InboundDataRepository
      * Handle the get data logic
      *
      * @param DataParsersContract $parser_instance
+     *
      * @return array
      */
     protected static function handleGetData(DataParsersContract $parser_instance): array

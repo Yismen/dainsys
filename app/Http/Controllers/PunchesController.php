@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 // use App\Http\PunchesCreateRequests\PunchesCreateRequest;
-use App\Models\Punch;
-use App\Models\Employee;
-use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\PunchesCreateRequest;
 use App\Http\Requests\PunchesUpdateRequest;
+use App\Models\Employee;
+use App\Models\Punch;
+use Yajra\DataTables\Facades\DataTables;
 
 class PunchesController extends Controller
 {
@@ -26,7 +26,7 @@ class PunchesController extends Controller
      */
     public function index()
     {
-        if (!request()->ajax()) {
+        if (! request()->ajax()) {
             $employees_missing_punch = Employee::actives()->whereDoesntHave('punch')
                 ->sorted()
                 ->paginate(25);
@@ -61,7 +61,7 @@ class PunchesController extends Controller
         $punch->create($request->only('punch', 'employee_id'));
 
         return redirect()->route('admin.punches.index')
-            ->withSuccess("Punch number $punch->punch has been created!");
+            ->withSuccess("Punch number {$punch->punch} has been created!");
     }
 
     /**
@@ -101,7 +101,7 @@ class PunchesController extends Controller
 
         return redirect()
             ->route('admin.punches.index')
-            ->withSuccess("Punch $punch->card has been updated");
+            ->withSuccess("Punch {$punch->card} has been updated");
     }
 
     /**
@@ -116,6 +116,6 @@ class PunchesController extends Controller
         $punch->delete();
 
         return redirect()->route('admin.punches.index')
-            ->withWarning("Punch $punch->punch has been deleted!");
+            ->withWarning("Punch {$punch->punch} has been deleted!");
     }
 }

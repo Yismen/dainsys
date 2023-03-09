@@ -32,10 +32,10 @@ class MissingInfoRepository
     public static function photo()
     {
         return Employee::actives()
-        ->filter(request()->all())
-        ->sorted()
-        ->forDefaultSites()
-        ->missingPhoto();
+            ->filter(request()->all())
+            ->sorted()
+            ->forDefaultSites()
+            ->missingPhoto();
     }
 
     public static function punch()

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api\Performances;
 
-use Carbon\Carbon;
-use App\Models\Performance;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PerformanceResource;
+use App\Models\Performance;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
@@ -19,6 +19,7 @@ class PerformancesController extends Controller
      * Collection of performances data for many months back.
      *
      * @urlParam many integer The amount of months back to filter data. Example /performances/performance_data/last/3/months
+     *
      * @queryParam date string Filter data for specific date. Date must be included within the amount of months filtere, therefore should be used in combinaton.
      * @queryParam dates_between string Filter data for specific date range. Example ?dates_between=2022-05-21,2022-05-24. Date must be included within the amount of months filtere, therefore should be used in combinaton.
      * @queryParam campaign string Filter data by campaign name. Example ?campaign=%POL-%.
@@ -87,19 +88,20 @@ class PerformancesController extends Controller
         ini_set('memory_limit', config('dainsys.memory_limit'));
         ini_set('max_execution_time', 240);
 
-        $start_of_month = Carbon::now()->subMonths((int)$many)->startOfMonth();
+        $start_of_month = Carbon::now()->subMonths((int) $many)->startOfMonth();
 
         $performances = Performance::query()
             ->with([
                 'supervisor',
-                'downtimeReason'
+                'downtimeReason',
             ])
             ->with(['campaign' => function ($query) {
                 $query->with([
                     'source',
-                    'project.client'
+                    'project.client',
                 ]);
-            }])
+            },
+            ])
             ->with(['employee' => function ($query) {
                 $query->with([
                     'supervisor',
@@ -107,9 +109,10 @@ class PerformancesController extends Controller
                     'termination',
                     'position.department',
                     'project',
-                    'punch'
+                    'punch',
                 ]);
-            }])
+            },
+            ])
             ->whereDate('date', '>=', $start_of_month)
             ->filter(request()->all())
             ->get();

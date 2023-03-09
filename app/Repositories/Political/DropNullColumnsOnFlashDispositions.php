@@ -33,9 +33,10 @@ class DropNullColumnsOnFlashDispositions
      * with valid value.
      *
      * @param string $set_last_key
+     *
      * @return void
      */
-    public function padKeys(string $set_last_key = null)
+    public function padKeys(?string $set_last_key = null)
     {
         $this->data = array_map(function ($item) use ($set_last_key) {
             $array = array_merge($this->keys, $item);
@@ -57,11 +58,12 @@ class DropNullColumnsOnFlashDispositions
      *
      * @param String $key
      * @param Array $value
+     *
      * @return void
      */
     private function addValidKeys($key, $value)
     {
-        if (!in_array($key, $this->keys)) {
+        if (! in_array($key, $this->keys)) {
             return $this->keys[$key] = null;
         }
 

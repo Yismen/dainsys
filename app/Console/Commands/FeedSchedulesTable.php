@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
-use Carbon\Carbon;
 use App\Models\Employee;
 use App\Models\Schedule;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class FeedSchedulesTable extends Command
@@ -43,7 +43,7 @@ class FeedSchedulesTable extends Command
     {
         $this->days = (int) $this->option('days');
 
-        if (!$this->validate()) {
+        if (! $this->validate()) {
             return $this->error('Invalid arguments...');
         }
 

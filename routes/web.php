@@ -1,29 +1,29 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArsController;
-use App\Http\Controllers\BanksController;
-use App\Http\Controllers\CardsController;
-use App\Http\Controllers\SitesController;
-use App\Http\Controllers\UsersController;
-use App\Http\Controllers\ClientsController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProjectsController;
-use App\Http\Controllers\CampaignsController;
-use App\Http\Controllers\LoginNamesController;
-use App\Http\Controllers\AttendancesController;
-use App\Http\Controllers\SupervisorsController;
-use App\Http\Controllers\NationalitiesController;
-use App\Http\Controllers\Partials\UserController;
-use App\Http\Controllers\User\PasswordController;
 use App\Http\Controllers\Attendance\CodeController;
 use App\Http\Controllers\Attendance\DateController;
 use App\Http\Controllers\AttendanceCodesController;
-use App\Http\Controllers\PerformanceImportController;
+use App\Http\Controllers\AttendancesController;
+use App\Http\Controllers\BanksController;
+use App\Http\Controllers\CampaignsController;
+use App\Http\Controllers\CardsController;
+use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\HumanResources\BirthdaysController;
 use App\Http\Controllers\HumanResources\DGT3Controller;
 use App\Http\Controllers\HumanResources\DGT4Controller;
-use App\Http\Controllers\HumanResources\BirthdaysController;
+use App\Http\Controllers\LoginNamesController;
+use App\Http\Controllers\NationalitiesController;
+use App\Http\Controllers\Partials\UserController;
+use App\Http\Controllers\PerformanceImportController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\SitesController;
+use App\Http\Controllers\SupervisorsController;
+use App\Http\Controllers\User\PasswordController;
+use App\Http\Controllers\UsersController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', \App\Http\Controllers\HomeController::class)->name('home');
 Auth::routes(['register' => false]);
@@ -105,7 +105,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
         Route::post('{employee}/photo', [\App\Http\Controllers\Employee\PhotoController::class, 'update'])
             ->name('employees.update-photo');
         Route::delete('{employee}/photo', [\App\Http\Controllers\Employee\PhotoController::class, 'destroy'])
-                    ->name('employees.remove-photo');
+            ->name('employees.remove-photo');
         Route::put('{employee}/bank-account', [\App\Http\Controllers\Employee\BankAccountController::class, 'update'])
             ->name('employees.update-bank-account');
         Route::post('{employee}/social-security', [\App\Http\Controllers\Employee\SocialSecurityController::class, 'update'])

@@ -2,11 +2,11 @@
 
 namespace App\Console\Commands;
 
-use SplFileInfo;
 use Carbon\Carbon;
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
+use SplFileInfo;
 
 class ClearTempraryFiles extends Command
 {
@@ -110,7 +110,7 @@ class ClearTempraryFiles extends Command
     {
         $date_updated = Carbon::parse($file->getMTime());
 
-        return $date_updated->diffInDays(now()) >= (int)$this->argument('remove_files_older_than_days');
+        return $date_updated->diffInDays(now()) >= (int) $this->argument('remove_files_older_than_days');
     }
 
     protected function interactWithFiles()

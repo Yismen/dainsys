@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Cache;
 
 class UsersController extends Controller
 {
-    private $request;
     protected $user;
+    private $request;
 
     public function __construct(Request $request, Role $role)
     {
@@ -32,7 +32,8 @@ class UsersController extends Controller
         $users = $users
             ->with(['roles' => function ($query) {
                 $query->orderBy('name');
-            }])
+            },
+            ])
             ->with('profile')
             ->orderBy('name')
             ->get();
@@ -82,6 +83,7 @@ class UsersController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function show(User $user)
@@ -93,6 +95,7 @@ class UsersController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function edit(User $user)
@@ -104,6 +107,7 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function update(User $user, Request $request)
@@ -126,11 +130,12 @@ class UsersController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function destroy(User $user)
     {
-        if ($user->id == auth()->user()->id) {
+        if ($user->id === auth()->user()->id) {
             return redirect()->route('admin.users.edit', $user->id)
                 ->withDanger('It is not allowed to remove your own user.');
         }
@@ -145,7 +150,7 @@ class UsersController extends Controller
         $user->delete();
 
         return redirect()->route('admin.users.index')
-            ->withWarning("User $user->name has been removed!!!");
+            ->withWarning("User {$user->name} has been removed!!!");
     }
 
     public function inactives()
@@ -162,6 +167,7 @@ class UsersController extends Controller
      * Activate the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function restore($id)
@@ -173,6 +179,6 @@ class UsersController extends Controller
         $user->restore();
 
         return redirect()->route('admin.users.inactive-users')
-            ->withWarning("User $user->name has been restored!!!");
+            ->withWarning("User {$user->name} has been restored!!!");
     }
 }

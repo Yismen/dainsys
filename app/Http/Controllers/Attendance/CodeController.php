@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Attendance;
 
-use App\Models\AttendanceCode;
-use Illuminate\Http\Request;
-use App\Repositories\Attendances\AttendanceCodesRepository;
 use App\Http\Controllers\Controller;
+use App\Models\AttendanceCode;
+use App\Repositories\Attendances\AttendanceCodesRepository;
+use Illuminate\Http\Request;
 
 class CodeController extends Controller
 {

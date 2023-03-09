@@ -11,15 +11,17 @@ class Search
 
     // public function __construct($TABLE, $FIELDS)
     // {
-    // 	$this->TABLE = $TABLE;
-    // 	$this->FIELDS = $FIELDS;
+    //  $this->TABLE = $TABLE;
+    //  $this->FIELDS = $FIELDS;
     // }
 
     /**
      * perform a search query to the given model
+     *
      * @param  [model] $modelTable
      * @param  [array] $fields     array
      * @param  [string] $input      string
+     *
      * @return collection collection of items meeting the chriteria
      */
     public function find($modelTable, $fields, $input = 'search')

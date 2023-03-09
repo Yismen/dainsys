@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\RingCentral\Disposition;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Illuminate\Validation\Rule;
-use App\Models\RingCentral\Disposition;
 
 class DispositionForm extends Component
 {
@@ -23,16 +23,6 @@ class DispositionForm extends Component
         'wantsCreate',
         'wantsEdit',
     ];
-
-    protected function getRules(): array
-    {
-        return [
-            'name' => [
-                'required',
-                Rule::unique(Disposition::class, 'name')->ignore($this->modelId, 'id')
-            ]
-        ];
-    }
 
     public function mount($disposition = null)
     {
@@ -101,7 +91,7 @@ class DispositionForm extends Component
             'sales',
             'upsales',
             'cc_sales',
-            'editing'
+            'editing',
         ]);
 
         $this->dispatchBrowserEvent('closeDispositionModal');
@@ -129,9 +119,19 @@ class DispositionForm extends Component
             'sales',
             'upsales',
             'cc_sales',
-            'editing'
+            'editing',
         ]);
 
         $this->dispatchBrowserEvent('closeDispositionModal');
+    }
+
+    protected function getRules(): array
+    {
+        return [
+            'name' => [
+                'required',
+                Rule::unique(Disposition::class, 'name')->ignore($this->modelId, 'id'),
+            ],
+        ];
     }
 }

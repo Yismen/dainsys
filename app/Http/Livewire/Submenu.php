@@ -16,6 +16,7 @@ class Submenu extends Component
      * @param  string $label: Label to be displayed
      * @param  array  $links: Links to render. Each item must have a text and route key. Example: [['text' => 'About', 'route] => '/admin/about']
      * @param  bool $target: On click open a new tab. You may pass this as part of the menu items as well: [['text' => 'About', 'route] => '/admin/about', 'target' => '_new']
+     *
      * @return void
      */
     public function mount(string $label = 'Sub Menu', array $links = [], bool $target = false)

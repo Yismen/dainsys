@@ -18,11 +18,11 @@ class DateBetweenRule implements Rule
      *
      * @return void
      */
-    public function __construct(Carbon $from, Carbon $to = null)
+    public function __construct(Carbon $from, ?Carbon $to = null)
     {
         $this->from = $from;
 
-        $this->to = $to != null ? $to : Carbon::now();
+        $this->to = $to !== null ? $to : Carbon::now();
     }
 
     /**
@@ -30,6 +30,7 @@ class DateBetweenRule implements Rule
      *
      * @param  string  $attribute
      * @param  mixed  $value
+     *
      * @return bool
      */
     public function passes($attribute, $value)

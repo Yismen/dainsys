@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Downtime;
-use Yajra\DataTables\Facades\DataTables;
-use App\Repositories\PerformanceRepository;
 use App\Http\Requests\Performance\CreateDowntimeRequest;
 use App\Http\Requests\Performance\UpdateDowntimeRequest;
+use App\Models\Downtime;
+use App\Repositories\PerformanceRepository;
+use Yajra\DataTables\Facades\DataTables;
 
 class DowntimeController extends Controller
 {
@@ -36,7 +36,7 @@ class DowntimeController extends Controller
 
     public function create(PerformanceRepository $repo, Downtime $downtime)
     {
-        if (!request()->ajax()) {
+        if (! request()->ajax()) {
             return view('downtimes.create', compact('downtime'));
         }
 

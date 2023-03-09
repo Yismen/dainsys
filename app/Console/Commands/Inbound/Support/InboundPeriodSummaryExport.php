@@ -22,7 +22,7 @@ class InboundPeriodSummaryExport implements WithMultipleSheets
 
     protected $period_name;
 
-    public function __construct($repo, string $client = 'Kipany', string $period_name, $date_from = null, $date_to = null)
+    public function __construct($repo, string $client, string $period_name, $date_from = null, $date_to = null)
     {
         $this->repo = $repo;
         $this->client = $client;

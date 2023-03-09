@@ -23,7 +23,7 @@ class ShiftsController extends Controller
      */
     public function index()
     {
-        if (!request()->ajax()) {
+        if (! request()->ajax()) {
             return view('shifts.index');
         }
 
@@ -141,6 +141,6 @@ class ShiftsController extends Controller
         $shift->delete();
 
         return redirect()->route('admin.shifts.index')
-            ->withWarning("Shift $shift->name has been removed.");
+            ->withWarning("Shift {$shift->name} has been removed.");
     }
 }

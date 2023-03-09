@@ -18,7 +18,6 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function it_lists_all_users_assigned_with_banks()
     {
-        $this->withoutExceptionHandling();
         $user = $this->userWithPermission('view-banks');
         $this->be($user);
         $bank = create(Bank::class);

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 // use App\Http\Request;
-use Illuminate\Http\Request;
 use App\Models\PaymentFrequency;
+use Illuminate\Http\Request;
 
 class PaymentFrequenciesController extends Controller
 {
@@ -58,13 +58,14 @@ class PaymentFrequenciesController extends Controller
         $payment_frequency = $payment_frequency->create($request->only(['name']));
 
         return redirect()->route('admin.payment_frequencies.index')
-            ->withSuccess("PaymentFrequency $payment_frequency->name has been created!");
+            ->withSuccess("PaymentFrequency {$payment_frequency->name} has been created!");
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
 
@@ -72,6 +73,7 @@ class PaymentFrequenciesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function edit(PaymentFrequency $payment_frequency)
@@ -83,24 +85,26 @@ class PaymentFrequenciesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function update(PaymentFrequency $payment_frequency, Request $request)
     {
         $this->validate($request, [
-            'name' => "required|unique:payment_frequencies,name,$payment_frequency->id,id",
+            'name' => "required|unique:payment_frequencies,name,{$payment_frequency->id},id",
         ]);
 
         $payment_frequency->update($request->only(['name']));
 
         return redirect()->route('admin.payment_frequencies.show', $payment_frequency->id)
-            ->withSuccess("payment $payment_frequency->name has been ubdated!!");
+            ->withSuccess("payment {$payment_frequency->name} has been ubdated!!");
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function destroy(PaymentFrequency $payment_frequency, Request $request)
@@ -112,6 +116,6 @@ class PaymentFrequenciesController extends Controller
         }
 
         return redirect()->route('admin.payment_frequencies.index')
-            ->withWarning("payment $payment_frequency->name has been removed!");
+            ->withWarning("payment {$payment_frequency->name} has been removed!");
     }
 }

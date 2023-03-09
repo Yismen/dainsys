@@ -1,5 +1,4 @@
-@inject('layout', 'App\Models\Layout')
-@extends('layouts.'.$layout->app(), ['page_header'=>'Overnight Hours', 'page_description'=>'Edit Overnight Hours ID.'])
+@extends('layouts.app', ['page_header'=>'Overnight Hours', 'page_description'=>'Edit Overnight Hours ID.'])
 
 @section('content')
 <div class="container-fluid">

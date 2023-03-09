@@ -20,6 +20,7 @@ abstract class BaseModelFilter extends ModelFilter
      * @param Array/string $request
      * @param  EloquentRelationship $relationship
      * @param  String               $quey_field
+     *
      * @return QueryBuilder
      */
     protected function filterQuery($request, $relationship, $quey_field = 'name')

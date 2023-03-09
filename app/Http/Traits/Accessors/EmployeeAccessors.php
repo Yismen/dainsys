@@ -2,22 +2,21 @@
 
 namespace App\Http\Traits\Accessors;
 
-use Carbon\Carbon;
 use App\Models\Afp;
 use App\Models\Ars;
 use App\Models\Bank;
-use App\Models\Site;
+use App\Models\Department;
 use App\Models\Gender;
 use App\Models\Marital;
-use App\Models\Project;
-use App\Models\Position;
-use App\Models\Department;
-use App\Models\Supervisor;
 use App\Models\Nationality;
-use App\Models\PaymentType;
-use App\Models\TerminationType;
 use App\Models\PaymentFrequency;
+use App\Models\PaymentType;
+use App\Models\Position;
+use App\Models\Project;
+use App\Models\Site;
+use App\Models\Supervisor;
 use App\Models\TerminationReason;
+use App\Models\TerminationType;
 
 trait EmployeeAccessors
 {
@@ -68,7 +67,7 @@ trait EmployeeAccessors
 
     public function getPhotoAttribute($photo)
     {
-        return '' == $photo ? 'images/placeholders/300.png' : $photo;
+        return $photo === '' ? 'images/placeholders/300.png' : $photo;
     }
 
     public function getStatusAttribute()
@@ -256,7 +255,7 @@ trait EmployeeAccessors
      */
     public function getPositionsListAttribute()
     {
-        return  Position::orderBy('name')
+        return Position::orderBy('name')
             ->with('department', 'payment_type', 'payment_frequency')
             ->get();
     }

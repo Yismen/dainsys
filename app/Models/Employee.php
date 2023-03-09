@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
-use App\Traits\Trackable;
+use App\Http\Traits\Accessors\EmployeeAccessors;
+use App\Http\Traits\Mutators\EmployeeMutators;
+use App\Http\Traits\Relationships\EmployeeRelationships;
 use App\ModelFilters\FilterableTrait;
 use App\Models\DainsysModel as Model;
+use App\Traits\Trackable;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
-use App\Http\Traits\Mutators\EmployeeMutators;
-use App\Http\Traits\Accessors\EmployeeAccessors;
-use App\Http\Traits\Relationships\EmployeeRelationships;
 
 class Employee extends Model
 {
@@ -146,7 +146,7 @@ class Employee extends Model
      *
      * @return Query Builder        query builder instance
      */
-    public function scopeRecents($query, Carbon $date = null)
+    public function scopeRecents($query, ?Carbon $date = null)
     {
         if ($date === null) {
             $date = Carbon::now()->subMonths(3);
@@ -161,9 +161,9 @@ class Employee extends Model
             );
     }
 
-    public function scopeNotRecents($query, Carbon $date = null)
+    public function scopeNotRecents($query, ?Carbon $date = null)
     {
-        if (null == $date) {
+        if ($date === null) {
             $date = Carbon::now()->subMonths(3);
         }
 
@@ -295,7 +295,8 @@ class Employee extends Model
         return $this->where('hire_date', '<=', $date)
             ->with(['termination' => function ($query) use ($date) {
                 return $query->where('termination_date', '>=', $date);
-            }])
+            },
+            ])
             ->get();
     }
 
@@ -303,7 +304,8 @@ class Employee extends Model
     {
         return $this->whereYear('hire_date', '<=', $year)->with(['termination' => function ($query) {
             return $query->where('termination_date', '>=', '2012-02-09');
-        }])->get();
+        },
+        ])->get();
     }
 
     /**
@@ -313,9 +315,10 @@ class Employee extends Model
      * @param  TerminationType   $termination_type
      * @param  TerminationReason $termination_eason
      * @param  string            $comments
+     *
      * @return void
      */
-    public function inactivate(Carbon $carbon, TerminationType $termination_type, TerminationReason $termination_eason, string $comments = null)
+    public function inactivate(Carbon $carbon, TerminationType $termination_type, TerminationReason $termination_eason, ?string $comments = null)
     {
         return $this->termination()->updateOrCreate([
             'termination_date' => $carbon->now(),
@@ -332,17 +335,17 @@ class Employee extends Model
      */
     public function isMasculine()
     {
-        return $this->has('gender') && 'Masculine' == $this->gender->gender ? 'Masculine' : null;
+        return $this->has('gender') && $this->gender->gender === 'Masculine' ? 'Masculine' : null;
     }
 
     public function isFemenine()
     {
-        return $this->has('gender') && 'Femenine' == $this->gender->gender ? 'Femenine' : null;
+        return $this->has('gender') && $this->gender->gender === 'Femenine' ? 'Femenine' : null;
     }
 
     public function isOfGender($gender, $return_value = null)
     {
-        if ($this->has('gender') && strtolower($this->gender->gender) == strtolower($gender)) {
+        if ($this->has('gender') && strtolower($this->gender->gender) === strtolower($gender)) {
             if ($return_value) {
                 return $return_value;
             }
@@ -389,7 +392,7 @@ class Employee extends Model
                 $process->id
             )->count();
 
-            return (int)$process->steps_count === 0 ? 0 : (int)$employee_process_steps_count / (int)$process->steps_count * 100;
+            return (int) $process->steps_count === 0 ? 0 : (int) $employee_process_steps_count / (int) $process->steps_count * 100;
         });
     }
 }

@@ -63,13 +63,14 @@ class DepartmentsController extends Controller
         }
 
         return redirect()->route('admin.departments.index')
-            ->withSuccess("Department $department->name has been added!");
+            ->withSuccess("Department {$department->name} has been added!");
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function show(Department $department)
@@ -81,6 +82,7 @@ class DepartmentsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function edit(Department $department)
@@ -92,12 +94,13 @@ class DepartmentsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function update(Request $request, Department $department)
     {
         $this->validate($request, [
-            'name' => "required|unique:departments,name,$department->id,id",
+            'name' => "required|unique:departments,name,{$department->id},id",
         ]);
 
         Cache::forget('departments');
@@ -105,13 +108,14 @@ class DepartmentsController extends Controller
 
         $department->update($request->only('name'));
 
-        return redirect()->route('admin.departments.edit', $department->id)->withSuccess("HH RR Department $department->name has been updated");
+        return redirect()->route('admin.departments.edit', $department->id)->withSuccess("HH RR Department {$department->name} has been updated");
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return Response
      */
     public function destroy(Department $department)
@@ -123,6 +127,6 @@ class DepartmentsController extends Controller
 
         return redirect()
             ->route('admin.departments.index')
-            ->withWarning("HH RR Department $department->name has been removed");
+            ->withWarning("HH RR Department {$department->name} has been removed");
     }
 }

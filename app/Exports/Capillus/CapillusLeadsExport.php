@@ -55,7 +55,7 @@ class CapillusLeadsExport implements FromView, WithTitle, WithEvents, WithPreCal
                     // ->formatDateColumn()
                     ->formatTimecolumns()
                     ->setColumnsWidth()
-                    ;
+                ;
 
                 $this->sheet->setAutoFilter("A1:O{$this->count}");
                 $this->sheet->freezePane('E2');
@@ -143,9 +143,9 @@ class CapillusLeadsExport implements FromView, WithTitle, WithEvents, WithPreCal
 
         $this->sheet
             ->getStyle('A1:O1')
-                ->applyFromArray($format)
-                ->getAlignment()
-                    ->setWrapText(true);
+            ->applyFromArray($format)
+            ->getAlignment()
+            ->setWrapText(true);
 
         return $this;
     }

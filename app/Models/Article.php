@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use App\Models\DainsysModel as Model;
+use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 
 class Article extends Model
@@ -122,6 +122,7 @@ class Article extends Model
      * Defines a scope to filter the ithems with a published at date prior to current date
      *
      * @param  [object] $query [query builder]
+     *
      * @return [object]        [query builder]
      */
     public function scopePublished($query)
@@ -133,6 +134,7 @@ class Article extends Model
      * Defines a scope to filter the ithems with a published at date after current date
      *
      * @param  [object] $query [query builder]
+     *
      * @return [object]        [query builder]
      */
     public function scopeUnpublished($query)
@@ -144,6 +146,7 @@ class Article extends Model
      * Defines a scope to sort the items ascendently by Published at field
      *
      * @param  [object] $query [query builder]
+     *
      * @return [object]        [query builder]
      */
     public function scopeOrderedAsc($query)
@@ -155,6 +158,7 @@ class Article extends Model
      * Defines a scope to sort the items ascendently by Published at field
      *
      * @param  [object] $query [query builder]
+     *
      * @return [object]        [query builder]
      */
     public function scopeOrderedDesc($query)

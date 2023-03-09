@@ -24,11 +24,12 @@ class FilenameStartsWithRule implements Rule
      *
      * @param  string  $attribute
      * @param  mixed  $value
+     *
      * @return bool
      */
     public function passes($attribute, $value)
     {
-        if (request()->hasFile($attribute) && $this->filename != null) {
+        if (request()->hasFile($attribute) && $this->filename !== null) {
             return Str::startsWith($value->getClientOriginalName(), $this->filename);
         }
 
