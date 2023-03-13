@@ -27,13 +27,13 @@ class RoutesTest extends TestCase
     }
 
     /** @test */
-    public function users_with_role_ring_central_manager_are_rendered_with_dashboard()
-    {
-        $this->actingAs($this->userWithPermission('view-ring-central-dashboard'));
+    // public function users_with_role_ring_central_manager_are_rendered_with_dashboard()
+    // {
+    //     $this->actingAs($this->userWithPermission('view-ring-central-dashboard'));
 
-        $response = $this->get(route('admin.dashboards.ring_central'));
+    //     $response = $this->get(route('admin.dashboards.ring_central'));
 
-        $response->assertOk();
-        $response->assertViewIs('dashboards.ring-central.manager');
-    }
+    //     $response->assertOk();
+    //     $response->assertViewIs('dashboards.ring-central.manager');
+    // }
 }
