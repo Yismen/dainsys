@@ -21,6 +21,7 @@ class Notification extends DainsysModel
 
     public function prunable()
     {
-        throw $this->query()->whereDate('created_at', '<=', now()->subDays(10));
+        // return $this->query()->whereDate('created_at', '<=', now()->subDays(10));
+        return static::whereDate('created_at', '<=', now()->subDays(10));
     }
 }

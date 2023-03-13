@@ -25,6 +25,6 @@ class UserLogin extends Model
      */
     public function prunable()
     {
-        return static::where('created_at', '<=', now()->subMonths(3))->whereNotNull('logged_out_at');
+        return static::whereDate('created_at', '<=', now()->subMonths(3))->whereNotNull('logged_out_at');
     }
 }
