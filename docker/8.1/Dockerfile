@@ -50,16 +50,25 @@ RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
 
 
 # Add repository ODBC and Install the Microsoft ODBC driver for SQL Server
+RUN apt-get update
+RUN apt-get install -y apt-transport-https
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
     && curl https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list > /etc/apt/sources.list.d/mssql-release.list \
     && apt-get update \
     && ACCEPT_EULA=Y apt-get install -y msodbcsql18 \
     && ACCEPT_EULA=Y apt-get install -y mssql-tools18 \
-    && apt-get install -y unixodbc-dev
+    && apt-get install -y unixodbc-dev unixodbc
 
 # Install the PHP drivers for Microsoft SQL Server
 RUN curl -O https://pear.php.net/go-pear.phar \
     && php go-pear.phar
+
+# install ODBC Driver
+RUN ACCEPT_EULA=Y apt-get install -y msodbcsql17
+RUN apt-get install -y unixodbc-dev
+RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
+RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+RUN exec bash
 
 RUN pecl install sqlsrv \
     && pecl install pdo_sqlsrv \
@@ -71,6 +80,8 @@ RUN pecl install sqlsrv \
 
 RUN ln -s /etc/php/8.1/mods-available/sqlsrv.ini /etc/php/8.1/cli/conf.d/sqlsrv.ini
 RUN ln -s /etc/php/8.1/mods-available/pdo_sqlsrv.ini /etc/php/8.1/cli/conf.d/pdo_sqlsrv.ini
+
+# end of sqlsrv installation. continue with laravel
 
 COPY start-container /usr/local/bin/start-container
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
