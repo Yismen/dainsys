@@ -3,9 +3,9 @@
 namespace App\Listeners;
 
 use Illuminate\Mail\Events\MessageSent;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Queue\InteractsWithQueue;
+use Symfony\Component\Mime\Part\DataPart;
 
 class RemoveTemporaryMailAttachments
 {
@@ -23,7 +23,7 @@ class RemoveTemporaryMailAttachments
     /**
      * Handle the event.
      *
-     * @param  object $event
+     * @param object $event
      *
      * @return void
      */
@@ -34,18 +34,12 @@ class RemoveTemporaryMailAttachments
 
     protected function removeFileIfExists(MessageSent $event)
     {
-        if (Arr::has($event->data, 'temporary_mail_attachment') && Storage::exists($event->data['temporary_mail_attachment'])) {
-            Storage::delete($event->data['temporary_mail_attachment']);
-        }
-
-        foreach ($event->message->getChildren() as $attachment) {
-            try {
+        foreach ($event->message->getAttachments() as $attachment) {
+            if ($attachment instanceof DataPart) {
                 $file_name = $attachment->getFilename() ?? '';
                 if (Storage::exists($file_name)) {
                     Storage::delete($file_name);
                 }
-            } catch (\Throwable $th) {
-                //throw $th;
             }
         }
     }
