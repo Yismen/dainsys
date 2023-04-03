@@ -54,7 +54,10 @@
                 <ul class="treeview-menu">
                     @foreach ($role->menus as $menu)
                     <li>
-                        <a href="{{ url($menu->name) }}">
+                        <a href="{{ url($menu->name) }}" @if(! str($menu->name)->contains('admin'))
+                            target="__new"
+                            @endif
+                            >
                             <i class="{{ filled($menu->icon) ? $menu->icon : 'fa fa-circle-o' }} text-red">
                             </i> {{ __($menu->display_name) }}
                         </a>
