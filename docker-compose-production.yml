@@ -1,0 +1,114 @@
+# For more information: https://laravel.com/docs/sail
+version: '3'
+services:
+    nginx:
+        build:
+            context: ./docker/production/nginx
+            args:
+                - CHANGE_SOURCE=${CHANGE_SOURCE}
+                - PHP_UPSTREAM_CONTAINER=${NGINX_PHP_UPSTREAM_CONTAINER}
+                - PHP_UPSTREAM_PORT=${NGINX_PHP_UPSTREAM_PORT}
+                - http_proxy
+                - https_proxy
+                - no_proxy
+        restart: always
+        volumes:
+            - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
+            - ${NGINX_HOST_LOG_PATH}:/var/log/nginx
+            - ${NGINX_SITES_PATH}:/etc/nginx/sites-available
+            - ${NGINX_SSL_PATH}:/etc/nginx/ssl
+        ports:
+            - "${NGINX_HOST_HTTP_PORT}:80"
+            - "${NGINX_HOST_HTTPS_PORT}:443"
+            - "${VARNISH_BACKEND_PORT}:81"
+        depends_on:
+            - php-fpm
+        networks:
+            - dainsys
+    php-fpm:
+        # image: cyberduck/php-fpm-laravel:8.1
+        build:
+            context: ./docker/production/php-fpm
+        restart: always
+        volumes:
+            - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
+            - ~/.ssh:/root/.ssh # can be useful for composer if you use private CVS
+        networks:
+            - dainsys #if you're using networks between containers
+        expose:
+            - "9000"
+    supervisor:
+        build:
+            context: ./docker/production/supervisor
+            args:
+                - LARADOCK_PHP_VERSION=${LARADOCK_PHP_VERSION}
+        restart: always
+        volumes:
+            - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
+            - ~/.ssh:/root/.ssh # can be useful for composer if you use private CVS
+        networks:
+            - dainsys #if you're using networks between containers
+        depends_on:
+            - php-fpm
+    mysql:
+        image: 'mysql:8.0'
+        restart: always
+        # ports:
+        #     - '${FORWARD_DB_PORT:-3306}:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_DATABASE: '${DB_DATABASE}'
+            MYSQL_USER: '${DB_USERNAME}'
+            MYSQL_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        volumes:
+            - 'sailmysql:/var/lib/mysql'
+        networks:
+            - dainsys
+        healthcheck:
+            test: [ "CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}" ]
+            retries: 3
+            timeout: 5s
+    redis:
+        image: 'redis:alpine'
+        restart: always
+        ports:
+            - '${FORWARD_REDIS_PORT:-6379}:6379'
+        volumes:
+            - 'sailredis:/data'
+        networks:
+            - dainsys
+        healthcheck:
+            test: [ "CMD", "redis-cli", "ping" ]
+            retries: 3
+            timeout: 5s
+    meilisearch:
+        image: 'getmeili/meilisearch:latest'
+        restart: always
+        ports:
+            - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
+        volumes:
+            - 'sailmeilisearch:/data.ms'
+        networks:
+            - dainsys
+        healthcheck:
+            test:
+                [
+                    "CMD",
+                    "wget",
+                    "--no-verbose",
+                    "--spider",
+                    "http://localhost:7700/health"
+                ]
+            retries: 3
+            timeout: 5s
+networks:
+    dainsys:
+        driver: bridge
+volumes:
+    sailmysql:
+        driver: local
+    sailredis:
+        driver: local
+    sailmeilisearch:
+        driver: local
