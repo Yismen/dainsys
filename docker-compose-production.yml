@@ -78,10 +78,14 @@ services:
             - 'sailredis:/data'
         networks:
             - dainsys
+        depends_on:
+            - php-fpm
         healthcheck:
             test: [ "CMD", "redis-cli", "ping" ]
             retries: 3
             timeout: 5s
+        command: >
+            --requirepass ${REDIS_PASSWORD}
     meilisearch:
         image: 'getmeili/meilisearch:latest'
         restart: always
