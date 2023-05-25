@@ -10,7 +10,6 @@
     "require": {
         "php": "^7.2.5|^8.0",
         "arcanedev/log-viewer": "^9.0",
-        "barryvdh/laravel-debugbar": "^3.4",
         "cviebrock/eloquent-sluggable": "9.*",
         "dainsys/clear-laravel-logs": "^2.1",
         "doctrine/dbal": "^2.8",
@@ -37,6 +36,7 @@
     },
     "require-dev": {
         "brianium/paratest": "^6.3",
+        "barryvdh/laravel-debugbar": "^3.4",
         "spatie/laravel-ignition": "^1.0",
         "fakerphp/faker": "^1.9.1",
         "filp/whoops": "^2.1",
