@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\UpdateBillableHoursAndRevenue as JobsUpdateBillableHoursAndRevenue;
-use App\Services\BillableHoursAndRevenueService;
 use Illuminate\Console\Command;
+use App\Services\BillableHoursAndRevenueService;
+use App\Jobs\UpdateBillableHoursAndRevenue as JobsUpdateBillableHoursAndRevenue;
 
 class UpdateBillableHoursAndRevenue extends Command
 {

@@ -102,10 +102,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(\Spatie\Backup\Commands\BackupCommand::class)->dailyAt('21:15');
         $schedule->command(\Spatie\Backup\Commands\CleanupCommand::class)->dailyAt('22:15');
 
-        $schedule->command(\App\Console\Commands\UpdateBillableHoursAndRevenue::class, [
-            now()->subDays(2) . ',' . now(),
-        ])->dailyAt('01:15');
-
+        $schedule->command(\App\Console\Commands\UpdateBillableHoursAndRevenue::class, [now()->subDays(1)->format('Y-m-d') . ',' . now()->format('Y-m-d')])->dailyAt('01:15');
         $schedule->command(\Illuminate\Database\Console\PruneCommand::class, [
             '--model' => [
                 \App\Models\Performance::class,

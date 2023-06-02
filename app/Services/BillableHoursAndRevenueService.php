@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\Performance;
 use Carbon\Carbon;
+use App\Models\Performance;
 use Illuminate\Database\Eloquent\Builder;
 
 class BillableHoursAndRevenueService
@@ -40,10 +40,11 @@ class BillableHoursAndRevenueService
             )
             ->when(
                 $this->revenue_type,
-                fn ($query) => $query->whereHas(
-                    'campaign.revenueType',
-                    fn ($q) => $q->where('name', 'like', "{$this->revenue_type}%")
-                )
+                function ($query) {
+                    $query->whereHas('campaign.revenueType', function ($query) {
+                        $query->where('name', 'like', "{$this->revenue_type}%");
+                    });
+                }
             )
             ->when(
                 $this->campaign,

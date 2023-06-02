@@ -8,20 +8,20 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "^7.2.5|^8.0",
+        "php": "^8.0",
         "arcanedev/log-viewer": "^9.0",
         "cviebrock/eloquent-sluggable": "9.*",
         "dainsys/clear-laravel-logs": "^2.1",
         "doctrine/dbal": "^2.8",
-        "fideloper/proxy": "^4.4",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.5",
         "knuckleswtf/scribe": "^3.21",
-        "laravel/framework": "^9.0",
+        "laravel/framework": "^9.19",
         "laravel/legacy-factories": "^1.1",
         "laravel/passport": "^10.0",
         "laravel/telescope": "~4.0",
-        "laravel/tinker": "^2.5",
+        "laravel/sanctum": "^3.0",
+        "laravel/tinker": "^2.7",
         "laravel/ui": "^3.0",
         "laravelcollective/html": "^6.0",
         "livewire/livewire": "^2.9",
@@ -31,6 +31,8 @@
         "spatie/flysystem-dropbox": "^2.0",
         "spatie/laravel-backup": "^8.0",
         "spatie/laravel-permission": "^5.0",
+        "symfony/http-client": "^6.2",
+        "symfony/mailgun-mailer": "^6.3",
         "tucker-eric/eloquentfilter": "^3.0",
         "yajra/laravel-datatables-oracle": "^9.0"
     },
@@ -40,6 +42,7 @@
         "spatie/laravel-ignition": "^1.0",
         "fakerphp/faker": "^1.9.1",
         "filp/whoops": "^2.1",
+        "laravel/pint": "^1.0",
         "laravel/dusk": "^6.0",
         "laravel/envoy": "^2.0",
         "laravel/sail": "^1.12",
@@ -107,9 +110,10 @@
         "sort-packages": true,
         "optimize-autoloader": true,
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "pestphp/pest-plugin": true
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }
