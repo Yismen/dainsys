@@ -137,7 +137,7 @@
           <!-- ./Cellphone Number-->
           <div class="col-lg-6">
             <div class="form-group" :class="{ 'has-error': form.error.has('secondary_phone') }">
-              <label for="secondary_phone" class="col-sm-4 control-label">Otro Teléfono:</label>
+              <label for="secondary_phone" class="col-sm-4 control-label">Email:</label>
               <div class="col-sm-8">
                 <input type="text" id="secondary_phone" name="secondary_phone" class="form-control input-sm"
                   v-model="form.fields.secondary_phone" />
