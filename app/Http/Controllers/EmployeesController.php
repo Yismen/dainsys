@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\EmployeeCreated;
 use App\Models\Employee;
 use App\Models\Termination;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Events\EmployeeCreated;
 use Yajra\DataTables\DataTables;
 
 class EmployeesController extends Controller
@@ -32,7 +32,7 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        if (! request()->ajax()) {
+        if (!request()->ajax()) {
             return view('employees.index');
         }
 
@@ -76,7 +76,7 @@ class EmployeesController extends Controller
             'passport' => 'required_if:personal_id,null|nullable|unique:employees,passport|size:10',
             'date_of_birth' => 'required|date',
             'cellphone_number' => 'required|digits:10|unique:employees,cellphone_number',
-            'secondary_phone' => 'nullable|digits:10',
+            'secondary_phone' => 'required|email',
             'position_id' => 'required|exists:positions,id',
             'gender_id' => 'required|exists:genders,id',
             'site_id' => 'required|exists:sites,id',
@@ -84,6 +84,11 @@ class EmployeesController extends Controller
             'marital_id' => 'required|exists:maritals,id',
             'has_kids' => 'required|boolean',
             'punch' => 'required|min:4|max:90|unique:punches,punch',
+        ], [
+            'secondary_phone' => [
+                'required' => 'El campo email es requerido',
+                'email' => 'El campo email debe ser una dirección de correo válida',
+            ]
         ]);
 
         $employee = $employee->create($request->all());
@@ -187,13 +192,19 @@ class EmployeesController extends Controller
             'passport' => 'required_if:personal_id,null|nullable|size:10|unique:employees,passport,' . $employee->id,
             'date_of_birth' => 'required|date',
             'cellphone_number' => 'required|digits:10|unique:employees,cellphone_number,' . $employee->id,
-            'secondary_phone' => 'nullable|digits:10',
+            // 'secondary_phone' => 'nullable|digits:10',
+            'secondary_phone' => 'required|email',
             'gender_id' => 'required|exists:genders,id',
             'site_id' => 'required|exists:sites,id',
             'project_id' => 'required|exists:projects,id',
             'marital_id' => 'required|exists:maritals,id',
             'has_kids' => 'required|boolean',
             'position_id' => 'required|exists:positions,id',
+        ], [
+            'secondary_phone' => [
+                'required' => 'El campo email es requerido',
+                'email' => 'El campo email debe ser una dirección de correo válida',
+            ]
         ]);
 
         $employee->update($request->all());
