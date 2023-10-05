@@ -34,7 +34,7 @@ abstract class BecauseMailBase extends Mailable
         $defaults = $this->mergeDefaults($defaults);
 
         return $this
-            ->from($defaults['from'], 'Yisme Jorge')
+            ->from($defaults['from'], 'Yismen Jorge')
             ->bcc($defaults['bcc'])
             ->view($defaults['view'])
             ->attachFromStorage($this->temporary_mail_attachment)

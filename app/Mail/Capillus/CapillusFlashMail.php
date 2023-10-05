@@ -12,7 +12,7 @@ class CapillusFlashMail extends CapillusMailBase
     public function build()
     {
         return $this
-            ->from('yjorge@eccocorpbpo.com', 'Yisme Jorge')
+            ->from('yjorge@eccocorpbpo.com', 'Yismen Jorge')
             ->bcc('yjorge@eccocorpbpo.com')
             ->view('emails.capillus')
             ->attachFromStorage($this->temporary_mail_attachment)

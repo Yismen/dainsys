@@ -34,7 +34,7 @@ class BaseRingCentralMails extends Mailable
     public function build()
     {
         return $this
-            ->from($this->options['from'], 'Yisme Jorge')
+            ->from($this->options['from'], 'Yismen Jorge')
             ->to($this->distro)
             ->bcc($this->options['bcc'])
             ->view($this->options['view'])
