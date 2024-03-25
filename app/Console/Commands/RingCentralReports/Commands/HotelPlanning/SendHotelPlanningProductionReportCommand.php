@@ -13,7 +13,7 @@ class SendHotelPlanningProductionReportCommand extends BaseProductionReportComma
      *
      * @var string
      */
-    protected $signature = 'hpc:send-production-report {--date=} {--from_date=}';
+    protected $signature = 'hpc:send-production-report {--date=} {--from_date=} {--subject=}';
 
     /**
      * The console command description.
@@ -37,7 +37,7 @@ class SendHotelPlanningProductionReportCommand extends BaseProductionReportComma
             $dates_range,
             $distro_array = $this->getDistroList($this->name),
             $team = '%',
-            $subject_sufix = 'Hourly Production Report'
+            $subject_sufix = $this->option('subject') ?? 'Hourly Production Report'
         );
 
         Excel::store($report, $file_name);
