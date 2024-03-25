@@ -79,6 +79,11 @@ class Kernel extends ConsoleKernel
         $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalTextCampaignReportCommand::class)->dailyAt('07:20');
 
         $schedule->command(\App\Console\Commands\RingCentralReports\Commands\HotelPlanning\SendHotelPlanningProductionReportCommand::class, ['--date' => now()->format('Y-m-d')])->hourly();
+        $schedule->command(\App\Console\Commands\RingCentralReports\Commands\HotelPlanning\SendHotelPlanningProductionReportCommand::class, [
+            '--date' => now()->subDay()->format('Y-m-d'),
+            '--from_date' => now()->subDay()->startOfWeek()->format('Y-m-d'),
+            '--subject' => 'WTD Hours Report'
+        ])->dailyAt('06:30');
 
         $schedule->command(\App\Console\Commands\Inbound\SendDailySummaryCommand::class)->dailyAt('06:20');
         $schedule->command(\App\Console\Commands\Inbound\SendWTDSummaryCommand::class)->dailyAt('06:30');
