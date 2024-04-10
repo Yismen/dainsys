@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands\Inbound\Support;
 
-use App\Connections\RingCentralConnection;
 use Illuminate\Support\Facades\DB;
+use App\Connections\RingCentralConnection;
 
 class InboundSummaryRepository extends RingCentralConnection implements InboundSummaryInterface
 {
@@ -20,7 +20,7 @@ class InboundSummaryRepository extends RingCentralConnection implements InboundS
 
     protected string $agent_group_name;
 
-    protected string $dial_group_name;
+    protected string|array $dial_group_name;
 
     public function __construct($date_from, $date_to, $agent_group_name = 'ECC%', $gate = '%')
     {
@@ -42,26 +42,30 @@ class InboundSummaryRepository extends RingCentralConnection implements InboundS
 
     public function getHoursData(): array
     {
-        return \config('app.env') === 'testing' ?
+        $data = \config('app.env') === 'testing' ?
             $this->getFakedHours() :
             $this->connection()->select(
-                DB::raw("        
-                    SELECT * 
+                DB::raw("
+                    SELECT *
                     FROM vw_Hours_Summary
                     WHERE
                         CONVERT(date, [Report Date]) BETWEEN '{$this->date_from}' AND '{$this->date_to}'
-                        AND [Dial Group] LIKE '{$this->dial_group_name}'
-                        AND Team like '{$this->agent_group_name}' 
+                        AND (
+                            [Dial Group] LIKE 'HTL%'
+                            or [Dial Group] like 'eth%'
+                            or [Dial Group] like 'etr%'
+                        )
+                        AND Team like '{$this->agent_group_name}'
+                        ORDER BY [Report Date] desc, Team asc, agent_name asc, [Dial Group] asc
             ")
             );
-
-        return $this;
+        return $data;
     }
 
     public function getFakedInbound(): array
     {
         return json_decode('
-            [                
+            [
                 {
                     "gate_name":"HTL - Shared",
                     "agent_disposition":"40 - Caller Hung Up",
@@ -104,7 +108,7 @@ class InboundSummaryRepository extends RingCentralConnection implements InboundS
 
     public function getFakedHours(): array
     {
-        return json_decode('[            
+        return json_decode('[
             {
                 "Dial Group":"ECC-Kipany_Dedicated",
                 "Last Name":"Flores Garcia",

@@ -2,14 +2,14 @@
 
 namespace App\Console\Commands\Inbound\Sheets;
 
+use Illuminate\Support\Str;
 use App\Exports\RangeFormarter;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Events\AfterSheet;
+use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithPreCalculateFormulas;
-use Maatwebsite\Excel\Concerns\WithTitle;
-use Maatwebsite\Excel\Events\AfterSheet;
 
 class HoursData implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
 {
@@ -31,7 +31,7 @@ class HoursData implements FromView, WithTitle, WithEvents, WithPreCalculateForm
         $this->data = $data;
 
         $this->rows = count($this->data) + 2;
-        $this->last_column = 'D';
+        $this->last_column = 'E';
         $this->sheetName = Str::of(\class_basename($this))->snake()->replace('_', ' ')->title();
         $this->title = "Inbound {$this->sheetName} Report";
         $this->view = 'exports.inbound.' . Str::of(\class_basename($this))->snake();
@@ -56,12 +56,12 @@ class HoursData implements FromView, WithTitle, WithEvents, WithPreCalculateForm
 
                 (new RangeFormarter($event, "A1:{$this->last_column}{$this->rows}"))
                     ->configurePage()
-                    ->setColumnsWidth('B', 'C')
-                    ->formatTitle('A1:D1')
+                    ->setColumnsWidth('B', 'D')
+                    ->formatTitle('A1:E1')
                     ->formatHeaderRow("A2:{$this->last_column}2")
                     ->applyBorders("A3:{$this->last_column}{$this->rows}")
-                    ->applyNumberFormats("D3:D{$totalsRow}", '#,##0.00')
-                    ->formatTotals("D{$totalsRow}:D{$totalsRow}");
+                    ->applyNumberFormats("E3:E{$totalsRow}", '#,##0.00')
+                    ->formatTotals("E{$totalsRow}:E{$totalsRow}");
 
                 $this->addSubTotals();
 
@@ -83,7 +83,7 @@ class HoursData implements FromView, WithTitle, WithEvents, WithPreCalculateForm
     protected function addSubTotals()
     {
         $totalsRow = $this->rows + 1;
-        $loginTimeColumn = 'D';
+        $loginTimeColumn = 'E';
 
         foreach (range($loginTimeColumn, $loginTimeColumn) as $letter) {
             $this->sheet->setCellValue(

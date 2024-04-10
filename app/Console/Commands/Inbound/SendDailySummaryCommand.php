@@ -2,13 +2,13 @@
 
 namespace App\Console\Commands\Inbound;
 
-use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
-use App\Console\Commands\Inbound\Support\InboundDataRepository;
-use App\Console\Commands\Inbound\Support\InboundSummaryExport;
 use App\Mail\CommandsBaseMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Console\Commands\Inbound\Support\InboundSummaryExport;
+use App\Console\Commands\Inbound\Support\InboundDataRepository;
+use App\Console\Commands\Common\Traits\NotifyUsersOnFailedCommandsTrait;
 
 class SendDailySummaryCommand extends Command
 {
@@ -55,25 +55,25 @@ class SendDailySummaryCommand extends Command
         $file_name = $mail_subject . ' ' . now()->format('Ymd_His') . '.xlsx';
         $distro = $this->getDistroList();
 
-        $this->date_to = ! $this->option('date') ?
+        $this->date_to = !$this->option('date') ?
             $date->format('m/d/Y') :
             $date->parse($this->option('date'))->format('m/d/Y');
 
-        $this->date_from = ! $this->option('from') ?
+        $this->date_from = !$this->option('from') ?
             $this->date_to :
             $date->parse($this->option('from'))->format('m/d/Y');
 
         $repo['data'] = InboundDataRepository::getData(
-            $this->date_from,
-            $this->date_to,
-            $data_parsers = [
+            date_from: $this->date_from,
+            date_to: $this->date_to,
+            data_parsers: [
                 \App\Console\Commands\Inbound\Support\DataParsers\ByEmployee::class,
                 \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByGate::class,
                 \App\Console\Commands\Inbound\Support\DataParsers\DispositionsByEmployee::class,
                 \App\Console\Commands\Inbound\Support\DataParsers\HoursData::class,
             ],
-            'ECC%',
-            'HTL%'
+            team: 'ECC%',
+            gate: 'HTL%'
         );
 
         if ($this->hasAnyData((array) $repo['data'])) {
@@ -117,7 +117,7 @@ class SendDailySummaryCommand extends Command
     protected function hasAnyData(array $data): bool
     {
         foreach ($data as $value) {
-            if (count($value) > 0 || ! empty($value)) {
+            if (count($value) > 0 || !empty($value)) {
                 return true;
             }
         }

@@ -5,6 +5,7 @@
             <th>Date</th>
             <th>Team</th>
             <th>Agent Name</th>
+            <th>Dial Group</th>
             {{-- <th>From Date</th> --}}
             <th>Login Time</th>
         </tr>
@@ -17,6 +18,7 @@
                 <td>{{ $row->get('Report Date') }}</td>
                 <td>{{ $row->get('Team') }}</td>
                 <td>{{ trim("{$row->get('First Name')} {$row->get('Last Name')}") }}</td>
+                <td>{{ $row->get('Dial Group') }}</td>
                 <td>{{ $row->get('login_time') }}</td>
             </tr>
         @endforeach

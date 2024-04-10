@@ -4,7 +4,7 @@
         <tr>
             <th>Name</th>
             @foreach ($dates as $date)
-            <th>{{ $date }}</th>                
+            <th>{{ $date }}</th>
             @endforeach
             <th>PTD Hours</th>
             <th>PTD Calls</th>
@@ -14,7 +14,7 @@
 
         @foreach ($names as $name)
             @php
-                
+
                 $agent_calls_data = $calls_data->first(fn ($item) => $item->agent_name == $name);
 
                 $calls = $agent_calls_data->total_calls ?? 0;
@@ -24,21 +24,21 @@
                 <td>{{ $name }}</td>
                 @foreach ($dates as $date)
                     @php
-
-                        $name_collection =  $hours_data->filter(function ($item) use ($date, $name) {
+                        $name_collection =  $hours_data->filter(function ($item) use ( $name) {
                             return $item->agent_name == $name;
                         });
 
                         $row = $name_collection->first(function ($item) use ($date, $name) {
                             return $item->{'Report Date'} == $date;
                         });
+                        $login_time = $name_collection->where('Report Date', $date)->sum('login_time')
                     @endphp
-                    <td>{{ $row->login_time ?? 0  }}</td>
+                    <td>{{ $login_time ?? 0  }}</td>
                 @endforeach
-                <td>{{ $name_collection ? $name_collection->sum('login_time') : 0 }}</td>             
+                <td>{{ $name_collection ? $name_collection->sum('login_time') : 0 }}</td>
                 <td>{{ $calls }}</td>
                 <td>{{ $sales }}</td>
-                <td>{{ $calls > 0 ? number_format($sales / $calls, 2) : 0 }}</td> 
+                <td>{{ $calls > 0 ? number_format($sales / $calls, 2) : 0 }}</td>
             </tr>
         @endforeach
     </tbody>
