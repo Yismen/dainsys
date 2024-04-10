@@ -14,7 +14,6 @@
 
         @foreach ($names as $name)
             @php
-
                 $agent_calls_data = $calls_data->first(fn ($item) => $item->agent_name == $name);
 
                 $calls = $agent_calls_data->total_calls ?? 0;
