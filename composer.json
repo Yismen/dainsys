@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.0",
         "arcanedev/log-viewer": "^9.0",
+        "brotzka/laravel-dotenv-editor": "^2.2",
         "cviebrock/eloquent-sluggable": "9.*",
         "dainsys/clear-laravel-logs": "^2.1",
         "doctrine/dbal": "^2.8",
