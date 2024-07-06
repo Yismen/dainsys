@@ -2,21 +2,16 @@
 
 namespace App\Notifications;
 
+use App\Services\SMSService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\VonageMessage;
 
-class UserAppNotification extends Notification implements ShouldQueue
+class UserAppNotification extends Notification
 {
     use Queueable;
-
-    public $subject;
-
-    public $body;
-
-    public $css_class;
 
     /**
      * Create a new notification instance
@@ -24,11 +19,8 @@ class UserAppNotification extends Notification implements ShouldQueue
      * @param String $subject
      * @param String $body
      */
-    public function __construct($subject, $body, $css_class = '')
+    public function __construct(public string $subject, public string $body, public string $css_class = '')
     {
-        $this->subject = $subject;
-        $this->body = $body;
-        $this->css_class = $css_class;
     }
 
     /**
@@ -43,15 +35,16 @@ class UserAppNotification extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', 'vonage'];
     }
 
     public function toVonage(object $notifiable): VonageMessage
     {
         return (new VonageMessage)
-                    ->content($this->body)
+                    ->content($this->subject)
                     ->unicode();
     }
+
 
     /**
      * Get the mail representation of the notification.

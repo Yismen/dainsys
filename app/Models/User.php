@@ -2,23 +2,24 @@
 
 namespace App\Models;
 
-use App\Http\Traits\Accessors\UserAccessors;
-use App\Http\Traits\Mutators\UserMutators;
-use App\Http\Traits\Relationships\UserRelationships;
+use App\Traits\Trackable;
+use Illuminate\Support\Str;
 use App\Mail\NewUserCreated;
 use App\Mail\UpdatedPassword;
-use App\Traits\Trackable;
-use Illuminate\Contracts\Auth\CanResetPassword;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Cache;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
-use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use App\Http\Traits\Mutators\UserMutators;
+use Illuminate\Notifications\Notification;
+use App\Http\Traits\Accessors\UserAccessors;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Contracts\Auth\CanResetPassword;
+use App\Http\Traits\Relationships\UserRelationships;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements CanResetPassword
 {
@@ -56,6 +57,12 @@ class User extends Authenticatable implements CanResetPassword
     //         $builder->where('is_active', '=', 1);
     //     });
     // }
+
+
+    public function routeNotificationForVonage(Notification $notification): string
+    {
+        return config('vonage.sms_from');
+    }
 
     public function owns($model)
     {
