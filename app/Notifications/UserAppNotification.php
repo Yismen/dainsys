@@ -2,12 +2,10 @@
 
 namespace App\Notifications;
 
-use App\Services\SMSService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Messages\VonageMessage;
 
 class UserAppNotification extends Notification
 {
@@ -19,9 +17,7 @@ class UserAppNotification extends Notification
      * @param String $subject
      * @param String $body
      */
-    public function __construct(public string $subject, public string $body, public string $css_class = '')
-    {
-    }
+    public function __construct(public string $subject, public string $body, public string $css_class = '') {}
 
     /**
      * Get the notification's delivery channels.
@@ -35,14 +31,7 @@ class UserAppNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['database', 'vonage'];
-    }
-
-    public function toVonage(object $notifiable): VonageMessage
-    {
-        return (new VonageMessage)
-                    ->content($this->subject)
-                    ->unicode();
+        return ['database', 'mail'];
     }
 
 
