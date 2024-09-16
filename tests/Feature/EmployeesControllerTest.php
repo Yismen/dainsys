@@ -123,10 +123,11 @@ class EmployeesControllerTest extends TestCase
     public function authorized_users_can_store_employee()
     {
         $employee = make(Employee::class)->toArray();
+
         $employee['punch'] = random_int(10001, 99999);
         $response = $this->actingAs($this->userWithPermission('create-employees'))
-        ->post(route('admin.employees.store'), $employee)
-        ->assertRedirect();
+            ->post(route('admin.employees.store'), $employee)
+            ->assertRedirect();
 
         $this->assertDatabaseHas('employees', Arr::only($employee, ['first_name', 'last_name']));
         $employee = Employee::where('first_name', $employee['first_name'])->first();
@@ -145,7 +146,7 @@ class EmployeesControllerTest extends TestCase
         $employee['punch'] = random_int(10001, 99999);
         $response = $this->actingAs($this->userWithPermission('create-employees'))
             ->post(route('admin.employees.store'), $employee);
-            
+
         Event::assertDispatched(EmployeeCreated::class);
     }
 
@@ -173,8 +174,8 @@ class EmployeesControllerTest extends TestCase
         $employee = make(Employee::class)->toArray();
         $employee['punch'] = random_int(10001, 99999);
         $response = $this->actingAs($this->userWithPermission('create-employees'))
-        ->post(route('admin.employees.store'), $employee)
-        ->assertRedirect();
+            ->post(route('admin.employees.store'), $employee)
+            ->assertRedirect();
 
         $employee = Employee::first();
 

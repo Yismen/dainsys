@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use App\Http\Traits\Accessors\EmployeeAccessors;
-use App\Http\Traits\Mutators\EmployeeMutators;
-use App\Http\Traits\Relationships\EmployeeRelationships;
+use Carbon\Carbon;
+use App\Traits\Trackable;
 use App\ModelFilters\FilterableTrait;
 use App\Models\DainsysModel as Model;
-use App\Traits\Trackable;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
+use App\Http\Traits\Mutators\EmployeeMutators;
+use App\Http\Traits\Accessors\EmployeeAccessors;
+use App\Http\Traits\Relationships\EmployeeRelationships;
 
 class Employee extends Model
 {
@@ -293,18 +293,20 @@ class Employee extends Model
         $date = Carbon::parse($date)->format('Y-m-d');
 
         return $this->where('hire_date', '<=', $date)
-            ->with(['termination' => function ($query) use ($date) {
-                return $query->where('termination_date', '>=', $date);
-            },
+            ->with([
+                'termination' => function ($query) use ($date) {
+                    return $query->where('termination_date', '>=', $date);
+                },
             ])
             ->get();
     }
 
     public function activesOnYear($year)
     {
-        return $this->whereYear('hire_date', '<=', $year)->with(['termination' => function ($query) {
-            return $query->where('termination_date', '>=', '2012-02-09');
-        },
+        return $this->whereYear('hire_date', '<=', $year)->with([
+            'termination' => function ($query) {
+                return $query->where('termination_date', '>=', '2012-02-09');
+            },
         ])->get();
     }
 

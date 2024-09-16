@@ -13,7 +13,7 @@ $factory->define(App\Models\Employee::class, function (Faker $faker) {
         'passport' => '',
         'date_of_birth' => $faker->date(),
         'cellphone_number' => $faker->unique()->numberBetween(8091000001, 8099999999),
-        // 'secondary_phone' => $faker->phoneNumber(),
+        'secondary_phone' => $faker->email(),
         'position_id' => factory(App\Models\Position::class),
         'site_id' => factory(App\Models\Site::class),
         'project_id' => factory(App\Models\Project::class),
