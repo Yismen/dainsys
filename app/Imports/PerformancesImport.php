@@ -2,22 +2,27 @@
 
 namespace App\Imports;
 
-use App\Models\Performance;
 use Carbon\Carbon;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Maatwebsite\Excel\Concerns\Importable;
+use App\Models\User;
+use App\Models\Performance;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Events\AfterImport;
+use App\Notifications\UserAppNotification;
+use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Events\ImportFailed;
+use App\Jobs\UpdateBillableHoursAndRevenue;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\WithMapping;
+use Illuminate\Database\Eloquent\Collection;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
-use Maatwebsite\Excel\Concerns\WithEvents;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithMapping;
-use Maatwebsite\Excel\Concerns\WithValidation;
 
-class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, WithBatchInserts, WithEvents, WithChunkReading, ShouldQueue, WithMapping
+class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, WithBatchInserts, WithChunkReading, ShouldQueue, WithMapping, WithEvents
 {
     use Importable;
-    use ExcelImportTrait;
     /**
      * The number of times the job may be attempted.
      *
@@ -143,5 +148,51 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
             '*.revenue' => 'required|numeric',
             '*.downtime_reason_id' => 'nullable|exists:downtime_reasons,id',
         ];
+    }
+
+    public function registerEvents(): array
+    {
+        return [
+            AfterImport::class => function (AfterImport $event) {
+                $this->updateRevenueTypes();
+
+                $this->importedBy->notify(new UserAppNotification(
+                    'Data Imported Succesfully!',
+                    "File {$this->file_name} was imported!",
+                    'success'
+                ));
+            },
+
+            ImportFailed::class => function (ImportFailed $event) {
+                $this->importedBy->notify(new UserAppNotification(
+                    'Import Failed!***',
+                    $event->e->getMessage(),
+                    'danger'
+                ));
+            },
+        ];
+    }
+
+    public function chunkSize(): int
+    {
+        return 500;
+    }
+
+    /**
+     * The size of batches to insert.
+     *
+     * @return int
+     */
+    public function batchSize(): int
+    {
+        return 500;
+    }
+
+    protected function updateRevenueTypes()
+    {
+        Performance::query()
+            ->with(['campaign.revenueType', 'employee', 'supervisor'])
+            ->whereDate('updated_at', now())
+            ->chunk(100, fn(Collection $performances) => dispatch(new UpdateBillableHoursAndRevenue($performances)));
     }
 }
