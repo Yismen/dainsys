@@ -13,13 +13,15 @@ class BillableHoursAndRevenueService
     public $revenue_type;
 
     public $campaign;
+    public string $date_field;
 
-    public function __construct(string $dates, $revenue_type, $campaign)
+    public function __construct(string $dates, $revenue_type, $campaign, $date_field = 'date')
     {
         $this->dates = preg_split('/[,|]+/', $dates, -1, PREG_SPLIT_NO_EMPTY);
 
         $this->revenue_type = $revenue_type;
         $this->campaign = $campaign;
+        $this->date_field = $date_field;
     }
 
     public function query(): Builder
@@ -29,10 +31,10 @@ class BillableHoursAndRevenueService
             ->when(
                 count($this->dates) === 1,
                 function ($query) {
-                    $query->whereDate('date', Carbon::parse($this->dates[0]));
+                    $query->whereDate($this->date_field, Carbon::parse($this->dates[0]));
                 },
                 function ($query) {
-                    $query->whereBetween('date', [
+                    $query->whereBetween($this->date_field, [
                         Carbon::parse($this->dates[0])->startOfDay(),
                         Carbon::parse($this->dates[1])->endOfDay(),
                     ]);
@@ -48,9 +50,9 @@ class BillableHoursAndRevenueService
             )
             ->when(
                 $this->campaign,
-                fn ($query) => $query->whereHas(
+                fn($query) => $query->whereHas(
                     'campaign',
-                    fn ($q) => $q->where('name', 'like', "{$this->campaign}%")
+                    fn($q) => $q->where('name', 'like', "{$this->campaign}%")
                 )
             )
         ;

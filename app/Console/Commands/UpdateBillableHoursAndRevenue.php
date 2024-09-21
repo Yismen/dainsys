@@ -15,11 +15,11 @@ class UpdateBillableHoursAndRevenue extends Command
      */
     protected $signature = 'dainsys:update-billable-hours-by-revenue-type
                             {dates : Default is yesterday\'s date. You can pass multiple dates divided by (,|). }
+                            {date_field=date : The field to query the date from. date|created_at|updated_at}
                             {--revenue_type= : string|optional. update for a specific revenue type. If not provided, all records of any type will be updated.}
                             {--campaign= : string|optional. The campaign you want apply.}
                             {--t|test : If activated, nothing will be changed, but records will be console logged.}
-                            {--chunk_size=3000 : Amount of records per job.}'
-    ;
+                            {--chunk_size=3000 : Amount of records per job.}';
 
     /**
      * The console command description.
@@ -51,6 +51,7 @@ class UpdateBillableHoursAndRevenue extends Command
             'dates' => $this->argument('dates'),
             'revenue_type' => $this->option('revenue_type'),
             'campaign' => $this->option('campaign'),
+            'date_field' => $this->argument('date_field'),
         ])->query();
         $count = $this->serviceData->count();
 
