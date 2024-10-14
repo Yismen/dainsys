@@ -59,7 +59,8 @@ class Kernel extends ConsoleKernel
         $schedule->command(\App\Console\Commands\EmployeesTerminated::class, [
             $date->copy()->subDay()->startOfWeek()->format('Y-m-d') . ',' . $date->copy()->subDay()->endOfWeek()->format('Y-m-d'),
             '--site' => 'santiago-hq',
-        ])->weeklyOn(1, '05:56'); // Every monday for the previous week
+        ])
+            ->weeklyOn(1, '05:56'); // Every monday for the previous week
         $schedule->command(\App\Console\Commands\EmployeesTerminated::class, [
             now()->subMonth()->startOfMonth()->format('Y-m-d') . ',' . now()->subMonth()->endOfMonth()->format('Y-m-d'),
             '--site' => 'santiago-hq',
@@ -69,16 +70,21 @@ class Kernel extends ConsoleKernel
          * Ring Central Commands
          * ---------------------------------------------------------------------------------
          */
-        $schedule->command(\App\Console\Commands\General\SendGeneralDailyProductionReportCommand::class, ['--team' => 'ECC'])->dailyAt('05:25');
-        $schedule->command(\App\Console\Commands\General\SendGeneralDailyRawReportCommand::class, ['--team' => 'ECC'])->dailyAt('05:45');
+        $schedule->command(\App\Console\Commands\General\SendGeneralDailyProductionReportCommand::class, ['--team' => 'ECC'])
+            ->dailyAt('05:25');
+        $schedule->command(\App\Console\Commands\General\SendGeneralDailyRawReportCommand::class, ['--team' => 'ECC'])
+            ->dailyAt('05:45');
 
-        $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Publishing\SendPublishingProductionReportCommand::class)->everyThirtyMinutes();
+        $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Publishing\SendPublishingProductionReportCommand::class)
+            ->everyThirtyMinutes();
 
         $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalFlashReportCommand::class)->hourly();
         $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalProductionReportCommand::class)->hourly();
         $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalTextCampaignReportCommand::class)->dailyAt('07:20');
 
-        $schedule->command(\App\Console\Commands\RingCentralReports\Commands\HotelPlanning\SendHotelPlanningProductionReportCommand::class, ['--date' => now()->format('Y-m-d')])->hourly();
+        $schedule->command(\App\Console\Commands\RingCentralReports\Commands\HotelPlanning\SendHotelPlanningProductionReportCommand::class, ['--date' => now()
+            ->format('Y-m-d')])
+            ->everyThirtyMinutes();
         $schedule->command(\App\Console\Commands\RingCentralReports\Commands\HotelPlanning\SendHotelPlanningProductionReportCommand::class, [
             '--date' => now()->subDay()->format('Y-m-d'),
             '--from_date' => now()->subDay()->startOfWeek()->format('Y-m-d'),
