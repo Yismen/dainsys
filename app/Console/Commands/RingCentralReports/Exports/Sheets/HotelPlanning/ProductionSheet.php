@@ -20,18 +20,18 @@ class ProductionSheet extends BaseRingCentralSheet
         return $connection->connect()
             ->select(
                 DB::raw("
-                    SELECT        
-                        [Dial Group] as dial_group 
+                    SELECT
+                        [Dial Group] as dial_group
                         , CONVERT(date, [Login DTS]) AS production_date
 						, Team as team
                         , trim([First Name] + ' ' + [Last Name]) AS agent_name
-                        , SUM(CONVERT(float, REPLACE([Login Time (min)], ',', ''))) / 60 AS login_time
+                        , (SUM(CONVERT(float, REPLACE([Login Time (min)], ',', ''))) - SUM(CONVERT(float, REPLACE([Lunch Time (min)], ',', '')))) / 60 AS login_time
                     FROM   dbo.Agent_Session_Report_Raw
                     WHERE
                         CONVERT(date, [Login DTS]) BETWEEN '{$date_from}' AND '{$date_to}'
                         AND [Dial Group] LIKE '{$this->exporter->campaign_name}'
                         AND Team like '{$this->exporter->team}'
-                    GROUP BY 
+                    GROUP BY
                         [Dial Group]
                         , Team
                         , [First Name]
