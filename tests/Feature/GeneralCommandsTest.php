@@ -77,7 +77,7 @@ class GeneralCommandsTest extends TestCase
             new CommandsBaseMail([$recipient], $file_name, $subject)
         );
 
-        Mail::assertSent(
+        Mail::assertQueued(
             CommandsBaseMail::class
         );
     }

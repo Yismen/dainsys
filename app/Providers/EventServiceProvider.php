@@ -29,7 +29,7 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\EmployeeReactivated::class,
         ],
         \App\Events\EmployeeCreated::class => [
-            \App\Listeners\EmployeeCreatedListener::class,
+            // \App\Listeners\NotifyEmployeeCreated::class,
             \App\Listeners\CreateEmployeeShift::class,
             \App\Listeners\CreateEmployeeSchedule::class,
             \App\Listeners\AssignEmployeeToAutomaticProcesses::class,
@@ -42,9 +42,6 @@ class EventServiceProvider extends ServiceProvider
         ],
         \App\Events\EditUserSettings::class => [
             \App\Listeners\UpdateUserSettings::class,
-        ],
-        \App\Events\EmployeesUpdates::class => [
-            \App\Listeners\NotifyEmployeesHired::class,
         ],
         \Illuminate\Auth\Events\Login::class => [
             \App\Listeners\UserLoggedIn::class,

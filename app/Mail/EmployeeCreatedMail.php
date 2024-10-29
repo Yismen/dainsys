@@ -6,8 +6,9 @@ use App\Models\Employee;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EmployeeCreatedMail extends Mailable
+class EmployeeCreatedMail extends Mailable implements ShouldQueue
 {
     use Queueable;
     use SerializesModels;

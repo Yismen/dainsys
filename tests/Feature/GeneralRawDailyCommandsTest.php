@@ -36,7 +36,7 @@ class GeneralRawDailyCommandsTest extends TestCase
             ->expectsOutput('General Daily Raw Report Sent!')
             ->assertExitCode(0);
 
-        Mail::assertSent(CommandsBaseMail::class);
+        Mail::assertQueued(CommandsBaseMail::class);
     }
 
     /** @test */
@@ -80,7 +80,7 @@ class GeneralRawDailyCommandsTest extends TestCase
             new CommandsBaseMail([$recipient], $file_name, $subject)
         );
 
-        Mail::assertSent(
+        Mail::assertQueued(
             CommandsBaseMail::class
         );
     }

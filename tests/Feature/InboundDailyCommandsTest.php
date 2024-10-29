@@ -46,7 +46,7 @@ class InboundDailyCommandsTest extends TestCase
         $this->mockRepo(InboundDataRepository::class, []);
         $this->artisan(SendDailySummaryCommand::class);
 
-        Mail::assertSent(
+        Mail::assertQueued(
             CommandsBaseMail::class
         );
     }
@@ -124,7 +124,7 @@ class InboundDailyCommandsTest extends TestCase
             new CommandsBaseMail([$recipient], $file_name, $subject)
         );
 
-        Mail::assertSent(
+        Mail::assertQueued(
             CommandsBaseMail::class
         );
     }

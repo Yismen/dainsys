@@ -86,7 +86,7 @@ class TerminationTest extends TestCase
             ->actingAs($this->user())
             ->post(route('admin.employees.terminate', $employee->id), $termination);
 
-        Mail::assertSent(EmployeeTerminatedMail::class);
+        Mail::assertQueued(EmployeeTerminatedMail::class);
     }
 
     /** @test */

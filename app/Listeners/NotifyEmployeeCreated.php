@@ -2,20 +2,19 @@
 
 namespace App\Listeners;
 
-use App\Mail\EmployeeCreatedMail;
 use App\Models\Report;
+use App\Events\EmployeesUpdates;
+use App\Mail\EmployeeCreatedMail;
 use Illuminate\Support\Facades\Mail;
 
-class EmployeeCreatedListener
+class NotifyEmployeeCreated
 {
     /**
      * Create the event listener.
      *
      * @return void
      */
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     public function handle($event)
     {

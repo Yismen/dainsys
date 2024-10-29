@@ -47,7 +47,7 @@ class InboundWTDCommandTest extends TestCase
         $this->mockRepo(InboundDataRepository::class, []);
         $this->artisan(SendWTDSummaryCommand::class);
 
-        Mail::assertSent(
+        Mail::assertQueued(
             CommandsBaseMail::class
         );
     }
@@ -128,7 +128,7 @@ class InboundWTDCommandTest extends TestCase
             new CommandsBaseMail([$recipient], $file_name, $subject)
         );
 
-        Mail::assertSent(
+        Mail::assertQueued(
             CommandsBaseMail::class
         );
     }
