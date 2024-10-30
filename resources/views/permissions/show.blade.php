@@ -8,7 +8,7 @@
 			<div class="box box-primary pad">
 				<div class="box-header">
 					<h4>
-						{{ ucwords(str_replace(['-', '_'], ' ', $permission->name)) }}
+						{{ ucwords(str($permission->name)->replace(['-', '_'], ' ')) }}
 						<a href="{{ route('admin.permissions.index') }}" class="pull-right">
 							<i class="fa fa-list"></i> List
 						</a>
@@ -19,7 +19,7 @@
 						<strong>Permission: </strong>{{ $permission->name }}
 					</li>
 					<li class="list-group-item">
-						<strong>Resource: </strong>{{ ucwords( str_replace(['_', '-'], ' ', $permission->name) ) }}
+						<strong>Resource: </strong>{{ ucwords( str($permission->name)->replace(['_', '-'], ' ')) }}
 					</li>
 					<li class="list-group-item">
 						<strong>Description: </strong>{{ $permission->guard_name }}

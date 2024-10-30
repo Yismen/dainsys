@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Permission\Models\Role as EmpatieRole;
 
 class Role extends EmpatieRole
@@ -84,7 +84,7 @@ class Role extends EmpatieRole
 
     public function getNameParsedAttribute()
     {
-        return ucwords(str_replace(['_', '-'], ' ', $this->attributes['name']));
+        return ucwords(str($this->attributes['name'])->replace(['_', '-'], ' '));
     }
 
     /**

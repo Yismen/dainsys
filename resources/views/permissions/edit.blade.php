@@ -8,7 +8,7 @@
 
 				<div class="box-header">
 					<h4>
-						Edit Permission {{ ucwords( str_replace(['_', '-'], ' ', $permission->name) ) }}
+						Edit Permission {{ ucwords( str($permission->name)->replace(['_', '-'], ' ') ) }}
 						<a href="{{ route('admin.permissions.index') }}" class="pull-right">
 							<i class="fa fa-list"></i> List
 						</a>

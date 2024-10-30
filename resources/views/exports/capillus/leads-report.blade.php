@@ -25,19 +25,19 @@
             <tr>
                 <td>{{ \Carbon\Carbon::parse($row->get('Date'))->format('Y-m-d') }}</td>
                 <td>{{ $row->get('Time') }}</td>
-                <td>{{ str_replace(['-', '(', ')'], '', $row->get('ANI')) }}</td>
-                <td>{{ str_replace(['-', '(', ')'], '', $row->get('CBR')) }}</td>
-                <td>{{ str_replace(['"'], "", $row->get('Fname')) }}</td>
-                <td>{{ str_replace(['"'], "", $row->get('Lname')) }}</td>
-                <td>{{ str_replace(['"'], "", $row->get('Email')) }}</td>
-                <td>{{ str_replace(['"'], "", $row->get('StreetAddress')) }}</td>
-                <td>{{ str_replace(['"'], "", $row->get('City')) }}</td>
-                <td>{{ str_replace(['"'], "", $row->get('State')) }}</td>
-                <td>{{ str_replace(['"'], "", $row->get('Zip Code')) }}</td>
-                <td>{{ str_replace(['"'], "", $row->get('Country')) }}</td>
-                <td>{{ str_replace(['"'], "", $row->get('Interested In')) }}</td>
-                <td>{{ str_replace(['"'], "", $row->get('connected_disposition')) }}</td>
-                <td>{{ str_replace(['"'], "", $row->get('Comments')) }}</td>
+                <td>{{ str($row->get('ANI'))->replace(['-', '(', ')'], '') }}</td>
+                <td>{{ str($row->get('CBR'))->replace(['-', '(', ')'], '') }}</td>
+                <td>{{ str($row->get('Fname'))->replace(['"'], "") }}</td>
+                <td>{{ str($row->get('Lname'))->replace(['"'], "") }}</td>
+                <td>{{ str($row->get('Email'))->replace(['"'], "") }}</td>
+                <td>{{ str($row->get('StreetAddress'))->replace(['"'], "") }}</td>
+                <td>{{ str($row->get('City'))->replace(['"'], "") }}</td>
+                <td>{{ str($row->get('State'))->replace(['"'], "") }}</td>
+                <td>{{ str($row->get('Zip_Code'))->replace(['"'], "") }}</td>
+                <td>{{ str($row->get('Country'))->replace(['"'], "") }}</td>
+                <td>{{ str($row->get('Interested In'))->replace(['"'], "") }}</td>
+                <td>{{ str($row->get('connected_disposition'))->replace(['"'], "") }}</td>
+                <td>{{ str($row->get('Comments'))->replace(['"'], "") }}</td>
             </tr>
         @endforeach
     </tbody>

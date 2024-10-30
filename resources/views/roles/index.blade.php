@@ -34,7 +34,7 @@
 							<tr>
 								<td>
 									<a href="{{ route('admin.roles.show', $role->name) }}">{{
-										ucwords(trim(str_replace(['-', '_'], ' ', $role->name))) }}</a>
+										ucwords(trim(str($role->name)->replace(['-', '_'], ' '))) }}</a>
 								</td>
 								<td>
 									{{ $role->guard_name }}

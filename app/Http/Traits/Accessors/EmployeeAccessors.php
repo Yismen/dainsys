@@ -5,18 +5,18 @@ namespace App\Http\Traits\Accessors;
 use App\Models\Afp;
 use App\Models\Ars;
 use App\Models\Bank;
-use App\Models\Department;
+use App\Models\Site;
 use App\Models\Gender;
 use App\Models\Marital;
-use App\Models\Nationality;
-use App\Models\PaymentFrequency;
-use App\Models\PaymentType;
-use App\Models\Position;
 use App\Models\Project;
-use App\Models\Site;
+use App\Models\Position;
+use App\Models\Department;
 use App\Models\Supervisor;
-use App\Models\TerminationReason;
+use App\Models\Nationality;
+use App\Models\PaymentType;
 use App\Models\TerminationType;
+use App\Models\PaymentFrequency;
+use App\Models\TerminationReason;
 
 trait EmployeeAccessors
 {
@@ -107,7 +107,7 @@ trait EmployeeAccessors
         $name = filled($this->last_name) ? $name . ' ' . trim($this->last_name) : $name;
         $name = filled($this->second_last_name) ? $name . ' ' . trim($this->second_last_name) : $name;
 
-        return ucwords(mb_strtolower(trim($name)));
+        return str($name)->headline();
     }
 
     /**
@@ -183,12 +183,12 @@ trait EmployeeAccessors
      */
     public function getFirstNameAttribute($name)
     {
-        return ucwords(mb_strtolower($name));
+        return str($name)->headline();
     }
 
     public function getSecondFirstNameAttribute($name)
     {
-        return ucwords(mb_strtolower($name));
+        return str($name)->headline();
     }
 
     /**
@@ -200,12 +200,12 @@ trait EmployeeAccessors
      */
     public function getLastNameAttribute($name)
     {
-        return ucwords(mb_strtolower($name));
+        return str($name)->headline();
     }
 
     public function getSecondLastNameAttribute($name)
     {
-        return ucwords(mb_strtolower($name));
+        return str($name)->headline();
     }
 
     /**
