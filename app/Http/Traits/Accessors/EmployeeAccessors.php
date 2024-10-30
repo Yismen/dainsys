@@ -107,7 +107,7 @@ trait EmployeeAccessors
         $name = filled($this->last_name) ? $name . ' ' . trim($this->last_name) : $name;
         $name = filled($this->second_last_name) ? $name . ' ' . trim($this->second_last_name) : $name;
 
-        return str($name)->headline();
+        return str($name)->headline()->value;
     }
 
     /**
@@ -183,12 +183,12 @@ trait EmployeeAccessors
      */
     public function getFirstNameAttribute($name)
     {
-        return str($name)->headline();
+        return str($name)->headline()->value;
     }
 
     public function getSecondFirstNameAttribute($name)
     {
-        return str($name)->headline();
+        return str($name)->headline()->value;
     }
 
     /**
@@ -200,12 +200,12 @@ trait EmployeeAccessors
      */
     public function getLastNameAttribute($name)
     {
-        return str($name)->headline();
+        return str($name)->headline()->value;
     }
 
     public function getSecondLastNameAttribute($name)
     {
-        return str($name)->headline();
+        return str($name)->headline()->value;
     }
 
     /**

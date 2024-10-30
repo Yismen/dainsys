@@ -117,7 +117,7 @@
                     </a> `
                     }},
                     {data: 'first_name', name: 'first_name', render: function(data, type, full){
-                        return `<a 
+                        return `<a
                             href="/admin/employees/${full.id}"
                             title="View employee details"
                             >
@@ -134,7 +134,7 @@
                         let position = full.position ? full.position.name : '';
                         let project = full.project ? full.project.name : '';
                         let site = full.site ? full.site.name : '';
-                        
+
                         return `${position}, ${project}, @ ${site}`;
                     }},
                     {data: 'project', name: 'project.name', orderable: false, visible:true, render: function(data, type, full) {
