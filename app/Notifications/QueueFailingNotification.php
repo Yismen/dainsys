@@ -10,7 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\VonageMessage;
 
-class QueueFailingNotification extends Notification
+class QueueFailingNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 

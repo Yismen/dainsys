@@ -3,10 +3,11 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
 
-class UserCreatedNotification extends Notification
+class UserCreatedNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -15,9 +16,7 @@ class UserCreatedNotification extends Notification
      *
      * @return void
      */
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Get the notification's delivery channels.
@@ -55,8 +54,6 @@ class UserCreatedNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        return [
-
-        ];
+        return [];
     }
 }
