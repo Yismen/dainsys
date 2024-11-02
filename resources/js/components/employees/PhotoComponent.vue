@@ -28,6 +28,7 @@
                                 <div class="col-sm-10">
                                     <input type="file" id="photo"
                                         name="photo" class="form-control"
+                                        accept="image/*"
                                     >
                                     <span class="text-danger" v-if="form.error.has('photo')">{{ form.error.get('photo') }}</span>
                                 </div>
@@ -72,7 +73,7 @@
             },
             photo() {
                 let time = new Date().getTime();
-                
+
                 return `${this.employee.photo}?${time}`;
             },
             hasPhoto() {
@@ -97,7 +98,7 @@
 
             },
             removePhoto () {
-                
+
                 this.$swal({
                     title: "Are you sure?",
                     text: "This action can not be reverted. It will be gone forever. ",
@@ -107,7 +108,7 @@
                     cancelButtonColor: "#3085d6",
                     confirmButtonText: "Yes, delete it!"
                 }).then(result => {
-                    if (result.value) {                        
+                    if (result.value) {
                         this.form.delete(`/admin/employees/${this.employee.id}/photo`)
                             .then(response => {
                                 this.$store.dispatch('employee/set', response.data)

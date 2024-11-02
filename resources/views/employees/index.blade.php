@@ -116,12 +116,9 @@
                         </div>
                     </a> `
                     }},
-                    {data: 'first_name', name: 'first_name', render: function(data, type, full){
-                        return `<a
-                            href="/admin/employees/${full.id}"
-                            title="View employee details"
-                            >
-                            ${full.full_name.trim()}
+                    {data: 'first_name', name: 'first_name', render: function(data, type, full) {
+                        return `<a href="/admin/employees/${full.id}" title="View employee details">
+                            ${full.full_name}
                         </a>`
 
                     }},

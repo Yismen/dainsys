@@ -67,7 +67,9 @@ trait EmployeeAccessors
 
     public function getPhotoAttribute($photo)
     {
-        return $photo === '' ? 'images/placeholders/300.png' : $photo;
+        return empty($photo)
+            ? 'images/placeholders/300.png'
+            : $photo;
     }
 
     public function getStatusAttribute()
@@ -93,21 +95,6 @@ trait EmployeeAccessors
     public function getIsUniversalAttribute(): bool
     {
         return $this->universal ? true : false;
-    }
-
-    /**
-     * Concatanets firs name and last name attributes.
-     *
-     * @return string first and last names joint by space
-     */
-    public function getFullNameAttribute()
-    {
-        $name = filled($this->first_name) ? trim($this->first_name) : '';
-        $name = filled($this->second_first_name) ? $name . ' ' . trim($this->second_first_name) : $name;
-        $name = filled($this->last_name) ? $name . ' ' . trim($this->last_name) : $name;
-        $name = filled($this->second_last_name) ? $name . ' ' . trim($this->second_last_name) : $name;
-
-        return str($name)->headline()->value;
     }
 
     /**
@@ -183,12 +170,16 @@ trait EmployeeAccessors
      */
     public function getFirstNameAttribute($name)
     {
-        return str($name)->headline()->value;
+        return filled($name)
+            ? str($name)->trim()->headline()->value
+            : '';
     }
 
     public function getSecondFirstNameAttribute($name)
     {
-        return str($name)->headline()->value;
+        return filled($name)
+            ? str($name)->trim()->headline()->value
+            : '';
     }
 
     /**
@@ -200,12 +191,33 @@ trait EmployeeAccessors
      */
     public function getLastNameAttribute($name)
     {
-        return str($name)->headline()->value;
+        return filled($name)
+            ? str($name)->trim()->headline()->value
+            : '';
     }
 
     public function getSecondLastNameAttribute($name)
     {
-        return str($name)->headline()->value;
+        return filled($name)
+            ? str($name)->trim()->headline()->value
+            : '';
+    }
+
+    /**
+     * Concatanets firs name and last name attributes.
+     *
+     * @return string first and last names joint by space
+     */
+    public function getFullNameAttribute()
+    {
+        $name = join(" ", [
+            $this->first_name,
+            $this->second_first_name,
+            $this->last_name,
+            $this->second_last_name,
+        ]);
+
+        return str($name)->trim()->headline()->value;
     }
 
     /**
