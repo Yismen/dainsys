@@ -162,48 +162,6 @@ trait EmployeeAccessors
     }
 
     /**
-     * convert the First Name to UC Words.
-     *
-     * @param string $first_name Employee First name
-     *
-     * @return string Converted to ucwords
-     */
-    public function getFirstNameAttribute($name)
-    {
-        return filled($name)
-            ? str($name)->trim()->headline()->value
-            : '';
-    }
-
-    public function getSecondFirstNameAttribute($name)
-    {
-        return filled($name)
-            ? str($name)->trim()->headline()->value
-            : '';
-    }
-
-    /**
-     * convert the First Name to UC Words.
-     *
-     * @param string $first_name Employee First name
-     *
-     * @return string Converted to ucwords
-     */
-    public function getLastNameAttribute($name)
-    {
-        return filled($name)
-            ? str($name)->trim()->headline()->value
-            : '';
-    }
-
-    public function getSecondLastNameAttribute($name)
-    {
-        return filled($name)
-            ? str($name)->trim()->headline()->value
-            : '';
-    }
-
-    /**
      * Concatanets firs name and last name attributes.
      *
      * @return string first and last names joint by space
@@ -217,7 +175,7 @@ trait EmployeeAccessors
             $this->second_last_name,
         ]);
 
-        return str($name)->trim()->headline()->value;
+        return str($name)->squish()->headline()->value;
     }
 
     /**

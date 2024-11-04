@@ -19,7 +19,7 @@ class EmployeAccessorsTest extends TestsTestCase
         $activeEmployee = create(Employee::class);
 
         $this->assertEquals('Active', $activeEmployee->status);
-        
+
         $inactiveEmployee = create(Termination::class)->employee;
 
         $this->assertEquals('Inactive', $inactiveEmployee->status);
@@ -59,5 +59,19 @@ class EmployeAccessorsTest extends TestsTestCase
         $universalEmployee = create(Universal::class)->employee;
 
         $this->assertNotNull($universalEmployee->universal);
+    }
+
+    /** @test */
+    public function it_retun_full_name_headline()
+    {
+        $parsedName = 'Some Full Name';
+        $employee = create(Employee::class, [
+            'first_name' => ' some     ',
+            'second_first_name' => '      ',
+            'last_name' => ' full     ',
+            'second_last_name' => '    name     ',
+        ]);
+
+        $this->assertEquals($employee->full_name, $parsedName);
     }
 }
