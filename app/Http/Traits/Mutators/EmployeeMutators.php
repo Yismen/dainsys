@@ -13,12 +13,12 @@ trait EmployeeMutators
      */
     public function setFirstNameAttribute($first_name)
     {
-        $this->attributes['first_name'] = str($first_name)->squish()->headline();
+        $this->attributes['first_name'] = str($first_name)->lower()->squish()->title();
     }
 
     public function setSecondFirstNameAttribute($second_first_name)
     {
-        $this->attributes['second_first_name'] = str($second_first_name)->squish()->headline();
+        $this->attributes['second_first_name'] = str($second_first_name)->lower()->squish()->title();
     }
 
     /**
@@ -28,12 +28,12 @@ trait EmployeeMutators
      */
     public function setLastNameAttribute($last_name)
     {
-        $this->attributes['last_name'] = str($last_name)->squish()->headline();
+        $this->attributes['last_name'] = str($last_name)->lower()->squish()->title();
     }
 
     public function setSecondLastNameAttribute($second_last_name)
     {
-        $this->attributes['second_last_name'] = str($second_last_name)->squish()->headline();
+        $this->attributes['second_last_name'] = str($second_last_name)->lower()->squish()->title();
     }
 
     /**

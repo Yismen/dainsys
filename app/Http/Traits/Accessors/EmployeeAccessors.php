@@ -175,7 +175,7 @@ trait EmployeeAccessors
             $this->second_last_name,
         ]);
 
-        return str($name)->squish()->headline()->value;
+        return str($name)->lower()->squish()->title()->value;
     }
 
     /**
