@@ -11,9 +11,7 @@ class UpdateTerminationDataField
      *
      * @return void
      */
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Handle the event.
@@ -27,14 +25,14 @@ class UpdateTerminationDataField
         $employee = $event->employee;
 
         $employee_data = json_encode([
-            'name' => $event->employee->full_name,
-            'hire_date' => $event->employee->hire_date,
-            'site' => optional($event->employee)->site->name,
-            'department' => optional($event->employee->position->department)->name,
-            'project' => optional($event->employee->project)->name,
-            'supervisor' => optional($event->employee->supervisor)->name,
-            'salary' => optional($event->employee->position)->salary,
-            'payment_type' => optional($event->employee->position->payment_type)->name,
+            'name' => $employee->full_name,
+            'hire_date' => $employee->hire_date,
+            'site' => optional($employee)->site->name,
+            'department' => optional($employee->position->department)->name,
+            'project' => optional($employee->project)->name,
+            'supervisor' => optional($employee->supervisor)->name,
+            'salary' => optional($employee->position)->salary,
+            'payment_type' => optional($employee->position->payment_type)->name,
         ]);
 
         $event->termination->updateQuietly(['employee_data' => $employee_data]);

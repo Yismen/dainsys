@@ -8,7 +8,7 @@
             <div class="box box-warning" style="height: 180px; overflow-y: auto;">
                 <div class="box-body box-profile">
                     <img
-                        src="{{ file_exists($other->photo) ? asset($other->photo) :  asset('images/placeholders/300.png')}}"
+                        src="{{ file_exists($other->photo ?? '') ? asset($other->photo) :  asset('images/placeholders/300.png')}}"
                         class="profile-user-img img-responsive img-circle" alt="Image"
                     >
 

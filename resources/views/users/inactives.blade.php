@@ -12,7 +12,7 @@ inactive users list']) @section('content')
                 <div class="col-sm-6">
                     <div class="box box-danger info-box bg-grey">
                         <span class="info-box-icon">
-                            @if (file_exists(optional($user->profile)->photo))
+                            @if (file_exists(optional($user->profile ?? '')->photo))
                             <a href="{{ asset($user->profile->photo) }}" target="_user_photo">
                                 <img src="{{ asset($user->profile->photo) }}"
                                     class="profile-user-img img-responsive img-circle img-thumbnail" alt="Image">

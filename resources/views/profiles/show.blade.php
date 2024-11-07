@@ -10,7 +10,7 @@
 		<div class="col-sm-3">
 			<div class="box box-primary">
 				<div class="box-body box-profile">
-					@if (file_exists(optional($profile)->photo))
+					@if (file_exists(optional($profile)->photo ?? ''))
 						<a href="{{ asset(optional($profile)->photo) }}" target="_user_photo">
 							<img src="{{ asset(optional($profile)->photo) }}" class="profile-user-img img-responsive img-circle animated rotateIn" alt="Image">
 						</a>

@@ -3,7 +3,7 @@
 <div class="col-sm-6">
     <div class="box box-primary info-box bg-grey">
         <span class="info-box-icon">
-            @if (file_exists(optional($user->profile)->photo))
+            @if (file_exists(optional($user->profile)->photo ?? ''))
                 <a href="{{ asset($user->profile->photo) }}" target="_user_photo">
                     <img src="{{ asset($user->profile->photo) }}"
                         class="profile-user-img img-responsive img-circle img-thumbnail" alt="Image"
@@ -20,9 +20,9 @@
             <span class="info-box-text">
                 <a href="{{ route('admin.users.show', $user->id) }}">
                     <i class="fa fa-user"></i>
-                    {{ $user->name }} 
+                    {{ $user->name }}
                 </a>
-                <i 
+                <i
                     class="fa fa-circle {{ $user->isOnline() ? 'text-green' : 'text-gray'}}"
                     title="{{ $user->isOnline() ? 'Online' : 'Away'}}"
                 ></i>

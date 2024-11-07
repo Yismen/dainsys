@@ -37,7 +37,12 @@ class User extends Authenticatable implements CanResetPassword
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'is_active', 'is_admin',
+        'name',
+        'email',
+        'password',
+        'username',
+        'is_active',
+        'is_admin',
     ];
 
     /**
@@ -46,7 +51,8 @@ class User extends Authenticatable implements CanResetPassword
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     // protected static function boot()

@@ -39,7 +39,7 @@ $date = (new \Carbon\Carbon)->format('m-d');
                                     {{ $employee->date_of_birth->age }} {{ __('Year') }}s.
                                 </td>
                                 <td>
-                                    @if (file_exists($employee->photo))
+                                    @if (file_exists($employee->photo ?? ''))
                                     <a href="{{ asset($employee->photo) }}" target="_employee">
                                         <img src="{{ asset($employee->photo) }}"
                                             style="max-height: 50px; max-width: 50px;"

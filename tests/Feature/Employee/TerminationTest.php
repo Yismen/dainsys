@@ -63,7 +63,10 @@ class TerminationTest extends TestCase
     /** @test */
     public function employee_termination_fires_event()
     {
-        Event::fake();
+        Event::fake([
+            EmployeeTerminated::class
+        ]);
+
         $employee = create(Employee::class);
         $termination = make(Termination::class)->toArray();
 

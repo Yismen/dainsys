@@ -108,7 +108,7 @@
 
 <div class="row">
     <div class="col-md-6">
-        @if (auth()->user()->profile && file_exists(auth()->user()->profile->photo))
+        @if (auth()->user()->profile && file_exists(auth()->user()->profile->photo ?? ''))
             <a href="{{ asset(auth()->user()->profile->photo) }}" target="_user_photo">
             	<img src="{{ asset(auth()->user()->profile->photo) }}"
 	            	class="img-responsive img-circle center-block" alt="Image"

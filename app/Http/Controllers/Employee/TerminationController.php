@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Employee;
 
-use App\Events\EmployeeReactivated;
-use App\Events\EmployeeTerminated;
-use App\Http\Controllers\Controller;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use App\Events\EmployeeReactivated;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 
 class TerminationController extends Controller
@@ -26,7 +25,7 @@ class TerminationController extends Controller
             $employee->termination()->update($request->only(['termination_date', 'termination_type_id', 'termination_reason_id', 'can_be_rehired', 'comments']));
         } else {
             $termination = $employee->termination()->create($request->only(['termination_date', 'termination_type_id', 'termination_reason_id', 'can_be_rehired', 'comments']));
-            event(new EmployeeTerminated($employee, $termination));
+            // event(new EmployeeTerminated($employee, $termination));
         }
 
         return $employee->load(

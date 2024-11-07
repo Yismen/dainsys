@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\DainsysModel as Model;
 use Carbon\Carbon;
+use App\Events\EmployeeTerminated;
+use App\Models\DainsysModel as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Termination extends Model
@@ -17,6 +18,19 @@ class Termination extends Model
     protected $casts = [
         'can_be_rehired' => 'boolean',
     ];
+
+    protected static function booted()
+    {
+        static::created(function (Termination $termination) {
+            $employee = $termination->employee->load([
+                'site',
+                'project',
+                'position',
+            ]);
+
+            EmployeeTerminated::dispatch($employee, $termination);
+        });
+    }
 
     public function employee()
     {

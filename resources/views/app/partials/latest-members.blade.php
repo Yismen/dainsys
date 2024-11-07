@@ -8,7 +8,7 @@
             <div class="box-body" style="display: flex; flex-wrap: wrap; justify-content: flex-start;">
                 @foreach ($profiles as $profile)
                 <div class="col-sm-4">
-                    <img src="{{ file_exists($profile->photo) ? asset($profile->photo) :  asset('images/placeholders/300.png') }}" class="profile-user-img img-responsive img-circle" alt="Image">
+                    <img src="{{ file_exists($profile->photo ?? '') ? asset($profile->photo) :  asset('images/placeholders/300.png') }}" class="profile-user-img img-responsive img-circle" alt="Image">
 
                     <h5 class="profile-username text-center">
                         <a href="{{ route('admin.profiles.show', $profile->id) }}" title="Visit {{ optional($profile->user)->name }} Profile">

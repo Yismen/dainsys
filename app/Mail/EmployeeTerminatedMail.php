@@ -5,6 +5,7 @@ namespace App\Mail;
 use App\Models\Employee;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -27,7 +28,12 @@ class EmployeeTerminatedMail extends Mailable implements ShouldQueue
 
     public function __construct(Employee $employee, array $recipients)
     {
-        $this->employee = $employee;
+        $this->employee = $employee->load([
+            'site',
+            'project',
+            'position'
+        ]);
+
         $this->recipients = $recipients;
     }
 
