@@ -45,6 +45,8 @@ class Position extends Model
      */
     public function getNameAndDepartmentAttribute()
     {
+        $this->load('department');
+
         return ucwords(trim(
             ($this->department->name ?? '') . '-' . $this->name
         ));
@@ -63,6 +65,7 @@ class Position extends Model
     public function getPayPerHoursAttribute()
     {
         $salary = $this->salary;
+        $this->load('payment_type');
 
         if ($this->payment_type) {
             if (strtolower($this->payment_type->name) === 'salary') {

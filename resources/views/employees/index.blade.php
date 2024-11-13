@@ -47,7 +47,7 @@
                 </div>
                 {{-- Filters --}}
                 <div class="box-body">
-                    <div class="form-group col-sm-2">
+                    <div class="form-group col-xs-6 col-sm-4 col-md-3 col-lg-2">
                         <label for="inputFiltrarStatus" class="control-label">Filtrar Por Status:</label>
                         <div class="">
                             <select name="FiltrarStatus" id="inputFiltrarStatus" class="form-control" required="required" data-column="6">
@@ -57,13 +57,46 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group col-sm-2">
-                        <label for="inputFiltrarStatus" class="control-label">Filtrar Por Site:</label>
+                    <div class="form-group col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <label for="inputFiltrarSite" class="control-label">Filtrar Por Site:</label>
                         <div class="">
-                            <select name="FiltrarStatus" id="inputFiltrarStatus" class="form-control" required="required" data-column="9">
+                            <select name="FiltrarSite" id="inputFiltrarSite" class="form-control" required="required" data-column="9">
                                 <option value="" selected>Todos</option>
                                 @foreach ($sites as $site)
                                     <option value="{{ $site->name }}">{{ $site->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <label for="inputFiltrarProject" class="control-label">Filtrar Por Project:</label>
+                        <div class="">
+                            <select name="FiltrarProject" id="inputFiltrarProject" class="form-control" required="required" data-column="8">
+                                <option value="" selected>Todos</option>
+                                @foreach ($projects as $project)
+                                    <option value="{{ $project->name }}">{{ $project->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <label for="inputFiltrarPosition" class="control-label">Filtrar Por Position:</label>
+                        <div class="">
+                            <select name="FiltrarPosition" id="inputFiltrarPosition" class="form-control" required="required" data-column="7">
+                                <option value="" selected>Todos</option>
+                                @foreach ($positions as $position)
+                                    <option value="{{ $position->name }}">{{ $position->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <label for="inputFiltrarSupervisor" class="control-label">Filtrar Por Supervisor:</label>
+                        <div class="">
+                            <select name="FiltrarSupervisor" id="inputFiltrarPosition" class="form-control" required="required" data-column="16">
+                                <option value="" selected>Todos</option>
+                                @foreach ($supervisors as $supervisor)
+                                    <option value="{{ $supervisor->name }}">{{ $supervisor->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -81,7 +114,7 @@
                                     <th>@lang('Second') @lang('First name'):</th>
                                     <th>@lang('Last Name'):</th>
                                     <th>@lang('Second') @lang('Last Name'):</th>
-                                    <th  class="col-xs-1">@lang('Hire Date')</th>
+                                    <th class="col-xs-1">@lang('Hire Date')</th>
                                     <th>@lang('Status')</th>
                                     <th>@lang('Position'):</th>
                                     <th>@lang('Project'):</th>
@@ -92,6 +125,7 @@
                                     <th>@lang('Cell Phone'):</th>
                                     <th>Other Phone:</th>
                                     <th>@lang('Edit'):</th>
+                                    <th>@lang('Supervisor'):</th>
 
                                 </tr>
                             </thead>
@@ -179,12 +213,15 @@
                             <i class="fa fa-pencil"></i> Edit
                         </a>`
                     }},
+                    {data: 'supervisor', name: 'supervisor.name', orderable: false, visible:false, render: function(data, type, full) {
+                        return data ? data.name : '';
+                    }},
                 ]
             });
 
 
 
-            $("#inputFiltrarStatus, #inputFiltrarStatus")
+            $("#inputFiltrarStatus, #inputFiltrarSite, #inputFiltrarProject, #inputFiltrarPosition, #inputFiltrarSupervisor")
                 .change(function(e) {
                     console.log($(this).val())
                     dTable

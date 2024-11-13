@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Site;
+use App\Models\Project;
 use App\Models\Employee;
+use App\Models\Position;
+use App\Models\Supervisor;
 use App\Models\Termination;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -38,8 +41,23 @@ class EmployeesController extends Controller
             return view(
                 'employees.index',
                 [
-                    'sites' => Cache::rememberForever('sites_list', function () {
+                    'sites' => Cache::rememberForever('sites_list_for_employees', function () {
                         return Site::query()
+                            ->orderBy('name')
+                            ->get(['id', 'name']);
+                    }),
+                    'projects' => Cache::rememberForever('projects_list_for_employees', function () {
+                        return Project::query()
+                            ->orderBy('name')
+                            ->get(['id', 'name']);
+                    }),
+                    'positions' => Cache::rememberForever('positions_list_for_employees', function () {
+                        return Position::query()
+                            ->orderBy('name')
+                            ->get(['id', 'name']);
+                    }),
+                    'supervisors' => Cache::rememberForever('supervisors_list_for_employees', function () {
+                        return Supervisor::query()
                             ->orderBy('name')
                             ->get(['id', 'name']);
                     }),
@@ -255,6 +273,7 @@ class EmployeesController extends Controller
                     'position.payment_type',
                     'project',
                     'termination',
+                    'supervisor',
                     'punch',
                     'site',
                 ])

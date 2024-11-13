@@ -79,6 +79,9 @@ trait EmployeeAccessors
 
     public function getActiveAttribute(): bool
     {
+        $this->load([
+            'termination'
+        ]);
         return $this->termination ? false : true;
     }
 
