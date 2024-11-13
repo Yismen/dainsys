@@ -1,7 +1,7 @@
 @extends('layouts.app', ['page_header'=>__('Employees'), 'page_description'=>__('List')])
 
 @section('content')
-<div class="container-fluids">
+<div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
             <div class="box box-primary">
@@ -47,6 +47,21 @@
                 </div>
 
                 <div class="box-body">
+
+                    <div class="form-group">
+                        <label for="inputFiltrarStatus" class="col-sm-2 control-label">Filtrar Por Status:</label>
+                        <div class="col-sm-2">
+                            <select name="FiltrarStatus" id="inputFiltrarStatus" class="form-control" required="required" data-column="6">
+                                <option value="all" selected>Todos</option>
+                                <option value="actives">Activos</option>
+                                <option value="inactives">Inactivos</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="box-body">
                     <div class="table-responsive">
                         <table class="table table-hover table-condensed table-bordered" id="employees-table">
                             <thead>
@@ -56,14 +71,14 @@
                                     <th>@lang('Second') @lang('First name'):</th>
                                     <th>@lang('Last Name'):</th>
                                     <th>@lang('Second') @lang('Last Name'):</th>
-                                    <th>@lang('Hire Date')</th>
+                                    <th  class="col-xs-1">@lang('Hire Date')</th>
                                     <th>@lang('Status')</th>
                                     <th>@lang('Position'):</th>
                                     <th>@lang('Project'):</th>
                                     <th>@lang('Site'):</th>
                                     <th class="col-xs-1">@lang('Personal Id') / @lang('Passport'):</th>
                                     <th>@lang('Passport'):</th>
-                                    <th class="col-xs-1">@lang('Punch Id'):</th>
+                                    <th class="">@lang('Punch Id'):</th>
                                     <th>@lang('Cell Phone'):</th>
                                     <th>Other Phone:</th>
                                     <th>@lang('Edit'):</th>
@@ -155,6 +170,15 @@
                         </a>`
                     }},
                 ]
+            });
+
+
+
+            $('#inputFiltrarStatus').change(function(e) {
+                dTable
+                    .column( $(this).data('column'))
+                    .search($(this).val())
+                    .draw();
             });
         });
 

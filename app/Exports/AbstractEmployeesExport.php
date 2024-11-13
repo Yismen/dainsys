@@ -4,16 +4,16 @@ namespace App\Exports;
 
 use App\Models\Employee;
 use Illuminate\Database\Eloquent\Builder;
-use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
-use Maatwebsite\Excel\Concerns\ShouldAutoSize;
-use Maatwebsite\Excel\Concerns\WithColumnFormatting;
-use Maatwebsite\Excel\Concerns\WithEvents;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
+use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 
 abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAutoSize, WithColumnFormatting, WithMapping, WithHeadings, WithEvents
 {
@@ -32,8 +32,7 @@ abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAu
 
     public function registerEvents(): array
     {
-        return [
-        ];
+        return [];
     }
 
     public function title(): string
@@ -66,7 +65,11 @@ abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAu
                 },
                 'bankAccount',
                 'supervisor',
-                'termination',
+                'termination' => function ($terinationQuery) {
+                    $terinationQuery->with([
+                        'terminationType'
+                    ]);
+                },
             ]);
     }
 

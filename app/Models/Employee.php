@@ -134,7 +134,7 @@ class Employee extends Model
      */
     public function scopeActives($query)
     {
-        return $query->with('termination')->has('termination', false);
+        return $query->has('termination', false);
     }
 
     /**
@@ -186,7 +186,16 @@ class Employee extends Model
      */
     public function scopeInactives($query)
     {
-        return $query->with('termination')
+        return $query
+            // ->with([
+            //     'termination' => function ($query) {
+            //         $query
+            //             ->with([
+            //                 'terminationType',
+            //                 'terminationReason',
+            //             ]);
+            //     }
+            // ])
             ->whereHas(
                 'termination',
                 function ($query) {

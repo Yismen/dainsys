@@ -247,11 +247,7 @@ class EmployeesController extends Controller
                     'punch',
                     'site',
                 ])
-        )->filterColumn('status', function ($query, $keyword) {
-            $method = $this->getScope($keyword);
-
-            $query->$method();
-        }, true)
+        )
             ->editColumn('hire_date', function ($query) {
                 return $query->hire_date->format('d-M-Y');
             })
@@ -260,6 +256,11 @@ class EmployeesController extends Controller
             })
             ->addColumn('edit', function ($query) {
                 return route('admin.employees.edit', $query->id);
+            })
+            ->filterColumn('status', function ($query, $value) {
+                if (in_array($value, ['all', 'actives', 'inactives'])) {
+                    $query->$value();
+                }
             })
             ->toJson(true);
     }
