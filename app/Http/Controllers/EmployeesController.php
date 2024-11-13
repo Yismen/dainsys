@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Site;
 use App\Models\Employee;
 use App\Models\Termination;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Events\EmployeeCreated;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Cache;
 
 class EmployeesController extends Controller
 {
@@ -33,7 +35,16 @@ class EmployeesController extends Controller
     public function index()
     {
         if (!request()->ajax()) {
-            return view('employees.index');
+            return view(
+                'employees.index',
+                [
+                    'sites' => Cache::rememberForever('sites_list', function () {
+                        return Site::query()
+                            ->orderBy('name')
+                            ->get(['id', 'name']);
+                    }),
+                ]
+            );
         }
 
         return $this->getDatatables();

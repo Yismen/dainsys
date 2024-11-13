@@ -45,12 +45,11 @@
                     </div>
 
                 </div>
-
+                {{-- Filters --}}
                 <div class="box-body">
-
-                    <div class="form-group">
-                        <label for="inputFiltrarStatus" class="col-sm-2 control-label">Filtrar Por Status:</label>
-                        <div class="col-sm-2">
+                    <div class="form-group col-sm-2">
+                        <label for="inputFiltrarStatus" class="control-label">Filtrar Por Status:</label>
+                        <div class="">
                             <select name="FiltrarStatus" id="inputFiltrarStatus" class="form-control" required="required" data-column="6">
                                 <option value="all" selected>Todos</option>
                                 <option value="actives">Activos</option>
@@ -58,9 +57,20 @@
                             </select>
                         </div>
                     </div>
-
+                    <div class="form-group col-sm-2">
+                        <label for="inputFiltrarStatus" class="control-label">Filtrar Por Site:</label>
+                        <div class="">
+                            <select name="FiltrarStatus" id="inputFiltrarStatus" class="form-control" required="required" data-column="9">
+                                <option value="" selected>Todos</option>
+                                @foreach ($sites as $site)
+                                    <option value="{{ $site->name }}">{{ $site->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
+                {{-- Datatable --}}
                 <div class="box-body">
                     <div class="table-responsive">
                         <table class="table table-hover table-condensed table-bordered" id="employees-table">
@@ -174,11 +184,13 @@
 
 
 
-            $('#inputFiltrarStatus').change(function(e) {
-                dTable
-                    .column( $(this).data('column'))
-                    .search($(this).val())
-                    .draw();
+            $("#inputFiltrarStatus, #inputFiltrarStatus")
+                .change(function(e) {
+                    console.log($(this).val())
+                    dTable
+                        .column( $(this).data('column'))
+                        .search($(this).val())
+                        .draw();
             });
         });
 
