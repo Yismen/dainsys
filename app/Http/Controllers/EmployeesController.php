@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Site;
-use App\Models\Project;
 use App\Models\Employee;
-use App\Models\Position;
-use App\Models\Supervisor;
 use App\Models\Termination;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Events\EmployeeCreated;
 use Yajra\DataTables\DataTables;
-use Illuminate\Support\Facades\Cache;
+use App\Services\ListsForEmployees\SiteWithEmployeesService;
+use App\Services\ListsForEmployees\ProjectWithEmployeesService;
+use App\Services\ListsForEmployees\PositionWithEmployeesService;
+use App\Services\ListsForEmployees\SupervisorWithEmployeesService;
 
 class EmployeesController extends Controller
 {
@@ -41,26 +40,10 @@ class EmployeesController extends Controller
             return view(
                 'employees.index',
                 [
-                    'sites' => Cache::rememberForever('sites_list_for_employees', function () {
-                        return Site::query()
-                            ->orderBy('name')
-                            ->get(['id', 'name']);
-                    }),
-                    'projects' => Cache::rememberForever('projects_list_for_employees', function () {
-                        return Project::query()
-                            ->orderBy('name')
-                            ->get(['id', 'name']);
-                    }),
-                    'positions' => Cache::rememberForever('positions_list_for_employees', function () {
-                        return Position::query()
-                            ->orderBy('name')
-                            ->get(['id', 'name']);
-                    }),
-                    'supervisors' => Cache::rememberForever('supervisors_list_for_employees', function () {
-                        return Supervisor::query()
-                            ->orderBy('name')
-                            ->get(['id', 'name']);
-                    }),
+                    'sites' => SiteWithEmployeesService::make(),
+                    'projects' => ProjectWithEmployeesService::make(),
+                    'positions' => PositionWithEmployeesService::make(),
+                    'supervisors' => SupervisorWithEmployeesService::make(),
                 ]
             );
         }
