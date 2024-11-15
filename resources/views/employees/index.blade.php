@@ -101,6 +101,12 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <label for="inputFiltrarSupervisor" class="control-label"></label>
+                        <div class="">
+                            <button type="button" class="btn btn-warning" id="removeFilters">Quitar Filtros</button>
+                        </div>
+                    </div>
                 </div>
 
                 {{-- Datatable --}}
@@ -223,11 +229,20 @@
 
             $("#inputFiltrarStatus, #inputFiltrarSite, #inputFiltrarProject, #inputFiltrarPosition, #inputFiltrarSupervisor")
                 .change(function(e) {
-                    console.log($(this).val())
                     dTable
                         .column( $(this).data('column'))
                         .search($(this).val())
                         .draw();
+            });
+
+            $('#removeFilters').click(function() {
+                $('#inputFiltrarStatus').val('all');
+                $('#inputFiltrarSite, #inputFiltrarProject, #inputFiltrarPosition, #inputFiltrarSupervisor').val('');
+
+                dTable
+                    .columns('*')
+                    .search('')
+                    .draw();
             });
         });
 

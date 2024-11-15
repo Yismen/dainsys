@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\DainsysModel as Model;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Position extends Model
@@ -59,7 +60,9 @@ class Position extends Model
 
     public function getPaymentTypesListAttribute()
     {
-        return PaymentType::select('id', 'name')->orderBy('name')->get();
+        return Cache::rememberForever('payment_types_list', function () {
+            return PaymentType::select('id', 'name')->orderBy('name')->get();
+        });
     }
 
     public function getPayPerHoursAttribute()

@@ -269,8 +269,12 @@ class EmployeesController extends Controller
         return DataTables::of(
             Employee::query()
                 ->with([
-                    'position.department',
-                    'position.payment_type',
+                    'position' => function ($query) {
+                        $query->with([
+                            'department',
+                            'payment_type',
+                        ]);
+                    },
                     'project',
                     'termination',
                     'supervisor',
@@ -291,6 +295,30 @@ class EmployeesController extends Controller
                 if (in_array($value, ['all', 'actives', 'inactives'])) {
                     $query->$value();
                 }
+            })
+            ->filterColumn('site.name', function ($query, $value) {
+                $query->withWhereHas(
+                    'site',
+                    fn($q) => $q->where('name', 'like', str($value)->lower())
+                );
+            })
+            ->filterColumn('project.name', function ($query, $value) {
+                $query->withWhereHas(
+                    'project',
+                    fn($q) => $q->where('name', 'like', str($value)->lower())
+                );
+            })
+            ->filterColumn('position.name', function ($query, $value) {
+                $query->withWhereHas(
+                    'position',
+                    fn($q) => $q->where('name', 'like', str($value)->lower())
+                );
+            })
+            ->filterColumn('supervisor.name', function ($query, $value) {
+                $query->withWhereHas(
+                    'supervisor',
+                    fn($q) => $q->where('name', 'like', str($value)->lower())
+                );
             })
             ->toJson(true);
     }
