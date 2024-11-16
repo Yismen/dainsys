@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api\Performances;
 
+use App\Models\Employee;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EmployeeResource;
-use App\Models\Employee;
 
 /**
  * @group Performances
@@ -35,7 +35,11 @@ class EmployeesController extends Controller
      */
     public function __invoke()
     {
-        $projects = Employee::with('supervisor')
+        $projects = Employee::with([
+            'supervisor',
+            'site',
+            'punch'
+        ])
             ->orderBy('first_name')
             ->orderBy('second_first_name')
             ->orderBy('last_name')

@@ -20,6 +20,11 @@ class Position extends Model
         // 'payment_frequencies_list'
     ];
 
+    protected $with = [
+        'department',
+        'payment_type'
+    ];
+
     public function department()
     {
         return $this->belongsTo(Department::class);
@@ -46,10 +51,8 @@ class Position extends Model
      */
     public function getNameAndDepartmentAttribute()
     {
-        $this->load('department');
-
         return ucwords(trim(
-            ($this->department->name ?? '') . '-' . $this->name
+            $this->department?->name . '-' . $this->name
         ));
     }
 
@@ -68,7 +71,6 @@ class Position extends Model
     public function getPayPerHoursAttribute()
     {
         $salary = $this->salary;
-        $this->load('payment_type');
 
         if ($this->payment_type) {
             if (strtolower($this->payment_type->name) === 'salary') {
