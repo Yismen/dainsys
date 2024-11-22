@@ -47,4 +47,38 @@ class EmployeesTest extends TestCase
 
         Excel::assertDownloaded('employees-all.xlsx');
     }
+
+    /** @test */
+    public function it_implements_the_trackeable_trait()
+    {
+        $methods = get_class_methods(new Employee);
+
+        $this->assertContains('changes', $methods);
+    }
+
+    /** @test */
+    public function it_track_updates()
+    {
+        $this->actingAs($this->user());
+        $update_data = [
+            'first_name' => 'Updated Name',
+            'last_name' => 'Updated Surname'
+        ];
+        $employee = factory(Employee::class)->create();
+        $old_first_name = $employee->first_name;
+        $old_last_name = $employee->last_name;
+
+        $employee->update($update_data);
+
+        $this->assertEquals($employee->changes->first()->modifications, [
+            "first_name" => [
+                "old" => $old_first_name,
+                "new" => "Updated Name",
+            ],
+            "last_name" => [
+                "old" => $old_last_name,
+                "new" => "Updated Surname",
+            ],
+        ]);
+    }
 }

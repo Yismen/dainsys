@@ -3,31 +3,29 @@
 <div style="max-height: 300px;
 overflow: auto;">
     <div class="table-responsive">
-        <table class="table table-condensed table-hover table-bordered">
-            <tbody>
-                @foreach ($employee->changes as $change)
-                <tr>
-                    <td>
-                        @php
-                        $after = json_decode($change->after);
-                        @endphp
-                        {{ __('On Date') }} {{ $change->updated_at->format('d/M/Y') }}, {{ optional($change->user)->name
-                        }}
-                        {{ __('Changed') }}:
-                        <ul>
-                            @foreach (json_decode($change->before) as $key => $value)
-                            <li>
-                                {{ __('Field') }} {{ $key }},
-                                {{ __('From') }} <span class="text-blue">{{ $value }}</span>
-                                {{ __('To') }} <span class="text-green">{{ collect($after->$key)->first() }}</span>
-                            </li>
-                            @endforeach
-                        </ul>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+        @foreach ($employee->changes as $change)
+            <h5>{{ __('On Date') }} {{ $change->updated_at->format('d/M/Y') }}, {{ optional($change->user)->name
+            }}
+            {{ __('Changed') }}:</h5>
+            <table class="table table-condensed table-hover table-bordered bg-warning">
+                <thead>
+                    <tr>
+                        <th>{{ __('Field') }}</th>
+                        <th>{{ __('Old Value') }}</th>
+                        <th>{{ __('New Value') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($change->modifications as $field => $modification)
+                        <tr>
+                            <td>{{ str($field)->headline() }}</td>
+                            <td>{{ $modification['old'] }}</td>
+                            <td>{{ $modification['new'] }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endforeach
     </div>
 </div>
 @endif

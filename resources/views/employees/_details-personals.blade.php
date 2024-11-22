@@ -1,7 +1,7 @@
 <div class="box box-widget widget-user-2">
     <!-- Add the bg color to the header using any of the bg-* classes -->
     <div
-        class="widget-user-header {{ $employee->status === 'Active' ? 'bg-green' : 'bg-yellow' }}"
+        class="widget-user-header {{ $employee->is_active ? 'bg-green' : 'bg-yellow' }}"
     >
         <a href="{{ file_exists(trim(explode('?', $employee->photo)[0], '/')) ? asset($employee->photo) : asset('images/placeholders/200.png') }}" target="_employee-photo">
             <div class="widget-user-image">

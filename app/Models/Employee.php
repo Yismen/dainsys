@@ -57,6 +57,10 @@ class Employee extends Model
         'status',
     ];
 
+    protected $with = [
+        'termination'
+    ];
+
     public function scopeAll($query)
     {
         return $query;
