@@ -26,6 +26,7 @@
         "laravel/ui": "^3.0",
         "laravel/vonage-notification-channel": "^3.3",
         "laravelcollective/html": "^6.0",
+        "lcobucci/clock": "^3.2",
         "livewire/livewire": "^2.9",
         "maatwebsite/excel": "^3.0",
         "predis/predis": "^2.1",
