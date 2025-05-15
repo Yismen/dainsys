@@ -158,7 +158,6 @@ return [
          */
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
         // Collective\Html\HtmlServiceProvider::class,
-        Spatie\Html\HtmlServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         // GrahamCampbell\Flysystem\FlysystemServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
@@ -225,8 +224,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Form' => \Spatie\Html\Facades\Html::class,
-        'Html' => \Spatie\Html\Facades\Html::class,
+        // 'Form' => Collective\Html\FormFacade::class,
+        // 'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         // 'Flysystem' => GrahamCampbell\Flysystem\Facades\Flysystem::class,

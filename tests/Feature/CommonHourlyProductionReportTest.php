@@ -3,11 +3,12 @@
 namespace Tests\Feature;
 
 use Mockery;
+use Tests\TestCase;
 use App\Mail\CommandsBaseMail;
-use PHPUnit\Framework\TestCase;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Console\Commands\Common\HourlyProductionReport\HourlyProductionReportExport;
+use App\Console\Commands\Common\HourlyProductionReport\HourlyProductionReportRepository;
 
 class CommonHourlyProductionReportTest extends TestCase
 {
