@@ -9,9 +9,9 @@
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                             </span>
-                        
+
                         </div>
-                    {!! Form::close() !!} 
+                    {!! Form::close() !!}
                     <!-- /.input-group -->
                 </div>
                 {{-- /. Search Well --}}
@@ -25,7 +25,7 @@
                     </div>
                 @endif
                 {{-- /. Dashboard Well --}}
-                
+
                 <div class="well">
                     <h4>Side Widget Well</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
@@ -40,7 +40,7 @@
             event.preventDefault();
             var data = $(this).serializeArray();
             var url = $(this).attr('action');
-        
+
             process( data, container, url );
         });
 

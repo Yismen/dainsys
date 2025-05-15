@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\User;
+use Laravel\Passport\Passport;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Queue\Events\JobFailed;
@@ -20,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Passport::authorizationView('auth.oauth.authorize');
+        Passport::$clientUuids = false;
+
         Paginator::useBootstrap();
 
         Model::preventLazyLoading(! $this->app->isProduction());

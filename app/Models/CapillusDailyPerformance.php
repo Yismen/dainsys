@@ -50,7 +50,9 @@ class CapillusDailyPerformance extends Model
         'wrong_number',
     ];
 
-    protected $dates = ['date'];
+    protected $casts = [
+        'date' => 'datetime',
+    ];
 
     public function removeIfExists(array $options = [])
     {

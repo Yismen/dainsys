@@ -7,7 +7,9 @@ use Carbon\Carbon;
 
 class Attendance extends Model
 {
-    protected $dates = ['date'];
+    protected $casts = [
+        'date' => 'datetime',
+    ];
 
     protected $fillable = ['employee_id', 'user_id', 'code_id', 'comments', 'date'];
 

@@ -24,11 +24,11 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(GateContract $gate)
+    public function boot()
     {
-        $this->registerPolicies($gate);
+        // $this->registerPolicies($gate);
 
-        Passport::routes();
+        // Passport::routes();
 
         Passport::tokensExpireIn(now()->addDays(15));
 

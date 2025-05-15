@@ -6,7 +6,9 @@ use App\Models\DainsysModel as Model;
 
 class Vip extends Model
 {
-    protected $dates = ['since'];
+    protected $casts = [
+        'since' => 'datetime',
+    ];
 
     protected $fillable = ['employee_id', 'since'];
 

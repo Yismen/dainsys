@@ -8,7 +8,9 @@ class Hour extends Model
 {
     protected $fillable = ['employee_id', 'name', 'date', 'unique_id', 'regulars', 'nightly', 'holidays', 'training', 'overtime'];
 
-    protected $dates = ['date'];
+    protected $casts = [
+        'date' => 'datetime',
+    ];
 
     // Relationships =============================================
     public function employee()

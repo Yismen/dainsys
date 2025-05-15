@@ -11,7 +11,9 @@ class OvernightHour extends Model
     /**
      * Convert fields to Carbon Intances
      */
-    protected $dates = ['date'];
+    protected $casts = [
+        'date' => 'datetime',
+    ];
 
     protected $fillable = ['date', 'employee_id', 'hours', 'unique_id'];
 

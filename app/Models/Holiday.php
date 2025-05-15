@@ -7,7 +7,9 @@ use Carbon\Carbon;
 
 class Holiday extends Model
 {
-    protected $dates = ['date'];
+    protected $casts = [
+        'date' => 'datetime',
+    ];
 
     protected $fillable = ['date', 'name', 'description'];
 
