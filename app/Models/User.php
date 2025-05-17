@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use App\Http\Traits\Relationships\UserRelationships;
+use Dainsys\Support\Traits\HasSupportTickets;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements CanResetPassword
@@ -31,6 +32,7 @@ class User extends Authenticatable implements CanResetPassword
     use Notifiable;
     use Trackable;
     use SoftDeletes;
+    use HasSupportTickets;
     /**
      * The attributes that are mass assignable.
      *
