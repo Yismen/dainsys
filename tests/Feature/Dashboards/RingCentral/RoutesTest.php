@@ -1,6 +1,6 @@
 <?php
 
-namespace Feature\Dashboards\RingCentral;
+namespace Tests\Feature\Dashboards\RingCentral;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
