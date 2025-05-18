@@ -10,8 +10,8 @@
 /.vscode
 /.vagrant
 .env
-# .env.testing
-# *support*.sql
+.env.testing
+*support*.sql
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
