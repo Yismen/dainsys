@@ -2,13 +2,13 @@
 
 namespace {{ namespace }};
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class {{ class }} extends TestCase
 {
     /** @test */
     public function testExample()
     {
-        
+
     }
 }
