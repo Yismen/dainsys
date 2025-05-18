@@ -85,6 +85,8 @@ return [
 
     'fallback_locale' => 'en',
 
+    'valid_email_domains' => env('VALID_EMAIL_DOMAINS', ['ecco.com.do', 'eccocorpbpo.co']),
+
     /*
     |--------------------------------------------------------------------------
     | Encryption Key

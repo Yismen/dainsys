@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', \App\Http\Controllers\HomeController::class)->name('home');
 Auth::routes();
 
-Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'ensure_has_profile', 'ensure_valid_email_domain']], function () {
     Route::get('/', [\App\Http\Controllers\AdminController::class, 'admin']);
 
     Route::post('afps/employees', [\App\Http\Controllers\AfpsController::class, 'assignEmployees']);
