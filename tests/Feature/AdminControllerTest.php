@@ -25,7 +25,7 @@ class AdminControllerTest extends TestCase
 
         $request = $this->get('/admin');
 
-        $request->assertRedirect(route('admin.profiles.create'));
+        $request->assertRedirect(route('admin.dashboards'));
     }
 
     /** @test */
