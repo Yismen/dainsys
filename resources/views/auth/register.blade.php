@@ -1,4 +1,4 @@
-@extends('layouts.guest', ['page_description'=>'Please log in!'])
+@extends('layouts.guest', ['page_description'=>'Please register as new user!'])
 
 @section('content')
 <div class="login-box">
@@ -31,9 +31,9 @@
                 <strong class="text-danger">{{ $errors->first('email') }}</strong>
             </span>
         @endif
-        
+
       </div>
-      
+
       <div class="form-group has-feedback">
         <input type="password" class="form-control" placeholder="Password" name="password" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
@@ -43,7 +43,7 @@
             </span>
         @endif
       </div>
-      
+
       <div class="form-group has-feedback">
         <input type="password" class="form-control" placeholder="Password Cofirmation" name="password_confirmation" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
@@ -53,17 +53,17 @@
             </span>
         @endif
       </div>
-      
+
         <!-- /.col -->
-        <div class="col-xs-4">
+        <div class="">
           <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
         </div>
-      
+
     </form>
 
     <hr>
-   
-    <div class="d-flex flex-column">
+
+    <div class="">
         <a class="mt-4" href="{{ route('login') }}" class="text-center">Already a member?</a>
     </div>
 
