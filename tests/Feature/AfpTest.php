@@ -27,6 +27,7 @@ class AfpTest extends TestCase
     /** @test */
     public function it_requires_view_afps_permissions_to_view_all_afps()
     {
+
         $this->actingAs(create('App\Models\User'));
 
         $response = $this->get('/admin/afps');

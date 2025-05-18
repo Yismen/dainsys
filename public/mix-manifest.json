@@ -1,8 +1,8 @@
 {
     "/js/site.js": "/js/site.js?id=def11f94bda713384350dff6e992dbde",
-    "/js/app.js": "/js/app.js?id=e7507ebde7f69032c77777278a900036",
+    "/js/app.js": "/js/app.js?id=eb25afc0ae11b635fabcf7bcb7bde17e",
     "/js/site/js/chunks/backToTop.js": "/js/site/js/chunks/backToTop.js?id=93115acb9c774f20316b1838ffc57687",
-    "/js/site/js/chunks/loadingComponent.js": "/js/site/js/chunks/loadingComponent.js?id=c031e142df315ff29d4f238dfdf071cd",
+    "/js/site/js/chunks/loadingComponent.js": "/js/site/js/chunks/loadingComponent.js?id=eb4b4cccbe6db83e6c03179e72b4d2d9",
     "/js/site/js/chunks/passportClients.js": "/js/site/js/chunks/passportClients.js?id=a762b2226e274ce85689cef603eca5d0",
     "/js/site/js/chunks/passportAuthorizedClients.js": "/js/site/js/chunks/passportAuthorizedClients.js?id=2c7aff1abc16a41f8bc954560b8829ab",
     "/js/site/js/chunks/passportPersonalAccessTokens.js": "/js/site/js/chunks/passportPersonalAccessTokens.js?id=9293170b8f64196bda55d74f39924732",
@@ -26,6 +26,6 @@
     "/js/site/js/chunks/lineBaseChart.js": "/js/site/js/chunks/lineBaseChart.js?id=82f78c638474fad01c214088b4892bea",
     "/js/site/js/chunks/doughnutBaseChart.js": "/js/site/js/chunks/doughnutBaseChart.js?id=368d8340266cf9059be71a1cc4f6d166",
     "/js/site/js/chunks/barBaseChart.js": "/js/site/js/chunks/barBaseChart.js?id=6c53d8d8060c3924d3b7a08c371ae873",
-    "/css/app.css": "/css/app.css?id=550f3a165253f5a7fdf131ce339448af",
-    "/css/site.css": "/css/site.css?id=5f62700bc269cf1d3d8a4e58feed45f0"
+    "/css/app.css": "/css/app.css?id=36a633f55e499e15298ab0105572ed8b",
+    "/css/site.css": "/css/site.css?id=57d903f04dc7db110aba8974274719ce"
 }

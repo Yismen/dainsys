@@ -1,8 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.guest')
 
 <!-- Main Content -->
 @section('content')
-        <div class="col-md-8 col-md-offset-2">
+    <div class="align-center d-flex flex-column justify-center" style="height: 100vh;">
+        
+  <div class="login-logo">
+    <h1 class="text-uppercase">
+        <a href="/"><b>{{ config('app.name') }}</b></a>
+    </h1>
+  </div>
+
+          <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">Reset Password</div>
                 <div class="panel-body">
@@ -32,7 +40,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-envelope"></i>Send Password Reset Link
+                                    <i class="fa fa-btn fa-envelope"></i> Send Password Reset Link
                                 </button>
                             </div>
                         </div>
@@ -40,4 +48,5 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection

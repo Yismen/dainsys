@@ -13,8 +13,7 @@
               <h3><i class="fa fa-warning text-red"></i> Forbiden!</h3>
 
               <p>
-                <a href="{{ url()->previous() }}">Go Back to where you came from!</a> or notify the administrator about
-                it.
+                <a href="{{ url()->previous() }}">{{ $exception->getMessage() ?: "Go Back to where you came from!</a> or notify the administrator about it." }} 
               </p>
 
               <p>{{ session('danger') }}</p>

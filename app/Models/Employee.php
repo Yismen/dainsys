@@ -47,7 +47,10 @@ class Employee extends Model
      *
      * @var Carbon Instance
      */
-    protected $dates = ['hire_date', 'date_of_birth'];
+    protected $casts = [
+        'hire_date' => 'datetime',
+        'date_of_birth' => 'datetime',
+    ];
 
     protected $guarded = [];
 

@@ -13,10 +13,9 @@ class Termination extends Model
 
     protected $fillable = ['employee_id', 'termination_date', 'termination_type_id', 'termination_reason_id', 'can_be_rehired', 'comments', 'employee_data'];
 
-    protected $dates = ['termination_date'];
-
     protected $casts = [
         'can_be_rehired' => 'boolean',
+        'termination_date' => 'datetime'
     ];
 
     protected static function booted()

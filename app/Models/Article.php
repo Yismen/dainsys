@@ -27,7 +27,10 @@ class Article extends Model
      *
      * @dates [array]
      */
-    protected $dates = ['published_at'];
+
+    protected $casts = [
+    'tpublished_at' => 'datetime',
+];
 
     public function sluggable(): array
     {

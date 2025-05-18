@@ -18,7 +18,7 @@ class AuthorizationTest extends TestCase
 
         $response->get(route('admin.departments.index'))
             ->assertForbidden();
-
+        
         $response->get(route('admin.departments.show', $department->id))
             ->assertForbidden();
     }
