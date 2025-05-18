@@ -2,7 +2,13 @@
 
 <!-- Main Content -->
 @section('content')
-    <div class="align-center d-flex justify-center" style="height: 100vh;">
+    <div class="align-center d-flex flex-column justify-center" style="height: 100vh;">
+        
+  <div class="login-logo">
+    <h1 class="text-uppercase">
+        <a href="/"><b>{{ config('app.name') }}</b></a>
+    </h1>
+  </div>
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">Reset Password</div>
