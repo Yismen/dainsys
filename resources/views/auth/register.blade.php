@@ -9,10 +9,20 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg">Please register!</p>
 
-    <form action="{{ route('login') }}" method="post">
+    <form action="{{ route('register') }}" method="post">
         {!! csrf_field() !!}
+      <div class="form-group has-feedback">
+        <input type="name" class="form-control" placeholder="Full name" value="{{ old('name') }}" name="name" required>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+         @if ($errors->has('name'))
+            <span class="help-block ">
+                <strong class="text-danger">{{ $errors->first('name') }}</strong>
+            </span>
+        @endif
+      </div>
+
       <div class="form-group has-feedback">
         <input type="email" class="form-control" placeholder="Email" value="{{ old('email') }}" name="email" required>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -23,6 +33,7 @@
         @endif
         
       </div>
+      
       <div class="form-group has-feedback">
         <input type="password" class="form-control" placeholder="Password" name="password" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
@@ -32,26 +43,28 @@
             </span>
         @endif
       </div>
-      <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox" name="remember" value="{{ old('remember', '1') }}"> Remember Me
-            </label>
-          </div>
-        </div>
+      
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="Password Cofirmation" name="password_confirmation" required>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+         @if ($errors->has('password_confirmation'))
+            <span class="help-block ">
+                <strong class="text-danger">{{ $errors->first('password_confirmation') }}</strong>
+            </span>
+        @endif
+      </div>
+      
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
         </div>
-        <!-- /.col -->
-      </div>
+      
     </form>
+
     <hr>
    
     <div class="d-flex flex-column">
-         <a href="{{ url('password/reset') }}">Forgot Your Password?</a>
-        <a class="mt-4" href="{{ route('register') }}" class="text-center">Register a new membership</a>
+        <a class="mt-4" href="{{ route('login') }}" class="text-center">Already a member?</a>
     </div>
 
   </div>

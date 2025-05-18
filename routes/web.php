@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', \App\Http\Controllers\HomeController::class)->name('home');
-Auth::routes(['register' => false]);
+Auth::routes();
 
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/', [\App\Http\Controllers\AdminController::class, 'admin']);
