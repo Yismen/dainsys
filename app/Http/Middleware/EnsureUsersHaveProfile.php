@@ -15,11 +15,13 @@ class EnsureUsersHaveProfile
      */
     public function handle($request, Closure $next)
     {
-        $user = auth()->user();
-        if ($user && ! $user->profile) {
-            // return redirect()->route('admin.profiles.create');
-            $user->profile()->create(['gender' => 'male']);
+        if(app()->isProduction())
+        {
+            $user = auth()->user();
+            if ($user && ! $user->profile) {
+                $user->profile()->create(['gender' => 'male']);
 
+            }
         }
         return $next($request);
     }
