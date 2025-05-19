@@ -29,13 +29,13 @@ class BecauseFlashRepository extends RingCentralConnection
     protected function execQuery(int $subdays = 0)
     {
         return $this->connection()->select(
-            DB::raw("
-                declare 
-                    @reportDate as smalldatetime, @endDate as smalldatetime, @campaign as varchar(50) 
+            "
+                declare
+                    @reportDate as smalldatetime, @endDate as smalldatetime, @campaign as varchar(50)
                 set @reportDate = GETDATE() - {$subdays} AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time'
-                set @campaign = '%'                    
+                set @campaign = '%'
                 exec [sp_BecauseFlashReport] @reportDate, @campaign
-            ")
+            "
         );
     }
 }

@@ -49,24 +49,24 @@ class PoliticalFlashRepository extends RingCentralConnection implements Politica
     public function getHours()
     {
         return $this->connection()->select(
-            DB::raw("
+            "
                 declare @fromDate as smalldatetime, @toDate as smalldatetime, @campaign as varchar(50), @team as varchar(50)
                 set @fromDate = '{$this->date_from}'
-                set @toDate = '{$this->date_to}' 
-                set @team = '{$this->team}' 
-                
+                set @toDate = '{$this->date_to}'
+                set @team = '{$this->team}'
+
                 exec [sp_POL_Campaign_Hours_Total] @fromDate, @toDate, @team
-            ")
+            "
         );
     }
 
     public function getDispositions()
     {
         return $this->connection()->select(
-            DB::raw("
+           "
                 declare @reportDate as date
                 set @reportDate = '{$this->date_to}'
-                
+
                 select
                     campaign_name,
                     disposition,
@@ -75,32 +75,32 @@ class PoliticalFlashRepository extends RingCentralConnection implements Politica
                     POL_AllCampaignFlash
                 WHERE
                             report_date = @reportDate
-                group by 
-                            campaign_name, 
+                group by
+                            campaign_name,
                             disposition
-                order by 
-                            campaign_name desc, 
+                order by
+                            campaign_name desc,
                             disposition
-            ")
+            "
         );
     }
 
     public function getAnswers()
     {
         return $this->connection()->select(
-            DB::raw("
+           "
                 declare @reportDate as date
                 set @reportDate = '{$this->date_to}'
-                
+
                 select
                     *
                 FROM
                     POL_AllCampaignFlash
                 WHERE
                             report_date = @reportDate
-                order by 
+                order by
                             campaign_name desc
-            ")
+            "
         );
     }
 }

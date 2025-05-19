@@ -47,15 +47,15 @@ class DispositionsSheet extends BaseRingCentralSheet
     {
         return $connection->connect()
             ->select(
-                DB::raw(" 
+                "
                     declare @fromDate as smalldatetime, @toDate as smalldatetime, @campaign as varchar(50), @team as varchar(50)
                     set @fromDate = '{$date_from}'
                     set @toDate = '{$date_to}'
                     set @campaign = '{$this->exporter->campaign_name}'
                     set @team = '{$this->exporter->team}'
-                    
+
                     exec [sp_Dispositions_Summary] @fromDate, @toDate, @campaign, @team
-                ")
+                "
             );
     }
 

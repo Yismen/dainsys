@@ -47,15 +47,15 @@ class OomaMonthTDCallsSheet extends DispositionsSheet
     {
         return $connection->connect()
             ->select(
-                DB::raw(" 
-                    SELECT 
+               "
+                    SELECT
                         CONVERT(DATE, call_start) as call_date
                         , CONVERT(TIME, call_start) AS call_time
                         , agent_disposition
                         , agent_notes as notes
                         , dial_group_name
                         , lead_phone
-                        , TRIM(agent_first_name) + ' ' + TRIM(agent_last_name) AS agent_name 
+                        , TRIM(agent_first_name) + ' ' + TRIM(agent_last_name) AS agent_name
                         , UPPER(TRIM(title)) AS title
                         , first_name
                         , mid_name
@@ -73,12 +73,12 @@ class OomaMonthTDCallsSheet extends DispositionsSheet
                         , aux_data5
                         , recording_url
                     FROM DIALER_RESULT_DOWNLOAD
-                    WHERE 
+                    WHERE
                         CONVERT(DATE, call_start) BETWEEN '{$date_from}' and '{$date_to}'
                         AND agent_disposition NOT LIKE ''
                         AND dial_group_name LIKE '{$this->exporter->campaign_name}'
                     ORDER BY call_start DESC
-                ")
+                "
             );
     }
 

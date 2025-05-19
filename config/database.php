@@ -72,7 +72,7 @@ return [
             'username' => env('POLISCRIPT_USERNAME', ''),
             'password' => env('POLISCRIPT_PASSWORD', ''),
             'charset' => 'utf8',
-            'prefix' => ''
+            'prefix' => '',
         ],
         'pgsql' => [
             'driver' => 'pgsql',

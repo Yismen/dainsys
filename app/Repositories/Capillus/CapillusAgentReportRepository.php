@@ -21,14 +21,14 @@ class CapillusAgentReportRepository extends RingCentralConnection
     protected function getData()
     {
         return $this->connection()->select(
-            DB::raw("
+            "
                 SET NOCOUNT ON
                 declare @fromDate as datetime, @toDate as datetime
                 set @fromDate = '{$this->options['from_date']}'
                 set @toDate = '{$this->options['to_date']}'
-            
+
                 exec sp_CapillusAgentReport @fromDate, @toDate
-            ")
+            "
         );
     }
 }

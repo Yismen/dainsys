@@ -36,7 +36,7 @@ class InboundSummaryRepository extends RingCentralConnection implements InboundS
         return config('app.env') === 'testing' ?
             $this->getFakedInbound() :
             $this->connection()->select(
-                DB::raw($this->sqlRawStatement($group_fields))
+                $this->sqlRawStatement($group_fields)
             );
     }
 
@@ -45,7 +45,7 @@ class InboundSummaryRepository extends RingCentralConnection implements InboundS
         $data = \config('app.env') === 'testing' ?
             $this->getFakedHours() :
             $this->connection()->select(
-                DB::raw("
+                "
                     SELECT *
                     FROM vw_Hours_Summary
                     WHERE
@@ -57,7 +57,7 @@ class InboundSummaryRepository extends RingCentralConnection implements InboundS
                         )
                         AND Team like '{$this->agent_group_name}'
                         ORDER BY [Report Date] desc, Team asc, agent_name asc, [Dial Group] asc
-            ")
+            "
             );
         return $data;
     }

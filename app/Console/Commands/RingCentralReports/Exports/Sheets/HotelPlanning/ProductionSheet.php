@@ -17,10 +17,8 @@ class ProductionSheet extends BaseRingCentralSheet
 {
     public function getData(ConnectionContract $connection, string $date_from, string $date_to): array
     {
-        return $connection->connect()
-            ->select(
-                DB::raw("
-                    SELECT
+     $data = $connection->connect()
+            ->select("SELECT
                         [Dial Group] as dial_group
                         , CONVERT(date, [Login DTS]) AS production_date
 						, Team as team
@@ -42,9 +40,9 @@ class ProductionSheet extends BaseRingCentralSheet
 						, CONVERT(date, [Login DTS])
                         , Team
                         , [First Name]
-						, [Last Name]
-                ")
-            );
+						, [Last Name]");
+
+            return $data;
     }
 
     /**

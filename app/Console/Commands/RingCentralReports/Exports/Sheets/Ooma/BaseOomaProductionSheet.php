@@ -21,8 +21,8 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
     {
         return $connection->connect()
             ->select(
-                DB::raw("
-                    SELECT        
+                "
+                    SELECT
                         [Dial Group] as dial_group
                         , trim([First Name]) AS agent_fname
                         , trim([Last Name]) AS agent_lname
@@ -40,7 +40,7 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
                         CONVERT(date, [Login DTS]) BETWEEN '{$date_from}' AND '{$date_to}'
                         AND [Dial Group] LIKE '{$this->exporter->campaign_name}'
                         AND Team like '{$this->exporter->team}'
-                    GROUP BY 
+                    GROUP BY
                         [Dial Group]
                         , Team
                         , [First Name]
@@ -51,8 +51,7 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
                         , Team
                         , [First Name]
                 , [Last Name]
-                ")
-            );
+                ");
     }
 
     /**

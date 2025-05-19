@@ -25,28 +25,28 @@ class WowRepository extends RingCentralConnection
     protected function getDispositions()
     {
         return $this->connection()->select(
-            DB::raw("        
+            "
                 declare @fromDate as smalldatetime, @toDate as smalldatetime, @campaign as varchar(50)
                 set @fromDate = '{$this->date_from}'
                 set @toDate = '{$this->date_to}'
                 set @campaign = 'CTV%'
-                
+
                 exec [sp_Dispositions_Summary] @fromDate, @toDate, @campaign
-            ")
+            "
         );
     }
 
     private function getData()
     {
         return $this->connection()->select(
-            DB::raw("
+            "
                 declare @fromDate as smalldatetime, @toDate as smalldatetime, @campaign as varchar(50)
                 set @fromDate = '{$this->date_from}'
                 set @toDate = '{$this->date_to}'
                 set @campaign = 'CTV%'
-                
+
                 exec [sp_Hours_Summary] @fromDate, @toDate, @campaign
-            ")
+            "
         );
     }
 }

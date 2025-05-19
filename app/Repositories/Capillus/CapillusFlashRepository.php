@@ -29,14 +29,14 @@ class CapillusFlashRepository extends RingCentralConnection
     protected function execQuery(int $subdays = 0)
     {
         return $this->connection()->select(
-            DB::raw("
-                declare 
-                    @startDate as smalldatetime, @endDate as smalldatetime, @campaign as varchar(50) 
+            "
+                declare
+                    @startDate as smalldatetime, @endDate as smalldatetime, @campaign as varchar(50)
                 set @startDate = GETDATE() - {$subdays} AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time'
                 set @endDate = GETDATE() - {$subdays} AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time'
-                set @campaign = 'Capillus%'                    
+                set @campaign = 'Capillus%'
                 exec [sp_CapillusFlashReport] @startDate, @endDate, @campaign
-            ")
+            "
         );
     }
 }

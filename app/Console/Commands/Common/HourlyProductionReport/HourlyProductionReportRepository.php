@@ -31,15 +31,15 @@ class HourlyProductionReportRepository extends RingCentralConnection implements 
         $this->data = config('app.env') === 'testing' ?
             $this->getFakedData() :
             $this->connection()->select(
-                DB::raw("
+                "
                     declare @fromDate as smalldatetime, @toDate as smalldatetime, @campaign as varchar(50), @team as varchar(50) = '%'
                     set @fromDate = '{$this->date_from}'
                     set @toDate = '{$this->date_to}'
                     set @campaign = '{$this->campaign}%'
                     set @team = '{$this->team}%'
-                    
+
                     exec [sp_Hours_Summary] @fromDate, @toDate, @campaign, @team
-                ")
+                "
             );
 
         return $this;
@@ -49,17 +49,13 @@ class HourlyProductionReportRepository extends RingCentralConnection implements 
     {
         $this->dispositions = \config('app.env') === 'testing' ?
             $this->getFakedDispositions() :
-            $this->connection()->select(
-                DB::raw("        
-                declare @fromDate as smalldatetime, @toDate as smalldatetime, @campaign as varchar(50), @team as varchar(50)
+            $this->connection()->select("declare @fromDate as smalldatetime, @toDate as smalldatetime, @campaign as varchar(50), @team as varchar(50)
                 set @fromDate = '{$this->date_from}'
                 set @toDate = '{$this->date_to}'
-                set @campaign = '{$this->campaign}%'                
+                set @campaign = '{$this->campaign}%'
                 set @team = '{$this->team}%'
-                
-                exec [sp_Dispositions_Summary] @fromDate, @toDate, @campaign, @team
-            ")
-            );
+
+                exec [sp_Dispositions_Summary] @fromDate, @toDate, @campaign, @team");
 
         return $this;
     }

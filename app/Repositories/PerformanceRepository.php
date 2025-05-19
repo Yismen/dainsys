@@ -23,7 +23,7 @@ class PerformanceRepository
             'DATE_FORMAT(date, "%Y-%b")';
 
         return $this->baseQeury()
-            ->addSelect(DB::raw($dateClause . ' as month'))
+            ->addSelect($dateClause . ' as month')
             ->groupBy('month')
             ->whereDate('date', '>=', $start_of_month)
             ->whereDate('date', '<', now()->today())
@@ -38,7 +38,7 @@ class PerformanceRepository
             'DATE_FORMAT(date, "%Y-%w")';
 
         return $this->baseQeury()
-            ->addSelect(DB::raw($dateClause . ' as week'))
+            ->addSelect($dateClause . ' as week')
             ->groupBy('week')
             ->whereDate('date', '>=', $start_of_week)
             ->whereDate('date', '<', now()->today())
@@ -107,7 +107,7 @@ class PerformanceRepository
     {
         return Performance::filter(request()->all())
             ->select(
-                DB::raw('
+                '
                 sum(revenue) as revenue,
                 sum(login_time) as login_time,
                 sum(revenue) / sum(login_time) as rph,
@@ -117,7 +117,7 @@ class PerformanceRepository
                 sum(billable_hours) / sum(login_time) as efficiency,
                 sum(production_time) / sum(login_time) as efficiency_over_production,
                 sum(sph_goal * production_time) / sum(production_time) as sph_goal
-            ')
+            '
             )
             ->orderBy('date');
     }

@@ -42,8 +42,8 @@ class CapillusAgentCallDataDumpRepository extends RingCentralConnection
     protected function getData()
     {
         return $this->connection()->select(
-            DB::raw("
-                declare @startDate as smalldatetime, 
+            "
+                declare @startDate as smalldatetime,
                     @endDate as smalldatetime,
                     @camp as varchar(50)
 
@@ -52,7 +52,7 @@ class CapillusAgentCallDataDumpRepository extends RingCentralConnection
                 set @camp = '{$this->campaign}'
 
                 exec sp_CapillusCallLog @startDate, @endDate, @camp
-            ")
+            "
         );
     }
 }

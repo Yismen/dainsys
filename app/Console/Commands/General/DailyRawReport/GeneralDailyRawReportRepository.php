@@ -31,9 +31,9 @@ class GeneralDailyRawReportRepository extends RingCentralConnection
         }
 
         return $this->connection()->select(
-            DB::raw("
-                DECLARE 
-                    @dateFrom as date, 
+            "
+                DECLARE
+                    @dateFrom as date,
                     @dateTo as date,
                     @team as varchar(50) = '%'
 
@@ -42,7 +42,7 @@ class GeneralDailyRawReportRepository extends RingCentralConnection
                 SET	@team  = '{$this->team_group}'
 
                 EXEC [sp_Session_Raw_Report] @dateFrom, @dateTo, @team
-            ")
+            "
         );
     }
 
