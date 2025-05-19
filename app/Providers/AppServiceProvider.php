@@ -21,9 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Passport::authorizationView('auth.oauth.authorize');
-        Passport::$clientUuids = false;
-
         Paginator::useBootstrap();
 
         Model::preventLazyLoading(! $this->app->isProduction());
