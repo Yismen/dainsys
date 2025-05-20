@@ -423,6 +423,13 @@ export default {
       this.positions_list.unshift(position);
       this.form.fields.position_id = position.id
     },
+    getDefaultDateOfBirth(years_ago = 18) {
+        const today = new Date();
+        const date_of_birth = new Date();
+        date_of_birth.setFullYear(today.getFullYear() - years_ago);
+
+        return date_of_birth;
+    },
     getEmployeeObject() {
       let employee = this.$store.getters["employee/getEmployee"];
       return {
@@ -447,7 +454,7 @@ export default {
           : new Date(),
         date_of_birth: employee.hasOwnProperty("date_of_birth")
           ? employee.date_of_birth
-          : new Date(),
+          : this.getDefaultDateOfBirth(20),
         cellphone_number: employee.hasOwnProperty("cellphone_number")
           ? employee.cellphone_number
           : "",
