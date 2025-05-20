@@ -75,7 +75,7 @@
 
 
             <li>
-                <a href="/support" target="__new">
+                <a href="/support/my_tickets" target="__new">
                     <i class="fa fa-life-ring"></i>
                     <span>Support Tickets</span>
                     <i class="fa fa-angle-left pull-right"></i>
