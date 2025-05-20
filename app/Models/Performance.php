@@ -50,7 +50,7 @@ class Performance extends Model
     {
         parent::boot();
 
-        static::saving(queueable(function (self $model) {
+        static::saving(function (self $model) {
             $employee = Employee::findOrfail($model->employee_id);
 
             // $model->unique_id = $model->date . '-' . $model->employee_id . '-' . $model->campaign_id;
@@ -59,7 +59,7 @@ class Performance extends Model
                 'name' => $employee->fullName,
             ]);
             $model->parseBillableHoursAndRevenue();
-        }));
+        });
     }
 
     /**
@@ -80,6 +80,7 @@ class Performance extends Model
     public function parseBillableHoursAndRevenue()
     {
         $this->load('campaign.revenueType');
+
         $data = [];
         switch (strtolower($this->campaign->revenueType->name)) {
             case 'sales or production':
