@@ -30,7 +30,7 @@ class UpdatePerformance extends FormRequest
             'login_time' => 'required|numeric|min:0|max:14',
             'production_time' => 'required|numeric|min:0|max:14',
             'transactions' => 'required|numeric',
-            'revenue' => 'required|numeric',
+            'revenue' => 'nullable|numeric',
             'campaign_id' => 'required|exists:campaigns,id',
 
         ];
