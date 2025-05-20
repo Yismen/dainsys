@@ -68,9 +68,19 @@
                 </a>
             </li>
 
+
             @endforeach
             @endif
 
+
+
+            <li>
+                <a href="/support" target="__new">
+                    <i class="fa fa-life-ring"></i>
+                    <span>Support Tickets</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+            </li>
         </ul>
         <!-- /.sidebar-menu -->
 
