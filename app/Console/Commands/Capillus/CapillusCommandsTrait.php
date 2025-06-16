@@ -13,9 +13,7 @@ trait CapillusCommandsTrait
     {
         $campaigns = config('dainsys.capillus.campaigns');
 
-        if (! $campaigns) {
-            throw new Exception('Capillus Campaigns not set in config.dainsys.capillus array!');
-        }
+        throw_unless($campaigns, new Exception('Capillus Campaigns not set in config.dainsys.capillus array!'));
 
         return explode('|', $campaigns);
     }

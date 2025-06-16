@@ -48,7 +48,7 @@ class TerminationsController extends Controller
     {
         return $terminations->create($request->all());
 
-        return \Redirect::route('terminations.create')->withSuccess("Succesfully created department [{$request->department}];");
+        return \Illuminate\Support\Facades\Redirect::route('terminations.create')->withSuccess("Succesfully created department [{$request->department}];");
     }
 
     /**

@@ -10,10 +10,10 @@ return RectorConfig::configure()
     ->withSets([
         LaravelLevelSetList::UP_TO_LARAVEL_110,
         LaravelSetList::LARAVEL_COLLECTION,
-        // LaravelSetList::LARAVEL_ARRAYACCESS_TO_METHOD_CALL,
+        LaravelSetList::LARAVEL_ARRAYACCESS_TO_METHOD_CALL,
         // LaravelSetList::LARAVEL_ELOQUENT_MAGIC_METHOD_TO_QUERY_BUILDER,
-        // LaravelSetList::LARAVEL_FACADE_ALIASES_TO_FULL_NAMES,
-        // LaravelSetList::LARAVEL_IF_HELPERS,
+        LaravelSetList::LARAVEL_FACADE_ALIASES_TO_FULL_NAMES,
+        LaravelSetList::LARAVEL_IF_HELPERS,
         LaravelSetList::LARAVEL_LEGACY_FACTORIES_TO_CLASSES,
     ])
     ->withPaths([

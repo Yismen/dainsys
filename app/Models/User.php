@@ -135,13 +135,9 @@ class User extends Authenticatable implements CanResetPassword
 
     public function updateUser($request)
     {
-        if ($this->id === auth()->user()->id && $request->is_active === 0) {
-            abort(401, 'You cant inactivate Your self. No changes made.');
-        }
+        abort_if($this->id === auth()->user()->id && $request->is_active === 0, 401, 'You cant inactivate Your self. No changes made.');
 
-        if ($this->id === auth()->user()->id && $this->is_admin === 0 && $request->is_admin === 1) {
-            abort(401, 'You cant set your self as Admin. No changes made.');
-        }
+        abort_if($this->id === auth()->user()->id && $this->is_admin === 0 && $request->is_admin === 1, 401, 'You cant set your self as Admin. No changes made.');
 
         $this->update($request->all());
 
@@ -150,13 +146,9 @@ class User extends Authenticatable implements CanResetPassword
 
     public function forceChangePassword($request)
     {
-        if ($this->id === auth()->user()->id && $request->is_active === 0) {
-            abort(401, 'You cant inactivate Your self. No changes made.');
-        }
+        abort_if($this->id === auth()->user()->id && $request->is_active === 0, 401, 'You cant inactivate Your self. No changes made.');
 
-        if ($this->id === auth()->user()->id && $this->is_admin === 0 && $request->is_admin === 1) {
-            abort(401, 'You cant set your self as Admin. No changes made.');
-        }
+        abort_if($this->id === auth()->user()->id && $this->is_admin === 0 && $request->is_admin === 1, 401, 'You cant set your self as Admin. No changes made.');
 
         $new_password = Str::random(15);
 

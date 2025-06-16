@@ -91,7 +91,7 @@ class ContactsController extends Controller
 
         $contact->update($request->only(['name', 'phone', 'works_at', 'position', 'secondary_phone', 'email']));
 
-        return \Redirect::route('admin.contacts.index')
+        return \Illuminate\Support\Facades\Redirect::route('admin.contacts.index')
             ->withSuccess("Your contact {$contact->name} has been updated succesffully!");
     }
 

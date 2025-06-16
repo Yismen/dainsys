@@ -40,7 +40,7 @@ class Password extends Model
      */
     public function ScopeForCurrentUser($query)
     {
-        return $query->where('user_id', \Auth::user()->id);
+        return $query->where('user_id', \Illuminate\Support\Facades\Auth::user()->id);
     }
 
     /**

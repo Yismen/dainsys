@@ -60,7 +60,7 @@ class ArticlesController extends Controller
     {
         $this->createArticle($article, $request, $tag);
 
-        return \Redirect::route('articles.index')->withSuccess("{$request->title} has been created successfully!");
+        return \Illuminate\Support\Facades\Redirect::route('articles.index')->withSuccess("{$request->title} has been created successfully!");
     }
 
     /**
@@ -100,7 +100,7 @@ class ArticlesController extends Controller
     {
         $this->updateArticle($article, $request);
 
-        return \Redirect::route('articles.show', $article->slug)->withSuccess('Edited successfully...!');
+        return \Illuminate\Support\Facades\Redirect::route('articles.show', $article->slug)->withSuccess('Edited successfully...!');
     }
 
     /**
@@ -114,7 +114,7 @@ class ArticlesController extends Controller
     {
         $article->delete();
 
-        return \Redirect::route('articles.index')->withSuccess("Article [{$article->title}] has been removed");
+        return \Illuminate\Support\Facades\Redirect::route('articles.index')->withSuccess("Article [{$article->title}] has been removed");
     }
 
     /**

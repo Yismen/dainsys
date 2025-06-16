@@ -34,19 +34,14 @@ class DainsysAuthorization
 
     protected function guardAgainstUnauthenticated()
     {
-        if (! auth()->check()) {
-            abort(401, 'Unauthenticated');
-        }
+        abort_unless(auth()->check(), 401, 'Unauthenticated');
     }
 
     protected function guardAgainstUnauthorizedUsers($request, $permissions)
     {
-        if (! $request->user()->hasAnyPermission(
+        // session()->flash('danger', 'Unauthorized! Permissions Needed: ' . $permissions);
+        abort_unless($request->user()->hasAnyPermission(
             $this->parsePermissions($permissions)
-        )) {
-            // session()->flash('danger', 'Unauthorized! Permissions Needed: ' . $permissions);
-
-            abort(403, "You need permission {$permissions} to view this page!");
-        }
+        ), 403, "You need permission {$permissions} to view this page!");
     }
 }
