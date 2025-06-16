@@ -14,7 +14,7 @@ class CampaignsControllerTest extends TestCase
     /** @test */
     public function it_returns_a_campaigns_collection()
     {
-        factory(Campaign::class)->create();
+        Campaign::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/campaigns');

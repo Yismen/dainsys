@@ -14,8 +14,8 @@ class NotificationTest extends TestCase
     /** @test */
     public function it_removes_prunable_notifications()
     {
-        $regular = factory(Notification::class)->create(['created_at' => now()]);
-        $prunable = factory(Notification::class)->create(['created_at' => now()->subDays(15)]);
+        $regular = Notification::factory()->create(['created_at' => now()]);
+        $prunable = Notification::factory()->create(['created_at' => now()->subDays(15)]);
 
         $this->artisan(PruneCommand::class, [
             '--model' => [

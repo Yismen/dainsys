@@ -14,7 +14,7 @@ class DowntimeReasonsControllerTest extends TestCase
     /** @test */
     public function it_returns_a_downtime_reasons_collection()
     {
-        $downtime = factory(DowntimeReason::class)->create();
+        $downtime = DowntimeReason::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/downtime_reasons');

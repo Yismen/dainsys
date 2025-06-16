@@ -14,7 +14,7 @@ class HumanResourcesTest extends TestCase
     /** @test */
     public function it_returns_a_collection_of_attritions_data()
     {
-        factory(Employee::class)->create();
+        Employee::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/dashboards/human_resources/attritions');
@@ -33,7 +33,7 @@ class HumanResourcesTest extends TestCase
     /** @test */
     public function it_returns_a_collection_of_hc_by_department()
     {
-        factory(Employee::class)->create();
+        Employee::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/dashboards/human_resources/hc_by_department');
@@ -53,7 +53,7 @@ class HumanResourcesTest extends TestCase
     /** @test */
     public function it_returns_a_collection_of_hc_by_gender()
     {
-        factory(Employee::class)->create();
+        Employee::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/dashboards/human_resources/hc_by_gender');
@@ -73,7 +73,7 @@ class HumanResourcesTest extends TestCase
     /** @test */
     public function it_returns_a_collection_of_hc_by_project()
     {
-        factory(Employee::class)->create();
+        Employee::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/dashboards/human_resources/hc_by_project');
@@ -94,7 +94,7 @@ class HumanResourcesTest extends TestCase
     /** @test */
     public function it_returns_a_collection_of_head_counts()
     {
-        factory(Employee::class)->create();
+        Employee::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/dashboards/human_resources/head_counts');

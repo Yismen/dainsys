@@ -14,7 +14,7 @@ class SupervisorsControllerTest extends TestCase
     /** @test */
     public function it_returns_a_supervisors_collection()
     {
-        factory(Supervisor::class)->create();
+        Supervisor::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/performances/supervisors');
@@ -34,8 +34,8 @@ class SupervisorsControllerTest extends TestCase
     /** @test */
     public function it_returns_active_supervisors_only()
     {
-        $active_supervisor = factory(Supervisor::class)->create(['active' => true]);
-        $inactive_supervisor = factory(Supervisor::class)->create(['active' => false]);
+        $active_supervisor = Supervisor::factory()->create(['active' => true]);
+        $inactive_supervisor = Supervisor::factory()->create(['active' => false]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/performances/supervisors/actives');

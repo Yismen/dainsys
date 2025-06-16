@@ -20,8 +20,8 @@ class InboundDailyCommandsTest extends TestCase
     {
         Excel::fake();
         Mail::fake();
-        $report = factory(\App\Models\Report::class)->create(['key' => 'inbound:send-daily-summary']);
-        $recipients = factory(\App\Models\Recipient::class, 2)->create();
+        $report = \App\Models\Report::factory()->create(['key' => 'inbound:send-daily-summary']);
+        $recipients = \App\Models\Recipient::factory(2)->create();
         $report->recipients()->sync($recipients->pluck('id')->toArray());
 
         $this->mockRepo(InboundDataRepository::class, []);
@@ -37,8 +37,8 @@ class InboundDailyCommandsTest extends TestCase
         Mail::fake();
         $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
-        $report = factory(\App\Models\Report::class)->create(['key' => 'inbound:send-daily-summary']);
-        $recipients = factory(\App\Models\Recipient::class, 2)->create();
+        $report = \App\Models\Report::factory()->create(['key' => 'inbound:send-daily-summary']);
+        $recipients = \App\Models\Recipient::factory(2)->create();
         $report->recipients()->sync($recipients->pluck('id')->toArray());
 
         $this->mockRepo(InboundDataRepository::class, []);

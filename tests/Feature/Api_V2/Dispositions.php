@@ -14,7 +14,7 @@ class Dispositions extends TestCase
     /** @test */
     public function it_returns_a_dispositions_collection()
     {
-        factory(Disposition::class)->create();
+        Disposition::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/dispositions');

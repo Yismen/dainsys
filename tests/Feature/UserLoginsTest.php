@@ -13,7 +13,7 @@ class UserLoginsTest extends TestCase
     /** @test */
     public function a_session_is_created_when_user_log_in()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         auth()->login($user);
 
@@ -27,7 +27,7 @@ class UserLoginsTest extends TestCase
     /** @test */
     public function a_session_is_closed_when_user_log_out()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
         auth()->login($user);
 
         auth()->logout();
@@ -46,7 +46,7 @@ class UserLoginsTest extends TestCase
     /** @test */
     public function a_session_is_casted()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         auth()->login($user);
         

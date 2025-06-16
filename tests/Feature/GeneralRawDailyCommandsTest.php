@@ -24,8 +24,8 @@ class GeneralRawDailyCommandsTest extends TestCase
     {
         Mail::fake();
         Excel::fake();
-        $report = factory(Report::class)->create(['key' => 'dainsys:general-rc-raw-report']);
-        $recipients = factory(Recipient::class, 2)->create();
+        $report = Report::factory()->create(['key' => 'dainsys:general-rc-raw-report']);
+        $recipients = Recipient::factory(2)->create();
         $report->recipients()->sync($recipients->pluck('id')->toArray());
 
         $subject = 'Fake Name';

@@ -74,17 +74,17 @@ class BirthdaysControllerTest extends TestCase
     /** @test */
     public function it_shows_birthdays_for_this_month()
     {
-        $site = factory(Site::class)->create(['name' => config('dainsys.limit_queries.sites')[0]]);
+        $site = Site::factory()->create(['name' => config('dainsys.limit_queries.sites')[0]]);
 
-        $employee_with_birthday_this_month = factory(Employee::class)->create([
+        $employee_with_birthday_this_month = Employee::factory()->create([
             'site_id' => $site->id,
             'date_of_birth' => now()
         ]);
-        $employee_with_birthday_last_month = factory(Employee::class)->create([
+        $employee_with_birthday_last_month = Employee::factory()->create([
             'site_id' => $site->id,
             'date_of_birth' => now()->subMonths(4)
         ]);
-        $employee_with_birthday_next_month = factory(Employee::class)->create([
+        $employee_with_birthday_next_month = Employee::factory()->create([
             'site_id' => $site->id,
             'date_of_birth' => now()->addMonth()
         ]);
@@ -100,17 +100,17 @@ class BirthdaysControllerTest extends TestCase
     /** @test */
     public function it_shows_birthdays_for_last_month()
     {
-        $site = factory(Site::class)->create(['name' => config('dainsys.limit_queries.sites')[0]]);
+        $site = Site::factory()->create(['name' => config('dainsys.limit_queries.sites')[0]]);
 
-        $employee_with_birthday_this_month = factory(Employee::class)->create([
+        $employee_with_birthday_this_month = Employee::factory()->create([
             'site_id' => $site->id,
             'date_of_birth' => now()->startOfMonth()
         ]);
-        $employee_with_birthday_last_month = factory(Employee::class)->create([
+        $employee_with_birthday_last_month = Employee::factory()->create([
             'site_id' => $site->id,
             'date_of_birth' => now()->startOfMonth()->subMonth()
         ]);
-        $employee_with_birthday_next_month = factory(Employee::class)->create([
+        $employee_with_birthday_next_month = Employee::factory()->create([
             'site_id' => $site->id,
             'date_of_birth' => now()->startOfMonth()->addMonth()
         ]);
@@ -126,17 +126,17 @@ class BirthdaysControllerTest extends TestCase
     /** @test */
     public function it_shows_birthdays_for_next_month()
     {
-        $site = factory(Site::class)->create(['name' => config('dainsys.limit_queries.sites')[0]]);
+        $site = Site::factory()->create(['name' => config('dainsys.limit_queries.sites')[0]]);
 
-        $employee_with_birthday_this_month = factory(Employee::class)->create([
+        $employee_with_birthday_this_month = Employee::factory()->create([
             'site_id' => $site->id,
             'date_of_birth' => now()->startOfMonth()
         ]);
-        $employee_with_birthday_last_month = factory(Employee::class)->create([
+        $employee_with_birthday_last_month = Employee::factory()->create([
             'site_id' => $site->id,
             'date_of_birth' => now()->startOfMonth()->subMonths()
         ]);
-        $employee_with_birthday_next_month = factory(Employee::class)->create([
+        $employee_with_birthday_next_month = Employee::factory()->create([
             'site_id' => $site->id,
             'date_of_birth' => now()->addMonth()
         ]);
@@ -153,14 +153,14 @@ class BirthdaysControllerTest extends TestCase
     /** @test */
     public function birthdays_only_shows_default_sites_when_site_is_not_on_request()
     {
-        $site_default = factory(Site::class)->create(['name' => config('dainsys.limit_queries.sites')[0]]);
-        $site_any = factory(Site::class)->create();
+        $site_default = Site::factory()->create(['name' => config('dainsys.limit_queries.sites')[0]]);
+        $site_any = Site::factory()->create();
 
-        $employee_for_default_site = factory(Employee::class)->create([
+        $employee_for_default_site = Employee::factory()->create([
             'site_id' => $site_default->id,
             'date_of_birth' => now()
         ]);
-        $employee_for_any_site = factory(Employee::class)->create([
+        $employee_for_any_site = Employee::factory()->create([
             'site_id' => $site_any->id,
             'date_of_birth' => now()
         ]);
@@ -175,14 +175,14 @@ class BirthdaysControllerTest extends TestCase
     /** @test */
     public function birthdays_shows_all_when_site_is_on_request()
     {
-        $site_default = factory(Site::class)->create(['name' => config('dainsys.limit_queries.sites')[0]]);
-        $site_any = factory(Site::class)->create();
+        $site_default = Site::factory()->create(['name' => config('dainsys.limit_queries.sites')[0]]);
+        $site_any = Site::factory()->create();
 
-        $employee_for_default_site = factory(Employee::class)->create([
+        $employee_for_default_site = Employee::factory()->create([
             'site_id' => $site_default->id,
             'date_of_birth' => now()
         ]);
-        $employee_for_any_site = factory(Employee::class)->create([
+        $employee_for_any_site = Employee::factory()->create([
             'site_id' => $site_any->id,
             'date_of_birth' => now()
         ]);

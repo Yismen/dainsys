@@ -15,7 +15,7 @@ class EmployeeControllerTest extends TestCase
     /** @test */
     public function it_returns_a_employees_collection()
     {
-        factory(Employee::class)->create();
+        Employee::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/employees');
@@ -66,7 +66,7 @@ class EmployeeControllerTest extends TestCase
     /** @test */
     public function it_returns_all_employees()
     {
-        factory(Employee::class, 5)->create();
+        Employee::factory(5)->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/employees/all');
@@ -78,8 +78,8 @@ class EmployeeControllerTest extends TestCase
     /** @test */
     public function it_returns_active_employees_only()
     {
-        factory(Employee::class)->create();
-        factory(Termination::class)->create();
+        Employee::factory()->create();
+        Termination::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/employees/actives');
@@ -94,8 +94,8 @@ class EmployeeControllerTest extends TestCase
     public function it_returns_recent_employees_only()
     {
         Passport::actingAs($this->user());
-        $recent = factory(Employee::class)->create(['hire_date' => now()]);
-        $not_recent = factory(Termination::class)
+        $recent = Employee::factory()->create(['hire_date' => now()]);
+        $not_recent = Termination::factory()
             ->create()
             ->employee;
         $not_recent->update(['hire_date' => now()->subYears(5)]);

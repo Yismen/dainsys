@@ -14,7 +14,7 @@ class SchedulesControllerTest extends TestCase
     /** @test */
     public function it_returns_a_schedules_collection()
     {
-        factory(Schedule::class, 3)->create(['date' => now()->subDay()]);
+        Schedule::factory(3)->create(['date' => now()->subDay()]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/performances/schedules');

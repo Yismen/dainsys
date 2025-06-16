@@ -27,7 +27,7 @@ class ProcessesTest extends TestCase
     /** @test */
     public function ProcessShowsListOfProcesses()
     {
-        $process = factory(Process::class)->create();
+        $process = Process::factory()->create();
 
         Livewire::test(Processes::class)
             ->assertViewIs('livewire.processes')
@@ -45,7 +45,7 @@ class ProcessesTest extends TestCase
     /** @test */
     public function ProcessLimitsBasedOnSearch()
     {
-        $processes = factory(Process::class, 3)->create();
+        $processes = Process::factory(3)->create();
 
         Livewire::test(Processes::class)
             ->emit('searchUpdated', $processes[1]->name)

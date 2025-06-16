@@ -27,7 +27,7 @@ class StepsTest extends TestCase
     /** @test */
     public function StepShowsListOfSteps()
     {
-        $process = factory(Step::class)->create();
+        $process = Step::factory()->create();
 
         Livewire::test(Steps::class)
             ->assertViewIs('livewire.steps')
@@ -38,7 +38,7 @@ class StepsTest extends TestCase
     /** @test */
     public function steps_componenet_use_search_component()
     {
-        $step1 = factory(Step::class)->create();
+        $step1 = Step::factory()->create();
 
         Livewire::test(Steps::class)
             ->set('process_id', $step1->process_id)
@@ -48,7 +48,7 @@ class StepsTest extends TestCase
     /** @test */
     public function StepLimitsBasedOnSearch()
     {
-        $steps = factory(Step::class, 3)->create();
+        $steps = Step::factory(3)->create();
 
         Livewire::test(Steps::class)
             ->emit('searchUpdated', $steps[1]->name)
@@ -58,8 +58,8 @@ class StepsTest extends TestCase
     /** @test */
     public function steps_limit_by_process()
     {
-        $step1 = factory(Step::class)->create();
-        $step2 = factory(Step::class)->create();
+        $step1 = Step::factory()->create();
+        $step2 = Step::factory()->create();
 
         Livewire::test(Steps::class)
             ->assertDontSee($step1->name)

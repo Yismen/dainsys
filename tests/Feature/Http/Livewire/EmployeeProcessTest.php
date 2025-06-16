@@ -37,7 +37,7 @@ class EmployeeProcessTest extends TestCase
     /** @test */
     public function steps_componenet_use_search_component()
     {
-        $process = factory(Process::class, 5)->create();
+        $process = Process::factory(5)->create();
 
         Livewire::test(EmployeeProcess::class)
             // ->assertDontSeeLivewire(Search::class)
@@ -62,8 +62,8 @@ class EmployeeProcessTest extends TestCase
     /** @test */
     public function employees_can_be_assigned_to_a_process()
     {
-        $process = factory(Process::class)->create();
-        $employee = factory(Employee::class)->create();
+        $process = Process::factory()->create();
+        $employee = Employee::factory()->create();
 
         Livewire::test(EmployeeProcess::class)
             ->set('process_id', $process->id)
@@ -76,8 +76,8 @@ class EmployeeProcessTest extends TestCase
     /** @test */
     public function employees_can_be_un_assigned_to_a_process()
     {
-        $process = factory(Process::class)->create();
-        $employee = factory(Employee::class)->create();
+        $process = Process::factory()->create();
+        $employee = Employee::factory()->create();
         $employee->processes()->attach([$process->id]);
 
         Livewire::test(EmployeeProcess::class)

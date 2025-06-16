@@ -16,7 +16,7 @@ class EmployeesTest extends TestCase
     /** @test */
     public function guests_can_not_download_employees()
     {
-        factory(Employee::class)->create();
+        Employee::factory()->create();
 
         $this->get(route('admin.employees.export_to_excel', 'all'))
             ->assertRedirect('login');
@@ -27,7 +27,7 @@ class EmployeesTest extends TestCase
     /** @test */
     public function users_without_permission_can_not_download_employees()
     {
-        factory(Employee::class)->create();
+        Employee::factory()->create();
         $this->actingAs($this->user());
 
         $this->get(route('admin.employees.export_to_excel', 'all'))
@@ -41,7 +41,7 @@ class EmployeesTest extends TestCase
     {
         Excel::fake();
         $this->actingAs($this->userWithPermission('view-employees'));
-        factory(Employee::class)->create();
+        Employee::factory()->create();
 
         $this->get(route('admin.employees.export_to_excel', 'all'));
 
@@ -64,7 +64,7 @@ class EmployeesTest extends TestCase
             'first_name' => 'Updated Name',
             'last_name' => 'Updated Surname'
         ];
-        $employee = factory(Employee::class)->create();
+        $employee = Employee::factory()->create();
         $old_first_name = $employee->first_name;
         $old_last_name = $employee->last_name;
 

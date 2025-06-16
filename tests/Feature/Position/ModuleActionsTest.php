@@ -71,7 +71,7 @@ class ModuleActionsTest extends TestCase
     public function position_cannot_be_destroyed_if_has_active_employees()
     {
         $position = create(Position::class);
-        $active_employee = factory(Employee::class)->create(['position_id' => $position->id]);
+        $active_employee = Employee::factory()->create(['position_id' => $position->id]);
 
         $this->actingAs($this->userWithPermission('destroy-positions'));
         $response = $this->delete(route('admin.positions.destroy', $position->id));
@@ -100,8 +100,8 @@ class ModuleActionsTest extends TestCase
     public function authorized_users_can_destroy_position_if_all_its_employees_are_inactive()
     {
         $position = create(Position::class);
-        $inactive_employee = factory(Employee::class)->create(['position_id' => $position->id]);
-        factory(Termination::class)->create(['employee_id' => $inactive_employee]);
+        $inactive_employee = Employee::factory()->create(['position_id' => $position->id]);
+        Termination::factory()->create(['employee_id' => $inactive_employee]);
 
 
         $this->actingAs($this->userWithPermission('destroy-positions'))

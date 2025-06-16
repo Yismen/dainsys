@@ -27,7 +27,7 @@ class AfpTest extends TestCase
     /** @test */
     public function it_creates_a_afp_and_returns_json()
     {
-        $afp = factory(Afp::class)->make()->toArray();
+        $afp = Afp::factory()->make()->toArray();
         Passport::actingAs($this->user());
 
         $response = $this->post('/api/afps', $afp);

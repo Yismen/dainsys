@@ -14,7 +14,7 @@ class OvernightHoursControllerTest extends TestCase
     /** @test */
     public function it_returns_a_overnight_hours_collection()
     {
-        factory(OvernightHour::class, 5)->create();
+        OvernightHour::factory(5)->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/overnight_hours');

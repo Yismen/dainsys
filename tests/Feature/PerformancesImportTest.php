@@ -89,7 +89,7 @@ class PerformancesImportTest extends TestCase
     /** @test */
     public function it_deletes_data_for_given_file_name_and_date()
     {
-        $performance = factory(Performance::class)->create();
+        $performance = Performance::factory()->create();
         $attributes = [
             'date' => $performance->date,
             'file_name' => $performance->file_name,
@@ -107,8 +107,8 @@ class PerformancesImportTest extends TestCase
     /** @test */
     public function it_shows_all_performances_for_a_date()
     {
-        $date_1 = factory(Performance::class)->create(['date' => '2021-01-01']);
-        $date_2 = factory(Performance::class)->create(['date' => '2021-01-05']);
+        $date_1 = Performance::factory()->create(['date' => '2021-01-01']);
+        $date_2 = Performance::factory()->create(['date' => '2021-01-05']);
 
         $this->actingAs($this->userWithPermission('view-performances-import'));
 

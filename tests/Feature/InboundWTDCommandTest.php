@@ -23,8 +23,8 @@ class InboundWTDCommandTest extends TestCase
     {
         Excel::fake();
         Mail::fake();
-        $report = factory(Report::class)->create(['key' => 'inbound:send-wtd-summary']);
-        $recipients = factory(Recipient::class, 2)->create();
+        $report = Report::factory()->create(['key' => 'inbound:send-wtd-summary']);
+        $recipients = Recipient::factory(2)->create();
         $report->recipients()->sync($recipients->pluck('id')->toArray());
 
         $this->mockRepo(InboundDataRepository::class, []);
@@ -40,8 +40,8 @@ class InboundWTDCommandTest extends TestCase
         Mail::fake();
         $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
-        $report = factory(Report::class)->create(['key' => 'inbound:send-wtd-summary']);
-        $recipients = factory(Recipient::class, 2)->create();
+        $report = Report::factory()->create(['key' => 'inbound:send-wtd-summary']);
+        $recipients = Recipient::factory(2)->create();
         $report->recipients()->sync($recipients->pluck('id')->toArray());
 
         $this->mockRepo(InboundDataRepository::class, []);

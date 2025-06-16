@@ -27,7 +27,7 @@ class NationalityTest extends TestCase
     /** @test */
     public function it_creates_a_nationality_and_returns_json()
     {
-        $nationality = factory(Nationality::class)->make()->toArray();
+        $nationality = Nationality::factory()->make()->toArray();
         Passport::actingAs($this->user());
 
         $response = $this->post('/api/v2/nationalities', $nationality);

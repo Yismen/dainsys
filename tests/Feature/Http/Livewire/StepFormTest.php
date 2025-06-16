@@ -43,7 +43,7 @@ class StepFormTest extends TestCase
     /** @test */
     public function steps_form_prepares_for_editing_record()
     {
-        $step = factory(Step::class)->create();
+        $step = Step::factory()->create();
 
         Livewire::test(StepsForm::class)
             ->emit('wantsEditStep', $step)
@@ -60,7 +60,7 @@ class StepFormTest extends TestCase
     /** @test */
     public function steps_form_create_new_record()
     {
-        $process = factory(Process::class)->create();
+        $process = Process::factory()->create();
 
         Livewire::test(StepsForm::class)
             ->emit('wantsCreateStep')
@@ -84,7 +84,7 @@ class StepFormTest extends TestCase
     /** @test */
     public function steps_form_updates_record()
     {
-        $step = factory(Step::class)->create();
+        $step = Step::factory()->create();
 
         Livewire::test(StepsForm::class)
             ->emit('wantsEditStep', $step)

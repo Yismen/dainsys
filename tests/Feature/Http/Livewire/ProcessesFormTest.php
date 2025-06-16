@@ -42,7 +42,7 @@ class ProcessesFormTest extends TestCase
     /** @test */
     public function processes_form_prepares_for_editing_record()
     {
-        $process = factory(Process::class)->create();
+        $process = Process::factory()->create();
 
         Livewire::test(ProcessesForm::class)
             ->emit('wantsEditProcess', $process)
@@ -77,7 +77,7 @@ class ProcessesFormTest extends TestCase
     /** @test */
     public function processes_form_updates_record()
     {
-        $process = factory(Process::class)->create();
+        $process = Process::factory()->create();
 
         Livewire::test(ProcessesForm::class)
             ->emit('wantsEditProcess', $process)

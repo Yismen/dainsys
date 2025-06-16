@@ -22,8 +22,8 @@ class PublishingCommandsTest extends TestCase
         Mail::fake();
         Excel::fake();
         Notification::fake();
-        $report = factory(\App\Models\Report::class)->create(['key' => 'publishing:send-production-report']);
-        $recipients = factory(\App\Models\Recipient::class, 2)->create();
+        $report = \App\Models\Report::factory()->create(['key' => 'publishing:send-production-report']);
+        $recipients = \App\Models\Recipient::factory(2)->create();
         $report->recipients()->sync($recipients->pluck('id')->toArray());
 
         $this->artisan(SendPublishingProductionReportCommand::class)

@@ -14,7 +14,7 @@ class ProjectsControllerTest extends TestCase
     /** @test */
     public function it_returns_a_projects_collection()
     {
-        factory(Project::class)->create();
+        Project::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/performances/projects');

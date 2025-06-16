@@ -16,7 +16,7 @@ class LoginNamesTest extends TestCase
     /** @test */
     public function guests_can_not_download_login_names()
     {
-        factory(LoginName::class)->create();
+        LoginName::factory()->create();
 
         $this->get(route('admin.login_names.to-excel.all'))
             ->assertRedirect('login');
@@ -25,7 +25,7 @@ class LoginNamesTest extends TestCase
     /** @test */
     public function guests_can_not_download_employees_login_names()
     {
-        factory(LoginName::class)->create();
+        LoginName::factory()->create();
 
         $this->get(route('admin.login_names.to-excel.all-employees'))
             ->assertRedirect('login');
@@ -36,7 +36,7 @@ class LoginNamesTest extends TestCase
     /** @test */
     public function users_without_permission_can_not_download_login_names()
     {
-        factory(LoginName::class)->create();
+        LoginName::factory()->create();
         $this->actingAs($this->user());
 
         $this->get(route('admin.login_names.to-excel.all'))
@@ -46,7 +46,7 @@ class LoginNamesTest extends TestCase
     /** @test */
     public function users_without_permission_can_not_download_employees_login_names()
     {
-        factory(LoginName::class)->create();
+        LoginName::factory()->create();
         $this->actingAs($this->user());
 
         $this->get(route('admin.login_names.to-excel.all-employees'))
@@ -60,7 +60,7 @@ class LoginNamesTest extends TestCase
     {
         Excel::fake();
         $this->actingAs($this->userWithPermission('export-login-names-to-excel'));
-        factory(LoginName::class)->create();
+        LoginName::factory()->create();
 
         $this->get(route('admin.login_names.to-excel.all'))
             ->assertOk();
@@ -72,7 +72,7 @@ class LoginNamesTest extends TestCase
     public function it_download_all_employees_login_names()
     {
         Excel::fake();
-        factory(LoginName::class)->create();
+        LoginName::factory()->create();
         $this->actingAs($this->userWithPermission('export-login-names-to-excel'));
 
         $this->get(route('admin.login_names.to-excel.all-employees'));

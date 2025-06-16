@@ -14,7 +14,7 @@ class ProductionTest extends TestCase
     /** @test */
     public function it_returns_a_collection_of_monthly_stats()
     {
-        factory(Performance::class, 3)->create();
+        Performance::factory(3)->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/dashboards/production/monthly_stats');
@@ -39,7 +39,7 @@ class ProductionTest extends TestCase
     /** @test */
     public function it_returns_a_collection_of_mtd_stats()
     {
-        factory(Performance::class, 3)->create();
+        Performance::factory(3)->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/dashboards/production/mtd_stats');

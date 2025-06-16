@@ -15,7 +15,7 @@ class LoginNamesControllerTest extends TestCase
     /** @test */
     public function it_returns_a_login_names_collection()
     {
-        factory(LoginName::class, 3)->create();
+        LoginName::factory(3)->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/login_names');

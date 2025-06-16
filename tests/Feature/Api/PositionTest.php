@@ -32,7 +32,7 @@ class PositionTest extends TestCase
     /** @test */
     public function it_creates_a_position_and_returns_json()
     {
-        $position = factory(Position::class)->make()->toArray();
+        $position = Position::factory()->make()->toArray();
         Passport::actingAs($this->user());
 
         $response = $this->post('/api/positions', $position);

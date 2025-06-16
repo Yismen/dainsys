@@ -27,7 +27,7 @@ class DepartmentTest extends TestCase
     /** @test */
     public function it_creates_a_department_and_returns_json()
     {
-        $department = factory(Department::class)->make()->toArray();
+        $department = Department::factory()->make()->toArray();
         Passport::actingAs($this->user());
 
         $response = $this->post('/api/v2/departments', $department);

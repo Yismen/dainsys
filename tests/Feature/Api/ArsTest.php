@@ -27,7 +27,7 @@ class ArsTest extends TestCase
     /** @test */
     public function it_creates_a_ars_and_returns_json()
     {
-        $ars = factory(Ars::class)->make()->toArray();
+        $ars = Ars::factory()->make()->toArray();
         Passport::actingAs($this->user());
 
         $response = $this->post('/api/arss', $ars);

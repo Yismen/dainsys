@@ -20,7 +20,7 @@ class RecipientTest extends TestCase
             'title' => 'CEO',
         ];
 
-        factory(Recipient::class)->create($data);
+        Recipient::factory()->create($data);
 
         $this->assertDatabaseHas('recipients', $data);
     }
@@ -28,8 +28,8 @@ class RecipientTest extends TestCase
     /** @test */
     public function report_model_has_recipient()
     {
-        $report = factory(Report::class)->create();
-        $recipient = factory(Recipient::class)->create();
+        $report = Report::factory()->create();
+        $recipient = Recipient::factory()->create();
         $recipient->reports()->sync($report->pluck('id'));
 
         $this->assertDatabaseHas('recipient_report', ['recipient_id' => $recipient->id, 'report_id' => $report->id]);

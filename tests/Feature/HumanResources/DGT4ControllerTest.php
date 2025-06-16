@@ -84,8 +84,8 @@ class DGT4ControllerTest extends TestCase
     /** @test */
     public function it_shows_dgt4_report()
     {
-        $employee_hired_this_year = factory(Employee::class)->create(['hire_date' => now()]);
-        $employee_hired_last_year = factory(Employee::class)->create(['hire_date' => now()->subYear()]);
+        $employee_hired_this_year = Employee::factory()->create(['hire_date' => now()]);
+        $employee_hired_last_year = Employee::factory()->create(['hire_date' => now()->subYear()]);
         $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
 
         $this->post(route('admin.human_resources.dgt4.show', [
@@ -103,8 +103,8 @@ class DGT4ControllerTest extends TestCase
     public function it_downloads_dgt4_report()
     {
         Excel::fake();
-        $employee_hired_this_year = factory(Employee::class)->create(['hire_date' => now()]);
-        $employee_hired_last_year = factory(Employee::class)->create(['hire_date' => now()->subYear()]);
+        $employee_hired_this_year = Employee::factory()->create(['hire_date' => now()]);
+        $employee_hired_last_year = Employee::factory()->create(['hire_date' => now()->subYear()]);
         $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
 
         $this->get(route('admin.human_resources.dgt4.download', [

@@ -20,7 +20,7 @@ class UpdateBillableHoursAndRevenueTest extends TestCase
     {
         Queue::fake();
 
-        factory(Performance::class)->create([
+        Performance::factory()->create([
             'date' => now(),
             'login_time' => 10,
             'production_time' => 9,
@@ -37,9 +37,9 @@ class UpdateBillableHoursAndRevenueTest extends TestCase
     /** @test */
     public function billable_hours_and_revenue_is_updated_to_production_time_when_revenue_type_is_sales_or_production()
     {
-        $revenue_type = factory(RevenueType::class)->create(['name' => 'Sales Or Production']);
-        $campaign = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type->id, ]);
-        $performance = factory(Performance::class)->create([
+        $revenue_type = RevenueType::factory()->create(['name' => 'Sales Or Production']);
+        $campaign = Campaign::factory()->create(['revenue_type_id' => $revenue_type->id, ]);
+        $performance = Performance::factory()->create([
             'campaign_id' => $campaign->id,
             'login_time' => 10,
             'production_time' => 9,
@@ -64,9 +64,9 @@ class UpdateBillableHoursAndRevenueTest extends TestCase
     /** @test */
     public function billable_hours_and_revenue_is_updated_to_production_time_when_revenue_type_is_production_time()
     {
-        $revenue_type = factory(RevenueType::class)->create(['name' => 'Production Time']);
-        $campaign = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type->id]);
-        $performance = factory(Performance::class)->create([
+        $revenue_type = RevenueType::factory()->create(['name' => 'Production Time']);
+        $campaign = Campaign::factory()->create(['revenue_type_id' => $revenue_type->id]);
+        $performance = Performance::factory()->create([
             'campaign_id' => $campaign->id,
             'login_time' => 10,
             'production_time' => 9,
@@ -91,9 +91,9 @@ class UpdateBillableHoursAndRevenueTest extends TestCase
     /** @test */
     public function billable_hours_and_revenue_is_updated_to_talk_time_when_revenue_type_is_talk_time()
     {
-        $revenue_type = factory(RevenueType::class)->create(['name' => 'Talk Time']);
-        $campaign = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type->id]);
-        $performance = factory(Performance::class)->create([
+        $revenue_type = RevenueType::factory()->create(['name' => 'Talk Time']);
+        $campaign = Campaign::factory()->create(['revenue_type_id' => $revenue_type->id]);
+        $performance = Performance::factory()->create([
             'campaign_id' => $campaign->id,
             'login_time' => 10,
             'production_time' => 9,
@@ -118,9 +118,9 @@ class UpdateBillableHoursAndRevenueTest extends TestCase
     /** @test */
     public function billable_hours_and_revenue_is_updated_to_login_time_when_revenue_type_is_login_time()
     {
-        $revenue_type = factory(RevenueType::class)->create(['name' => 'Login Time']);
-        $campaign = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type->id]);
-        $performance = factory(Performance::class)->create([
+        $revenue_type = RevenueType::factory()->create(['name' => 'Login Time']);
+        $campaign = Campaign::factory()->create(['revenue_type_id' => $revenue_type->id]);
+        $performance = Performance::factory()->create([
             'campaign_id' => $campaign->id,
             'login_time' => 10,
             'production_time' => 9,
@@ -146,11 +146,11 @@ class UpdateBillableHoursAndRevenueTest extends TestCase
     public function billable_hours_and_revenue_only_update_specified_revenue_type()
     {
         Performance::unsetEventDispatcher();
-        $revenue_type_login_time = factory(RevenueType::class)->create(['name' => 'Login Time']);
-        $revenue_type_talk_time = factory(RevenueType::class)->create(['name' => 'Talk Time']);
-        $campaign_login_time = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type_login_time->id]);
-        $campaign_talk_time = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type_talk_time->id]);
-        $performance_1 = factory(Performance::class)->create([
+        $revenue_type_login_time = RevenueType::factory()->create(['name' => 'Login Time']);
+        $revenue_type_talk_time = RevenueType::factory()->create(['name' => 'Talk Time']);
+        $campaign_login_time = Campaign::factory()->create(['revenue_type_id' => $revenue_type_login_time->id]);
+        $campaign_talk_time = Campaign::factory()->create(['revenue_type_id' => $revenue_type_talk_time->id]);
+        $performance_1 = Performance::factory()->create([
             'campaign_id' => $campaign_login_time->id,
             'login_time' => 10,
             'production_time' => 10,
@@ -159,7 +159,7 @@ class UpdateBillableHoursAndRevenueTest extends TestCase
             'billable_hours' => 4,
             'revenue' => 4,
         ]);
-        $performance_2 = factory(Performance::class)->create([
+        $performance_2 = Performance::factory()->create([
             'campaign_id' => $campaign_talk_time->id,
             'login_time' => 10,
             'production_time' => 10,
@@ -193,16 +193,16 @@ class UpdateBillableHoursAndRevenueTest extends TestCase
     public function billable_hours_and_revenue_only_update_records_for_after_date_from()
     {
         Performance::unsetEventDispatcher();
-        $revenue_type = factory(RevenueType::class)->create(['name' => 'Login Time']);
-        $campaign = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type->id]);
-        $performance_recent = factory(Performance::class)->create([
+        $revenue_type = RevenueType::factory()->create(['name' => 'Login Time']);
+        $campaign = Campaign::factory()->create(['revenue_type_id' => $revenue_type->id]);
+        $performance_recent = Performance::factory()->create([
             'date' => now(),
             'campaign_id' => $campaign->id,
             'login_time' => 10,
             'billable_hours' => 4,
             'revenue' => 4,
         ]);
-        $performance_old = factory(Performance::class)->create([
+        $performance_old = Performance::factory()->create([
             'date' => now()->subMonths(2),
             'campaign_id' => $campaign->id,
             'login_time' => 10,
@@ -233,16 +233,16 @@ class UpdateBillableHoursAndRevenueTest extends TestCase
     public function billable_hours_and_revenue_only_update_records_for_before_date_to()
     {
         Performance::unsetEventDispatcher();
-        $revenue_type = factory(RevenueType::class)->create(['name' => 'Login Time']);
-        $campaign = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type->id]);
-        $performance_recent = factory(Performance::class)->create([
+        $revenue_type = RevenueType::factory()->create(['name' => 'Login Time']);
+        $campaign = Campaign::factory()->create(['revenue_type_id' => $revenue_type->id]);
+        $performance_recent = Performance::factory()->create([
             'date' => now(),
             'campaign_id' => $campaign->id,
             'login_time' => 10,
             'billable_hours' => 4,
             'revenue' => 4,
         ]);
-        $performance_old = factory(Performance::class)->create([
+        $performance_old = Performance::factory()->create([
             'date' => now()->subMonths(2),
             'campaign_id' => $campaign->id,
             'login_time' => 10,
@@ -273,16 +273,16 @@ class UpdateBillableHoursAndRevenueTest extends TestCase
     public function billable_hours_and_revenue_only_update_last_day_if_days_is_not_specified()
     {
         // Performance::unsetEventDispatcher();
-        $revenue_type = factory(RevenueType::class)->create(['name' => 'Login Time']);
-        $campaign = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type->id]);
-        $performance_recent = factory(Performance::class)->create([
+        $revenue_type = RevenueType::factory()->create(['name' => 'Login Time']);
+        $campaign = Campaign::factory()->create(['revenue_type_id' => $revenue_type->id]);
+        $performance_recent = Performance::factory()->create([
             'date' => now(),
             'campaign_id' => $campaign->id,
             'login_time' => 10,
             'billable_hours' => 4,
             'revenue' => 4,
         ]);
-        $performance_old = factory(Performance::class)->create([
+        $performance_old = Performance::factory()->create([
             'date' => now()->subDays(2),
             'campaign_id' => $campaign->id,
             'login_time' => 10,

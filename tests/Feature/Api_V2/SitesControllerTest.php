@@ -14,7 +14,7 @@ class SitesControllerTest extends TestCase
     /** @test */
     public function it_returns_a_sites_collection()
     {
-        factory(Site::class)->create();
+        Site::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/sites');

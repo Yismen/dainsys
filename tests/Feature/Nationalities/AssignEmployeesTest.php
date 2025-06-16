@@ -42,9 +42,9 @@ class AssignEmployeesTest extends TestCase
     /** @test */
     public function it_validates_before_assigning_employees_to_a_nationality()
     {
-        $nationality_1 = factory(Nationality::class)->create();
-        $nationality_2 = factory(Nationality::class)->create();
-        $employee = factory(Employee::class)->create(['nationality_id' => $nationality_1->id]);
+        $nationality_1 = Nationality::factory()->create();
+        $nationality_2 = Nationality::factory()->create();
+        $employee = Employee::factory()->create(['nationality_id' => $nationality_1->id]);
         $this->actingAs($this->userWithPermission('assign-nationalities-employees'));
 
         $attributes = [
@@ -63,9 +63,9 @@ class AssignEmployeesTest extends TestCase
     /** @test */
     public function it_assign_employees_to_a_nationality()
     {
-        $nationality_1 = factory(Nationality::class)->create();
-        $nationality_2 = factory(Nationality::class)->create();
-        $employee = factory(Employee::class)->create(['nationality_id' => $nationality_1->id]);
+        $nationality_1 = Nationality::factory()->create();
+        $nationality_2 = Nationality::factory()->create();
+        $employee = Employee::factory()->create(['nationality_id' => $nationality_1->id]);
         $this->actingAs($this->userWithPermission('assign-nationalities-employees'));
 
         $this->assertDatabaseHas('employees', [

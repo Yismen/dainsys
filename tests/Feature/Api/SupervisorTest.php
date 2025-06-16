@@ -27,7 +27,7 @@ class SupervisorTest extends TestCase
     /** @test */
     public function it_creates_a_supervisor_and_returns_json()
     {
-        $supervisor = factory(Supervisor::class)->make()->toArray();
+        $supervisor = Supervisor::factory()->make()->toArray();
         Passport::actingAs($this->user());
 
         $response = $this->post('/api/supervisors', $supervisor);

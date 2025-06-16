@@ -16,8 +16,8 @@ class AutomaticProcessAssignationTest extends TestCase
     /** @test */
     public function assigns_authomatic_processes_to_all_employees()
     {
-        $processes = factory(Process::class, 5)->create(['default' => true]);
-        $employees = factory(Employee::class, 5)->create();
+        $processes = Process::factory(5)->create(['default' => true]);
+        $employees = Employee::factory(5)->create();
 
         $this->artisan(AutomaticProcessAssignation::class);
 
@@ -31,8 +31,8 @@ class AutomaticProcessAssignationTest extends TestCase
     /** @test */
     public function it_does_not_assigns_authomatic_processes_to_employees()
     {
-        $processes = factory(Process::class, 5)->create(['default' => false]);
-        $employees = factory(Employee::class, 5)->create();
+        $processes = Process::factory(5)->create(['default' => false]);
+        $employees = Employee::factory(5)->create();
 
         $this->artisan(AutomaticProcessAssignation::class);
 

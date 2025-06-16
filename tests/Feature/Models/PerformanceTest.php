@@ -17,8 +17,8 @@ class PerformanceTest extends TestCase
     /** @test */
     public function performance_model_is_prunable()
     {
-        $not_prunable = factory(Performance::class)->create();
-        $prunable = factory(Performance::class)->create(['created_at' => now()->subYears(4)->startOfYear()]);
+        $not_prunable = Performance::factory()->create();
+        $prunable = Performance::factory()->create(['created_at' => now()->subYears(4)->startOfYear()]);
 $this->artisan(PruneCommand::class, [
     '--model' => [
         Performance::class
@@ -33,9 +33,9 @@ $this->artisan(PruneCommand::class, [
     /** @test */
     public function billable_hours_is_updated_to_production_time_when_revenue_type_is_sales_or_production()
     {
-        $revenue_type = factory(RevenueType::class)->create(['name' => 'Sales Or Production']);
-        $campaign = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type->id]);
-        $performance = factory(Performance::class)->create([
+        $revenue_type = RevenueType::factory()->create(['name' => 'Sales Or Production']);
+        $campaign = Campaign::factory()->create(['revenue_type_id' => $revenue_type->id]);
+        $performance = Performance::factory()->create([
             'campaign_id' => $campaign->id,
             'login_time' => 10,
             'production_time' => 9,
@@ -60,9 +60,9 @@ $this->artisan(PruneCommand::class, [
     /** @test */
     public function billable_hours_is_updated_to_production_time_when_revenue_type_is_production_time()
     {
-        $revenue_type = factory(RevenueType::class)->create(['name' => 'Production Time']);
-        $campaign = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type->id]);
-        $performance = factory(Performance::class)->create([
+        $revenue_type = RevenueType::factory()->create(['name' => 'Production Time']);
+        $campaign = Campaign::factory()->create(['revenue_type_id' => $revenue_type->id]);
+        $performance = Performance::factory()->create([
             'campaign_id' => $campaign->id,
             'login_time' => 10,
             'production_time' => 9,
@@ -87,9 +87,9 @@ $this->artisan(PruneCommand::class, [
     /** @test */
     public function billable_hours_is_updated_to_talk_time_when_revenue_type_is_talk_time()
     {
-        $revenue_type = factory(RevenueType::class)->create(['name' => 'Talk Time']);
-        $campaign = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type->id]);
-        $performance = factory(Performance::class)->create([
+        $revenue_type = RevenueType::factory()->create(['name' => 'Talk Time']);
+        $campaign = Campaign::factory()->create(['revenue_type_id' => $revenue_type->id]);
+        $performance = Performance::factory()->create([
             'campaign_id' => $campaign->id,
             'login_time' => 10,
             'production_time' => 9,
@@ -114,9 +114,9 @@ $this->artisan(PruneCommand::class, [
     /** @test */
     public function billable_hours_is_updated_to_login_time_when_revenue_type_is_login_time()
     {
-        $revenue_type = factory(RevenueType::class)->create(['name' => 'Login Time']);
-        $campaign = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type->id]);
-        $performance = factory(Performance::class)->create([
+        $revenue_type = RevenueType::factory()->create(['name' => 'Login Time']);
+        $campaign = Campaign::factory()->create(['revenue_type_id' => $revenue_type->id]);
+        $performance = Performance::factory()->create([
             'campaign_id' => $campaign->id,
             'login_time' => 10,
             'production_time' => 9,
@@ -141,9 +141,9 @@ $this->artisan(PruneCommand::class, [
     /** @test */
     public function billable_hours_is_updated_to_zero_when_revenue_type_is_downtime()
     {
-        $revenue_type = factory(RevenueType::class)->create(['name' => 'Downtime']);
-        $campaign = factory(Campaign::class)->create(['revenue_type_id' => $revenue_type->id]);
-        $performance = factory(Performance::class)->create([
+        $revenue_type = RevenueType::factory()->create(['name' => 'Downtime']);
+        $campaign = Campaign::factory()->create(['revenue_type_id' => $revenue_type->id]);
+        $performance = Performance::factory()->create([
             'campaign_id' => $campaign->id,
             'login_time' => 10,
             'production_time' => 9,

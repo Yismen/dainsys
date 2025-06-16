@@ -54,8 +54,8 @@ class PoliticalCommandsTest extends TestCase
         Excel::fake();
         Notification::fake();
         // $this->userWithRole('admin');
-        $report = factory(\App\Models\Report::class)->create(['key' => 'political:send-production-report']);
-        $recipients = factory(\App\Models\Recipient::class, 2)->create();
+        $report = \App\Models\Report::factory()->create(['key' => 'political:send-production-report']);
+        $recipients = \App\Models\Recipient::factory(2)->create();
         $report->recipients()->sync($recipients->pluck('id')->toArray());
 
         $this->mockRepo(TextCampaignSheet::class, []);
@@ -74,8 +74,8 @@ class PoliticalCommandsTest extends TestCase
         Excel::fake();
         Notification::fake();
         // $this->userWithRole('admin');
-        $report = factory(\App\Models\Report::class)->create(['key' => 'political:send-text-campaign-report']);
-        $recipients = factory(\App\Models\Recipient::class, 2)->create();
+        $report = \App\Models\Report::factory()->create(['key' => 'political:send-text-campaign-report']);
+        $recipients = \App\Models\Recipient::factory(2)->create();
         $report->recipients()->sync($recipients->pluck('id')->toArray());
 
         $this->mockRepo(TextCampaignSheet::class, []);
