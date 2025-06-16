@@ -41,14 +41,16 @@ class LoginName extends Model
      * --------------------------------------------
      * Accessors.
      */
-    public function getEmployeesListAttribute()
+    protected function employeesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Employee::select('id', 'first_name', 'second_first_name', 'last_name', 'second_last_name')
-            ->orderBy('first_name')
-            ->orderBy('second_first_name')
-            ->orderBy('last_name')
-            ->orderBy('second_last_name')
-            ->get()
-            ->pluck('fullName', 'id');
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return Employee::select('id', 'first_name', 'second_first_name', 'last_name', 'second_last_name')
+                ->orderBy('first_name')
+                ->orderBy('second_first_name')
+                ->orderBy('last_name')
+                ->orderBy('second_last_name')
+                ->get()
+                ->pluck('fullName', 'id');
+        });
     }
 }

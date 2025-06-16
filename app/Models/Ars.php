@@ -28,8 +28,10 @@ class Ars extends Model
         return $this->hasMany('App\Models\Employee');
     }
 
-    public function setNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['name'] = trim(ucwords($name));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
+            return ['name' => trim(ucwords($name))];
+        });
     }
 }

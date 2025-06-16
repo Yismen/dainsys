@@ -62,14 +62,14 @@ class DowntimesController extends Controller
             ->orderBy('date')
             ->when(
                 request('months'),
-                function ($performance_query) {
+                function ($performance_query): void {
                     $performance_query->whereDate(
                         'date',
                         '>=',
                         Carbon::now()->subMonths((int) request('months'))->startOfMonth()
                     );
                 },
-                function ($performance_query) {
+                function ($performance_query): void {
                     $performance_query->whereDate(
                         'date',
                         '>=',

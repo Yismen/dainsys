@@ -13,8 +13,10 @@ class AttendanceCode extends Model
         return $this->hasMany(Attendance::class, 'code_id');
     }
 
-    protected function getNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return ucwords(trim($name));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function ($name) {
+            return ucwords(trim($name));
+        });
     }
 }

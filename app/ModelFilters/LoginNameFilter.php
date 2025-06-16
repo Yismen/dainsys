@@ -6,7 +6,7 @@ class LoginNameFilter extends BaseModelFilter
 {
     public function recents($request)
     {
-        return $this->whereHas('employee', function ($query) {
+        return $this->whereHas('employee', function ($query): void {
             $query->recents();
         });
     }

@@ -30,7 +30,7 @@ class UsersController extends Controller
     public function index(User $users)
     {
         $users = $users
-            ->with(['roles' => function ($query) {
+            ->with(['roles' => function ($query): void {
                 $query->orderBy('name');
             },
             ])

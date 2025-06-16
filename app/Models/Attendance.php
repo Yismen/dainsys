@@ -7,10 +7,6 @@ use Carbon\Carbon;
 
 class Attendance extends Model
 {
-    protected $casts = [
-        'date' => 'datetime',
-    ];
-
     protected $fillable = ['employee_id', 'user_id', 'code_id', 'comments', 'date'];
 
     public function employee()
@@ -32,24 +28,33 @@ class Attendance extends Model
     {
         return $this->belongsTo(AttendanceCode::class, 'code_id');
     }
-
-    public function getDateAttribute($date)
+    protected function date(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Carbon::parse($date)->format('Y-m-d');
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function ($date) {
+            return Carbon::parse($date)->format('Y-m-d');
+        });
     }
-
-    public function getCodesListAttribute()
+    protected function codesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return AttendanceCode::all();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return AttendanceCode::all();
+        });
     }
-
-    public function getEmployeesListAttribute()
+    protected function employeesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return auth()->user()->supervisors->load(['employees' => function ($query) {
-            return $query->actives()->sorted();
-        },
-        ])->map(function ($item, $key) {
-            return $item->employees;
-        })->collapse();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return auth()->user()->supervisors->load(['employees' => function ($query) {
+                return $query->actives()->sorted();
+            },
+            ])->map(function ($item, $key) {
+                return $item->employees;
+            })->collapse();
+        });
+    }
+    protected function casts(): array
+    {
+        return [
+            'date' => 'datetime',
+        ];
     }
 }

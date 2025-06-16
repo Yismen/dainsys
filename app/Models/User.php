@@ -93,11 +93,13 @@ class User extends Authenticatable implements CanResetPassword
      *
      * @return void
      */
-    public function getIsLoggedInAttribute()
+    protected function isLoggedIn(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->login()
-            ->where(['logged_out_at' => null])
-            ->count() > 0;
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return $this->login()
+                ->where(['logged_out_at' => null])
+                ->count() > 0;
+        });
     }
 
     public function isOnline()

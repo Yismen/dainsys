@@ -50,10 +50,6 @@ class CapillusDailyPerformance extends Model
         'wrong_number',
     ];
 
-    protected $casts = [
-        'date' => 'datetime',
-    ];
-
     public function removeIfExists(array $options = [])
     {
         $options = array_merge([
@@ -88,5 +84,11 @@ class CapillusDailyPerformance extends Model
     public function scopePtd($query, Carbon $date)
     {
         return $query->where('date', '<=', $date);
+    }
+    protected function casts(): array
+    {
+        return [
+            'date' => 'datetime',
+        ];
     }
 }

@@ -32,22 +32,28 @@ class Shift extends Model
         return $this->belongsTo(Employee::class);
     }
 
-    public function getStartAtAttribute($start_at)
+    protected function startAt(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Carbon::parse($start_at)->format('H:i');
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function ($start_at) {
+            return Carbon::parse($start_at)->format('H:i');
+        });
     }
 
-    public function getEndAtAttribute($start_at)
+    protected function endAt(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Carbon::parse($start_at)->format('H:i');
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function ($start_at) {
+            return Carbon::parse($start_at)->format('H:i');
+        });
     }
 
-    public function getEmployeesListAttribute()
+    protected function employeesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Employee::actives()
-            ->orderBy('first_name')
-            ->orderBy('second_first_name')
-            ->orderBy('last_name')
-            ->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return Employee::actives()
+                ->orderBy('first_name')
+                ->orderBy('second_first_name')
+                ->orderBy('last_name')
+                ->get();
+        });
     }
 }

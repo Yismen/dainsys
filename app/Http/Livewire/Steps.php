@@ -35,17 +35,17 @@ class Steps extends Component
     {
         return Step::query()
             ->with(['process'])
-            ->when($this->process_id > 0, function ($query) {
+            ->when($this->process_id > 0, function ($query): void {
                 $query->whereHas('process', function ($query) {
                     return $query->where('id', '=', $this->process_id);
                 });
             })
             ->when(
                 $this->search,
-                function ($query) {
+                function ($query): void {
                     $this->resetPage();
 
-                    $query->where(function ($query) {
+                    $query->where(function ($query): void {
                         $query->where('name', 'like', "%{$this->search}%")
                             ->orWhere('description', 'like', "%{$this->search}%");
                     });

@@ -8,8 +8,11 @@ class TerminationType extends Model
 {
     protected $fillable = ['name', 'description'];
 
-    public function setNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->attributes['name'] = ucwords(trim($name));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
+            return $this->attributes['name'] = ucwords(trim($name));
+            return ['name' => ucwords(trim($name))];
+        });
     }
 }

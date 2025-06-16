@@ -8,14 +8,18 @@ class Client extends Model
 {
     protected $fillable = ['name', 'contact_name', 'main_phone', 'email', 'secondary_phone', 'account_number'];
 
-    public function setNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['name'] = ucwords(trim($name));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
+            return ['name' => ucwords(trim($name))];
+        });
     }
 
-    public function setContactNameAttribute($contact_name)
+    protected function contactName(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['contact_name'] = ucwords(trim($contact_name));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($contact_name) {
+            return ['contact_name' => ucwords(trim($contact_name))];
+        });
     }
 
     public function projects()

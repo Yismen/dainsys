@@ -19,22 +19,21 @@ class Track extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getModificationsAttribute(): array
+    protected function modifications(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $return = [];
-        $before = json_decode($this->before, true);
-        $after = json_decode($this->after, true);
-
-        $diff = array_diff_assoc($after, $before);
-
-        foreach ($diff as $key => $value) {
-            $return[$key] = [
-                'old' => $before[$key],
-                'new' => $value,
-            ];
-        }
-
-        return $return;
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            $return = [];
+            $before = json_decode($this->before, true);
+            $after = json_decode($this->after, true);
+            $diff = array_diff_assoc($after, $before);
+            foreach ($diff as $key => $value) {
+                $return[$key] = [
+                    'old' => $before[$key],
+                    'new' => $value,
+                ];
+            }
+            return $return;
+        });
     }
 
     public function hasModification(): bool

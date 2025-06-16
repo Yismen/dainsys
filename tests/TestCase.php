@@ -24,7 +24,7 @@ abstract class TestCase extends BaseTestCase
     protected function mockRepo(string $class, $data, array $methods = [])
     {
         $methods = array_merge(['getData'], $methods);
-        $this->partialMock($class, function ($mock) use ($data, $methods) {
+        $this->partialMock($class, function ($mock) use ($data, $methods): void {
             foreach ($methods as $method) {
                 $mock
                 ->shouldReceive($method)

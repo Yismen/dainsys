@@ -50,7 +50,7 @@ class Performance extends Model
     {
         parent::boot();
 
-        static::saving(function (self $model) {
+        static::saving(function (self $model): void {
             $employee = Employee::findOrfail($model->employee_id);
 
             // $model->unique_id = $model->date . '-' . $model->employee_id . '-' . $model->campaign_id;

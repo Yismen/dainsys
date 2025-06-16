@@ -36,7 +36,7 @@ class BecauseFlashReportExport implements FromView, WithColumnFormatting, WithTi
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 // format the whole tables
                 $event->sheet->getDelegate()->getStyle('A4:O13')->applyFromArray($this->tableStyle());
                 $event->sheet->getDelegate()->getStyle('A16:O25')->applyFromArray($this->tableStyle());

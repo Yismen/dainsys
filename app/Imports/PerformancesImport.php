@@ -104,7 +104,7 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
     {
         Performance::query()
             ->where('unique_id', $row['unique_id'])
-            ->orWhere(function ($performance_query) use ($row) {
+            ->orWhere(function ($performance_query) use ($row): void {
                 $performance_query
                     ->where('employee_id', $row['employee_id'])
                     ->where('campaign_id', $row['campaign_id'])
@@ -153,7 +153,7 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
     public function registerEvents(): array
     {
         return [
-            AfterImport::class => function (AfterImport $event) {
+            AfterImport::class => function (AfterImport $event): void {
                 $this->updateRevenueTypes();
 
                 $this->importedBy->notify(new UserAppNotification(
@@ -163,7 +163,7 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
                 ));
             },
 
-            ImportFailed::class => function (ImportFailed $event) {
+            ImportFailed::class => function (ImportFailed $event): void {
                 $this->importedBy->notify(new UserAppNotification(
                     'Import Failed!***',
                     $event->e->getMessage(),

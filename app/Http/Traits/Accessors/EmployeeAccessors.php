@@ -171,7 +171,7 @@ trait EmployeeAccessors
      */
     public function getFullNameAttribute()
     {
-        $name = join(" ", [
+        $name = implode(" ", [
             $this->first_name,
             $this->second_first_name,
             $this->last_name,

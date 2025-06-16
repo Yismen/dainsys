@@ -16,19 +16,25 @@ class Permission extends EmpatiePermission
         'destroy',
     ];
 
-    public function setNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['name'] = trim(Str::slug($name));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
+            return ['name' => trim(Str::slug($name))];
+        });
     }
 
-    public function setResourceAttribute($resource)
+    protected function resource(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['resource'] = trim(Str::slug($resource));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($resource) {
+            return ['resource' => trim(Str::slug($resource))];
+        });
     }
 
-    public function getRolesListAttribute()
+    protected function rolesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Role::orderBy('name')->pluck('name', 'id')->toArray();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return Role::orderBy('name')->pluck('name', 'id')->toArray();
+        });
     }
 
     public function createPermission($request)
@@ -64,7 +70,7 @@ class Permission extends EmpatiePermission
 
         $selected = [];
 
-        foreach ($actions as $key => $value) {
+        foreach ($actions as $value) {
             $selected[$value] = $value;
         }
 

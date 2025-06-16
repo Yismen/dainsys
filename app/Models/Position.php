@@ -49,49 +49,59 @@ class Position extends Model
      * -----------------------------------------------------
      * Accessors
      */
-    public function getNameAndDepartmentAttribute()
+    protected function nameAndDepartment(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return ucwords(trim(
-            $this->department?->name . '-' . $this->name
-        ));
-    }
-
-    public function getDepartmentsListAttribute()
-    {
-        return Department::select('id', 'name')->orderBy('name')->get();
-    }
-
-    public function getPaymentTypesListAttribute()
-    {
-        return Cache::rememberForever('payment_types_list', function () {
-            return PaymentType::select('id', 'name')->orderBy('name')->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return ucwords(trim(
+                $this->department?->name . '-' . $this->name
+            ));
         });
     }
 
-    public function getPayPerHoursAttribute()
+    protected function departmentsList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $salary = $this->salary;
-
-        if ($this->payment_type) {
-            if (strtolower($this->payment_type->name) === 'salary') {
-                return $salary / 23.83 / 8;
-            }
-        }
-
-        return $salary;
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return Department::select('id', 'name')->orderBy('name')->get();
+        });
     }
 
-    public function getPaymentFrequenciesListAttribute()
+    protected function paymentTypesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return PaymentFrequency::select('id', 'name')->orderBy('name')->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return Cache::rememberForever('payment_types_list', function () {
+                return PaymentType::select('id', 'name')->orderBy('name')->get();
+            });
+        });
+    }
+
+    protected function payPerHours(): \Illuminate\Database\Eloquent\Casts\Attribute
+    {
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            $salary = $this->salary;
+            if ($this->payment_type) {
+                if (strtolower($this->payment_type->name) === 'salary') {
+                    return $salary / 23.83 / 8;
+                }
+            }
+            return $salary;
+        });
+    }
+
+    protected function paymentFrequenciesList(): \Illuminate\Database\Eloquent\Casts\Attribute
+    {
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return PaymentFrequency::select('id', 'name')->orderBy('name')->get();
+        });
     }
 
     /**
      * ----------------------------------------------------------
      * Mutators
      */
-    public function setNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['name'] = ucwords(strtolower(trim($name)));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
+            return ['name' => ucwords(strtolower(trim($name)))];
+        });
     }
 }

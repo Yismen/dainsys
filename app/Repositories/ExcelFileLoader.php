@@ -73,7 +73,7 @@ class ExcelFileLoader
 
     private function handleLoad($file)
     {
-        Excel::load($file, function ($reader) {
+        Excel::load($file, function ($reader): void {
             foreach ($reader->toArray() as $index => $data) {
                 $this->handleRow($reader, $data, $index);
             }

@@ -25,7 +25,7 @@ class Downtime extends Model
     {
         parent::boot();
 
-        static::saving(function ($model) {
+        static::saving(function ($model): void {
             $employe = Employee::with('supervisor')->findOrfail(request('employee_id'));
 
             $model->unique_id = request('date') . '-' . request('employee_id') . '-' . request('campaign_id');

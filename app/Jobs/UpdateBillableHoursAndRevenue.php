@@ -36,7 +36,7 @@ class UpdateBillableHoursAndRevenue implements ShouldQueue
      */
     public function handle()
     {
-        $this->performances->each(function (Performance $performance) {
+        $this->performances->each(function (Performance $performance): void {
             $performance->parseBillableHoursAndRevenue();
         });
     }

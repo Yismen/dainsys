@@ -44,8 +44,8 @@ abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAu
     {
         return Employee::query()
             ->orderBy('first_name')
-            ->when($this->site, function ($query) {
-                $query->whereHas('site', function ($query) {
+            ->when($this->site, function ($query): void {
+                $query->whereHas('site', function ($query): void {
                     $query->where('name', 'like', "{$this->site}%");
                 });
             })
@@ -57,7 +57,7 @@ abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAu
                 'nationality',
                 'site',
                 'project',
-                'position' => function ($query) {
+                'position' => function ($query): void {
                     $query->with([
                         'department',
                         'payment_type',
@@ -65,7 +65,7 @@ abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAu
                 },
                 'bankAccount',
                 'supervisor',
-                'termination' => function ($terinationQuery) {
+                'termination' => function ($terinationQuery): void {
                     $terinationQuery->with([
                         'terminationType'
                     ]);

@@ -8,12 +8,6 @@ use App\Models\DainsysModel as Model;
 class OvernightHour extends Model
 {
     use FilterableTrait;
-    /**
-     * Convert fields to Carbon Intances
-     */
-    protected $casts = [
-        'date' => 'datetime',
-    ];
 
     protected $fillable = ['date', 'employee_id', 'hours', 'unique_id'];
 
@@ -21,15 +15,15 @@ class OvernightHour extends Model
     {
         parent::boot();
 
-        static::creating(function ($model) {
+        static::creating(function ($model): void {
             if (! $model->unique_id) {
-                $model->unique_id = join('-', [$model->date->format('Y-m-d'), $model->employee_id, 'punch']);
+                $model->unique_id = implode('-', [$model->date->format('Y-m-d'), $model->employee_id, 'punch']);
             }
         });
 
-        static::updating(function ($model) {
+        static::updating(function ($model): void {
             if (! $model->unique_id) {
-                $model->unique_id = join('-', [$model->date->format('Y-m-d'), $model->employee_id, 'punch']);
+                $model->unique_id = implode('-', [$model->date->format('Y-m-d'), $model->employee_id, 'punch']);
             }
         });
     }
@@ -55,5 +49,14 @@ class OvernightHour extends Model
         foreach ($duplicateds as $duplicated) {
             $duplicated->delete();
         }
+    }
+    /**
+     * Convert fields to Carbon Intances
+     */
+    protected function casts(): array
+    {
+        return [
+            'date' => 'datetime',
+        ];
     }
 }

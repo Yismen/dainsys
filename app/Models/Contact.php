@@ -28,9 +28,11 @@ class Contact extends Model
      *
      * @return mutated
      */
-    public function getWorksAtAttribute($work)
+    protected function worksAt(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return ucwords(trim($work));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function ($work) {
+            return ucwords(trim($work));
+        });
     }
 
     /**
@@ -40,9 +42,11 @@ class Contact extends Model
      *
      * @return mutated
      */
-    public function getPositionAttribute($position)
+    protected function position(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return ucwords(trim($position));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function ($position) {
+            return ucwords(trim($position));
+        });
     }
 
     /**
@@ -52,9 +56,11 @@ class Contact extends Model
      *
      * @return mutated attribute
      */
-    public function setNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['name'] = ucwords(trim($name));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
+            return ['name' => ucwords(trim($name))];
+        });
     }
 
     /**
@@ -68,7 +74,7 @@ class Contact extends Model
         /**
          * Hide contacts not owed by current user
          */
-        static::addGlobalScope('user', function (Builder $builder) {
+        static::addGlobalScope('user', function (Builder $builder): void {
             if (auth()->check()) {
                 $builder->whereUserId(auth()->user()->id);
             }

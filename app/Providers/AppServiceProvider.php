@@ -25,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
 
         Model::preventLazyLoading(! $this->app->isProduction());
 
-        Queue::failing(function (JobFailed $jobFailed) {
-            $users = User::whereHas('roles', function ($query) {
+        Queue::failing(function (JobFailed $jobFailed): void {
+            $users = User::whereHas('roles', function ($query): void {
                 $query->where('name', 'like', 'admin');
             })
                 ->get()

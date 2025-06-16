@@ -37,19 +37,23 @@ class Schedule extends Model
         return $this->belongsTo(Employee::class);
     }
 
-    public function getEmployeesListAttribute()
+    protected function employeesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Employee::actives()
-            ->orderBy('first_name')
-            ->orderBy('second_first_name')
-            ->orderBy('last_name')
-            ->orderBy('second_last_name')
-            ->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return Employee::actives()
+                ->orderBy('first_name')
+                ->orderBy('second_first_name')
+                ->orderBy('last_name')
+                ->orderBy('second_last_name')
+                ->get();
+        });
     }
 
-    public function getDateAttribute($date)
+    protected function date(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Carbon::parse($date);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function ($date) {
+            return Carbon::parse($date);
+        });
     }
 
     public function createNew($data)

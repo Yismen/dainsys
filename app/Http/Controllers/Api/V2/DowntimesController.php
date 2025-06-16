@@ -58,10 +58,10 @@ class DowntimesController extends Controller
             ->orderBy('date')
             ->when(
                 request('project_campaign'),
-                function ($project_campaign_query) {
+                function ($project_campaign_query): void {
                     $project_campaign_query->whereHas(
                         'campaign.project',
-                        function ($project_query) {
+                        function ($project_query): void {
                             $project_query->whereName(request('project_campaign'));
                         }
                     );
@@ -69,14 +69,14 @@ class DowntimesController extends Controller
             )
             ->when(
                 request('months'),
-                function ($performance_query) {
+                function ($performance_query): void {
                     $performance_query->whereDate(
                         'date',
                         '>=',
                         Carbon::now()->subMonths((int) request('months'))->startOfMonth()
                     );
                 },
-                function ($performance_query) {
+                function ($performance_query): void {
                     $performance_query->whereDate(
                         'date',
                         '>=',

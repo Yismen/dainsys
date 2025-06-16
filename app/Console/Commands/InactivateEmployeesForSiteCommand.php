@@ -51,7 +51,7 @@ class InactivateEmployeesForSiteCommand extends Command
         }
 
         $employees = Employee::query()
-            ->whereHas('site', function ($query) use ($site) {
+            ->whereHas('site', function ($query) use ($site): void {
                 $query->where('name', 'like', $site);
             })
             ->actives()

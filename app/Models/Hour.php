@@ -8,10 +8,6 @@ class Hour extends Model
 {
     protected $fillable = ['employee_id', 'name', 'date', 'unique_id', 'regulars', 'nightly', 'holidays', 'training', 'overtime'];
 
-    protected $casts = [
-        'date' => 'datetime',
-    ];
-
     // Relationships =============================================
     public function employee()
     {
@@ -25,4 +21,10 @@ class Hour extends Model
     // Accessors =================================================
 
     // Mutators ==================================================
+    protected function casts(): array
+    {
+        return [
+            'date' => 'datetime',
+        ];
+    }
 }

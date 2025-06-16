@@ -34,11 +34,11 @@ class ImageMaker
 
     private static function resizeImage()
     {
-        self::$IMAGE = self::$IMAGE->resize(self::$WIDTH, null, function ($constraint) {
+        self::$IMAGE = self::$IMAGE->resize(self::$WIDTH, null, function ($constraint): void {
             $constraint->aspectRatio();
         });
 
-        self::$IMAGE = self::$IMAGE->resize(null, self::$HEIGHT, function ($constraint) {
+        self::$IMAGE = self::$IMAGE->resize(null, self::$HEIGHT, function ($constraint): void {
             $constraint->aspectRatio();
         });
     }

@@ -101,9 +101,9 @@ class PerformanceImportController extends Controller
 
         $performances = Performance::query()
             ->where('date', request('date'))
-            ->when($has_file_name, function ($query) {
+            ->when($has_file_name, function ($query): void {
                 $query->where('file_name', request('file_name'));
-            }, function ($query) {
+            }, function ($query): void {
                 $query->whereNull('file_name');
             })
             ->get();

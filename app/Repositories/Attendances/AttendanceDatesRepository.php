@@ -33,7 +33,7 @@ class AttendanceDatesRepository
                     ->where('user_id', 'like', $this->current_user);
             },
             ])
-            ->whereHas('attendances', function ($query) {
+            ->whereHas('attendances', function ($query): void {
                 $query->whereDate('date', $this->date)
                     ->where('user_id', 'like', $this->current_user);
             })

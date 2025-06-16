@@ -87,7 +87,7 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
                 $this->sheet->getColumnDimension('A')->setWidth(30);

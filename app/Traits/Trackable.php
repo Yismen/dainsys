@@ -18,7 +18,7 @@ trait Trackable
     {
         parent::boot();
 
-        static::updating(function ($model) {
+        static::updating(function ($model): void {
             $model->recordChanges();
         });
     }

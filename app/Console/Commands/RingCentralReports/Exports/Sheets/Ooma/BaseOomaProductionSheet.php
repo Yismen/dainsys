@@ -60,7 +60,7 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 $rows = count($this->data) + 2;
                 $totals_row = $rows + 1;
                 $sheet = $event->sheet->getDelegate();

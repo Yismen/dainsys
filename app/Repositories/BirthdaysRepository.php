@@ -53,7 +53,7 @@ class BirthdaysRepository
             ->filter(request()->all())
             ->with([
                 'site',
-                'position' => function ($query) {
+                'position' => function ($query): void {
                     $query->with([
                         'department',
                         'payment_type',

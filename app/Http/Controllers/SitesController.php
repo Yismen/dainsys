@@ -26,7 +26,7 @@ class SitesController extends Controller
                     ->orderBy('last_name')
                     ->orderBy('second_last_name')
                     ->with([
-                        'position' => function ($query) {
+                        'position' => function ($query): void {
                             $query->with(['department', 'payment_type']);
                         },
                         'project',

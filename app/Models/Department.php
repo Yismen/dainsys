@@ -15,9 +15,12 @@ class Department extends Model
      *
      * @return string             converted string
      */
-    public function setNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->attributes['name'] = ucwords($name);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
+            return $this->attributes['name'] = ucwords($name);
+            return ['name' => ucwords($name)];
+        });
     }
 
     public function positions()

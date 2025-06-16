@@ -23,7 +23,7 @@ class EmployeesExport extends AbstractEmployeesExport
 
     public function title(): string
     {
-        return str(join(' ', [
+        return str(implode(' ', [
             'Employees',
             $this->scope,
         ]))->headline();

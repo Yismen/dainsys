@@ -32,7 +32,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
-        $this->routes(function () {
+        $this->routes(function (): void {
             Route::prefix('api')
                 ->middleware('api')
                 ->namespace($this->namespace)
@@ -89,7 +89,7 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::bind('department', function ($id) {
             return \App\Models\Department::whereId($id)
-                ->with(['positions' => function ($query) {
+                ->with(['positions' => function ($query): void {
                     $query->orderBy('name');
                 },
                 ])
@@ -238,15 +238,15 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::bind('role', function ($role) {
             return \App\Models\Role::whereName($role)
-                ->with(['permissions' => function ($query) {
+                ->with(['permissions' => function ($query): void {
                     $query->orderBy('resource');
                 },
                 ])
-                ->with(['users' => function ($query) {
+                ->with(['users' => function ($query): void {
                     $query->orderBy('name');
                 },
                 ])
-                ->with(['menus' => function ($query) {
+                ->with(['menus' => function ($query): void {
                     $query->orderBy('display_name');
                 },
                 ])

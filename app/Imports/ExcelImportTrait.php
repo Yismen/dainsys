@@ -37,14 +37,14 @@ trait ExcelImportTrait
     public function registerEvents(): array
     {
         return [
-            AfterImport::class => function (AfterImport $event) {
+            AfterImport::class => function (AfterImport $event): void {
                 $this->importedBy->notify(new UserAppNotification(
                     'Data Imported Succesfully!',
                     "File {$this->file_name} was imported!",
                     'success'
                 ));
             },
-            ImportFailed::class => function (ImportFailed $event) {
+            ImportFailed::class => function (ImportFailed $event): void {
                 $this->importedBy->notify(new UserAppNotification(
                     'Import Failed!***',
                     $event->e->getMessage(),

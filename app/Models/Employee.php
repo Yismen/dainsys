@@ -42,15 +42,6 @@ class Employee extends Model
         'has_kids',
         'photo',
     ];
-    /**
-     * Fields to be converted to Carbon instances.
-     *
-     * @var Carbon Instance
-     */
-    protected $casts = [
-        'hire_date' => 'datetime',
-        'date_of_birth' => 'datetime',
-    ];
 
     protected $guarded = [];
 
@@ -205,7 +196,7 @@ class Employee extends Model
             // ])
             ->whereHas(
                 'termination',
-                function ($query) {
+                function ($query): void {
                     $query->whereDate('termination_date', '<=', Carbon::today());
                 }
             );
@@ -238,9 +229,9 @@ class Employee extends Model
         $date = Carbon::parse($date);
 
         return $query->where('hire_date', '<=', $date)
-            ->where(function ($query) use ($date) {
+            ->where(function ($query) use ($date): void {
                 $query->has('termination', false)
-                    ->orWhereHas('termination', function ($query) use ($date) {
+                    ->orWhereHas('termination', function ($query) use ($date): void {
                         $query->where('termination_date', '>=', $date);
                     });
             });
@@ -255,8 +246,8 @@ class Employee extends Model
     {
         $default_sites = config('dainsys.limit_queries.sites');
 
-        return $query->when(request('site') === null, function ($query) use ($default_sites) {
-            $query->whereHas('site', function ($site_query) use ($default_sites) {
+        return $query->when(request('site') === null, function ($query) use ($default_sites): void {
+            $query->whereHas('site', function ($site_query) use ($default_sites): void {
                 $site_query->whereIn('name', $default_sites);
             });
         });
@@ -265,7 +256,7 @@ class Employee extends Model
     public function scopeMissingPhoto($query)
     {
         $query
-            ->where(function ($query) {
+            ->where(function ($query): void {
                 $query
                     ->where('photo', '')
                     ->orWhereNull('photo');
@@ -412,5 +403,17 @@ class Employee extends Model
 
             return (int) $process->steps_count === 0 ? 0 : (int) $employee_process_steps_count / (int) $process->steps_count * 100;
         });
+    }
+    /**
+     * Fields to be converted to Carbon instances.
+     *
+     * @return Carbon Instance
+     */
+    protected function casts(): array
+    {
+        return [
+            'hire_date' => 'datetime',
+            'date_of_birth' => 'datetime',
+        ];
     }
 }

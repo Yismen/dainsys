@@ -36,7 +36,7 @@ class CapillusFlashReportExport implements FromView, WithColumnFormatting, WithT
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 // format the whole tables
                 $event->sheet->getDelegate()->getStyle('A4:U13')->applyFromArray($this->tableStyle());
                 $event->sheet->getDelegate()->getStyle('A16:U25')->applyFromArray($this->tableStyle());

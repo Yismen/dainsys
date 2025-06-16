@@ -13,14 +13,9 @@ class Termination extends Model
 
     protected $fillable = ['employee_id', 'termination_date', 'termination_type_id', 'termination_reason_id', 'can_be_rehired', 'comments', 'employee_data'];
 
-    protected $casts = [
-        'can_be_rehired' => 'boolean',
-        'termination_date' => 'datetime'
-    ];
-
     protected static function booted()
     {
-        static::created(function (Termination $termination) {
+        static::created(function (Termination $termination): void {
             $employee = $termination->employee->load([
                 'site',
                 'project',
@@ -45,15 +40,24 @@ class Termination extends Model
     {
         return $this->belongsTo('App\Models\TerminationReason');
     }
-
-    public function setTerminationDateAttribute($date)
+    protected function terminationDate(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $date = Carbon::parse($date)->format('Y-m-d');
-        $this->attributes['termination_date'] = $date;
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($date) {
+            $date = Carbon::parse($date)->format('Y-m-d');
+            return ['termination_date' => $date];
+        });
     }
-
-    public function getEmployeeDataAttribute($data)
+    protected function employeeData(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return json_decode($data);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function ($data) {
+            return json_decode($data);
+        });
+    }
+    protected function casts(): array
+    {
+        return [
+            'can_be_rehired' => 'boolean',
+            'termination_date' => 'datetime'
+        ];
     }
 }

@@ -28,18 +28,24 @@ class Campaign extends Model
         return $this->hasMany(Performance::class);
     }
 
-    public function getProjectListAttribute()
+    protected function projectList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Project::orderBy('name')->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return Project::orderBy('name')->get();
+        });
     }
 
-    public function getSourceListAttribute()
+    protected function sourceList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Source::orderBy('name')->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return Source::orderBy('name')->get();
+        });
     }
 
-    public function getRevenueTypeListAttribute()
+    protected function revenueTypeList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return RevenueType::orderBy('name')->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return RevenueType::orderBy('name')->get();
+        });
     }
 }

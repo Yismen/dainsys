@@ -22,16 +22,6 @@ class Article extends Model
      */
     protected $fillable = ['username', 'title', 'body', 'excert', 'main_image', 'published_at'];
 
-    /**
-     * Additional dates field to be treated as an instance of Carbon
-     *
-     * @dates [array]
-     */
-
-    protected $casts = [
-    'tpublished_at' => 'datetime',
-];
-
     public function sluggable(): array
     {
         return [
@@ -41,84 +31,81 @@ class Article extends Model
             ],
         ];
     }
-
     /**
      * Set the title field to be always in propper case
      *
      * @param [attribute] $title [description]
      */
-    public function setTitleAttribute($title)
+    protected function title(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['title'] = trim(ucwords($title));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($title) {
+            return ['title' => trim(ucwords($title))];
+        });
     }
-
     /**
      * Get a list os the taks ids associated with current article
      *
      * @return [array] [description]
      */
-    public function getTagListAttribute()
+    protected function tagList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->tags->pluck('id');
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return $this->tags->pluck('id');
+        });
     }
-
     /**
      * set the body field to be always Uc First
      *
      * @param [string] $body [the body attrbute]
      */
-    public function setBodyAttribute($body)
+    protected function body(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['body'] = ucfirst(trim($body));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($body) {
+            return ['body' => ucfirst(trim($body))];
+        });
     }
-
-    public function setUsernameAttribute()
+    protected function username(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['username'] = auth()->user()->username;
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function () {
+            return ['username' => auth()->user()->username];
+        });
     }
-
-    /**
-     * Parse the published at date provided by the user
-     *
-     * @param [string] $date
-     */
-    public function setPublishedAtAttribute($date)
-    {
-        $format = 'Y-m-d';
-        $date = Carbon::parse($date)->format($format);
-        $this->attributes['published_at'] = Carbon::createFromFormat($format, $date);
-    }
-
     /**
      * Parse the published at date returned to the user
      *
      * @param [string] $date
      */
-    public function getPublishedAtAttribute($date)
+    protected function publishedAt(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Carbon::parse($date);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function ($date) {
+            return Carbon::parse($date);
+        }, set: function ($date) {
+            $format = 'Y-m-d';
+            $date = Carbon::parse($date)->format($format);
+            return ['published_at' => Carbon::createFromFormat($format, $date)];
+        });
     }
-
-    public function getNextAttribute()
+    protected function next(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $article = $this->orderBy('published_at', 'ASC')
-            // ->orderBy('id', 'DESC')
-            ->where('published_at', '>', $this->published_at)
-            ->published()
-            ->get()->first();
-
-        return $article ? $article : null;
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            $article = $this->orderBy('published_at', 'ASC')
+                // ->orderBy('id', 'DESC')
+                ->where('published_at', '>', $this->published_at)
+                ->published()
+                ->get()->first();
+            return $article ? $article : null;
+        });
     }
-
-    public function getPreviousAttribute()
+    protected function previous(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $article = $this->orderBy('published_at', 'DESC')
-            // ->orderBy('id', 'DESC')
-            ->where('published_at', '<', $this->published_at)
-            ->published()
-            ->first();
-
-        return $article ? $article : null;
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            $article = $this->orderBy('published_at', 'DESC')
+                // ->orderBy('id', 'DESC')
+                ->where('published_at', '<', $this->published_at)
+                ->published()
+                ->first();
+            return $article ? $article : null;
+        });
     }
 
     /**
@@ -208,14 +195,27 @@ class Article extends Model
     {
         return $this->belongsToMany('App\Models\Tag');
     }
-
-    public function getNextArticleAttribute()
+    protected function nextArticle(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->attributes['next_article'] = $this->next;
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return $this->attributes['next_article'] = $this->next;
+        });
     }
-
-    public function getPreviousArticleAttribute()
+    protected function previousArticle(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->attributes['previous_article'] = $this->previous;
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return $this->attributes['previous_article'] = $this->previous;
+        });
+    }
+    /**
+     * Additional dates field to be treated as an instance of Carbon
+     *
+     * @dates [array]
+     */
+    protected function casts(): array
+    {
+        return [
+        'tpublished_at' => 'datetime',
+    ];
     }
 }

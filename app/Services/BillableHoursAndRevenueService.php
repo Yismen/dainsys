@@ -30,10 +30,10 @@ class BillableHoursAndRevenueService
             ->with('campaign.revenueType')
             ->when(
                 count($this->dates) === 1,
-                function ($query) {
+                function ($query): void {
                     $query->whereDate($this->date_field, Carbon::parse($this->dates[0]));
                 },
-                function ($query) {
+                function ($query): void {
                     $query->whereBetween($this->date_field, [
                         Carbon::parse($this->dates[0])->startOfDay(),
                         Carbon::parse($this->dates[1])->endOfDay(),
@@ -42,8 +42,8 @@ class BillableHoursAndRevenueService
             )
             ->when(
                 $this->revenue_type,
-                function ($query) {
-                    $query->whereHas('campaign.revenueType', function ($query) {
+                function ($query): void {
+                    $query->whereHas('campaign.revenueType', function ($query): void {
                         $query->where('name', 'like', "{$this->revenue_type}%");
                     });
                 }

@@ -21,11 +21,11 @@ class AttendanceEmployeesRepository
     public function data()
     {
         return AttendanceCode::query()
-            ->whereHas('attendances', function ($query) {
+            ->whereHas('attendances', function ($query): void {
                 $query->where('employee_id', $this->employee)
                     ->whereDate('date', '>=', Carbon::now()->subMonths(2)->startOfMonth());
             })
-            ->with(['attendances' => function ($query) {
+            ->with(['attendances' => function ($query): void {
                 $query->where('employee_id', $this->employee)
                     ->whereDate('date', '>=', Carbon::now()->subMonths(2)->startOfMonth());
             },

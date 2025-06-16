@@ -47,7 +47,7 @@ class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateForm
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 $totalsRow = $this->rows + 1;
 
                 // auto

@@ -38,7 +38,7 @@ class WowDispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCa
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 

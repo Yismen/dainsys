@@ -88,7 +88,7 @@ class OomaMonthTDCallsSheet extends DispositionsSheet
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 $rows = count($this->data) + 1;
                 $last_column = 'W';
 

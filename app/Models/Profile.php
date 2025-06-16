@@ -21,21 +21,23 @@ class Profile extends Model
      * ======================================
      * Accessors
      */
-    public function getSkillsArrayAttribute()
+    protected function skillsArray(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return explode(',', $this->skills);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return explode(',', $this->skills);
+        });
     }
 
-    public function getSkillsObjectAttribute()
+    protected function skillsObject(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $returned = [];
-        $skills = explode(',', $this->skills);
-
-        foreach ($skills as $skill) {
-            array_push($returned, ucwords(trim($skill)));
-        }
-
-        return (object) $returned;
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            $returned = [];
+            $skills = explode(',', $this->skills);
+            foreach ($skills as $skill) {
+                array_push($returned, ucwords(trim($skill)));
+            }
+            return (object) $returned;
+        });
     }
 
     /**

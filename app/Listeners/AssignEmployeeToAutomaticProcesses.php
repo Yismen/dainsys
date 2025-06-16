@@ -29,7 +29,7 @@ class AssignEmployeeToAutomaticProcesses
 
         $processes_id = Process::query()
             ->where('default', true)
-            ->whereDoesntHave('employees', function ($query) use ($employee) {
+            ->whereDoesntHave('employees', function ($query) use ($employee): void {
                 $query->where('id', $employee->id);
             })->pluck('id')->toArray();
 

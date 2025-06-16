@@ -10,15 +10,14 @@ class DowntimeReason extends Model
      * mass assignable
      */
     protected $fillable = ['id', 'name'];
-
-    public function setNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->attributes['name'] = ucwords(trim($name));
-    }
-
-    public function getNameAttribute($name)
-    {
-        return ucwords(trim($name));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function ($name) {
+            return ucwords(trim($name));
+        }, set: function ($name) {
+            return $this->attributes['name'] = ucwords(trim($name));
+            return ['name' => ucwords(trim($name))];
+        });
     }
 
     public function hours()

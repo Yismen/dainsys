@@ -196,7 +196,7 @@ class EmployeeController extends Controller
             'gender',
             'marital',
             'nationality',
-            'position' => function ($query) {
+            'position' => function ($query): void {
                 $query->with([
                     'department',
                     'payment_type'

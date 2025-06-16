@@ -63,7 +63,7 @@ class PerformanceFilter extends BaseModelFilter
         $to_date = trim($dates[1] ?? $dates[0]);
 
         return $this
-            ->where(function ($query) use ($from_date, $to_date) {
+            ->where(function ($query) use ($from_date, $to_date): void {
                 $query
                     ->whereDate('date', '>=', now()->parse($from_date)->format('Y-m-d'))
                     ->whereDate('date', '<=', now()->parse($to_date)->format('Y-m-d'));

@@ -38,7 +38,7 @@ class WowDataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateF
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 

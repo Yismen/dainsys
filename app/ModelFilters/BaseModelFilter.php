@@ -25,7 +25,7 @@ abstract class BaseModelFilter extends ModelFilter
      */
     protected function filterQuery($request, $relationship, $quey_field = 'name')
     {
-        return $this->whereHas($relationship, function ($query) use ($request, $quey_field) {
+        return $this->whereHas($relationship, function ($query) use ($request, $quey_field): void {
             if (is_array($request)) {
                 $query->where($quey_field, 'like', $request[0]);
                 for ($i = 1; $i < count($request); $i++) {

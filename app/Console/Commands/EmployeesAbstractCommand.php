@@ -24,7 +24,7 @@ abstract class EmployeesAbstractCommand extends Command
 
     protected function fileName(): string
     {
-        return join('-', [
+        return implode('-', [
             str($this->name)->afterLast(':'),
             'from',
             $this->dates['date_from']->format('Y-m-d'),
@@ -35,7 +35,7 @@ abstract class EmployeesAbstractCommand extends Command
 
     protected function getSubject(): string
     {
-        return join(' ', [
+        return implode(' ', [
             str($this->name)->afterLast(':')->headline(),
             'From',
             $this->dates['date_from']->format('Y-m-d'),

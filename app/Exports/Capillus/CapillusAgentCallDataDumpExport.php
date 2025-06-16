@@ -48,7 +48,7 @@ class CapillusAgentCallDataDumpExport implements FromView, WithTitle, WithEvents
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 

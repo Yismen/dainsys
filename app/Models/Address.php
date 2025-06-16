@@ -19,18 +19,27 @@ class Address extends Model
         return $this->belongsTo(Employee::class);
     }
 
-    public function setSectorAttribute($sector)
+    protected function sector(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->attributes['sector'] = ucwords(trim($sector));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($sector) {
+            return $this->attributes['sector'] = ucwords(trim($sector));
+            return ['sector' => ucwords(trim($sector))];
+        });
     }
 
-    public function setStreetAddressAttribute($street_address)
+    protected function streetAddress(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->attributes['street_address'] = ucwords(trim($street_address));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($street_address) {
+            return $this->attributes['street_address'] = ucwords(trim($street_address));
+            return ['street_address' => ucwords(trim($street_address))];
+        });
     }
 
-    public function setCityAttribute($city)
+    protected function city(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->attributes['city'] = ucwords(trim($city));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($city) {
+            return $this->attributes['city'] = ucwords(trim($city));
+            return ['city' => ucwords(trim($city))];
+        });
     }
 }

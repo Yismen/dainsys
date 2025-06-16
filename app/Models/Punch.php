@@ -39,37 +39,43 @@ class Punch extends Model
      * ---------------------------------------------------
      * Accessors.
      */
-    public function getEmployeeListAttribute()
+    protected function employeeList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $employees = $this->employee()->pluck('id');
-
-        if ($employees->count() > 0) {
-            return $employees[0];
-        }
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            $employees = $this->employee()->pluck('id');
+            if ($employees->count() > 0) {
+                return $employees[0];
+            }
+        });
     }
 
-    public function getEmployeesListAttribute()
+    protected function employeesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $employees = \App\Models\Employee::orderBy('first_name')
-            ->orderBy('second_first_name')
-            ->orderBy('last_name')
-            ->get();
-
-        return $employees->pluck('fullName', 'id');
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            $employees = \App\Models\Employee::orderBy('first_name')
+                ->orderBy('second_first_name')
+                ->orderBy('last_name')
+                ->get();
+            return $employees->pluck('fullName', 'id');
+        });
     }
 
-    public function getFreeEmployeesAttribute()
+    protected function freeEmployees(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Employee::with('punch')
-            ->sorted()
-            ->actives()
-            ->whereDoesntHave('punch')
-            ->orWhere('id', $this->employee->id)
-            ->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return Employee::with('punch')
+                ->sorted()
+                ->actives()
+                ->whereDoesntHave('punch')
+                ->orWhere('id', $this->employee->id)
+                ->get();
+        });
     }
 
-    public function setPunchAttribute($punch)
+    protected function punch(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['punch'] = strtoupper($punch);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($punch) {
+            return ['punch' => strtoupper($punch)];
+        });
     }
 }

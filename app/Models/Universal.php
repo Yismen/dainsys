@@ -6,10 +6,6 @@ use App\Models\DainsysModel as Model;
 
 class Universal extends Model
 {
-    protected $casts = [
-        'since' => 'datetime',
-    ];
-
     protected $fillable = ['employee_id', 'since'];
 
     /**
@@ -20,5 +16,11 @@ class Universal extends Model
     public function employee()
     {
         return $this->belongsTo(Employee::class);
+    }
+    protected function casts(): array
+    {
+        return [
+            'since' => 'datetime',
+        ];
     }
 }

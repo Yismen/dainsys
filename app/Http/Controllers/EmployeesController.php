@@ -252,7 +252,7 @@ class EmployeesController extends Controller
         return DataTables::of(
             Employee::query()
                 ->with([
-                    'position' => function ($query) {
+                    'position' => function ($query): void {
                         $query->with([
                             'department',
                             'payment_type',
@@ -274,30 +274,30 @@ class EmployeesController extends Controller
             ->addColumn('edit', function ($query) {
                 return route('admin.employees.edit', $query->id);
             })
-            ->filterColumn('status', function ($query, $value) {
+            ->filterColumn('status', function ($query, $value): void {
                 if (in_array($value, ['all', 'actives', 'inactives'])) {
                     $query->$value();
                 }
             })
-            ->filterColumn('site.name', function ($query, $value) {
+            ->filterColumn('site.name', function ($query, $value): void {
                 $query->withWhereHas(
                     'site',
                     fn($q) => $q->where('name', 'like', str($value)->lower())
                 );
             })
-            ->filterColumn('project.name', function ($query, $value) {
+            ->filterColumn('project.name', function ($query, $value): void {
                 $query->withWhereHas(
                     'project',
                     fn($q) => $q->where('name', 'like', str($value)->lower())
                 );
             })
-            ->filterColumn('position.name', function ($query, $value) {
+            ->filterColumn('position.name', function ($query, $value): void {
                 $query->withWhereHas(
                     'position',
                     fn($q) => $q->where('name', 'like', str($value)->lower())
                 );
             })
-            ->filterColumn('supervisor.name', function ($query, $value) {
+            ->filterColumn('supervisor.name', function ($query, $value): void {
                 $query->withWhereHas(
                     'supervisor',
                     fn($q) => $q->where('name', 'like', str($value)->lower())

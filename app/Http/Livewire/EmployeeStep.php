@@ -28,7 +28,7 @@ class EmployeeStep extends Component
         $employee = Employee::query()
             ->where('id', $this->employee_id)
             ->with(['steps'])
-            ->whereHas('processes', function ($query) {
+            ->whereHas('processes', function ($query): void {
                 $query->where('processes.id', $this->process_id);
             })
             ->firstOrFail();
@@ -48,7 +48,7 @@ class EmployeeStep extends Component
     {
         $employee = Employee::query()
             ->where('id', $this->employee_id)
-            ->whereHas('processes', function ($query) {
+            ->whereHas('processes', function ($query): void {
                 $query->where('processes.id', $this->process_id);
             })
             ->firstOrFail();

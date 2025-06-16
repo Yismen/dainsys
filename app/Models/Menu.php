@@ -22,14 +22,19 @@ class Menu extends Model
         return $this->belongsToMany(Role::class);
     }
 
-    public function getRolesListAttribute()
+    protected function rolesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $roles = Role::pluck('name', 'id')->toArray();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return $roles = Role::pluck('name', 'id')->toArray();
+        });
     }
 
-    public function setDisplayNameAttribute($display_name)
+    protected function displayName(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->attributes['display_name'] = ucwords($display_name);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($display_name) {
+            return $this->attributes['display_name'] = ucwords($display_name);
+            return ['display_name' => ucwords($display_name)];
+        });
     }
 
     public function addMenu($request)
@@ -115,7 +120,7 @@ class Menu extends Model
     {
         $names = ['create', 'view', 'edit', 'destroy'];
 
-        foreach ($names as $key => $value) {
+        foreach ($names as $value) {
             $new_name = $value . '-' . $name;
 
             if (! Permission::where('name', $new_name)->first()) {

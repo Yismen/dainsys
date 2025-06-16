@@ -21,13 +21,14 @@ class Card extends Model
      * ---------------------------------------------------
      * Accessors
      */
-    public function getEmployeeListAttribute()
+    protected function employeeList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $employees = $this->employee()->pluck('id');
-
-        if ($employees->count() > 0) {
-            return $employees[0];
-        }
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            $employees = $this->employee()->pluck('id');
+            if ($employees->count() > 0) {
+                return $employees[0];
+            }
+        });
     }
 
     /**
@@ -35,12 +36,13 @@ class Card extends Model
      *
      * @return [type] [description]
      */
-    public function getEmployeesListAttribute()
+    protected function employeesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $employees = \App\Models\Employee::orderBy('first_name')
-            ->get();
-
-        return $employees->pluck('fullName', 'id');
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            $employees = \App\Models\Employee::orderBy('first_name')
+                ->get();
+            return $employees->pluck('fullName', 'id');
+        });
     }
 
     /**

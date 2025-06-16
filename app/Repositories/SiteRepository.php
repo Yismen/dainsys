@@ -19,7 +19,7 @@ class SiteRepository
     {
         $instance = new self();
 
-        return $instance->query()->whereHas('employees', function ($query) {
+        return $instance->query()->whereHas('employees', function ($query): void {
             $query->actives();
         })->get();
     }

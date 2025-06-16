@@ -8,9 +8,11 @@ class Source extends Model
 {
     protected $fillable = ['name'];
 
-    public function setNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['name'] = ucwords(trim($name));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
+            return ['name' => ucwords(trim($name))];
+        });
     }
 
     public function campaigns()

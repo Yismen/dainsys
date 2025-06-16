@@ -54,7 +54,7 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
-    protected $routeMiddleware = [
+    protected $middlewareAliases = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         'ensure_has_profile' => \App\Http\Middleware\EnsureUsersHaveProfile::class,
         'ensure_valid_email_domain' => \App\Http\Middleware\EnsureValidEmailDomain::class,

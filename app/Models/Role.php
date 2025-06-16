@@ -17,9 +17,11 @@ class Role extends EmpatieRole
         return $this->belongsToMany(Menu::class);
     }
 
-    public function setNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['name'] = strtolower(trim(Str::slug($name)));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
+            return ['name' => strtolower(trim(Str::slug($name)))];
+        });
     }
 
     /**
@@ -27,9 +29,11 @@ class Role extends EmpatieRole
      *
      * @return [type] [description]
      */
-    public function getUsersListAttribute()
+    protected function usersList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return User::orderBy('name')->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return User::orderBy('name')->get();
+        });
     }
 
     /**
@@ -37,9 +41,11 @@ class Role extends EmpatieRole
      *
      * @return [type] [description]
      */
-    public function getPermissionsListAttribute()
+    protected function permissionsList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Permission::orderBy('resource')->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return Permission::orderBy('resource')->get();
+        });
     }
 
     /**
@@ -47,9 +53,11 @@ class Role extends EmpatieRole
      *
      * @return [type] [description]
      */
-    public function getMenusListAttribute()
+    protected function menusList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Menu::orderBy('name')->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return Menu::orderBy('name')->get();
+        });
     }
 
     public function createRole($request)
@@ -82,9 +90,11 @@ class Role extends EmpatieRole
         return $this->syncRelations($this, $request);
     }
 
-    public function getNameParsedAttribute()
+    protected function nameParsed(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return ucwords(str($this->attributes['name'])->replace(['_', '-'], ' '));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return ucwords(str($this->attributes['name'])->replace(['_', '-'], ' '));
+        });
     }
 
     /**

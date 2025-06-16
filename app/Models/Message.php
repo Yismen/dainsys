@@ -13,8 +13,10 @@ class Message extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getUserListAttribute()
+    protected function userList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return User::orderBy('name')->pluck('name', 'id');
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return User::orderBy('name')->pluck('name', 'id');
+        });
     }
 }

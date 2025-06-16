@@ -24,14 +24,19 @@ class Supervisor extends Model
         return $this->hasManyThrough(Attendance::class, User::class);
     }
 
-    public function getStatusAttribute()
+    protected function status(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->active ? 'Active' : 'Inactive';
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            return $this->active ? 'Active' : 'Inactive';
+        });
     }
 
-    public function setNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->attributes['name'] = ucwords(trim($name));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
+            return $this->attributes['name'] = ucwords(trim($name));
+            return ['name' => ucwords(trim($name))];
+        });
     }
 
     public function scopeActives($query)

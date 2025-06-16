@@ -14,8 +14,11 @@ class Bank extends Model
         return $this->hasMany('App\Models\BankAccount');
     }
 
-    public function setNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->attributes['name'] = ucwords(trim($name));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
+            return $this->attributes['name'] = ucwords(trim($name));
+            return ['name' => ucwords(trim($name))];
+        });
     }
 }
