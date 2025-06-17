@@ -16,7 +16,7 @@ class AuthTest extends TestCase
     {
         $response = $this->get('/login');
 
-        $response->assertViewIs('auth.login');
+        $response->assertViewIs(\Illuminate\Auth\Events\Login::class);
     }
 
     /** @test */

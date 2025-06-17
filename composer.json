@@ -42,9 +42,10 @@
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.4",
         "brianium/paratest": "^7.0",
-        "driftingly/rector-laravel": "^2.0",
+        "driftingly/rector-laravel": "^1.2",
         "fakerphp/faker": "^1.9.1",
         "filp/whoops": "^2.1",
+        "larastan/larastan": "^2.11",
         "laravel/dusk": "^7.0",
         "laravel/envoy": "^2.0",
         "laravel/pint": "^1.0",
