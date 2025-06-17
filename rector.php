@@ -8,7 +8,7 @@ use RectorLaravel\Set\LaravelSetList;
 
 return RectorConfig::configure()
     ->withSets([
-        LaravelLevelSetList::UP_TO_LARAVEL_110,
+        LaravelLevelSetList::UP_TO_LARAVEL_100,
         LaravelSetList::LARAVEL_COLLECTION,
         LaravelSetList::LARAVEL_ARRAYACCESS_TO_METHOD_CALL,
         // LaravelSetList::LARAVEL_ELOQUENT_MAGIC_METHOD_TO_QUERY_BUILDER,

@@ -5,6 +5,9 @@ namespace Database\Factories;
 use Carbon\Carbon;
 use Faker\Generator as Faker;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Performance>
+ */
 class PerformanceFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
 

@@ -5,6 +5,9 @@ namespace Database\Factories;
 use App\Models\RevenueType;
 use Faker\Generator as Faker;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Campaign>
+ */
 class CampaignFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
 

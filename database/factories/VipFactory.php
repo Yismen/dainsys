@@ -4,6 +4,9 @@ namespace Database\Factories;
 
 use Faker\Generator as Faker;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Vip>
+ */
 class VipFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
 

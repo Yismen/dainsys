@@ -8,6 +8,9 @@ use App\Models\User;
 use Carbon\Carbon;
 use Faker\Generator as Faker;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Attendance>
+ */
 class AttendanceFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;

@@ -4,6 +4,9 @@ namespace Database\Factories;
 
 use Faker\Generator as Faker;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\OvernightHour>
+ */
 class OvernightHourFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
 

@@ -7,6 +7,9 @@ namespace Database\Factories;
 use App\Models\Report;
 use Faker\Generator as Faker;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Report>
+ */
 class ReportFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
 

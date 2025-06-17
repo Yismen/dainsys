@@ -8,6 +8,9 @@ use App\Models\User;
 use App\Models\UserLogin;
 use Faker\Generator as Faker;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\UserLogin>
+ */
 class UserLoginFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
 

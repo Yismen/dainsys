@@ -4,6 +4,9 @@ namespace Database\Factories;
 
 use Faker\Generator as Faker;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\RevenueType>
+ */
 class RevenueTypeFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
 

@@ -6,6 +6,9 @@ use App\Models\Employee;
 use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Address>
+ */
 class AddressFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
     use HasFactory;

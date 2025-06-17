@@ -7,6 +7,9 @@ namespace Database\Factories;
 use App\Models\Process;
 use Faker\Generator as Faker;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Process>
+ */
 class ProcessFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
 

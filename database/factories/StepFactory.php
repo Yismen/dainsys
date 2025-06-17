@@ -8,6 +8,9 @@ use App\Models\Step;
 use App\Models\Process;
 use Faker\Generator as Faker;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Step>
+ */
 class StepFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
 
