@@ -7,6 +7,8 @@ use Spatie\Permission\Models\Permission as EmpatiePermission;
 
 class Permission extends EmpatiePermission
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['name', 'guard_name', 'resource'];
 
     protected $actions = [
@@ -18,23 +20,17 @@ class Permission extends EmpatiePermission
 
     protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
-            return ['name' => trim(Str::slug($name))];
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn($name) => ['name' => trim(Str::slug($name))]);
     }
 
     protected function resource(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($resource) {
-            return ['resource' => trim(Str::slug($resource))];
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn($resource) => ['resource' => trim(Str::slug($resource))]);
     }
 
     protected function rolesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
-            return Role::orderBy('name')->pluck('name', 'id')->toArray();
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => Role::orderBy('name')->pluck('name', 'id')->toArray());
     }
 
     public function createPermission($request)
@@ -107,7 +103,7 @@ class Permission extends EmpatiePermission
                 $permission->delete();
             }
 
-            $permission = $this->create(['name' => $permission_name, 'resource' => trim($request->resource)]);
+            $permission = $this->create(['name' => $permission_name, 'resource' => trim((string) $request->resource)]);
 
             $permission->roles()->sync((array) $request->roles);
         }

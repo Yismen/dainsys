@@ -6,6 +6,7 @@ use App\Models\DainsysModel as Model;
 
 class Site extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     protected $fillable = ['name'];
 
     public function employees()

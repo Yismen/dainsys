@@ -16,7 +16,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewSupervisorUser()
     {
-        $user = create('App\Models\User');
+        $user = create(\App\Models\User::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.supervisor_users.index'))

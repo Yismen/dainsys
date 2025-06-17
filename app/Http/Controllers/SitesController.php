@@ -19,23 +19,19 @@ class SitesController extends Controller
 
     public function index()
     {
-        $sites = Cache::remember('sites', now()->addHours(4), function () {
-            return Site::with(['employees' => function ($query) {
-                return $query->orderBy('first_name')
-                    ->orderBy('second_first_name')
-                    ->orderBy('last_name')
-                    ->orderBy('second_last_name')
-                    ->with([
-                        'position' => function ($query): void {
-                            $query->with(['department', 'payment_type']);
-                        },
-                        'project',
-                    ])
-                    ->actives();
-            },
+        $sites = Cache::remember('sites', now()->addHours(4), fn() => Site::with(['employees' => fn($query) => $query->orderBy('first_name')
+            ->orderBy('second_first_name')
+            ->orderBy('last_name')
+            ->orderBy('second_last_name')
+            ->with([
+                'position' => function ($query): void {
+                    $query->with(['department', 'payment_type']);
+                },
+                'project',
             ])
-                ->get();
-        });
+            ->actives(),
+        ])
+            ->get());
 
         return view('sites.index', compact('sites'));
     }

@@ -13,21 +13,21 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewAttendanceCodes()
     {
-        $attendance_code = create('App\Models\AttendanceCode');
+        $attendance_code = create(\App\Models\AttendanceCode::class);
 
         $this->get(route('admin.attendance_codes.index'))->assertRedirect('/login');
     }
 
     public function testGuestCantEditAttendanceCodes()
     {
-        $attendance_code = create('App\Models\AttendanceCode');
+        $attendance_code = create(\App\Models\AttendanceCode::class);
 
         $this->put(route('admin.attendance_codes.update', $attendance_code->id))->assertRedirect('/login');
     }
 
     public function testGuestCantDestroyAttendanceCode()
     {
-        $attendance_code = create('App\Models\AttendanceCode');
+        $attendance_code = create(\App\Models\AttendanceCode::class);
 
         $this->delete(route('admin.attendance_codes.destroy', $attendance_code->id))->assertRedirect('/login');
     }

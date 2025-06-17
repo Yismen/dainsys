@@ -25,9 +25,7 @@ class DepartmentsController extends Controller
      */
     public function index(Department $departments, Request $request)
     {
-        $departments = Cache::rememberForever('departments', function () {
-            return Department::orderBy('name')->get();
-        });
+        $departments = Cache::rememberForever('departments', fn() => Department::orderBy('name')->get());
 
         return view('departments.index', compact('departments'));
     }

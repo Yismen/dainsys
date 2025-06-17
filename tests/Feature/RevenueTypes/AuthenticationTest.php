@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewRevenueTypes()
     {
-        $revenue_type = create('App\Models\RevenueType');
+        $revenue_type = create(\App\Models\RevenueType::class);
 
         $this->get(route('admin.revenue_types.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateRevenueTypes()
     {
-        $revenue_type = create('App\Models\RevenueType');
+        $revenue_type = create(\App\Models\RevenueType::class);
 
         $this->get(route('admin.revenue_types.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateRevenueType()
     {
-        $revenue_type = create('App\Models\RevenueType');
+        $revenue_type = create(\App\Models\RevenueType::class);
 
         $this->get(route('admin.revenue_types.edit', $revenue_type->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyRevenueType()
     {
-        $revenue_type = create('App\Models\RevenueType');
+        $revenue_type = create(\App\Models\RevenueType::class);
 
         $this->delete(route('admin.revenue_types.destroy', $revenue_type->id))
             ->assertStatus(302)

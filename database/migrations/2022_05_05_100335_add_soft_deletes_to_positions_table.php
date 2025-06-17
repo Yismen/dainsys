@@ -13,7 +13,7 @@ class AddSoftDeletesToPositionsTable extends Migration
      */
     public function up()
     {
-        Schema::table('positions', function (Blueprint $table) {
+        Schema::table('positions', function (Blueprint $table): void {
             $table->softDeletes();
         });
     }
@@ -25,7 +25,7 @@ class AddSoftDeletesToPositionsTable extends Migration
      */
     public function down()
     {
-        Schema::table('positions', function (Blueprint $table) {
+        Schema::table('positions', function (Blueprint $table): void {
             $table->dropSoftDeletes();
         });
     }

@@ -35,13 +35,6 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
      * @var int
      */
     public $timeout = 120;
-
-    /**
-     * The name with the file will be saved.
-     *
-     * @var string
-     */
-    protected $file_name;
     /**
      * The user who imported the file.
      *
@@ -54,10 +47,11 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
      *
      * @param string $file_name
      */
-    public function __construct($file_name)
+    public function __construct(/**
+     * The name with the file will be saved.
+     */
+    protected $file_name)
     {
-        $this->file_name = $file_name;
-
         $this->importedBy = auth()->user();
     }
 

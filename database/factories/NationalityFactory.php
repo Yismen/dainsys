@@ -1,9 +1,17 @@
 <?php
 
+namespace Database\Factories;
+
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\Nationality::class, function (Faker $faker) {
-    return [
-        'name' => $faker->unique()->country() . '_' . $faker->randomNumber(),
-    ];
-});
+class NationalityFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+
+    protected $model = \App\Models\Nationality::class;
+    public function definition()
+    {
+        return [
+            'name' => fake()->unique()->country() . '_' . fake()->randomNumber(),
+        ];
+    }
+}

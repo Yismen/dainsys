@@ -18,6 +18,7 @@ class EmployeeControllerTest extends TestCase
         Employee::factory()->create();
         Passport::actingAs($this->user());
 
+
         $response = $this->get('/api/employees');
 
         $response->assertOk()
@@ -99,7 +100,7 @@ class EmployeeControllerTest extends TestCase
             ->create()
             ->employee;
         $not_recent->update(['hire_date' => now()->subYears(5)]);
-        
+
         $response = $this->get('/api/employees/recents');
 
         $this->assertDatabaseCount('employees', 2);

@@ -6,6 +6,7 @@ use App\Models\DainsysModel as Model;
 
 class AttendanceCode extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     protected $fillable = ['name', 'color', 'absence'];
 
     public function attendances()
@@ -15,8 +16,6 @@ class AttendanceCode extends Model
 
     protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function ($name) {
-            return ucwords(trim($name));
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn($name) => ucwords(trim((string) $name)));
     }
 }

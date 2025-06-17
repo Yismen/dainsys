@@ -41,12 +41,12 @@ class Confirmation extends Component
     ) {
         $this->name = $name;
         $this->model_id = $model_id;
-        $this->confirmed_event_name = $confirmed_event_name ? $confirmed_event_name : 'confirmed';
-        $this->title = $title ? $title : 'Are you sure you want to proceed?';
-        $this->message = $message ? $message : 'You may not be able to revert this action. Please proceed carefully or hit on cancel';
-        $this->icon = $icon ? $icon : 'fa fa-trash';
-        $this->button_text = $button_text ? $button_text : 'Delete';
-        $this->button_class = $button_class ? $button_class : 'btn btn-xs btn-danger';
+        $this->confirmed_event_name = $confirmed_event_name ?: 'confirmed';
+        $this->title = $title ?: 'Are you sure you want to proceed?';
+        $this->message = $message ?: 'You may not be able to revert this action. Please proceed carefully or hit on cancel';
+        $this->icon = $icon ?: 'fa fa-trash';
+        $this->button_text = $button_text ?: 'Delete';
+        $this->button_class = $button_class ?: 'btn btn-xs btn-danger';
     }
 
     /**

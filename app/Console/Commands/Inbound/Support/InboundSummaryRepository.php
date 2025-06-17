@@ -12,22 +12,13 @@ class InboundSummaryRepository extends RingCentralConnection implements InboundS
     public $data;
     public $hours_data;
 
-    public $date_from;
-
-    public $date_to;
-
     protected $gate_statement;
-
-    protected string $agent_group_name;
 
     protected string|array $dial_group_name;
 
-    public function __construct($date_from, $date_to, $agent_group_name = 'ECC%', $gate = '%')
+    public function __construct(public $date_from, public $date_to, protected string $agent_group_name = 'ECC%', $gate = '%')
     {
-        $this->date_from = $date_from;
-        $this->date_to = $date_to;
         $this->gate_statement = $this->getGateStatement($gate);
-        $this->agent_group_name = $agent_group_name;
         $this->dial_group_name = $gate;
     }
 

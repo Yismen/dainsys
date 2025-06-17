@@ -12,12 +12,10 @@ use Maatwebsite\Excel\Sheet;
 
 abstract class BaseRingCentralSheet implements FromView, WithTitle, WithPreCalculateFormulas, WithEvents
 {
-    protected RingCentralExportsContract $exporter;
     protected $data;
 
-    public function __construct(RingCentralExportsContract $exporter)
+    public function __construct(protected RingCentralExportsContract $exporter)
     {
-        $this->exporter = $exporter;
     }
 
     abstract public function getData(ConnectionContract $connection, string $date_from, string $date_to): array;

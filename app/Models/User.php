@@ -24,6 +24,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements CanResetPassword
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     use HasApiTokens;
     use HasRoles;
     use UserAccessors;
@@ -95,11 +96,9 @@ class User extends Authenticatable implements CanResetPassword
      */
     protected function isLoggedIn(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
-            return $this->login()
-                ->where(['logged_out_at' => null])
-                ->count() > 0;
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => $this->login()
+            ->where(['logged_out_at' => null])
+            ->count() > 0);
     }
 
     public function isOnline()

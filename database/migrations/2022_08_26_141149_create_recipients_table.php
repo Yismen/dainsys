@@ -13,7 +13,7 @@ class CreateRecipientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('recipients', function (Blueprint $table) {
+        Schema::create('recipients', function (Blueprint $table): void {
             $table->increments('id');
             $table->timestamps();
             $table->string('name')->unique()->index();

@@ -1,9 +1,17 @@
 <?php
 
+namespace Database\Factories;
+
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\Gender::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name(),
-    ];
-});
+class GenderFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+
+    protected $model = \App\Models\Gender::class;
+    public function definition()
+    {
+        return [
+            'name' => fake()->name(),
+        ];
+    }
+}

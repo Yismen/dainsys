@@ -13,7 +13,7 @@ class CreateOvernightHoursTable extends Migration
      */
     public function up()
     {
-        Schema::create('overnight_hours', function (Blueprint $table) {
+        Schema::create('overnight_hours', function (Blueprint $table): void {
             $table->increments('id');
             $table->date('date');
             $table->integer('employee_id')->unsigned()->index();

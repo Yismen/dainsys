@@ -11,7 +11,7 @@ class CreateUniversalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('universals', function (Blueprint $table) {
+        Schema::create('universals', function (Blueprint $table): void {
             $table->increments('id');
             $table->integer('employee_id')->unsigned();
             $table->date('since');

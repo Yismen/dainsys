@@ -28,12 +28,10 @@ class ArticlesController extends Controller
      */
     public function index(Article $article)
     {
-        $articles = Cache::remember('articles', now()->addHours(5), function () {
-            return Article::with('user')
-                ->latest('published_at')
-                ->published()
-                ->paginate(10);
-        });
+        $articles = Cache::remember('articles', now()->addHours(5), fn() => Article::with('user')
+            ->latest('published_at')
+            ->published()
+            ->paginate(10));
 
         return view('articles.index', compact('articles'));
     }

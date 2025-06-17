@@ -6,6 +6,7 @@ use App\Models\DainsysModel as Model;
 
 class TerminationType extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     protected $fillable = ['name', 'description'];
 
     protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute

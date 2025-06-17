@@ -22,9 +22,7 @@ class TerminationTest extends TestCase
         parent::setUp();
 
         $recipients = Recipient::factory()->create();
-        $report = Report::where('key', 'dainsys:employees-terminated')->firstOr(function () {
-            return Report::factory()->create(['key' => 'dainsys:employees-terminated']);
-        });
+        $report = Report::where('key', 'dainsys:employees-terminated')->firstOr(fn() => Report::factory()->create(['key' => 'dainsys:employees-terminated']));
         $report->recipients()->sync([$recipients->id]);
     }
 

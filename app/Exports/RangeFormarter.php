@@ -74,7 +74,7 @@ class RangeFormarter
      */
     public function setAutoSizeRange(string $from_column, $to_column = null)
     {
-        $to_column = $to_column ? $to_column : $from_column;
+        $to_column = $to_column ?: $from_column;
 
         foreach (range($from_column, $to_column) as $col) {
             $this->sheet->getColumnDimension($col)

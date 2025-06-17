@@ -82,22 +82,20 @@ class UpdateBillableHoursAndRevenue extends Command
 
     protected function printTestTable()
     {
-        $records = $this->serviceData->take(50)->reorder()->inRandomOrder()->get()->map(function ($performance) {
-            return [
-                $performance->id,
-                $performance->date,
-                $performance->campaign->name,
-                $performance->campaign->revenueType->name,
-                $performance->login_time,
-                $performance->production_time,
-                $performance->talk_time,
-                $performance->transactions,
-                $performance->billable_hours,
-                $performance->campaign->revenue_rate,
-                $performance->revenue,
+        $records = $this->serviceData->take(50)->reorder()->inRandomOrder()->get()->map(fn($performance) => [
+            $performance->id,
+            $performance->date,
+            $performance->campaign->name,
+            $performance->campaign->revenueType->name,
+            $performance->login_time,
+            $performance->production_time,
+            $performance->talk_time,
+            $performance->transactions,
+            $performance->billable_hours,
+            $performance->campaign->revenue_rate,
+            $performance->revenue,
 
-            ];
-        });
+        ]);
 
         $this->table(
             ['Id', 'Date', 'Campaign', 'Revenue Type', 'Login Hours', 'Work Hours', 'Talk Time', 'Sales', 'Billable Hours', 'Rate', 'Revenue'],

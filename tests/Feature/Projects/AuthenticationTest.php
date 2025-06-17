@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewProjects()
     {
-        $project = create('App\Models\Project');
+        $project = create(\App\Models\Project::class);
 
         $this->get(route('admin.projects.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateProjects()
     {
-        $project = create('App\Models\Project');
+        $project = create(\App\Models\Project::class);
 
         $this->get(route('admin.projects.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateProject()
     {
-        $project = create('App\Models\Project');
+        $project = create(\App\Models\Project::class);
 
         $this->get(route('admin.projects.edit', $project->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyProject()
     {
-        $project = create('App\Models\Project');
+        $project = create(\App\Models\Project::class);
 
         $this->delete(route('admin.projects.destroy', $project->id))
             ->assertStatus(302)

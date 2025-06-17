@@ -12,7 +12,7 @@ class CreateTerminationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('terminations', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('terminations', function (Blueprint $table): void {
             $table->increments('id');
             $table->integer('employee_id')->unsigned()->index();
             $table->dateTime('termination_date');
@@ -35,6 +35,6 @@ class CreateTerminationsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('terminations');
+        \Illuminate\Support\Facades\Schema::drop('terminations');
     }
 }

@@ -7,6 +7,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Afp extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     use Sluggable;
 
     protected $fillable = ['name'];
@@ -23,13 +24,11 @@ class Afp extends Model
 
     public function employees()
     {
-        return $this->hasMany('App\Models\Employee');
+        return $this->hasMany(\App\Models\Employee::class);
     }
 
     protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
-            return ['name' => trim(ucwords($name))];
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn($name) => ['name' => trim(ucwords((string) $name))]);
     }
 }

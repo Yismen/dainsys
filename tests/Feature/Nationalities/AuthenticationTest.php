@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewNationalities()
     {
-        $nationality = create('App\Models\Nationality');
+        $nationality = create(\App\Models\Nationality::class);
 
         $this->get(route('admin.nationalities.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateNationalities()
     {
-        $nationality = create('App\Models\Nationality');
+        $nationality = create(\App\Models\Nationality::class);
 
         $this->get(route('admin.nationalities.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateNationality()
     {
-        $nationality = create('App\Models\Nationality');
+        $nationality = create(\App\Models\Nationality::class);
 
         $this->get(route('admin.nationalities.edit', $nationality->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyNationality()
     {
-        $nationality = create('App\Models\Nationality');
+        $nationality = create(\App\Models\Nationality::class);
 
         $this->delete(route('admin.nationalities.destroy', $nationality->id))
             ->assertStatus(302)

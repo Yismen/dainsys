@@ -41,7 +41,7 @@ class Performance extends Component
     {
         return ModelsPerformance::query()
             ->when($this->search, function ($query): void {
-                $terms = preg_split("/[\s]+/", $this->search, -1, PREG_SPLIT_NO_EMPTY);
+                $terms = preg_split("/[\s]+/", (string) $this->search, -1, PREG_SPLIT_NO_EMPTY);
 
                 foreach ($terms as $value) {
                     // $query->whereDate('date', $value)
@@ -100,24 +100,20 @@ class Performance extends Component
 
     protected function getProjects()
     {
-        return Cache::rememberForever('performances_projects', function () {
-            return Project::query()
-                ->orderBy('name')
-                ->select(['name', 'id'])
-                ->get();
-        });
+        return Cache::rememberForever('performances_projects', fn() => Project::query()
+            ->orderBy('name')
+            ->select(['name', 'id'])
+            ->get());
     }
 
     protected function getCampaigns()
     {
-        return Cache::rememberForever('performances_campaigns', function () {
-            return Campaign::query()
-                ->orderBy('name')
-                ->select(['name', 'id'])
-                ->when($this->project, function ($query): void {
-                    $query->where('project_id', $this->project);
-                })
-                ->get();
-        });
+        return Cache::rememberForever('performances_campaigns', fn() => Campaign::query()
+            ->orderBy('name')
+            ->select(['name', 'id'])
+            ->when($this->project, function ($query): void {
+                $query->where('project_id', $this->project);
+            })
+            ->get());
     }
 }

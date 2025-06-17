@@ -12,7 +12,7 @@ class CreatePaymentFrequenciesTable extends Migration
      */
     public function up()
     {
-        Schema::create('payment_frequencies', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('payment_frequencies', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name', 100);
             $table->string('slug', 150)->nullable();
@@ -27,6 +27,6 @@ class CreatePaymentFrequenciesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('payment_frequencies');
+        \Illuminate\Support\Facades\Schema::drop('payment_frequencies');
     }
 }

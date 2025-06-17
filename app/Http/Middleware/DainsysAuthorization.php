@@ -29,7 +29,7 @@ class DainsysAuthorization
 
     protected function parsePermissions($permissions)
     {
-        return explode('|', $permissions);
+        return explode('|', (string) $permissions);
     }
 
     protected function guardAgainstUnauthenticated()

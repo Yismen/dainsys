@@ -13,7 +13,7 @@ class AddActiveFieldToSupervisorsTable extends Migration
      */
     public function up()
     {
-        Schema::table('supervisors', function (Blueprint $table) {
+        Schema::table('supervisors', function (Blueprint $table): void {
             $table->boolean('active')->nullable()->default(true)->after('name');
         });
     }
@@ -26,7 +26,7 @@ class AddActiveFieldToSupervisorsTable extends Migration
     public function down()
     {
         if (Schema::hasColumn('supervisors', 'active')) {
-            Schema::table('supervisors', function (Blueprint $table) {
+            Schema::table('supervisors', function (Blueprint $table): void {
                 $table->dropColumn('active');
             }); 
         }        

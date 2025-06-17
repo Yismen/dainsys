@@ -7,9 +7,15 @@ use App\Models\DainsysModel as Model;
 
 class OvernightHour extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     use FilterableTrait;
 
     protected $fillable = ['date', 'employee_id', 'hours', 'unique_id'];
+
+    protected $casts = [
+        'date' => 'datetime',
+        'hours' => 'float',
+    ];
 
     public static function boot()
     {
@@ -49,14 +55,5 @@ class OvernightHour extends Model
         foreach ($duplicateds as $duplicated) {
             $duplicated->delete();
         }
-    }
-    /**
-     * Convert fields to Carbon Intances
-     */
-    protected function casts(): array
-    {
-        return [
-            'date' => 'datetime',
-        ];
     }
 }

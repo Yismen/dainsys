@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewPerformances()
     {
-        $performance = create('App\Models\Performance');
+        $performance = create(\App\Models\Performance::class);
 
         $this->get(route('admin.performances.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdatePerformance()
     {
-        $performance = create('App\Models\Performance');
+        $performance = create(\App\Models\Performance::class);
 
         $this->get(route('admin.performances.edit', $performance->id))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyPerformance()
     {
-        $performance = create('App\Models\Performance');
+        $performance = create(\App\Models\Performance::class);
 
         $this->delete(route('admin.performances.destroy', $performance->id))
             ->assertStatus(302)

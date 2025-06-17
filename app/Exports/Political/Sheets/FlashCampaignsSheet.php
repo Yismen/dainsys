@@ -24,18 +24,15 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
 
     protected $answers;
 
-    protected $campaign;
-
     protected $answersLastColumn;
 
-    public function __construct($dispositions, $answers, $campaign)
+    public function __construct($dispositions, $answers, protected $campaign)
     {
         $this->rowsDispo = count($dispositions) + 3;
         $this->rowsAnswers = count($answers);
 
         $this->dispositions = $dispositions;
         $this->answers = $answers;
-        $this->campaign = $campaign;
         $this->answersLastColumn = $this->answersLastColumn();
     }
 
@@ -91,7 +88,7 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
 
     public function title(): string
     {
-        return substr($this->campaign, -28);
+        return substr((string) $this->campaign, -28);
     }
 
     protected function answersStart()
@@ -116,7 +113,7 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
 
         try {
             return $range[count(array_keys($col)) - 6];
-        } catch (\Throwable $th) {
+        } catch (\Throwable) {
             return $range[count(array_keys($col)) - 7];
         }
     }

@@ -23,8 +23,8 @@ class NotificationTest extends TestCase
         $response = $this->get('/api/notifications/unread');
 
         $response->assertJsonCount(3)
-            ->assertJsonFragment(['foo' => json_decode($unread_notifications->first()->data)->foo])
-            ->assertJsonMissing(['foo' => json_decode($read_notifications->first()->data)->foo]);
+            ->assertJsonFragment(['foo' => json_decode((string) $unread_notifications->first()->data)->foo])
+            ->assertJsonMissing(['foo' => json_decode((string) $read_notifications->first()->data)->foo]);
     }
 
     /** @test */

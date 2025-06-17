@@ -68,7 +68,7 @@ trait ExcelImportTrait
             return Carbon::instance(
                 \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value)
             );
-        } catch (\ErrorException $e) {
+        } catch (\ErrorException) {
             return Carbon::parse($value);
         }
     }

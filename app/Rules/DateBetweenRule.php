@@ -22,7 +22,7 @@ class DateBetweenRule implements Rule
     {
         $this->from = $from;
 
-        $this->to = $to !== null ? $to : Carbon::now();
+        $this->to = $to ?? Carbon::now();
     }
 
     /**

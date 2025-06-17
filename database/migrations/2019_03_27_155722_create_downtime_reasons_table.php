@@ -13,7 +13,7 @@ class CreateDowntimeReasonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('downtime_reasons', function (Blueprint $table) {
+        Schema::create('downtime_reasons', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name', 100);
             $table->timestamps();

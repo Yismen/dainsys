@@ -10,15 +10,9 @@ class GeneralDataSheet implements FromView, WithTitle
 {
     protected $data;
 
-    protected string $view_name;
-
-    protected string $page_title;
-
-    public function __construct(array $data, string $view_name = 'exports.data-ring-central', string $page_title = 'Ring Central Report')
+    public function __construct(array $data, protected string $view_name = 'exports.data-ring-central', protected string $page_title = 'Ring Central Report')
     {
         $this->data = $data;
-        $this->view_name = $view_name;
-        $this->page_title = $page_title;
     }
 
     public function view(): View

@@ -8,6 +8,6 @@ class ConfigRepository
     {
         $distro = config($key, $default);
 
-        return preg_split("/[,\|]+/", $distro, -1, PREG_SPLIT_NO_EMPTY);
+        return preg_split("/[,\|]+/", (string) $distro, -1, PREG_SPLIT_NO_EMPTY);
     }
 }

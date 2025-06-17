@@ -1,17 +1,27 @@
 <?php
 
+namespace Database\Factories;
+
 use App\Models\AttendanceCode;
 use App\Models\Employee;
 use App\Models\User;
 use Carbon\Carbon;
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\Attendance::class, function (Faker $faker) {
-    return [
-        'date' => $faker->date('Y-m-d'),
-        'employee_id' => factory(Employee::class)->create(),
-        'code_id' => factory(AttendanceCode::class)->create(),
-        'user_id' => auth()->user() ? auth()->user()->id : factory(User::class)->create(),
-        'comments' => $faker->text(150)
-    ];
-});
+class AttendanceFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
+    protected
+$model = \App\Models\Attendance::class;
+    public function definition()
+    {
+        return [
+            'date' => fake()->date('Y-m-d'),
+            'employee_id' => Employee::factory()->create(),
+            'code_id' => AttendanceCode::factory()->create(),
+            'user_id' => auth()->user() ? auth()->user()->id : User::factory()->create(),
+            'comments' => fake()->text(150)
+        ];
+    }
+}

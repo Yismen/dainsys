@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewMenus()
     {
-        $menu = create('App\Models\Menu');
+        $menu = create(\App\Models\Menu::class);
 
         $this->get(route('admin.menus.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateMenus()
     {
-        $menu = create('App\Models\Menu');
+        $menu = create(\App\Models\Menu::class);
 
         $this->get(route('admin.menus.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateMenu()
     {
-        $menu = create('App\Models\Menu');
+        $menu = create(\App\Models\Menu::class);
 
         $this->get(route('admin.menus.edit', $menu->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyMenu()
     {
-        $menu = create('App\Models\Menu');
+        $menu = create(\App\Models\Menu::class);
 
         $this->delete(route('admin.menus.destroy', $menu->id))
             ->assertStatus(302)

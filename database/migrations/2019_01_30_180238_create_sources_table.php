@@ -13,7 +13,7 @@ class CreateSourcesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sources', function (Blueprint $table) {
+        Schema::create('sources', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name', 300);
             $table->timestamps();

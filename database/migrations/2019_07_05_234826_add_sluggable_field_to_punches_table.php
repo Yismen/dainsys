@@ -11,7 +11,7 @@ class AddSluggableFieldToPunchesTable extends Migration
      */
     public function up()
     {
-        Schema::table('punches', function (Blueprint $table) {
+        Schema::table('punches', function (Blueprint $table): void {
             $table->string('slug', 100)->nullable()->after('employee_id');
         });
     }
@@ -22,7 +22,7 @@ class AddSluggableFieldToPunchesTable extends Migration
     public function down()
     {
         if (Schema::hasColumn('punches', 'slug')) {
-            Schema::table('punches', function (Blueprint $table) {
+            Schema::table('punches', function (Blueprint $table): void {
                 $table->dropColumn('slug');
             });
         }

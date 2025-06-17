@@ -36,14 +36,12 @@ class PermissionsController extends Controller
                     'roles',
                 ])
         )
-            ->addColumn('delete', function ($query) {
-                return "
+            ->addColumn('delete', fn($query) => "
                 <delete-request-button
                 url='{route('admin.permissions.destroy', {$query->name})}'
                 redirect-url='{route('admin.permissions.index')}'
             ></delete-request-button>
-            ";
-            })
+            ")
             ->toJson(true);
     }
 

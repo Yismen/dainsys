@@ -7,16 +7,14 @@ use Illuminate\Queue\SerializesModels;
 class CreateUserSettings extends Event
 {
     use SerializesModels;
-    public $user;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct(public $user)
     {
-        $this->user = $user;
     }
 
     /**

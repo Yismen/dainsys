@@ -14,7 +14,7 @@ class AfpTest extends TestCase
     /** @test */
     public function guests_can_not_visit_any_afps_route()
     {
-        $afp = create('App\Models\Afp');
+        $afp = create(\App\Models\Afp::class);
         $this->get(route('admin.afps.index'))->assertRedirect('/login');
         $this->get(route('admin.afps.show', $afp->id))->assertRedirect('/login');
         $this->get(route('admin.afps.create'))->assertRedirect('/login');
@@ -28,7 +28,7 @@ class AfpTest extends TestCase
     public function it_requires_view_afps_permissions_to_view_all_afps()
     {
 
-        $this->actingAs(create('App\Models\User'));
+        $this->actingAs(create(\App\Models\User::class));
 
         $response = $this->get('/admin/afps');
 
@@ -39,8 +39,8 @@ class AfpTest extends TestCase
     public function it_requires_view_afps_permissions_to_view_a_afp_details()
     {
         // given
-        $afp = create('App\Models\Afp');
-        $this->actingAs(create('App\Models\User'));
+        $afp = create(\App\Models\Afp::class);
+        $this->actingAs(create(\App\Models\User::class));
 
         // when
         $response = $this->get("/admin/afps/{$afp->id}");
@@ -54,7 +54,7 @@ class AfpTest extends TestCase
     {
         // given
         $user = $this->userWithPermission('view-afps');
-        $afp = create('App\Models\Afp');
+        $afp = create(\App\Models\Afp::class);
 
         // when
         $this->actingAs($user);
@@ -69,7 +69,7 @@ class AfpTest extends TestCase
     {
         // given
         $user = $this->userWithPermission('view-afps');
-        $afp = create('App\Models\Afp');
+        $afp = create(\App\Models\Afp::class);
 
         // when
         $this->actingAs($user);
@@ -83,7 +83,7 @@ class AfpTest extends TestCase
     public function it_requires_create_afps_permission_to_add_a_permission()
     {
         // Given
-        $user = create('App\Models\User');
+        $user = create(\App\Models\User::class);
         $this->actingAs($user);
 
         // When
@@ -111,8 +111,8 @@ class AfpTest extends TestCase
     public function it_requires_destroy_afps_permission_to_destroy_a_permission()
     {
         // Given
-        $this->actingAs(create('App\Models\User'));
-        $afp = create('App\Models\Afp');
+        $this->actingAs(create(\App\Models\User::class));
+        $afp = create(\App\Models\Afp::class);
 
         // When
         $response = $this->delete(route('admin.afps.destroy', $afp->id));
@@ -127,7 +127,7 @@ class AfpTest extends TestCase
     {
         // given
         $user = $this->userWithPermission('destroy-afps');
-        $afp = create('App\Models\Afp');
+        $afp = create(\App\Models\Afp::class);
 
         // when
         $this->actingAs($user);
@@ -149,7 +149,7 @@ class AfpTest extends TestCase
     /** @test */
     public function a_user_can_create_a_afp()
     {
-        $afp = make('App\Models\Afp');
+        $afp = make(\App\Models\Afp::class);
 
         $this->actingAs($this->userWithPermission('create-afps'))
             ->post(route('admin.afps.store', $afp->toArray()));
@@ -163,7 +163,7 @@ class AfpTest extends TestCase
     /** @test */
     public function a_user_can_see_a_form_to_update_a_afp()
     {
-        $afp = create('App\Models\Afp');
+        $afp = create(\App\Models\Afp::class);
 
         $this->actingAs($this->userWithPermission('edit-afps'))
             ->get(route('admin.afps.edit', $afp->id))
@@ -173,7 +173,7 @@ class AfpTest extends TestCase
     /** @test */
     public function it_requires_a_name_to_update_a_afp()
     {
-        $afp = create('App\Models\Afp');
+        $afp = create(\App\Models\Afp::class);
 
         $this->actingAs($this->userWithPermission('edit-afps'))
             ->put(route('admin.afps.update', $afp->id), $this->formAttributes(['name' => '']))
@@ -183,7 +183,7 @@ class AfpTest extends TestCase
     /** @test */
     public function a_user_can_update_a_afp()
     {
-        $afp = create('App\Models\Afp');
+        $afp = create(\App\Models\Afp::class);
         $afp->name = 'New Name';
 
         $this->actingAs($this->userWithPermission('edit-afps'))

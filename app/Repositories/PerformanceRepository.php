@@ -70,13 +70,9 @@ class PerformanceRepository
             ->whereHas('downtimeReason')
             ->whereHas(
                 'campaign',
-                function ($query) {
-                    return $query->with('project')
-                        ->where('name', 'like', '%downtime%')
-                        ->orWhereHas('project', function ($query) {
-                            return $query->where('name', 'like', '%downtime%');
-                        });
-                }
+                fn($query) => $query->with('project')
+                    ->where('name', 'like', '%downtime%')
+                    ->orWhereHas('project', fn($query) => $query->where('name', 'like', '%downtime%'))
             );
     }
 

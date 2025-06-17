@@ -54,9 +54,7 @@ class GeneralRawDailyCommandsTest extends TestCase
             $file_name
         );
 
-        Excel::assertStored($file_name, function (GeneralDailyRawReportExport $export) {
-            return true;
-        });
+        Excel::assertStored($file_name, fn(GeneralDailyRawReportExport $export) => true);
     }
 
     /** @test */

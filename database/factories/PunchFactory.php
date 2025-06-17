@@ -4,15 +4,15 @@ namespace Database\Factories;
 
 use Faker\Generator as Faker;
 
-class SocialSecurityFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+class PunchFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
 
-    protected $model = \App\Models\SocialSecurity::class;
+    protected $model = \App\Models\Punch::class;
     public function definition()
     {
         return [
             'employee_id' => \App\Models\Employee::factory(),
-            'number' => random_int(1000000001, 9999999999),
+            'punch' => fake()->numberBetween(1000, 9999)
         ];
     }
 }

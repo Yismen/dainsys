@@ -27,13 +27,7 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
 
     protected string $view;
 
-    protected string $client;
-
-    protected string $date_from;
-
     protected array $working_range;
-
-    protected $date_to;
 
     protected $totals_row;
     protected $total_hours_column;
@@ -42,12 +36,9 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
     protected $first_column;
     protected $first_hours_column;
 
-    public function __construct(array $data, string $client, string $period_name, $date_from, $date_to)
+    public function __construct(array $data, protected string $client, string $period_name, protected string $date_from, protected $date_to)
     {
         $this->data = $data;
-        $this->client = $client;
-        $this->date_from = $date_from;
-        $this->date_to = $date_to;
         $this->sheetName = "{$period_name} Inbound Report";
         $this->hours_data = collect($this->data['period_hours_parser']);
 

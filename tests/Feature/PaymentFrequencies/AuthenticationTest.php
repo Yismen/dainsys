@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewPaymentFrequencies()
     {
-        $payment_frequency = create('App\Models\PaymentFrequency');
+        $payment_frequency = create(\App\Models\PaymentFrequency::class);
 
         $this->get(route('admin.payment_frequencies.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreatePaymentFrequencies()
     {
-        $payment_frequency = create('App\Models\PaymentFrequency');
+        $payment_frequency = create(\App\Models\PaymentFrequency::class);
 
         $this->get(route('admin.payment_frequencies.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdatePaymentFrequency()
     {
-        $payment_frequency = create('App\Models\PaymentFrequency');
+        $payment_frequency = create(\App\Models\PaymentFrequency::class);
 
         $this->get(route('admin.payment_frequencies.edit', $payment_frequency->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyPaymentFrequency()
     {
-        $payment_frequency = create('App\Models\PaymentFrequency');
+        $payment_frequency = create(\App\Models\PaymentFrequency::class);
 
         $this->delete(route('admin.payment_frequencies.destroy', $payment_frequency->id))
             ->assertStatus(302)

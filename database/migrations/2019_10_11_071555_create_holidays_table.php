@@ -13,7 +13,7 @@ class CreateHolidaysTable extends Migration
      */
     public function up()
     {
-        Schema::create('holidays', function (Blueprint $table) {
+        Schema::create('holidays', function (Blueprint $table): void {
             $table->increments('id');
             $table->date('date');
             $table->string('name', 150);

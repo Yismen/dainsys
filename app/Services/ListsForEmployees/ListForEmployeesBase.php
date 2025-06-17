@@ -17,11 +17,9 @@ abstract class ListForEmployeesBase
 
     public static function make(): Collection
     {
-        return Cache::rememberForever(static::cacheKey(), function () {
-            return static::model()::query()
-                ->orderBy('name')
-                ->whereHas('employees')
-                ->get(['id', 'name']);
-        });
+        return Cache::rememberForever(static::cacheKey(), fn() => static::model()::query()
+            ->orderBy('name')
+            ->whereHas('employees')
+            ->get(['id', 'name']));
     }
 }

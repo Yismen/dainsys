@@ -6,6 +6,7 @@ use App\Models\DainsysModel as Model;
 
 class Card extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     protected $fillable = ['card', 'employee_id'];
 
     /**
@@ -14,7 +15,7 @@ class Card extends Model
      */
     public function employee()
     {
-        return $this->belongsTo('App\Models\Employee');
+        return $this->belongsTo(\App\Models\Employee::class);
     }
 
     /**

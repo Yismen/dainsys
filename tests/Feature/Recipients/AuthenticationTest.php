@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewRecipients()
     {
-        $recipient = create('App\Models\Recipient');
+        $recipient = create(\App\Models\Recipient::class);
 
         $this->get(route('admin.recipients.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateRecipients()
     {
-        $recipient = create('App\Models\Recipient');
+        $recipient = create(\App\Models\Recipient::class);
 
         $this->get(route('admin.recipients.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateRecipient()
     {
-        $recipient = create('App\Models\Recipient');
+        $recipient = create(\App\Models\Recipient::class);
 
         $this->get(route('admin.recipients.edit', $recipient->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyRecipient()
     {
-        $recipient = create('App\Models\Recipient');
+        $recipient = create(\App\Models\Recipient::class);
 
         $this->delete(route('admin.recipients.destroy', $recipient->id))
             ->assertStatus(302)

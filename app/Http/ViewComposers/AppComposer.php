@@ -21,9 +21,9 @@ class AppComposer
             'user' => $this->user,
             'user_notifications' => $this->userNotifications(),
             'user_notifications_count' => $this->userNotificationsCount(),
-            'app_name' => ucwords(config('dainsys.app_name', 'Dainsys')),
-            'client_name' => ucwords(config('dainsys.client_name', 'Dainsys\' Client')),
-            'client_name_mini' => strtoupper(config('dainsys.client_name_mini', 'DAINSYS')),
+            'app_name' => ucwords((string) config('dainsys.app_name', 'Dainsys')),
+            'client_name' => ucwords((string) config('dainsys.client_name', 'Dainsys\' Client')),
+            'client_name_mini' => strtoupper((string) config('dainsys.client_name_mini', 'DAINSYS')),
             'settings' => $this->settings(),
             'color' => $this->color(),
         ]);
@@ -34,19 +34,13 @@ class AppComposer
         if (auth()->check()) {
             $this->user = auth()->user();
 
-            return Cache::rememberForEver('user-' . $this->user->id, function () {
-                return $this->user
-                    ->load([
-                        'settings',
-                        'roles' => function ($query) {
-                            return $query->orderBy('name')
-                                ->with(['menus' => function ($query) {
-                                    return $query->orderBy('display_name');
-                                },
-                                ]);
-                        },
-                    ]);
-            });
+            return Cache::rememberForEver('user-' . $this->user->id, fn() => $this->user
+                ->load([
+                    'settings',
+                    'roles' => fn($query) => $query->orderBy('name')
+                        ->with(['menus' => fn($query) => $query->orderBy('display_name'),
+                        ]),
+                ]));
         }
 
         return null;
@@ -55,9 +49,7 @@ class AppComposer
     private function userNotifications()
     {
         if ($this->user) {
-            return Cache::rememberForEver('user-notifications-' . $this->user->id, function () {
-                return $this->user->unreadNotifications()->take(10)->get();
-            });
+            return Cache::rememberForEver('user-notifications-' . $this->user->id, fn() => $this->user->unreadNotifications()->take(10)->get());
         }
 
         return null;
@@ -66,9 +58,7 @@ class AppComposer
     private function userNotificationsCount(): int
     {
         if ($this->user) {
-            return Cache::rememberForEver('user-notifications-count-' . auth()->user()->id, function () {
-                return auth()->user()->unreadNotifications()->count();
-            });
+            return Cache::rememberForEver('user-notifications-count-' . auth()->user()->id, fn() => auth()->user()->unreadNotifications()->count());
         }
 
         return 0;
@@ -76,7 +66,7 @@ class AppComposer
 
     private function settings()
     {
-        return $this->user && $this->user->settings ? json_decode($this->user->settings->data) : null;
+        return $this->user && $this->user->settings ? json_decode((string) $this->user->settings->data) : null;
     }
 
     private function color()
@@ -85,7 +75,7 @@ class AppComposer
 
         $skin = $settings && isset($settings->skin) ?
             explode('-', $settings->skin) :
-            explode('-', config('dainsys.layout_color'));
+            explode('-', (string) config('dainsys.layout_color'));
 
         return is_array($skin) && count($skin) > 1 ?
             $skin[1] :

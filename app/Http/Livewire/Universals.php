@@ -42,39 +42,31 @@ class Universals extends Component
         $this->noUniversals = $this->getEmployees('noUniversals');
 
         return view('livewire.universals', [
-            'sites' => Cache::rememberForever('universal_sites', function () {
-                return Site::query()
-                    ->whereHas('employees', function ($quer): void {
-                        $quer->actives();
-                    })
-                    ->orderBy('name')
-                    ->get();
-            }),
-            'departments' => Cache::rememberForever('universal_departments', function () {
-                return Department::query()
-                    ->whereHas('employees', function ($quer): void {
-                        $quer->actives();
-                    })
-                    ->orderBy('name')
-                    ->get();
-            }),
-            'projects' => Cache::rememberForever('universal_projects', function () {
-                return Project::query()
-                    ->whereHas('employees', function ($quer): void {
-                        $quer->actives();
-                    })
-                    ->orderBy('name')
-                    ->get();
-            }),
-            'positions' => Cache::rememberForever('universal_positions', function () {
-                return Position::query()
-                    ->whereHas('employees', function ($quer): void {
-                        $quer->actives();
-                    })
-                    ->orderBy('name')
-                    ->with('department', 'payment_type')
-                    ->get();
-            }),
+            'sites' => Cache::rememberForever('universal_sites', fn() => Site::query()
+                ->whereHas('employees', function ($quer): void {
+                    $quer->actives();
+                })
+                ->orderBy('name')
+                ->get()),
+            'departments' => Cache::rememberForever('universal_departments', fn() => Department::query()
+                ->whereHas('employees', function ($quer): void {
+                    $quer->actives();
+                })
+                ->orderBy('name')
+                ->get()),
+            'projects' => Cache::rememberForever('universal_projects', fn() => Project::query()
+                ->whereHas('employees', function ($quer): void {
+                    $quer->actives();
+                })
+                ->orderBy('name')
+                ->get()),
+            'positions' => Cache::rememberForever('universal_positions', fn() => Position::query()
+                ->whereHas('employees', function ($quer): void {
+                    $quer->actives();
+                })
+                ->orderBy('name')
+                ->with('department', 'payment_type')
+                ->get()),
         ]);
     }
 

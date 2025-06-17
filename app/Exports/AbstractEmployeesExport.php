@@ -18,15 +18,10 @@ use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAutoSize, WithColumnFormatting, WithMapping, WithHeadings, WithEvents
 {
     use Exportable;
-
-    protected $date_from = null;
-    protected $date_to = null;
     protected $site = null;
 
-    public function __construct($date_from = null, $date_to = null, ?string $site = null)
+    public function __construct(protected $date_from = null, protected $date_to = null, ?string $site = null)
     {
-        $this->date_from = $date_from;
-        $this->date_to = $date_to;
         $this->site = $site;
     }
 
@@ -86,11 +81,11 @@ abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAu
             filled($employee->personal_id) ? $employee->personal_id : $employee->passport,
             Date::dateTimeToExcel($employee->hire_date),
             Date::dateTimeToExcel($employee->date_of_birth),
-            substr($employee->cellphone_number, 0, 3),
-            substr($employee->cellphone_number, -7),
+            substr((string) $employee->cellphone_number, 0, 3),
+            substr((string) $employee->cellphone_number, -7),
             $employee->address === null ? '' :
                 $employee->address->street_address . ', ' . $employee->address->sector . ', ' . $employee->address->city,
-            substr(optional($employee->gender)->name, 0, 1),
+            substr((string) optional($employee->gender)->name, 0, 1),
             optional($employee->marital)->name,
             optional($employee->nationality)->name,
             optional($employee->site)->name,

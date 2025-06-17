@@ -13,7 +13,7 @@ class AddSoftDeleteFiedToTerminationsTable extends Migration
      */
     public function up()
     {
-        Schema::table('terminations', function (Blueprint $table) {
+        Schema::table('terminations', function (Blueprint $table): void {
             $table->softDeletes();
         });
     }
@@ -26,7 +26,7 @@ class AddSoftDeleteFiedToTerminationsTable extends Migration
     public function down()
     {       
         if (Schema::hasColumn('terminations', 'deleted_at')) {
-            Schema::table('terminations', function (Blueprint $table) {
+            Schema::table('terminations', function (Blueprint $table): void {
                 $table->dropColumn('deleted_at');
             });
         }

@@ -32,9 +32,7 @@ class SchedulesController extends Controller
             $employees_missing_schedule = Employee::actives()
                 ->whereDoesntHave(
                     'schedules',
-                    function ($query) {
-                        return $query->whereDate('date', '>=', Carbon::now()->subDays(10));
-                    }
+                    fn($query) => $query->whereDate('date', '>=', Carbon::now()->subDays(10))
                 )
                 ->orderBy('first_name')
                 ->orderBy('second_first_name')
@@ -44,9 +42,7 @@ class SchedulesController extends Controller
             return view('schedules.index', compact('employees_missing_schedule'));
         }
 
-        $schedules = Schedule::whereHas('employee', function ($query) {
-            return $query->actives();
-        })
+        $schedules = Schedule::whereHas('employee', fn($query) => $query->actives())
             ->with('employee')
             ->whereDate('date', '>=', Carbon::now()->subDays(10))
             ->orderBy('slug');

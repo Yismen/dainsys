@@ -7,6 +7,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Punch extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     use Sluggable;
 
     protected $fillable = ['punch', 'employee_id'];
@@ -32,7 +33,7 @@ class Punch extends Model
      */
     public function employee()
     {
-        return $this->belongsTo('App\Models\Employee');
+        return $this->belongsTo(\App\Models\Employee::class);
     }
 
     /**
@@ -62,20 +63,16 @@ class Punch extends Model
 
     protected function freeEmployees(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
-            return Employee::with('punch')
-                ->sorted()
-                ->actives()
-                ->whereDoesntHave('punch')
-                ->orWhere('id', $this->employee->id)
-                ->get();
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => Employee::with('punch')
+            ->sorted()
+            ->actives()
+            ->whereDoesntHave('punch')
+            ->orWhere('id', $this->employee->id)
+            ->get());
     }
 
     protected function punch(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($punch) {
-            return ['punch' => strtoupper($punch)];
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn($punch) => ['punch' => strtoupper((string) $punch)]);
     }
 }

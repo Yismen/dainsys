@@ -23,7 +23,7 @@ class ImportOvernightHoursTest extends TestCase
     /** Authorization: Prevent access to unauthorizated users */
     public function testUnuthorizedUsersCantAccess()
     {
-        $hour = create('App\Models\OvernightHour');
+        $hour = create(\App\Models\OvernightHour::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.overnight_hours.index'))

@@ -13,7 +13,7 @@ class CreateTracksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tracks', function (Blueprint $table) {
+        Schema::create('tracks', function (Blueprint $table): void {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->integer('trackable_id')->unsigned()->index();

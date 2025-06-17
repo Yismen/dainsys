@@ -33,39 +33,31 @@ class Vips extends Component
         return view('livewire.vips', [
             'vip_employees' => $this->getEmployees('vips'),
             'non_vip_employees' => $this->getEmployees('noVips'),
-            'sites' => Cache::rememberForever('vip_sites', function () {
-                return Site::query()
-                    ->whereHas('employees', function ($quer): void {
-                        $quer->actives();
-                    })
-                    ->orderBy('name')
-                    ->get();
-            }),
-            'departments' => Cache::rememberForever('vip_departments', function () {
-                return Department::query()
-                    ->whereHas('employees', function ($quer): void {
-                        $quer->actives();
-                    })
-                    ->orderBy('name')
-                    ->get();
-            }),
-            'projects' => Cache::rememberForever('vip_projects', function () {
-                return Project::query()
-                    ->whereHas('employees', function ($quer): void {
-                        $quer->actives();
-                    })
-                    ->orderBy('name')
-                    ->get();
-            }),
-            'positions' => Cache::rememberForever('vip_positions', function () {
-                return Position::query()
-                    ->whereHas('employees', function ($quer): void {
-                        $quer->actives();
-                    })
-                    ->orderBy('name')
-                    ->with('department', 'payment_type')
-                    ->get();
-            }),
+            'sites' => Cache::rememberForever('vip_sites', fn() => Site::query()
+                ->whereHas('employees', function ($quer): void {
+                    $quer->actives();
+                })
+                ->orderBy('name')
+                ->get()),
+            'departments' => Cache::rememberForever('vip_departments', fn() => Department::query()
+                ->whereHas('employees', function ($quer): void {
+                    $quer->actives();
+                })
+                ->orderBy('name')
+                ->get()),
+            'projects' => Cache::rememberForever('vip_projects', fn() => Project::query()
+                ->whereHas('employees', function ($quer): void {
+                    $quer->actives();
+                })
+                ->orderBy('name')
+                ->get()),
+            'positions' => Cache::rememberForever('vip_positions', fn() => Position::query()
+                ->whereHas('employees', function ($quer): void {
+                    $quer->actives();
+                })
+                ->orderBy('name')
+                ->with('department', 'payment_type')
+                ->get()),
         ]);
     }
 

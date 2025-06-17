@@ -1,11 +1,19 @@
 <?php
 
+namespace Database\Factories;
+
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\Holiday::class, function (Faker $faker) {
-    return [
-        'date' => $faker->date,
-        'name' => $faker->text(50),
-        'description' => $faker->text(80)
-    ];
-});
+class HolidayFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+
+    protected $model = \App\Models\Holiday::class;
+    public function definition()
+    {
+        return [
+            'date' => fake()->date,
+            'name' => fake()->text(50),
+            'description' => fake()->text(80)
+        ];
+    }
+}

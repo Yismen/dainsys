@@ -40,7 +40,7 @@ trait NotifyUsersOnFailedCommandsTrait
             }
 
             return $this;
-        } catch (\Throwable $th) {
+        } catch (\Throwable) {
             //throw $th;
         }
     }

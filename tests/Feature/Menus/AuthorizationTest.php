@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewMenu()
     {
-        $menu = create('App\Models\Menu');
+        $menu = create(\App\Models\Menu::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.menus.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetMenu()
     {
-        $menu = create('App\Models\Menu');
+        $menu = create(\App\Models\Menu::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.menus.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditMenu()
     {
-        $menu = create('App\Models\Menu');
+        $menu = create(\App\Models\Menu::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.menus.update', $menu->id))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyMenu()
     {
-        $menu = create('App\Models\Menu');
+        $menu = create(\App\Models\Menu::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.menus.destroy', $menu->id))

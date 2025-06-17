@@ -11,7 +11,7 @@ class CreateSchedules2Table extends Migration
      */
     public function up()
     {
-        Schema::create('schedules', function (Blueprint $table) {
+        Schema::create('schedules', function (Blueprint $table): void {
             $table->increments('id');
             $table->integer('employee_id')->unsigned();
             $table->string('slug', 100)->nullable();

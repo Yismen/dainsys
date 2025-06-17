@@ -31,9 +31,7 @@ class StepsForm extends Component
     public function render()
     {
         return view('livewire.steps-form', [
-            'processes' => Cache::rememberForever('steps_processes', function () {
-                return Process::orderBy('name')->get(['name', 'id']);
-            }),
+            'processes' => Cache::rememberForever('steps_processes', fn() => Process::orderBy('name')->get(['name', 'id'])),
         ]);
     }
 

@@ -13,7 +13,7 @@ class AddDefaultColumnToProcessesTable extends Migration
      */
     public function up()
     {
-        Schema::table('processes', function (Blueprint $table) {
+        Schema::table('processes', function (Blueprint $table): void {
             $table->boolean('default')->nullable()->default(false)->after('name');
         });
     }
@@ -25,7 +25,7 @@ class AddDefaultColumnToProcessesTable extends Migration
      */
     public function down()
     {
-        Schema::table('processes', function (Blueprint $table) {
+        Schema::table('processes', function (Blueprint $table): void {
             //
         });
     }

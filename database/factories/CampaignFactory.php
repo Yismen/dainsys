@@ -1,23 +1,31 @@
 <?php
 
+namespace Database\Factories;
+
 use App\Models\RevenueType;
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\Campaign::class, function (Faker $faker) {
-    $revenueTypeIds = [];
-    try {
-        foreach (['Sales Or Production', 'Production Time', 'Talk Time', 'Login Time', 'Downtime'] as $name) {
-            $revenueTypeIds[] = factory(RevenueType::class)->create(['name' => $name])->id;
+class CampaignFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+
+    protected $model = \App\Models\Campaign::class;
+    public function definition()
+    {
+        $revenueTypeIds = [];
+        try {
+            foreach (['Sales Or Production', 'Production Time', 'Talk Time', 'Login Time', 'Downtime'] as $name) {
+                $revenueTypeIds[] = RevenueType::factory()->create(['name' => $name])->id;
+            }
+        } catch (\Throwable) {
+            //throw $th;
         }
-    } catch (\Throwable $th) {
-        //throw $th;
+        return [
+            'name' => fake()->name(),
+            'project_id' => \App\Models\Project::factory()->create()->id,
+            'source_id' => \App\Models\Source::factory()->create()->id,
+            'revenue_type_id' => fake()->randomElement($revenueTypeIds),
+            'sph_goal' => fake()->randomDigit(),
+            'revenue_rate' => fake()->randomDigit(),
+        ];
     }
-    return [
-        'name' => $faker->name(),
-        'project_id' => factory(App\Models\Project::class)->create()->id,
-        'source_id' => factory(App\Models\Source::class)->create()->id,
-        'revenue_type_id' => $faker->randomElement($revenueTypeIds),
-        'sph_goal' => $faker->randomDigit(),
-        'revenue_rate' => $faker->randomDigit(),
-    ];
-});
+}

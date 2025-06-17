@@ -22,7 +22,7 @@ class ModuleActionsTest extends TestCase
 
         $this->get(route('admin.profiles.index'))
             ->assertOk()
-            ->assertViewIs('profiles.show', $profile->id);
+            ->assertViewIs('profiles.show');
     }
 
     /** @test */

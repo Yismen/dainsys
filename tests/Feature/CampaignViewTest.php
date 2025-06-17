@@ -14,7 +14,7 @@ class CampaignViewTest extends TestCase
     /** @test */
     public function guest_users_are_redirected()
     {
-        $campaign = create('App\Models\Campaign');
+        $campaign = create(\App\Models\Campaign::class);
 
         $this->get(route('admin.campaigns.index'))->assertRedirect('/login');
         $this->get(route('admin.campaigns.show', $campaign->id))->assertRedirect('/login');
@@ -23,7 +23,7 @@ class CampaignViewTest extends TestCase
     /** @test */
     public function it_requires_view_campaigns_permissions_to_view_all_campaigns()
     {
-        $this->actingAs(create('App\Models\User'));
+        $this->actingAs(create(\App\Models\User::class));
 
         $response = $this->get('/admin/campaigns');
 
@@ -34,8 +34,8 @@ class CampaignViewTest extends TestCase
     public function it_requires_view_campaigns_permissions_to_view_a_campaign_details()
     {
         // given
-        $campaign = create('App\Models\Campaign');
-        $this->actingAs(create('App\Models\User'));
+        $campaign = create(\App\Models\Campaign::class);
+        $this->actingAs(create(\App\Models\User::class));
 
         // when
         $response = $this->get("/admin/campaigns/{$campaign->id}");
@@ -49,7 +49,7 @@ class CampaignViewTest extends TestCase
     {
         // given
         $user = $this->userWithPermission('view-campaigns');
-        $campaign = create('App\Models\Campaign');
+        $campaign = create(\App\Models\Campaign::class);
 
         // when
         $this->actingAs($user);
@@ -65,7 +65,7 @@ class CampaignViewTest extends TestCase
     {
         // given
         $user = $this->userWithPermission('view-campaigns');
-        $campaign = create('App\Models\Campaign');
+        $campaign = create(\App\Models\Campaign::class);
 
         // when
         $this->actingAs($user);

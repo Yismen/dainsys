@@ -6,6 +6,7 @@ use App\Models\DainsysModel as Model;
 
 class Tag extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     /**
      * List of fields that can be updated/from a form
      *
@@ -15,6 +16,6 @@ class Tag extends Model
 
     public function articles()
     {
-        return $this->belongsToMany('App\Models\Article');
+        return $this->belongsToMany(\App\Models\Article::class);
     }
 }

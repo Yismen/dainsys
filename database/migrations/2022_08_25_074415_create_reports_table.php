@@ -13,7 +13,7 @@ class CreateReportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reports', function (Blueprint $table) {
+        Schema::create('reports', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name')->unique()->index();
             $table->string('key')->unique()->index();

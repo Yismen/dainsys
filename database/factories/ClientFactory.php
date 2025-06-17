@@ -1,14 +1,22 @@
 <?php
 
+namespace Database\Factories;
+
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\Client::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name(),
-        'contact_name' => $faker->name(),
-        'main_phone' => $faker->phoneNumber(),
-        'email' => $faker->email(),
-        'secondary_phone' => $faker->phoneNumber(),
-        'account_number' => $faker->phoneNumber(),
-    ];
-});
+class ClientFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+
+    protected $model = \App\Models\Client::class;
+    public function definition()
+    {
+        return [
+            'name' => fake()->name(),
+            'contact_name' => fake()->name(),
+            'main_phone' => fake()->phoneNumber(),
+            'email' => fake()->email(),
+            'secondary_phone' => fake()->phoneNumber(),
+            'account_number' => fake()->phoneNumber(),
+        ];
+    }
+}

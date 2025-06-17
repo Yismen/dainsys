@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 class Contact extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $table = 'contacts';
 
     protected $fillable = ['user_id', 'name', 'phone', 'works_at', 'position', 'secondary_phone', 'email'];
@@ -30,9 +32,7 @@ class Contact extends Model
      */
     protected function worksAt(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function ($work) {
-            return ucwords(trim($work));
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn($work) => ucwords(trim((string) $work)));
     }
 
     /**
@@ -44,9 +44,7 @@ class Contact extends Model
      */
     protected function position(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function ($position) {
-            return ucwords(trim($position));
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn($position) => ucwords(trim((string) $position)));
     }
 
     /**
@@ -58,9 +56,7 @@ class Contact extends Model
      */
     protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
-            return ['name' => ucwords(trim($name))];
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn($name) => ['name' => ucwords(trim((string) $name))]);
     }
 
     /**

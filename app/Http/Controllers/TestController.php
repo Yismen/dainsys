@@ -77,11 +77,11 @@ class TestController extends Controller
             'today' => $carbon->toDateString(),
             'yesterday' => $carbon->yesterday(),
             'this_week' => $carbon->weekOfYear,
-            'last_week' => $carbon->subWeek(1),
+            'last_week' => $carbon->subWeek(),
             'this_month' => $carbon->month,
             'last_month' => $carbon->subMonth(),
             'this_year' => $carbon->year,
-            'last_year' => $carbon->subYear(1),
+            'last_year' => $carbon->subYear(),
         ];
 
         return view('test.component', compact('data'));

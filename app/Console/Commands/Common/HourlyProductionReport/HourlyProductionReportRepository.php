@@ -10,20 +10,8 @@ class HourlyProductionReportRepository extends RingCentralConnection implements 
     public $data;
     public $dispositions;
 
-    public $date_from;
-
-    protected $date_to;
-
-    protected string $campaign;
-
-    protected string $team;
-
-    public function __construct($date_from, $date_to, $campaign, $team = '%')
+    public function __construct(public $date_from, protected $date_to, protected string $campaign, protected string $team = '%')
     {
-        $this->date_from = $date_from;
-        $this->date_to = $date_to;
-        $this->campaign = $campaign;
-        $this->team = $team;
     }
 
     public function getData(): object

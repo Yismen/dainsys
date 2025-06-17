@@ -28,7 +28,7 @@ class EmployeeProcessControllerTest extends TestCase
     /** @test */
     public function it_requires_view_employe_process_permissions_to_view_all_employee_process()
     {
-        $this->actingAs(create('App\Models\User'));
+        $this->actingAs(create(\App\Models\User::class));
 
         $response = $this->get('/admin/employee_process');
 
@@ -40,7 +40,7 @@ class EmployeeProcessControllerTest extends TestCase
     {
         $employee = Employee::factory()->create();
         $process = Process::factory()->create();
-        $this->actingAs(create('App\Models\User'));
+        $this->actingAs(create(\App\Models\User::class));
 
         $response = $this->get(route('admin.employee-process.show', ['employee_id' => $employee->id, 'process_id' => $process->id]));
 

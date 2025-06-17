@@ -14,7 +14,7 @@ class CampaignCreateTest extends TestCase
     /** @test */
     public function guests_can_not_visit_any_campaigns_route()
     {
-        $campaign = create('App\Models\Campaign');
+        $campaign = create(\App\Models\Campaign::class);
 
         $this->get(route('admin.campaigns.create'))->assertRedirect('/login');
         $this->post(route('admin.campaigns.store', $campaign->toArray()))->assertRedirect('/login');
@@ -24,7 +24,7 @@ class CampaignCreateTest extends TestCase
     public function it_requires_create_campaigns_permission_to_add_a_campaign()
     {
         // Given
-        $user = create('App\Models\User');
+        $user = create(\App\Models\User::class);
         $this->actingAs($user);
 
         // When
@@ -75,7 +75,7 @@ class CampaignCreateTest extends TestCase
     /** @test */
     public function a_user_can_create_a_campaign()
     {
-        $campaign = make('App\Models\Campaign');
+        $campaign = make(\App\Models\Campaign::class);
 
         $this->actingAs($this->userWithPermission('create-campaigns'))
             ->post(route('admin.campaigns.store', $campaign->toArray()));

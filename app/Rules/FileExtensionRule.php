@@ -16,7 +16,7 @@ class FileExtensionRule implements Rule
     public function __construct($extensions)
     {
         $this->extensions = is_array($extensions) ?
-            $extensions : explode('|', $extensions);
+            $extensions : explode('|', (string) $extensions);
     }
 
     /**

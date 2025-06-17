@@ -10,18 +10,9 @@ class BillableHoursAndRevenueService
 {
     public $dates;
 
-    public $revenue_type;
-
-    public $campaign;
-    public string $date_field;
-
-    public function __construct(string $dates, $revenue_type, $campaign, $date_field = 'date')
+    public function __construct(string $dates, public $revenue_type, public $campaign, public string $date_field = 'date')
     {
         $this->dates = preg_split('/[,|]+/', $dates, -1, PREG_SPLIT_NO_EMPTY);
-
-        $this->revenue_type = $revenue_type;
-        $this->campaign = $campaign;
-        $this->date_field = $date_field;
     }
 
     public function query(): Builder

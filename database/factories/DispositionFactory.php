@@ -1,13 +1,21 @@
 <?php
 
+namespace Database\Factories;
+
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\RingCentral\Disposition::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name(),
-        'contacts' => 1,
-        'sales' => 1,
-        'upsales' => 1,
-        'cc_sales' => 1,
-    ];
-});
+class DispositionFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+
+    protected $model = \App\Models\RingCentral\Disposition::class;
+    public function definition()
+    {
+        return [
+            'name' => fake()->name(),
+            'contacts' => 1,
+            'sales' => 1,
+            'upsales' => 1,
+            'cc_sales' => 1,
+        ];
+    }
+}

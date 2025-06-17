@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewCards()
     {
-        $card = create('App\Models\Card');
+        $card = create(\App\Models\Card::class);
 
         $this->get(route('admin.cards.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateCards()
     {
-        $card = create('App\Models\Card');
+        $card = create(\App\Models\Card::class);
 
         $this->get(route('admin.cards.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateCard()
     {
-        $card = create('App\Models\Card');
+        $card = create(\App\Models\Card::class);
 
         $this->get(route('admin.cards.edit', $card->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyCard()
     {
-        $card = create('App\Models\Card');
+        $card = create(\App\Models\Card::class);
 
         $this->delete(route('admin.cards.destroy', $card->id))
             ->assertStatus(302)

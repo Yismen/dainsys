@@ -28,17 +28,13 @@ class ArsController extends Controller
             ->actives()
             ->get();
 
-        $arss = Cache::rememberForever('arss', function () {
-            return Ars::with(['employees' => function ($query) {
-                return $query
-                    ->orderBy('first_name')
-                    ->orderBy('second_first_name')
-                    ->orderBy('last_name')
-                    ->orderBy('second_last_name')
-                    ->actives();
-            },
-            ])->orderBy('name')->get();
-        });
+        $arss = Cache::rememberForever('arss', fn() => Ars::with(['employees' => fn($query) => $query
+            ->orderBy('first_name')
+            ->orderBy('second_first_name')
+            ->orderBy('last_name')
+            ->orderBy('second_last_name')
+            ->actives(),
+        ])->orderBy('name')->get());
 
         if ($request->ajax()) {
             return $arss;

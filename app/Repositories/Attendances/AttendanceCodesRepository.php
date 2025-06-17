@@ -22,16 +22,14 @@ class AttendanceCodesRepository
 
     public function data()
     {
-        return Cache::remember('attendances-' . $this->code . '-' . $this->current_user, now()->addHours(4), function () {
-            return [
-                'this_week' => $this->thisWeek(),
-                'last_week' => $this->lastWeek(),
-                'this_month' => $this->monthToDate(),
-                'last_month' => $this->previousMonth(),
-                'two_months_ago' => $this->twoMonthsAgo(),
-                'year_to_date' => $this->yearToDate(),
-            ];
-        });
+        return Cache::remember('attendances-' . $this->code . '-' . $this->current_user, now()->addHours(4), fn() => [
+            'this_week' => $this->thisWeek(),
+            'last_week' => $this->lastWeek(),
+            'this_month' => $this->monthToDate(),
+            'last_month' => $this->previousMonth(),
+            'two_months_ago' => $this->twoMonthsAgo(),
+            'year_to_date' => $this->yearToDate(),
+        ]);
     }
 
     public function codes()

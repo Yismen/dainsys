@@ -1,11 +1,20 @@
 <?php
 
+namespace Database\Factories;
+
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\AttendanceCode::class, function (Faker $faker) {
-    return [
-        'name' => $faker->sentence(3),
-        'color' => '#FFFFFF',
-        'absence' => true
-    ];
-});
+class AttendanceCodeFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+
+    protected  $model = \App\Models\AttendanceCode::class;
+
+    public function definition()
+    {
+        return [
+            'name' => fake()->sentence(3),
+            'color' => '#FFFFFF',
+            'absence' => true
+        ];
+    }
+}

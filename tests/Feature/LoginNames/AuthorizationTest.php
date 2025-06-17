@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewLoginName()
     {
-        $login_name = create('App\Models\LoginName');
+        $login_name = create(\App\Models\LoginName::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.login_names.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetLoginName()
     {
-        $login_name = create('App\Models\LoginName');
+        $login_name = create(\App\Models\LoginName::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.login_names.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditLoginName()
     {
-        $login_name = create('App\Models\LoginName');
+        $login_name = create(\App\Models\LoginName::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.login_names.update', $login_name->id))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyLoginName()
     {
-        $login_name = create('App\Models\LoginName');
+        $login_name = create(\App\Models\LoginName::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.login_names.destroy', $login_name->id))

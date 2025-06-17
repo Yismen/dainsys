@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewPositions()
     {
-        $position = create('App\Models\Position');
+        $position = create(\App\Models\Position::class);
 
         $this->get(route('admin.positions.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreatePositions()
     {
-        $position = create('App\Models\Position');
+        $position = create(\App\Models\Position::class);
 
         $this->get(route('admin.positions.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdatePosition()
     {
-        $position = create('App\Models\Position');
+        $position = create(\App\Models\Position::class);
 
         $this->get(route('admin.positions.edit', $position->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyPosition()
     {
-        $position = create('App\Models\Position');
+        $position = create(\App\Models\Position::class);
 
         $this->delete(route('admin.positions.destroy', $position->id))
             ->assertStatus(302)

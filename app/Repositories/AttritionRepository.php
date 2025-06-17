@@ -66,10 +66,8 @@ class AttritionRepository
         return Employee::with('termination')
             ->filter(request()->all())
             ->forDefaultSites()
-            ->whereHas('termination', function ($query) use ($start_of_month) {
-                return $query->whereYear('termination_date', $start_of_month->year)
-                    ->whereMonth('termination_date', $start_of_month->month);
-            })->count();
+            ->whereHas('termination', fn($query) => $query->whereYear('termination_date', $start_of_month->year)
+                ->whereMonth('termination_date', $start_of_month->month))->count();
     }
 
     public static function hiredThisMonth(int $months = 0): int

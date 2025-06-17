@@ -133,8 +133,8 @@ class EmployeeProcess extends Component
                     $query->where('id', $this->position_id);
                 });
             })
-            ->when(strlen($this->search) > 0, function ($query): void {
-                foreach (preg_split("/[\s,]+/", $this->search, -1, PREG_SPLIT_NO_EMPTY) as $search_value) {
+            ->when(strlen((string) $this->search) > 0, function ($query): void {
+                foreach (preg_split("/[\s,]+/", (string) $this->search, -1, PREG_SPLIT_NO_EMPTY) as $search_value) {
                     $query->where(function ($query) use ($search_value): void {
                         $query->where('first_name', 'like', "%{$search_value}%")
                             ->orWhere('last_name', 'like', "%{$search_value}%")
@@ -148,56 +148,46 @@ class EmployeeProcess extends Component
 
     protected function processes()
     {
-        return Cache::rememberForever('steps_processes', function () {
-            return Process::orderBy('name')->get(['name', 'id']);
-        });
+        return Cache::rememberForever('steps_processes', fn() => Process::orderBy('name')->get(['name', 'id']));
     }
 
     protected function sites()
     {
-        return Cache::rememberForever('steps_sites', function () {
-            return Site::query()
-                ->orderBy('name')
-                ->whereHas('employees', function ($query): void {
-                    $query->actives();
-                })
-                ->get(['name', 'id']);
-        });
+        return Cache::rememberForever('steps_sites', fn() => Site::query()
+            ->orderBy('name')
+            ->whereHas('employees', function ($query): void {
+                $query->actives();
+            })
+            ->get(['name', 'id']));
     }
 
     protected function departments()
     {
-        return Cache::rememberForever('steps_departments', function () {
-            return Department::query()
-                ->orderBy('name')
-                ->whereHas('employees', function ($query): void {
-                    $query->actives();
-                })
-                ->get(['name', 'id']);
-        });
+        return Cache::rememberForever('steps_departments', fn() => Department::query()
+            ->orderBy('name')
+            ->whereHas('employees', function ($query): void {
+                $query->actives();
+            })
+            ->get(['name', 'id']));
     }
 
     protected function projects()
     {
-        return Cache::rememberForever('steps_projects', function () {
-            return Project::query()
-                ->orderBy('name')
-                ->whereHas('employees', function ($query): void {
-                    $query->actives();
-                })
-                ->get(['name', 'id']);
-        });
+        return Cache::rememberForever('steps_projects', fn() => Project::query()
+            ->orderBy('name')
+            ->whereHas('employees', function ($query): void {
+                $query->actives();
+            })
+            ->get(['name', 'id']));
     }
 
     protected function positions()
     {
-        return Cache::rememberForever('steps_positions', function () {
-            return Position::query()
-                ->orderBy('name')
-                ->whereHas('employees', function ($query): void {
-                    $query->actives();
-                })
-                ->get(['name', 'id']);
-        });
+        return Cache::rememberForever('steps_positions', fn() => Position::query()
+            ->orderBy('name')
+            ->whereHas('employees', function ($query): void {
+                $query->actives();
+            })
+            ->get(['name', 'id']));
     }
 }

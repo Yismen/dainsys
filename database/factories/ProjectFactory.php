@@ -1,11 +1,19 @@
 <?php
 
+namespace Database\Factories;
+
 use App\Models\Client;
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\Project::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name(),
-        'client_id' => factory(Client::class),
-    ];
-});
+class ProjectFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+
+    protected $model = \App\Models\Project::class;
+    public function definition()
+    {
+        return [
+            'name' => fake()->name(),
+            'client_id' => Client::factory(),
+        ];
+    }
+}

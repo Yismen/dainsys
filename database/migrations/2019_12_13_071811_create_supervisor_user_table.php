@@ -13,7 +13,7 @@ class CreateSupervisorUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('supervisor_user', function (Blueprint $table) {
+        Schema::create('supervisor_user', function (Blueprint $table): void {
             $table->increments('id');
             $table->integer('supervisor_id')->unsigned();
             $table->integer('user_id')->unsigned();

@@ -12,7 +12,7 @@ class CreateMenusTable extends Migration
      */
     public function up()
     {
-        Schema::create('menus', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('menus', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name');
             $table->string('display_name');
@@ -29,6 +29,6 @@ class CreateMenusTable extends Migration
      */
     public function down()
     {
-        Schema::drop('menus');
+        \Illuminate\Support\Facades\Schema::drop('menus');
     }
 }

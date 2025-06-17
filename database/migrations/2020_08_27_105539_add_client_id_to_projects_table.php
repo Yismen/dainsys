@@ -13,7 +13,7 @@ class AddClientIdToProjectsTable extends Migration
      */
     public function up()
     {
-        Schema::table('projects', function (Blueprint $table) {
+        Schema::table('projects', function (Blueprint $table): void {
             $table->integer('client_id')->unsigned()->nullable()->after('name');
 
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
@@ -27,7 +27,7 @@ class AddClientIdToProjectsTable extends Migration
      */
     public function down()
     {
-        Schema::table('projects', function (Blueprint $table) {
+        Schema::table('projects', function (Blueprint $table): void {
             $table->dropForeign(['client_id']);
 
             $table->dropColumn('client_id');

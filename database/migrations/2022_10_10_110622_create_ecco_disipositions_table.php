@@ -19,7 +19,7 @@ class CreateEccoDisipositionsTable extends Migration
     public function up()
     {
         if (!Schema::hasTable('ecco_dispositions')) {
-            Schema::create('ecco_dispositions', function (Blueprint $table) {
+            Schema::create('ecco_dispositions', function (Blueprint $table): void {
                 $table->id();
                 $table->timestamps();
                 $table->string('name', 400)->unique();

@@ -1,9 +1,18 @@
 <?php
 
+namespace Database\Factories;
+
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\Ars::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name(),
-    ];
-});
+class ArsFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+
+    protected  $model = \App\Models\Ars::class;
+
+    public function definition()
+    {
+        return [
+            'name' => fake()->name(),
+        ];
+    }
+}

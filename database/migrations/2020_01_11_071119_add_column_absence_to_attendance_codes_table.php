@@ -13,7 +13,7 @@ class AddColumnAbsenceToAttendanceCodesTable extends Migration
      */
     public function up()
     {
-        Schema::table('attendance_codes', function (Blueprint $table) {
+        Schema::table('attendance_codes', function (Blueprint $table): void {
             $table->boolean('absence')->nullable()->default(false);
         });
     }
@@ -26,7 +26,7 @@ class AddColumnAbsenceToAttendanceCodesTable extends Migration
     public function down()
     {    
         if (Schema::hasColumn('attendance_codes', 'absence')) {
-            Schema::table('attendance_codes', function (Blueprint $table) {
+            Schema::table('attendance_codes', function (Blueprint $table): void {
                 $table->dropColumn('absence');
             });
         }

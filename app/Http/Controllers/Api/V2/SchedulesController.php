@@ -42,9 +42,7 @@ class SchedulesController extends Controller
             ->with('employee')
             ->whereDate('date', '>=', Carbon::now()->subDays((int) $daysago))
             ->whereDate('date', '<=', Carbon::now())
-            ->whereHas('employee', function ($query) {
-                return $query->whereDoesntHave('termination');
-            })
+            ->whereHas('employee', fn($query) => $query->whereDoesntHave('termination'))
             ->get();
 
         return ScheduleResource::collection($schedules);

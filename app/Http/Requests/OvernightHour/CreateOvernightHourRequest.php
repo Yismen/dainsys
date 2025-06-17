@@ -27,9 +27,7 @@ class CreateOvernightHourRequest extends FormRequest
     {
         $dates = OvernightHour::where('employee_id', request('employee_id'))
             ->whereDate('date', request('date'))
-            ->pluck('date')->map(function ($date) {
-                return $date->format('Y-m-d');
-            });
+            ->pluck('date')->map(fn($date) => $date->format('Y-m-d'));
 
         return [
             'date' => [

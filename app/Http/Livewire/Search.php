@@ -24,6 +24,6 @@ class Search extends Component
     {
         $this->emit('searchUpdated', $this->search);
 
-        return $this->count = strlen(trim($this->search));
+        return $this->count = strlen(trim((string) $this->search));
     }
 }

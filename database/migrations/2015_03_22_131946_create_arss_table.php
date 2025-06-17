@@ -12,7 +12,7 @@ class CreateArssTable extends Migration
      */
     public function up()
     {
-        Schema::create('arss', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('arss', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name', 100);
             $table->string('slug', 150)->nullable();
@@ -27,6 +27,6 @@ class CreateArssTable extends Migration
      */
     public function down()
     {
-        Schema::drop('arss');
+        \Illuminate\Support\Facades\Schema::drop('arss');
     }
 }

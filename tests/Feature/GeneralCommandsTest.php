@@ -51,9 +51,7 @@ class GeneralCommandsTest extends TestCase
             $file_name
         );
 
-        Excel::assertStored($file_name, function (GeneralDailyProductionReportExport $export) {
-            return true;
-        });
+        Excel::assertStored($file_name, fn(GeneralDailyProductionReportExport $export) => true);
     }
 
     /** @test */

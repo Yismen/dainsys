@@ -12,7 +12,7 @@ class CreateProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('profiles', function (Blueprint $table): void {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->unique();
             $table->enum('gender', ['male', 'female']);
@@ -36,6 +36,6 @@ class CreateProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('profiles');
+        \Illuminate\Support\Facades\Schema::drop('profiles');
     }
 }

@@ -10,16 +10,13 @@ use Illuminate\Support\Facades\Cache;
 class UsersController extends Controller
 {
     protected $user;
-    private $request;
 
-    public function __construct(Request $request, Role $role)
+    public function __construct(private readonly Request $request, Role $role)
     {
         $this->middleware('authorize:view-users|edit-users|create-users', ['only' => ['index', 'show']]);
         $this->middleware('authorize:edit-users', ['only' => ['edit', 'update', 'force-reset', 'force-change']]);
         $this->middleware('authorize:create-users', ['only' => ['create', 'store']]);
         $this->middleware('authorize:destroy-users', ['only' => ['destroy']]);
-
-        $this->request = $request;
     }
 
     /**

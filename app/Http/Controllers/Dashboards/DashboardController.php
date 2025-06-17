@@ -39,7 +39,7 @@ class DashboardController extends Controller
             }
         }
 
-        return (new DefaultDashboardController())->index('default');
+        return (new DefaultDashboardController())->index();
     }
 
     protected function renderRoleController($role, $class)

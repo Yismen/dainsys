@@ -12,7 +12,7 @@ class CreateNationalitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('nationalities', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('nationalities', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name', 150)->unique();
             $table->timestamps();
@@ -26,6 +26,6 @@ class CreateNationalitiesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('nationalities');
+        \Illuminate\Support\Facades\Schema::drop('nationalities');
     }
 }

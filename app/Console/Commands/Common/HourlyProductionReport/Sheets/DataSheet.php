@@ -19,21 +19,12 @@ class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateForm
     protected $rows;
     protected $last_column;
 
-    protected $sheetName;
-
-    protected $title;
-
-    protected string $view;
-
-    public function __construct(array $data, $sheetName, $title, string $view = 'exports.data')
+    public function __construct(array $data, protected $sheetName, protected $title, protected string $view = 'exports.data')
     {
         $this->data = $data;
 
         $this->rows = count($this->data) + 2;
         $this->last_column = 'P';
-        $this->sheetName = $sheetName;
-        $this->title = $title;
-        $this->view = $view;
     }
 
     public function view(): View

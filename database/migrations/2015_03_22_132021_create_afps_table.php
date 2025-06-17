@@ -12,7 +12,7 @@ class CreateAfpsTable extends Migration
      */
     public function up()
     {
-        Schema::create('afps', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('afps', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name', 100);
             $table->string('slug', 100)->nullable();
@@ -27,6 +27,6 @@ class CreateAfpsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('afps');
+        \Illuminate\Support\Facades\Schema::drop('afps');
     }
 }

@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewHolidays()
     {
-        $holiday = create('App\Models\Holiday');
+        $holiday = create(\App\Models\Holiday::class);
 
         $this->get(route('admin.holidays.index'))->assertRedirect('/login');
         // $this->get(route('admin.holidays.show', $holiday->id))->assertRedirect('/login');
@@ -21,7 +21,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateHolidays()
     {
-        $holiday = create('App\Models\Holiday');
+        $holiday = create(\App\Models\Holiday::class);
 
         $this->get(route('admin.holidays.create'))->assertRedirect('/login');
         $this->post(route('admin.holidays.store', $holiday->toArray()))->assertRedirect('/login');
@@ -29,7 +29,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantEditHolidays()
     {
-        $holiday = create('App\Models\Holiday');
+        $holiday = create(\App\Models\Holiday::class);
 
         $this->get(route('admin.holidays.edit', $holiday->id))->assertRedirect('/login');
         $this->put(route('admin.holidays.update', $holiday->id))->assertRedirect('/login');
@@ -37,7 +37,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyHoliday()
     {
-        $holiday = create('App\Models\Holiday');
+        $holiday = create(\App\Models\Holiday::class);
 
         $this->delete(route('admin.holidays.destroy', $holiday->id))->assertRedirect('/login');
     }

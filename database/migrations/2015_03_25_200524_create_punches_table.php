@@ -12,7 +12,7 @@ class CreatePunchesTable extends Migration
      */
     public function up()
     {
-        Schema::create('punches', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('punches', function (Blueprint $table): void {
             $table->increments('id');
             $table->integer('employee_id')->unsigned()->unique()->index();
             $table->string('punch', 100);
@@ -31,6 +31,6 @@ class CreatePunchesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('punches');
+        \Illuminate\Support\Facades\Schema::drop('punches');
     }
 }

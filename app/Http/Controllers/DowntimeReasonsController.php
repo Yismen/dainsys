@@ -7,16 +7,12 @@ use Illuminate\Http\Request;
 
 class DowntimeReasonsController extends Controller
 {
-    private $request;
-
-    public function __construct(Request $request)
+    public function __construct(private readonly Request $request)
     {
         $this->middleware('authorize:view-downtime-reasons|edit-downtime-reasons|create-downtime-reasons', ['only' => ['index', 'show']]);
         $this->middleware('authorize:edit-downtime-reasons', ['only' => ['edit', 'update']]);
         $this->middleware('authorize:create-downtime-reasons', ['only' => ['create', 'store']]);
         $this->middleware('authorize:destroy-downtime-reasons', ['only' => ['destroy']]);
-
-        $this->request = $request;
     }
 
     /**

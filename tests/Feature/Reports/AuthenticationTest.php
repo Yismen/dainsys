@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewReports()
     {
-        $report = create('App\Models\Report');
+        $report = create(\App\Models\Report::class);
 
         $this->get(route('admin.reports.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateReports()
     {
-        $report = create('App\Models\Report');
+        $report = create(\App\Models\Report::class);
 
         $this->get(route('admin.reports.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateReport()
     {
-        $report = create('App\Models\Report');
+        $report = create(\App\Models\Report::class);
 
         $this->get(route('admin.reports.edit', $report->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyReport()
     {
-        $report = create('App\Models\Report');
+        $report = create(\App\Models\Report::class);
 
         $this->delete(route('admin.reports.destroy', $report->id))
             ->assertStatus(302)

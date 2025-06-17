@@ -33,18 +33,14 @@ class NationalitiesController extends Controller
             ->actives()
             ->get();
 
-        $nationalities = Cache::rememberForever('nationalities', function () {
-            return Nationality::orderBy('name', 'ASC')
-                ->with(['employees' => function ($query) {
-                    return $query
-                        ->orderBy('first_name')
-                        ->orderBy('first_name')
-                        ->orderBy('last_name')
-                        ->orderBy('second_last_name')
-                        ->actives();
-                },
-                ])->get();
-        });
+        $nationalities = Cache::rememberForever('nationalities', fn() => Nationality::orderBy('name', 'ASC')
+            ->with(['employees' => fn($query) => $query
+                ->orderBy('first_name')
+                ->orderBy('first_name')
+                ->orderBy('last_name')
+                ->orderBy('second_last_name')
+                ->actives(),
+            ])->get());
 
         if ($request->ajax()) {
             return $nationalities;

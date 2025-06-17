@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewLoginNames()
     {
-        $login_name = create('App\Models\LoginName');
+        $login_name = create(\App\Models\LoginName::class);
 
         $this->get(route('admin.login_names.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateLoginNames()
     {
-        $login_name = create('App\Models\LoginName');
+        $login_name = create(\App\Models\LoginName::class);
 
         $this->get(route('admin.login_names.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateLoginName()
     {
-        $login_name = create('App\Models\LoginName');
+        $login_name = create(\App\Models\LoginName::class);
 
         $this->get(route('admin.login_names.edit', $login_name->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyLoginName()
     {
-        $login_name = create('App\Models\LoginName');
+        $login_name = create(\App\Models\LoginName::class);
 
         $this->delete(route('admin.login_names.destroy', $login_name->id))
             ->assertStatus(302)

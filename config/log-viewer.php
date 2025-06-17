@@ -53,7 +53,7 @@ return [
             'prefix' => 'log-viewer',
 
             'middleware' => env('ARCANEDEV_LOGVIEWER_MIDDLEWARE') ?
-                explode(',', env('ARCANEDEV_LOGVIEWER_MIDDLEWARE'))
+                explode(',', (string) env('ARCANEDEV_LOGVIEWER_MIDDLEWARE'))
                 : explode(',', 'web,auth,authorize:view-logs')
         ],
     ],

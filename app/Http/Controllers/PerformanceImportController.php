@@ -74,9 +74,7 @@ class PerformanceImportController extends Controller
             ->with('employee.supervisor');
 
         return DataTables::of($performances)
-            ->addColumn('edit', function ($query) {
-                return route('admin.performances.edit', $query->id);
-            })
+            ->addColumn('edit', fn($query) => route('admin.performances.edit', $query->id))
             ->toJson(true);
     }
 

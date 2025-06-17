@@ -22,15 +22,15 @@ class ExcelFileLoader
     private $errors = [];
 
     /**
-     * rules to validate each line of data.
-     *
-     * @var array
+     * @param mixed[] $rules
      */
-    private $validation_rules = [];
-
-    public function __construct($rules = [])
+    public function __construct(
+        /**
+         * rules to validate each line of data.
+         */
+        private $validation_rules = []
+    )
     {
-        $this->validation_rules = $rules;
     }
 
     public function load($files)
@@ -90,7 +90,7 @@ class ExcelFileLoader
             $data = $validator->getData();
 
             $this->errors[
-                explode('.', $reader->file->getClientOriginalName())[0]
+                explode('.', (string) $reader->file->getClientOriginalName())[0]
             ][] = [
                 'data' => $data,
                 'row_error' => $index + 2,

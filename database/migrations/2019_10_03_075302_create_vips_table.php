@@ -13,7 +13,7 @@ class CreateVipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('vips', function (Blueprint $table) {
+        Schema::create('vips', function (Blueprint $table): void {
             $table->increments('id');
             $table->integer('employee_id')->unsigned();
             $table->date('since');

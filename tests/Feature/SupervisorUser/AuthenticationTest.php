@@ -16,8 +16,8 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewSupervisorUsers()
     {
-        $user = create('App\Models\User');
-        $supervisor = create('App\Models\Supervisor');
+        $user = create(\App\Models\User::class);
+        $supervisor = create(\App\Models\Supervisor::class);
 
         $this->get(route('admin.supervisor_users.index'))->assertRedirect('/login');
     }

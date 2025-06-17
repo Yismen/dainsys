@@ -23,7 +23,7 @@ class EmployeesControllerTest extends TestCase
     // Authentication Tests
     public function testGuestCantViewEmployees()
     {
-        $employee = create('App\Models\Employee');
+        $employee = create(\App\Models\Employee::class);
 
         $this->get(route('admin.employees.index'))
             ->assertStatus(302)
@@ -36,7 +36,7 @@ class EmployeesControllerTest extends TestCase
 
     public function testGuestCantCreateEmployees()
     {
-        $employee = create('App\Models\Employee');
+        $employee = create(\App\Models\Employee::class);
 
         $this->get(route('admin.employees.create'))
             ->assertStatus(302)
@@ -49,7 +49,7 @@ class EmployeesControllerTest extends TestCase
 
     public function testGuestCantUpdateEmployee()
     {
-        $employee = create('App\Models\Employee');
+        $employee = create(\App\Models\Employee::class);
 
         $this->get(route('admin.employees.edit', $employee->id))
             ->assertStatus(302)
@@ -63,7 +63,7 @@ class EmployeesControllerTest extends TestCase
     //Authorization Tests
     public function testUnuthorizedUsersCantViewEmployee()
     {
-        $employee = create('App\Models\Employee');
+        $employee = create(\App\Models\Employee::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.employees.index'))
@@ -75,7 +75,7 @@ class EmployeesControllerTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetEmployee()
     {
-        $employee = create('App\Models\Employee');
+        $employee = create(\App\Models\Employee::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.employees.store'))
@@ -84,7 +84,7 @@ class EmployeesControllerTest extends TestCase
 
     public function testUnuthorizedUsersCantEditEmployee()
     {
-        $employee = create('App\Models\Employee');
+        $employee = create(\App\Models\Employee::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.employees.update', $employee->id))

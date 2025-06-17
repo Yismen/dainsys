@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewRoles()
     {
-        $role = create('App\Models\Role');
+        $role = create(\App\Models\Role::class);
 
         $this->get(route('admin.roles.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateRoles()
     {
-        $role = create('App\Models\Role');
+        $role = create(\App\Models\Role::class);
 
         $this->get(route('admin.roles.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateRole()
     {
-        $role = create('App\Models\Role');
+        $role = create(\App\Models\Role::class);
 
         $this->get(route('admin.roles.edit', $role->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyRole()
     {
-        $role = create('App\Models\Role');
+        $role = create(\App\Models\Role::class);
 
         $this->delete(route('admin.roles.destroy', $role->id))
             ->assertStatus(302)

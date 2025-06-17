@@ -13,7 +13,7 @@ class AddDataFieldToTerminationsTable extends Migration
      */
     public function up()
     {
-        Schema::table('terminations', function (Blueprint $table) {
+        Schema::table('terminations', function (Blueprint $table): void {
             $table->json('employee_data')->nullable();
         });
     }
@@ -25,7 +25,7 @@ class AddDataFieldToTerminationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('terminations', function (Blueprint $table) {
+        Schema::table('terminations', function (Blueprint $table): void {
             $table->dropColumn('employee_data');
         });
     }

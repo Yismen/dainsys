@@ -23,9 +23,7 @@ class BanksController extends Controller
      */
     public function index(Request $request)
     {
-        $banks = Cache::rememberForever('banks', function () {
-            return Bank::orderBy('name')->get();
-        });
+        $banks = Cache::rememberForever('banks', fn() => Bank::orderBy('name')->get());
 
         if ($request->ajax()) {
             return $banks;

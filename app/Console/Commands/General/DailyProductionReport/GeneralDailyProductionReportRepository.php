@@ -14,13 +14,10 @@ class GeneralDailyProductionReportRepository extends RingCentralConnection
     protected $date_to;
     protected $dispositions;
 
-    protected string $team_group;
-
-    public function __construct(array $options, string $team_group = '%')
+    public function __construct(array $options, protected string $team_group = '%')
     {
         $this->date_from = $options['date_from'];
         $this->date_to = $options['date_to'];
-        $this->team_group = $team_group;
 
         $this->data = $this->getData();
     }

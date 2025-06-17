@@ -11,7 +11,7 @@ class DropSchedulesTableIfExists extends Migration
      */
     public function up()
     {
-        Schema::table('schedules', function (Blueprint $table) {
+        Schema::table('schedules', function (Blueprint $table): void {
             Schema::dropIfExists('schedules');
         });
     }
@@ -21,7 +21,7 @@ class DropSchedulesTableIfExists extends Migration
      */
     public function down()
     {
-        Schema::table('schedules', function (Blueprint $table) {
+        Schema::table('schedules', function (Blueprint $table): void {
         });
     }
 }

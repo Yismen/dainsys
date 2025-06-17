@@ -1,12 +1,20 @@
 <?php
 
+namespace Database\Factories;
+
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\Schedule::class, function (Faker $faker) {
-    return [
-        'employee_id' => factory(App\Models\Employee::class),
-        'slug' => $faker->slug(),
-        'date' => $faker->date(),
-        'hours' => random_int(5, 12),
-    ];
-});
+class ScheduleFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+
+    protected $model = \App\Models\Schedule::class;
+    public function definition()
+    {
+        return [
+            'employee_id' => \App\Models\Employee::factory(),
+            'slug' => fake()->slug(),
+            'date' => fake()->date(),
+            'hours' => random_int(5, 12),
+        ];
+    }
+}

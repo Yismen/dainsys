@@ -7,16 +7,14 @@ use Illuminate\Queue\SerializesModels;
 class EmployeesUpdates extends Event
 {
     use SerializesModels;
-    private $employees;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($employees)
+    public function __construct(private $employees)
     {
-        $this->employees = $employees;
     }
 
     /**

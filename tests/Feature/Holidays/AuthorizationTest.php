@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewHoliday()
     {
-        $holiday = create('App\Models\Holiday');
+        $holiday = create(\App\Models\Holiday::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.holidays.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetHoliday()
     {
-        $holiday = create('App\Models\Holiday');
+        $holiday = create(\App\Models\Holiday::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.holidays.create'))
@@ -37,7 +37,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditHoliday()
     {
-        $holiday = create('App\Models\Holiday');
+        $holiday = create(\App\Models\Holiday::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.holidays.edit', $holiday->id))
@@ -49,7 +49,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyHoliday()
     {
-        $holiday = create('App\Models\Holiday');
+        $holiday = create(\App\Models\Holiday::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.holidays.destroy', $holiday->id))

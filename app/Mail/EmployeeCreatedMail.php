@@ -13,19 +13,16 @@ class EmployeeCreatedMail extends Mailable implements ShouldQueue
     use Queueable;
     use SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public Employee $employee;
-
-    protected array $recipients;
-
-    public function __construct(Employee $employee, array $recipients)
+    public function __construct(
+        /**
+         * Create a new message instance.
+         *
+         * @return void
+         */
+        public Employee $employee,
+        protected array $recipients
+    )
     {
-        $this->employee = $employee;
-        $this->recipients = $recipients;
     }
 
     /**

@@ -12,16 +12,12 @@ use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
 class CapillusCallsTypeCountSheet implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
 {
-    protected $report_data;
-
     protected $sheet;
 
     protected $count;
 
-    public function __construct($report_data)
+    public function __construct(protected $report_data)
     {
-        $this->report_data = $report_data;
-
         $this->count = count($this->report_data);
         $this->count = $this->count > 0 ? $this->count : 1;
     }

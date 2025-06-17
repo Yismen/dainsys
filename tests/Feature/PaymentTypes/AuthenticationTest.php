@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewPaymentTypes()
     {
-        $payment_type = create('App\Models\PaymentType');
+        $payment_type = create(\App\Models\PaymentType::class);
 
         $this->get(route('admin.payment_types.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreatePaymentTypes()
     {
-        $payment_type = create('App\Models\PaymentType');
+        $payment_type = create(\App\Models\PaymentType::class);
 
         $this->get(route('admin.payment_types.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdatePaymentType()
     {
-        $payment_type = create('App\Models\PaymentType');
+        $payment_type = create(\App\Models\PaymentType::class);
 
         $this->get(route('admin.payment_types.edit', $payment_type->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyPaymentType()
     {
-        $payment_type = create('App\Models\PaymentType');
+        $payment_type = create(\App\Models\PaymentType::class);
 
         $this->delete(route('admin.payment_types.destroy', $payment_type->id))
             ->assertStatus(302)

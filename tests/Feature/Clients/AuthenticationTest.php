@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewClients()
     {
-        $client = create('App\Models\Client');
+        $client = create(\App\Models\Client::class);
 
         $this->get(route('admin.clients.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateClients()
     {
-        $client = create('App\Models\Client');
+        $client = create(\App\Models\Client::class);
 
         $this->get(route('admin.clients.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateClient()
     {
-        $client = create('App\Models\Client');
+        $client = create(\App\Models\Client::class);
 
         $this->get(route('admin.clients.edit', $client->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyClient()
     {
-        $client = create('App\Models\Client');
+        $client = create(\App\Models\Client::class);
 
         $this->delete(route('admin.clients.destroy', $client->id))
             ->assertStatus(302)

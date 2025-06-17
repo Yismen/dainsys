@@ -22,7 +22,7 @@ class DefaultDashboardController extends DashboardAbstractController
     {
         return view("{$this->views_location}.default", [
             'user' => auth()->user()->load(['roles.menus']),
-            'app_name' => ucwords(config('dainsys.app_name', 'Dainsys')),
+            'app_name' => ucwords((string) config('dainsys.app_name', 'Dainsys')),
             'users_count' => User::count(),
             'employees_count' => Employee::actives()->count(),
             'profiles' => Profile::latest()->take(6)->with('user')->get(),

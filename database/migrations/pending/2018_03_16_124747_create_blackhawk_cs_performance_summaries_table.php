@@ -13,7 +13,7 @@ class CreateBlackhawkCSPerformanceSummariesTable extends Migration
      */
     public function up()
     {
-        Schema::create('blackhawk_cs_performance_summaries', function (Blueprint $table) {
+        Schema::create('blackhawk_cs_performance_summaries', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('unique_id')->index()->unique();
             $table->date('date');

@@ -12,7 +12,7 @@ class CreateSupervisorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('supervisors', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('supervisors', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
@@ -26,6 +26,6 @@ class CreateSupervisorsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('supervisors');
+        \Illuminate\Support\Facades\Schema::drop('supervisors');
     }
 }

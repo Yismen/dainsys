@@ -28,9 +28,7 @@ class PositionsController extends Controller
         if ($request->ajax()) {
             return DataTables::of(
                 Position::with('department')
-                    ->withCount(['employees' => function ($query) {
-                        return $query->actives();
-                    },
+                    ->withCount(['employees' => fn($query) => $query->actives(),
                     ])
                     ->with('payment_type')
                     ->with('payment_frequency')

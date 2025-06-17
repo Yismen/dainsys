@@ -8,6 +8,7 @@ use App\Traits\Trackable;
 
 class Downtime extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     use Trackable, PerformanceTrait;
 
     protected $table = 'performances';

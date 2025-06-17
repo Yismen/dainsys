@@ -100,9 +100,7 @@ class EmployeeRepository
 
     protected function constrainCallback()
     {
-        return function ($query) {
-            return $query->actives()
-                ->filter(request()->all());
-        };
+        return fn($query) => $query->actives()
+            ->filter(request()->all());
     }
 }

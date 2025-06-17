@@ -6,6 +6,7 @@ use App\Models\DainsysModel as Model;
 
 class Curve extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     /**
      * mass assignable
      */

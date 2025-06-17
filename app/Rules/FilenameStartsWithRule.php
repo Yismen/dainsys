@@ -7,16 +7,13 @@ use Illuminate\Support\Str;
 
 class FilenameStartsWithRule implements Rule
 {
-    protected $filename;
-
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct($filename)
+    public function __construct(protected $filename)
     {
-        $this->filename = $filename;
     }
 
     /**

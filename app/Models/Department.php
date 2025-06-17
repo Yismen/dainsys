@@ -6,6 +6,7 @@ use App\Models\DainsysModel as Model;
 
 class Department extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     protected $fillable = ['name'];
 
     /**

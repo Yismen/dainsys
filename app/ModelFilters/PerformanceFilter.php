@@ -57,7 +57,7 @@ class PerformanceFilter extends BaseModelFilter
 
     public function datesBetween($request)
     {
-        $dates = explode(',', $request);
+        $dates = explode(',', (string) $request);
 
         $from_date = $dates[0];
         $to_date = trim($dates[1] ?? $dates[0]);

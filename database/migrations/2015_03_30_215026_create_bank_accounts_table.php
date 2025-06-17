@@ -12,7 +12,7 @@ class CreateBankAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bank_accounts', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('bank_accounts', function (Blueprint $table): void {
             $table->increments('id');
             $table->integer('employee_id')->unsigned();
             $table->integer('bank_id')->unsigned();
@@ -31,6 +31,6 @@ class CreateBankAccountsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('bank_accounts');
+        \Illuminate\Support\Facades\Schema::drop('bank_accounts');
     }
 }

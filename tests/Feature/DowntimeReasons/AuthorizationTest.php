@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewDowntimeReason()
     {
-        $downtime_reason = create('App\Models\DowntimeReason');
+        $downtime_reason = create(\App\Models\DowntimeReason::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.downtime_reasons.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetDowntimeReason()
     {
-        $downtime_reason = create('App\Models\DowntimeReason');
+        $downtime_reason = create(\App\Models\DowntimeReason::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.downtime_reasons.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditDowntimeReason()
     {
-        $downtime_reason = create('App\Models\DowntimeReason');
+        $downtime_reason = create(\App\Models\DowntimeReason::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.downtime_reasons.update', $downtime_reason->id))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyDowntimeReason()
     {
-        $downtime_reason = create('App\Models\DowntimeReason');
+        $downtime_reason = create(\App\Models\DowntimeReason::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.downtime_reasons.destroy', $downtime_reason->id))

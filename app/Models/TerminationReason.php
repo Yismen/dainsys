@@ -6,6 +6,7 @@ use App\Models\DainsysModel as Model;
 
 class TerminationReason extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     /**
      * mass assignable
      */

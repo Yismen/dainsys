@@ -20,20 +20,14 @@ class DispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCalcu
     protected $rows;
     protected $last_column;
 
-    protected $sheetName;
-
-    protected $title;
-
     protected $view;
 
-    public function __construct(array $data, $sheetName, $title, string $view = 'exports.dispositions')
+    public function __construct(array $data, protected $sheetName, protected $title, string $view = 'exports.dispositions')
     {
         $this->data = $data;
 
         $this->rows = count($this->data) + 2;
         $this->last_column = 'F';
-        $this->sheetName = $sheetName;
-        $this->title = $title;
         $this->view = $view;
     }
 

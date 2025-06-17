@@ -89,9 +89,7 @@ class InboundWTDCommandTest extends TestCase
             $file_name
         );
 
-        Excel::assertStored($file_name, function (InboundSummaryExport $export) {
-            return true;
-        });
+        Excel::assertStored($file_name, fn(InboundSummaryExport $export) => true);
     }
 
     /** @test */

@@ -29,9 +29,7 @@ class ShiftsController extends Controller
 
         $shifts = Shift::with('employee')
             ->orderBy('slug')
-            ->whereHas('employee', function ($query) {
-                return $query->actives();
-            });
+            ->whereHas('employee', fn($query) => $query->actives());
 
         return DataTables::of($shifts)
             ->orderColumn('employee', 'slug $1')

@@ -13,7 +13,7 @@ class CreateBecauseDailyPerformancesTable extends Migration
      */
     public function up()
     {
-        Schema::create('because_daily_performances', function (Blueprint $table) {
+        Schema::create('because_daily_performances', function (Blueprint $table): void {
             $table->id();
             $table->dateTime('date')->index();
             $table->integer("weekday");

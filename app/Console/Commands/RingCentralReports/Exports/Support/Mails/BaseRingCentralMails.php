@@ -10,10 +10,6 @@ class BaseRingCentralMails extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $temporary_mail_attachment;
-
-    public $subject;
-
     protected $distro;
 
     protected $options;
@@ -23,11 +19,9 @@ class BaseRingCentralMails extends Mailable
      *
      * @return void
      */
-    public function __construct(array $distro, $filename, $subject, $options = [])
+    public function __construct(array $distro, public $temporary_mail_attachment, public $subject, $options = [])
     {
         $this->distro = $distro;
-        $this->temporary_mail_attachment = $filename;
-        $this->subject = $subject;
         $this->options = $this->mergeDefaults($options);
     }
 

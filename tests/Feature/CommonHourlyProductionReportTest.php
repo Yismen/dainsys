@@ -31,9 +31,7 @@ class CommonHourlyProductionReportTest extends TestCase
             $file_name
         );
 
-        Excel::assertStored($file_name, function (HourlyProductionReportExport $export) {
-            return true;
-        });
+        Excel::assertStored($file_name, fn(HourlyProductionReportExport $export) => true);
     }
 
     /** @test */

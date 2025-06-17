@@ -12,7 +12,7 @@ class CreateCardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cards', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('cards', function (Blueprint $table): void {
             $table->increments('id');
             $table->integer('employee_id')->unsigned()->unique()->index();
             $table->string('card', 100);
@@ -31,6 +31,6 @@ class CreateCardsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('cards');
+        \Illuminate\Support\Facades\Schema::drop('cards');
     }
 }

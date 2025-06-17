@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetDowntime()
     {
-        $downtime = create('App\Models\Downtime');
+        $downtime = create(\App\Models\Downtime::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.downtimes.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditDowntime()
     {
-        $downtime = create('App\Models\Downtime');
+        $downtime = create(\App\Models\Downtime::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.downtimes.update', $downtime->id))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyDowntime()
     {
-        $downtime = create('App\Models\Downtime');
+        $downtime = create(\App\Models\Downtime::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.downtimes.destroy', $downtime->id))

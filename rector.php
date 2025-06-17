@@ -22,12 +22,13 @@ return RectorConfig::configure()
         __DIR__ . '/config',
         __DIR__ . '/envoy',
         __DIR__ . '/public',
+        __DIR__ . '/database',
         __DIR__ . '/resources',
         __DIR__ . '/routes',
         __DIR__ . '/tests',
     ])
     // uncomment to reach your current PHP version
-    // ->withPhpSets()
+    ->withPhpSets()
     ->withTypeCoverageLevel(0)
     ->withDeadCodeLevel(0)
     ->withCodeQualityLevel(0);

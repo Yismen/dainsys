@@ -13,7 +13,7 @@ class CreateRevenueTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('revenue_types', function (Blueprint $table) {
+        Schema::create('revenue_types', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name', 100);
             $table->timestamps();

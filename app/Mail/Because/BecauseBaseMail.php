@@ -10,20 +10,13 @@ abstract class BecauseBaseMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $temporary_mail_attachment;
-
-    public $report_name;
-
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(array $distro, $filename, $report_name)
+    public function __construct(array $distro, public $temporary_mail_attachment, public $report_name)
     {
-        $this->temporary_mail_attachment = $filename;
-        $this->report_name = $report_name;
-
         foreach ($distro as $recipient) {
             $this->to($recipient);
         }

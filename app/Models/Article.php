@@ -8,6 +8,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Article extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     /**
      * Sluggable implementation
      */
@@ -38,9 +39,7 @@ class Article extends Model
      */
     protected function title(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($title) {
-            return ['title' => trim(ucwords($title))];
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn($title) => ['title' => trim(ucwords((string) $title))]);
     }
     /**
      * Get a list os the taks ids associated with current article
@@ -49,9 +48,7 @@ class Article extends Model
      */
     protected function tagList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
-            return $this->tags->pluck('id');
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => $this->tags->pluck('id'));
     }
     /**
      * set the body field to be always Uc First
@@ -60,15 +57,11 @@ class Article extends Model
      */
     protected function body(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($body) {
-            return ['body' => ucfirst(trim($body))];
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn($body) => ['body' => ucfirst(trim((string) $body))]);
     }
     protected function username(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function () {
-            return ['username' => auth()->user()->username];
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn() => ['username' => auth()->user()->username]);
     }
     /**
      * Parse the published at date returned to the user
@@ -77,9 +70,7 @@ class Article extends Model
      */
     protected function publishedAt(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function ($date) {
-            return Carbon::parse($date);
-        }, set: function ($date) {
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn($date) => Carbon::parse($date), set: function ($date) {
             $format = 'Y-m-d';
             $date = Carbon::parse($date)->format($format);
             return ['published_at' => Carbon::createFromFormat($format, $date)];
@@ -93,7 +84,7 @@ class Article extends Model
                 ->where('published_at', '>', $this->published_at)
                 ->published()
                 ->get()->first();
-            return $article ? $article : null;
+            return $article ?: null;
         });
     }
     protected function previous(): \Illuminate\Database\Eloquent\Casts\Attribute
@@ -104,7 +95,7 @@ class Article extends Model
                 ->where('published_at', '<', $this->published_at)
                 ->published()
                 ->first();
-            return $article ? $article : null;
+            return $article ?: null;
         });
     }
 
@@ -163,7 +154,7 @@ class Article extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\Models\User', 'username', 'username');
+        return $this->belongsTo(\App\Models\User::class, 'username', 'username');
     }
 
     /**
@@ -173,7 +164,7 @@ class Article extends Model
      */
     public function publisher()
     {
-        return $this->belongsTo('App\Models\User', 'username', 'username');
+        return $this->belongsTo(\App\Models\User::class, 'username', 'username');
     }
 
     /**
@@ -193,19 +184,15 @@ class Article extends Model
      */
     public function tags()
     {
-        return $this->belongsToMany('App\Models\Tag');
+        return $this->belongsToMany(\App\Models\Tag::class);
     }
     protected function nextArticle(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
-            return $this->attributes['next_article'] = $this->next;
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => $this->attributes['next_article'] = $this->next);
     }
     protected function previousArticle(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
-            return $this->attributes['previous_article'] = $this->previous;
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => $this->attributes['previous_article'] = $this->previous);
     }
     /**
      * Additional dates field to be treated as an instance of Carbon

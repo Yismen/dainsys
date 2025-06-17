@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewBanks()
     {
-        $bank = create('App\Models\Bank');
+        $bank = create(\App\Models\Bank::class);
 
         $this->get(route('admin.banks.index'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateBank()
     {
-        $bank = create('App\Models\Bank');
+        $bank = create(\App\Models\Bank::class);
 
         $this->get(route('admin.banks.edit', $bank->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyBank()
     {
-        $bank = create('App\Models\Bank');
+        $bank = create(\App\Models\Bank::class);
 
         $this->delete(route('admin.banks.destroy', $bank->id))
             ->assertStatus(302)

@@ -21,9 +21,7 @@ class EmployeesTerminated extends AbstractEmployeesExport
 
     public function prepareRows($rows)
     {
-        return $rows->sortBy(function ($query) {
-            return $query->termination->termination_date;
-        });
+        return $rows->sortBy(fn($query) => $query->termination->termination_date);
     }
 
     public function title(): string

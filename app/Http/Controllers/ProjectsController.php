@@ -18,19 +18,16 @@ class ProjectsController extends Controller
 
     public function index()
     {
-        $projects = Project::with(['client', 'employees' => function ($query) {
+        $projects = Project::with(['client', 'employees' => fn($query) =>
             // give it the possition
-            return $query->orderBy('first_name')
-                ->orderBy('second_first_name')
-                ->orderBy('last_name')
-                ->orderBy('second_last_name')
-                ->with('supervisor', 'nationality')
-                ->with(['position' => function ($query) {
-                    return $query->with(['department', 'payment_type']);
-                },
-                ])
-                ->actives();
-        },
+            $query->orderBy('first_name')
+            ->orderBy('second_first_name')
+            ->orderBy('last_name')
+            ->orderBy('second_last_name')
+            ->with('supervisor', 'nationality')
+            ->with(['position' => fn($query) => $query->with(['department', 'payment_type']),
+            ])
+            ->actives(),
         ])
             ->orderBy('name')
             ->get();

@@ -25,17 +25,11 @@ class AdminRepository
 
     protected function getRoles()
     {
-        return Role::with(['users' => function ($query) {
-            return $query->orderBy('name');
-        },
+        return Role::with(['users' => fn($query) => $query->orderBy('name'),
         ])
-            ->with(['permissions' => function ($query) {
-                return $query->orderBy('resource');
-            },
+            ->with(['permissions' => fn($query) => $query->orderBy('resource'),
             ])
-            ->with(['menus' => function ($query) {
-                return $query->orderBy('name');
-            },
+            ->with(['menus' => fn($query) => $query->orderBy('name'),
             ])
             ->orderBy('name')->get();
     }

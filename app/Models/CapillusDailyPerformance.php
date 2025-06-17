@@ -7,6 +7,7 @@ use Carbon\Carbon;
 
 class CapillusDailyPerformance extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     protected $fillable = [
         'campaign',
         'calls_offered',

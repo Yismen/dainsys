@@ -14,15 +14,15 @@ class VipTest extends TestCase
     /** @test */
     public function it_requries_authentication()
     {
-        $vip = create('App\Models\Vip');
+        $vip = create(\App\Models\Vip::class);
         $this->get(route('admin.vips.index'))->assertRedirect('/login');
     }
 
     /** @test */
     public function it_requires_permissions()
     {
-        $this->actingAs(create('App\Models\User'));
-        $vip = create('App\Models\Vip');
+        $this->actingAs(create(\App\Models\User::class));
+        $vip = create(\App\Models\Vip::class);
 
         $response = $this->get('/admin/vips');
         $response->assertStatus(403);
@@ -32,8 +32,8 @@ class VipTest extends TestCase
     public function authorized_users_can_view_vip_resource()
     {
         $user = $this->userWithPermission('view-vips');
-        $vip = create('App\Models\Vip');
-        $employee = create('App\Models\Employee');
+        $vip = create(\App\Models\Vip::class);
+        $employee = create(\App\Models\Employee::class);
         $this->actingAs($user);
 
         $vip->employee()->associate($employee);

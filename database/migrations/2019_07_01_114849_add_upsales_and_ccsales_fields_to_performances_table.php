@@ -13,7 +13,7 @@ class AddUpsalesAndCcsalesFieldsToPerformancesTable extends Migration
      */
     public function up()
     {
-        Schema::table('performances', function (Blueprint $table) {
+        Schema::table('performances', function (Blueprint $table): void {
             $table->integer('upsales')->unsigned()->default(0)->after('transactions');
             $table->integer('cc_sales')->unsigned()->default(0)->after('upsales');
         });
@@ -27,13 +27,13 @@ class AddUpsalesAndCcsalesFieldsToPerformancesTable extends Migration
     public function down()
     {
         if (Schema::hasColumn('performances', 'upsales')) {
-            Schema::table('performances', function (Blueprint $table) {
+            Schema::table('performances', function (Blueprint $table): void {
                 $table->dropColumn('upsales');
             });
         }
         
         if (Schema::hasColumn('performances', 'cc_sales')) {
-            Schema::table('performances', function (Blueprint $table) {
+            Schema::table('performances', function (Blueprint $table): void {
                 $table->dropColumn('cc_sales');
             });
         }

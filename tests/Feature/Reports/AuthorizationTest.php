@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewReport()
     {
-        $report = create('App\Models\Report');
+        $report = create(\App\Models\Report::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.reports.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetReport()
     {
-        $report = create('App\Models\Report');
+        $report = create(\App\Models\Report::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.reports.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditReport()
     {
-        $report = create('App\Models\Report');
+        $report = create(\App\Models\Report::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.reports.update', $report->id))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyReport()
     {
-        $report = create('App\Models\Report');
+        $report = create(\App\Models\Report::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.reports.destroy', $report->id))

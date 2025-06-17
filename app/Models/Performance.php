@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Prunable;
 
 class Performance extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     use Trackable;
     use PerformanceTrait;
     use FilterableTrait;
@@ -52,7 +53,6 @@ class Performance extends Model
 
         static::saving(function (self $model): void {
             $employee = Employee::findOrfail($model->employee_id);
-
             // $model->unique_id = $model->date . '-' . $model->employee_id . '-' . $model->campaign_id;
             $model->updateQuietly([
                 'unique_id' => $model->date . '-' . $model->employee_id . '-' . $model->campaign_id,
@@ -82,7 +82,7 @@ class Performance extends Model
         $this->load('campaign.revenueType');
 
         $data = [];
-        switch (strtolower($this->campaign->revenueType->name)) {
+        switch (strtolower((string) $this->campaign->revenueType->name)) {
             case 'sales or production':
                 $data['billable_hours'] = $this->production_time;
                 $data['revenue'] = $this->transactions * $this->campaign->revenue_rate;

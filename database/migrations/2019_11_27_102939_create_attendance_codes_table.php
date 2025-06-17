@@ -13,7 +13,7 @@ class CreateAttendanceCodesTable extends Migration
      */
     public function up()
     {
-        Schema::create('attendance_codes', function (Blueprint $table) {
+        Schema::create('attendance_codes', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name', 150)->unique();
             $table->string('color', 100)->nullable()->default('#FFFFFF');

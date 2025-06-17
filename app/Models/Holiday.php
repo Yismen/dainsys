@@ -7,21 +7,24 @@ use Carbon\Carbon;
 
 class Holiday extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['date', 'name', 'description'];
+
+    protected $casts = [
+        'date' => 'datetime',
+    ];
+
     protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function ($name) {
-            return ucwords($name);
-        }, set: function ($name) {
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn($name) => ucwords((string) $name), set: function ($name) {
             return $this->attributes['name'] = ucwords($name);
             return ['name' => ucwords($name)];
         });
     }
     protected function description(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function ($description) {
-            return ucfirst($description);
-        }, set: function ($description) {
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn($description) => ucfirst((string) $description), set: function ($description) {
             return $this->attributes['description'] = ucfirst($description);
             return ['description' => ucfirst($description)];
         });

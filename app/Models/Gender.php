@@ -6,6 +6,7 @@ use App\Models\DainsysModel as Model;
 
 class Gender extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     protected $fillable = ['name'];
 
     /**
@@ -15,6 +16,6 @@ class Gender extends Model
      */
     public function employees()
     {
-        return $this->hasMany('App\Models\Employee');
+        return $this->hasMany(\App\Models\Employee::class);
     }
 }

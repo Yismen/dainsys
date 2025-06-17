@@ -6,12 +6,13 @@ use App\Models\DainsysModel as Model;
 
 class Bank extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     protected $fillable = ['name'];
 
     // Relationships =============================================
     public function accounts()
     {
-        return $this->hasMany('App\Models\BankAccount');
+        return $this->hasMany(\App\Models\BankAccount::class);
     }
 
     protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute

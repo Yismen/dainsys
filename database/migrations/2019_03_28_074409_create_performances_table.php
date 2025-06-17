@@ -11,7 +11,7 @@ class CreatePerformancesTable extends Migration
      */
     public function up()
     {
-        Schema::create('performances', function (Blueprint $table) {
+        Schema::create('performances', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('unique_id', 100);
             $table->date('date');

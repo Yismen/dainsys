@@ -8,6 +8,8 @@ use Spatie\Permission\Models\Role as EmpatieRole;
 
 class Role extends EmpatieRole
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['name', 'guard_name'];
 
     protected $appends = ['name_parsed'];
@@ -19,9 +21,7 @@ class Role extends EmpatieRole
 
     protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
-            return ['name' => strtolower(trim(Str::slug($name)))];
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn($name) => ['name' => strtolower(trim(Str::slug($name)))]);
     }
 
     /**
@@ -31,9 +31,7 @@ class Role extends EmpatieRole
      */
     protected function usersList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
-            return User::orderBy('name')->get();
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => User::orderBy('name')->get());
     }
 
     /**
@@ -43,9 +41,7 @@ class Role extends EmpatieRole
      */
     protected function permissionsList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
-            return Permission::orderBy('resource')->get();
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => Permission::orderBy('resource')->get());
     }
 
     /**
@@ -55,9 +51,7 @@ class Role extends EmpatieRole
      */
     protected function menusList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
-            return Menu::orderBy('name')->get();
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => Menu::orderBy('name')->get());
     }
 
     public function createRole($request)
@@ -92,9 +86,7 @@ class Role extends EmpatieRole
 
     protected function nameParsed(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
-            return ucwords(str($this->attributes['name'])->replace(['_', '-'], ' '));
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => ucwords((string) str($this->attributes['name'])->replace(['_', '-'], ' ')));
     }
 
     /**

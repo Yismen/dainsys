@@ -12,7 +12,7 @@ class CreateMenuRoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('menu_role', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('menu_role', function (Blueprint $table): void {
             $table->integer('menu_id')->unsigned()->index();
             $table->foreign('menu_id')->references('id')->on('menus')
                 ->onUpdate('cascade')->onDelete('cascade');
@@ -32,6 +32,6 @@ class CreateMenuRoleTable extends Migration
      */
     public function down()
     {
-        Schema::drop('menu_role');
+        \Illuminate\Support\Facades\Schema::drop('menu_role');
     }
 }

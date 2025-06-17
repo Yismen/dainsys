@@ -28,17 +28,13 @@ class AfpsController extends Controller
             ->actives()
             ->get();
 
-        $afps = Cache::rememberForever('afps', function () {
-            return Afp::with(['employees' => function ($query) {
-                return $query
-                    ->orderBy('first_name')
-                    ->orderBy('second_first_name')
-                    ->orderBy('last_name')
-                    ->orderBy('second_last_name')
-                    ->actives();
-            },
-            ])->orderBy('name')->get();
-        });
+        $afps = Cache::rememberForever('afps', fn() => Afp::with(['employees' => fn($query) => $query
+            ->orderBy('first_name')
+            ->orderBy('second_first_name')
+            ->orderBy('last_name')
+            ->orderBy('second_last_name')
+            ->actives(),
+        ])->orderBy('name')->get());
 
         if ($request->ajax()) {
             return $afps;

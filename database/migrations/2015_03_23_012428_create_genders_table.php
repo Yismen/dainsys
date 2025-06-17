@@ -12,7 +12,7 @@ class CreateGendersTable extends Migration
      */
     public function up()
     {
-        Schema::create('genders', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('genders', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name', 30)->unique();
             $table->timestamps();
@@ -26,6 +26,6 @@ class CreateGendersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('genders');
+        \Illuminate\Support\Facades\Schema::dropIfExists('genders');
     }
 }

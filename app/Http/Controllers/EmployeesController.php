@@ -265,15 +265,9 @@ class EmployeesController extends Controller
                     'site',
                 ])
         )
-            ->editColumn('hire_date', function ($query) {
-                return $query->hire_date->format('d-M-Y');
-            })
-            ->editColumn('status', function ($query) {
-                return $query->active ? 'Active' : 'Inactive';
-            })
-            ->addColumn('edit', function ($query) {
-                return route('admin.employees.edit', $query->id);
-            })
+            ->editColumn('hire_date', fn($query) => $query->hire_date->format('d-M-Y'))
+            ->editColumn('status', fn($query) => $query->active ? 'Active' : 'Inactive')
+            ->addColumn('edit', fn($query) => route('admin.employees.edit', $query->id))
             ->filterColumn('status', function ($query, $value): void {
                 if (in_array($value, ['all', 'actives', 'inactives'])) {
                     $query->$value();

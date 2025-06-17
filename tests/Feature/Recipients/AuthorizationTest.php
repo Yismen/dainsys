@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewRecipient()
     {
-        $recipient = create('App\Models\Recipient');
+        $recipient = create(\App\Models\Recipient::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.recipients.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetRecipient()
     {
-        $recipient = create('App\Models\Recipient');
+        $recipient = create(\App\Models\Recipient::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.recipients.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditRecipient()
     {
-        $recipient = create('App\Models\Recipient');
+        $recipient = create(\App\Models\Recipient::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.recipients.update', $recipient->id))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyRecipient()
     {
-        $recipient = create('App\Models\Recipient');
+        $recipient = create(\App\Models\Recipient::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.recipients.destroy', $recipient->id))

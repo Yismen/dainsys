@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewNationality()
     {
-        $nationality = create('App\Models\Nationality');
+        $nationality = create(\App\Models\Nationality::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.nationalities.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetNationality()
     {
-        $nationality = create('App\Models\Nationality');
+        $nationality = create(\App\Models\Nationality::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.nationalities.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditNationality()
     {
-        $nationality = create('App\Models\Nationality');
+        $nationality = create(\App\Models\Nationality::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.nationalities.update', $nationality->id))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyNationality()
     {
-        $nationality = create('App\Models\Nationality');
+        $nationality = create(\App\Models\Nationality::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.nationalities.destroy', $nationality->id))

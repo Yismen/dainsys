@@ -15,7 +15,7 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_see_punch_list()
     {
-        $punch = create('App\Models\Punch')->toArray();
+        $punch = create(\App\Models\Punch::class)->toArray();
         $response = $this->actingAs($this->userWithPermission('view-punches'));
 
         $response->get(route('admin.punches.index'))
@@ -27,7 +27,7 @@ class ModuleActionsTest extends TestCase
     public function authorized_users_can_create_a_punch()
     {
         $response = $this->actingAs($this->userWithPermission('create-punches'));
-        $punch = make('App\Models\Punch')->toArray();
+        $punch = make(\App\Models\Punch::class)->toArray();
 
         $response->post(route('admin.punches.store'), $punch)
             ->assertRedirect(route('admin.punches.index'));
@@ -41,7 +41,7 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_see_edit_page()
     {
-        $punch = create('App\Models\Punch');
+        $punch = create(\App\Models\Punch::class);
         $response = $this->actingAs($this->userWithPermission('edit-punches'));
         
         $response->get(route('admin.punches.edit', $punch->punch))
@@ -57,7 +57,7 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_update_punch()
     {
-        $punch = create('App\Models\Punch');
+        $punch = create(\App\Models\Punch::class);
         $updated = [
             'punch' => '00499',
             'employee_id' => create(Employee::class)->id,
@@ -79,7 +79,7 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_destroy_punch()
     {
-        $punch = create('App\Models\Punch');
+        $punch = create(\App\Models\Punch::class);
         $response = $this->actingAs($this->userWithPermission('destroy-punches'));
 
         $response->delete(route('admin.punches.destroy', $punch->punch))

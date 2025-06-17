@@ -13,6 +13,7 @@ use App\Http\Traits\Relationships\EmployeeRelationships;
 
 class Employee extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     use EmployeeRelationships;
     use EmployeeAccessors;
     use EmployeeMutators;
@@ -53,6 +54,12 @@ class Employee extends Model
 
     protected $with = [
         'termination'
+    ];
+
+    protected $casts = [
+        'hire_date' => 'datetime',
+        'date_of_birth' => 'datetime',
+        'has_kids' => 'boolean',
     ];
 
     public function scopeAll($query)
@@ -153,9 +160,7 @@ class Employee extends Model
         return $query->actives()
             ->orWhereHas(
                 'termination',
-                function ($query) use ($date) {
-                    return $query->where('termination_date', '>=', $date);
-                }
+                fn($query) => $query->where('termination_date', '>=', $date)
             );
     }
 
@@ -168,9 +173,7 @@ class Employee extends Model
         return $query->actives()
             ->orWhereHas(
                 'termination',
-                function ($query) use ($date) {
-                    return $query->where('termination_date', '<', $date);
-                }
+                fn($query) => $query->where('termination_date', '<', $date)
             );
     }
 
@@ -301,9 +304,7 @@ class Employee extends Model
 
         return $this->where('hire_date', '<=', $date)
             ->with([
-                'termination' => function ($query) use ($date) {
-                    return $query->where('termination_date', '>=', $date);
-                },
+                'termination' => fn($query) => $query->where('termination_date', '>=', $date),
             ])
             ->get();
     }
@@ -311,9 +312,7 @@ class Employee extends Model
     public function activesOnYear($year)
     {
         return $this->whereYear('hire_date', '<=', $year)->with([
-            'termination' => function ($query) {
-                return $query->where('termination_date', '>=', '2012-02-09');
-            },
+            'termination' => fn($query) => $query->where('termination_date', '>=', '2012-02-09'),
         ])->get();
     }
 
@@ -354,7 +353,7 @@ class Employee extends Model
 
     public function isOfGender($gender, $return_value = null)
     {
-        if ($this->has('gender') && strtolower($this->gender->gender) === strtolower($gender)) {
+        if ($this->has('gender') && strtolower((string) $this->gender->gender) === strtolower((string) $gender)) {
             if ($return_value) {
                 return $return_value;
             }

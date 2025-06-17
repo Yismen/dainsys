@@ -13,7 +13,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantViewCard()
     {
-        $card = create('App\Models\Card');
+        $card = create(\App\Models\Card::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.cards.index'))
@@ -25,7 +25,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantCreatetCard()
     {
-        $card = create('App\Models\Card');
+        $card = create(\App\Models\Card::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.cards.store'))
@@ -34,7 +34,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantEditCard()
     {
-        $card = create('App\Models\Card');
+        $card = create(\App\Models\Card::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.cards.update', $card->card))
@@ -43,7 +43,7 @@ class AuthorizationTest extends TestCase
 
     public function testUnuthorizedUsersCantDestroyCard()
     {
-        $card = create('App\Models\Card');
+        $card = create(\App\Models\Card::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.cards.destroy', $card->card))

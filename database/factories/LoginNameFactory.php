@@ -1,10 +1,18 @@
 <?php
 
+namespace Database\Factories;
+
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\LoginName::class, function (Faker $faker) {
-    return [
-        'login' => $faker->paragraph(2),
-        'employee_id' => factory(App\Models\Employee::class),
-    ];
-});
+class LoginNameFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+
+    protected $model = \App\Models\LoginName::class;
+    public function definition()
+    {
+        return [
+            'login' => fake()->paragraph(2),
+            'employee_id' => \App\Models\Employee::factory(),
+        ];
+    }
+}

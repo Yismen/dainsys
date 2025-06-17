@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewPermissions()
     {
-        $permission = create('App\Models\Permission');
+        $permission = create(\App\Models\Permission::class);
 
         $this->get(route('admin.permissions.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreatePermissions()
     {
-        $permission = create('App\Models\Permission');
+        $permission = create(\App\Models\Permission::class);
 
         $this->get(route('admin.permissions.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdatePermission()
     {
-        $permission = create('App\Models\Permission');
+        $permission = create(\App\Models\Permission::class);
 
         $this->get(route('admin.permissions.edit', $permission->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroyPermission()
     {
-        $permission = create('App\Models\Permission');
+        $permission = create(\App\Models\Permission::class);
 
         $this->delete(route('admin.permissions.destroy', $permission->id))
             ->assertStatus(302)

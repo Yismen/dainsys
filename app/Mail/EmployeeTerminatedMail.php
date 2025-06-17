@@ -24,17 +24,13 @@ class EmployeeTerminatedMail extends Mailable implements ShouldQueue
      */
     public Employee $employee;
 
-    protected array $recipients;
-
-    public function __construct(Employee $employee, array $recipients)
+    public function __construct(Employee $employee, protected array $recipients)
     {
         $this->employee = $employee->load([
             'site',
             'project',
             'position'
         ]);
-
-        $this->recipients = $recipients;
     }
 
     /**

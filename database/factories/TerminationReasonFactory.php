@@ -1,10 +1,18 @@
 <?php
 
+namespace Database\Factories;
+
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\TerminationReason::class, function (Faker $faker) {
-    return [
-        'reason' => $faker->sentence,
-        'description' => $faker->sentence,
-    ];
-});
+class TerminationReasonFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+
+    protected $model = \App\Models\TerminationReason::class;
+    public function definition()
+    {
+        return [
+            'reason' => fake()->sentence,
+            'description' => fake()->sentence,
+        ];
+    }
+}

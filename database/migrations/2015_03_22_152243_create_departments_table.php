@@ -12,7 +12,7 @@ class CreateDepartmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('departments', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('departments', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name', 80)->unique();
             $table->timestamps();
@@ -26,6 +26,6 @@ class CreateDepartmentsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('departments');
+        \Illuminate\Support\Facades\Schema::drop('departments');
     }
 }

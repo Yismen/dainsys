@@ -12,7 +12,7 @@ class CreatePayrollIncentivesConceptsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payroll_incentive_concepts', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('payroll_incentive_concepts', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name', 200);
             $table->timestamps();
@@ -26,6 +26,6 @@ class CreatePayrollIncentivesConceptsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('payroll_incentive_concepts');
+        \Illuminate\Support\Facades\Schema::drop('payroll_incentive_concepts');
     }
 }

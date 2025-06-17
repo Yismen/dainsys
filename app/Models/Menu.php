@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 
 class Menu extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     protected $fillable = ['name', 'display_name', 'description', 'icon'];
 
     protected $guarded = [];
@@ -24,9 +25,7 @@ class Menu extends Model
 
     protected function rolesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
-            return $roles = Role::pluck('name', 'id')->toArray();
-        });
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => $roles = Role::pluck('name', 'id')->toArray());
     }
 
     protected function displayName(): \Illuminate\Database\Eloquent\Casts\Attribute
@@ -104,13 +103,13 @@ class Menu extends Model
 
     private function prepareName($name)
     {
-        return strtolower(trim(preg_replace("/\.|\/\//", '/', $name)));
+        return strtolower(trim((string) preg_replace("/\.|\/\//", '/', (string) $name)));
     }
 
     private function stripAdmin($name)
     {
         if (Str::startsWith($name, 'admin/')) {
-            return explode('admin/', $name, 2)[1];
+            return explode('admin/', (string) $name, 2)[1];
         }
 
         return $name;

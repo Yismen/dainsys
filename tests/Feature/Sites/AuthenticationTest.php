@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantViewSites()
     {
-        $site = create('App\Models\Site');
+        $site = create(\App\Models\Site::class);
 
         $this->get(route('admin.sites.index'))
             ->assertStatus(302)
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantCreateSites()
     {
-        $site = create('App\Models\Site');
+        $site = create(\App\Models\Site::class);
 
         $this->get(route('admin.sites.create'))
             ->assertStatus(302)
@@ -39,7 +39,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantUpdateSite()
     {
-        $site = create('App\Models\Site');
+        $site = create(\App\Models\Site::class);
 
         $this->get(route('admin.sites.edit', $site->id))
             ->assertStatus(302)
@@ -52,7 +52,7 @@ class AuthenticationTest extends TestCase
 
     public function testGuestCantDestroySite()
     {
-        $site = create('App\Models\Site');
+        $site = create(\App\Models\Site::class);
 
         $this->delete(route('admin.sites.destroy', $site->id))
             ->assertStatus(302)

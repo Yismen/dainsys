@@ -58,7 +58,7 @@ class MigrationStatus extends Command
     private function setMigrationsArray()
     {
         foreach ($this->getMigrationFiles($this->option('dirname')) as $partial) {
-            $partial = pathinfo($partial);
+            $partial = pathinfo((string) $partial);
             $name = $partial['filename'];
             $migrated = $this->getMigration($name);
 

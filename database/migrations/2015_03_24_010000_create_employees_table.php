@@ -12,7 +12,7 @@ class CreateEmployeesTable extends Migration
      */
     public function up()
     {
-        Schema::create('employees', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('employees', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('first_name', 50);
             $table->string('second_first_name', 100)->nullable();
@@ -35,7 +35,7 @@ class CreateEmployeesTable extends Migration
             $table->integer('ars_id')->unsigned()->nullable();
             $table->integer('afp_id')->unsigned()->nullable();
             $table->integer('nationality_id')->unsigned()->nullable();
-            $table->boolean('has_kids', 10)->default(0);
+            $table->boolean('has_kids')->default(0);
             // $table->integer('kids', 10)->default(0);
             $table->string('photo', 800)->nullable();
 
@@ -57,9 +57,9 @@ class CreateEmployeesTable extends Migration
          * set the initial value for the autoincrement field
          */
         if (config('database.default') == 'pgsql') {
-            DB::statement('ALTER SEQUENCE employees_id_seq RESTART WITH 10001');
+            \Illuminate\Support\Facades\DB::statement('ALTER SEQUENCE employees_id_seq RESTART WITH 10001');
         } elseif (config('database.default') == 'mysql') {
-            DB::statement('ALTER TABLE `employees` AUTO_INCREMENT = 10001');
+            \Illuminate\Support\Facades\DB::statement('ALTER TABLE `employees` AUTO_INCREMENT = 10001');
         }
     }
 
@@ -70,6 +70,6 @@ class CreateEmployeesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employees');
+        \Illuminate\Support\Facades\Schema::dropIfExists('employees');
     }
 }

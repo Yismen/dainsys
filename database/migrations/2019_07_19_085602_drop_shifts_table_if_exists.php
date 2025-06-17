@@ -19,7 +19,7 @@ class DropShiftsTableIfExists extends Migration
      */
     public function down()
     {
-        Schema::table('shifts', function (Blueprint $table) {
+        Schema::table('shifts', function (Blueprint $table): void {
         });
     }
 }
