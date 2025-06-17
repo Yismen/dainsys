@@ -2,22 +2,23 @@
 
 namespace App\Console\Commands\Inbound\Sheets;
 
-use Illuminate\Support\Str;
 use App\Exports\RangeFormarter;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\FromView;
-use Maatwebsite\Excel\Events\AfterSheet;
-use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithPreCalculateFormulas;
+use Maatwebsite\Excel\Concerns\WithTitle;
+use Maatwebsite\Excel\Events\AfterSheet;
 
-class HoursData implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
+class HoursData implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $data;
 
     protected $sheet;
 
     protected $rows;
+
     protected $last_column;
 
     protected $sheetName;
@@ -34,7 +35,7 @@ class HoursData implements FromView, WithTitle, WithEvents, WithPreCalculateForm
         $this->last_column = 'E';
         $this->sheetName = Str::of(\class_basename($this))->snake()->replace('_', ' ')->title();
         $this->title = "Inbound {$this->sheetName} Report";
-        $this->view = 'exports.inbound.' . Str::of(\class_basename($this))->snake();
+        $this->view = 'exports.inbound.'.Str::of(\class_basename($this))->snake();
     }
 
     public function view(): View

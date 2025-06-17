@@ -11,15 +11,17 @@ use Livewire\Component;
 class Steps extends Component
 {
     use HasLivewirePagination;
+
     public int $process_id = 0;
 
     protected $listeners = ['searchUpdated', 'stepSaved' => '$refresh'];
+
     protected $search = null;
 
     public function render()
     {
         return view('livewire.steps', [
-            'processes' => Cache::rememberForever('steps_processes', fn() => Process::orderBy('name')->get(['name', 'id'])),
+            'processes' => Cache::rememberForever('steps_processes', fn () => Process::orderBy('name')->get(['name', 'id'])),
             'steps' => $this->process_id === 0 ? null : $this->getSteps(),
         ]);
     }
@@ -34,7 +36,7 @@ class Steps extends Component
         return Step::query()
             ->with(['process'])
             ->when($this->process_id > 0, function ($query): void {
-                $query->whereHas('process', fn($query) => $query->where('id', '=', $this->process_id));
+                $query->whereHas('process', fn ($query) => $query->where('id', '=', $this->process_id));
             })
             ->when(
                 $this->search,

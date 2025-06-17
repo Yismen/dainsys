@@ -18,13 +18,8 @@ class InboundSummaryExport implements WithMultipleSheets
         protected string $client = 'Kipany',
         protected $date_from = null,
         protected $date_to = null
-    )
-    {
-    }
+    ) {}
 
-    /**
-     * @return array
-     */
     public function sheets(): array
     {
         $sheets = [];

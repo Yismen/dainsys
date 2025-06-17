@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Nationalities;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewNationality()
+    public function test_unuthorized_users_cant_view_nationality()
     {
         $nationality = create(\App\Models\Nationality::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -23,7 +23,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetNationality()
+    public function test_unuthorized_users_cant_createt_nationality()
     {
         $nationality = create(\App\Models\Nationality::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -32,7 +32,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditNationality()
+    public function test_unuthorized_users_cant_edit_nationality()
     {
         $nationality = create(\App\Models\Nationality::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -41,7 +41,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyNationality()
+    public function test_unuthorized_users_cant_destroy_nationality()
     {
         $nationality = create(\App\Models\Nationality::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));

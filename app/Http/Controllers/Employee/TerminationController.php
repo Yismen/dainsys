@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Employee;
 
-use App\Models\Employee;
-use Illuminate\Http\Request;
 use App\Events\EmployeeReactivated;
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class TerminationController extends Controller
@@ -49,7 +49,7 @@ class TerminationController extends Controller
         Cache::forget('empleados');
         Cache::forget('terminations');
 
-        event(new EmployeeReactivated());
+        event(new EmployeeReactivated);
 
         return $employee->loadLists();
     }

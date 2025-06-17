@@ -53,7 +53,6 @@ class ProfileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -82,9 +81,8 @@ class ProfileController extends Controller
     /**
      * show current user's profile
      *
-     * @param  Profile $profile current profile model
-     *
-     * @return view           [description]
+     * @param  Profile  $profile  current profile model
+     * @return view [description]
      */
     public function show(Profile $profile, Profiles $profiles)
     {
@@ -97,7 +95,6 @@ class ProfileController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Profile $profile)
@@ -115,9 +112,7 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Profile $profile)
@@ -146,12 +141,9 @@ class ProfileController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-    }
+    public function destroy($id) {}
 
     /**
      * Methods

@@ -52,7 +52,6 @@ return [
             'visibility' => 'public',
         ],
 
-
         'dropbox' => [
             'driver' => 'dropbox',
             'accessToken' => env('DROPBOX_ACCESS_TOKEN'),
@@ -76,9 +75,9 @@ return [
             'driver' => 'sftp',
             'host' => '199.189.137.98',
             'port' => 22,
-            'root'       => '/ftproot/EC/Capillus',
+            'root' => '/ftproot/EC/Capillus',
             'username' => env('CAPILLUS_FTP_USER'),
             'password' => env('CAPILLUS_FTP_PASSWORD'),
-        ]
+        ],
     ],
 ];

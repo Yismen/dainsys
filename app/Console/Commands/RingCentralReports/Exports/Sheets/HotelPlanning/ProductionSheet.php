@@ -2,22 +2,21 @@
 
 namespace App\Console\Commands\RingCentralReports\Exports\Sheets\HotelPlanning;
 
-use Illuminate\View\View;
-use Illuminate\Support\Str;
-use Maatwebsite\Excel\Sheet;
-use App\Exports\RangeFormarter;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Cache;
-use Maatwebsite\Excel\Events\AfterSheet;
 use App\Console\Commands\RingCentralReports\Exports\Sheets\BaseRingCentralSheet;
 use App\Console\Commands\RingCentralReports\Exports\Support\Connections\ConnectionContract;
 use App\Console\Commands\RingCentralReports\Exports\Support\Connections\RingCentralConnection;
+use App\Exports\RangeFormarter;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
+use Illuminate\View\View;
+use Maatwebsite\Excel\Events\AfterSheet;
+use Maatwebsite\Excel\Sheet;
 
 class ProductionSheet extends BaseRingCentralSheet
 {
     public function getData(ConnectionContract $connection, string $date_from, string $date_to): array
     {
-     $data = $connection->connect()
+        $data = $connection->connect()
             ->select("SELECT
                         [Dial Group] as dial_group
                         , CONVERT(date, [Login DTS]) AS production_date
@@ -42,24 +41,21 @@ class ProductionSheet extends BaseRingCentralSheet
                         , [First Name]
 						, [Last Name]");
 
-            return $data;
+        return $data;
     }
 
-    /**
-     * @return View
-     */
     public function view(): View
     {
         $class_name = Str::snake(class_basename($this));
 
-        $this->data = $this->getData(new RingCentralConnection(), $this->exporter->dates_range['from_date'], $this->exporter->dates_range['to_date']);
+        $this->data = $this->getData(new RingCentralConnection, $this->exporter->dates_range['from_date'], $this->exporter->dates_range['to_date']);
 
         if (count($this->data) > 0) {
             $this->exporter->has_data = true;
 
-            $cache_key = $this->exporter->campaign_name . $this->exporter->team . $this->exporter->dates_range['from_date'] . $this->exporter->dates_range['to_date'] . collect($this->data)->sum('login_time');
+            $cache_key = $this->exporter->campaign_name.$this->exporter->team.$this->exporter->dates_range['from_date'].$this->exporter->dates_range['to_date'].collect($this->data)->sum('login_time');
 
-            if (!Cache::has($cache_key)) {
+            if (! Cache::has($cache_key)) {
                 Cache::forever($cache_key, 'any');
 
                 $this->exporter->data_is_new = true;
@@ -75,17 +71,11 @@ class ProductionSheet extends BaseRingCentralSheet
         );
     }
 
-    /**
-     * @return string
-     */
     public function title(): string
     {
         return "{$this->exporter->client_name} Hours";
     }
 
-    /**
-     * @return array
-     */
     public function registerEvents(): array
     {
         return [

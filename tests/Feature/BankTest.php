@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class BankTest extends TestCase
 {
@@ -109,7 +109,7 @@ class BankTest extends TestCase
 
         $this->actingAs($this->userWithPermission('edit-banks'))
             ->get(route('admin.banks.edit', $bank->id))
-            ->assertSee('Edit Bank ' . $bank->name);
+            ->assertSee('Edit Bank '.$bank->name);
     }
 
     /** @test */

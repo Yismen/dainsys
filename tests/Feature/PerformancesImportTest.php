@@ -2,12 +2,12 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\Models\Performance;
-use Illuminate\Http\UploadedFile;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
+use Tests\TestCase;
 
 class PerformancesImportTest extends TestCase
 {
@@ -59,7 +59,7 @@ class PerformancesImportTest extends TestCase
         Storage::fake();
         Excel::fake();
         $correct_name_prefix = '_performance_daily_data';
-        $file_name = $correct_name_prefix . '_anything.csv';
+        $file_name = $correct_name_prefix.'_anything.csv';
         $file = UploadedFile::fake()->create($file_name, 8);
         $attributes = [
             'excel_file' => [$file],

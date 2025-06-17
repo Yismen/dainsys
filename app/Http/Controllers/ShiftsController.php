@@ -29,7 +29,7 @@ class ShiftsController extends Controller
 
         $shifts = Shift::with('employee')
             ->orderBy('slug')
-            ->whereHas('employee', fn($query) => $query->actives());
+            ->whereHas('employee', fn ($query) => $query->actives());
 
         return DataTables::of($shifts)
             ->orderColumn('employee', 'slug $1')
@@ -49,7 +49,6 @@ class ShiftsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -71,14 +70,13 @@ class ShiftsController extends Controller
         $shift = Shift::create($validated);
 
         return redirect()->route('admin.shifts.index')
-            ->withSuccess('Shift ' . $shift->name . ' created!');
+            ->withSuccess('Shift '.$shift->name.' created!');
     }
 
     /**
      * Display the specified resource.
      *
      * @param int  Shift $shift
-     *
      * @return \Illuminate\Http\Response
      */
     public function show(Shift $shift)
@@ -90,7 +88,6 @@ class ShiftsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int  Shift $shift
-     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Shift $shift)
@@ -101,15 +98,13 @@ class ShiftsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
      * @param int  Shift               $shift
-     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Shift $shift)
     {
         $validated = $this->validate($request, [
-            'employee_id' => 'required|unique:shifts,employee_id,' . $shift->id,
+            'employee_id' => 'required|unique:shifts,employee_id,'.$shift->id,
             'start_at' => 'required|date_format:H:i',
             'end_at' => 'required|date_format:H:i',
             'monday' => 'nullable|numeric|min:0|max:12',
@@ -124,14 +119,13 @@ class ShiftsController extends Controller
         $shift->update($validated);
 
         return redirect()->route('admin.shifts.index')
-            ->withSuccess('Shift ' . $shift->name . ' updated!');
+            ->withSuccess('Shift '.$shift->name.' updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param int  Shift $shift
-     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Shift $shift)

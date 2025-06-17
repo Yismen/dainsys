@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class CampaignCreateTest extends TestCase
 {
@@ -68,8 +68,7 @@ class CampaignCreateTest extends TestCase
             ->assertSessionHasErrors('source_id')
             ->assertSessionHasErrors('revenue_type_id')
             ->assertSessionHasErrors('sph_goal')
-            ->assertSessionHasErrors('revenue_rate')
-            ;
+            ->assertSessionHasErrors('revenue_rate');
     }
 
     /** @test */

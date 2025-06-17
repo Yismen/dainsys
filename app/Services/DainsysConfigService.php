@@ -10,7 +10,7 @@ class DainsysConfigService
 
     public function __construct()
     {
-        $this->repository = new DatabaseRepository();
+        $this->repository = new DatabaseRepository;
     }
 
     public function getDistro(string $key)

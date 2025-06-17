@@ -8,16 +8,14 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class LoginName extends Model
 {
+    use FilterableTrait;
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
     use Sluggable;
-    use FilterableTrait;
 
     protected $fillable = ['login', 'employee_id'];
 
     /**
      * Return the sluggable configuration array for this model.
-     *
-     * @return array
      */
     public function sluggable(): array
     {
@@ -44,7 +42,7 @@ class LoginName extends Model
      */
     protected function employeesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => Employee::select('id', 'first_name', 'second_first_name', 'last_name', 'second_last_name')
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => Employee::select('id', 'first_name', 'second_first_name', 'last_name', 'second_last_name')
             ->orderBy('first_name')
             ->orderBy('second_first_name')
             ->orderBy('last_name')

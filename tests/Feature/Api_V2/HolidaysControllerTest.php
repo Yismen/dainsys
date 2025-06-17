@@ -81,7 +81,7 @@ class HolidaysControllerTest extends TestCase
         $next_year = Holiday::factory()->create(['date' => now()->addYear()]);
         Passport::actingAs($this->user());
 
-        $response = $this->get('/api/v2/holidays?year=' . now()->year);
+        $response = $this->get('/api/v2/holidays?year='.now()->year);
 
         $response->assertOk()
             ->assertJsonFragment(['name' => $this_year->name, 'date' => $this_year->date->format('Y-m-d')])

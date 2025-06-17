@@ -11,14 +11,13 @@ class UniqueInDBRule implements Rule
     protected $fields;
 
     protected $except_id;
+
     protected $dates;
 
     /**
      * Create a new instance
      *
      * @param string class representing the model $model
-     * @param array $fields
-     * @param int   $except_id
      */
     public function __construct(string $model, array $fields, int $except_id = 0, array $dates = [])
     {
@@ -31,9 +30,8 @@ class UniqueInDBRule implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param string $attribute
-     * @param mixed  $value
-     *
+     * @param  string  $attribute
+     * @param  mixed  $value
      * @return bool
      */
     public function passes($attribute, $value)
@@ -62,7 +60,7 @@ class UniqueInDBRule implements Rule
     protected function getModelInstance($model)
     {
         if (is_string($model)) {
-            return new $model();
+            return new $model;
         }
 
         return $model;

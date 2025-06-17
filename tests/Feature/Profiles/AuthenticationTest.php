@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Profiles;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewProfiles()
+    public function test_guest_cant_view_profiles()
     {
         $profile = create(\App\Models\Profile::class);
 
@@ -24,7 +24,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateProfiles()
+    public function test_guest_cant_create_profiles()
     {
         $profile = create(\App\Models\Profile::class);
 
@@ -37,7 +37,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateProfile()
+    public function test_guest_cant_update_profile()
     {
         $profile = create(\App\Models\Profile::class);
 

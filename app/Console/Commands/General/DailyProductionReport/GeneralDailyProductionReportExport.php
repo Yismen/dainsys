@@ -8,20 +8,15 @@ use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 class GeneralDailyProductionReportExport implements WithMultipleSheets
 {
     /**
-     * @param object $repo
+     * @param  object  $repo
      */
     public function __construct(
         /**
          * Array of hours
          */
         protected $repo
-    )
-    {
-    }
+    ) {}
 
-    /**
-     * @return array
-     */
     public function sheets(): array
     {
         $sheets = [];

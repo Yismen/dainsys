@@ -35,7 +35,7 @@ class ProductionController extends Controller
      */
     public function mtd_stats(Request $request)
     {
-        $performance_repo = new PerformanceRepository();
+        $performance_repo = new PerformanceRepository;
 
         $mtdData = $performance_repo->monthToDateData();
 
@@ -78,7 +78,7 @@ class ProductionController extends Controller
      */
     public function monthly_stats(Request $request)
     {
-        $performance_repo = new PerformanceRepository();
+        $performance_repo = new PerformanceRepository;
 
         $mtdData = $performance_repo->monthToDateData();
 

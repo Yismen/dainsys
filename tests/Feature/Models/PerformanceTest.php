@@ -2,13 +2,12 @@
 
 namespace Tests\Feature\Models;
 
-use Tests\TestCase;
 use App\Models\Campaign;
-use App\Models\Employee;
 use App\Models\Performance;
 use App\Models\RevenueType;
 use Illuminate\Database\Console\PruneCommand;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class PerformanceTest extends TestCase
 {
@@ -19,11 +18,11 @@ class PerformanceTest extends TestCase
     {
         $not_prunable = Performance::factory()->create();
         $prunable = Performance::factory()->create(['created_at' => now()->subYears(4)->startOfYear()]);
-$this->artisan(PruneCommand::class, [
-    '--model' => [
-        Performance::class
-        ]
-    ]);
+        $this->artisan(PruneCommand::class, [
+            '--model' => [
+                Performance::class,
+            ],
+        ]);
 
         $this->assertDatabaseHas('performances', ['id' => $not_prunable->id]);
         $this->assertDatabaseMissing('performances', ['id' => $prunable->id]);
@@ -102,7 +101,7 @@ $this->artisan(PruneCommand::class, [
 
         $this->assertDatabaseHas('performances', [
             'billable_hours' => $performance->talk_time,
-            'revenue' =>  $performance->talk_time * $performance->campaign->revenue_rate,
+            'revenue' => $performance->talk_time * $performance->campaign->revenue_rate,
         ]);
 
         $this->assertDatabaseMissing('performances', [

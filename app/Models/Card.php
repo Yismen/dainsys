@@ -7,6 +7,7 @@ use App\Models\DainsysModel as Model;
 class Card extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['card', 'employee_id'];
 
     /**
@@ -42,6 +43,7 @@ class Card extends Model
         return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
             $employees = \App\Models\Employee::orderBy('first_name')
                 ->get();
+
             return $employees->pluck('fullName', 'id');
         });
     }

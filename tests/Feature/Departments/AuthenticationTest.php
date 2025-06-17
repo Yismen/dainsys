@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Departments;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewDepartments()
+    public function test_guest_cant_view_departments()
     {
         $department = create(\App\Models\Department::class);
 
@@ -24,7 +24,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateDepartments()
+    public function test_guest_cant_create_departments()
     {
         $department = create(\App\Models\Department::class);
 
@@ -37,7 +37,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateDepartment()
+    public function test_guest_cant_update_department()
     {
         $department = create(\App\Models\Department::class);
 
@@ -50,7 +50,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyDepartment()
+    public function test_guest_cant_destroy_department()
     {
         $department = create(\App\Models\Department::class);
 

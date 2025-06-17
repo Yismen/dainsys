@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use App\Models\DainsysModel as Model;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Cache;
 
 class Position extends Model
 {
@@ -23,7 +23,7 @@ class Position extends Model
 
     protected $with = [
         'department',
-        'payment_type'
+        'payment_type',
     ];
 
     public function department()
@@ -52,19 +52,19 @@ class Position extends Model
      */
     protected function nameAndDepartment(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => ucwords(trim(
-            $this->department?->name . '-' . $this->name
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => ucwords(trim(
+            $this->department?->name.'-'.$this->name
         )));
     }
 
     protected function departmentsList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => Department::select('id', 'name')->orderBy('name')->get());
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => Department::select('id', 'name')->orderBy('name')->get());
     }
 
     protected function paymentTypesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => Cache::rememberForever('payment_types_list', fn() => PaymentType::select('id', 'name')->orderBy('name')->get()));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => Cache::rememberForever('payment_types_list', fn () => PaymentType::select('id', 'name')->orderBy('name')->get()));
     }
 
     protected function payPerHours(): \Illuminate\Database\Eloquent\Casts\Attribute
@@ -76,13 +76,14 @@ class Position extends Model
                     return $salary / 23.83 / 8;
                 }
             }
+
             return $salary;
         });
     }
 
     protected function paymentFrequenciesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => PaymentFrequency::select('id', 'name')->orderBy('name')->get());
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => PaymentFrequency::select('id', 'name')->orderBy('name')->get());
     }
 
     /**
@@ -91,6 +92,6 @@ class Position extends Model
      */
     protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn($name) => ['name' => ucwords(strtolower(trim((string) $name)))]);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn ($name) => ['name' => ucwords(strtolower(trim((string) $name)))]);
     }
 }

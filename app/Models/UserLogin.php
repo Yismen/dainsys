@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class UserLogin extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
-    use SoftDeletes;
     use Prunable;
+    use SoftDeletes;
 
     protected $fillable = ['user_id', 'logged_in_at', 'logged_out_at'];
 
@@ -28,6 +28,7 @@ class UserLogin extends Model
     {
         return static::whereDate('created_at', '<=', now()->subMonths(3))->whereNotNull('logged_out_at');
     }
+
     protected function casts(): array
     {
         return [

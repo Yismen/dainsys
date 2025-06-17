@@ -12,11 +12,17 @@ class DispositionForm extends Component
     use WithPagination;
 
     public int $modelId = 0;
+
     public string $name = '';
+
     public int $contacts = 0;
+
     public int $sales = 0;
+
     public int $upsales = 0;
+
     public int $cc_sales = 0;
+
     public bool $editing = false;
 
     protected $listeners = [

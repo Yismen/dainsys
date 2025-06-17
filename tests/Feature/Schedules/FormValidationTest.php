@@ -3,9 +3,9 @@
 namespace Tests\Feature\Schedules;
 
 use App\Models\Schedule;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class FormValidationTest extends TestCase
 {

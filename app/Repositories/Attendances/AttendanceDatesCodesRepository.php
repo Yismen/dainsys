@@ -16,8 +16,8 @@ class AttendanceDatesCodesRepository
     /**
      * Return data and dates for all attendances for a given date
      *
-     * @param Carbon\date $date
-     * @param bool $current_user false to query data for all users
+     * @param  Carbon\date  $date
+     * @param  bool  $current_user  false to query data for all users
      */
     public function __construct(Carbon $date, int $code, bool $current_user = true)
     {

@@ -3,7 +3,6 @@
 namespace App\Repositories\Because;
 
 use App\Connections\RingCentralConnection;
-use Illuminate\Support\Facades\DB;
 
 class BecausePullDailyPerformanceDataRepository extends RingCentralConnection
 {

@@ -8,23 +8,19 @@ use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 class GeneralDailyRawReportExport implements WithMultipleSheets
 {
     protected string $view_name = 'exports.data-raw';
+
     protected string $report_name = 'Daily Raw Report';
 
     /**
-     * @param object $repo
+     * @param  object  $repo
      */
     public function __construct(
         /**
          * Array of hours
          */
         protected $repo
-    )
-    {
-    }
+    ) {}
 
-    /**
-     * @return array
-     */
     public function sheets(): array
     {
         $sheets = [];

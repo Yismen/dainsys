@@ -22,16 +22,14 @@ class ExcelFileLoader
     private $errors = [];
 
     /**
-     * @param mixed[] $rules
+     * @param  mixed[]  $rules
      */
     public function __construct(
         /**
          * rules to validate each line of data.
          */
         private $validation_rules = []
-    )
-    {
-    }
+    ) {}
 
     public function load($files)
     {

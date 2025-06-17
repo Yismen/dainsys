@@ -11,6 +11,7 @@ use Livewire\Component;
 class EmployeeStep extends Component
 {
     public int $employee_id;
+
     public int $process_id;
 
     protected $listeners = [

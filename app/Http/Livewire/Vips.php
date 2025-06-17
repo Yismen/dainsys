@@ -33,25 +33,25 @@ class Vips extends Component
         return view('livewire.vips', [
             'vip_employees' => $this->getEmployees('vips'),
             'non_vip_employees' => $this->getEmployees('noVips'),
-            'sites' => Cache::rememberForever('vip_sites', fn() => Site::query()
+            'sites' => Cache::rememberForever('vip_sites', fn () => Site::query()
                 ->whereHas('employees', function ($quer): void {
                     $quer->actives();
                 })
                 ->orderBy('name')
                 ->get()),
-            'departments' => Cache::rememberForever('vip_departments', fn() => Department::query()
+            'departments' => Cache::rememberForever('vip_departments', fn () => Department::query()
                 ->whereHas('employees', function ($quer): void {
                     $quer->actives();
                 })
                 ->orderBy('name')
                 ->get()),
-            'projects' => Cache::rememberForever('vip_projects', fn() => Project::query()
+            'projects' => Cache::rememberForever('vip_projects', fn () => Project::query()
                 ->whereHas('employees', function ($quer): void {
                     $quer->actives();
                 })
                 ->orderBy('name')
                 ->get()),
-            'positions' => Cache::rememberForever('vip_positions', fn() => Position::query()
+            'positions' => Cache::rememberForever('vip_positions', fn () => Position::query()
                 ->whereHas('employees', function ($quer): void {
                     $quer->actives();
                 })
@@ -73,7 +73,7 @@ class Vips extends Component
 
     protected function getEmployees(string $method)
     {
-        $repo = new VipRepo();
+        $repo = new VipRepo;
 
         return $repo->$method()
             ->with([

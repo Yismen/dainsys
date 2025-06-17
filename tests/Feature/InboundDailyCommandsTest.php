@@ -2,14 +2,14 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
+use App\Console\Commands\Inbound\SendDailySummaryCommand;
+use App\Console\Commands\Inbound\Support\InboundDataRepository;
+use App\Console\Commands\Inbound\Support\InboundSummaryExport;
 use App\Mail\CommandsBaseMail;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Console\Commands\Inbound\SendDailySummaryCommand;
-use App\Console\Commands\Inbound\Support\InboundSummaryExport;
-use App\Console\Commands\Inbound\Support\InboundDataRepository;
+use Tests\TestCase;
 
 class InboundDailyCommandsTest extends TestCase
 {
@@ -87,7 +87,7 @@ class InboundDailyCommandsTest extends TestCase
             $file_name
         );
 
-        Excel::assertStored($file_name, fn(InboundSummaryExport $export) => true);
+        Excel::assertStored($file_name, fn (InboundSummaryExport $export) => true);
     }
 
     /** @test */

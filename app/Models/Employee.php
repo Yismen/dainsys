@@ -2,23 +2,23 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
-use App\Traits\Trackable;
+use App\Http\Traits\Accessors\EmployeeAccessors;
+use App\Http\Traits\Mutators\EmployeeMutators;
+use App\Http\Traits\Relationships\EmployeeRelationships;
 use App\ModelFilters\FilterableTrait;
 use App\Models\DainsysModel as Model;
+use App\Traits\Trackable;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
-use App\Http\Traits\Mutators\EmployeeMutators;
-use App\Http\Traits\Accessors\EmployeeAccessors;
-use App\Http\Traits\Relationships\EmployeeRelationships;
 
 class Employee extends Model
 {
-    use \Illuminate\Database\Eloquent\Factories\HasFactory;
-    use EmployeeRelationships;
     use EmployeeAccessors;
     use EmployeeMutators;
-    use Trackable;
+    use EmployeeRelationships;
     use FilterableTrait;
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+    use Trackable;
 
     protected $fillable = [
         'first_name',
@@ -53,7 +53,7 @@ class Employee extends Model
     ];
 
     protected $with = [
-        'termination'
+        'termination',
     ];
 
     protected $casts = [
@@ -70,8 +70,7 @@ class Employee extends Model
     /**
      * sort the query in ascending order.
      *
-     * @param QueryBuilder $query
-     *
+     * @param  QueryBuilder  $query
      * @return $query
      */
     public function scopeSorted($query)
@@ -85,8 +84,7 @@ class Employee extends Model
     /**
      * Limit the query to the Vips only.
      *
-     * @param QueryBuilder $query
-     *
+     * @param  QueryBuilder  $query
      * @return $query
      */
     public function scopeUniversals($query)
@@ -97,8 +95,7 @@ class Employee extends Model
     /**
      * Limit the query to those not assigned as universal.
      *
-     * @param QueryBuilder $query
-     *
+     * @param  QueryBuilder  $query
      * @return $query
      */
     public function scopeNoUniversals($query)
@@ -109,8 +106,7 @@ class Employee extends Model
     /**
      * Limit the query to the Vips only.
      *
-     * @param QueryBuilder $query
-     *
+     * @param  QueryBuilder  $query
      * @return $query
      */
     public function scopeVips($query)
@@ -121,8 +117,7 @@ class Employee extends Model
     /**
      * Limit the query to those not assigned as vip.
      *
-     * @param QueryBuilder $query
-     *
+     * @param  QueryBuilder  $query
      * @return $query
      */
     public function scopeNoVips($query)
@@ -133,8 +128,7 @@ class Employee extends Model
     /**
      * Limit the query to employees not associated to a termination.
      *
-     * @param QueryBuilder $query QueryBuilder Instance
-     *
+     * @param  QueryBuilder  $query  QueryBuilder Instance
      * @return [type] Chain of query builder instance
      */
     public function scopeActives($query)
@@ -146,9 +140,8 @@ class Employee extends Model
      * Query Active employees or terminated after a given date.
      *
      * @param Query Builder $query -automatically injected by laravel
-     * @param Carbon $date carbon instance. The Date since where
-     *                     to include the inactives. Default is 1 month ago
-     *
+     * @param  Carbon  $date  carbon instance. The Date since where
+     *                        to include the inactives. Default is 1 month ago
      * @return Query Builder        query builder instance
      */
     public function scopeRecents($query, ?Carbon $date = null)
@@ -160,7 +153,7 @@ class Employee extends Model
         return $query->actives()
             ->orWhereHas(
                 'termination',
-                fn($query) => $query->where('termination_date', '>=', $date)
+                fn ($query) => $query->where('termination_date', '>=', $date)
             );
     }
 
@@ -173,7 +166,7 @@ class Employee extends Model
         return $query->actives()
             ->orWhereHas(
                 'termination',
-                fn($query) => $query->where('termination_date', '<', $date)
+                fn ($query) => $query->where('termination_date', '<', $date)
             );
     }
 
@@ -181,8 +174,7 @@ class Employee extends Model
      * Limit the query to employees associated to a termination.
      * By definition these employees are considered inactives.
      *
-     * @param QueryBuilder $query QueryBuilder Instance     *
-     *
+     * @param  QueryBuilder  $query  QueryBuilder Instance     *
      * @return [type] Chain of query builder instance
      */
     public function scopeInactives($query)
@@ -224,7 +216,6 @@ class Employee extends Model
      *
      * @param [query]          $query DB query builder chaining
      * @param [string as date] $date  A date like string to parsed with Carbon
-     *
      * @return [query] returns the query builder chaining
      */
     public function scopeWasActiveOrTerminatedBefore($query, $date)
@@ -304,7 +295,7 @@ class Employee extends Model
 
         return $this->where('hire_date', '<=', $date)
             ->with([
-                'termination' => fn($query) => $query->where('termination_date', '>=', $date),
+                'termination' => fn ($query) => $query->where('termination_date', '>=', $date),
             ])
             ->get();
     }
@@ -312,17 +303,13 @@ class Employee extends Model
     public function activesOnYear($year)
     {
         return $this->whereYear('hire_date', '<=', $year)->with([
-            'termination' => fn($query) => $query->where('termination_date', '>=', '2012-02-09'),
+            'termination' => fn ($query) => $query->where('termination_date', '>=', '2012-02-09'),
         ])->get();
     }
 
     /**
      * Inactivate the current employee
      *
-     * @param  Carbon            $carbon
-     * @param  TerminationType   $termination_type
-     * @param  TerminationReason $termination_eason
-     * @param  string            $comments
      *
      * @return void
      */
@@ -403,6 +390,7 @@ class Employee extends Model
             return (int) $process->steps_count === 0 ? 0 : (int) $employee_process_steps_count / (int) $process->steps_count * 100;
         });
     }
+
     /**
      * Fields to be converted to Carbon instances.
      *

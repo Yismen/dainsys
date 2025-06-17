@@ -12,7 +12,7 @@ class SocialSecurityController extends Controller
     public function update(Employee $employee, Request $request)
     {
         $this->validate($request, [
-            'number' => 'required|min:5|max:10|unique:social_securities,number,' . $employee->id . ',employee_id',
+            'number' => 'required|min:5|max:10|unique:social_securities,number,'.$employee->id.',employee_id',
         ]);
 
         Cache::forget('employees');

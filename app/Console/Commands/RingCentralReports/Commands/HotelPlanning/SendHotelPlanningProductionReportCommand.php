@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands\RingCentralReports\Commands\HotelPlanning;
 
-use Maatwebsite\Excel\Facades\Excel;
-use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
 use App\Console\Commands\RingCentralReports\Commands\BaseProductionReportCommand;
+use App\Console\Commands\RingCentralReports\Exports\ProductionReportExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SendHotelPlanningProductionReportCommand extends BaseProductionReportCommand
 {
@@ -49,8 +49,6 @@ class SendHotelPlanningProductionReportCommand extends BaseProductionReportComma
 
     /**
      * Returns the dates range form the report
-     *
-     * @return array
      */
     protected function getDatesRange(): array
     {

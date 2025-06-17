@@ -55,7 +55,6 @@ class TerminationsController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function show(Termination $terminations)
@@ -67,7 +66,6 @@ class TerminationsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function edit(Termination $terminations)
@@ -79,7 +77,6 @@ class TerminationsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function update(CreateTerminationsRequest $request, Termination $terminations)
@@ -94,7 +91,6 @@ class TerminationsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function destroy(Termination $terminations)

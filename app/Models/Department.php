@@ -7,19 +7,20 @@ use App\Models\DainsysModel as Model;
 class Department extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['name'];
 
     /**
      * Update the Department name field to be ucwords
      *
      * @param  [string] $name the name name's field
-     *
-     * @return string             converted string
+     * @return string converted string
      */
     protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
         return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
             return $this->attributes['name'] = ucwords($name);
+
             return ['name' => ucwords($name)];
         });
     }

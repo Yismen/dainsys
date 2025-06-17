@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\PaymentTypes;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewPaymentTypes()
+    public function test_guest_cant_view_payment_types()
     {
         $payment_type = create(\App\Models\PaymentType::class);
 
@@ -24,7 +24,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreatePaymentTypes()
+    public function test_guest_cant_create_payment_types()
     {
         $payment_type = create(\App\Models\PaymentType::class);
 
@@ -37,7 +37,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdatePaymentType()
+    public function test_guest_cant_update_payment_type()
     {
         $payment_type = create(\App\Models\PaymentType::class);
 
@@ -50,7 +50,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyPaymentType()
+    public function test_guest_cant_destroy_payment_type()
     {
         $payment_type = create(\App\Models\PaymentType::class);
 

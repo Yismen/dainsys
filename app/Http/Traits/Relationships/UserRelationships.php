@@ -82,7 +82,7 @@ trait UserRelationships
 
     public function employees()
     {
-        return $this->supervisors()->map(fn($item) => $item->employees)->collapse();
+        return $this->supervisors()->map(fn ($item) => $item->employees)->collapse();
     }
 
     public function login()

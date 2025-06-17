@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
-class CapillusCallsTypeCountSheet implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
+class CapillusCallsTypeCountSheet implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $sheet;
 
@@ -42,8 +42,7 @@ class CapillusCallsTypeCountSheet implements FromView, WithTitle, WithEvents, Wi
                 $this->sheet = $event->sheet->getDelegate();
 
                 $this->configurePage()
-                    ->setColumnsWidth()
-                ;
+                    ->setColumnsWidth();
 
                 $this->sheet->setAutoFilter("A1:H{$this->count}");
                 $this->sheet->freezePane('D2');

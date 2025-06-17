@@ -3,13 +3,13 @@
 namespace App\Repositories\Capillus;
 
 use App\Connections\RingCentralConnection;
-use Illuminate\Support\Facades\DB;
 
 class CapillusCallTypeRepository extends RingCentralConnection
 {
     public $call_types_count;
 
     public $call_types_results;
+
     protected $options;
 
     public function __construct(array $options)

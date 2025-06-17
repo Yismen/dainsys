@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Bank;
 
-use Carbon\Carbon;
-use Tests\TestCase;
 use App\Models\Bank;
-use App\Models\User;
 use App\Models\Employee;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class ModuleActionsTest extends TestCase
 {

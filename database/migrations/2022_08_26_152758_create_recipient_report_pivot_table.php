@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateRecipientReportPivotTable extends Migration
 {
@@ -31,7 +31,6 @@ class CreateRecipientReportPivotTable extends Migration
      */
     public function down()
     {
-        Schema::table('recipients_reports', function (Blueprint $table): void {
-        });
+        Schema::table('recipients_reports', function (Blueprint $table): void {});
     }
 }

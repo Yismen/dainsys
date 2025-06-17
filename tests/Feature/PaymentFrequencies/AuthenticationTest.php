@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\PaymentFrequencies;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewPaymentFrequencies()
+    public function test_guest_cant_view_payment_frequencies()
     {
         $payment_frequency = create(\App\Models\PaymentFrequency::class);
 
@@ -24,7 +24,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreatePaymentFrequencies()
+    public function test_guest_cant_create_payment_frequencies()
     {
         $payment_frequency = create(\App\Models\PaymentFrequency::class);
 
@@ -37,7 +37,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdatePaymentFrequency()
+    public function test_guest_cant_update_payment_frequency()
     {
         $payment_frequency = create(\App\Models\PaymentFrequency::class);
 
@@ -50,7 +50,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyPaymentFrequency()
+    public function test_guest_cant_destroy_payment_frequency()
     {
         $payment_frequency = create(\App\Models\PaymentFrequency::class);
 

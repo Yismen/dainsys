@@ -94,9 +94,8 @@ class DGT4ControllerTest extends TestCase
         ]))
             ->assertOk()
             ->assertViewIs('human_resources.reports.dgt4')
-            ->assertSee($employee_hired_this_year->full_name)
-            // ->assertDontSee($employee_hired_last_year->full_name)
-        ;
+            ->assertSee($employee_hired_this_year->full_name);
+        // ->assertDontSee($employee_hired_last_year->full_name)
     }
 
     /** @test */
@@ -112,6 +111,6 @@ class DGT4ControllerTest extends TestCase
         ]))
             ->assertOk();
 
-        Excel::assertDownloaded('DGT4-' . now()->year . '.xlsx');
+        Excel::assertDownloaded('DGT4-'.now()->year.'.xlsx');
     }
 }

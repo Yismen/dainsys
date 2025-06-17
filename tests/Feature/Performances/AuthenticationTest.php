@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Performances;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewPerformances()
+    public function test_guest_cant_view_performances()
     {
         $performance = create(\App\Models\Performance::class);
 
@@ -24,7 +24,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdatePerformance()
+    public function test_guest_cant_update_performance()
     {
         $performance = create(\App\Models\Performance::class);
 
@@ -37,7 +37,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyPerformance()
+    public function test_guest_cant_destroy_performance()
     {
         $performance = create(\App\Models\Performance::class);
 

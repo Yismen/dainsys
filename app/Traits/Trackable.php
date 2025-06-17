@@ -25,7 +25,7 @@ trait Trackable
 
     protected function recordChanges()
     {
-        $diff  = $this->getDiff();
+        $diff = $this->getDiff();
 
         if (auth()->check() && empty($diff) === false) {
             $this->changes()->create($diff);

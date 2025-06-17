@@ -4,18 +4,16 @@ namespace Database\Factories;
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\Step;
 use App\Models\Process;
-use Faker\Generator as Faker;
+use App\Models\Step;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Step>
  */
 class StepFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
+    protected $model = Step::class;
 
-    protected
-$model = Step::class;
     public function definition()
     {
         return [

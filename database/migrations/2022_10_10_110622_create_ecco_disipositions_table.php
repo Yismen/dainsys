@@ -1,14 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateEccoDisipositionsTable extends Migration
 {
     public function getConnection()
     {
-        return app()->isProduction() ? 'poliscript' : config('database.default') ;
+        return app()->isProduction() ? 'poliscript' : config('database.default');
     }
 
     /**
@@ -18,7 +18,7 @@ class CreateEccoDisipositionsTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('ecco_dispositions')) {
+        if (! Schema::hasTable('ecco_dispositions')) {
             Schema::create('ecco_dispositions', function (Blueprint $table): void {
                 $table->id();
                 $table->timestamps();

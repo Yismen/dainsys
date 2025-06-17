@@ -3,15 +3,12 @@
 namespace App\Services;
 
 use Vonage\Client;
-use Vonage\SMS\Message\SMS;
 use Vonage\Client\Credentials\Basic;
+use Vonage\SMS\Message\SMS;
 
 class SMSService
 {
-    public function __construct(public string $to_number, public string $message)
-    {
-
-    }
+    public function __construct(public string $to_number, public string $message) {}
 
     public function send()
     {

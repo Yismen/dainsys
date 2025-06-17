@@ -7,6 +7,7 @@ use App\Models\DainsysModel as Model;
 class BankAccount extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['bank_id', 'account_number'];
 
     public function employee()

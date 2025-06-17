@@ -7,7 +7,9 @@ use Livewire\Component;
 class Search extends Component
 {
     public $search = '';
+
     public int $count = 0;
+
     public $debounce;
 
     public function mount(string $debounce = 'lazy')

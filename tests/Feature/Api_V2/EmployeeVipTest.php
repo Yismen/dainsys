@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Api_V2;
 
-use App\Models\Vip;
 use App\Models\Employee;
-use Tests\TestCase;
-use Laravel\Passport\Passport;
+use App\Models\Vip;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class EmployeeVipTest extends TestCase
 {

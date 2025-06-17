@@ -36,7 +36,7 @@ class PermissionsController extends Controller
                     'roles',
                 ])
         )
-            ->addColumn('delete', fn($query) => "
+            ->addColumn('delete', fn ($query) => "
                 <delete-request-button
                 url='{route('admin.permissions.destroy', {$query->name})}'
                 redirect-url='{route('admin.permissions.index')}'
@@ -80,7 +80,6 @@ class PermissionsController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function show(Permission $permission)
@@ -92,7 +91,6 @@ class PermissionsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function edit(Permission $permission)
@@ -104,13 +102,12 @@ class PermissionsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function update(Permission $permission, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:3|unique:permissions,resource,' . $permission->id,
+            'name' => 'required|min:3|unique:permissions,resource,'.$permission->id,
             'roles' => 'array|exists:roles,id',
         ]);
 
@@ -126,7 +123,6 @@ class PermissionsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function destroy(Permission $permission)

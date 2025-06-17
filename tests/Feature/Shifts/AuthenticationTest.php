@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Shifts;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewShifts()
+    public function test_guest_cant_view_shifts()
     {
         $shift = create(\App\Models\Shift::class);
 
@@ -24,7 +24,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateShifts()
+    public function test_guest_cant_create_shifts()
     {
         $shift = create(\App\Models\Shift::class);
 
@@ -37,7 +37,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateShift()
+    public function test_guest_cant_update_shift()
     {
         $shift = create(\App\Models\Shift::class);
 
@@ -50,7 +50,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyShift()
+    public function test_guest_cant_destroy_shift()
     {
         $shift = create(\App\Models\Shift::class);
 

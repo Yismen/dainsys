@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Position;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewPosition()
+    public function test_unuthorized_users_cant_view_position()
     {
         $position = create(\App\Models\Position::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -23,7 +23,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetPosition()
+    public function test_unuthorized_users_cant_createt_position()
     {
         $position = create(\App\Models\Position::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -32,7 +32,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditPosition()
+    public function test_unuthorized_users_cant_edit_position()
     {
         $position = create(\App\Models\Position::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -41,7 +41,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyPosition()
+    public function test_unuthorized_users_cant_destroy_position()
     {
         $position = create(\App\Models\Position::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));

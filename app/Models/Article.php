@@ -9,6 +9,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Article extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     /**
      * Sluggable implementation
      */
@@ -32,6 +33,7 @@ class Article extends Model
             ],
         ];
     }
+
     /**
      * Set the title field to be always in propper case
      *
@@ -39,8 +41,9 @@ class Article extends Model
      */
     protected function title(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn($title) => ['title' => trim(ucwords((string) $title))]);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn ($title) => ['title' => trim(ucwords((string) $title))]);
     }
+
     /**
      * Get a list os the taks ids associated with current article
      *
@@ -48,8 +51,9 @@ class Article extends Model
      */
     protected function tagList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => $this->tags->pluck('id'));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => $this->tags->pluck('id'));
     }
+
     /**
      * set the body field to be always Uc First
      *
@@ -57,12 +61,14 @@ class Article extends Model
      */
     protected function body(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn($body) => ['body' => ucfirst(trim((string) $body))]);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn ($body) => ['body' => ucfirst(trim((string) $body))]);
     }
+
     protected function username(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn() => ['username' => auth()->user()->username]);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn () => ['username' => auth()->user()->username]);
     }
+
     /**
      * Parse the published at date returned to the user
      *
@@ -70,12 +76,14 @@ class Article extends Model
      */
     protected function publishedAt(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn($date) => Carbon::parse($date), set: function ($date) {
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn ($date) => Carbon::parse($date), set: function ($date) {
             $format = 'Y-m-d';
             $date = Carbon::parse($date)->format($format);
+
             return ['published_at' => Carbon::createFromFormat($format, $date)];
         });
     }
+
     protected function next(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
         return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
@@ -84,9 +92,11 @@ class Article extends Model
                 ->where('published_at', '>', $this->published_at)
                 ->published()
                 ->get()->first();
+
             return $article ?: null;
         });
     }
+
     protected function previous(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
         return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
@@ -95,6 +105,7 @@ class Article extends Model
                 ->where('published_at', '<', $this->published_at)
                 ->published()
                 ->first();
+
             return $article ?: null;
         });
     }
@@ -103,7 +114,6 @@ class Article extends Model
      * Defines a scope to filter the ithems with a published at date prior to current date
      *
      * @param  [object] $query [query builder]
-     *
      * @return [object]        [query builder]
      */
     public function scopePublished($query)
@@ -115,7 +125,6 @@ class Article extends Model
      * Defines a scope to filter the ithems with a published at date after current date
      *
      * @param  [object] $query [query builder]
-     *
      * @return [object]        [query builder]
      */
     public function scopeUnpublished($query)
@@ -127,7 +136,6 @@ class Article extends Model
      * Defines a scope to sort the items ascendently by Published at field
      *
      * @param  [object] $query [query builder]
-     *
      * @return [object]        [query builder]
      */
     public function scopeOrderedAsc($query)
@@ -139,7 +147,6 @@ class Article extends Model
      * Defines a scope to sort the items ascendently by Published at field
      *
      * @param  [object] $query [query builder]
-     *
      * @return [object]        [query builder]
      */
     public function scopeOrderedDesc($query)
@@ -186,14 +193,17 @@ class Article extends Model
     {
         return $this->belongsToMany(\App\Models\Tag::class);
     }
+
     protected function nextArticle(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => $this->attributes['next_article'] = $this->next);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => $this->attributes['next_article'] = $this->next);
     }
+
     protected function previousArticle(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => $this->attributes['previous_article'] = $this->previous);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => $this->attributes['previous_article'] = $this->previous);
     }
+
     /**
      * Additional dates field to be treated as an instance of Carbon
      *
@@ -202,7 +212,7 @@ class Article extends Model
     protected function casts(): array
     {
         return [
-        'tpublished_at' => 'datetime',
-    ];
+            'tpublished_at' => 'datetime',
+        ];
     }
 }

@@ -2,21 +2,20 @@
 
 namespace Tests\Feature\Http\Livewire;
 
-use Tests\TestCase;
-use App\Models\Step;
-use Livewire\Livewire;
-use App\Models\Process;
-use App\Models\Employee;
-use App\Http\Livewire\Search;
 use App\Http\Livewire\EmployeeProcess;
+use App\Http\Livewire\Search;
+use App\Models\Employee;
+use App\Models\Process;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
+use Tests\TestCase;
 
 class EmployeeProcessTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function StepIndexContainsLivewireStepComponent()
+    public function step_index_contains_livewire_step_component()
     {
         $user = $this->userWithPermission('view-employee-process');
 
@@ -27,11 +26,10 @@ class EmployeeProcessTest extends TestCase
     }
 
     /** @test */
-    public function StepShowsListOfEmployeeProcess()
+    public function step_shows_list_of_employee_process()
     {
         Livewire::test(EmployeeProcess::class)
-            ->assertViewHas('processes')
-            ;
+            ->assertViewHas('processes');
     }
 
     /** @test */
@@ -55,8 +53,7 @@ class EmployeeProcessTest extends TestCase
             ->assertViewHas('sites')
             ->assertViewHas('departments')
             ->assertViewHas('projects')
-            ->assertViewHas('positions')
-            ;
+            ->assertViewHas('positions');
     }
 
     /** @test */
@@ -67,8 +64,7 @@ class EmployeeProcessTest extends TestCase
 
         Livewire::test(EmployeeProcess::class)
             ->set('process_id', $process->id)
-            ->call('assign', $employee->id)
-            ;
+            ->call('assign', $employee->id);
 
         $this->assertDatabaseHas('employee_process', ['employee_id' => $employee->id, 'process_id' => $process->id]);
     }
@@ -82,8 +78,7 @@ class EmployeeProcessTest extends TestCase
 
         Livewire::test(EmployeeProcess::class)
             ->set('process_id', $process->id)
-            ->call('unAssign', $employee->id)
-            ;
+            ->call('unAssign', $employee->id);
 
         $this->assertDatabaseMissing('employee_process', ['employee_id' => $employee->id, 'process_id' => $process->id]);
     }

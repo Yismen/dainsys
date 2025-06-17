@@ -4,9 +4,7 @@ namespace App\Exports;
 
 class EmployeesExport extends AbstractEmployeesExport
 {
-    public function __construct(protected $scope)
-    {
-    }
+    public function __construct(protected $scope) {}
 
     public function query()
     {

@@ -11,8 +11,6 @@ trait ExcelImportTrait
 {
     /**
      * The size of file chunks
-     *
-     * @return int
      */
     public function chunkSize(): int
     {
@@ -21,8 +19,6 @@ trait ExcelImportTrait
 
     /**
      * The size of batches to insert.
-     *
-     * @return int
      */
     public function batchSize(): int
     {
@@ -31,8 +27,6 @@ trait ExcelImportTrait
 
     /**
      * Events listeners for the Importer.
-     *
-     * @return array
      */
     public function registerEvents(): array
     {
@@ -57,9 +51,8 @@ trait ExcelImportTrait
     /**
      * Convert an date in a carbon instance.
      *
-     * @param value  $value  the value to be parsed
-     * @param format $format the format from where the carbon instance is created
-     *
+     * @param  value  $value  the value to be parsed
+     * @param  format  $format  the format from where the carbon instance is created
      * @return Carbon instance
      */
     protected function transformDate($value, $format = 'Y-m-d')

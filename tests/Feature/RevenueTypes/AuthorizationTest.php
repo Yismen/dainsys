@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\RevenueTypes;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewRevenueType()
+    public function test_unuthorized_users_cant_view_revenue_type()
     {
         $revenue_type = create(\App\Models\RevenueType::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -23,7 +23,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetRevenueType()
+    public function test_unuthorized_users_cant_createt_revenue_type()
     {
         $revenue_type = create(\App\Models\RevenueType::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -32,7 +32,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditRevenueType()
+    public function test_unuthorized_users_cant_edit_revenue_type()
     {
         $revenue_type = create(\App\Models\RevenueType::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -41,7 +41,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyRevenueType()
+    public function test_unuthorized_users_cant_destroy_revenue_type()
     {
         $revenue_type = create(\App\Models\RevenueType::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));

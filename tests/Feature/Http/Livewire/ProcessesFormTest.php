@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Http\Livewire;
 
-use Tests\TestCase;
-use Livewire\Livewire;
-use App\Models\Process;
 use App\Http\Livewire\ProcessesForm;
+use App\Models\Process;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
+use Tests\TestCase;
 
 class ProcessesFormTest extends TestCase
 {
@@ -35,8 +35,7 @@ class ProcessesFormTest extends TestCase
             ->assertSet('fields.default', null)
             ->assertSet('fields.description', null)
             ->assertSet('is_editing', false)
-            ->assertDispatchedBrowserEvent('showProcessModal')
-        ;
+            ->assertDispatchedBrowserEvent('showProcessModal');
     }
 
     /** @test */
@@ -50,8 +49,7 @@ class ProcessesFormTest extends TestCase
             ->assertSet('is_editing', true)
             ->assertSet('fields.name', $process->name)
             ->assertSet('fields.description', $process->description)
-            ->assertDispatchedBrowserEvent('showProcessModal')
-        ;
+            ->assertDispatchedBrowserEvent('showProcessModal');
     }
 
     /** @test */
@@ -64,8 +62,7 @@ class ProcessesFormTest extends TestCase
             ->set('fields.description', 'New description')
             ->call('store')
             ->assertEmitted('processSaved')
-            ->assertDispatchedBrowserEvent('hideProcessModal')
-        ;
+            ->assertDispatchedBrowserEvent('hideProcessModal');
 
         $this->assertDatabaseHas('processes', [
             'name' => 'New name',
@@ -86,8 +83,7 @@ class ProcessesFormTest extends TestCase
             ->set('fields.description', 'New description')
             ->call('update')
             ->assertEmitted('processSaved')
-            ->assertDispatchedBrowserEvent('hideProcessModal')
-        ;
+            ->assertDispatchedBrowserEvent('hideProcessModal');
 
         $this->assertDatabaseHas('processes', [
             'name' => 'New name',

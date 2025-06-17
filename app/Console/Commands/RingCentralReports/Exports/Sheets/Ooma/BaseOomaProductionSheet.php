@@ -7,7 +7,6 @@ use App\Console\Commands\RingCentralReports\Exports\Sheets\Traits\OomaRingCentra
 use App\Console\Commands\RingCentralReports\Exports\Support\Connections\ConnectionContract;
 use App\Console\Commands\RingCentralReports\Exports\Support\Connections\RingCentralConnection;
 use App\Exports\RangeFormarter;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Events\AfterSheet;
@@ -51,12 +50,10 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
                         , Team
                         , [First Name]
                 , [Last Name]
-                ");
+                "
+            );
     }
 
-    /**
-     * @return array
-     */
     public function registerEvents(): array
     {
         return [
@@ -116,9 +113,6 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
         }
     }
 
-    /**
-     * @return string
-     */
     public function title(): string
     {
         return $this->page_title ?? Str::of(class_basename($this))
@@ -130,9 +124,9 @@ abstract class BaseOomaProductionSheet extends BaseRingCentralSheet
 
     protected function parseView(string $date_from, string $date_to): View
     {
-        $this->data = $this->getData(new RingCentralConnection(), $date_from, $date_to);
+        $this->data = $this->getData(new RingCentralConnection, $date_from, $date_to);
         $dispositions = $this->getDispositionsSummary(
-            new RingCentralConnection(),
+            new RingCentralConnection,
             $date_from,
             $date_to,
         );

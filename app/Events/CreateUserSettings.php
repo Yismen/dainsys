@@ -13,9 +13,7 @@ class CreateUserSettings extends Event
      *
      * @return void
      */
-    public function __construct(public $user)
-    {
-    }
+    public function __construct(public $user) {}
 
     /**
      * Get the channels the event should be broadcast on.

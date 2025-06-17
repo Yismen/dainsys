@@ -1,4 +1,5 @@
 <?php
+
 /*
 |--------------------------------------------------------------------------
 | Broadcast Channels
@@ -12,4 +13,4 @@
 
 use Illuminate\Support\Facades\Broadcast;
 
-Broadcast::channel('App.User.{id}', fn($user, $id) => (int) $user->id === (int) $id);
+Broadcast::channel('App.User.{id}', fn ($user, $id) => (int) $user->id === (int) $id);

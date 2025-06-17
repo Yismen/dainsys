@@ -24,9 +24,6 @@ class WowProductionReport implements WithMultipleSheets
         $this->repo = $repo;
     }
 
-    /**
-     * @return array
-     */
     public function sheets(): array
     {
         $sheets = [];

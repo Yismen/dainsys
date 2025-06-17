@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-use App\Services\BillableHoursAndRevenueService;
 use App\Jobs\UpdateBillableHoursAndRevenue as JobsUpdateBillableHoursAndRevenue;
+use App\Services\BillableHoursAndRevenueService;
+use Illuminate\Console\Command;
 
 class UpdateBillableHoursAndRevenue extends Command
 {
@@ -66,7 +66,7 @@ class UpdateBillableHoursAndRevenue extends Command
 
         $bar->finish();
 
-        $this->line('Total records: ' . $count);
+        $this->line('Total records: '.$count);
     }
 
     protected function dispatchBatchedJobs($bar)
@@ -82,7 +82,7 @@ class UpdateBillableHoursAndRevenue extends Command
 
     protected function printTestTable()
     {
-        $records = $this->serviceData->take(50)->reorder()->inRandomOrder()->get()->map(fn($performance) => [
+        $records = $this->serviceData->take(50)->reorder()->inRandomOrder()->get()->map(fn ($performance) => [
             $performance->id,
             $performance->date,
             $performance->campaign->name,

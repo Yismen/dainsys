@@ -2,19 +2,19 @@
 
 namespace Tests\Feature\Http\Livewire;
 
-use Tests\TestCase;
-use App\Models\Step;
-use Livewire\Livewire;
-use App\Http\Livewire\Steps;
 use App\Http\Livewire\Search;
+use App\Http\Livewire\Steps;
+use App\Models\Step;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
+use Tests\TestCase;
 
 class StepsTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function StepIndexContainsLivewireStepComponent()
+    public function step_index_contains_livewire_step_component()
     {
         $user = $this->userWithPermission('view-steps');
 
@@ -25,7 +25,7 @@ class StepsTest extends TestCase
     }
 
     /** @test */
-    public function StepShowsListOfSteps()
+    public function step_shows_list_of_steps()
     {
         $process = Step::factory()->create();
 
@@ -46,7 +46,7 @@ class StepsTest extends TestCase
     }
 
     /** @test */
-    public function StepLimitsBasedOnSearch()
+    public function step_limits_based_on_search()
     {
         $steps = Step::factory(3)->create();
 
@@ -69,7 +69,6 @@ class StepsTest extends TestCase
             ->assertDontSee($step2->name)
             ->set('process_id', $step2->process_id)
             ->assertSee($step2->name)
-            ->assertDontSee($step1->name)
-            ;
+            ->assertDontSee($step1->name);
     }
 }

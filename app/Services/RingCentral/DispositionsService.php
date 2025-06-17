@@ -9,7 +9,6 @@ class DispositionsService
 {
     public function query(): Builder
     {
-        return Disposition::query()
-        ;
+        return Disposition::query();
     }
 }

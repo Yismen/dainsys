@@ -9,16 +9,16 @@ use Illuminate\Queue\SerializesModels;
 
 class EmployeeReactivated
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Get the channels the event should broadcast on.

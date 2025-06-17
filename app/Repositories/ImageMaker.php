@@ -9,10 +9,15 @@ class ImageMaker
     public const MAX_SIZE = 600;
 
     protected static $FILE;
+
     protected static $SQUARED;
+
     protected static $ENCODE;
+
     protected static $IMAGE;
+
     protected static int $WIDTH;
+
     protected static int $HEIGHT;
 
     public static function make($FILE, $SQUARED = false, $ENCODE = null, $WIDTH = null, $HEIGHT = null)

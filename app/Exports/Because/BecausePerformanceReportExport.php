@@ -18,7 +18,7 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
-class BecausePerformanceReportExport implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
+class BecausePerformanceReportExport implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $repo;
 
@@ -55,8 +55,7 @@ class BecausePerformanceReportExport implements FromView, WithTitle, WithEvents,
                     ->addConditionalFormats()
                     ->addBorders()
                     ->addNumberFormats()
-                    ->setColumnsWidth()
-                ;
+                    ->setColumnsWidth();
 
                 $event->sheet->getDelegate()->mergeCells('A1:K1');
                 $event->sheet->getDelegate()->getStyle('A1:K1')->applyFromArray($this->headerStyle());

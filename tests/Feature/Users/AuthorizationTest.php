@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Users;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewUser()
+    public function test_unuthorized_users_cant_view_user()
     {
         $user = create(\App\Models\User::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -23,7 +23,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetUser()
+    public function test_unuthorized_users_cant_createt_user()
     {
         $user = create(\App\Models\User::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -32,7 +32,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditUser()
+    public function test_unuthorized_users_cant_edit_user()
     {
         $user = create(\App\Models\User::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -41,7 +41,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyUser()
+    public function test_unuthorized_users_cant_destroy_user()
     {
         $user = create(\App\Models\User::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));

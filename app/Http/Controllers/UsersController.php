@@ -80,7 +80,6 @@ class UsersController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function show(User $user)
@@ -92,7 +91,6 @@ class UsersController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function edit(User $user)
@@ -104,15 +102,14 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function update(User $user, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:3|unique:users,name,' . $user->id,
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'username' => 'required|unique:users,username,' . $user->id,
+            'name' => 'required|min:3|unique:users,name,'.$user->id,
+            'email' => 'required|email|unique:users,email,'.$user->id,
+            'username' => 'required|unique:users,username,'.$user->id,
         ]);
 
         Cache::flush();
@@ -127,7 +124,6 @@ class UsersController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function destroy(User $user)
@@ -164,7 +160,6 @@ class UsersController extends Controller
      * Activate the specified resource from storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function restore($id)

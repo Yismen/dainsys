@@ -51,7 +51,7 @@ class RecipientsController extends Controller
         Cache::forget('recipients');
 
         return redirect()->route('admin.recipients.index')
-            ->withSuccess('Recipient ' . $recipient->name . ' has been created!');
+            ->withSuccess('Recipient '.$recipient->name.' has been created!');
     }
 
     public function show(Recipient $recipient)
@@ -69,8 +69,8 @@ class RecipientsController extends Controller
     public function update(Recipient $recipient, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:recipients,name,' . $recipient->id,
-            'email' => 'required|email|unique:recipients,email,' . $recipient->id,
+            'name' => 'required|unique:recipients,name,'.$recipient->id,
+            'email' => 'required|email|unique:recipients,email,'.$recipient->id,
             'title' => 'nullable|min:3',
         ]);
 
@@ -80,7 +80,7 @@ class RecipientsController extends Controller
         Cache::forget('recipients');
 
         return redirect()->route('admin.recipients.index')
-            ->withSuccess('Recipient ' . $recipient->name . ' has been updated!');
+            ->withSuccess('Recipient '.$recipient->name.' has been updated!');
     }
 
     protected function destroy(Recipient $recipient)
@@ -90,6 +90,6 @@ class RecipientsController extends Controller
         $recipient->delete();
 
         return redirect()->route('admin.recipients.index')
-            ->withDanger('Recipient ' . $recipient->name . ' has been removed!');
+            ->withDanger('Recipient '.$recipient->name.' has been removed!');
     }
 }

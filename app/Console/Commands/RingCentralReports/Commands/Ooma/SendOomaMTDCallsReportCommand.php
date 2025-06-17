@@ -49,8 +49,6 @@ class SendOomaMTDCallsReportCommand extends BaseProductionReportCommand
 
     /**
      * Replace default method
-     *
-     * @return array
      */
     protected function getDatesRange(): array
     {

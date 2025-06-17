@@ -2,14 +2,14 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Support\Facades\Mail;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Console\Commands\RingCentralReports\Exports\Support\Mails\BaseRingCentralMails;
 use App\Console\Commands\RingCentralReports\Commands\Publishing\SendPublishingProductionReportCommand;
+use App\Console\Commands\RingCentralReports\Exports\Support\Mails\BaseRingCentralMails;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
+use Maatwebsite\Excel\Facades\Excel;
+use Tests\TestCase;
 
 class PublishingCommandsTest extends TestCase
 {

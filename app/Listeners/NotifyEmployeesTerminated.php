@@ -2,9 +2,9 @@
 
 namespace App\Listeners;
 
-use App\Models\Report;
 use App\Events\EmployeeTerminated;
 use App\Mail\EmployeeTerminatedMail;
+use App\Models\Report;
 use Illuminate\Support\Facades\Mail;
 
 class NotifyEmployeesTerminated
@@ -19,7 +19,6 @@ class NotifyEmployeesTerminated
     /**
      * Handle the event.
      *
-     * @param  EmployeeTerminated $event
      *
      * @return void
      */

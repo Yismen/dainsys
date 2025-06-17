@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use App\Models\Employee;
-use Tests\TestCase as TestsTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase as TestsTestCase;
 
 class EmployeeMutatorsTest extends TestsTestCase
 {
@@ -16,11 +16,11 @@ class EmployeeMutatorsTest extends TestsTestCase
         $inputName = ' first name ';
         $parsedName = 'First Name';
         $employee = create(Employee::class, [
-            'first_name' => $inputName
+            'first_name' => $inputName,
         ]);
 
         $this->assertDatabaseHas(Employee::class, [
-            'first_name' => $parsedName
+            'first_name' => $parsedName,
         ]);
 
         $this->assertEquals($employee->first_name, $parsedName);
@@ -32,11 +32,11 @@ class EmployeeMutatorsTest extends TestsTestCase
         $inputName = ' second first     name ';
         $parsedName = 'Second First Name';
         $employee = create(Employee::class, [
-            'second_first_name' => $inputName
+            'second_first_name' => $inputName,
         ]);
 
         $this->assertDatabaseHas(Employee::class, [
-            'second_first_name' => $parsedName
+            'second_first_name' => $parsedName,
         ]);
 
         $this->assertEquals($employee->second_first_name, $parsedName);
@@ -48,11 +48,11 @@ class EmployeeMutatorsTest extends TestsTestCase
         $inputName = ' last name ';
         $parsedName = 'Last Name';
         $employee = create(Employee::class, [
-            'last_name' => $inputName
+            'last_name' => $inputName,
         ]);
 
         $this->assertDatabaseHas(Employee::class, [
-            'last_name' => $parsedName
+            'last_name' => $parsedName,
         ]);
 
         $this->assertEquals($employee->last_name, $parsedName);
@@ -64,11 +64,11 @@ class EmployeeMutatorsTest extends TestsTestCase
         $inputName = ' second last     name ';
         $parsedName = 'Second Last Name';
         $employee = create(Employee::class, [
-            'second_last_name' => $inputName
+            'second_last_name' => $inputName,
         ]);
 
         $this->assertDatabaseHas(Employee::class, [
-            'second_last_name' => $parsedName
+            'second_last_name' => $parsedName,
         ]);
 
         $this->assertEquals($employee->second_last_name, $parsedName);

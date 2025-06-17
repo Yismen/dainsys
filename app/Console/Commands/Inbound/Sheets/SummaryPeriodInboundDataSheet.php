@@ -5,22 +5,27 @@ namespace App\Console\Commands\Inbound\Sheets;
 use App\Exports\RangeFormarter;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
-use Maatwebsite\Excel\Events\AfterSheet;
-use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithPreCalculateFormulas;
+use Maatwebsite\Excel\Concerns\WithTitle;
+use Maatwebsite\Excel\Events\AfterSheet;
 
-class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
+class SummaryPeriodInboundDataSheet implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $data;
+
     protected $names;
+
     protected $dates;
+
     protected $hours_data;
+
     protected $calls_data;
 
     protected $sheet;
 
     protected $rows;
+
     protected $last_column;
 
     protected $sheetName;
@@ -30,10 +35,15 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
     protected array $working_range;
 
     protected $totals_row;
+
     protected $total_hours_column;
+
     protected $total_calls_column;
+
     protected $total_sales_column;
+
     protected $first_column;
+
     protected $first_hours_column;
 
     public function __construct(array $data, protected string $client, string $period_name, protected string $date_from, protected $date_to)

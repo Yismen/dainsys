@@ -17,15 +17,18 @@ class Holiday extends Model
 
     protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn($name) => ucwords((string) $name), set: function ($name) {
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn ($name) => ucwords((string) $name), set: function ($name) {
             return $this->attributes['name'] = ucwords($name);
+
             return ['name' => ucwords($name)];
         });
     }
+
     protected function description(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn($description) => ucfirst((string) $description), set: function ($description) {
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn ($description) => ucfirst((string) $description), set: function ($description) {
             return $this->attributes['description'] = ucfirst($description);
+
             return ['description' => ucfirst($description)];
         });
     }
@@ -36,6 +39,7 @@ class Holiday extends Model
 
         return $query->whereDate('date', '>=', $date);
     }
+
     protected function casts(): array
     {
         return [

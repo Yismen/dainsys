@@ -3,7 +3,6 @@
 namespace App\Console\Commands\General\DailyRawReport;
 
 use App\Connections\RingCentralConnection;
-use Illuminate\Support\Facades\DB;
 
 class GeneralDailyRawReportRepository extends RingCentralConnection
 {

@@ -18,8 +18,11 @@ class Performance extends Component
     use WithSorting;
 
     public $date;
+
     public $project;
+
     public $campaign;
+
     public $records = 10;
 
     public function updatingSearch()
@@ -50,8 +53,7 @@ class Performance extends Component
                             ->orWhere('second_first_name', 'like', "{$value}%")
                             ->orWhere('last_name', 'like', "{$value}%")
                             ->orWhere('second_last_name', 'like', "{$value}%");
-                    })
-                    ;
+                    });
                 }
             })
             ->when($this->date, function ($query): void {
@@ -100,7 +102,7 @@ class Performance extends Component
 
     protected function getProjects()
     {
-        return Cache::rememberForever('performances_projects', fn() => Project::query()
+        return Cache::rememberForever('performances_projects', fn () => Project::query()
             ->orderBy('name')
             ->select(['name', 'id'])
             ->get());
@@ -108,7 +110,7 @@ class Performance extends Component
 
     protected function getCampaigns()
     {
-        return Cache::rememberForever('performances_campaigns', fn() => Campaign::query()
+        return Cache::rememberForever('performances_campaigns', fn () => Campaign::query()
             ->orderBy('name')
             ->select(['name', 'id'])
             ->when($this->project, function ($query): void {

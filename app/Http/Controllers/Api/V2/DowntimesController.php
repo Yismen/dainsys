@@ -49,7 +49,7 @@ class DowntimesController extends Controller
                 'employee',
                 'supervisor',
             ])
-            ->whereHas('campaign', fn($campaign_query) => $campaign_query->whereHas('project', fn($project_query) => $project_query->where('name', 'like', '%downtimes%'))
+            ->whereHas('campaign', fn ($campaign_query) => $campaign_query->whereHas('project', fn ($project_query) => $project_query->where('name', 'like', '%downtimes%'))
                 ->orWhere('name', 'like', '%downtimes%'))
             ->orderBy('date')
             ->when(

@@ -20,14 +20,12 @@ class CreateOvernightHourRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
     public function rules(): array
     {
         $dates = OvernightHour::where('employee_id', request('employee_id'))
             ->whereDate('date', request('date'))
-            ->pluck('date')->map(fn($date) => $date->format('Y-m-d'));
+            ->pluck('date')->map(fn ($date) => $date->format('Y-m-d'));
 
         return [
             'date' => [

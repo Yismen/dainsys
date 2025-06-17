@@ -34,11 +34,11 @@ class AppComposer
         if (auth()->check()) {
             $this->user = auth()->user();
 
-            return Cache::rememberForEver('user-' . $this->user->id, fn() => $this->user
+            return Cache::rememberForEver('user-'.$this->user->id, fn () => $this->user
                 ->load([
                     'settings',
-                    'roles' => fn($query) => $query->orderBy('name')
-                        ->with(['menus' => fn($query) => $query->orderBy('display_name'),
+                    'roles' => fn ($query) => $query->orderBy('name')
+                        ->with(['menus' => fn ($query) => $query->orderBy('display_name'),
                         ]),
                 ]));
         }
@@ -49,7 +49,7 @@ class AppComposer
     private function userNotifications()
     {
         if ($this->user) {
-            return Cache::rememberForEver('user-notifications-' . $this->user->id, fn() => $this->user->unreadNotifications()->take(10)->get());
+            return Cache::rememberForEver('user-notifications-'.$this->user->id, fn () => $this->user->unreadNotifications()->take(10)->get());
         }
 
         return null;
@@ -58,7 +58,7 @@ class AppComposer
     private function userNotificationsCount(): int
     {
         if ($this->user) {
-            return Cache::rememberForEver('user-notifications-count-' . auth()->user()->id, fn() => auth()->user()->unreadNotifications()->count());
+            return Cache::rememberForEver('user-notifications-count-'.auth()->user()->id, fn () => auth()->user()->unreadNotifications()->count());
         }
 
         return 0;

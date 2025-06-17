@@ -13,26 +13,32 @@ trait HourlyProductionReportTrait
      * Message to be printed once report is sent
      */
     public string $report_message;
+
     /**
      * Repository interface
      */
     protected HourlyProductionReportInterface $repo;
+
     /**
      * Campaign name prefix
      */
     protected string $campaign_name_prefix;
+
     /**
      * String date representation
      */
     protected string $date_from;
+
     /**
      * String date to representation
      */
     protected string $date_to;
+
     /**
      * List of emails to send the report
      */
     protected array $distro;
+
     /**
      * Report subject name
      */
@@ -62,15 +68,10 @@ trait HourlyProductionReportTrait
 
     /**
      * Creates and send the report
-     *
-     * @param string $mail_subject
-     * @param array $distro
-     *
-     * @return void
      */
     protected function createAndSendReport(string $mail_subject, array $distro): void
     {
-        $file_name = $mail_subject . ' ' . now()->format('Ymd_His') . '.xlsx';
+        $file_name = $mail_subject.' '.now()->format('Ymd_His').'.xlsx';
 
         $this->repo = new HourlyProductionReportRepository(
             $this->date_from,
@@ -106,8 +107,6 @@ trait HourlyProductionReportTrait
 
     /**
      * Get the distribution list from the config and explode it into an array
-     *
-     * @return array
      */
     protected function getDistroList(): array
     {
@@ -119,8 +118,6 @@ trait HourlyProductionReportTrait
 
     /**
      * Initialize dates and other variables which can't be initialized from the constructor
-     *
-     * @return object
      */
     protected function bootOptionVariables(): object
     {

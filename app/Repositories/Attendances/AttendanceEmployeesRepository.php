@@ -30,8 +30,7 @@ class AttendanceEmployeesRepository
                     ->whereDate('date', '>=', Carbon::now()->subMonths(2)->startOfMonth());
             },
             ])
-            ->get()
-        ;
+            ->get();
     }
 
     public function codes()

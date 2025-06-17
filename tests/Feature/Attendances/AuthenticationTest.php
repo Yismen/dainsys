@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Attendances;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewAttendances()
+    public function test_guest_cant_view_attendances()
     {
         $attendance = create(\App\Models\Attendance::class);
 
@@ -24,7 +24,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateAttendances()
+    public function test_guest_cant_create_attendances()
     {
         $attendance = create(\App\Models\Attendance::class);
 
@@ -37,7 +37,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateAttendance()
+    public function test_guest_cant_update_attendance()
     {
         $attendance = create(\App\Models\Attendance::class);
 
@@ -50,7 +50,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyAttendance()
+    public function test_guest_cant_destroy_attendance()
     {
         $attendance = create(\App\Models\Attendance::class);
 

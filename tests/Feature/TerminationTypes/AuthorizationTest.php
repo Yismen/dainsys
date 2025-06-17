@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\TerminationTypes;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewTerminationType()
+    public function test_unuthorized_users_cant_view_termination_type()
     {
         $termination_type = create(\App\Models\TerminationType::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -23,7 +23,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetTerminationType()
+    public function test_unuthorized_users_cant_createt_termination_type()
     {
         $termination_type = create(\App\Models\TerminationType::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -32,7 +32,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditTerminationType()
+    public function test_unuthorized_users_cant_edit_termination_type()
     {
         $termination_type = create(\App\Models\TerminationType::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));

@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Models;
 
-use Tests\TestCase;
-use App\Models\Report;
 use App\Models\Recipient;
+use App\Models\Report;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class RecipientTest extends TestCase
 {

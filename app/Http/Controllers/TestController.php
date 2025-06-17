@@ -62,7 +62,8 @@ class TestController extends Controller
 
     public function testComponent()
     {
-        $carbon = new Carbon();
+        $carbon = new Carbon;
+
         // $data = [
         //     $carbon->today() => 'Today',
         //     $carbon->yesterday() => 'Yesterday',

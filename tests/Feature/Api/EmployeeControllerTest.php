@@ -3,10 +3,10 @@
 namespace Tests\Feature\Api;
 
 use App\Models\Employee;
-use Tests\TestCase;
 use App\Models\Termination;
-use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class EmployeeControllerTest extends TestCase
 {
@@ -17,7 +17,6 @@ class EmployeeControllerTest extends TestCase
     {
         Employee::factory()->create();
         Passport::actingAs($this->user());
-
 
         $response = $this->get('/api/employees');
 

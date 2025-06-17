@@ -21,15 +21,13 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__ . '/Commands');
+        $this->load(__DIR__.'/Commands');
 
         require base_path('routes/console.php');
     }
 
     /**
      * Define the application's command schedule.
-     *
-     * @param \Illuminate\Console\Scheduling\Schedule $schedule
      */
     protected function schedule(Schedule $schedule)
     {
@@ -44,11 +42,11 @@ class Kernel extends ConsoleKernel
             '--site' => 'santiago-hq',
         ])->dailyAt('05:55'); // Daily for the previous day
         $schedule->command(\App\Console\Commands\EmployeesHired::class, [
-            $date->copy()->subDay()->startOfWeek()->format('Y-m-d') . ',' . $date->copy()->subDay()->endOfWeek()->format('Y-m-d'),
+            $date->copy()->subDay()->startOfWeek()->format('Y-m-d').','.$date->copy()->subDay()->endOfWeek()->format('Y-m-d'),
             '--site' => 'santiago-hq',
         ])->weeklyOn(1, '05:56'); // Every monday for the previous week
         $schedule->command(\App\Console\Commands\EmployeesHired::class, [
-            now()->subMonth()->startOfMonth()->format('Y-m-d') . ',' . now()->subMonth()->endOfMonth()->format('Y-m-d'),
+            now()->subMonth()->startOfMonth()->format('Y-m-d').','.now()->subMonth()->endOfMonth()->format('Y-m-d'),
             '--site' => 'santiago-hq',
         ])->monthlyOn(1, '05:57'); // Monthly for the previous month
 
@@ -57,12 +55,12 @@ class Kernel extends ConsoleKernel
             '--site' => 'santiago-hq',
         ])->dailyAt('05:55'); // Daily for the previous day
         $schedule->command(\App\Console\Commands\EmployeesTerminated::class, [
-            $date->copy()->subDay()->startOfWeek()->format('Y-m-d') . ',' . $date->copy()->subDay()->endOfWeek()->format('Y-m-d'),
+            $date->copy()->subDay()->startOfWeek()->format('Y-m-d').','.$date->copy()->subDay()->endOfWeek()->format('Y-m-d'),
             '--site' => 'santiago-hq',
         ])
             ->weeklyOn(1, '05:56'); // Every monday for the previous week
         $schedule->command(\App\Console\Commands\EmployeesTerminated::class, [
-            now()->subMonth()->startOfMonth()->format('Y-m-d') . ',' . now()->subMonth()->endOfMonth()->format('Y-m-d'),
+            now()->subMonth()->startOfMonth()->format('Y-m-d').','.now()->subMonth()->endOfMonth()->format('Y-m-d'),
             '--site' => 'santiago-hq',
         ])->monthlyOn(1, '05:57'); // Monthly for the previous month
 
@@ -88,7 +86,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(\App\Console\Commands\RingCentralReports\Commands\HotelPlanning\SendHotelPlanningProductionReportCommand::class, [
             '--date' => now()->subDay()->format('Y-m-d'),
             '--from_date' => now()->subDay()->startOfWeek()->format('Y-m-d'),
-            '--subject' => 'WTD Hours Report'
+            '--subject' => 'WTD Hours Report',
         ])->dailyAt('06:30');
 
         $schedule->command(\App\Console\Commands\Inbound\SendDailySummaryCommand::class)->dailyAt('06:20');
@@ -115,8 +113,8 @@ class Kernel extends ConsoleKernel
 
         $schedule
             ->command(\App\Console\Commands\UpdateBillableHoursAndRevenue::class, [
-                now()->subDays(1)->format('Y-m-d') . ',' . now()->format('Y-m-d'),
-                'created_at'
+                now()->subDays(1)->format('Y-m-d').','.now()->format('Y-m-d'),
+                'created_at',
             ])
             ->dailyAt('01:15');
 

@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Schedules;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewSchedules()
+    public function test_guest_cant_view_schedules()
     {
         $schedule = create(\App\Models\Schedule::class);
 
@@ -24,7 +24,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateSchedules()
+    public function test_guest_cant_create_schedules()
     {
         $schedule = create(\App\Models\Schedule::class);
 
@@ -37,7 +37,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateSchedule()
+    public function test_guest_cant_update_schedule()
     {
         $schedule = create(\App\Models\Schedule::class);
 
@@ -50,7 +50,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroySchedule()
+    public function test_guest_cant_destroy_schedule()
     {
         $schedule = create(\App\Models\Schedule::class);
 

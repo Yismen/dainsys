@@ -2,13 +2,12 @@
 
 namespace App\Notifications;
 
-use App\Services\SMSService;
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\Events\JobFailed;
-use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\VonageMessage;
+use Illuminate\Notifications\Notification;
+use Illuminate\Queue\Events\JobFailed;
 
 class QueueFailingNotification extends Notification implements ShouldQueue
 {

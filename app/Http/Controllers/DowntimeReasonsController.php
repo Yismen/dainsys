@@ -58,7 +58,6 @@ class DowntimeReasonsController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function show(DowntimeReason $downtime_reason)
@@ -70,7 +69,6 @@ class DowntimeReasonsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function edit(DowntimeReason $downtime_reason)
@@ -82,13 +80,12 @@ class DowntimeReasonsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function update(DowntimeReason $downtime_reason, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:5|unique:downtime_reasons,name,' . $downtime_reason->id,
+            'name' => 'required|min:5|unique:downtime_reasons,name,'.$downtime_reason->id,
         ]);
 
         $downtime_reason->update($request->only(['name']));

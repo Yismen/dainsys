@@ -25,9 +25,6 @@ class FlashReportExport implements WithMultipleSheets
         $this->repo = $repo;
     }
 
-    /**
-     * @return array
-     */
     public function sheets(): array
     {
         $sheets = [];
@@ -39,7 +36,7 @@ class FlashReportExport implements WithMultipleSheets
         foreach ($dispositions as $name => $disposition) {
             $answers = $answersCollection->get($name);
 
-            $answers = (new DropNullColumnsOnFlashDispositions())
+            $answers = (new DropNullColumnsOnFlashDispositions)
                 ->handle($answers->all())
                 ->padKeys('num_leads')
                 ->data;

@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Api_V2\Dashboard;
 
-use Tests\TestCase;
 use App\Models\Performance;
-use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class ProductionTest extends TestCase
 {

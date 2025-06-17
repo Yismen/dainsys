@@ -28,7 +28,7 @@ class TerminationReasonRequest extends Request
             null;
 
         return [
-            'reason' => 'required|unique:termination_reasons,reason,' . $id,
+            'reason' => 'required|unique:termination_reasons,reason,'.$id,
             'description' => 'min:5',
         ];
     }

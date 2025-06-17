@@ -81,7 +81,7 @@ class PerformancesController extends Controller
      */
     public function data(int $many = 3): JsonResource
     {
-        --$many;
+        $many--;
 
         $many = $many <= 0 ? 0 : $many;
 

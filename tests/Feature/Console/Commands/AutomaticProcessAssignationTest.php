@@ -2,12 +2,11 @@
 
 namespace Tests\Feature\Console\Commands;
 
-use Tests\TestCase;
-use App\Models\Process;
-use App\Models\Employee;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Console\Commands\AutomaticProcessAssignation;
+use App\Models\Employee;
+use App\Models\Process;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class AutomaticProcessAssignationTest extends TestCase
 {

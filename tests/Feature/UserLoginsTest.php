@@ -3,8 +3,8 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class UserLoginsTest extends TestCase
 {
@@ -49,11 +49,11 @@ class UserLoginsTest extends TestCase
         $user = User::factory()->create();
 
         auth()->login($user);
-        
+
         $this->assertTrue($user->is_logged_in);
 
         auth()->logout();
-        
+
         $this->assertFalse($user->is_logged_in);
     }
 }

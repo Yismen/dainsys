@@ -3,11 +3,11 @@
 namespace App\Repositories\Wow;
 
 use App\Connections\RingCentralConnection;
-use Illuminate\Support\Facades\DB;
 
 class WowRepository extends RingCentralConnection
 {
     public $data;
+
     public $dispositions;
 
     protected $date_from;

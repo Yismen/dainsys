@@ -28,7 +28,7 @@ class ArticlesController extends Controller
      */
     public function index(Article $article)
     {
-        $articles = Cache::remember('articles', now()->addHours(5), fn() => Article::with('user')
+        $articles = Cache::remember('articles', now()->addHours(5), fn () => Article::with('user')
             ->latest('published_at')
             ->published()
             ->paginate(10));
@@ -64,8 +64,7 @@ class ArticlesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int      $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function show(Article $article, Request $request)
@@ -76,8 +75,7 @@ class ArticlesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int      $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function edit(Article $article, Tag $tags)
@@ -90,8 +88,7 @@ class ArticlesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int      $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function update(Article $article, ArticlesRequest $request)
@@ -104,8 +101,7 @@ class ArticlesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int      $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function destroy(Article $article)
@@ -130,9 +126,8 @@ class ArticlesController extends Controller
     /**
      * Sync the given tagas in the database
      *
-     * @param Article    $article [Article Model]
-     * @param Array|null $tagIDs  [The IDs of the tags]
-     *
+     * @param  Article  $article  [Article Model]
+     * @param  array|null  $tagIDs  [The IDs of the tags]
      * @return [type]              [object]
      */
     public function syncTags(Article $article, ?array $tagIDs = null)
@@ -143,9 +138,8 @@ class ArticlesController extends Controller
     /**
      * Create a new article model
      *
-     * @param Article         $article [the model to be create]
-     * @param ArticlesRequest $request [data passed by the user]
-     *
+     * @param  Article  $article  [the model to be create]
+     * @param  ArticlesRequest  $request  [data passed by the user]
      * @return [type]                [object]
      */
     public function createArticle(Article $article, ArticlesRequest $request, Tag $tag)
@@ -160,9 +154,8 @@ class ArticlesController extends Controller
     /**
      * Update current article model
      *
-     * @param Article         $article [the model to be updated]
-     * @param ArticlesRequest $request [data passed by user]
-     *
+     * @param  Article  $article  [the model to be updated]
+     * @param  ArticlesRequest  $request  [data passed by user]
      * @return [type]                [object]
      */
     public function updateArticle(Article $article, ArticlesRequest $request)
@@ -175,8 +168,7 @@ class ArticlesController extends Controller
     /**
      * search for articles
      *
-     * @param Request $requests [requests object]
-     *
+     * @param  Request  $requests  [requests object]
      * @return [type]            [view]
      */
     public function search(Request $requests, Article $article)
@@ -201,8 +193,7 @@ class ArticlesController extends Controller
     /**
      * Receive the content of a local file and save an image to the server
      *
-     * @param ArticlesRequest $request The request with the fields
-     *
+     * @param  ArticlesRequest  $request  The request with the fields
      * @return [type]                   location of the save image
      */
     public function saveImageFromLocalFile(Article $article, SaveImageFromLocalFileRequest $request)
@@ -213,7 +204,7 @@ class ArticlesController extends Controller
         $localPath = 'images/articles/'; // local folder where the image will be loaded to
         $fileName = sha1($request->input('slug'));
         $extension = '.png'; // the destinied extension
-        $extendedName = $localPath . $fileName . $extension;
+        $extendedName = $localPath.$fileName.$extension;
 
         $img = file_get_contents($request->file('file'));
 
@@ -240,8 +231,7 @@ class ArticlesController extends Controller
     /**
      * Receive the content of a url and save an image to the server
      *
-     * @param ArticlesRequest $request The request with the fields
-     *
+     * @param  ArticlesRequest  $request  The request with the fields
      * @return [type]                   location of the save image
      */
     public function saveImageFromURL(Article $article, SaveImageFromURLRequest $request)
@@ -252,7 +242,7 @@ class ArticlesController extends Controller
         $localPath = 'images/articles/'; // local folder where the image will be loaded to
         $fileName = sha1($request->input('slug'));
         $extension = '.png'; // the destinied extension
-        $extendedName = $localPath . $fileName . $extension;
+        $extendedName = $localPath.$fileName.$extension;
 
         $img = file_get_contents($request->input('url'));
 
@@ -281,9 +271,8 @@ class ArticlesController extends Controller
      * Interset the tags object and save to the database
      * those that has not been saved yet
      *
-     * @param Array $selected [description]
+     * @param  array  $selected  [description]
      * @param  [type] $tagObject [description]
-     *
      * @return [type]            [description]
      */
     public function insertNewTags($tagsArray, Tag $tags)
@@ -299,9 +288,9 @@ class ArticlesController extends Controller
                 }
 
                 $tags->name = $value;
-                $tags->save(); //add the new unexistent tag to the Tag model
+                $tags->save(); // add the new unexistent tag to the Tag model
 
-                array_push($tagsArray, $tags->id); //add just created tag to the array
+                array_push($tagsArray, $tags->id); // add just created tag to the array
             }
         }
 

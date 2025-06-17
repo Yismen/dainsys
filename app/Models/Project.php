@@ -7,6 +7,7 @@ use App\Models\DainsysModel as Model;
 class Project extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     /**
      * Fillable fields
      *
@@ -31,7 +32,7 @@ class Project extends Model
 
     protected function clientsList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => Client::orderBy('name')->pluck('name', 'id'));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => Client::orderBy('name')->pluck('name', 'id'));
     }
 
     public function isNotDowntimes($query)

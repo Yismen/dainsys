@@ -15,13 +15,19 @@ use Livewire\Component;
 class EmployeeProcess extends Component
 {
     use HasLivewirePagination;
+
     public int $process_id = 0;
+
     public int $site_id = 0;
+
     public int $department_id = 0;
+
     public int $project_id = 0;
+
     public int $position_id = 0;
 
     protected $listeners = ['searchUpdated'];
+
     protected $search = null;
 
     public function render()
@@ -82,8 +88,7 @@ class EmployeeProcess extends Component
                     $query->where('processes.id', $this->process_id);
                 });
             })
-            ->paginate($this->amount, ['*'], 'assigned_page')
-        ;
+            ->paginate($this->amount, ['*'], 'assigned_page');
     }
 
     protected function getEmployeesNotAssigned()
@@ -98,8 +103,7 @@ class EmployeeProcess extends Component
                     $query->where('processes.id', $this->process_id);
                 });
             })
-            ->paginate($this->amount, ['*'], 'not_assigned_page')
-        ;
+            ->paginate($this->amount, ['*'], 'not_assigned_page');
     }
 
     protected function employeesQuery()
@@ -142,18 +146,17 @@ class EmployeeProcess extends Component
                             ->orWhere('second_last_name', 'like', "%{$search_value}%");
                     });
                 }
-            })
-        ;
+            });
     }
 
     protected function processes()
     {
-        return Cache::rememberForever('steps_processes', fn() => Process::orderBy('name')->get(['name', 'id']));
+        return Cache::rememberForever('steps_processes', fn () => Process::orderBy('name')->get(['name', 'id']));
     }
 
     protected function sites()
     {
-        return Cache::rememberForever('steps_sites', fn() => Site::query()
+        return Cache::rememberForever('steps_sites', fn () => Site::query()
             ->orderBy('name')
             ->whereHas('employees', function ($query): void {
                 $query->actives();
@@ -163,7 +166,7 @@ class EmployeeProcess extends Component
 
     protected function departments()
     {
-        return Cache::rememberForever('steps_departments', fn() => Department::query()
+        return Cache::rememberForever('steps_departments', fn () => Department::query()
             ->orderBy('name')
             ->whereHas('employees', function ($query): void {
                 $query->actives();
@@ -173,7 +176,7 @@ class EmployeeProcess extends Component
 
     protected function projects()
     {
-        return Cache::rememberForever('steps_projects', fn() => Project::query()
+        return Cache::rememberForever('steps_projects', fn () => Project::query()
             ->orderBy('name')
             ->whereHas('employees', function ($query): void {
                 $query->actives();
@@ -183,7 +186,7 @@ class EmployeeProcess extends Component
 
     protected function positions()
     {
-        return Cache::rememberForever('steps_positions', fn() => Position::query()
+        return Cache::rememberForever('steps_positions', fn () => Position::query()
             ->orderBy('name')
             ->whereHas('employees', function ($query): void {
                 $query->actives();

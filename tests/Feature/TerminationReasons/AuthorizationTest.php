@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\TerminationReasons;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewTerminationReason()
+    public function test_unuthorized_users_cant_view_termination_reason()
     {
         $termination_reason = create(\App\Models\TerminationReason::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -23,7 +23,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetTerminationReason()
+    public function test_unuthorized_users_cant_createt_termination_reason()
     {
         $termination_reason = create(\App\Models\TerminationReason::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -32,7 +32,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditTerminationReason()
+    public function test_unuthorized_users_cant_edit_termination_reason()
     {
         $termination_reason = create(\App\Models\TerminationReason::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));

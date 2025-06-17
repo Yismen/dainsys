@@ -11,18 +11,13 @@ class EmployeeReactivated
      *
      * @return void
      */
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Handle the event.
      *
-     * @param  Event  $event
      *
      * @return void
      */
-    public function handle(Event $event)
-    {
-    }
+    public function handle(Event $event) {}
 }

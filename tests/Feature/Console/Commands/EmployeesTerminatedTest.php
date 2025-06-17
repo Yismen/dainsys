@@ -2,22 +2,22 @@
 
 namespace Tests\Feature\Console\Commands;
 
-use Tests\TestCase;
-use App\Models\Report;
+use App\Mail\EmployeesTerminatedMail;
 use App\Models\Employee;
 use App\Models\Recipient;
+use App\Models\Report;
 use App\Models\Termination;
-use Illuminate\Support\Facades\Mail;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Mail\EmployeesTerminatedMail;
-use Illuminate\Support\Facades\Queue;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Queue;
+use Maatwebsite\Excel\Facades\Excel;
+use Tests\TestCase;
 
 class EmployeesTerminatedTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -39,7 +39,7 @@ class EmployeesTerminatedTest extends TestCase
 
         $command = $this->artisan(\App\Console\Commands\EmployeesTerminated::class, [
             'dates' => now()->subDay()->format('Y-m-d'),
-            '--site' => 'santiago-hq'
+            '--site' => 'santiago-hq',
         ]);
 
         $command->assertSuccessful();
@@ -54,8 +54,8 @@ class EmployeesTerminatedTest extends TestCase
         Termination::factory()->create(['employee_id' => $employee->id, 'termination_date' => today()->subWeek()]);
 
         $command = $this->artisan(\App\Console\Commands\EmployeesTerminated::class, [
-            'dates' => now()->subDay()->startOfWeek()->format('Y-m-d') . ',' . now()->subDay()->endOfWeek()->format('Y-m-d'),
-            '--site' => 'santiago-hq'
+            'dates' => now()->subDay()->startOfWeek()->format('Y-m-d').','.now()->subDay()->endOfWeek()->format('Y-m-d'),
+            '--site' => 'santiago-hq',
         ]);
 
         $command->assertSuccessful();
@@ -71,8 +71,8 @@ class EmployeesTerminatedTest extends TestCase
         Termination::factory()->create(['employee_id' => $employee->id, 'termination_date' => today()->subMonth()]);
 
         $command = $this->artisan(\App\Console\Commands\EmployeesTerminated::class, [
-            'dates' => now()->subMonth()->startOfMonth()->format('Y-m-d') . ',' . now()->subMonth()->endOfMonth()->format('Y-m-d'),
-            '--site' => 'santiago-hq'
+            'dates' => now()->subMonth()->startOfMonth()->format('Y-m-d').','.now()->subMonth()->endOfMonth()->format('Y-m-d'),
+            '--site' => 'santiago-hq',
         ]);
 
         $command->assertSuccessful();

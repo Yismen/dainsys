@@ -32,7 +32,6 @@ class DropNullColumnsOnFlashDispositions
      * Ensure all the elements contains keys that have at least one record
      * with valid value.
      *
-     * @param string $set_last_key
      *
      * @return void
      */
@@ -56,9 +55,8 @@ class DropNullColumnsOnFlashDispositions
     /**
      * Create an array of all valid keys present in the collection
      *
-     * @param String $key
-     * @param Array $value
-     *
+     * @param  string  $key
+     * @param  array  $value
      * @return void
      */
     private function addValidKeys($key, $value)

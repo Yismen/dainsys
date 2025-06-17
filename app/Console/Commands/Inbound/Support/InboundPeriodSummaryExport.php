@@ -12,17 +12,17 @@ class InboundPeriodSummaryExport implements WithMultipleSheets
     public function __construct(/**
      * Array of hours
      */
-    protected array $repo, /**
+        protected array $repo, /**
      * The client name
      */
-    protected string $client, string $period_name, protected $date_from = null, protected $date_to = null)
-    {
+        protected string $client,
+        string $period_name,
+        protected $date_from = null,
+        protected $date_to = null
+    ) {
         $this->period_name = $period_name;
     }
 
-    /**
-     * @return array
-     */
     public function sheets(): array
     {
         $sheets = [];

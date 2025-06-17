@@ -14,8 +14,6 @@ class Punch extends Model
 
     /**
      * Return the sluggable configuration array for this model.
-     *
-     * @return array
      */
     public function sluggable(): array
     {
@@ -57,13 +55,14 @@ class Punch extends Model
                 ->orderBy('second_first_name')
                 ->orderBy('last_name')
                 ->get();
+
             return $employees->pluck('fullName', 'id');
         });
     }
 
     protected function freeEmployees(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => Employee::with('punch')
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => Employee::with('punch')
             ->sorted()
             ->actives()
             ->whereDoesntHave('punch')
@@ -73,6 +72,6 @@ class Punch extends Model
 
     protected function punch(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn($punch) => ['punch' => strtoupper((string) $punch)]);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn ($punch) => ['punch' => strtoupper((string) $punch)]);
     }
 }

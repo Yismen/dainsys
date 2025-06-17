@@ -12,16 +12,13 @@ class FilenameStartsWithRule implements Rule
      *
      * @return void
      */
-    public function __construct(protected $filename)
-    {
-    }
+    public function __construct(protected $filename) {}
 
     /**
      * Determine if the validation rule passes.
      *
      * @param  string  $attribute
      * @param  mixed  $value
-     *
      * @return bool
      */
     public function passes($attribute, $value)

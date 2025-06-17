@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Exports;
 
-use Tests\TestCase;
 use App\Models\Employee;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Maatwebsite\Excel\Facades\Excel;
+use Tests\TestCase;
 
 class EmployeesTest extends TestCase
 {
@@ -62,7 +62,7 @@ class EmployeesTest extends TestCase
         $this->actingAs($this->user());
         $update_data = [
             'first_name' => 'Updated Name',
-            'last_name' => 'Updated Surname'
+            'last_name' => 'Updated Surname',
         ];
         $employee = Employee::factory()->create();
         $old_first_name = $employee->first_name;
@@ -71,13 +71,13 @@ class EmployeesTest extends TestCase
         $employee->update($update_data);
 
         $this->assertEquals($employee->changes->first()->modifications, [
-            "first_name" => [
-                "old" => $old_first_name,
-                "new" => "Updated Name",
+            'first_name' => [
+                'old' => $old_first_name,
+                'new' => 'Updated Name',
             ],
-            "last_name" => [
-                "old" => $old_last_name,
-                "new" => "Updated Surname",
+            'last_name' => [
+                'old' => $old_last_name,
+                'new' => 'Updated Surname',
             ],
         ]);
     }

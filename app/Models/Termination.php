@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use App\Events\EmployeeTerminated;
 use App\Models\DainsysModel as Model;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Termination extends Model
@@ -47,6 +47,7 @@ class Termination extends Model
     {
         return $this->belongsTo(\App\Models\TerminationReason::class);
     }
+
     // protected function terminationDate(): \Illuminate\Database\Eloquent\Casts\Attribute
     // {
     //     return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($date) {
@@ -56,13 +57,14 @@ class Termination extends Model
     // }
     protected function employeeData(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn($data) => json_decode((string) $data));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn ($data) => json_decode((string) $data));
     }
+
     protected function casts(): array
     {
         return [
             'can_be_rehired' => 'boolean',
-            'termination_date' => 'datetime'
+            'termination_date' => 'datetime',
         ];
     }
 }

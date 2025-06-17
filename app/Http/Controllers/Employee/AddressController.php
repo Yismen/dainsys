@@ -13,8 +13,6 @@ class AddressController extends Controller
     /**
      * update employees' address
      *
-     * @param  Employee $employee
-     * @param  Request  $request
      *
      * @return void
      */

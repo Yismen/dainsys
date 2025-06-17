@@ -7,6 +7,7 @@ use App\Models\DainsysModel as Model;
 class Hour extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['employee_id', 'name', 'date', 'unique_id', 'regulars', 'nightly', 'holidays', 'training', 'overtime'];
 
     // Relationships =============================================

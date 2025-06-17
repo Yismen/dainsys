@@ -3,7 +3,6 @@
 namespace App\Console\Commands\General\DailyProductionReport;
 
 use App\Connections\RingCentralConnection;
-use Illuminate\Support\Facades\DB;
 
 class GeneralDailyProductionReportRepository extends RingCentralConnection
 {
@@ -12,6 +11,7 @@ class GeneralDailyProductionReportRepository extends RingCentralConnection
     protected $date_from;
 
     protected $date_to;
+
     protected $dispositions;
 
     public function __construct(array $options, protected string $team_group = '%')
@@ -35,6 +35,7 @@ class GeneralDailyProductionReportRepository extends RingCentralConnection
                 set @team_group = '{$this->team_group}'
 
                 exec [sp_Hours_Summary] @fromDate, @toDate, @campaign, @team_group
-            "            );
+            "
+            );
     }
 }

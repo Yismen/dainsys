@@ -19,7 +19,6 @@ class LoginNamesController extends Controller
      * @queryParam recents optional When present, only login names for employees labeled as recents will be included. Default is true. Example ?recents=true
      *
      * @return \Illuminate\Support\Collection;
-     * /**
      *
      * @response 200 {
      *  "employee_id": 10001,

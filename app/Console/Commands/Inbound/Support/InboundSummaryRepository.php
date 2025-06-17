@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands\Inbound\Support;
 
-use Illuminate\Support\Facades\DB;
 use App\Connections\RingCentralConnection;
 
 class InboundSummaryRepository extends RingCentralConnection implements InboundSummaryInterface
@@ -10,6 +9,7 @@ class InboundSummaryRepository extends RingCentralConnection implements InboundS
     use InboundSummaryDataParserTrait;
 
     public $data;
+
     public $hours_data;
 
     protected $gate_statement;
@@ -50,6 +50,7 @@ class InboundSummaryRepository extends RingCentralConnection implements InboundS
                         ORDER BY [Report Date] desc, Team asc, agent_name asc, [Dial Group] asc
             "
             );
+
         return $data;
     }
 

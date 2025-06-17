@@ -66,7 +66,6 @@ class ContactsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function edit(Contact $contact)
@@ -78,7 +77,6 @@ class ContactsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function update(Contact $contact, Request $request)
@@ -99,7 +97,6 @@ class ContactsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function destroy(Contact $contact)

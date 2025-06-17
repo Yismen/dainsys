@@ -9,15 +9,19 @@ use Livewire\Component;
 class ProcessesForm extends Component
 {
     use HasLivewirePagination;
+
     public array $fields = [
         'name' => null,
         'default' => false,
         'description' => null,
     ];
+
     public bool $is_editing = false;
+
     public Process $process;
 
     protected $listeners = ['wantsCreateProcess', 'wantsEditProcess'];
+
     protected $rules = [
         'fields.name' => 'required|min:3|unique:steps,name',
         'fields.default' => 'required|boolean',
@@ -62,7 +66,7 @@ class ProcessesForm extends Component
     public function update()
     {
         $rules = array_merge($this->rules, [
-            'fields.name' => 'required|min:3|unique:processes,name,' . $this->process->id,
+            'fields.name' => 'required|min:3|unique:processes,name,'.$this->process->id,
             'fields.description' => 'max:1000',
         ]);
         $this->validate($rules);

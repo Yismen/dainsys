@@ -13,9 +13,7 @@ class EmployeesUpdates extends Event
      *
      * @return void
      */
-    public function __construct(private $employees)
-    {
-    }
+    public function __construct(private $employees) {}
 
     /**
      * Get the channels the event should be broadcast on.

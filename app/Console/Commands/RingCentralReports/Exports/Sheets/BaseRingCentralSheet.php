@@ -10,13 +10,11 @@ use Maatwebsite\Excel\Concerns\WithPreCalculateFormulas;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Sheet;
 
-abstract class BaseRingCentralSheet implements FromView, WithTitle, WithPreCalculateFormulas, WithEvents
+abstract class BaseRingCentralSheet implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $data;
 
-    public function __construct(protected RingCentralExportsContract $exporter)
-    {
-    }
+    public function __construct(protected RingCentralExportsContract $exporter) {}
 
     abstract public function getData(ConnectionContract $connection, string $date_from, string $date_to): array;
 

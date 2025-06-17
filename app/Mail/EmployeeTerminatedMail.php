@@ -4,10 +4,9 @@ namespace App\Mail;
 
 use App\Models\Employee;
 use Illuminate\Bus\Queueable;
-use Illuminate\Mail\Mailable;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
 
 /**
  * EmployeeTerminatedMail
@@ -29,7 +28,7 @@ class EmployeeTerminatedMail extends Mailable implements ShouldQueue
         $this->employee = $employee->load([
             'site',
             'project',
-            'position'
+            'position',
         ]);
     }
 
@@ -43,7 +42,6 @@ class EmployeeTerminatedMail extends Mailable implements ShouldQueue
         return $this->markdown('mail.employee-terminated-mail', [
             'employee' => $this->employee->load('termination'),
         ])
-            ->to($this->recipients)
-        ;
+            ->to($this->recipients);
     }
 }

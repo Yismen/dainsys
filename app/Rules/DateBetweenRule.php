@@ -8,7 +8,9 @@ use Illuminate\Contracts\Validation\Rule;
 class DateBetweenRule implements Rule
 {
     protected $from;
+
     protected $value;
+
     protected $attribute;
 
     protected $to;
@@ -30,7 +32,6 @@ class DateBetweenRule implements Rule
      *
      * @param  string  $attribute
      * @param  mixed  $value
-     *
      * @return bool
      */
     public function passes($attribute, $value)

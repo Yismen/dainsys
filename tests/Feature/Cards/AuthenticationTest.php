@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Cards;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewCards()
+    public function test_guest_cant_view_cards()
     {
         $card = create(\App\Models\Card::class);
 
@@ -24,7 +24,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateCards()
+    public function test_guest_cant_create_cards()
     {
         $card = create(\App\Models\Card::class);
 
@@ -37,7 +37,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateCard()
+    public function test_guest_cant_update_card()
     {
         $card = create(\App\Models\Card::class);
 
@@ -50,7 +50,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyCard()
+    public function test_guest_cant_destroy_card()
     {
         $card = create(\App\Models\Card::class);
 

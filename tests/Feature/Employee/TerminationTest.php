@@ -2,27 +2,27 @@
 
 namespace Tests\Feature\Employee;
 
-use Tests\TestCase;
-use App\Models\Report;
-use App\Models\Employee;
-use App\Models\Recipient;
-use App\Models\Termination;
 use App\Events\EmployeeTerminated;
 use App\Mail\EmployeeTerminatedMail;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Event;
+use App\Models\Employee;
+use App\Models\Recipient;
+use App\Models\Report;
+use App\Models\Termination;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Mail;
+use Tests\TestCase;
 
 class TerminationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function setup(): void
+    protected function setup(): void
     {
         parent::setUp();
 
         $recipients = Recipient::factory()->create();
-        $report = Report::where('key', 'dainsys:employees-terminated')->firstOr(fn() => Report::factory()->create(['key' => 'dainsys:employees-terminated']));
+        $report = Report::where('key', 'dainsys:employees-terminated')->firstOr(fn () => Report::factory()->create(['key' => 'dainsys:employees-terminated']));
         $report->recipients()->sync([$recipients->id]);
     }
 
@@ -62,7 +62,7 @@ class TerminationTest extends TestCase
     public function employee_termination_fires_event()
     {
         Event::fake([
-            EmployeeTerminated::class
+            EmployeeTerminated::class,
         ]);
 
         $employee = create(Employee::class);

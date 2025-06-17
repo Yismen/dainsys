@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use Tests\TestCase;
-use App\Models\Process;
-use App\Models\Employee;
-use App\Http\Livewire\EmployeeStep;
 use App\Http\Livewire\EmployeeProcess;
+use App\Http\Livewire\EmployeeStep;
+use App\Models\Employee;
+use App\Models\Process;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class EmployeeProcessControllerTest extends TestCase
 {

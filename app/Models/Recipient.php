@@ -15,8 +15,6 @@ class Recipient extends Model
 
     /**
      * The reports that belong to the Recipient
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function reports(): BelongsToMany
     {

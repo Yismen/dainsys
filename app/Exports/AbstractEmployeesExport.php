@@ -4,20 +4,21 @@ namespace App\Exports;
 
 use App\Models\Employee;
 use Illuminate\Database\Eloquent\Builder;
+use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
-use Maatwebsite\Excel\Concerns\Exportable;
-use Maatwebsite\Excel\Concerns\WithEvents;
-use Maatwebsite\Excel\Concerns\WithMapping;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
-use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 
-abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAutoSize, WithColumnFormatting, WithMapping, WithHeadings, WithEvents
+abstract class AbstractEmployeesExport implements FromQuery, ShouldAutoSize, WithColumnFormatting, WithEvents, WithHeadings, WithMapping, WithTitle
 {
     use Exportable;
+
     protected $site = null;
 
     public function __construct(protected $date_from = null, protected $date_to = null, ?string $site = null)
@@ -62,7 +63,7 @@ abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAu
                 'supervisor',
                 'termination' => function ($terinationQuery): void {
                     $terinationQuery->with([
-                        'terminationType'
+                        'terminationType',
                     ]);
                 },
             ]);
@@ -84,7 +85,7 @@ abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAu
             substr((string) $employee->cellphone_number, 0, 3),
             substr((string) $employee->cellphone_number, -7),
             $employee->address === null ? '' :
-                $employee->address->street_address . ', ' . $employee->address->sector . ', ' . $employee->address->city,
+                $employee->address->street_address.', '.$employee->address->sector.', '.$employee->address->city,
             substr((string) optional($employee->gender)->name, 0, 1),
             optional($employee->marital)->name,
             optional($employee->nationality)->name,

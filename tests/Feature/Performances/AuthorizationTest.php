@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Performances;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewPerformance()
+    public function test_unuthorized_users_cant_view_performance()
     {
         $performance = create(\App\Models\Performance::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -23,7 +23,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditPerformance()
+    public function test_unuthorized_users_cant_edit_performance()
     {
         $performance = create(\App\Models\Performance::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -32,7 +32,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyPerformance()
+    public function test_unuthorized_users_cant_destroy_performance()
     {
         $performance = create(\App\Models\Performance::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));

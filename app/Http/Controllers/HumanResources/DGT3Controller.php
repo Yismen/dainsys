@@ -31,7 +31,7 @@ class DGT3Controller extends Controller
     public function excel(Request $request, Reports $report)
     {
         $results = $report->dgt3($request->year)->get();
-        $file_name = 'DGT3-' . request('year') . '.xlsx';
+        $file_name = 'DGT3-'.request('year').'.xlsx';
 
         $request->flash();
 

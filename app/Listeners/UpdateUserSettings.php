@@ -12,14 +12,11 @@ class UpdateUserSettings
      *
      * @return void
      */
-    public function __construct(private readonly Request $request)
-    {
-    }
+    public function __construct(private readonly Request $request) {}
 
     /**
      * Handle the event.
      *
-     * @param  EditUserSettings  $event
      *
      * @return void
      */

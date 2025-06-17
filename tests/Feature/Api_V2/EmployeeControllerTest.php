@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Api_V2;
 
-use Tests\TestCase;
-use App\Models\Site;
-use App\Models\Project;
 use App\Models\Employee;
+use App\Models\Project;
+use App\Models\Site;
 use App\Models\Termination;
-use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class EmployeeControllerTest extends TestCase
 {
@@ -124,10 +124,10 @@ class EmployeeControllerTest extends TestCase
         $site = Site::factory()->create();
         $employee_site_1 = Employee::factory()->create([
             'hire_date' => now(),
-            'site_id' => $site->id
+            'site_id' => $site->id,
         ]);
         $employee_site_2 = Employee::factory()->create([
-            'hire_date' => now()
+            'hire_date' => now(),
         ]);
 
         $response = $this->get("/api/v2/employees?site={$site->name}");
@@ -151,10 +151,10 @@ class EmployeeControllerTest extends TestCase
         $project = Project::factory()->create();
         $employee_project_1 = Employee::factory()->create([
             'hire_date' => now(),
-            'project_id' => $project->id
+            'project_id' => $project->id,
         ]);
         $employee_project_2 = Employee::factory()->create([
-            'hire_date' => now()
+            'hire_date' => now(),
         ]);
 
         $response = $this->get("/api/v2/employees?project={$project->name}");
@@ -179,7 +179,7 @@ class EmployeeControllerTest extends TestCase
             'hire_date' => now(),
         ])->load('position.department');
         $employee_department_2 = Employee::factory()->create([
-            'hire_date' => now()
+            'hire_date' => now(),
         ]);
         $response = $this->get("/api/v2/employees?department={$employee_department_1->position->department->name}");
 
@@ -203,7 +203,7 @@ class EmployeeControllerTest extends TestCase
             'hire_date' => now(),
         ])->load('position');
         $employee_position_2 = Employee::factory()->create([
-            'hire_date' => now()
+            'hire_date' => now(),
         ]);
         $response = $this->get("/api/v2/employees?position={$employee_position_1->position->name}");
 

@@ -29,6 +29,6 @@ class Afp extends Model
 
     protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn($name) => ['name' => trim(ucwords((string) $name))]);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn ($name) => ['name' => trim(ucwords((string) $name))]);
     }
 }

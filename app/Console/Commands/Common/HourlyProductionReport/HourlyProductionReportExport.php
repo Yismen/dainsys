@@ -8,9 +8,6 @@ use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class HourlyProductionReportExport implements WithMultipleSheets
 {
-    /**
-     * @param object $repo
-     */
     public function __construct(
         /**
          * Array of hours
@@ -19,13 +16,8 @@ class HourlyProductionReportExport implements WithMultipleSheets
         protected string $client = 'Publishing',
         protected string $data_view = 'exports.data',
         protected string $disposition_view = 'exports.dispositions'
-    )
-    {
-    }
+    ) {}
 
-    /**
-     * @return array
-     */
     public function sheets(): array
     {
         $sheets = [];

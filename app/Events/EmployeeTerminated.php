@@ -22,9 +22,7 @@ class EmployeeTerminated
          */
         public Employee $employee,
         public Termination $termination
-    )
-    {
-    }
+    ) {}
 
     /**
      * Get the channels the event should broadcast on.

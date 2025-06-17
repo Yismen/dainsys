@@ -13,11 +13,12 @@ use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
-class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
+class FlashCampaignsSheet implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $sheet;
 
     protected $rowsDispo;
+
     protected $rowsAnswers;
 
     protected $dispositions;
@@ -53,8 +54,7 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
                 $this->sheet = $event->sheet->getDelegate();
 
                 $this->configurePage()
-                    ->setColumnsWidth()
-                ;
+                    ->setColumnsWidth();
 
                 $this->sheet->freezePane('A2');
                 $this->sheet->getStyle("A3:B{$this->rowsDispo}")->applyFromArray([

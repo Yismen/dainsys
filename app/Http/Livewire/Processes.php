@@ -11,6 +11,7 @@ class Processes extends Component
     use HasLivewirePagination;
 
     protected $listeners = ['searchUpdated', 'processSaved' => '$refresh'];
+
     protected $search = null;
 
     public function render()

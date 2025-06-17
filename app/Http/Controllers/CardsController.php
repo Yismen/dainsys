@@ -63,7 +63,6 @@ class CardsController extends Controller
      * Display the specified resource.
      *
      * @param  int  Card $card
-     *
      * @return Response
      */
     public function show(Card $card)
@@ -75,7 +74,6 @@ class CardsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  Card $card
-     *
      * @return Response
      */
     public function edit(Card $card)
@@ -87,7 +85,6 @@ class CardsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  Card $card
-     *
      * @return Response
      */
     public function update(Card $card, Request $request)
@@ -107,7 +104,6 @@ class CardsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  Card $card
-     *
      * @return Response
      */
     public function destroy(Card $card)

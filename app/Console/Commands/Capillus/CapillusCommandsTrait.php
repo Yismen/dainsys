@@ -20,12 +20,10 @@ trait CapillusCommandsTrait
 
     /**
      * Parse the distro list from the dainsys config file
-     *
-     * @return array
      */
     protected function distroList(): array
     {
-        $service = new \App\Services\DainsysConfigService();
+        $service = new \App\Services\DainsysConfigService;
 
         return $service->getDistro($this->name);
     }

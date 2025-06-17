@@ -8,8 +8,11 @@ use Illuminate\Database\Eloquent\Builder;
 abstract class AbstractRingCentralService
 {
     protected array $fields;
+
     protected Carbon $date_from;
+
     protected Carbon $date_to;
+
     protected Builder $query;
 
     public function __construct()

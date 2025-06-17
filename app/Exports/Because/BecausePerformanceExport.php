@@ -12,9 +12,6 @@ class BecausePerformanceExport implements WithMultipleSheets
         $this->date = $date;
     }
 
-    /**
-     * @return array
-     */
     public function sheets(): array
     {
         $sheets = [];

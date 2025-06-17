@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Employee;
 
-use App\Models\LoginName;
 use App\Models\Employee;
+use App\Models\LoginName;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

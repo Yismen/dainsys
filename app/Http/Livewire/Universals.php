@@ -27,6 +27,7 @@ class Universals extends Component
     public array $position_list = [];
 
     public $universals;
+
     public $noUniversals;
 
     public string $search = '';
@@ -42,25 +43,25 @@ class Universals extends Component
         $this->noUniversals = $this->getEmployees('noUniversals');
 
         return view('livewire.universals', [
-            'sites' => Cache::rememberForever('universal_sites', fn() => Site::query()
+            'sites' => Cache::rememberForever('universal_sites', fn () => Site::query()
                 ->whereHas('employees', function ($quer): void {
                     $quer->actives();
                 })
                 ->orderBy('name')
                 ->get()),
-            'departments' => Cache::rememberForever('universal_departments', fn() => Department::query()
+            'departments' => Cache::rememberForever('universal_departments', fn () => Department::query()
                 ->whereHas('employees', function ($quer): void {
                     $quer->actives();
                 })
                 ->orderBy('name')
                 ->get()),
-            'projects' => Cache::rememberForever('universal_projects', fn() => Project::query()
+            'projects' => Cache::rememberForever('universal_projects', fn () => Project::query()
                 ->whereHas('employees', function ($quer): void {
                     $quer->actives();
                 })
                 ->orderBy('name')
                 ->get()),
-            'positions' => Cache::rememberForever('universal_positions', fn() => Position::query()
+            'positions' => Cache::rememberForever('universal_positions', fn () => Position::query()
                 ->whereHas('employees', function ($quer): void {
                     $quer->actives();
                 })
@@ -111,7 +112,7 @@ class Universals extends Component
 
     protected function getEmployees(string $method)
     {
-        $repo = new UniversalRepo();
+        $repo = new UniversalRepo;
 
         $employees = $repo->$method()
             ->with([

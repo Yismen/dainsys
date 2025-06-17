@@ -7,6 +7,7 @@ use App\Models\DainsysModel as Model;
 class Profile extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['gender', 'bio', 'photo', 'phone', 'education', 'skills', 'work', 'location'];
 
     /**
@@ -24,7 +25,7 @@ class Profile extends Model
      */
     protected function skillsArray(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => explode(',', $this->skills));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => explode(',', $this->skills));
     }
 
     protected function skillsObject(): \Illuminate\Database\Eloquent\Casts\Attribute
@@ -35,6 +36,7 @@ class Profile extends Model
             foreach ($skills as $skill) {
                 array_push($returned, ucwords(trim($skill)));
             }
+
             return (object) $returned;
         });
     }

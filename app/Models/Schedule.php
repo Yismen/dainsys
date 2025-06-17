@@ -19,8 +19,6 @@ class Schedule extends Model
 
     /**
      * Return the sluggable configuration array for this model.
-     *
-     * @return array
      */
     public function sluggable(): array
     {
@@ -40,7 +38,7 @@ class Schedule extends Model
 
     protected function employeesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => Employee::actives()
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => Employee::actives()
             ->orderBy('first_name')
             ->orderBy('second_first_name')
             ->orderBy('last_name')
@@ -50,7 +48,7 @@ class Schedule extends Model
 
     protected function date(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn($date) => Carbon::parse($date));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn ($date) => Carbon::parse($date));
     }
 
     public function createNew($data)

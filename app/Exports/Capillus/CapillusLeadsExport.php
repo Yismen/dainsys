@@ -14,7 +14,7 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
-class CapillusLeadsExport implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas, WithCustomCsvSettings
+class CapillusLeadsExport implements FromView, WithCustomCsvSettings, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $sheet;
 
@@ -50,8 +50,7 @@ class CapillusLeadsExport implements FromView, WithTitle, WithEvents, WithPreCal
                     ->formatHeaderRow()
                     // ->formatDateColumn()
                     ->formatTimecolumns()
-                    ->setColumnsWidth()
-                ;
+                    ->setColumnsWidth();
 
                 $this->sheet->setAutoFilter("A1:O{$this->count}");
                 $this->sheet->freezePane('E2');

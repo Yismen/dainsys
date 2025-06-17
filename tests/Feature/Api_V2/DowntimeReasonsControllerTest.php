@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Api_V2;
 
-use Tests\TestCase;
 use App\Models\DowntimeReason;
-use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class DowntimeReasonsControllerTest extends TestCase
 {

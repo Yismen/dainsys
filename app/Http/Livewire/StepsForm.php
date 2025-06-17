@@ -11,16 +11,20 @@ use Livewire\Component;
 class StepsForm extends Component
 {
     use HasLivewirePagination;
+
     public array $fields = [
         'name' => null,
         'process_id' => null,
         'order' => null,
         'description' => null,
     ];
+
     public bool $is_editing = false;
+
     public Step $step;
 
     protected $listeners = ['wantsCreateStep', 'wantsEditStep'];
+
     protected $rules = [
         'fields.name' => 'required|min:3|unique:steps,name',
         'fields.process_id' => 'required|exists:processes,id',
@@ -31,7 +35,7 @@ class StepsForm extends Component
     public function render()
     {
         return view('livewire.steps-form', [
-            'processes' => Cache::rememberForever('steps_processes', fn() => Process::orderBy('name')->get(['name', 'id'])),
+            'processes' => Cache::rememberForever('steps_processes', fn () => Process::orderBy('name')->get(['name', 'id'])),
         ]);
     }
 
@@ -67,7 +71,7 @@ class StepsForm extends Component
     public function update()
     {
         $rules = array_merge($this->rules, [
-            'fields.name' => 'required|min:3|unique:processes,name,' . $this->step->id,
+            'fields.name' => 'required|min:3|unique:processes,name,'.$this->step->id,
         ]);
         $this->validate($rules);
         $this->step->update($this->fields);

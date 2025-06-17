@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\PaymentFrequencies;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewPaymentFrequency()
+    public function test_unuthorized_users_cant_view_payment_frequency()
     {
         $payment_frequency = create(\App\Models\PaymentFrequency::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -23,7 +23,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetPaymentFrequency()
+    public function test_unuthorized_users_cant_createt_payment_frequency()
     {
         $payment_frequency = create(\App\Models\PaymentFrequency::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -32,7 +32,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditPaymentFrequency()
+    public function test_unuthorized_users_cant_edit_payment_frequency()
     {
         $payment_frequency = create(\App\Models\PaymentFrequency::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -41,7 +41,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyPaymentFrequency()
+    public function test_unuthorized_users_cant_destroy_payment_frequency()
     {
         $payment_frequency = create(\App\Models\PaymentFrequency::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));

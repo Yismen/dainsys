@@ -3,16 +3,14 @@
 namespace App\Console\Commands\Common\HourlyProductionReport;
 
 use App\Connections\RingCentralConnection;
-use Illuminate\Support\Facades\DB;
 
 class HourlyProductionReportRepository extends RingCentralConnection implements HourlyProductionReportInterface
 {
     public $data;
+
     public $dispositions;
 
-    public function __construct(public $date_from, protected $date_to, protected string $campaign, protected string $team = '%')
-    {
-    }
+    public function __construct(public $date_from, protected $date_to, protected string $campaign, protected string $team = '%') {}
 
     public function getData(): object
     {

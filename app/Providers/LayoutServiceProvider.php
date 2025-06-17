@@ -11,8 +11,8 @@ class LayoutServiceProvider extends ServiceProvider
      *
      * @return void
      */
-
     protected $site = 'site';
+
     protected $app = 'app';
 
     public function boot()
@@ -26,16 +26,13 @@ class LayoutServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
-    }
+    public function register() {}
 
     /**
      * returns current value of site property. Allows for override optionally.
      *
-     * @param  string $site new name of the site's layout. can be null o be overridden.
-     *
-     * @return string       site's name
+     * @param  string  $site  new name of the site's layout. can be null o be overridden.
+     * @return string site's name
      */
     public function site($site = null)
     {
@@ -49,9 +46,8 @@ class LayoutServiceProvider extends ServiceProvider
     /**
      * returns current value of app property. Allows for override optionally.
      *
-     * @param  string $app new name of the app's layout. can be null o be overridden.
-     *
-     * @return string       app's name
+     * @param  string  $app  new name of the app's layout. can be null o be overridden.
+     * @return string app's name
      */
     public function app($app = null)
     {

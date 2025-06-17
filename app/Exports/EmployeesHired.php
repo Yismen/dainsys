@@ -14,8 +14,7 @@ class EmployeesHired extends AbstractEmployeesExport
         return $this->baseQuery()
             ->orderBy('hire_date')
             ->when($this->date_from, fn ($q) => $q->whereDate('hire_date', '>=', $this->date_from))
-            ->when($this->date_to, fn ($q) => $q->whereDate('hire_date', '<=', $this->date_to))
-        ;
+            ->when($this->date_to, fn ($q) => $q->whereDate('hire_date', '<=', $this->date_to));
     }
 
     public function title(): string

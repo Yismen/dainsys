@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\HumanResources;
 
-use Tests\TestCase;
-use App\Models\Site;
 use App\Models\Employee;
+use App\Models\Site;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class BirthdaysControllerTest extends TestCase
 {
@@ -78,15 +78,15 @@ class BirthdaysControllerTest extends TestCase
 
         $employee_with_birthday_this_month = Employee::factory()->create([
             'site_id' => $site->id,
-            'date_of_birth' => now()
+            'date_of_birth' => now(),
         ]);
         $employee_with_birthday_last_month = Employee::factory()->create([
             'site_id' => $site->id,
-            'date_of_birth' => now()->subMonths(4)
+            'date_of_birth' => now()->subMonths(4),
         ]);
         $employee_with_birthday_next_month = Employee::factory()->create([
             'site_id' => $site->id,
-            'date_of_birth' => now()->addMonth()
+            'date_of_birth' => now()->addMonth(),
         ]);
         $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
 
@@ -104,15 +104,15 @@ class BirthdaysControllerTest extends TestCase
 
         $employee_with_birthday_this_month = Employee::factory()->create([
             'site_id' => $site->id,
-            'date_of_birth' => now()->startOfMonth()
+            'date_of_birth' => now()->startOfMonth(),
         ]);
         $employee_with_birthday_last_month = Employee::factory()->create([
             'site_id' => $site->id,
-            'date_of_birth' => now()->startOfMonth()->subMonth()
+            'date_of_birth' => now()->startOfMonth()->subMonth(),
         ]);
         $employee_with_birthday_next_month = Employee::factory()->create([
             'site_id' => $site->id,
-            'date_of_birth' => now()->startOfMonth()->addMonth()
+            'date_of_birth' => now()->startOfMonth()->addMonth(),
         ]);
         $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
 
@@ -130,15 +130,15 @@ class BirthdaysControllerTest extends TestCase
 
         $employee_with_birthday_this_month = Employee::factory()->create([
             'site_id' => $site->id,
-            'date_of_birth' => now()->startOfMonth()
+            'date_of_birth' => now()->startOfMonth(),
         ]);
         $employee_with_birthday_last_month = Employee::factory()->create([
             'site_id' => $site->id,
-            'date_of_birth' => now()->startOfMonth()->subMonths()
+            'date_of_birth' => now()->startOfMonth()->subMonths(),
         ]);
         $employee_with_birthday_next_month = Employee::factory()->create([
             'site_id' => $site->id,
-            'date_of_birth' => now()->addMonth()
+            'date_of_birth' => now()->addMonth(),
         ]);
         $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
 
@@ -148,7 +148,6 @@ class BirthdaysControllerTest extends TestCase
             ->assertDontSee($employee_with_birthday_this_month->full_name)
             ->assertDontSee($employee_with_birthday_last_month->full_name);
     }
-    
 
     /** @test */
     public function birthdays_only_shows_default_sites_when_site_is_not_on_request()
@@ -158,11 +157,11 @@ class BirthdaysControllerTest extends TestCase
 
         $employee_for_default_site = Employee::factory()->create([
             'site_id' => $site_default->id,
-            'date_of_birth' => now()
+            'date_of_birth' => now(),
         ]);
         $employee_for_any_site = Employee::factory()->create([
             'site_id' => $site_any->id,
-            'date_of_birth' => now()
+            'date_of_birth' => now(),
         ]);
 
         $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
@@ -172,6 +171,7 @@ class BirthdaysControllerTest extends TestCase
         $response->assertSee($employee_for_default_site->full_name);
         $response->assertDontSee($employee_for_any_site->full_name);
     }
+
     /** @test */
     public function birthdays_shows_all_when_site_is_on_request()
     {
@@ -180,16 +180,16 @@ class BirthdaysControllerTest extends TestCase
 
         $employee_for_default_site = Employee::factory()->create([
             'site_id' => $site_default->id,
-            'date_of_birth' => now()
+            'date_of_birth' => now(),
         ]);
         $employee_for_any_site = Employee::factory()->create([
             'site_id' => $site_any->id,
-            'date_of_birth' => now()
+            'date_of_birth' => now(),
         ]);
 
         $this->actingAs($this->userWithPermission('view-human-resources-dashboard'));
 
-        $response = $this->get(route('admin.birthdays_this_month') . "?site=%");
+        $response = $this->get(route('admin.birthdays_this_month').'?site=%');
         $response->assertOk();
         $response->assertSee($employee_for_default_site->full_name);
         $response->assertSee($employee_for_any_site->full_name);

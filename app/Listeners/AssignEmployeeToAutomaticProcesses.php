@@ -12,14 +12,11 @@ class AssignEmployeeToAutomaticProcesses
      *
      * @return void
      */
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Handle the event.
      *
-     * @param  \App\Events\EmployeeCreated  $event
      *
      * @return void
      */

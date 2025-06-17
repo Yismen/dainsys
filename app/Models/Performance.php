@@ -2,21 +2,19 @@
 
 namespace App\Models;
 
-use App\Traits\Trackable;
-use App\Traits\PerformanceTrait;
 use App\ModelFilters\FilterableTrait;
 use App\Models\DainsysModel as Model;
-use function Illuminate\Events\queueable;
-
+use App\Traits\PerformanceTrait;
+use App\Traits\Trackable;
 use Illuminate\Database\Eloquent\Prunable;
 
 class Performance extends Model
 {
-    use \Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Trackable;
-    use PerformanceTrait;
     use FilterableTrait;
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+    use PerformanceTrait;
     use Prunable;
+    use Trackable;
 
     protected $fillable = [
         'away_time',
@@ -55,7 +53,7 @@ class Performance extends Model
             $employee = Employee::findOrfail($model->employee_id);
             // $model->unique_id = $model->date . '-' . $model->employee_id . '-' . $model->campaign_id;
             $model->updateQuietly([
-                'unique_id' => $model->date . '-' . $model->employee_id . '-' . $model->campaign_id,
+                'unique_id' => $model->date.'-'.$model->employee_id.'-'.$model->campaign_id,
                 'name' => $employee->fullName,
             ]);
             $model->parseBillableHoursAndRevenue();

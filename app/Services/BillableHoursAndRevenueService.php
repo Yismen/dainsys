@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use Carbon\Carbon;
 use App\Models\Performance;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 
 class BillableHoursAndRevenueService
@@ -41,11 +41,10 @@ class BillableHoursAndRevenueService
             )
             ->when(
                 $this->campaign,
-                fn($query) => $query->whereHas(
+                fn ($query) => $query->whereHas(
                     'campaign',
-                    fn($q) => $q->where('name', 'like', "{$this->campaign}%")
+                    fn ($q) => $q->where('name', 'like', "{$this->campaign}%")
                 )
-            )
-        ;
+            );
     }
 }

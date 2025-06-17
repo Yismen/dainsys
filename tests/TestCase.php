@@ -27,8 +27,8 @@ abstract class TestCase extends BaseTestCase
         $this->partialMock($class, function ($mock) use ($data, $methods): void {
             foreach ($methods as $method) {
                 $mock
-                ->shouldReceive($method)
-                ->andReturn(['data' => $data]);
+                    ->shouldReceive($method)
+                    ->andReturn(['data' => $data]);
             }
         });
     }

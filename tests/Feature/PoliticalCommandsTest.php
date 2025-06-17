@@ -2,19 +2,19 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Mockery\MockInterface;
-use Illuminate\Support\Facades\Mail;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Repositories\Political\PoliticalFlashRepository;
-use App\Console\Commands\RingCentralReports\Exports\Sheets\Political\TextCampaignSheet;
-use App\Console\Commands\RingCentralReports\Exports\Support\Mails\BaseRingCentralMails;
 use App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalFlashReportCommand;
 use App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalProductionReportCommand;
 use App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalTextCampaignReportCommand;
+use App\Console\Commands\RingCentralReports\Exports\Sheets\Political\TextCampaignSheet;
+use App\Console\Commands\RingCentralReports\Exports\Support\Mails\BaseRingCentralMails;
+use App\Repositories\Political\PoliticalFlashRepository;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
+use Maatwebsite\Excel\Facades\Excel;
+use Mockery\MockInterface;
+use Tests\TestCase;
 
 class PoliticalCommandsTest extends TestCase
 {

@@ -18,9 +18,6 @@ class CapillusCallTypeExport implements WithMultipleSheets
         $this->date = $date;
     }
 
-    /**
-     * @return array
-     */
     public function sheets(): array
     {
         $data = new CapillusCallTypeRepository(['date' => $this->date->format('m/d/Y')]);

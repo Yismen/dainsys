@@ -30,7 +30,7 @@ abstract class EmployeesAbstractCommand extends Command
             $this->dates['date_from']->format('Y-m-d'),
             'to',
             $this->dates['date_to']->format('Y-m-d'),
-        ]) . '.xlsx';
+        ]).'.xlsx';
     }
 
     protected function getSubject(): string

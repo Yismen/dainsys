@@ -7,6 +7,7 @@ use App\Models\DainsysModel as Model;
 class Bank extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['name'];
 
     // Relationships =============================================
@@ -19,6 +20,7 @@ class Bank extends Model
     {
         return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
             return $this->attributes['name'] = ucwords(trim($name));
+
             return ['name' => ucwords(trim($name))];
         });
     }

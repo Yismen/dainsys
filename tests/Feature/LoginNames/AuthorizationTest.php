@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\LoginNames;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewLoginName()
+    public function test_unuthorized_users_cant_view_login_name()
     {
         $login_name = create(\App\Models\LoginName::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -23,7 +23,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetLoginName()
+    public function test_unuthorized_users_cant_createt_login_name()
     {
         $login_name = create(\App\Models\LoginName::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -32,7 +32,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditLoginName()
+    public function test_unuthorized_users_cant_edit_login_name()
     {
         $login_name = create(\App\Models\LoginName::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -41,7 +41,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyLoginName()
+    public function test_unuthorized_users_cant_destroy_login_name()
     {
         $login_name = create(\App\Models\LoginName::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));

@@ -23,7 +23,6 @@ class StoreUserSettings
     /**
      * Handle the event.
      *
-     * @param  CreateUserSettings  $event
      *
      * @return void
      */

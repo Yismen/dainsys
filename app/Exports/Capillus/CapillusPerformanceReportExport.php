@@ -15,7 +15,7 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
-class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
+class CapillusPerformanceReportExport implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $repo;
 

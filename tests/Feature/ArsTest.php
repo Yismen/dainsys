@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class ArsTest extends TestCase
 {
@@ -173,7 +173,7 @@ class ArsTest extends TestCase
         $employee->save();
 
         $this->get(route('admin.arss.edit', $ars->id))
-            ->assertSee('Edit ARS - ' . $ars->name);
+            ->assertSee('Edit ARS - '.$ars->name);
     }
 
     /** @test */

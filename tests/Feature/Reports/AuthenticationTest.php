@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Reports;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewReports()
+    public function test_guest_cant_view_reports()
     {
         $report = create(\App\Models\Report::class);
 
@@ -24,7 +24,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateReports()
+    public function test_guest_cant_create_reports()
     {
         $report = create(\App\Models\Report::class);
 
@@ -37,7 +37,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateReport()
+    public function test_guest_cant_update_report()
     {
         $report = create(\App\Models\Report::class);
 
@@ -50,7 +50,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyReport()
+    public function test_guest_cant_destroy_report()
     {
         $report = create(\App\Models\Report::class);
 

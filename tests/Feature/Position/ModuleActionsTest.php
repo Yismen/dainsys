@@ -4,11 +4,11 @@ namespace Tests\Feature\Position;
 
 use App\Models\Employee;
 use App\Models\Position;
-use Tests\TestCase;
 use App\Models\Termination;
-use Illuminate\Support\Arr;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Arr;
+use Tests\TestCase;
 
 class ModuleActionsTest extends TestCase
 {
@@ -75,7 +75,7 @@ class ModuleActionsTest extends TestCase
 
         $this->actingAs($this->userWithPermission('destroy-positions'));
         $response = $this->delete(route('admin.positions.destroy', $position->id));
-            
+
         $response->assertForbidden();
 
         $this->assertDatabaseHas('positions', ['id' => $position->id]);
@@ -102,7 +102,6 @@ class ModuleActionsTest extends TestCase
         $position = create(Position::class);
         $inactive_employee = Employee::factory()->create(['position_id' => $position->id]);
         Termination::factory()->create(['employee_id' => $inactive_employee]);
-
 
         $this->actingAs($this->userWithPermission('destroy-positions'))
             ->delete(route('admin.positions.destroy', $position->id))

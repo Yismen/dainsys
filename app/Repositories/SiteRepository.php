@@ -10,14 +10,14 @@ class SiteRepository
 
     public function all()
     {
-        $instance = new self();
+        $instance = new self;
 
         return $instance->query()->get();
     }
 
     public static function actives()
     {
-        $instance = new self();
+        $instance = new self;
 
         return $instance->query()->whereHas('employees', function ($query): void {
             $query->actives();

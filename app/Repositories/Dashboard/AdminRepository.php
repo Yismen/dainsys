@@ -11,9 +11,9 @@ class AdminRepository
 {
     public static function toArray()
     {
-        $static = new self();
+        $static = new self;
 
-        $mtdData = (new PerformanceRepository());
+        $mtdData = (new PerformanceRepository);
 
         return [
             'revenue' => number_format(Performance::sum('revenue'), 2),
@@ -25,11 +25,11 @@ class AdminRepository
 
     protected function getRoles()
     {
-        return Role::with(['users' => fn($query) => $query->orderBy('name'),
+        return Role::with(['users' => fn ($query) => $query->orderBy('name'),
         ])
-            ->with(['permissions' => fn($query) => $query->orderBy('resource'),
+            ->with(['permissions' => fn ($query) => $query->orderBy('resource'),
             ])
-            ->with(['menus' => fn($query) => $query->orderBy('name'),
+            ->with(['menus' => fn ($query) => $query->orderBy('name'),
             ])
             ->orderBy('name')->get();
     }

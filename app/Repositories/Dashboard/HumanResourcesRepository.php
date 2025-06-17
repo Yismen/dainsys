@@ -14,7 +14,7 @@ class HumanResourcesRepository
 {
     public static function toArray()
     {
-        $static = new self();
+        $static = new self;
 
         $monthly_attrition = collect(AttritionRepository::monthly());
 

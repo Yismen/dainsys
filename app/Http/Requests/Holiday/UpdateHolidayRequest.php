@@ -28,7 +28,7 @@ class UpdateHolidayRequest extends FormRequest
         $id = $exists ? $exists->id : null;
 
         return [
-            'date' => 'required|date|unique:holidays,date,' . $id . ',id',
+            'date' => 'required|date|unique:holidays,date,'.$id.',id',
             'name' => 'required|min:4|max:150',
         ];
     }

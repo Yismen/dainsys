@@ -7,7 +7,6 @@ use App\Console\Commands\RingCentralReports\Exports\Support\Connections\Connecti
 use App\Console\Commands\RingCentralReports\Exports\Support\Connections\RingCentralConnection;
 use App\Exports\RangeFormarter;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
@@ -21,14 +20,11 @@ class OomaMonthTDCallsSheet extends DispositionsSheet
      */
     protected $reportable = true;
 
-    /**
-     * @return View
-     */
     public function view(): View
     {
         // $class_name = Str::snake(class_basename($this));
 
-        $this->data = $this->getData(new RingCentralConnection(), $this->exporter->dates_range['from_date'], $this->exporter->dates_range['to_date']);
+        $this->data = $this->getData(new RingCentralConnection, $this->exporter->dates_range['from_date'], $this->exporter->dates_range['to_date']);
 
         if (count($this->data) > 0 && $this->reportable === true) {
             $this->exporter->has_data = true;
@@ -47,7 +43,7 @@ class OomaMonthTDCallsSheet extends DispositionsSheet
     {
         return $connection->connect()
             ->select(
-               "
+                "
                     SELECT
                         CONVERT(DATE, call_start) as call_date
                         , CONVERT(TIME, call_start) AS call_time
@@ -82,9 +78,6 @@ class OomaMonthTDCallsSheet extends DispositionsSheet
             );
     }
 
-    /**
-     * @return array
-     */
     public function registerEvents(): array
     {
         return [

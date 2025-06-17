@@ -46,7 +46,7 @@ class FeedShiftsTableCommand extends Command
         $bar->start();
 
         foreach ($collection as $employee) {
-            (new Shift())->create(
+            (new Shift)->create(
                 [
                     'employee_id' => $employee->id,
                     'slug' => Str::slug($employee->fullName),

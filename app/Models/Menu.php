@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 class Menu extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['name', 'display_name', 'description', 'icon'];
 
     protected $guarded = [];
@@ -25,13 +26,14 @@ class Menu extends Model
 
     protected function rolesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => $roles = Role::pluck('name', 'id')->toArray());
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => $roles = Role::pluck('name', 'id')->toArray());
     }
 
     protected function displayName(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
         return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($display_name) {
             return $this->attributes['display_name'] = ucwords($display_name);
+
             return ['display_name' => ucwords($display_name)];
         });
     }
@@ -95,7 +97,7 @@ class Menu extends Model
         $request->merge(['name' => $name]);
 
         if ($request->is_admin) {
-            $request->merge(['name' => 'admin/' . $request->name]);
+            $request->merge(['name' => 'admin/'.$request->name]);
         }
 
         return $name;
@@ -120,7 +122,7 @@ class Menu extends Model
         $names = ['create', 'view', 'edit', 'destroy'];
 
         foreach ($names as $value) {
-            $new_name = $value . '-' . $name;
+            $new_name = $value.'-'.$name;
 
             if (! Permission::where('name', $new_name)->first()) {
                 Permission::create([

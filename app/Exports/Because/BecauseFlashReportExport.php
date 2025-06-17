@@ -14,7 +14,7 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
-class BecauseFlashReportExport implements FromView, WithColumnFormatting, WithTitle, WithEvents
+class BecauseFlashReportExport implements FromView, WithColumnFormatting, WithEvents, WithTitle
 {
     protected $data;
 
@@ -51,7 +51,7 @@ class BecauseFlashReportExport implements FromView, WithColumnFormatting, WithTi
                 // format the window columns
                 $event->sheet->getDelegate()->getStyle('A5:A12')->applyFromArray($this->windowCellsStyle());
                 $event->sheet->getDelegate()->getStyle('A17:A24')->applyFromArray($this->windowCellsStyle());
-                //set Columns Width
+                // set Columns Width
                 $event->sheet->getDelegate()->getDefaultColumnDimension()->setWidth(13);
                 $event->sheet->getDelegate()->getColumnDimension('A')->setWidth(15);
                 $event->sheet->getDelegate()->getPageSetup()

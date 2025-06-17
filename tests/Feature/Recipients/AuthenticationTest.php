@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Recipients;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewRecipients()
+    public function test_guest_cant_view_recipients()
     {
         $recipient = create(\App\Models\Recipient::class);
 
@@ -24,7 +24,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateRecipients()
+    public function test_guest_cant_create_recipients()
     {
         $recipient = create(\App\Models\Recipient::class);
 
@@ -37,7 +37,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateRecipient()
+    public function test_guest_cant_update_recipient()
     {
         $recipient = create(\App\Models\Recipient::class);
 
@@ -50,7 +50,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyRecipient()
+    public function test_guest_cant_destroy_recipient()
     {
         $recipient = create(\App\Models\Recipient::class);
 

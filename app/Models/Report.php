@@ -15,8 +15,6 @@ class Report extends Model
 
     /**
      * The recipients that belong to the Report
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function recipients(): BelongsToMany
     {
@@ -25,11 +23,11 @@ class Report extends Model
 
     public function mailableRecipients(): array
     {
-        throw_unless($this->active, new \Exception('Report ' . $this->name . ' is inactive!', 403));
+        throw_unless($this->active, new \Exception('Report '.$this->name.' is inactive!', 403));
 
         $recipients = $this->recipients()->pluck('email', 'name')->all();
 
-        throw_if(empty($recipients), new \Exception('Report ' . $this->name . ' has no recipients assigned. Please assign some!', 403));
+        throw_if(empty($recipients), new \Exception('Report '.$this->name.' has no recipients assigned. Please assign some!', 403));
 
         return $recipients;
     }

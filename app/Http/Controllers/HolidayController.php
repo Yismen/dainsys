@@ -40,15 +40,12 @@ class HolidayController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\HolidayRequest  $request
-     *
      * @return \Illuminate\Http\Response
      */
     public function store(CreateHolidayRequest $request)
@@ -63,18 +60,14 @@ class HolidayController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Holiday  $holiday
-     *
      * @return \Illuminate\Http\Response
      */
-    public function show(Holiday $holiday)
-    {
-    }
+    public function show(Holiday $holiday) {}
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Holiday  $holiday
-     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Holiday $holiday)
@@ -87,7 +80,6 @@ class HolidayController extends Controller
      *
      * @param  \Illuminate\Http\Holiday\CreateHolidayRequest  $request
      * @param  \App\Holiday  $holiday
-     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateHolidayRequest $request, Holiday $holiday)
@@ -102,7 +94,6 @@ class HolidayController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Holiday  $holiday
-     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Holiday $holiday)

@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\RevenueTypes;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewRevenueTypes()
+    public function test_guest_cant_view_revenue_types()
     {
         $revenue_type = create(\App\Models\RevenueType::class);
 
@@ -24,7 +24,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateRevenueTypes()
+    public function test_guest_cant_create_revenue_types()
     {
         $revenue_type = create(\App\Models\RevenueType::class);
 
@@ -37,7 +37,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateRevenueType()
+    public function test_guest_cant_update_revenue_type()
     {
         $revenue_type = create(\App\Models\RevenueType::class);
 
@@ -50,7 +50,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyRevenueType()
+    public function test_guest_cant_destroy_revenue_type()
     {
         $revenue_type = create(\App\Models\RevenueType::class);
 

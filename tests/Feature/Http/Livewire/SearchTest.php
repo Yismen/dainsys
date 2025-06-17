@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Http\Livewire;
 
-use Tests\TestCase;
-use Livewire\Livewire;
 use App\Http\Livewire\Search;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
+use Tests\TestCase;
 
 class SearchTest extends TestCase
 {

@@ -2,14 +2,14 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
+use App\Console\Commands\UpdateBillableHoursAndRevenue;
+use App\Jobs\UpdateBillableHoursAndRevenue as JobsUpdateBillableHoursAndRevenue;
 use App\Models\Campaign;
 use App\Models\Performance;
 use App\Models\RevenueType;
-use Illuminate\Support\Facades\Queue;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Console\Commands\UpdateBillableHoursAndRevenue;
-use App\Jobs\UpdateBillableHoursAndRevenue as JobsUpdateBillableHoursAndRevenue;
+use Illuminate\Support\Facades\Queue;
+use Tests\TestCase;
 
 class UpdateBillableHoursAndRevenueTest extends TestCase
 {
@@ -38,7 +38,7 @@ class UpdateBillableHoursAndRevenueTest extends TestCase
     public function billable_hours_and_revenue_is_updated_to_production_time_when_revenue_type_is_sales_or_production()
     {
         $revenue_type = RevenueType::factory()->create(['name' => 'Sales Or Production']);
-        $campaign = Campaign::factory()->create(['revenue_type_id' => $revenue_type->id, ]);
+        $campaign = Campaign::factory()->create(['revenue_type_id' => $revenue_type->id]);
         $performance = Performance::factory()->create([
             'campaign_id' => $campaign->id,
             'login_time' => 10,
@@ -171,7 +171,7 @@ class UpdateBillableHoursAndRevenueTest extends TestCase
 
         $this->artisan(UpdateBillableHoursAndRevenue::class, [
             'dates' => now(),
-            '--revenue_type' => $revenue_type_login_time->name
+            '--revenue_type' => $revenue_type_login_time->name,
         ]);
 
         $this->assertDatabaseHas('performances', [
@@ -210,8 +210,8 @@ class UpdateBillableHoursAndRevenueTest extends TestCase
             'revenue' => 4,
         ]);
 
-        $this->artisan(UpdateBillableHoursAndRevenue::class, [            
-            'dates' => now()->subMonths(5) . ',' . now()->subDays(2)
+        $this->artisan(UpdateBillableHoursAndRevenue::class, [
+            'dates' => now()->subMonths(5).','.now()->subDays(2),
         ]);
 
         $this->assertDatabaseHas('performances', [
@@ -251,7 +251,7 @@ class UpdateBillableHoursAndRevenueTest extends TestCase
         ]);
 
         $this->artisan(UpdateBillableHoursAndRevenue::class, [
-            'dates' => now()->subMonths(5) . ',' . now()->subDays(2)
+            'dates' => now()->subMonths(5).','.now()->subDays(2),
         ]);
 
         $this->assertDatabaseHas('performances', [
@@ -291,7 +291,7 @@ class UpdateBillableHoursAndRevenueTest extends TestCase
         ]);
 
         $this->artisan(UpdateBillableHoursAndRevenue::class, [
-            'dates' => now()
+            'dates' => now(),
             // '--test' => true
         ]);
 

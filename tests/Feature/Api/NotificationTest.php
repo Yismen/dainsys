@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Api;
 
-use Tests\TestCase;
 use App\Models\Notification;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Arr;
 use Laravel\Passport\Passport;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class NotificationTest extends TestCase
 {
@@ -94,7 +94,7 @@ class NotificationTest extends TestCase
         $this->assertEquals(2, Notification::whereNull('read_at')->count());
         $notification = Notification::first();
 
-        $response = $this->get('/api/notifications/show/' . $notification->id);
+        $response = $this->get('/api/notifications/show/'.$notification->id);
 
         $response->assertOk()
             ->assertJsonStructure([

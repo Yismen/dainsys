@@ -5,8 +5,6 @@ namespace Database\Factories;
 use App\Models\AttendanceCode;
 use App\Models\Employee;
 use App\Models\User;
-use Carbon\Carbon;
-use Faker\Generator as Faker;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Attendance>
@@ -15,8 +13,8 @@ class AttendanceFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
 
-    protected
-$model = \App\Models\Attendance::class;
+    protected $model = \App\Models\Attendance::class;
+
     public function definition()
     {
         return [
@@ -24,7 +22,7 @@ $model = \App\Models\Attendance::class;
             'employee_id' => Employee::factory()->create(),
             'code_id' => AttendanceCode::factory()->create(),
             'user_id' => auth()->user() ? auth()->user()->id : User::factory()->create(),
-            'comments' => fake()->text(150)
+            'comments' => fake()->text(150),
         ];
     }
 }

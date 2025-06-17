@@ -7,6 +7,7 @@ use App\Models\DainsysModel as Model;
 class Supervisor extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['name', 'active'];
 
     public function employees()
@@ -27,13 +28,14 @@ class Supervisor extends Model
 
     protected function status(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => $this->active ? 'Active' : 'Inactive');
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => $this->active ? 'Active' : 'Inactive');
     }
 
     protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
         return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
             return $this->attributes['name'] = ucwords(trim($name));
+
             return ['name' => ucwords(trim($name))];
         });
     }

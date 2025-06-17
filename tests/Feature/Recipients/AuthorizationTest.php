@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Recipients;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewRecipient()
+    public function test_unuthorized_users_cant_view_recipient()
     {
         $recipient = create(\App\Models\Recipient::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -23,7 +23,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetRecipient()
+    public function test_unuthorized_users_cant_createt_recipient()
     {
         $recipient = create(\App\Models\Recipient::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -32,7 +32,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditRecipient()
+    public function test_unuthorized_users_cant_edit_recipient()
     {
         $recipient = create(\App\Models\Recipient::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -41,7 +41,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyRecipient()
+    public function test_unuthorized_users_cant_destroy_recipient()
     {
         $recipient = create(\App\Models\Recipient::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));

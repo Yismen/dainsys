@@ -9,7 +9,8 @@ use App\Traits\Trackable;
 class Downtime extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Trackable, PerformanceTrait;
+    use PerformanceTrait;
+    use Trackable;
 
     protected $table = 'performances';
 
@@ -29,11 +30,11 @@ class Downtime extends Model
         static::saving(function ($model): void {
             $employe = Employee::with('supervisor')->findOrfail(request('employee_id'));
 
-            $model->unique_id = request('date') . '-' . request('employee_id') . '-' . request('campaign_id');
+            $model->unique_id = request('date').'-'.request('employee_id').'-'.request('campaign_id');
 
             $model->name = $employe->fullName;
 
-            $model->file_name = request('date') . '-' . request('campaign_id') . '-downtimes-file';
+            $model->file_name = request('date').'-'.request('campaign_id').'-downtimes-file';
 
             $model->supervisor_id = optional($employe->supervisor)->id;
         });

@@ -13,9 +13,7 @@ abstract class BaseRingCentralExports implements RingCentralExportsContract, Wit
 
     public bool $data_is_new = false;
 
-    public function __construct(public array $sheets, public string $client_name, public string $campaign_name, public array $dates_range, public array $distro_array, public string $team = 'ECC%', public string $subject_sufix = 'Production Report')
-    {
-    }
+    public function __construct(public array $sheets, public string $client_name, public string $campaign_name, public array $dates_range, public array $distro_array, public string $team = 'ECC%', public string $subject_sufix = 'Production Report') {}
 
     public function send(string $file_name)
     {

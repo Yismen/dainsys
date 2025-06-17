@@ -3,15 +3,14 @@
 namespace Database\Factories;
 
 use App\Models\User;
-use Faker\Generator as Faker;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Contact>
  */
 class ContactFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
-
     protected $model = \App\Models\Contact::class;
+
     public function definition()
     {
         return [
@@ -21,7 +20,7 @@ class ContactFactory extends \Illuminate\Database\Eloquent\Factories\Factory
             'works_at' => fake()->company,
             'position' => fake()->jobTitle,
             'secondary_phone' => fake()->phoneNumber(),
-            'email' => fake()->email
+            'email' => fake()->email,
         ];
     }
 }

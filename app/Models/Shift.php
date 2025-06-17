@@ -15,8 +15,6 @@ class Shift extends Model
 
     /**
      * Return the sluggable configuration array for this model.
-     *
-     * @return array
      */
     public function sluggable(): array
     {
@@ -35,17 +33,17 @@ class Shift extends Model
 
     protected function startAt(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn($start_at) => Carbon::parse($start_at)->format('H:i'));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn ($start_at) => Carbon::parse($start_at)->format('H:i'));
     }
 
     protected function endAt(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn($start_at) => Carbon::parse($start_at)->format('H:i'));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn ($start_at) => Carbon::parse($start_at)->format('H:i'));
     }
 
     protected function employeesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => Employee::actives()
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => Employee::actives()
             ->orderBy('first_name')
             ->orderBy('second_first_name')
             ->orderBy('last_name')

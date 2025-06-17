@@ -3,15 +3,14 @@
 namespace Database\Factories;
 
 use App\Models\RevenueType;
-use Faker\Generator as Faker;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Campaign>
  */
 class CampaignFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
-
     protected $model = \App\Models\Campaign::class;
+
     public function definition()
     {
         $revenueTypeIds = [];
@@ -20,8 +19,9 @@ class CampaignFactory extends \Illuminate\Database\Eloquent\Factories\Factory
                 $revenueTypeIds[] = RevenueType::factory()->create(['name' => $name])->id;
             }
         } catch (\Throwable) {
-            //throw $th;
+            // throw $th;
         }
+
         return [
             'name' => fake()->name(),
             'project_id' => \App\Models\Project::factory()->create()->id,

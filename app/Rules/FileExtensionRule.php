@@ -24,7 +24,6 @@ class FileExtensionRule implements Rule
      *
      * @param  string  $attribute
      * @param  mixed  $value
-     *
      * @return bool
      */
     public function passes($attribute, $value)
@@ -43,6 +42,6 @@ class FileExtensionRule implements Rule
      */
     public function message()
     {
-        return 'File must be of extenxions ' . implode('|', $this->extensions);
+        return 'File must be of extenxions '.implode('|', $this->extensions);
     }
 }

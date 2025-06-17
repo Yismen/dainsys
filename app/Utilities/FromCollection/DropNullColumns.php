@@ -12,7 +12,7 @@ class DropNullColumns
 
     public function handle(array $data)
     {
-        $this->data = collect($data)->map(fn($item) => collect($item)->map(fn($item) => collect($item)->reject(function ($item, $key) {
+        $this->data = collect($data)->map(fn ($item) => collect($item)->map(fn ($item) => collect($item)->reject(function ($item, $key) {
             $this->getValidKeys($key, $item);
 
             return $item === null;
@@ -25,13 +25,12 @@ class DropNullColumns
      * Ensure all the elements contains keys that have at least one record
      * with valid value.
      *
-     * @param string $set_last_key
      *
      * @return void
      */
     public function padKeys(?string $set_last_key = null)
     {
-        $this->data = $this->data->map(fn($item) => $item->map(function ($item) use ($set_last_key) {
+        $this->data = $this->data->map(fn ($item) => $item->map(function ($item) use ($set_last_key) {
             $array = array_merge($this->keys, $item->all());
 
             if ($set_last_key) {
@@ -49,9 +48,8 @@ class DropNullColumns
     /**
      * Create an array of all valid keys present in the collection
      *
-     * @param String $key
-     * @param Array $item
-     *
+     * @param  string  $key
+     * @param  array  $item
      * @return void
      */
     private function getValidKeys($key, $item)

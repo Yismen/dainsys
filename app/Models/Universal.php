@@ -7,6 +7,7 @@ use App\Models\DainsysModel as Model;
 class Universal extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['employee_id', 'since'];
 
     /**
@@ -18,6 +19,7 @@ class Universal extends Model
     {
         return $this->belongsTo(Employee::class);
     }
+
     protected function casts(): array
     {
         return [

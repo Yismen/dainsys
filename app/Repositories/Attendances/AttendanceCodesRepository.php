@@ -22,7 +22,7 @@ class AttendanceCodesRepository
 
     public function data()
     {
-        return Cache::remember('attendances-' . $this->code . '-' . $this->current_user, now()->addHours(4), fn() => [
+        return Cache::remember('attendances-'.$this->code.'-'.$this->current_user, now()->addHours(4), fn () => [
             'this_week' => $this->thisWeek(),
             'last_week' => $this->lastWeek(),
             'this_month' => $this->monthToDate(),

@@ -2,15 +2,13 @@
 
 namespace Database\Factories;
 
-use Faker\Generator as Faker;
-
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Shift>
  */
 class ShiftFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
-
     protected $model = \App\Models\Shift::class;
+
     public function definition()
     {
         return [

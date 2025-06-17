@@ -13,7 +13,7 @@ class Profiles
         $user = auth()->user();
 
         return Profile::with('user')
-            ->whereHas('user', fn($query) => $query)
+            ->whereHas('user', fn ($query) => $query)
             ->where('user_id', '<>', $user->id)
             ->paginate(18);
     }

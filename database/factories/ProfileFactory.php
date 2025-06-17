@@ -2,15 +2,13 @@
 
 namespace Database\Factories;
 
-use Faker\Generator as Faker;
-
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Profile>
  */
 class ProfileFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
-
     protected $model = \App\Models\Profile::class;
+
     public function definition()
     {
         return [
@@ -21,7 +19,7 @@ class ProfileFactory extends \Illuminate\Database\Eloquent\Factories\Factory
             'education' => fake()->paragraph,
             'skills' => fake()->paragraph,
             'work' => fake()->sentence,
-            'location' => fake()->sentence
+            'location' => fake()->sentence,
         ];
     }
 }

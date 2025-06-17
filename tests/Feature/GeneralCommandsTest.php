@@ -2,17 +2,17 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use App\Models\Report;
-use App\Models\Recipient;
-use App\Mail\CommandsBaseMail;
-use Illuminate\Support\Facades\Mail;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Console\Commands\General\SendGeneralDailyProductionReportCommand;
 use App\Console\Commands\General\DailyProductionReport\GeneralDailyProductionReportExport;
 use App\Console\Commands\General\DailyProductionReport\GeneralDailyProductionReportRepository;
+use App\Console\Commands\General\SendGeneralDailyProductionReportCommand;
+use App\Mail\CommandsBaseMail;
+use App\Models\Recipient;
+use App\Models\Report;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
+use Tests\TestCase;
 
 class GeneralCommandsTest extends TestCase
 {
@@ -51,7 +51,7 @@ class GeneralCommandsTest extends TestCase
             $file_name
         );
 
-        Excel::assertStored($file_name, fn(GeneralDailyProductionReportExport $export) => true);
+        Excel::assertStored($file_name, fn (GeneralDailyProductionReportExport $export) => true);
     }
 
     /** @test */

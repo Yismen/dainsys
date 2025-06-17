@@ -8,6 +8,7 @@ use Carbon\Carbon;
 class BecauseDailyPerformance extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = [
         'date',
         'weekday',
@@ -82,6 +83,7 @@ class BecauseDailyPerformance extends Model
     {
         return $query->where('date', '<=', $date);
     }
+
     protected function casts(): array
     {
         return [

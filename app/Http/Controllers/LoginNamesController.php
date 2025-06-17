@@ -73,8 +73,7 @@ class LoginNamesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function show(LoginName $login)
@@ -85,8 +84,7 @@ class LoginNamesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function edit(LoginName $login)
@@ -97,14 +95,13 @@ class LoginNamesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function update(LoginName $login, Request $request)
     {
         $this->validate($request, [
-            'login' => 'required|min:2|unique:login_names,login,' . $login->id,
+            'login' => 'required|min:2|unique:login_names,login,'.$login->id,
             'employee_id' => 'sometimes|required|exists:employees,id',
         ]);
 
@@ -124,8 +121,7 @@ class LoginNamesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function destroy(LoginName $login)
@@ -141,11 +137,11 @@ class LoginNamesController extends Controller
 
     public function toExcel(Request $request)
     {
-        return Excel::download(new LoginNameExport(), 'login-names.xlsx');
+        return Excel::download(new LoginNameExport, 'login-names.xlsx');
     }
 
     public function employeesToExcel(Request $request)
     {
-        return Excel::download(new LoginNameEployees(), 'login-names.xlsx');
+        return Excel::download(new LoginNameEployees, 'login-names.xlsx');
     }
 }

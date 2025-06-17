@@ -3,15 +3,14 @@
 namespace Database\Factories;
 
 use App\Models\User;
-use Faker\Generator as Faker;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Notification>
  */
 class NotificationFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
-
     protected $model = \App\Models\Notification::class;
+
     public function definition()
     {
         return [

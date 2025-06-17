@@ -8,7 +8,7 @@ use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithTitle;
 
-class LoginNameEployees implements FromView, WithTitle, ShouldAutoSize
+class LoginNameEployees implements FromView, ShouldAutoSize, WithTitle
 {
     public function view(): View
     {

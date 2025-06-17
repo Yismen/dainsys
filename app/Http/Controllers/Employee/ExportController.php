@@ -16,13 +16,12 @@ class ExportController extends Controller
     /**
      * Allows to export employees to excel by status
      *
-     * @param  string   $status
-     *
+     * @param  string  $status
      * @return download file
      */
     public function toExcel($status)
     {
-        $file_name = 'employees-' . $status . '.xlsx';
+        $file_name = 'employees-'.$status.'.xlsx';
 
         return Excel::download(new EmployeesExport($status), $file_name);
     }

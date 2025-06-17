@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Roles;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewRoles()
+    public function test_guest_cant_view_roles()
     {
         $role = create(\App\Models\Role::class);
 
@@ -24,7 +24,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateRoles()
+    public function test_guest_cant_create_roles()
     {
         $role = create(\App\Models\Role::class);
 
@@ -37,7 +37,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateRole()
+    public function test_guest_cant_update_role()
     {
         $role = create(\App\Models\Role::class);
 
@@ -50,7 +50,7 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyRole()
+    public function test_guest_cant_destroy_role()
     {
         $role = create(\App\Models\Role::class);
 

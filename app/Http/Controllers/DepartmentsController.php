@@ -25,7 +25,7 @@ class DepartmentsController extends Controller
      */
     public function index(Department $departments, Request $request)
     {
-        $departments = Cache::rememberForever('departments', fn() => Department::orderBy('name')->get());
+        $departments = Cache::rememberForever('departments', fn () => Department::orderBy('name')->get());
 
         return view('departments.index', compact('departments'));
     }
@@ -68,7 +68,6 @@ class DepartmentsController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function show(Department $department)
@@ -80,7 +79,6 @@ class DepartmentsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function edit(Department $department)
@@ -92,7 +90,6 @@ class DepartmentsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function update(Request $request, Department $department)
@@ -113,7 +110,6 @@ class DepartmentsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function destroy(Department $department)

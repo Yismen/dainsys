@@ -2,15 +2,13 @@
 
 namespace Database\Factories;
 
-use Faker\Generator as Faker;
-
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\LoginName>
  */
 class LoginNameFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
-
     protected $model = \App\Models\LoginName::class;
+
     public function definition()
     {
         return [

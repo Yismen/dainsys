@@ -31,6 +31,7 @@ class SendWTDSummaryCommand extends Command
     protected string $client = 'Kipany';
 
     protected $date_from;
+
     protected $date_to;
 
     /**
@@ -52,7 +53,7 @@ class SendWTDSummaryCommand extends Command
     {
         $date = now();
         $mail_subject = 'Kipany Inbound WTD Report';
-        $file_name = $mail_subject . ' ' . now()->format('Ymd_His') . '.xlsx';
+        $file_name = $mail_subject.' '.now()->format('Ymd_His').'.xlsx';
         $distro = $this->getDistroList();
 
         $this->date_to = $this->option('date') ?
@@ -96,22 +97,16 @@ class SendWTDSummaryCommand extends Command
 
     /**
      * Get the distribution list from the config and explode it into an array
-     *
-     * @return array
      */
     protected function getDistroList(): array
     {
-        $service = new \App\Services\DainsysConfigService();
+        $service = new \App\Services\DainsysConfigService;
 
         return $service->getDistro($this->name);
     }
 
     /**
      * Check if any of the data arrays have at least one row.
-     *
-     * @param  array   $data
-     *
-     * @return bool
      */
     protected function hasAnyData(array $data): bool
     {

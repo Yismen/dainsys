@@ -39,14 +39,14 @@ class UpdateSlugs extends Command
      */
     public function handle()
     {
-        $model = 'App\\Models\\' . $this->argument('model');
+        $model = 'App\\Models\\'.$this->argument('model');
         $field = $this->option('field');
 
         if (! class_exists($model)) {
             return $this->error("Model {$model} Not Found...");
         }
 
-        if (! Schema::hasColumn((new $model())->getTable(), $field)) {
+        if (! Schema::hasColumn((new $model)->getTable(), $field)) {
             return $this->error("Field {$field} does not exists in model {$model}");
         }
 
@@ -71,7 +71,7 @@ class UpdateSlugs extends Command
 
     private function getCollection($model, $field)
     {
-        $collection = new $model();
+        $collection = new $model;
 
         $collection = $this->option('force') ? $collection : $collection->whereNull($field);
 

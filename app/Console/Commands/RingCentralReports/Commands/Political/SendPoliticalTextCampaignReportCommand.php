@@ -49,8 +49,6 @@ class SendPoliticalTextCampaignReportCommand extends BaseProductionReportCommand
 
     /**
      * Returns the dates range form the report
-     *
-     * @return array
      */
     protected function getDatesRange(): array
     {

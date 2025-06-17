@@ -10,13 +10,14 @@ use Maatwebsite\Excel\Concerns\WithPreCalculateFormulas;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Events\AfterSheet;
 
-class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
+class DataSheet implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $data;
 
     protected $sheet;
 
     protected $rows;
+
     protected $last_column;
 
     public function __construct(array $data, protected $sheetName, protected $title, protected string $view = 'exports.data')

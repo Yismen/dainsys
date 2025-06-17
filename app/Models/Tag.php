@@ -7,6 +7,7 @@ use App\Models\DainsysModel as Model;
 class Tag extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     /**
      * List of fields that can be updated/from a form
      *

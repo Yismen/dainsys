@@ -7,6 +7,7 @@ use App\Models\DainsysModel as Model;
 class SocialSecurity extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['number'];
 
     // Relationships =============================================

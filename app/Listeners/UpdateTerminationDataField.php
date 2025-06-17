@@ -16,7 +16,6 @@ class UpdateTerminationDataField
     /**
      * Handle the event.
      *
-     * @param  EmployeeTerminated $event
      *
      * @return void
      */

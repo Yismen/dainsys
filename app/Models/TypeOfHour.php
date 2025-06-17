@@ -7,6 +7,7 @@ use App\Models\DainsysModel as Model;
 class TypeOfHour extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     /**
      * mass assignable
      */

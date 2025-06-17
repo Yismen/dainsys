@@ -93,9 +93,8 @@ class DGT3ControllerTest extends TestCase
         ]))
             ->assertOk()
             ->assertViewIs('human_resources.reports.dgt3')
-            ->assertSee($employee_hired_this_year->full_name)
-            // ->assertDontSee($employee_hired_last_year->full_name)
-        ;
+            ->assertSee($employee_hired_this_year->full_name);
+        // ->assertDontSee($employee_hired_last_year->full_name)
     }
 
     /** @test */
@@ -111,10 +110,9 @@ class DGT3ControllerTest extends TestCase
         ]))
             ->assertOk()
             ->assertViewIs('human_resources.reports.dgt3')
-            ->assertSee($employee_hired_this_year->full_name)
-            // ->assertDontSee($employee_hired_last_year->full_name)
-        ;
+            ->assertSee($employee_hired_this_year->full_name);
+        // ->assertDontSee($employee_hired_last_year->full_name)
 
-        Excel::assertDownloaded('DGT3-' . now()->year . '.xlsx');
+        Excel::assertDownloaded('DGT3-'.now()->year.'.xlsx');
     }
 }

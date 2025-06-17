@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Attendances;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewAttendance()
+    public function test_unuthorized_users_cant_view_attendance()
     {
         $attendance = create(\App\Models\Attendance::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -23,7 +23,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetAttendance()
+    public function test_unuthorized_users_cant_createt_attendance()
     {
         $attendance = create(\App\Models\Attendance::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -32,7 +32,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditAttendance()
+    public function test_unuthorized_users_cant_edit_attendance()
     {
         $attendance = create(\App\Models\Attendance::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -41,7 +41,7 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyAttendance()
+    public function test_unuthorized_users_cant_destroy_attendance()
     {
         $attendance = create(\App\Models\Attendance::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));

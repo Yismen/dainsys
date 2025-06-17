@@ -8,7 +8,7 @@ class BirthdaysRepository
 {
     public static function today()
     {
-        $static = new self();
+        $static = new self;
         $date = now();
 
         return $static->query()
@@ -18,7 +18,7 @@ class BirthdaysRepository
 
     public static function thisMonth()
     {
-        $static = new self();
+        $static = new self;
         $date = now();
 
         return $static->query()
@@ -27,7 +27,7 @@ class BirthdaysRepository
 
     public static function lastMonth()
     {
-        $static = new self();
+        $static = new self;
         $date = now()->subMonth();
 
         return $static->query()
@@ -36,12 +36,13 @@ class BirthdaysRepository
 
     public static function nextMonth()
     {
-        $static = new self();
+        $static = new self;
         $date = now()->addMonth();
 
         return $static->query()
             ->whereMonth('date_of_birth', $date->month);
     }
+
     protected function query()
     {
         $orderClause = env('DB_CONNECTION') === 'sqlite' ?

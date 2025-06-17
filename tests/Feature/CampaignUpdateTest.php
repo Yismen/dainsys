@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class CampaignUpdateTest extends TestCase
 {
@@ -28,7 +28,7 @@ class CampaignUpdateTest extends TestCase
 
         $this->actingAs($this->userWithPermission('edit-campaigns'))
             ->get(route('admin.campaigns.edit', $campaign->id))
-            ->assertSee('Edit Campaign ' . $campaign->name);
+            ->assertSee('Edit Campaign '.$campaign->name);
     }
 
     /** @test */

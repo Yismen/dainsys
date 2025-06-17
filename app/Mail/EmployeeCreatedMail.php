@@ -4,9 +4,9 @@ namespace App\Mail;
 
 use App\Models\Employee;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class EmployeeCreatedMail extends Mailable implements ShouldQueue
 {
@@ -21,9 +21,7 @@ class EmployeeCreatedMail extends Mailable implements ShouldQueue
          */
         public Employee $employee,
         protected array $recipients
-    )
-    {
-    }
+    ) {}
 
     /**
      * Build the message.
@@ -35,7 +33,6 @@ class EmployeeCreatedMail extends Mailable implements ShouldQueue
         return $this->markdown('mail.employee-created-mail', [
             'employee' => $this->employee,
         ])
-            ->to($this->recipients)
-        ;
+            ->to($this->recipients);
     }
 }

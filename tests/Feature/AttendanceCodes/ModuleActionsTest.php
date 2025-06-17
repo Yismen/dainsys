@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\AttendanceCodes;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ModuleActionsTest extends TestCase
 {
@@ -61,7 +61,7 @@ class ModuleActionsTest extends TestCase
         $updated = [
             'name' => 'Updated Name',
             'color' => '#F4f4f4',
-            'absence' => !$attendance_code->absence,
+            'absence' => ! $attendance_code->absence,
         ];
 
         $response = $this->actingAs($this->userWithPermission('edit-attendance-codes'));

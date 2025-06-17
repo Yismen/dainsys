@@ -7,6 +7,7 @@ use App\Models\DainsysModel as Model;
 class Nationality extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['name'];
 
     public function employees()
@@ -22,6 +23,7 @@ class Nationality extends Model
                     trim($name, ' ')
                 )
             );
+
             return ['name' => ucwords(
                 strtolower(
                     trim($name, ' ')

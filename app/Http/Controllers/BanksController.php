@@ -23,7 +23,7 @@ class BanksController extends Controller
      */
     public function index(Request $request)
     {
-        $banks = Cache::rememberForever('banks', fn() => Bank::orderBy('name')->get());
+        $banks = Cache::rememberForever('banks', fn () => Bank::orderBy('name')->get());
 
         if ($request->ajax()) {
             return $banks;
@@ -35,7 +35,6 @@ class BanksController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -62,7 +61,6 @@ class BanksController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  Bank $bank
-     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Bank $bank)
@@ -73,15 +71,13 @@ class BanksController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  Bank $bank
-     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Bank $bank)
     {
         $this->validate($request, [
-            'name' => 'required|unique:banks,name,' . $bank->id,
+            'name' => 'required|unique:banks,name,'.$bank->id,
         ]);
 
         Cache::forget('banks');
@@ -101,7 +97,6 @@ class BanksController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  Bank $bank
-     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Bank $bank, Request $request)

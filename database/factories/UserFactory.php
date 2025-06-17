@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
 /**
@@ -10,8 +9,8 @@ use Illuminate\Support\Str;
  */
 class UserFactory extends \Illuminate\Database\Eloquent\Factories\Factory
 {
-
     protected $model = \App\Models\User::class;
+
     public function definition()
     {
         return [

@@ -2,18 +2,18 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use App\Models\Report;
-use App\Models\Process;
-use App\Models\Employee;
-use App\Models\Recipient;
-use Illuminate\Support\Arr;
 use App\Events\EmployeeCreated;
 use App\Mail\EmployeeCreatedMail;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Models\Employee;
+use App\Models\Process;
+use App\Models\Recipient;
+use App\Models\Report;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Mail;
+use Tests\TestCase;
 
 class EmployeesControllerTest extends TestCase
 {
@@ -21,7 +21,7 @@ class EmployeesControllerTest extends TestCase
     use WithFaker;
 
     // Authentication Tests
-    public function testGuestCantViewEmployees()
+    public function test_guest_cant_view_employees()
     {
         $employee = create(\App\Models\Employee::class);
 
@@ -34,7 +34,7 @@ class EmployeesControllerTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateEmployees()
+    public function test_guest_cant_create_employees()
     {
         $employee = create(\App\Models\Employee::class);
 
@@ -47,7 +47,7 @@ class EmployeesControllerTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateEmployee()
+    public function test_guest_cant_update_employee()
     {
         $employee = create(\App\Models\Employee::class);
 
@@ -60,8 +60,8 @@ class EmployeesControllerTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    //Authorization Tests
-    public function testUnuthorizedUsersCantViewEmployee()
+    // Authorization Tests
+    public function test_unuthorized_users_cant_view_employee()
     {
         $employee = create(\App\Models\Employee::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -73,7 +73,7 @@ class EmployeesControllerTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetEmployee()
+    public function test_unuthorized_users_cant_createt_employee()
     {
         $employee = create(\App\Models\Employee::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -82,7 +82,7 @@ class EmployeesControllerTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditEmployee()
+    public function test_unuthorized_users_cant_edit_employee()
     {
         $employee = create(\App\Models\Employee::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));

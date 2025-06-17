@@ -20,17 +20,17 @@ class Permission extends EmpatiePermission
 
     protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn($name) => ['name' => trim(Str::slug($name))]);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn ($name) => ['name' => trim(Str::slug($name))]);
     }
 
     protected function resource(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn($resource) => ['resource' => trim(Str::slug($resource))]);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn ($resource) => ['resource' => trim(Str::slug($resource))]);
     }
 
     protected function rolesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn() => Role::orderBy('name')->pluck('name', 'id')->toArray());
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => Role::orderBy('name')->pluck('name', 'id')->toArray());
     }
 
     public function createPermission($request)
@@ -75,7 +75,7 @@ class Permission extends EmpatiePermission
 
     protected function getParsedPermission($action, $resource)
     {
-        return $action . ' ' . $resource;
+        return $action.' '.$resource;
     }
 
     protected function createNonResourcePermission($request)
