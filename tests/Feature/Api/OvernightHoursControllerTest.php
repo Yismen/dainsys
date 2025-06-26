@@ -33,4 +33,24 @@ class OvernightHoursControllerTest extends TestCase
                 ],
             ]);
     }
+
+    /** @test */
+    public function it_returns_a_overnight_hours_collection_even_if_there_is_not_overnight_hours()
+    {
+        Passport::actingAs($this->user());
+
+        $response = $this->get('/api/overnight_hours');
+
+        $response->assertOk()
+            ->assertJsonStructure([
+                'data' => [
+                    '*' => [
+                        'date',
+                        'employee_id',
+                        'name',
+                        'hours',
+                    ],
+                ],
+            ]);
+    }
 }

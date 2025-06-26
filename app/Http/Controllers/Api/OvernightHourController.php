@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OvernightHourResource;
 use App\Models\OvernightHour;
+use Illuminate\Database\Eloquent\Collection;
 
 class OvernightHourController extends Controller
 {
@@ -34,6 +35,18 @@ class OvernightHourController extends Controller
             ->filter(request()->all()) // date=date||months=0||days=0
             ->with(['employee'])
             ->get();
+
+        if ($overnights->isEmpty())
+        {
+            $overnights = new Collection([
+                new OvernightHour([
+                    'date' => now(),
+                    'employee_id' => null,
+                    'name' => '',
+                    'hours' => 0,
+                ])
+            ]);
+        }
 
         return OvernightHourResource::collection($overnights);
     }
