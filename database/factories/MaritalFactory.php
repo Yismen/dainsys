@@ -1,9 +1,18 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Models\Marital::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name(),
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Marital>
+ */
+class MaritalFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\Marital::class;
+
+    public function definition()
+    {
+        return [
+            'name' => fake()->name(),
+        ];
+    }
+}

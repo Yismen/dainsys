@@ -6,4 +6,5 @@ use App\Models\DainsysModel as Model;
 
 class BLine extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
 }

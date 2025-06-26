@@ -45,7 +45,7 @@ class AutomaticProcessAssignation extends Command
 
         foreach ($processes as $process) {
             $employees_id = Employee::query()
-                ->whereDoesntHave('processes', function ($query) use ($process) {
+                ->whereDoesntHave('processes', function ($query) use ($process): void {
                     $query->where('id', $process->id);
                 })
                 ->pluck('id')->toArray();

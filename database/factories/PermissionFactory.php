@@ -1,11 +1,20 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Models\Permission::class, function (Faker $faker) {
-    return [
-        'name' => $faker->slug,
-        'guard_name' => 'web',
-        'resource' => $faker->slug
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Permission>
+ */
+class PermissionFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\Permission::class;
+
+    public function definition()
+    {
+        return [
+            'name' => fake()->slug,
+            'guard_name' => 'web',
+            'resource' => fake()->slug,
+        ];
+    }
+}

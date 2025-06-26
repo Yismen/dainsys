@@ -6,6 +6,8 @@ use App\Models\DainsysModel as Model;
 
 class Nationality extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['name'];
 
     public function employees()
@@ -13,12 +15,20 @@ class Nationality extends Model
         return $this->hasMany(Employee::class);
     }
 
-    public function setNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->attributes['name'] = ucwords(
-            strtolower(
-                trim($name, ' ')
-            )
-        );
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($name) {
+            return $this->attributes['name'] = ucwords(
+                strtolower(
+                    trim($name, ' ')
+                )
+            );
+
+            return ['name' => ucwords(
+                strtolower(
+                    trim($name, ' ')
+                )
+            )];
+        });
     }
 }

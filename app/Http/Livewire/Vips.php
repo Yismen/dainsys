@@ -33,39 +33,31 @@ class Vips extends Component
         return view('livewire.vips', [
             'vip_employees' => $this->getEmployees('vips'),
             'non_vip_employees' => $this->getEmployees('noVips'),
-            'sites' => Cache::rememberForever('vip_sites', function () {
-                return Site::query()
-                    ->whereHas('employees', function ($quer) {
-                        $quer->actives();
-                    })
-                    ->orderBy('name')
-                    ->get();
-            }),
-            'departments' => Cache::rememberForever('vip_departments', function () {
-                return Department::query()
-                    ->whereHas('employees', function ($quer) {
-                        $quer->actives();
-                    })
-                    ->orderBy('name')
-                    ->get();
-            }),
-            'projects' => Cache::rememberForever('vip_projects', function () {
-                return Project::query()
-                    ->whereHas('employees', function ($quer) {
-                        $quer->actives();
-                    })
-                    ->orderBy('name')
-                    ->get();
-            }),
-            'positions' => Cache::rememberForever('vip_positions', function () {
-                return Position::query()
-                    ->whereHas('employees', function ($quer) {
-                        $quer->actives();
-                    })
-                    ->orderBy('name')
-                    ->with('department', 'payment_type')
-                    ->get();
-            }),
+            'sites' => Cache::rememberForever('vip_sites', fn () => Site::query()
+                ->whereHas('employees', function ($quer): void {
+                    $quer->actives();
+                })
+                ->orderBy('name')
+                ->get()),
+            'departments' => Cache::rememberForever('vip_departments', fn () => Department::query()
+                ->whereHas('employees', function ($quer): void {
+                    $quer->actives();
+                })
+                ->orderBy('name')
+                ->get()),
+            'projects' => Cache::rememberForever('vip_projects', fn () => Project::query()
+                ->whereHas('employees', function ($quer): void {
+                    $quer->actives();
+                })
+                ->orderBy('name')
+                ->get()),
+            'positions' => Cache::rememberForever('vip_positions', fn () => Position::query()
+                ->whereHas('employees', function ($quer): void {
+                    $quer->actives();
+                })
+                ->orderBy('name')
+                ->with('department', 'payment_type')
+                ->get()),
         ]);
     }
 
@@ -81,39 +73,39 @@ class Vips extends Component
 
     protected function getEmployees(string $method)
     {
-        $repo = new VipRepo();
+        $repo = new VipRepo;
 
         return $repo->$method()
             ->with([
                 'site',
                 'project',
-                'position' => function ($query) {
+                'position' => function ($query): void {
                     $query->with(['payment_type', 'department']);
                 },
             ])
-            ->when(count($this->site_list) > 0, function ($query) {
-                $query->whereHas('site', function ($site_query) {
+            ->when(count($this->site_list) > 0, function ($query): void {
+                $query->whereHas('site', function ($site_query): void {
                     $site_query->whereIn('id', $this->site_list);
                 });
             })
-            ->when(count($this->department_list) > 0, function ($query) {
-                $query->whereHas('position.department', function ($department_query) {
+            ->when(count($this->department_list) > 0, function ($query): void {
+                $query->whereHas('position.department', function ($department_query): void {
                     $department_query->whereIn('id', $this->department_list);
                 });
             })
-            ->when(count($this->project_list) > 0, function ($query) {
-                $query->whereHas('project', function ($project_query) {
+            ->when(count($this->project_list) > 0, function ($query): void {
+                $query->whereHas('project', function ($project_query): void {
                     $project_query->whereIn('id', $this->project_list);
                 });
             })
-            ->when(count($this->position_list) > 0, function ($query) {
-                $query->whereHas('position', function ($position_query) {
+            ->when(count($this->position_list) > 0, function ($query): void {
+                $query->whereHas('position', function ($position_query): void {
                     $position_query->whereIn('id', $this->position_list);
                 });
             })
-            ->when(strlen($this->search) > 0, function ($query) {
+            ->when(strlen($this->search) > 0, function ($query): void {
                 foreach (preg_split("/[\s,]+/", $this->search, -1, PREG_SPLIT_NO_EMPTY) as $search_value) {
-                    $query->where(function ($query) use ($search_value) {
+                    $query->where(function ($query) use ($search_value): void {
                         $query->where('first_name', 'like', "%{$search_value}%")
                             ->orWhere('last_name', 'like', "%{$search_value}%")
                             ->orWhere('second_first_name', 'like', "%{$search_value}%")

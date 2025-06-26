@@ -13,21 +13,17 @@ trait CapillusCommandsTrait
     {
         $campaigns = config('dainsys.capillus.campaigns');
 
-        if (! $campaigns) {
-            throw new Exception('Capillus Campaigns not set in config.dainsys.capillus array!');
-        }
+        throw_unless($campaigns, new Exception('Capillus Campaigns not set in config.dainsys.capillus array!'));
 
-        return explode('|', $campaigns);
+        return explode('|', (string) $campaigns);
     }
 
     /**
      * Parse the distro list from the dainsys config file
-     *
-     * @return array
      */
     protected function distroList(): array
     {
-        $service = new \App\Services\DainsysConfigService();
+        $service = new \App\Services\DainsysConfigService;
 
         return $service->getDistro($this->name);
     }

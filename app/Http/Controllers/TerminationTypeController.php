@@ -40,7 +40,6 @@ class TerminationTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -62,18 +61,14 @@ class TerminationTypeController extends Controller
      * Display the specified resource.
      *
      * @param  int  TerminationType $termination_type
-     *
      * @return \Illuminate\Http\Response
      */
-    public function show(TerminationType $termination_type)
-    {
-    }
+    public function show(TerminationType $termination_type) {}
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  TerminationType $termination_type
-     *
      * @return \Illuminate\Http\Response
      */
     public function edit(TerminationType $termination_type)
@@ -84,15 +79,13 @@ class TerminationTypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  TerminationType $termination_type
-     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, TerminationType $termination_type)
     {
         $this->validate($request, [
-            'name' => 'required|unique:termination_types,name,' . $termination_type->id,
+            'name' => 'required|unique:termination_types,name,'.$termination_type->id,
         ]);
 
         $termination_type->update(

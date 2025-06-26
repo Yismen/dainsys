@@ -7,24 +7,18 @@ use Illuminate\Support\Str;
 
 class FilenameStartsWithRule implements Rule
 {
-    protected $filename;
-
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct($filename)
-    {
-        $this->filename = $filename;
-    }
+    public function __construct(protected $filename) {}
 
     /**
      * Determine if the validation rule passes.
      *
      * @param  string  $attribute
      * @param  mixed  $value
-     *
      * @return bool
      */
     public function passes($attribute, $value)

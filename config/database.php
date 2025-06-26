@@ -61,8 +61,8 @@ return [
                     'jobs',
                     'notifications',
                 ],
-                'doNotCreateTables' => true
-            ]
+                'doNotCreateTables' => true,
+            ],
         ],
         'poliscript' => [
             'driver' => 'sqlsrv',
@@ -92,8 +92,8 @@ return [
                     'telescope_entries_tags',
                     'telescope_monitoring',
                 ],
-                'doNotCreateTables' => true
-            ]
+                'doNotCreateTables' => true,
+            ],
         ],
         'sqlsrv' => [
             'driver' => 'sqlsrv',

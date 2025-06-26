@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateRecipientsTable extends Migration
 {
@@ -13,7 +13,7 @@ class CreateRecipientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('recipients', function (Blueprint $table) {
+        Schema::create('recipients', function (Blueprint $table): void {
             $table->increments('id');
             $table->timestamps();
             $table->string('name')->unique()->index();

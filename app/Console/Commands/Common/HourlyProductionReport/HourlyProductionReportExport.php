@@ -8,36 +8,16 @@ use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class HourlyProductionReportExport implements WithMultipleSheets
 {
-    // use CapillusCommandsTrait;
-
-    /**
-     * Array of hours
-     *
-     * @var object
-     */
-    protected object $repo;
-
-    protected string $client;
-
-    protected string $data_view;
-
-    protected string $disposition_view;
-
     public function __construct(
-        $repo,
-        string $client = 'Publishing',
-        string $data_view = 'exports.data',
-        string $disposition_view = 'exports.dispositions'
-    ) {
-        $this->repo = $repo;
-        $this->client = $client;
-        $this->data_view = $data_view;
-        $this->disposition_view = $disposition_view;
-    }
+        /**
+         * Array of hours
+         */
+        protected object $repo,
+        protected string $client = 'Publishing',
+        protected string $data_view = 'exports.data',
+        protected string $disposition_view = 'exports.dispositions'
+    ) {}
 
-    /**
-     * @return array
-     */
     public function sheets(): array
     {
         $sheets = [];

@@ -12,14 +12,11 @@ class AssignEmployeeToAutomaticProcesses
      *
      * @return void
      */
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Handle the event.
      *
-     * @param  \App\Events\EmployeeCreated  $event
      *
      * @return void
      */
@@ -29,7 +26,7 @@ class AssignEmployeeToAutomaticProcesses
 
         $processes_id = Process::query()
             ->where('default', true)
-            ->whereDoesntHave('employees', function ($query) use ($employee) {
+            ->whereDoesntHave('employees', function ($query) use ($employee): void {
                 $query->where('id', $employee->id);
             })->pluck('id')->toArray();
 

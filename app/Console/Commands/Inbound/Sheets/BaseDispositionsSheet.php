@@ -11,21 +11,28 @@ use Maatwebsite\Excel\Concerns\WithPreCalculateFormulas;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Events\AfterSheet;
 
-abstract class BaseDispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
+abstract class BaseDispositionsSheet implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $data;
 
     protected $sheet;
 
     protected $rows;
+
     protected $last_column;
 
     protected $auto_fit_column_start;
+
     protected $auto_fit_column_end;
+
     protected $freeze_pane_cell;
+
     protected $total_calls_column;
+
     protected $total_sales_column;
+
     protected $avg_column_start;
+
     protected $avg_column_end;
 
     protected $sheetName;
@@ -34,22 +41,16 @@ abstract class BaseDispositionsSheet implements FromView, WithTitle, WithEvents,
 
     protected $view;
 
-    protected $date_from;
-
-    protected $date_to;
-
     protected $sheet_name;
 
-    public function __construct(array $data, $sheet_name = null, $date_from = null, $date_to = null)
+    public function __construct(array $data, $sheet_name = null, protected $date_from = null, protected $date_to = null)
     {
         $this->data = $data;
-        $this->date_from = $date_from;
-        $this->date_to = $date_to;
 
         $this->rows = count($this->data) + 2;
-        $this->sheetName = $sheet_name ? $sheet_name : Str::of(\class_basename($this))->snake()->replace('_', ' ')->title();
-        $this->title_line = "Inbound {$this->sheetName} Report" . ($this->date_from && $this->date_to ? ", from {$this->date_from} to {$this->date_to}" : '');
-        $this->view = $this->view ?: 'exports.inbound.' . Str::of(\class_basename($this))->snake();
+        $this->sheetName = $sheet_name ?: Str::of(\class_basename($this))->snake()->replace('_', ' ')->title();
+        $this->title_line = "Inbound {$this->sheetName} Report".($this->date_from && $this->date_to ? ", from {$this->date_from} to {$this->date_to}" : '');
+        $this->view = $this->view ?: 'exports.inbound.'.Str::of(\class_basename($this))->snake();
         $this->sheet_name = $sheet_name;
     }
 
@@ -64,7 +65,7 @@ abstract class BaseDispositionsSheet implements FromView, WithTitle, WithEvents,
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 $totalsRow = $this->rows + 1;
 
                 // auto

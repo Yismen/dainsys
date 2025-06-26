@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Api_V2;
 
-use Tests\TestCase;
-use App\Models\Site;
-use App\Models\Project;
 use App\Models\Employee;
+use App\Models\Project;
+use App\Models\Site;
 use App\Models\Termination;
-use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class EmployeeControllerTest extends TestCase
 {
@@ -17,7 +17,7 @@ class EmployeeControllerTest extends TestCase
     /** @test */
     public function it_returns_a_employees_collection()
     {
-        factory(Employee::class)->create();
+        Employee::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/employees');
@@ -68,7 +68,7 @@ class EmployeeControllerTest extends TestCase
     /** @test */
     public function it_returns_all_employees()
     {
-        factory(Employee::class, 5)->create();
+        Employee::factory(5)->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/employees/all');
@@ -80,8 +80,8 @@ class EmployeeControllerTest extends TestCase
     /** @test */
     public function it_returns_active_employees_only()
     {
-        factory(Employee::class, 2)->create();
-        factory(Termination::class, 2)->create();
+        Employee::factory(2)->create();
+        Termination::factory(2)->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/employees/actives');
@@ -95,8 +95,8 @@ class EmployeeControllerTest extends TestCase
     /** @test */
     public function it_returns_recent_employees_only()
     {
-        $recent = factory(Employee::class)->create(['hire_date' => now()]);
-        $not_recent = factory(Termination::class)
+        $recent = Employee::factory()->create(['hire_date' => now()]);
+        $not_recent = Termination::factory()
             ->create()
             ->employee;
         $not_recent->update(['hire_date' => now()->subYears(5)]);
@@ -121,13 +121,13 @@ class EmployeeControllerTest extends TestCase
     public function employees_are_filterable_by_site()
     {
         Passport::actingAs($this->user());
-        $site = factory(Site::class)->create();
-        $employee_site_1 = factory(Employee::class)->create([
+        $site = Site::factory()->create();
+        $employee_site_1 = Employee::factory()->create([
             'hire_date' => now(),
-            'site_id' => $site->id
+            'site_id' => $site->id,
         ]);
-        $employee_site_2 = factory(Employee::class)->create([
-            'hire_date' => now()
+        $employee_site_2 = Employee::factory()->create([
+            'hire_date' => now(),
         ]);
 
         $response = $this->get("/api/v2/employees?site={$site->name}");
@@ -148,13 +148,13 @@ class EmployeeControllerTest extends TestCase
     public function employees_are_filterable_by_project()
     {
         Passport::actingAs($this->user());
-        $project = factory(Project::class)->create();
-        $employee_project_1 = factory(Employee::class)->create([
+        $project = Project::factory()->create();
+        $employee_project_1 = Employee::factory()->create([
             'hire_date' => now(),
-            'project_id' => $project->id
+            'project_id' => $project->id,
         ]);
-        $employee_project_2 = factory(Employee::class)->create([
-            'hire_date' => now()
+        $employee_project_2 = Employee::factory()->create([
+            'hire_date' => now(),
         ]);
 
         $response = $this->get("/api/v2/employees?project={$project->name}");
@@ -175,11 +175,11 @@ class EmployeeControllerTest extends TestCase
     public function employees_are_filterable_by_department()
     {
         Passport::actingAs($this->user());
-        $employee_department_1 = factory(Employee::class)->create([
+        $employee_department_1 = Employee::factory()->create([
             'hire_date' => now(),
         ])->load('position.department');
-        $employee_department_2 = factory(Employee::class)->create([
-            'hire_date' => now()
+        $employee_department_2 = Employee::factory()->create([
+            'hire_date' => now(),
         ]);
         $response = $this->get("/api/v2/employees?department={$employee_department_1->position->department->name}");
 
@@ -199,11 +199,11 @@ class EmployeeControllerTest extends TestCase
     public function employees_are_filterable_by_position()
     {
         Passport::actingAs($this->user());
-        $employee_position_1 = factory(Employee::class)->create([
+        $employee_position_1 = Employee::factory()->create([
             'hire_date' => now(),
         ])->load('position');
-        $employee_position_2 = factory(Employee::class)->create([
-            'hire_date' => now()
+        $employee_position_2 = Employee::factory()->create([
+            'hire_date' => now(),
         ]);
         $response = $this->get("/api/v2/employees?position={$employee_position_1->position->name}");
 

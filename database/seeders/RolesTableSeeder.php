@@ -17,7 +17,7 @@ class RolesTableSeeder extends Seeder
     {
         $user = User::where('email', 'yismen.jorge@gmail.com')->first();
         $admin = Role::create(['name' => 'admin']);
-        $user->roles()->sync((array)$admin->only('id'));
+        $user->roles()->sync((array) $admin->only('id'));
 
         Role::create(['name' => 'management']);
         Role::create(['name' => 'human_resource']);

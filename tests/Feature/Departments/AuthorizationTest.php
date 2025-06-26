@@ -2,48 +2,48 @@
 
 namespace Tests\Feature\Departments;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewDepartment()
+    public function test_unuthorized_users_cant_view_department()
     {
-        $department = create('App\Models\Department');
+        $department = create(\App\Models\Department::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.departments.index'))
             ->assertForbidden();
-        
+
         $response->get(route('admin.departments.show', $department->id))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetDepartment()
+    public function test_unuthorized_users_cant_createt_department()
     {
-        $department = create('App\Models\Department');
+        $department = create(\App\Models\Department::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.departments.store'))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditDepartment()
+    public function test_unuthorized_users_cant_edit_department()
     {
-        $department = create('App\Models\Department');
+        $department = create(\App\Models\Department::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.departments.update', $department->id))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyDepartment()
+    public function test_unuthorized_users_cant_destroy_department()
     {
-        $department = create('App\Models\Department');
+        $department = create(\App\Models\Department::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.departments.destroy', $department->id))

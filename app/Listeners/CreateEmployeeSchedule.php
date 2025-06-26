@@ -19,10 +19,6 @@ class CreateEmployeeSchedule
 
     /**
      * Handle the event.
-     *
-     * @param EmployeeCreated $event
      */
-    public function handle(EmployeeCreated $event)
-    {
-    }
+    public function handle(EmployeeCreated $event) {}
 }

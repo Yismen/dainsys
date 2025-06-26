@@ -62,7 +62,6 @@ class RevenueTypesController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function show(RevenueType $revenue_type)
@@ -74,7 +73,6 @@ class RevenueTypesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function edit(RevenueType $revenue_type)
@@ -86,13 +84,12 @@ class RevenueTypesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function update(RevenueType $revenue_type, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:3|unique:revenue_types,name,' . $revenue_type->id,
+            'name' => 'required|min:3|unique:revenue_types,name,'.$revenue_type->id,
         ]);
 
         $revenue_type->update($request->only([
@@ -107,7 +104,6 @@ class RevenueTypesController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function destroy(RevenueType $revenue_type)

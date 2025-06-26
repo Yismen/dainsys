@@ -8,6 +8,7 @@ use Illuminate\Contracts\View\View;
 class OomaMonthTDProductionSheet extends BaseOomaProductionSheet
 {
     protected $page_title = 'MTD';
+
     /**
      * Report this sheet if it has data. For some sheets it make no sense to send a report
      * if they are the only one with data.
@@ -16,9 +17,6 @@ class OomaMonthTDProductionSheet extends BaseOomaProductionSheet
      */
     protected $reportable = false;
 
-    /**
-     * @return View
-     */
     public function view(): View
     {
         return $this->parseView(

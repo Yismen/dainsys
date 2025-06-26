@@ -1,29 +1,38 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Models\Employee::class, function (Faker $faker) {
-    return [
-        'first_name' => $faker->firstName(),
-        'second_first_name' => $faker->firstName(),
-        'last_name' => $faker->lastName(),
-        'second_last_name' => $faker->lastName(),
-        'hire_date' => $faker->date(),
-        'personal_id' => $faker->unique()->numberBetween(10000000000, 99999999999),
-        'passport' => '',
-        'date_of_birth' => $faker->date(),
-        'cellphone_number' => $faker->unique()->numberBetween(8091000001, 8099999999),
-        'secondary_phone' => $faker->email(),
-        'position_id' => factory(App\Models\Position::class),
-        'site_id' => factory(App\Models\Site::class),
-        'project_id' => factory(App\Models\Project::class),
-        'supervisor_id' => factory(App\Models\Supervisor::class),
-        'gender_id' => factory(App\Models\Gender::class),
-        'marital_id' => factory(App\Models\Marital::class),
-        'ars_id' => factory(App\Models\Ars::class),
-        'afp_id' => factory(App\Models\Afp::class),
-        'nationality_id' => factory(App\Models\Nationality::class),
-        'has_kids' => $faker->boolean(),
-        'photo' => '',
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Employee>
+ */
+class EmployeeFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\Employee::class;
+
+    public function definition()
+    {
+        return [
+            'first_name' => fake()->firstName(),
+            'second_first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
+            'second_last_name' => fake()->lastName(),
+            'hire_date' => fake()->date(),
+            'personal_id' => fake()->unique()->numberBetween(10000000000, 99999999999),
+            'passport' => '',
+            'date_of_birth' => fake()->date(),
+            'cellphone_number' => fake()->unique()->numberBetween(8091000001, 8099999999),
+            'secondary_phone' => fake()->email(),
+            'position_id' => \App\Models\Position::factory(),
+            'site_id' => \App\Models\Site::factory(),
+            'project_id' => \App\Models\Project::factory(),
+            'supervisor_id' => \App\Models\Supervisor::factory(),
+            'gender_id' => \App\Models\Gender::factory(),
+            'marital_id' => \App\Models\Marital::factory(),
+            'ars_id' => \App\Models\Ars::factory(),
+            'afp_id' => \App\Models\Afp::factory(),
+            'nationality_id' => \App\Models\Nationality::factory(),
+            'has_kids' => fake()->boolean(),
+            'photo' => '',
+        ];
+    }
+}

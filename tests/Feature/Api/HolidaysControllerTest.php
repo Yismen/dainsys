@@ -14,7 +14,7 @@ class HolidaysControllerTest extends TestCase
     /** @test */
     public function it_returns_a_holidays_collection()
     {
-        factory(Holiday::class, 3)->create(['date' => now()]);
+        Holiday::factory(3)->create(['date' => now()]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/holidays');
@@ -34,8 +34,8 @@ class HolidaysControllerTest extends TestCase
     /** @test */
     public function it_includes_holidays_for_a_year_ago()
     {
-        $this_year = factory(Holiday::class)->create(['date' => now()]);
-        $one_year_ago = factory(Holiday::class)->create(['date' => now()->subYears(1)]);
+        $this_year = Holiday::factory()->create(['date' => now()]);
+        $one_year_ago = Holiday::factory()->create(['date' => now()->subYears(1)]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/holidays');
@@ -48,8 +48,8 @@ class HolidaysControllerTest extends TestCase
     /** @test */
     public function it_does_not_includes_holidays_for_two_or_more_years_ago()
     {
-        $this_year = factory(Holiday::class)->create(['date' => now()]);
-        $two_years_ago = factory(Holiday::class)->create(['date' => now()->subYears(2)]);
+        $this_year = Holiday::factory()->create(['date' => now()]);
+        $two_years_ago = Holiday::factory()->create(['date' => now()->subYears(2)]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/holidays');
@@ -62,8 +62,8 @@ class HolidaysControllerTest extends TestCase
     /** @test */
     public function it_includes_holidays_for_future_years()
     {
-        $this_year = factory(Holiday::class)->create(['date' => now()]);
-        $next_year = factory(Holiday::class)->create(['date' => now()->addYear()]);
+        $this_year = Holiday::factory()->create(['date' => now()]);
+        $next_year = Holiday::factory()->create(['date' => now()->addYear()]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/holidays');
@@ -76,12 +76,12 @@ class HolidaysControllerTest extends TestCase
     /** @test */
     public function it_retur_holidays_for_a_given_year()
     {
-        $this_year = factory(Holiday::class)->create(['date' => now()]);
-        $last_year = factory(Holiday::class)->create(['date' => now()->subYear()]);
-        $next_year = factory(Holiday::class)->create(['date' => now()->addYear()]);
+        $this_year = Holiday::factory()->create(['date' => now()]);
+        $last_year = Holiday::factory()->create(['date' => now()->subYear()]);
+        $next_year = Holiday::factory()->create(['date' => now()->addYear()]);
         Passport::actingAs($this->user());
 
-        $response = $this->get('/api/holidays?year=' . now()->year);
+        $response = $this->get('/api/holidays?year='.now()->year);
 
         $response->assertOk()
             ->assertJsonFragment(['name' => $this_year->name, 'date' => $this_year->date->format('Y-m-d')])

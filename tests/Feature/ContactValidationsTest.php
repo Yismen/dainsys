@@ -2,13 +2,14 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class ContactValidationsTest extends TestCase
 {
-    use WithFaker, RefreshDatabase;
+    use RefreshDatabase;
+    use WithFaker;
 
     /** @test */
     public function it_requires_a_name_to_create_a_contact()

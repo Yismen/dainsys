@@ -13,7 +13,7 @@ use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
-class FlashHoursSheet implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
+class FlashHoursSheet implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $hours;
 
@@ -39,13 +39,12 @@ class FlashHoursSheet implements FromView, WithTitle, WithEvents, WithPreCalcula
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
                 $this->configurePage()
-                    ->setColumnsWidth()
-                ;
+                    ->setColumnsWidth();
 
                 $this->sheet->getStyle('A1:B1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
                 $this->sheet->getStyle('A1:B1')->applyFromArray($this->headerStyle());

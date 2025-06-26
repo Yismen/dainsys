@@ -45,15 +45,12 @@ class OvernightHourController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return \Illuminate\Http\Response
      */
     public function store(CreateOvernightHourRequest $request)
@@ -68,7 +65,6 @@ class OvernightHourController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\OvernightHour  $overnightHour
-     *
      * @return \Illuminate\Http\Response
      */
     public function edit(OvernightHour $overnightHour)
@@ -81,7 +77,6 @@ class OvernightHourController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\OvernightHour  $overnightHour
-     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateOvernightHourRequest $request, OvernightHour $overnightHour)
@@ -96,7 +91,6 @@ class OvernightHourController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\OvernightHour  $overnightHour
-     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(OvernightHour $overnightHour)

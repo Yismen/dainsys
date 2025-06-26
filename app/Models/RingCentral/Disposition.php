@@ -6,6 +6,8 @@ use App\Models\DainsysModel as Model;
 
 class Disposition extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['name', 'contacts', 'sales', 'upsales', 'cc_sales'];
 
     public function getConnectionName()

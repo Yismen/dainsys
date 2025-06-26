@@ -4,9 +4,6 @@ namespace App\Console\Commands\RingCentralReports\Exports;
 
 class ProductionReportExport extends BaseRingCentralExports
 {
-    /**
-     * @return array
-     */
     public function sheets(): array
     {
         $sheets = [];

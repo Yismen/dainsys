@@ -15,73 +15,74 @@ class EmployeeRepository
 {
     public static function all()
     {
-        $instance = new self();
+        $instance = new self;
 
         return $instance->query()->get();
     }
 
     public static function actives()
     {
-        $instance = new self();
+        $instance = new self;
 
         return $instance->query()->actives()->get();
     }
 
     public static function byStatus()
     {
-        $static = new self();
+        $static = new self;
 
         return $static->constrained(Gender::class);
     }
 
     public static function byGender()
     {
-        $static = new self();
+        $static = new self;
 
         return $static->constrained(Gender::class);
     }
 
     public static function bySite()
     {
-        $static = new self();
+        $static = new self;
 
         return $static->constrained(Site::class);
     }
 
     public static function byPosition()
     {
-        $static = new self();
+        $static = new self;
 
         return $static->constrained(Position::class);
     }
 
     public static function byDepartment()
     {
-        $static = new self();
+        $static = new self;
 
         return $static->constrained(Department::class);
     }
 
     public static function byProject()
     {
-        $static = new self();
+        $static = new self;
 
         return $static->constrained(Project::class);
     }
 
     public static function bySupervisor()
     {
-        $static = new self();
+        $static = new self;
 
         return $static->constrained(Supervisor::class);
     }
 
     public static function byNationality()
     {
-        $static = new self();
+        $static = new self;
 
         return $static->constrained(Nationality::class);
     }
+
     protected function query()
     {
         return Employee::query()
@@ -92,7 +93,7 @@ class EmployeeRepository
 
     protected function constrained($class)
     {
-        $class = new $class();
+        $class = new $class;
 
         return $class->withCount(['employees' => $this->constrainCallback()])
             ->whereHas('employees', $this->constrainCallback())->get();
@@ -100,9 +101,7 @@ class EmployeeRepository
 
     protected function constrainCallback()
     {
-        return function ($query) {
-            return $query->actives()
-                ->filter(request()->all());
-        };
+        return fn ($query) => $query->actives()
+            ->filter(request()->all());
     }
 }

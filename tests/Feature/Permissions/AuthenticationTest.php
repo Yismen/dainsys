@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Permissions;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewPermissions()
+    public function test_guest_cant_view_permissions()
     {
-        $permission = create('App\Models\Permission');
+        $permission = create(\App\Models\Permission::class);
 
         $this->get(route('admin.permissions.index'))
             ->assertStatus(302)
@@ -24,9 +24,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreatePermissions()
+    public function test_guest_cant_create_permissions()
     {
-        $permission = create('App\Models\Permission');
+        $permission = create(\App\Models\Permission::class);
 
         $this->get(route('admin.permissions.create'))
             ->assertStatus(302)
@@ -37,9 +37,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdatePermission()
+    public function test_guest_cant_update_permission()
     {
-        $permission = create('App\Models\Permission');
+        $permission = create(\App\Models\Permission::class);
 
         $this->get(route('admin.permissions.edit', $permission->id))
             ->assertStatus(302)
@@ -50,9 +50,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyPermission()
+    public function test_guest_cant_destroy_permission()
     {
-        $permission = create('App\Models\Permission');
+        $permission = create(\App\Models\Permission::class);
 
         $this->delete(route('admin.permissions.destroy', $permission->id))
             ->assertStatus(302)

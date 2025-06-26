@@ -9,10 +9,15 @@ class ImageMaker
     public const MAX_SIZE = 600;
 
     protected static $FILE;
+
     protected static $SQUARED;
+
     protected static $ENCODE;
+
     protected static $IMAGE;
+
     protected static int $WIDTH;
+
     protected static int $HEIGHT;
 
     public static function make($FILE, $SQUARED = false, $ENCODE = null, $WIDTH = null, $HEIGHT = null)
@@ -34,11 +39,11 @@ class ImageMaker
 
     private static function resizeImage()
     {
-        self::$IMAGE = self::$IMAGE->resize(self::$WIDTH, null, function ($constraint) {
+        self::$IMAGE = self::$IMAGE->resize(self::$WIDTH, null, function ($constraint): void {
             $constraint->aspectRatio();
         });
 
-        self::$IMAGE = self::$IMAGE->resize(null, self::$HEIGHT, function ($constraint) {
+        self::$IMAGE = self::$IMAGE->resize(null, self::$HEIGHT, function ($constraint): void {
             $constraint->aspectRatio();
         });
     }

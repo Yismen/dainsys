@@ -1,16 +1,26 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
+
 use Illuminate\Support\Str;
 
-$factory->define(App\Models\User::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name(),
-        'email' => $faker->unique()->safeEmail,
-        'username' => $faker->word(),
-        'password' => bcrypt('password'),
-        'remember_token' => Str::random(10),
-        'is_active' => true,
-        'is_admin' => false,
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ */
+class UserFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\User::class;
+
+    public function definition()
+    {
+        return [
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail,
+            'username' => fake()->word(),
+            'password' => bcrypt('password'),
+            'remember_token' => Str::random(10),
+            'is_active' => true,
+            'is_admin' => false,
+        ];
+    }
+}

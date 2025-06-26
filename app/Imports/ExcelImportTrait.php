@@ -11,8 +11,6 @@ trait ExcelImportTrait
 {
     /**
      * The size of file chunks
-     *
-     * @return int
      */
     public function chunkSize(): int
     {
@@ -21,8 +19,6 @@ trait ExcelImportTrait
 
     /**
      * The size of batches to insert.
-     *
-     * @return int
      */
     public function batchSize(): int
     {
@@ -31,20 +27,18 @@ trait ExcelImportTrait
 
     /**
      * Events listeners for the Importer.
-     *
-     * @return array
      */
     public function registerEvents(): array
     {
         return [
-            AfterImport::class => function (AfterImport $event) {
+            AfterImport::class => function (AfterImport $event): void {
                 $this->importedBy->notify(new UserAppNotification(
                     'Data Imported Succesfully!',
                     "File {$this->file_name} was imported!",
                     'success'
                 ));
             },
-            ImportFailed::class => function (ImportFailed $event) {
+            ImportFailed::class => function (ImportFailed $event): void {
                 $this->importedBy->notify(new UserAppNotification(
                     'Import Failed!***',
                     $event->e->getMessage(),
@@ -57,9 +51,8 @@ trait ExcelImportTrait
     /**
      * Convert an date in a carbon instance.
      *
-     * @param value  $value  the value to be parsed
-     * @param format $format the format from where the carbon instance is created
-     *
+     * @param  value  $value  the value to be parsed
+     * @param  format  $format  the format from where the carbon instance is created
      * @return Carbon instance
      */
     protected function transformDate($value, $format = 'Y-m-d')
@@ -68,7 +61,7 @@ trait ExcelImportTrait
             return Carbon::instance(
                 \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value)
             );
-        } catch (\ErrorException $e) {
+        } catch (\ErrorException) {
             return Carbon::parse($value);
         }
     }

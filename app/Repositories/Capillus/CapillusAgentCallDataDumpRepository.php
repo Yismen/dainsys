@@ -3,7 +3,6 @@
 namespace App\Repositories\Capillus;
 
 use App\Connections\RingCentralConnection;
-use Illuminate\Support\Facades\DB;
 
 class CapillusAgentCallDataDumpRepository extends RingCentralConnection
 {
@@ -15,16 +14,18 @@ class CapillusAgentCallDataDumpRepository extends RingCentralConnection
      * @var Date
      */
     protected $date;
+
     /**
      * A dated representing when the month started.
      *
      * @var Date
      */
     protected $startOfMonth;
+
     /**
      * The campaign to parse the data. This can contain a wildcard %.
      *
-     * @var String
+     * @var string
      */
     protected $campaign;
 

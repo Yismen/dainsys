@@ -21,7 +21,6 @@ class DashboardController extends Controller
      *
      * User must have 'view-dashboard' permissions. Otherwise will be denied!
      *
-     * @param  \Illuminate\Http\Request  $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -39,14 +38,14 @@ class DashboardController extends Controller
             }
         }
 
-        return (new DefaultDashboardController())->index('default');
+        return (new DefaultDashboardController)->index();
     }
 
     protected function renderRoleController($role, $class)
     {
-        $class_name = $this->dashboards_namespace . $class;
+        $class_name = $this->dashboards_namespace.$class;
 
-        $controller = new $class_name();
+        $controller = new $class_name;
 
         return $controller->index($role);
     }

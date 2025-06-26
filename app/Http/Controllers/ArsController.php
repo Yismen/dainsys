@@ -28,17 +28,13 @@ class ArsController extends Controller
             ->actives()
             ->get();
 
-        $arss = Cache::rememberForever('arss', function () {
-            return Ars::with(['employees' => function ($query) {
-                return $query
-                    ->orderBy('first_name')
-                    ->orderBy('second_first_name')
-                    ->orderBy('last_name')
-                    ->orderBy('second_last_name')
-                    ->actives();
-            },
-            ])->orderBy('name')->get();
-        });
+        $arss = Cache::rememberForever('arss', fn () => Ars::with(['employees' => fn ($query) => $query
+            ->orderBy('first_name')
+            ->orderBy('second_first_name')
+            ->orderBy('last_name')
+            ->orderBy('second_last_name')
+            ->actives(),
+        ])->orderBy('name')->get());
 
         if ($request->ajax()) {
             return $arss;
@@ -60,7 +56,6 @@ class ArsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -87,7 +82,6 @@ class ArsController extends Controller
      * Display the specified resource.
      *
      * @param  int  Ars $ars
-     *
      * @return \Illuminate\Http\Response
      */
     public function show(Ars $ars)
@@ -99,7 +93,6 @@ class ArsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  Ars $ars
-     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Ars $ars)
@@ -110,15 +103,13 @@ class ArsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  Ars $ars
-     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Ars $ars)
     {
         $this->validate($request, [
-            'name' => 'required|min:3|unique:arss,name,' . $ars->id,
+            'name' => 'required|min:3|unique:arss,name,'.$ars->id,
         ]);
 
         Cache::forget('employees');
@@ -134,7 +125,6 @@ class ArsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  Ars $ars
-     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Ars $ars, Request $request)
@@ -173,7 +163,7 @@ class ArsController extends Controller
         Cache::forget('employees');
         Cache::forget('arss');
 
-        foreach ($request->employee as  $id) {
+        foreach ($request->employee as $id) {
             $employee = Employee::whereId($id)->first();
 
             $employee->update(['ars_id' => $request->ars]);

@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\PaymentTypes;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewPaymentType()
+    public function test_unuthorized_users_cant_view_payment_type()
     {
-        $payment_type = create('App\Models\PaymentType');
+        $payment_type = create(\App\Models\PaymentType::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.payment_types.index'))
@@ -23,27 +23,27 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetPaymentType()
+    public function test_unuthorized_users_cant_createt_payment_type()
     {
-        $payment_type = create('App\Models\PaymentType');
+        $payment_type = create(\App\Models\PaymentType::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.payment_types.store'))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditPaymentType()
+    public function test_unuthorized_users_cant_edit_payment_type()
     {
-        $payment_type = create('App\Models\PaymentType');
+        $payment_type = create(\App\Models\PaymentType::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.payment_types.update', $payment_type->id))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyPaymentType()
+    public function test_unuthorized_users_cant_destroy_payment_type()
     {
-        $payment_type = create('App\Models\PaymentType');
+        $payment_type = create(\App\Models\PaymentType::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.payment_types.destroy', $payment_type->id))

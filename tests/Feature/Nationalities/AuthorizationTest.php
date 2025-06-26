@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Nationalities;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewNationality()
+    public function test_unuthorized_users_cant_view_nationality()
     {
-        $nationality = create('App\Models\Nationality');
+        $nationality = create(\App\Models\Nationality::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.nationalities.index'))
@@ -23,27 +23,27 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetNationality()
+    public function test_unuthorized_users_cant_createt_nationality()
     {
-        $nationality = create('App\Models\Nationality');
+        $nationality = create(\App\Models\Nationality::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.nationalities.store'))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditNationality()
+    public function test_unuthorized_users_cant_edit_nationality()
     {
-        $nationality = create('App\Models\Nationality');
+        $nationality = create(\App\Models\Nationality::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.nationalities.update', $nationality->id))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyNationality()
+    public function test_unuthorized_users_cant_destroy_nationality()
     {
-        $nationality = create('App\Models\Nationality');
+        $nationality = create(\App\Models\Nationality::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.nationalities.destroy', $nationality->id))

@@ -3,9 +3,9 @@
 namespace Tests\Feature\Employee;
 
 use App\Models\Employee;
-use Tests\TestCase;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Tests\TestCase;
 
 class PhotoTest extends TestCase
 {

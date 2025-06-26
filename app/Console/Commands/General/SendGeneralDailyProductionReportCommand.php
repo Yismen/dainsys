@@ -15,30 +15,36 @@ use Maatwebsite\Excel\Facades\Excel;
 class SendGeneralDailyProductionReportCommand extends Command
 {
     use NotifyUsersOnFailedCommandsTrait;
+
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
     protected $signature = 'dainsys:general-rc-production-report {--date=} {--from=} {--team=ECC}';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Send a Daily Production report to General distro';
+
     /**
      * Initial range date
      */
     protected string $date_from;
+
     /**
      * Ending range date
      */
     protected string $date_to;
+
     /**
      * List of emails to send the report
      */
     protected array $distro;
+
     /**
      * Report subject name
      */
@@ -57,7 +63,7 @@ class SendGeneralDailyProductionReportCommand extends Command
 
         $this->mail_subject = 'General Daily Production Report';
 
-        $this->file_name = $this->mail_subject . now()->subDay()->format('Ymd_His') . '.xlsx';
+        $this->file_name = $this->mail_subject.now()->subDay()->format('Ymd_His').'.xlsx';
     }
 
     /**
@@ -108,12 +114,10 @@ class SendGeneralDailyProductionReportCommand extends Command
 
     /**
      * Get the list of emails to receive the report
-     *
-     * @return array
      */
     protected function getDistroList(): array
     {
-        $service = new \App\Services\DainsysConfigService();
+        $service = new \App\Services\DainsysConfigService;
 
         return $service->getDistro($this->name);
     }

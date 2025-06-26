@@ -7,23 +7,16 @@ use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class GeneralDailyProductionReportExport implements WithMultipleSheets
 {
-    // use CapillusCommandsTrait;
-
     /**
-     * Array of hours
-     *
-     * @var object
+     * @param  object  $repo
      */
-    protected $repo;
+    public function __construct(
+        /**
+         * Array of hours
+         */
+        protected $repo
+    ) {}
 
-    public function __construct($repo)
-    {
-        $this->repo = $repo;
-    }
-
-    /**
-     * @return array
-     */
     public function sheets(): array
     {
         $sheets = [];

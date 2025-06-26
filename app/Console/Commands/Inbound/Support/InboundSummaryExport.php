@@ -7,30 +7,19 @@ use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class InboundSummaryExport implements WithMultipleSheets
 {
-    /**
-     * Array of hours
-     */
-    protected array $repo;
-    /**
-     * The client name
-     */
-    protected string $client;
+    public function __construct(
+        /**
+         * Array of hours
+         */
+        protected array $repo,
+        /**
+         * The client name
+         */
+        protected string $client = 'Kipany',
+        protected $date_from = null,
+        protected $date_to = null
+    ) {}
 
-    protected $date_from;
-
-    protected $date_to;
-
-    public function __construct($repo, string $client = 'Kipany', $date_from = null, $date_to = null)
-    {
-        $this->repo = $repo;
-        $this->client = $client;
-        $this->date_from = $date_from;
-        $this->date_to = $date_to;
-    }
-
-    /**
-     * @return array
-     */
     public function sheets(): array
     {
         $sheets = [];

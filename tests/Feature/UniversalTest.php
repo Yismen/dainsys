@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class UniversalTest extends TestCase
 {
@@ -14,15 +14,15 @@ class UniversalTest extends TestCase
     /** @test */
     public function it_requries_authentication()
     {
-        $universal = create('App\Models\Universal');
+        $universal = create(\App\Models\Universal::class);
         $this->get(route('admin.universals.index'))->assertRedirect('/login');
     }
 
     /** @test */
     public function it_requires_permissions()
     {
-        $this->actingAs(create('App\Models\User'));
-        $universal = create('App\Models\Universal');
+        $this->actingAs(create(\App\Models\User::class));
+        $universal = create(\App\Models\Universal::class);
 
         $response = $this->get('/admin/universals');
         $response->assertStatus(403);
@@ -32,8 +32,8 @@ class UniversalTest extends TestCase
     public function authorized_users_can_view_universal_resource()
     {
         $user = $this->userWithPermission('view-universals');
-        $universal = create('App\Models\Universal');
-        $employee = create('App\Models\Employee');
+        $universal = create(\App\Models\Universal::class);
+        $employee = create(\App\Models\Employee::class);
         $this->actingAs($user);
 
         $universal->employee()->associate($employee);

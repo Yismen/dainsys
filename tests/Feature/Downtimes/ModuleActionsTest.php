@@ -5,9 +5,9 @@ namespace Tests\Feature\Downtimes;
 use App\Models\Downtime;
 use App\Models\Employee;
 use App\Models\Supervisor;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class ModuleActionsTest extends TestCase
 {

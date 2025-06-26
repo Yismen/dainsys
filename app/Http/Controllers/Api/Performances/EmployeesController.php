@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api\Performances;
 
-use App\Models\Employee;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EmployeeResource;
+use App\Models\Employee;
 
 /**
  * @group Performances
@@ -38,7 +38,7 @@ class EmployeesController extends Controller
         $projects = Employee::with([
             'supervisor',
             'site',
-            'punch'
+            'punch',
         ])
             ->orderBy('first_name')
             ->orderBy('second_first_name')

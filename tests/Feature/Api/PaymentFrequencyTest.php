@@ -27,7 +27,7 @@ class PaymentFrequencyTest extends TestCase
     /** @test */
     public function it_creates_a_payment_frequency_and_returns_json()
     {
-        $payment_frequency = factory(PaymentFrequency::class)->make()->toArray();
+        $payment_frequency = PaymentFrequency::factory()->make()->toArray();
         Passport::actingAs($this->user());
 
         $response = $this->post('/api/payment_frequencies', $payment_frequency);

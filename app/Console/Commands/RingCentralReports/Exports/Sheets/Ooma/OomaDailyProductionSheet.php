@@ -7,6 +7,7 @@ use Illuminate\Contracts\View\View;
 class OomaDailyProductionSheet extends BaseOomaProductionSheet
 {
     protected $page_title = 'Daily';
+
     /**
      * Report this sheet if it has data. For some sheets it make no sense to send a report
      * if they are the only one with data.
@@ -15,9 +16,6 @@ class OomaDailyProductionSheet extends BaseOomaProductionSheet
      */
     protected $reportable = true;
 
-    /**
-     * @return View
-     */
     public function view(): View
     {
         return $this->parseView(

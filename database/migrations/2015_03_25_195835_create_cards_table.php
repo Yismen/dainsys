@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateCardsTable extends Migration
 {
@@ -12,7 +12,7 @@ class CreateCardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cards', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('cards', function (Blueprint $table): void {
             $table->increments('id');
             $table->integer('employee_id')->unsigned()->unique()->index();
             $table->string('card', 100);
@@ -31,6 +31,6 @@ class CreateCardsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('cards');
+        \Illuminate\Support\Facades\Schema::drop('cards');
     }
 }

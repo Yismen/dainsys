@@ -65,7 +65,6 @@ class PaymentFrequenciesController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
 
@@ -73,7 +72,6 @@ class PaymentFrequenciesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function edit(PaymentFrequency $payment_frequency)
@@ -85,7 +83,6 @@ class PaymentFrequenciesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function update(PaymentFrequency $payment_frequency, Request $request)
@@ -104,7 +101,6 @@ class PaymentFrequenciesController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function destroy(PaymentFrequency $payment_frequency, Request $request)

@@ -51,7 +51,7 @@ class ReportsController extends Controller
         Cache::forget('reports');
 
         return redirect()->route('admin.reports.index')
-            ->withSuccess('Report ' . $report->name . ' has been created!');
+            ->withSuccess('Report '.$report->name.' has been created!');
     }
 
     public function show(Report $report)
@@ -69,8 +69,8 @@ class ReportsController extends Controller
     public function update(Report $report, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:reports,name,' . $report->id,
-            'key' => 'required|unique:reports,key,' . $report->id,
+            'name' => 'required|unique:reports,name,'.$report->id,
+            'key' => 'required|unique:reports,key,'.$report->id,
             'active' => 'sometimes|boolean',
         ]);
 
@@ -85,6 +85,6 @@ class ReportsController extends Controller
         Cache::forget('reports');
 
         return redirect()->route('admin.reports.index')
-            ->withSuccess('Report ' . $report->name . ' has been updated!');
+            ->withSuccess('Report '.$report->name.' has been updated!');
     }
 }

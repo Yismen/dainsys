@@ -2,9 +2,8 @@
 
 namespace App\Services\ListsForEmployees;
 
-
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Cache;
 
 abstract class ListForEmployeesBase
 {
@@ -17,11 +16,9 @@ abstract class ListForEmployeesBase
 
     public static function make(): Collection
     {
-        return Cache::rememberForever(static::cacheKey(), function () {
-            return static::model()::query()
-                ->orderBy('name')
-                ->whereHas('employees')
-                ->get(['id', 'name']);
-        });
+        return Cache::rememberForever(static::cacheKey(), fn () => static::model()::query()
+            ->orderBy('name')
+            ->whereHas('employees')
+            ->get(['id', 'name']));
     }
 }

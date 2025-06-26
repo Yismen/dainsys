@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Nationalities;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewNationalities()
+    public function test_guest_cant_view_nationalities()
     {
-        $nationality = create('App\Models\Nationality');
+        $nationality = create(\App\Models\Nationality::class);
 
         $this->get(route('admin.nationalities.index'))
             ->assertStatus(302)
@@ -24,9 +24,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateNationalities()
+    public function test_guest_cant_create_nationalities()
     {
-        $nationality = create('App\Models\Nationality');
+        $nationality = create(\App\Models\Nationality::class);
 
         $this->get(route('admin.nationalities.create'))
             ->assertStatus(302)
@@ -37,9 +37,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateNationality()
+    public function test_guest_cant_update_nationality()
     {
-        $nationality = create('App\Models\Nationality');
+        $nationality = create(\App\Models\Nationality::class);
 
         $this->get(route('admin.nationalities.edit', $nationality->id))
             ->assertStatus(302)
@@ -50,9 +50,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyNationality()
+    public function test_guest_cant_destroy_nationality()
     {
-        $nationality = create('App\Models\Nationality');
+        $nationality = create(\App\Models\Nationality::class);
 
         $this->delete(route('admin.nationalities.destroy', $nationality->id))
             ->assertStatus(302)

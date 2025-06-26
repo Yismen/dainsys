@@ -3,7 +3,6 @@
 namespace App\Repositories\Capillus;
 
 use App\Connections\RingCentralConnection;
-use Illuminate\Support\Facades\DB;
 
 class CapillusLeadsRepository extends RingCentralConnection
 {

@@ -53,7 +53,7 @@ class FeedSchedulesTable extends Command
         $bar->start();
 
         foreach ($collection as $employee) {
-            (new Schedule())->createNew(
+            (new Schedule)->createNew(
                 [
                     'employee_id' => $employee->id,
                     'date' => Carbon::now()->subDays($this->option('since-days-ago'))->format('Y-m-d'),

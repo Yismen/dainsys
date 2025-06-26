@@ -5,49 +5,50 @@ namespace App\Console\Commands\Inbound\Sheets;
 use App\Exports\RangeFormarter;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
-use Maatwebsite\Excel\Events\AfterSheet;
-use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithPreCalculateFormulas;
+use Maatwebsite\Excel\Concerns\WithTitle;
+use Maatwebsite\Excel\Events\AfterSheet;
 
-class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
+class SummaryPeriodInboundDataSheet implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $data;
+
     protected $names;
+
     protected $dates;
+
     protected $hours_data;
+
     protected $calls_data;
 
     protected $sheet;
 
     protected $rows;
+
     protected $last_column;
 
     protected $sheetName;
 
     protected string $view;
 
-    protected string $client;
-
-    protected string $date_from;
-
     protected array $working_range;
 
-    protected $date_to;
-
     protected $totals_row;
+
     protected $total_hours_column;
+
     protected $total_calls_column;
+
     protected $total_sales_column;
+
     protected $first_column;
+
     protected $first_hours_column;
 
-    public function __construct(array $data, string $client, string $period_name, $date_from, $date_to)
+    public function __construct(array $data, protected string $client, string $period_name, protected string $date_from, protected $date_to)
     {
         $this->data = $data;
-        $this->client = $client;
-        $this->date_from = $date_from;
-        $this->date_to = $date_to;
         $this->sheetName = "{$period_name} Inbound Report";
         $this->hours_data = collect($this->data['period_hours_parser']);
 
@@ -87,7 +88,7 @@ class SummaryPeriodInboundDataSheet implements FromView, WithTitle, WithEvents, 
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
                 $this->sheet->getColumnDimension('A')->setWidth(30);

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateAddressesTable extends Migration
 {
@@ -12,7 +12,7 @@ class CreateAddressesTable extends Migration
      */
     public function up()
     {
-        Schema::create('addresses', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('addresses', function (Blueprint $table): void {
             $table->increments('id');
             $table->integer('employee_id')->unsigned()->index();
             $table->string('sector', 100);
@@ -32,6 +32,6 @@ class CreateAddressesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('addresses');
+        \Illuminate\Support\Facades\Schema::drop('addresses');
     }
 }

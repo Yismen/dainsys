@@ -47,8 +47,7 @@ class DowntimeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CreateDowntimeRequest $request, Downtime $downtime)
@@ -63,14 +62,13 @@ class DowntimeController extends Controller
         request()->flashExcept(['employee_id', '_token', 'login_time']);
 
         return redirect()->route('admin.downtimes.create')
-            ->withSuccess('Data Created! for ' . $downtime->name);
+            ->withSuccess('Data Created! for '.$downtime->name);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Downtime $downtimes
-     *
+     * @param  \App\Downtime  $downtimes
      * @return \Illuminate\Http\Response
      */
     public function edit(Downtime $downtime)
@@ -81,9 +79,8 @@ class DowntimeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Downtime            $downtime
-     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Downtime  $downtime
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateDowntimeRequest $request, Downtime $downtime)
@@ -91,14 +88,13 @@ class DowntimeController extends Controller
         $downtime->update($request->all());
 
         return redirect()->route('admin.downtimes.edit', $downtime->id)
-            ->withSuccess('Updated! ' . $downtime->name);
+            ->withSuccess('Updated! '.$downtime->name);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Downtime $downtime
-     *
+     * @param  \App\Downtime  $downtime
      * @return \Illuminate\Http\Response
      */
     public function destroy(Downtime $downtime)
@@ -113,8 +109,8 @@ class DowntimeController extends Controller
         return Downtime::whereDate('date', request()->date)
             ->where('employee_id', request()->employee_id)
             ->where('campaign_id', request()->campaign_id)
-            ->orWhere('unique_id', request()->date . '-' . request()->employee_id . '-downtime')
-            ->orWhere('unique_id', request()->date . '-' . request()->campaign_id . '-' . request()->campaign_id)
+            ->orWhere('unique_id', request()->date.'-'.request()->employee_id.'-downtime')
+            ->orWhere('unique_id', request()->date.'-'.request()->campaign_id.'-'.request()->campaign_id)
             ->first();
     }
 }

@@ -26,8 +26,6 @@ class ClearTempraryFiles extends Command
      */
     protected $description = 'Remove all files from a given set of directories';
 
-    protected Filesystem $filesystem;
-
     protected array $files = [];
 
     protected array $directories = [
@@ -48,11 +46,9 @@ class ClearTempraryFiles extends Command
      *
      * @return void
      */
-    public function __construct(Filesystem $filesystem)
+    public function __construct(protected Filesystem $filesystem)
     {
         parent::__construct();
-
-        $this->filesystem = $filesystem;
     }
 
     /**

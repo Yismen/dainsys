@@ -11,13 +11,14 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class WowDispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
+class WowDispositionsSheet implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $data;
 
     protected $sheet;
 
     protected $rows;
+
     protected $last_column;
 
     public function __construct(array $data)
@@ -38,7 +39,7 @@ class WowDispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCa
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
@@ -49,8 +50,7 @@ class WowDispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCa
                     ->formatHeaderRow("A2:{$this->last_column}2")
                     ->applyBorders("A3:{$this->last_column}{$this->rows}")
                     // ->applyNumberFormats("E2:G{$this->rows}", '#,##0.00')
-                    ->applyNumberFormats("{$this->last_column}2:{$this->last_column}{$this->rows}", NumberFormat::FORMAT_PERCENTAGE_00)
-                ;
+                    ->applyNumberFormats("{$this->last_column}2:{$this->last_column}{$this->rows}", NumberFormat::FORMAT_PERCENTAGE_00);
             },
         ];
     }

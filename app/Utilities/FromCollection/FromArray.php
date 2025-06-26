@@ -34,9 +34,7 @@ class FromArray
 
     public function mergeKeys()
     {
-        $this->data_array = array_map(function ($item) {
-            return array_merge($this->keys, $item[0]);
-        }, $this->data_array);
+        $this->data_array = array_map(fn ($item) => array_merge($this->keys, $item[0]), $this->data_array);
 
         return $this;
     }

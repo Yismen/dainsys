@@ -18,19 +18,16 @@ class ProjectsController extends Controller
 
     public function index()
     {
-        $projects = Project::with(['client', 'employees' => function ($query) {
+        $projects = Project::with(['client', 'employees' => fn ($query) =>
             // give it the possition
-            return $query->orderBy('first_name')
+            $query->orderBy('first_name')
                 ->orderBy('second_first_name')
                 ->orderBy('last_name')
                 ->orderBy('second_last_name')
                 ->with('supervisor', 'nationality')
-                ->with(['position' => function ($query) {
-                    return $query->with(['department', 'payment_type']);
-                },
+                ->with(['position' => fn ($query) => $query->with(['department', 'payment_type']),
                 ])
-                ->actives();
-        },
+                ->actives(),
         ])
             ->orderBy('name')
             ->get();
@@ -45,7 +42,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        $project = new Project();
+        $project = new Project;
 
         return view('projects.create', compact('project'));
     }
@@ -53,7 +50,6 @@ class ProjectsController extends Controller
     /**
      * Store a newly created reproject in storage.
      *
-     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -67,14 +63,13 @@ class ProjectsController extends Controller
         $project = $project->create($request->only(['name', 'client_id']));
 
         return redirect()->route('admin.projects.index')
-            ->withSuccess('Project ' . $project->name . ' created');
+            ->withSuccess('Project '.$project->name.' created');
     }
 
     /**
      * Display the specified reproject.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show(Project $project)
@@ -85,8 +80,7 @@ class ProjectsController extends Controller
     /**
      * Show the form for editing the specified reproject.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Project $project)
@@ -97,15 +91,13 @@ class ProjectsController extends Controller
     /**
      * Update the specified reproject in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Project $project)
     {
         $this->validate($request, [
-            'name' => 'required|min:3|unique:projects,name,' . $project->id,
+            'name' => 'required|min:3|unique:projects,name,'.$project->id,
             'client_id' => 'required|exists:clients,id',
         ]);
 
@@ -118,8 +110,7 @@ class ProjectsController extends Controller
     /**
      * Remove the specified reproject from storage.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Project $project)
@@ -138,7 +129,7 @@ class ProjectsController extends Controller
             'employee.required' => 'Select at least one employee!',
         ]);
 
-        foreach ($request->employee as  $id) {
+        foreach ($request->employee as $id) {
             $employee = Employee::whereId($id)->first();
 
             $employee->update(['project_id' => $request->project]);

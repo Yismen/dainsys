@@ -11,6 +11,7 @@ use Livewire\Component;
 class EmployeeStep extends Component
 {
     public int $employee_id;
+
     public int $process_id;
 
     protected $listeners = [
@@ -28,7 +29,7 @@ class EmployeeStep extends Component
         $employee = Employee::query()
             ->where('id', $this->employee_id)
             ->with(['steps'])
-            ->whereHas('processes', function ($query) {
+            ->whereHas('processes', function ($query): void {
                 $query->where('processes.id', $this->process_id);
             })
             ->firstOrFail();
@@ -48,7 +49,7 @@ class EmployeeStep extends Component
     {
         $employee = Employee::query()
             ->where('id', $this->employee_id)
-            ->whereHas('processes', function ($query) {
+            ->whereHas('processes', function ($query): void {
                 $query->where('processes.id', $this->process_id);
             })
             ->firstOrFail();

@@ -16,7 +16,6 @@ return [
      *
      * Defaults to null, which uses the toString() method on your model.
      */
-
     'build_from' => null,
 
     /**
@@ -28,7 +27,6 @@ return [
      *    $table->string('slug');
      * });
      */
-
     'save_to' => 'slug',
 
     /**
@@ -36,7 +34,6 @@ return [
      * no length restrictions are enforced.  Set it to a positive integer if you
      * want to make sure your slugs aren't too long.
      */
-
     'max_length' => null,
 
     /**
@@ -54,13 +51,11 @@ return [
      *
      *    'method' => array('Str','slug'),
      */
-
     'method' => null,
 
     /**
      * Separator to use when generating slugs.  Defaults to a hyphen.
      */
-
     'separator' => '-',
 
     /**
@@ -72,7 +67,6 @@ return [
      *     my-slug-1
      *     my-slug-2
      */
-
     'unique' => true,
 
     /**
@@ -81,7 +75,6 @@ return [
      * If set to "false", then a new slug could duplicate one that exists on a trashed model.
      * If set to "true", then uniqueness is enforced across trashed and existing models.
      */
-
     'include_trashed' => false,
 
     /**
@@ -89,7 +82,6 @@ return [
      * re-saved (i.e. already exists).  Defaults to false, which
      * means slugs are not updated.
      */
-
     'on_update' => false,
 
     /**
@@ -115,6 +107,5 @@ return [
      *
      * and continue from there.
      */
-
     'reserved' => null,
 ];

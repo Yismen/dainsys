@@ -27,7 +27,7 @@ class BankTest extends TestCase
     /** @test */
     public function it_creates_a_bank_and_returns_json()
     {
-        $bank = factory(Bank::class)->make()->toArray();
+        $bank = Bank::factory()->make()->toArray();
         Passport::actingAs($this->user());
 
         $response = $this->post('/api/v2/banks', $bank);

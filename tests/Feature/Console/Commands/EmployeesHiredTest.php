@@ -2,29 +2,29 @@
 
 namespace Tests\Feature\Console\Commands;
 
-use Tests\TestCase;
-use App\Models\Report;
+use App\Mail\EmployeesHiredMail;
 use App\Models\Employee;
 use App\Models\Recipient;
-use App\Mail\EmployeesHiredMail;
-use Illuminate\Support\Facades\Mail;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Support\Facades\Queue;
+use App\Models\Report;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Queue;
+use Maatwebsite\Excel\Facades\Excel;
+use Tests\TestCase;
 
 class EmployeesHiredTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
         // Queue::fake();
         // Mail::fake();
         // Excel::fake();
-        $report = factory(Report::class)->create(['key' => 'dainsys:employees-hired']);
-        $recipient = factory(Recipient::class)->create();
+        $report = Report::factory()->create(['key' => 'dainsys:employees-hired']);
+        $recipient = Recipient::factory()->create();
         $recipient->reports()->sync([$report->id]);
     }
 
@@ -32,10 +32,10 @@ class EmployeesHiredTest extends TestCase
     public function employees_hired_command_sends_report_for_employees_hired_previous_day()
     {
         $this->actingAs($this->userWithRole('admin'));
-        $employees = factory(Employee::class, 2)->create(['hire_date' => today()->subDay()]);
+        $employees = Employee::factory(2)->create(['hire_date' => today()->subDay()]);
         $command = $this->artisan(\App\Console\Commands\EmployeesHired::class, [
             'dates' => now()->subDay()->format('Y-m-d'),
-            '--site' => 'santiago-hq'
+            '--site' => 'santiago-hq',
         ]);
 
         $command->assertSuccessful();
@@ -46,11 +46,11 @@ class EmployeesHiredTest extends TestCase
     /** @test */
     public function employees_hired_command_sends_report_for_employees_hired_previous_week()
     {
-        factory(Employee::class, 2)->create(['hire_date' => today()->subWeek()]);
+        Employee::factory(2)->create(['hire_date' => today()->subWeek()]);
 
         $command = $this->artisan(\App\Console\Commands\EmployeesHired::class, [
-            'dates' => now()->subDay()->startOfWeek()->format('Y-m-d') . ',' . now()->subDay()->endOfWeek()->format('Y-m-d'),
-            '--site' => 'santiago-hq'
+            'dates' => now()->subDay()->startOfWeek()->format('Y-m-d').','.now()->subDay()->endOfWeek()->format('Y-m-d'),
+            '--site' => 'santiago-hq',
         ]);
 
         $command->assertSuccessful();
@@ -62,11 +62,11 @@ class EmployeesHiredTest extends TestCase
         Mail::fake();
         Excel::fake();
 
-        factory(Employee::class, 2)->create(['hire_date' => today()->subMonth()]);
+        Employee::factory(2)->create(['hire_date' => today()->subMonth()]);
 
         $command = $this->artisan(\App\Console\Commands\EmployeesHired::class, [
-            'dates' => now()->subMonth()->startOfMonth()->format('Y-m-d') . ',' . now()->subMonth()->endOfMonth()->format('Y-m-d'),
-            '--site' => 'santiago-hq'
+            'dates' => now()->subMonth()->startOfMonth()->format('Y-m-d').','.now()->subMonth()->endOfMonth()->format('Y-m-d'),
+            '--site' => 'santiago-hq',
         ]);
 
         $command->assertSuccessful();

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->group(function () {
+Route::middleware('auth:api')->group(function (): void {
     Route::get('/user', [\App\Http\Controllers\Api\UserController::class, 'index']);
     Route::resource('afps', \App\Http\Controllers\Api\AfpsController::class)->only(['store']);
     Route::resource('arss', \App\Http\Controllers\Api\ArssController::class)->only(['store']);
@@ -63,8 +63,8 @@ Route::middleware('auth:api')->group(function () {
     Route::get('notifications/show/{notification}', [\App\Http\Controllers\Api\NotificationsController::class, 'show']);
 });
 
-Route::prefix('v2')->group(function () {
-    Route::middleware(['auth:api'])->group(function () {
+Route::prefix('v2')->group(function (): void {
+    Route::middleware(['auth:api'])->group(function (): void {
         Route::get('/user', [\App\Http\Controllers\Api\V2\UserController::class, 'index']);
 
         Route::get('employees', [\App\Http\Controllers\Api\V2\EmployeesController::class, 'index']);

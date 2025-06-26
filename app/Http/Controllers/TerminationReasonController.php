@@ -41,7 +41,6 @@ class TerminationReasonController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return \Illuminate\Http\Response
      */
     public function store(TerminationReasonRequest $request)
@@ -58,18 +57,14 @@ class TerminationReasonController extends Controller
      * Display the specified resource.
      *
      * @param  int  TerminationReason $termination_reason
-     *
      * @return \Illuminate\Http\Response
      */
-    public function show(TerminationReason $termination_reason)
-    {
-    }
+    public function show(TerminationReason $termination_reason) {}
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  TerminationReason $termination_reason
-     *
      * @return \Illuminate\Http\Response
      */
     public function edit(TerminationReason $termination_reason)
@@ -82,7 +77,6 @@ class TerminationReasonController extends Controller
      *
      * @param  \Illuminate\Http\TerminationReasonRequest  $request
      * @param  int  TerminationReason $termination_reason
-     *
      * @return \Illuminate\Http\Response
      */
     public function update(TerminationReasonRequest $request, TerminationReason $termination_reason)

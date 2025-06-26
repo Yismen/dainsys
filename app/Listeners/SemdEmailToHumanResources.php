@@ -12,18 +12,13 @@ class SemdEmailToHumanResources
      *
      * @return void
      */
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Handle the event.
      *
      * @param  EmployeeCreate  $event
-     *
      * @return void
      */
-    public function handle(EmployeeCreated $event)
-    {
-    }
+    public function handle(EmployeeCreated $event) {}
 }

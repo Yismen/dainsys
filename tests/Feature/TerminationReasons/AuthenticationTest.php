@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\TerminationReasons;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewTerminationReasons()
+    public function test_guest_cant_view_termination_reasons()
     {
-        $termination_reason = create('App\Models\TerminationReason');
+        $termination_reason = create(\App\Models\TerminationReason::class);
 
         $this->get(route('admin.termination_reasons.index'))
             ->assertStatus(302)
@@ -24,9 +24,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateTerminationReasons()
+    public function test_guest_cant_create_termination_reasons()
     {
-        $termination_reason = create('App\Models\TerminationReason');
+        $termination_reason = create(\App\Models\TerminationReason::class);
 
         $this->get(route('admin.termination_reasons.create'))
             ->assertStatus(302)
@@ -37,9 +37,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateTerminationReason()
+    public function test_guest_cant_update_termination_reason()
     {
-        $termination_reason = create('App\Models\TerminationReason');
+        $termination_reason = create(\App\Models\TerminationReason::class);
 
         $this->get(route('admin.termination_reasons.edit', $termination_reason->id))
             ->assertStatus(302)

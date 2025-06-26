@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Bank;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewBank()
+    public function test_unuthorized_users_cant_view_bank()
     {
-        $bank = create('App\Models\Bank');
+        $bank = create(\App\Models\Bank::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.banks.index'))
@@ -23,27 +23,27 @@ class AuthorizationTest extends TestCase
         //     ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetBank()
+    public function test_unuthorized_users_cant_createt_bank()
     {
-        $bank = create('App\Models\Bank');
+        $bank = create(\App\Models\Bank::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.banks.store'))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditBank()
+    public function test_unuthorized_users_cant_edit_bank()
     {
-        $bank = create('App\Models\Bank');
+        $bank = create(\App\Models\Bank::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.banks.update', $bank->id))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyBank()
+    public function test_unuthorized_users_cant_destroy_bank()
     {
-        $bank = create('App\Models\Bank');
+        $bank = create(\App\Models\Bank::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.banks.destroy', $bank->id))

@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use Tests\TestCase;
 use App\Http\Livewire\Steps;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class StepControllerTest extends TestCase
 {
@@ -19,7 +19,7 @@ class StepControllerTest extends TestCase
     /** @test */
     public function it_requires_view_steps_permissions_to_view_all_steps()
     {
-        $this->actingAs(create('App\Models\User'));
+        $this->actingAs(create(\App\Models\User::class));
 
         $response = $this->get('/admin/steps');
 
@@ -45,7 +45,7 @@ class StepControllerTest extends TestCase
     {
         // given
         $user = $this->userWithPermission('view-steps');
-        $step = create('App\Models\Step');
+        $step = create(\App\Models\Step::class);
 
         // when
         $this->actingAs($user);

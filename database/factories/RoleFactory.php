@@ -1,10 +1,19 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Models\Role::class, function (Faker $faker) {
-    return [
-        'name' => $faker->sentence,
-        'guard_name' => 'web'
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Role>
+ */
+class RoleFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\Role::class;
+
+    public function definition()
+    {
+        return [
+            'name' => fake()->sentence,
+            'guard_name' => 'web',
+        ];
+    }
+}

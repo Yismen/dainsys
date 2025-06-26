@@ -1,11 +1,20 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Models\BankAccount::class, function (Faker $faker) {
-    return [
-        'employee_id' => factory(App\Models\Employee::class),
-        'bank_id' => factory(App\Models\Bank::class),
-        'account_number' => random_int(1000000001, 9999999999),
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BankAccount>
+ */
+class BankAccountFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\BankAccount::class;
+
+    public function definition()
+    {
+        return [
+            'employee_id' => \App\Models\Employee::factory(),
+            'bank_id' => \App\Models\Bank::factory(),
+            'account_number' => random_int(1000000001, 9999999999),
+        ];
+    }
+}

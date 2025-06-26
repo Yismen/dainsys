@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\DowntimeReasons;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewDowntimeReasons()
+    public function test_guest_cant_view_downtime_reasons()
     {
-        $downtime_reason = create('App\Models\DowntimeReason');
+        $downtime_reason = create(\App\Models\DowntimeReason::class);
 
         $this->get(route('admin.downtime_reasons.index'))
             ->assertStatus(302)
@@ -24,9 +24,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateDowntimeReasons()
+    public function test_guest_cant_create_downtime_reasons()
     {
-        $downtime_reason = create('App\Models\DowntimeReason');
+        $downtime_reason = create(\App\Models\DowntimeReason::class);
 
         $this->get(route('admin.downtime_reasons.create'))
             ->assertStatus(302)
@@ -37,9 +37,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateDowntimeReason()
+    public function test_guest_cant_update_downtime_reason()
     {
-        $downtime_reason = create('App\Models\DowntimeReason');
+        $downtime_reason = create(\App\Models\DowntimeReason::class);
 
         $this->get(route('admin.downtime_reasons.edit', $downtime_reason->id))
             ->assertStatus(302)
@@ -50,9 +50,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyDowntimeReason()
+    public function test_guest_cant_destroy_downtime_reason()
     {
-        $downtime_reason = create('App\Models\DowntimeReason');
+        $downtime_reason = create(\App\Models\DowntimeReason::class);
 
         $this->delete(route('admin.downtime_reasons.destroy', $downtime_reason->id))
             ->assertStatus(302)

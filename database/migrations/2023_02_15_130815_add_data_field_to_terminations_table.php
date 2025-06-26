@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddDataFieldToTerminationsTable extends Migration
 {
@@ -13,7 +13,7 @@ class AddDataFieldToTerminationsTable extends Migration
      */
     public function up()
     {
-        Schema::table('terminations', function (Blueprint $table) {
+        Schema::table('terminations', function (Blueprint $table): void {
             $table->json('employee_data')->nullable();
         });
     }
@@ -25,7 +25,7 @@ class AddDataFieldToTerminationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('terminations', function (Blueprint $table) {
+        Schema::table('terminations', function (Blueprint $table): void {
             $table->dropColumn('employee_data');
         });
     }

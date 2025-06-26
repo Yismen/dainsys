@@ -4,29 +4,25 @@ namespace App\Exports;
 
 use App\Models\Employee;
 use Illuminate\Database\Eloquent\Builder;
+use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
-use Maatwebsite\Excel\Concerns\Exportable;
-use Maatwebsite\Excel\Concerns\WithEvents;
-use Maatwebsite\Excel\Concerns\WithMapping;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
-use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 
-abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAutoSize, WithColumnFormatting, WithMapping, WithHeadings, WithEvents
+abstract class AbstractEmployeesExport implements FromQuery, ShouldAutoSize, WithColumnFormatting, WithEvents, WithHeadings, WithMapping, WithTitle
 {
     use Exportable;
 
-    protected $date_from = null;
-    protected $date_to = null;
     protected $site = null;
 
-    public function __construct($date_from = null, $date_to = null, ?string $site = null)
+    public function __construct(protected $date_from = null, protected $date_to = null, ?string $site = null)
     {
-        $this->date_from = $date_from;
-        $this->date_to = $date_to;
         $this->site = $site;
     }
 
@@ -44,8 +40,8 @@ abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAu
     {
         return Employee::query()
             ->orderBy('first_name')
-            ->when($this->site, function ($query) {
-                $query->whereHas('site', function ($query) {
+            ->when($this->site, function ($query): void {
+                $query->whereHas('site', function ($query): void {
                     $query->where('name', 'like', "{$this->site}%");
                 });
             })
@@ -57,7 +53,7 @@ abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAu
                 'nationality',
                 'site',
                 'project',
-                'position' => function ($query) {
+                'position' => function ($query): void {
                     $query->with([
                         'department',
                         'payment_type',
@@ -65,9 +61,9 @@ abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAu
                 },
                 'bankAccount',
                 'supervisor',
-                'termination' => function ($terinationQuery) {
+                'termination' => function ($terinationQuery): void {
                     $terinationQuery->with([
-                        'terminationType'
+                        'terminationType',
                     ]);
                 },
             ]);
@@ -86,11 +82,11 @@ abstract class AbstractEmployeesExport implements FromQuery, WithTitle, ShouldAu
             filled($employee->personal_id) ? $employee->personal_id : $employee->passport,
             Date::dateTimeToExcel($employee->hire_date),
             Date::dateTimeToExcel($employee->date_of_birth),
-            substr($employee->cellphone_number, 0, 3),
-            substr($employee->cellphone_number, -7),
+            substr((string) $employee->cellphone_number, 0, 3),
+            substr((string) $employee->cellphone_number, -7),
             $employee->address === null ? '' :
-                $employee->address->street_address . ', ' . $employee->address->sector . ', ' . $employee->address->city,
-            substr(optional($employee->gender)->name, 0, 1),
+                $employee->address->street_address.', '.$employee->address->sector.', '.$employee->address->city,
+            substr((string) optional($employee->gender)->name, 0, 1),
             optional($employee->marital)->name,
             optional($employee->nationality)->name,
             optional($employee->site)->name,

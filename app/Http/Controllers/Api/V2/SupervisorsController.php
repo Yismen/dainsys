@@ -54,6 +54,7 @@ class SupervisorsController extends Controller
 
         return SupervisorsResource::collection($supervisors);
     }
+
     /**
      * Store Supervisors
      *

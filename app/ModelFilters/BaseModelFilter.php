@@ -18,14 +18,13 @@ abstract class BaseModelFilter extends ModelFilter
      * Apply filter to the $query builder
      *
      * @param Array/string $request
-     * @param  EloquentRelationship $relationship
-     * @param  String               $quey_field
-     *
+     * @param  EloquentRelationship  $relationship
+     * @param  string  $quey_field
      * @return QueryBuilder
      */
     protected function filterQuery($request, $relationship, $quey_field = 'name')
     {
-        return $this->whereHas($relationship, function ($query) use ($request, $quey_field) {
+        return $this->whereHas($relationship, function ($query) use ($request, $quey_field): void {
             if (is_array($request)) {
                 $query->where($quey_field, 'like', $request[0]);
                 for ($i = 1; $i < count($request); $i++) {

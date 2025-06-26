@@ -3,9 +3,9 @@
 namespace Tests\Feature\Api_V2;
 
 use App\Models\Supervisor;
-use Tests\TestCase;
-use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class SupervisorsControllerTest extends TestCase
 {
@@ -14,7 +14,7 @@ class SupervisorsControllerTest extends TestCase
     /** @test */
     public function it_returns_a_supervisors_collection()
     {
-        factory(Supervisor::class)->create();
+        Supervisor::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/supervisors');
@@ -34,8 +34,8 @@ class SupervisorsControllerTest extends TestCase
     /** @test */
     public function it_returns_active_supervisors_only()
     {
-        $active_supervisor = factory(Supervisor::class)->create(['active' => true]);
-        $inactive_supervisor = factory(Supervisor::class)->create(['active' => false]);
+        $active_supervisor = Supervisor::factory()->create(['active' => true]);
+        $inactive_supervisor = Supervisor::factory()->create(['active' => false]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/supervisors/actives');
@@ -61,7 +61,7 @@ class SupervisorsControllerTest extends TestCase
     /** @test */
     public function it_creates_a_supervisor_and_returns_json()
     {
-        $supervisor = factory(Supervisor::class)->make()->toArray();
+        $supervisor = Supervisor::factory()->make()->toArray();
         Passport::actingAs($this->user());
 
         $response = $this->post('/api/v2/supervisors', $supervisor);

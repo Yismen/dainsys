@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Position;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewPositions()
+    public function test_guest_cant_view_positions()
     {
-        $position = create('App\Models\Position');
+        $position = create(\App\Models\Position::class);
 
         $this->get(route('admin.positions.index'))
             ->assertStatus(302)
@@ -24,9 +24,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreatePositions()
+    public function test_guest_cant_create_positions()
     {
-        $position = create('App\Models\Position');
+        $position = create(\App\Models\Position::class);
 
         $this->get(route('admin.positions.create'))
             ->assertStatus(302)
@@ -37,9 +37,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdatePosition()
+    public function test_guest_cant_update_position()
     {
-        $position = create('App\Models\Position');
+        $position = create(\App\Models\Position::class);
 
         $this->get(route('admin.positions.edit', $position->id))
             ->assertStatus(302)
@@ -50,9 +50,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyPosition()
+    public function test_guest_cant_destroy_position()
     {
-        $position = create('App\Models\Position');
+        $position = create(\App\Models\Position::class);
 
         $this->delete(route('admin.positions.destroy', $position->id))
             ->assertStatus(302)

@@ -12,6 +12,7 @@ class Unique implements Rule
      * Instance of App\Position
      */
     protected $position;
+
     /**
      * An instance of Illuminate\Http\Request
      */
@@ -33,12 +34,11 @@ class Unique implements Rule
      *
      * @param  string  $attribute
      * @param  mixed  $value
-     *
      * @return bool
      */
     public function passes($attribute, $value)
     {
-        $value = ucfirst(strtolower(trim($value)));
+        $value = ucfirst(strtolower(trim((string) $value)));
 
         $exists = $this->position->where($attribute, '=', $value)
             ->where('department_id', '=', $this->request->department_id)

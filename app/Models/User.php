@@ -2,37 +2,39 @@
 
 namespace App\Models;
 
-use App\Traits\Trackable;
-use Illuminate\Support\Str;
+use App\Http\Traits\Accessors\UserAccessors;
+use App\Http\Traits\Mutators\UserMutators;
+use App\Http\Traits\Relationships\UserRelationships;
 use App\Mail\NewUserCreated;
 use App\Mail\UpdatedPassword;
-use Laravel\Passport\HasApiTokens;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Cache;
-use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Notifications\Notifiable;
-use App\Http\Traits\Mutators\UserMutators;
-use Illuminate\Notifications\Notification;
-use App\Http\Traits\Accessors\UserAccessors;
+use App\Traits\Trackable;
+use Dainsys\Support\Traits\HasSupportTickets;
+use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Contracts\Auth\CanResetPassword;
-use App\Http\Traits\Relationships\UserRelationships;
-use Dainsys\Support\Traits\HasSupportTickets;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use Laravel\Passport\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements CanResetPassword
 {
     use HasApiTokens;
     use HasRoles;
-    use UserAccessors;
-    use UserRelationships;
-    use UserMutators;
-    use Notifiable;
-    use Trackable;
-    use SoftDeletes;
     use HasSupportTickets;
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+    use Notifiable;
+    use SoftDeletes;
+    use Trackable;
+    use UserAccessors;
+    use UserMutators;
+    use UserRelationships;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -66,7 +68,6 @@ class User extends Authenticatable implements CanResetPassword
     //     });
     // }
 
-
     public function routeNotificationForVonage(Notification $notification): string
     {
         return config('vonage.sms_from');
@@ -93,16 +94,16 @@ class User extends Authenticatable implements CanResetPassword
      *
      * @return void
      */
-    public function getIsLoggedInAttribute()
+    protected function isLoggedIn(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->login()
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => $this->login()
             ->where(['logged_out_at' => null])
-            ->count() > 0;
+            ->count() > 0);
     }
 
     public function isOnline()
     {
-        if ($this->is_logged_in || Cache::has('online-user-' . $this->id)) {
+        if ($this->is_logged_in || Cache::has('online-user-'.$this->id)) {
             return true;
         }
 
@@ -133,13 +134,9 @@ class User extends Authenticatable implements CanResetPassword
 
     public function updateUser($request)
     {
-        if ($this->id === auth()->user()->id && $request->is_active === 0) {
-            abort(401, 'You cant inactivate Your self. No changes made.');
-        }
+        abort_if($this->id === auth()->user()->id && $request->is_active === 0, 401, 'You cant inactivate Your self. No changes made.');
 
-        if ($this->id === auth()->user()->id && $this->is_admin === 0 && $request->is_admin === 1) {
-            abort(401, 'You cant set your self as Admin. No changes made.');
-        }
+        abort_if($this->id === auth()->user()->id && $this->is_admin === 0 && $request->is_admin === 1, 401, 'You cant set your self as Admin. No changes made.');
 
         $this->update($request->all());
 
@@ -148,13 +145,9 @@ class User extends Authenticatable implements CanResetPassword
 
     public function forceChangePassword($request)
     {
-        if ($this->id === auth()->user()->id && $request->is_active === 0) {
-            abort(401, 'You cant inactivate Your self. No changes made.');
-        }
+        abort_if($this->id === auth()->user()->id && $request->is_active === 0, 401, 'You cant inactivate Your self. No changes made.');
 
-        if ($this->id === auth()->user()->id && $this->is_admin === 0 && $request->is_admin === 1) {
-            abort(401, 'You cant set your self as Admin. No changes made.');
-        }
+        abort_if($this->id === auth()->user()->id && $this->is_admin === 0 && $request->is_admin === 1, 401, 'You cant set your self as Admin. No changes made.');
 
         $new_password = Str::random(15);
 
@@ -197,8 +190,6 @@ class User extends Authenticatable implements CanResetPassword
 
     /**
      * Return a collection of all sessions open for the current user.
-     *
-     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function openSessions(): Collection
     {

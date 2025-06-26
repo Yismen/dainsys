@@ -2,14 +2,14 @@
 
 namespace Tests\Feature\Api_V2;
 
-use Tests\TestCase;
 use App\Models\Campaign;
 use App\Models\Employee;
-use App\Models\Supervisor;
 use App\Models\Performance;
+use App\Models\Supervisor;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Arr;
 use Laravel\Passport\Passport;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class PerformanceDataTest extends TestCase
 {
@@ -18,7 +18,7 @@ class PerformanceDataTest extends TestCase
     /** @test */
     public function it_returns_a_collection_of_performances_data()
     {
-        $performance = factory(Performance::class)->create(['date' => now()]);
+        $performance = Performance::factory()->create(['date' => now()]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/performances');
@@ -75,8 +75,8 @@ class PerformanceDataTest extends TestCase
     /** @test */
     public function if_months_is_not_specified_it_just_returns_the_last_two_months()
     {
-        $this_month_performance = factory(Performance::class)->create(['date' => now()]);
-        $last_month_performance = factory(Performance::class)->create(['date' => now()->subMonths(4)]);
+        $this_month_performance = Performance::factory()->create(['date' => now()]);
+        $last_month_performance = Performance::factory()->create(['date' => now()->subMonths(4)]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/performances');
@@ -90,8 +90,8 @@ class PerformanceDataTest extends TestCase
     /** @test */
     public function performance_data_can_be_filtered_by_amount_of_months()
     {
-        $this_month_performance = factory(Performance::class)->create(['date' => now()]);
-        $last_month_performance = factory(Performance::class)->create(['date' => now()->subMonths(2)]);
+        $this_month_performance = Performance::factory()->create(['date' => now()]);
+        $last_month_performance = Performance::factory()->create(['date' => now()->subMonths(2)]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/performances?months=1');
@@ -105,10 +105,10 @@ class PerformanceDataTest extends TestCase
     /** @test */
     public function performance_data_can_be_filtered_by_campaign()
     {
-        $campaign = factory(Campaign::class)->create();
-        $another_campaign = factory(Campaign::class)->create();
-        factory(Performance::class)->create(['campaign_id' => $campaign->id]);
-        factory(Performance::class)->create(['campaign_id' => $another_campaign->id]);
+        $campaign = Campaign::factory()->create();
+        $another_campaign = Campaign::factory()->create();
+        Performance::factory()->create(['campaign_id' => $campaign->id]);
+        Performance::factory()->create(['campaign_id' => $another_campaign->id]);
         Passport::actingAs($this->user());
 
         $response = $this->get("/api/v2/performances?campaign={$campaign->name}");
@@ -122,10 +122,10 @@ class PerformanceDataTest extends TestCase
     /** @test */
     public function performance_data_can_be_filtered_by_employee()
     {
-        $employee = factory(Employee::class)->create();
-        $another_employee = factory(Employee::class)->create();
-        factory(Performance::class)->create(['employee_id' => $employee->id, 'name' => $employee->full_name]);
-        factory(Performance::class)->create(['employee_id' => $another_employee->id, 'name' => $another_employee->full_name]);
+        $employee = Employee::factory()->create();
+        $another_employee = Employee::factory()->create();
+        Performance::factory()->create(['employee_id' => $employee->id, 'name' => $employee->full_name]);
+        Performance::factory()->create(['employee_id' => $another_employee->id, 'name' => $another_employee->full_name]);
         Passport::actingAs($this->user());
 
         $response = $this->get("/api/v2/performances?employee={$employee->full_name}");
@@ -139,10 +139,10 @@ class PerformanceDataTest extends TestCase
     /** @test */
     public function performance_data_can_be_filtered_by_supervisor()
     {
-        $supervisor = factory(Supervisor::class)->create();
-        $another_supervisor = factory(Supervisor::class)->create();
-        factory(Performance::class)->create(['supervisor_id' => $supervisor->id]);
-        factory(Performance::class)->create(['supervisor_id' => $another_supervisor->id]);
+        $supervisor = Supervisor::factory()->create();
+        $another_supervisor = Supervisor::factory()->create();
+        Performance::factory()->create(['supervisor_id' => $supervisor->id]);
+        Performance::factory()->create(['supervisor_id' => $another_supervisor->id]);
         Passport::actingAs($this->user());
 
         $response = $this->get("/api/v2/performances?supervisor={$supervisor->name}");
@@ -156,10 +156,10 @@ class PerformanceDataTest extends TestCase
     /** @test */
     public function performance_data_can_be_filtered_by_project_campaign()
     {
-        $campaign = factory(Campaign::class)->create();
-        $another_campaign = factory(Campaign::class)->create();
-        factory(Performance::class)->create(['campaign_id' => $campaign->id]);
-        factory(Performance::class)->create(['campaign_id' => $another_campaign->id]);
+        $campaign = Campaign::factory()->create();
+        $another_campaign = Campaign::factory()->create();
+        Performance::factory()->create(['campaign_id' => $campaign->id]);
+        Performance::factory()->create(['campaign_id' => $another_campaign->id]);
         Passport::actingAs($this->user());
 
         $response = $this->get("/api/v2/performances?project_campaign={$campaign->project->name}");
@@ -173,10 +173,10 @@ class PerformanceDataTest extends TestCase
     /** @test */
     public function performance_data_can_be_filtered_by_site()
     {
-        $employee = factory(Employee::class)->create();
-        $another_employee = factory(Employee::class)->create();
-        factory(Performance::class)->create(['employee_id' => $employee->id]);
-        factory(Performance::class)->create(['employee_id' => $another_employee->id]);
+        $employee = Employee::factory()->create();
+        $another_employee = Employee::factory()->create();
+        Performance::factory()->create(['employee_id' => $employee->id]);
+        Performance::factory()->create(['employee_id' => $another_employee->id]);
         Passport::actingAs($this->user());
 
         $response = $this->get("/api/v2/performances?site={$employee->site->name}");
@@ -190,10 +190,10 @@ class PerformanceDataTest extends TestCase
     /** @test */
     public function performance_data_can_be_filtered_by_source()
     {
-        $campaign = factory(Campaign::class)->create();
-        $another_campaign = factory(Campaign::class)->create();
-        factory(Performance::class)->create(['campaign_id' => $campaign->id]);
-        factory(Performance::class)->create(['campaign_id' => $another_campaign->id]);
+        $campaign = Campaign::factory()->create();
+        $another_campaign = Campaign::factory()->create();
+        Performance::factory()->create(['campaign_id' => $campaign->id]);
+        Performance::factory()->create(['campaign_id' => $another_campaign->id]);
         Passport::actingAs($this->user());
 
         $response = $this->get("/api/v2/performances?source={$campaign->source->name}");
@@ -207,10 +207,10 @@ class PerformanceDataTest extends TestCase
     /** @test */
     public function performance_data_can_be_filtered_by_client()
     {
-        $campaign = factory(Campaign::class)->create();
-        $another_campaign = factory(Campaign::class)->create();
-        factory(Performance::class)->create(['campaign_id' => $campaign->id]);
-        factory(Performance::class)->create(['campaign_id' => $another_campaign->id]);
+        $campaign = Campaign::factory()->create();
+        $another_campaign = Campaign::factory()->create();
+        Performance::factory()->create(['campaign_id' => $campaign->id]);
+        Performance::factory()->create(['campaign_id' => $another_campaign->id]);
         Passport::actingAs($this->user());
 
         $response = $this->get("/api/v2/performances?client={$campaign->project->client->name}");
@@ -224,10 +224,10 @@ class PerformanceDataTest extends TestCase
     /** @test */
     public function performance_data_can_be_filtered_by_project_employee()
     {
-        $employee = factory(Employee::class)->create();
-        $another_employee = factory(Employee::class)->create();
-        factory(Performance::class)->create(['employee_id' => $employee->id]);
-        factory(Performance::class)->create(['employee_id' => $another_employee->id]);
+        $employee = Employee::factory()->create();
+        $another_employee = Employee::factory()->create();
+        Performance::factory()->create(['employee_id' => $employee->id]);
+        Performance::factory()->create(['employee_id' => $another_employee->id]);
         Passport::actingAs($this->user());
 
         $response = $this->get("/api/v2/performances?project_employee={$employee->project->name}");
@@ -241,10 +241,10 @@ class PerformanceDataTest extends TestCase
     /** @test */
     public function performance_data_can_be_filtered_by_supervisor_employee()
     {
-        $employee = factory(Employee::class)->create();
-        $another_employee = factory(Employee::class)->create();
-        factory(Performance::class)->create(['employee_id' => $employee->id]);
-        factory(Performance::class)->create(['employee_id' => $another_employee->id]);
+        $employee = Employee::factory()->create();
+        $another_employee = Employee::factory()->create();
+        Performance::factory()->create(['employee_id' => $employee->id]);
+        Performance::factory()->create(['employee_id' => $another_employee->id]);
         Passport::actingAs($this->user());
 
         $response = $this->get("/api/v2/performances?supervisor_employee={$employee->supervisor->name}");
@@ -258,8 +258,8 @@ class PerformanceDataTest extends TestCase
     /** @test */
     public function performance_data_can_be_filtered_by_date()
     {
-        $today = factory(Performance::class)->create(['date' => now()]);
-        $not_today = factory(Performance::class)->create(['date' => now()->subDay()]);
+        $today = Performance::factory()->create(['date' => now()]);
+        $not_today = Performance::factory()->create(['date' => now()->subDay()]);
         Passport::actingAs($this->user());
 
         $response = $this->get("/api/v2/performances?date={$today->date}");
@@ -273,9 +273,9 @@ class PerformanceDataTest extends TestCase
     /** @test */
     public function performance_data_can_be_filtered_by_dates_between()
     {
-        $from_date = factory(Performance::class)->create(['date' => now()->subDays(5)]);
-        $to_date = factory(Performance::class)->create(['date' => now()->subDay()]);
-        $today = factory(Performance::class)->create(['date' => now()]);
+        $from_date = Performance::factory()->create(['date' => now()->subDays(5)]);
+        $to_date = Performance::factory()->create(['date' => now()->subDay()]);
+        $today = Performance::factory()->create(['date' => now()]);
         Passport::actingAs($this->user());
 
         $response = $this->get("/api/v2/performances?dates_between={$from_date->date},{$to_date->date}");

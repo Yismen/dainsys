@@ -1,16 +1,25 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Models\Profile::class, function (Faker $faker) {
-    return [
-        'user_id' => factory(App\Models\User::class)->create(),
-        'gender' => 'male',
-        'bio' => $faker->paragraph,
-        'phone' => $faker->phoneNumber(),
-        'education' => $faker->paragraph,
-        'skills' => $faker->paragraph,
-        'work' => $faker->sentence,
-        'location' => $faker->sentence
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Profile>
+ */
+class ProfileFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\Profile::class;
+
+    public function definition()
+    {
+        return [
+            'user_id' => \App\Models\User::factory()->create(),
+            'gender' => 'male',
+            'bio' => fake()->paragraph,
+            'phone' => fake()->phoneNumber(),
+            'education' => fake()->paragraph,
+            'skills' => fake()->paragraph,
+            'work' => fake()->sentence,
+            'location' => fake()->sentence,
+        ];
+    }
+}

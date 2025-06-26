@@ -33,18 +33,14 @@ class NationalitiesController extends Controller
             ->actives()
             ->get();
 
-        $nationalities = Cache::rememberForever('nationalities', function () {
-            return Nationality::orderBy('name', 'ASC')
-                ->with(['employees' => function ($query) {
-                    return $query
-                        ->orderBy('first_name')
-                        ->orderBy('first_name')
-                        ->orderBy('last_name')
-                        ->orderBy('second_last_name')
-                        ->actives();
-                },
-                ])->get();
-        });
+        $nationalities = Cache::rememberForever('nationalities', fn () => Nationality::orderBy('name', 'ASC')
+            ->with(['employees' => fn ($query) => $query
+                ->orderBy('first_name')
+                ->orderBy('first_name')
+                ->orderBy('last_name')
+                ->orderBy('second_last_name')
+                ->actives(),
+            ])->get());
 
         if ($request->ajax()) {
             return $nationalities;
@@ -66,7 +62,6 @@ class NationalitiesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -92,8 +87,7 @@ class NationalitiesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show(Nationality $nationality)
@@ -104,8 +98,7 @@ class NationalitiesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Nationality $nationality)
@@ -116,9 +109,7 @@ class NationalitiesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Nationality $nationality)
@@ -137,8 +128,7 @@ class NationalitiesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Nationality $nationality)
@@ -159,7 +149,7 @@ class NationalitiesController extends Controller
         Cache::forget('nationalities');
         Cache::forget('employees');
 
-        foreach ($request->employee as  $id) {
+        foreach ($request->employee as $id) {
             $employee = Employee::whereId($id)->first();
 
             $employee->update(['nationality_id' => $request->get('nationality')]);
@@ -172,7 +162,7 @@ class NationalitiesController extends Controller
     protected function validateRequest(Request $request, Nationality $nationality)
     {
         $this->validate($request, [
-            'name' => 'required|min:3|unique:nationalities,name,' . $nationality->id,
+            'name' => 'required|min:3|unique:nationalities,name,'.$nationality->id,
         ]);
     }
 }

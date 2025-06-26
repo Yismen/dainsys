@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Punches;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewPunchs()
+    public function test_guest_cant_view_punchs()
     {
-        $punch = create('App\Models\Punch');
+        $punch = create(\App\Models\Punch::class);
 
         $this->get(route('admin.punches.index'))
             ->assertStatus(302)
@@ -24,9 +24,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreatePunchs()
+    public function test_guest_cant_create_punchs()
     {
-        $punch = create('App\Models\Punch');
+        $punch = create(\App\Models\Punch::class);
 
         $this->get(route('admin.punches.create'))
             ->assertStatus(302)
@@ -37,9 +37,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdatePunch()
+    public function test_guest_cant_update_punch()
     {
-        $punch = create('App\Models\Punch');
+        $punch = create(\App\Models\Punch::class);
 
         $this->get(route('admin.punches.edit', $punch->punch))
             ->assertStatus(302)
@@ -50,9 +50,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyPunch()
+    public function test_guest_cant_destroy_punch()
     {
-        $punch = create('App\Models\Punch');
+        $punch = create(\App\Models\Punch::class);
 
         $this->delete(route('admin.punches.destroy', $punch->punch))
             ->assertStatus(302)

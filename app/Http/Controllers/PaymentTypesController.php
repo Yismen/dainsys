@@ -69,7 +69,6 @@ class PaymentTypesController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
 
@@ -77,7 +76,6 @@ class PaymentTypesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function edit(PaymentType $payment_type)
@@ -89,7 +87,6 @@ class PaymentTypesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function update(PaymentType $payment_type, Request $request)
@@ -108,7 +105,6 @@ class PaymentTypesController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function destroy(PaymentType $payment_type, Request $request)

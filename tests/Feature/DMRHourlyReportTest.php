@@ -2,16 +2,16 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use App\Models\Report;
-use App\Models\Recipient;
+use App\Console\Commands\Inbound\Support\InboundDataRepository;
+use App\Console\Commands\Inbound\Support\InboundSummaryExport;
+use App\Console\Commands\RingCentralReports\Commands\DMR\SendDMRProductionReportCommand;
 use App\Mail\CommandsBaseMail;
+use App\Models\Recipient;
+use App\Models\Report;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Console\Commands\Inbound\Support\InboundSummaryExport;
-use App\Console\Commands\Inbound\Support\InboundDataRepository;
-use App\Console\Commands\RingCentralReports\Commands\DMR\SendDMRProductionReportCommand;
+use Tests\TestCase;
 
 class DMRHourlyReportTest extends TestCase
 {
@@ -22,8 +22,8 @@ class DMRHourlyReportTest extends TestCase
     {
         Excel::fake();
         Mail::fake();
-        $report = factory(Report::class)->create(['key' => 'dmr:send-hourly-report']);
-        $recipients = factory(Recipient::class, 2)->create();
+        $report = Report::factory()->create(['key' => 'dmr:send-hourly-report']);
+        $recipients = Recipient::factory(2)->create();
         $report->recipients()->sync($recipients->pluck('id')->toArray());
 
         $this->artisan(SendDMRProductionReportCommand::class)
@@ -80,9 +80,7 @@ class DMRHourlyReportTest extends TestCase
             $file_name
         );
 
-        Excel::assertStored($file_name, function (InboundSummaryExport $export) {
-            return true;
-        });
+        Excel::assertStored($file_name, fn (InboundSummaryExport $export) => true);
     }
 
     /** @test */

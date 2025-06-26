@@ -8,14 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Report extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     use SoftDeletes;
 
     protected $fillable = ['name', 'key', 'active', 'description'];
 
     /**
      * The recipients that belong to the Report
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function recipients(): BelongsToMany
     {
@@ -24,15 +23,11 @@ class Report extends Model
 
     public function mailableRecipients(): array
     {
-        if (! $this->active) {
-            throw new \Exception('Report ' . $this->name . ' is inactive!', 403);
-        }
+        throw_unless($this->active, new \Exception('Report '.$this->name.' is inactive!', 403));
 
         $recipients = $this->recipients()->pluck('email', 'name')->all();
 
-        if (empty($recipients)) {
-            throw new \Exception('Report ' . $this->name . ' has no recipients assigned. Please assign some!', 403);
-        }
+        throw_if(empty($recipients), new \Exception('Report '.$this->name.' has no recipients assigned. Please assign some!', 403));
 
         return $recipients;
     }

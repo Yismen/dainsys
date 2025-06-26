@@ -53,8 +53,6 @@ class SendOomaProductionReportCommand extends BaseProductionReportCommand
 
     /**
      * Replace default method
-     *
-     * @return array
      */
     protected function getDatesRange(): array
     {

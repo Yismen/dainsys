@@ -18,20 +18,16 @@ abstract class BaseProductionReportCommand extends Command
 
     /**
      * Parse and return the distribution list for the email
-     *
-     * @return array
      */
     protected function getDistroList(string $config_key): array
     {
-        $service = new \App\Services\DainsysConfigService();
+        $service = new \App\Services\DainsysConfigService;
 
         return $service->getDistro($config_key);
     }
 
     /**
      * Returns the dates range form the report
-     *
-     * @return array
      */
     protected function getDatesRange(): array
     {

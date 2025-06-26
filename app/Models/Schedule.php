@@ -8,6 +8,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Schedule extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     use Sluggable;
 
     protected $table = 'schedules';
@@ -18,8 +19,6 @@ class Schedule extends Model
 
     /**
      * Return the sluggable configuration array for this model.
-     *
-     * @return array
      */
     public function sluggable(): array
     {
@@ -37,19 +36,19 @@ class Schedule extends Model
         return $this->belongsTo(Employee::class);
     }
 
-    public function getEmployeesListAttribute()
+    protected function employeesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Employee::actives()
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => Employee::actives()
             ->orderBy('first_name')
             ->orderBy('second_first_name')
             ->orderBy('last_name')
             ->orderBy('second_last_name')
-            ->get();
+            ->get());
     }
 
-    public function getDateAttribute($date)
+    protected function date(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Carbon::parse($date);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn ($date) => Carbon::parse($date));
     }
 
     public function createNew($data)
@@ -71,7 +70,7 @@ class Schedule extends Model
                 }
 
                 $date->addDays(1);
-            } catch (\Exception $e) {
+            } catch (\Exception) {
                 throw new \Exception('Invalid Data. Must pass a valid employee_id, date, hours', 423);
             }
         }

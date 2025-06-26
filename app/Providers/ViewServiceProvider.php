@@ -20,7 +20,5 @@ class ViewServiceProvider extends ServiceProvider
         ], LatestPunchComposer::class);
     }
 
-    public function register()
-    {
-    }
+    public function register() {}
 }

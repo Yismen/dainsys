@@ -6,6 +6,8 @@ use App\Models\DainsysModel as Model;
 
 class SupervisorUser extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $table = 'supervisor_user';
 
     public function syncRelationship(array $data)

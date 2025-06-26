@@ -20,29 +20,24 @@ class ImportOvernightHourController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-    }
+    public function index() {}
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\ImportOvernightHourRequest  $request
-     *
      * @return \Illuminate\Http\Response
      */
     public function store(ImportOvernightHourRequest $request)
     {
-        MaatwebsiteExcel::import(new OvernightHoutImport(), $request->file('_file_'));
+        MaatwebsiteExcel::import(new OvernightHoutImport, $request->file('_file_'));
 
         return redirect()->route('admin.overnight_hours.index')
             ->withSuccess('File imported');
@@ -52,44 +47,31 @@ class ImportOvernightHourController extends Controller
      * Display the specified resource.
      *
      * @param  \App\OvernightHour  $overnightHour
-     *
      * @return \Illuminate\Http\Response
      */
-    public function show(OvernightHour $overnightHour)
-    {
-    }
+    public function show(OvernightHour $overnightHour) {}
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\OvernightHour  $overnightHour
-     *
      * @return \Illuminate\Http\Response
      */
-    public function edit(OvernightHour $overnightHour)
-    {
-    }
+    public function edit(OvernightHour $overnightHour) {}
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  \App\OvernightHour  $overnightHour
-     *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OvernightHour $overnightHour)
-    {
-    }
+    public function update(Request $request, OvernightHour $overnightHour) {}
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\OvernightHour  $overnightHour
-     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(OvernightHour $overnightHour)
-    {
-    }
+    public function destroy(OvernightHour $overnightHour) {}
 }

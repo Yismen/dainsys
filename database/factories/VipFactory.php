@@ -1,10 +1,19 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Models\Vip::class, function (Faker $faker) {
-    return [
-        'employee_id' => factory(App\Models\Employee::class)->create()->id,
-        'since' => $faker->date(),
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Vip>
+ */
+class VipFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\Vip::class;
+
+    public function definition()
+    {
+        return [
+            'employee_id' => \App\Models\Employee::factory()->create()->id,
+            'since' => fake()->date(),
+        ];
+    }
+}

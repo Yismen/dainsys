@@ -28,9 +28,7 @@ class PositionsController extends Controller
         if ($request->ajax()) {
             return DataTables::of(
                 Position::with('department')
-                    ->withCount(['employees' => function ($query) {
-                        return $query->actives();
-                    },
+                    ->withCount(['employees' => fn ($query) => $query->actives(),
                     ])
                     ->with('payment_type')
                     ->with('payment_frequency')
@@ -89,8 +87,7 @@ class PositionsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function show(Position $position)
@@ -101,8 +98,7 @@ class PositionsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function edit(Position $position, Request $request)
@@ -117,8 +113,7 @@ class PositionsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function update(Position $position, Request $request)
@@ -148,8 +143,7 @@ class PositionsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function destroy(Position $position, Request $request)

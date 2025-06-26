@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreatePayrollDiscountsTable extends Migration
 {
@@ -12,7 +12,7 @@ class CreatePayrollDiscountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payroll_discounts', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('payroll_discounts', function (Blueprint $table): void {
             $table->increments('id');
             $table->date('date');
             $table->integer('employee_id')->unsigned();
@@ -34,6 +34,6 @@ class CreatePayrollDiscountsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('payroll_discounts');
+        \Illuminate\Support\Facades\Schema::drop('payroll_discounts');
     }
 }

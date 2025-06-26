@@ -48,14 +48,13 @@ class TerminationsController extends Controller
     {
         return $terminations->create($request->all());
 
-        return \Redirect::route('terminations.create')->withSuccess("Succesfully created department [{$request->department}];");
+        return \Illuminate\Support\Facades\Redirect::route('terminations.create')->withSuccess("Succesfully created department [{$request->department}];");
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function show(Termination $terminations)
@@ -67,7 +66,6 @@ class TerminationsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function edit(Termination $terminations)
@@ -79,7 +77,6 @@ class TerminationsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function update(CreateTerminationsRequest $request, Termination $terminations)
@@ -94,7 +91,6 @@ class TerminationsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function destroy(Termination $terminations)

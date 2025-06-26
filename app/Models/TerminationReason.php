@@ -6,13 +6,19 @@ use App\Models\DainsysModel as Model;
 
 class TerminationReason extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     /**
      * mass assignable
      */
     protected $fillable = ['reason', 'description'];
 
-    public function setReasonAttribute($reason)
+    protected function reason(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->attributes['reason'] = ucwords(trim($reason));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($reason) {
+            return $this->attributes['reason'] = ucwords(trim($reason));
+
+            return ['reason' => ucwords(trim($reason))];
+        });
     }
 }

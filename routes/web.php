@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', \App\Http\Controllers\HomeController::class)->name('home');
 Auth::routes();
 
-Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'ensure_has_profile', 'ensure_valid_email_domain']], function () {
+Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'ensure_has_profile', 'ensure_valid_email_domain']], function (): void {
     Route::get('/', [\App\Http\Controllers\AdminController::class, 'admin']);
 
     Route::post('afps/employees', [\App\Http\Controllers\AfpsController::class, 'assignEmployees']);
@@ -57,7 +57,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'e
 
     Route::resource('contacts', \App\Http\Controllers\User\ContactsController::class);
 
-    Route::group(['prefix' => 'dashboards'], function () {
+    Route::group(['prefix' => 'dashboards'], function (): void {
         Route::get('', \App\Http\Controllers\Dashboards\DashboardController::class)
             ->name('dashboards');
         Route::get('human_resources', [\App\Http\Controllers\Dashboards\HumanResourcesDashboardController::class, 'index'])
@@ -81,7 +81,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'e
 
     Route::resource('dispositions', \App\Http\Controllers\RingCentral\DispositionController::class);
 
-    Route::prefix('employees')->group(function () {
+    Route::prefix('employees')->group(function (): void {
         Route::post('{employee}/address', [\App\Http\Controllers\Employee\AddressController::class, 'update'])
             ->name('employees.update-address');
         Route::put('{employee}/ars', [\App\Http\Controllers\Employee\ARSController::class, 'assign'])
@@ -124,7 +124,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'e
     Route::resource('holidays', \App\Http\Controllers\HolidayController::class)
         ->except('show');
 
-    Route::group(['prefix' => 'human_resources', 'middleware' => 'authorize:view-human-resources-dashboard'], function () {
+    Route::group(['prefix' => 'human_resources', 'middleware' => 'authorize:view-human-resources-dashboard'], function (): void {
         Route::get('employees/dgt3', [DGT3Controller::class, 'dgt3'])
             ->name('human_resources.dgt3.index');
         Route::post('employees/dgt3', [DGT3Controller::class, 'handleDgt3'])

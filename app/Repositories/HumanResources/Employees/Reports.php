@@ -48,23 +48,16 @@ class Reports
         ])
             ->whereYear('hire_date', '<=', $year)
             ->with('termination')
-            ->where(function ($query) use ($year) {
-                return $query->has('termination', false)
-                    ->orWhereHas('termination', function ($query) use ($year) {
-                        return $query->whereYear('termination_date', '>=', $year);
-                    });
-            })
+            ->where(fn ($query) => $query->has('termination', false)
+                ->orWhereHas('termination', fn ($query) => $query->whereYear('termination_date', '>=', $year)))
             ->with('socialSecurity')
             ->with('nationality')
-            ->with(['position' => function ($query) {
-                return $query->with('payment_type')->with('payment_frequency');
-            },
+            ->with(['position' => fn ($query) => $query->with('payment_type')->with('payment_frequency'),
             ])
-            ->with('gender')
+            ->with('gender');
 
-            // ->whereMonth('hire_date', '=', $month)
-            // ->orWhereYear('ter', '=', $year));
-        ;
+        // ->whereMonth('hire_date', '=', $month)
+        // ->orWhereYear('ter', '=', $year));
     }
 
     public function dgt4($year, $month)
@@ -73,13 +66,9 @@ class Reports
             'id', 'first_name', 'second_first_name', 'last_name', 'second_last_name', 'hire_date', 'personal_id', 'passport',
         ])
             ->with('termination')
-            ->where(function ($query) use ($year, $month) {
-                return $query->whereYear('hire_date', '=', $year)
-                    ->whereMonth('hire_date', '=', $month);
-            })
-            ->orWhereHas('termination', function ($query) use ($year, $month) {
-                return $query->whereYear('termination_date', '=', $year)
-                    ->whereMonth('termination_date', '=', $month);
-            });
+            ->where(fn ($query) => $query->whereYear('hire_date', '=', $year)
+                ->whereMonth('hire_date', '=', $month))
+            ->orWhereHas('termination', fn ($query) => $query->whereYear('termination_date', '=', $year)
+                ->whereMonth('termination_date', '=', $month));
     }
 }

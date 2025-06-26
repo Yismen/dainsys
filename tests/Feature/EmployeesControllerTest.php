@@ -2,18 +2,18 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use App\Models\Report;
-use App\Models\Process;
-use App\Models\Employee;
-use App\Models\Recipient;
-use Illuminate\Support\Arr;
 use App\Events\EmployeeCreated;
 use App\Mail\EmployeeCreatedMail;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Models\Employee;
+use App\Models\Process;
+use App\Models\Recipient;
+use App\Models\Report;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Mail;
+use Tests\TestCase;
 
 class EmployeesControllerTest extends TestCase
 {
@@ -21,9 +21,9 @@ class EmployeesControllerTest extends TestCase
     use WithFaker;
 
     // Authentication Tests
-    public function testGuestCantViewEmployees()
+    public function test_guest_cant_view_employees()
     {
-        $employee = create('App\Models\Employee');
+        $employee = create(\App\Models\Employee::class);
 
         $this->get(route('admin.employees.index'))
             ->assertStatus(302)
@@ -34,9 +34,9 @@ class EmployeesControllerTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateEmployees()
+    public function test_guest_cant_create_employees()
     {
-        $employee = create('App\Models\Employee');
+        $employee = create(\App\Models\Employee::class);
 
         $this->get(route('admin.employees.create'))
             ->assertStatus(302)
@@ -47,9 +47,9 @@ class EmployeesControllerTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateEmployee()
+    public function test_guest_cant_update_employee()
     {
-        $employee = create('App\Models\Employee');
+        $employee = create(\App\Models\Employee::class);
 
         $this->get(route('admin.employees.edit', $employee->id))
             ->assertStatus(302)
@@ -60,10 +60,10 @@ class EmployeesControllerTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    //Authorization Tests
-    public function testUnuthorizedUsersCantViewEmployee()
+    // Authorization Tests
+    public function test_unuthorized_users_cant_view_employee()
     {
-        $employee = create('App\Models\Employee');
+        $employee = create(\App\Models\Employee::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.employees.index'))
@@ -73,18 +73,18 @@ class EmployeesControllerTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetEmployee()
+    public function test_unuthorized_users_cant_createt_employee()
     {
-        $employee = create('App\Models\Employee');
+        $employee = create(\App\Models\Employee::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.employees.store'))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditEmployee()
+    public function test_unuthorized_users_cant_edit_employee()
     {
-        $employee = create('App\Models\Employee');
+        $employee = create(\App\Models\Employee::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.employees.update', $employee->id))
@@ -138,8 +138,8 @@ class EmployeesControllerTest extends TestCase
     {
         Event::fake();
 
-        $recipients = factory(Recipient::class)->create();
-        $report = factory(Report::class)->create(['key' => 'dainsys:employees-hired']);
+        $recipients = Recipient::factory()->create();
+        $report = Report::factory()->create(['key' => 'dainsys:employees-hired']);
         $report->recipients()->sync([$recipients->id]);
 
         $employee = make(Employee::class)->toArray();
@@ -170,7 +170,7 @@ class EmployeesControllerTest extends TestCase
     /** @test */
     public function automatic_processes_are_assigned_to_employees_when_created()
     {
-        $process = factory(Process::class)->create(['default' => true]);
+        $process = Process::factory()->create(['default' => true]);
         $employee = make(Employee::class)->toArray();
         $employee['punch'] = random_int(10001, 99999);
         $response = $this->actingAs($this->userWithPermission('create-employees'))

@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Sites;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewSites()
+    public function test_guest_cant_view_sites()
     {
-        $site = create('App\Models\Site');
+        $site = create(\App\Models\Site::class);
 
         $this->get(route('admin.sites.index'))
             ->assertStatus(302)
@@ -24,9 +24,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateSites()
+    public function test_guest_cant_create_sites()
     {
-        $site = create('App\Models\Site');
+        $site = create(\App\Models\Site::class);
 
         $this->get(route('admin.sites.create'))
             ->assertStatus(302)
@@ -37,9 +37,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateSite()
+    public function test_guest_cant_update_site()
     {
-        $site = create('App\Models\Site');
+        $site = create(\App\Models\Site::class);
 
         $this->get(route('admin.sites.edit', $site->id))
             ->assertStatus(302)
@@ -50,9 +50,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroySite()
+    public function test_guest_cant_destroy_site()
     {
-        $site = create('App\Models\Site');
+        $site = create(\App\Models\Site::class);
 
         $this->delete(route('admin.sites.destroy', $site->id))
             ->assertStatus(302)

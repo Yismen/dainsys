@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Roles;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewRole()
+    public function test_unuthorized_users_cant_view_role()
     {
-        $role = create('App\Models\Role');
+        $role = create(\App\Models\Role::class);
         $response = $this->actingAs($this->userWithRole('wrong-role'));
 
         $response->get(route('admin.roles.index'))
@@ -23,27 +23,27 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetRole()
+    public function test_unuthorized_users_cant_createt_role()
     {
-        $role = create('App\Models\Role');
+        $role = create(\App\Models\Role::class);
         $response = $this->actingAs($this->userWithRole('wrong-role'));
 
         $response->post(route('admin.roles.store'))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditRole()
+    public function test_unuthorized_users_cant_edit_role()
     {
-        $role = create('App\Models\Role');
+        $role = create(\App\Models\Role::class);
         $response = $this->actingAs($this->userWithRole('wrong-role'));
 
         $response->put(route('admin.roles.update', $role->name))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyRole()
+    public function test_unuthorized_users_cant_destroy_role()
     {
-        $role = create('App\Models\Role');
+        $role = create(\App\Models\Role::class);
         $response = $this->actingAs($this->userWithRole('wrong-role'));
 
         $response->delete(route('admin.roles.destroy', $role->name))

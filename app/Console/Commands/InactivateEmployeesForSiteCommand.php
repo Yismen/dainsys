@@ -46,12 +46,12 @@ class InactivateEmployeesForSiteCommand extends Command
 
         $answer2 = $this->ask("Please confirm once again by reponding with word 'yes'");
 
-        if (strtolower($answer1) !== 'yes' || strtolower($answer2) !== 'yes') {
+        if (strtolower((string) $answer1) !== 'yes' || strtolower((string) $answer2) !== 'yes') {
             return $this->warn('Process cancelled');
         }
 
         $employees = Employee::query()
-            ->whereHas('site', function ($query) use ($site) {
+            ->whereHas('site', function ($query) use ($site): void {
                 $query->where('name', 'like', $site);
             })
             ->actives()

@@ -10,21 +10,19 @@ use Illuminate\Queue\SerializesModels;
 
 class NewUserCreated extends Mailable implements ShouldQueue
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     public $user;
-
-    public $password;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user, $password)
+    public function __construct(User $user, public $password)
     {
         $this->user = $user;
-        $this->password = $password;
     }
 
     /**

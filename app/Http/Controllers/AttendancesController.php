@@ -48,7 +48,6 @@ class AttendancesController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Requests\Attendance\CreateAttendanceRequest  $request
-     *
      * @return \Illuminate\Http\Response
      */
     public function store(CreateAttendanceRequest $request)
@@ -81,18 +80,14 @@ class AttendancesController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Attendance  $attendance
-     *
      * @return \Illuminate\Http\Response
      */
-    public function show(Attendance $attendance)
-    {
-    }
+    public function show(Attendance $attendance) {}
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Attendance  $attendance
-     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Attendance $attendance)
@@ -105,7 +100,6 @@ class AttendancesController extends Controller
      *
      * @param  \Illuminate\Http\Requests\Attendance\CreateAttendanceRequest  $request
      * @param  \App\Attendance  $attendance
-     *
      * @return \Illuminate\Http\Response
      */
     public function update(EditAttendanceRequest $request, Attendance $attendance)
@@ -122,7 +116,6 @@ class AttendancesController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Attendance  $attendance
-     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Attendance $attendance)

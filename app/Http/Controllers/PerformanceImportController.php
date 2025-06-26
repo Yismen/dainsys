@@ -43,8 +43,7 @@ class PerformanceImportController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(PerformancesImportService $service)
@@ -74,9 +73,7 @@ class PerformanceImportController extends Controller
             ->with('employee.supervisor');
 
         return DataTables::of($performances)
-            ->addColumn('edit', function ($query) {
-                return route('admin.performances.edit', $query->id);
-            })
+            ->addColumn('edit', fn ($query) => route('admin.performances.edit', $query->id))
             ->toJson(true);
     }
 
@@ -91,8 +88,7 @@ class PerformanceImportController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Performance $performance
-     *
+     * @param  \App\Performance  $performance
      * @return \Illuminate\Http\Response
      */
     public function destroy()
@@ -101,9 +97,9 @@ class PerformanceImportController extends Controller
 
         $performances = Performance::query()
             ->where('date', request('date'))
-            ->when($has_file_name, function ($query) {
+            ->when($has_file_name, function ($query): void {
                 $query->where('file_name', request('file_name'));
-            }, function ($query) {
+            }, function ($query): void {
                 $query->whereNull('file_name');
             })
             ->get();

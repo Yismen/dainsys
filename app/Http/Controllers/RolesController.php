@@ -61,8 +61,7 @@ class RolesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int      $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function show(Role $role)
@@ -73,8 +72,7 @@ class RolesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int      $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function edit(Role $role)
@@ -85,14 +83,13 @@ class RolesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int      $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function update(Role $role, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:roles,name,' . $role->id,
+            'name' => 'required|unique:roles,name,'.$role->id,
             'users' => 'required|array',
         ]);
 
@@ -107,8 +104,7 @@ class RolesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int      $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function destroy(Role $role)

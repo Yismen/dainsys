@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\TerminationTypes;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewTerminationTypes()
+    public function test_guest_cant_view_termination_types()
     {
-        $termination_type = create('App\Models\TerminationType');
+        $termination_type = create(\App\Models\TerminationType::class);
 
         $this->get(route('admin.termination_types.index'))
             ->assertStatus(302)
@@ -24,9 +24,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateTerminationTypes()
+    public function test_guest_cant_create_termination_types()
     {
-        $termination_type = create('App\Models\TerminationType');
+        $termination_type = create(\App\Models\TerminationType::class);
 
         $this->get(route('admin.termination_types.create'))
             ->assertStatus(302)
@@ -37,9 +37,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateTerminationType()
+    public function test_guest_cant_update_termination_type()
     {
-        $termination_type = create('App\Models\TerminationType');
+        $termination_type = create(\App\Models\TerminationType::class);
 
         $this->get(route('admin.termination_types.edit', $termination_type->id))
             ->assertStatus(302)

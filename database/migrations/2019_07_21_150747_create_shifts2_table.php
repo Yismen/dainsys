@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateShifts2Table extends Migration
 {
@@ -11,7 +11,7 @@ class CreateShifts2Table extends Migration
      */
     public function up()
     {
-        Schema::create('shifts', function (Blueprint $table) {
+        Schema::create('shifts', function (Blueprint $table): void {
             $table->increments('id');
             $table->integer('employee_id')->unsigned();
             $table->string('slug', 100)->nullable();

@@ -156,8 +156,6 @@ trait EmployeeRelationships
 
     /**
      * The processes that belong to the EmployeeRelationships
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function processes(): BelongsToMany
     {
@@ -166,8 +164,6 @@ trait EmployeeRelationships
 
     /**
      * The steps that belong to the EmployeeRelationships
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function steps(): BelongsToMany
     {

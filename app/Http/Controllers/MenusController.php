@@ -65,7 +65,6 @@ class MenusController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function show(Menu $menu)
@@ -77,7 +76,6 @@ class MenusController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function edit(Menu $menu)
@@ -89,14 +87,13 @@ class MenusController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function update(Menu $menu, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:menus,name,' . $menu->id,
-            'display_name' => 'required|unique:menus,display_name,' . $menu->id . ',id',
+            'name' => 'required|unique:menus,name,'.$menu->id,
+            'display_name' => 'required|unique:menus,display_name,'.$menu->id.',id',
             'roles' => 'sometimes|required|array',
         ]);
 
@@ -112,7 +109,6 @@ class MenusController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function destroy(Menu $menu)

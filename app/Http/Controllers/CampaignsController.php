@@ -31,7 +31,7 @@ class CampaignsController extends Controller
 
     public function create()
     {
-        $campaign = (new Campaign())->append([
+        $campaign = (new Campaign)->append([
             'project_list',
             'revenue_type_list',
         ]);
@@ -53,7 +53,7 @@ class CampaignsController extends Controller
         $campaign = Campaign::create($request->only(['name', 'project_id', 'source_id', 'revenue_type_id', 'sph_goal', 'revenue_rate']));
 
         return redirect()->route('admin.campaigns.index')
-            ->withSuccess('Campaign ' . $campaign->name . ' has been created!');
+            ->withSuccess('Campaign '.$campaign->name.' has been created!');
     }
 
     public function show(Campaign $campaign)
@@ -74,7 +74,7 @@ class CampaignsController extends Controller
     public function update(Campaign $campaign, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:campaigns,name,' . $campaign->id,
+            'name' => 'required|unique:campaigns,name,'.$campaign->id,
             'project_id' => 'required|exists:projects,id',
             'source_id' => 'required|exists:sources,id',
             'revenue_type_id' => 'required|exists:revenue_types,id',
@@ -88,6 +88,6 @@ class CampaignsController extends Controller
         Cache::forget('campaigns');
 
         return redirect()->route('admin.campaigns.index')
-            ->withSuccess('Campaign ' . $campaign->name . ' has been updated!');
+            ->withSuccess('Campaign '.$campaign->name.' has been updated!');
     }
 }

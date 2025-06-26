@@ -68,7 +68,6 @@ class PunchesController extends Controller
      * Display the specified resource.
      *
      * @param int  Punch $punch
-     *
      * @return Response
      */
     public function show(Punch $punch)
@@ -80,7 +79,6 @@ class PunchesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int  Punch $punch
-     *
      * @return Response
      */
     public function edit(Punch $punch)
@@ -92,7 +90,6 @@ class PunchesController extends Controller
      * Update the specified resource in storage.
      *
      * @param int  Punch $punch
-     *
      * @return Response
      */
     public function update(Punch $punch, PunchesUpdateRequest $request)
@@ -108,7 +105,6 @@ class PunchesController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int  Punch $punch
-     *
      * @return Response
      */
     public function destroy(Punch $punch)

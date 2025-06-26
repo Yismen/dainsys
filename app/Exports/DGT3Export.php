@@ -13,7 +13,7 @@ class DGT3Export implements FromView
      */
     public function view(): View
     {
-        $results = (new Reports())
+        $results = (new Reports)
             ->dgt3(request('year'))
             ->get();
 

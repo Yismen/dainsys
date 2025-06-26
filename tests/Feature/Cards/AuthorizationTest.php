@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Cards;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewCard()
+    public function test_unuthorized_users_cant_view_card()
     {
-        $card = create('App\Models\Card');
+        $card = create(\App\Models\Card::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.cards.index'))
@@ -23,27 +23,27 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetCard()
+    public function test_unuthorized_users_cant_createt_card()
     {
-        $card = create('App\Models\Card');
+        $card = create(\App\Models\Card::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.cards.store'))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditCard()
+    public function test_unuthorized_users_cant_edit_card()
     {
-        $card = create('App\Models\Card');
+        $card = create(\App\Models\Card::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.cards.update', $card->card))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyCard()
+    public function test_unuthorized_users_cant_destroy_card()
     {
-        $card = create('App\Models\Card');
+        $card = create(\App\Models\Card::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.cards.destroy', $card->card))

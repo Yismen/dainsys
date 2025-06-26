@@ -2,11 +2,11 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Maatwebsite\Excel\Facades\Excel;
+use Tests\TestCase;
 
 class ImportOvernightHoursTest extends TestCase
 {
@@ -14,16 +14,16 @@ class ImportOvernightHoursTest extends TestCase
     use WithFaker;
 
     /** Authentication: Prevent access to unauthenticated users */
-    public function testGuestCantAccess()
+    public function test_guest_cant_access()
     {
         $this->get(route('admin.overnight_hours.index'))->assertRedirect('/login');
         $this->get(route('admin.overnight_hours.create'))->assertRedirect('/login');
     }
 
     /** Authorization: Prevent access to unauthorizated users */
-    public function testUnuthorizedUsersCantAccess()
+    public function test_unuthorized_users_cant_access()
     {
-        $hour = create('App\Models\OvernightHour');
+        $hour = create(\App\Models\OvernightHour::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.overnight_hours.index'))
@@ -34,7 +34,7 @@ class ImportOvernightHoursTest extends TestCase
     }
 
     /** Authorization: Grant access to authorizated users to import */
-    public function testAuthorizedUsersCanSeeAFormToImportOvernightHours()
+    public function test_authorized_users_can_see_a_form_to_import_overnight_hours()
     {
         $response = $this->actingAs($this->userWithPermission('view-overnight-hours'));
 
@@ -45,7 +45,7 @@ class ImportOvernightHoursTest extends TestCase
     }
 
     /** Validations: Validate fields to reate */
-    public function testValidateImportingOvernightHour()
+    public function test_validate_importing_overnight_hour()
     {
         $response = $this->actingAs($this->userWithPermission('import-overnight-hours'));
 
@@ -74,7 +74,7 @@ class ImportOvernightHoursTest extends TestCase
     }
 
     /** Import file with hours */
-    public function testAuthorizedUsersCanImportOvernightHoursFile()
+    public function test_authorized_users_can_import_overnight_hours_file()
     {
         Excel::fake();
 

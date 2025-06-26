@@ -30,10 +30,10 @@ class HolidayController extends Controller
         $holidays = Holiday::query()
             ->when(
                 request()->has('year'),
-                function ($query) {
+                function ($query): void {
                     $query->whereYear('date', request('year'));
                 },
-                function ($query) {
+                function ($query): void {
                     $query->whereYear('date', '>=', now()->subYear()->year);
                 }
             )

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateHoursTable extends Migration
 {
@@ -12,7 +12,7 @@ class CreateHoursTable extends Migration
      */
     public function up()
     {
-        Schema::create('hours', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('hours', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('unique_id', 30)->unique();
             $table->integer('employee_id')->unsigned()->index();
@@ -35,6 +35,6 @@ class CreateHoursTable extends Migration
      */
     public function down()
     {
-        Schema::drop('hours');
+        \Illuminate\Support\Facades\Schema::drop('hours');
     }
 }

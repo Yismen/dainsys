@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreatePayrollDiscountConceptsTable extends Migration
 {
@@ -12,7 +12,7 @@ class CreatePayrollDiscountConceptsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payroll_discount_concepts', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('payroll_discount_concepts', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name', 200);
             $table->timestamps();
@@ -26,6 +26,6 @@ class CreatePayrollDiscountConceptsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('payroll_discount_concepts');
+        \Illuminate\Support\Facades\Schema::drop('payroll_discount_concepts');
     }
 }

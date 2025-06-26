@@ -2,12 +2,12 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\Models\Performance;
-use Illuminate\Http\UploadedFile;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
+use Tests\TestCase;
 
 class PerformancesImportTest extends TestCase
 {
@@ -59,7 +59,7 @@ class PerformancesImportTest extends TestCase
         Storage::fake();
         Excel::fake();
         $correct_name_prefix = '_performance_daily_data';
-        $file_name = $correct_name_prefix . '_anything.csv';
+        $file_name = $correct_name_prefix.'_anything.csv';
         $file = UploadedFile::fake()->create($file_name, 8);
         $attributes = [
             'excel_file' => [$file],
@@ -89,7 +89,7 @@ class PerformancesImportTest extends TestCase
     /** @test */
     public function it_deletes_data_for_given_file_name_and_date()
     {
-        $performance = factory(Performance::class)->create();
+        $performance = Performance::factory()->create();
         $attributes = [
             'date' => $performance->date,
             'file_name' => $performance->file_name,
@@ -107,8 +107,8 @@ class PerformancesImportTest extends TestCase
     /** @test */
     public function it_shows_all_performances_for_a_date()
     {
-        $date_1 = factory(Performance::class)->create(['date' => '2021-01-01']);
-        $date_2 = factory(Performance::class)->create(['date' => '2021-01-05']);
+        $date_1 = Performance::factory()->create(['date' => '2021-01-01']);
+        $date_2 = Performance::factory()->create(['date' => '2021-01-05']);
 
         $this->actingAs($this->userWithPermission('view-performances-import'));
 

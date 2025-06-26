@@ -2,17 +2,17 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use App\Models\Report;
-use App\Models\Recipient;
-use App\Mail\CommandsBaseMail;
-use Illuminate\Support\Facades\Mail;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Console\Commands\General\SendGeneralDailyRawReportCommand;
 use App\Console\Commands\General\DailyRawReport\GeneralDailyRawReportExport;
 use App\Console\Commands\General\DailyRawReport\GeneralDailyRawReportRepository;
+use App\Console\Commands\General\SendGeneralDailyRawReportCommand;
+use App\Mail\CommandsBaseMail;
+use App\Models\Recipient;
+use App\Models\Report;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
+use Tests\TestCase;
 
 class GeneralRawDailyCommandsTest extends TestCase
 {
@@ -24,8 +24,8 @@ class GeneralRawDailyCommandsTest extends TestCase
     {
         Mail::fake();
         Excel::fake();
-        $report = factory(Report::class)->create(['key' => 'dainsys:general-rc-raw-report']);
-        $recipients = factory(Recipient::class, 2)->create();
+        $report = Report::factory()->create(['key' => 'dainsys:general-rc-raw-report']);
+        $recipients = Recipient::factory(2)->create();
         $report->recipients()->sync($recipients->pluck('id')->toArray());
 
         $subject = 'Fake Name';
@@ -54,9 +54,7 @@ class GeneralRawDailyCommandsTest extends TestCase
             $file_name
         );
 
-        Excel::assertStored($file_name, function (GeneralDailyRawReportExport $export) {
-            return true;
-        });
+        Excel::assertStored($file_name, fn (GeneralDailyRawReportExport $export) => true);
     }
 
     /** @test */

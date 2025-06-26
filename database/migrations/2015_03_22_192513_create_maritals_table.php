@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateMaritalsTable extends Migration
 {
@@ -10,7 +10,7 @@ class CreateMaritalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('maritals', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('maritals', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
@@ -22,6 +22,6 @@ class CreateMaritalsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('maritals');
+        \Illuminate\Support\Facades\Schema::drop('maritals');
     }
 }

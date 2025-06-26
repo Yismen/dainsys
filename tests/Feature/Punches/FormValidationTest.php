@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Punches;
 
-use Tests\TestCase;
-use App\Models\Punch;
 use App\Models\Employee;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Models\Punch;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class FormValidationTest extends TestCase
 {
@@ -49,7 +49,7 @@ class FormValidationTest extends TestCase
         $this->actingAs($this->userWithPermission('create-punches'))
             ->post(route('admin.punches.store'), array_merge($punch, ['punch' => $this->faker->sentence(15)]))
             ->assertSessionHasErrors('punch');
-            
+
         $this->actingAs($this->userWithPermission('edit-punches'))
             ->put(route('admin.punches.update', $punch['punch']), array_merge($punch, ['punch' => $this->faker->sentence(15)]))
             ->assertSessionHasErrors('punch');

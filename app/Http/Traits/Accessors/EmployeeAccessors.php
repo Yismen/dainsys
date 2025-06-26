@@ -5,18 +5,18 @@ namespace App\Http\Traits\Accessors;
 use App\Models\Afp;
 use App\Models\Ars;
 use App\Models\Bank;
-use App\Models\Site;
+use App\Models\Department;
 use App\Models\Gender;
 use App\Models\Marital;
-use App\Models\Project;
-use App\Models\Position;
-use App\Models\Department;
-use App\Models\Supervisor;
 use App\Models\Nationality;
-use App\Models\PaymentType;
-use App\Models\TerminationType;
 use App\Models\PaymentFrequency;
+use App\Models\PaymentType;
+use App\Models\Position;
+use App\Models\Project;
+use App\Models\Site;
+use App\Models\Supervisor;
 use App\Models\TerminationReason;
+use App\Models\TerminationType;
 
 trait EmployeeAccessors
 {
@@ -104,7 +104,6 @@ trait EmployeeAccessors
      * Return a new instance for the date.
      *
      * @param [type] $date [description]
-     *
      * @return [type] [description]
      */
     // public function getHireDateAttribute($date)
@@ -120,8 +119,7 @@ trait EmployeeAccessors
     /**
      * Convert the Date of birth to date.
      *
-     * @param datetime $date employee date of birth
-     *
+     * @param  datetime  $date  employee date of birth
      * @return datetime an instance of carbon
      */
     // public function getDateOfBirthAttribute($date)
@@ -171,7 +169,7 @@ trait EmployeeAccessors
      */
     public function getFullNameAttribute()
     {
-        $name = join(" ", [
+        $name = implode(' ', [
             $this->first_name,
             $this->second_first_name,
             $this->last_name,

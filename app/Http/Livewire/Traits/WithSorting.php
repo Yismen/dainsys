@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Traits;
 trait WithSorting
 {
     public $orderBy;
+
     public bool $orderDirection = true;
 
     public function orderBy($field)

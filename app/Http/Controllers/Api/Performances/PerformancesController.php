@@ -81,7 +81,7 @@ class PerformancesController extends Controller
      */
     public function data(int $many = 3): JsonResource
     {
-        --$many;
+        $many--;
 
         $many = $many <= 0 ? 0 : $many;
 
@@ -95,14 +95,14 @@ class PerformancesController extends Controller
                 'supervisor',
                 'downtimeReason',
             ])
-            ->with(['campaign' => function ($query) {
+            ->with(['campaign' => function ($query): void {
                 $query->with([
                     'source',
                     'project.client',
                 ]);
             },
             ])
-            ->with(['employee' => function ($query) {
+            ->with(['employee' => function ($query): void {
                 $query->with([
                     'supervisor',
                     'site',

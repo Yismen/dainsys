@@ -9,11 +9,8 @@ class UniqueForUserRule
     /**
      * Construct
      *
-     * @param Model $model
-     * @param int $id
-     * @param string $field
+     * @param  int  $id
+     * @param  string  $field
      */
-    public function __construct(Model $model, $id, $field)
-    {
-    }
+    public function __construct(Model $model, $id, $field) {}
 }

@@ -24,18 +24,18 @@ abstract class EmployeesAbstractCommand extends Command
 
     protected function fileName(): string
     {
-        return join('-', [
+        return implode('-', [
             str($this->name)->afterLast(':'),
             'from',
             $this->dates['date_from']->format('Y-m-d'),
             'to',
             $this->dates['date_to']->format('Y-m-d'),
-        ]) . '.xlsx';
+        ]).'.xlsx';
     }
 
     protected function getSubject(): string
     {
-        return join(' ', [
+        return implode(' ', [
             str($this->name)->afterLast(':')->headline(),
             'From',
             $this->dates['date_from']->format('Y-m-d'),

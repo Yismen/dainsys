@@ -7,6 +7,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Password extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     use Sluggable;
 
     /**
@@ -26,7 +27,7 @@ class Password extends Model
 
     public function modelName()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(\App\Models\User::class);
     }
 
     /**
@@ -40,7 +41,7 @@ class Password extends Model
      */
     public function ScopeForCurrentUser($query)
     {
-        return $query->where('user_id', \Auth::user()->id);
+        return $query->where('user_id', \Illuminate\Support\Facades\Auth::user()->id);
     }
 
     /**

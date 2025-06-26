@@ -8,7 +8,7 @@ trait UserMutators
 {
     public function setNameAttribute($name)
     {
-        return $this->attributes['name'] = ucwords($name);
+        return $this->attributes['name'] = ucwords((string) $name);
     }
 
     public function setUsernameAttribute($username)

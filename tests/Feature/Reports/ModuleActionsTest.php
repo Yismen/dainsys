@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Reports;
 
-use Tests\TestCase;
 use App\Models\Report;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class ModuleActionsTest extends TestCase
 {

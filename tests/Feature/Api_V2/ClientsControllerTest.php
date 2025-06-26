@@ -3,9 +3,9 @@
 namespace Tests\Feature\Api_V2;
 
 use App\Models\Client;
-use Tests\TestCase;
-use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class ClientsControllerTest extends TestCase
 {
@@ -14,7 +14,7 @@ class ClientsControllerTest extends TestCase
     /** @test */
     public function it_returns_a_clients_collection()
     {
-        factory(Client::class)->create();
+        Client::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/clients');

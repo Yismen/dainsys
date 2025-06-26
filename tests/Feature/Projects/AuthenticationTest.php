@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Projects;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewProjects()
+    public function test_guest_cant_view_projects()
     {
-        $project = create('App\Models\Project');
+        $project = create(\App\Models\Project::class);
 
         $this->get(route('admin.projects.index'))
             ->assertStatus(302)
@@ -24,9 +24,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateProjects()
+    public function test_guest_cant_create_projects()
     {
-        $project = create('App\Models\Project');
+        $project = create(\App\Models\Project::class);
 
         $this->get(route('admin.projects.create'))
             ->assertStatus(302)
@@ -37,9 +37,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateProject()
+    public function test_guest_cant_update_project()
     {
-        $project = create('App\Models\Project');
+        $project = create(\App\Models\Project::class);
 
         $this->get(route('admin.projects.edit', $project->id))
             ->assertStatus(302)
@@ -50,9 +50,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyProject()
+    public function test_guest_cant_destroy_project()
     {
-        $project = create('App\Models\Project');
+        $project = create(\App\Models\Project::class);
 
         $this->delete(route('admin.projects.destroy', $project->id))
             ->assertStatus(302)

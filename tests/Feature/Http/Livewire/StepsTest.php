@@ -2,19 +2,19 @@
 
 namespace Tests\Feature\Http\Livewire;
 
-use Tests\TestCase;
-use App\Models\Step;
-use Livewire\Livewire;
-use App\Http\Livewire\Steps;
 use App\Http\Livewire\Search;
+use App\Http\Livewire\Steps;
+use App\Models\Step;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
+use Tests\TestCase;
 
 class StepsTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function StepIndexContainsLivewireStepComponent()
+    public function step_index_contains_livewire_step_component()
     {
         $user = $this->userWithPermission('view-steps');
 
@@ -25,9 +25,9 @@ class StepsTest extends TestCase
     }
 
     /** @test */
-    public function StepShowsListOfSteps()
+    public function step_shows_list_of_steps()
     {
-        $process = factory(Step::class)->create();
+        $process = Step::factory()->create();
 
         Livewire::test(Steps::class)
             ->assertViewIs('livewire.steps')
@@ -38,7 +38,7 @@ class StepsTest extends TestCase
     /** @test */
     public function steps_componenet_use_search_component()
     {
-        $step1 = factory(Step::class)->create();
+        $step1 = Step::factory()->create();
 
         Livewire::test(Steps::class)
             ->set('process_id', $step1->process_id)
@@ -46,9 +46,9 @@ class StepsTest extends TestCase
     }
 
     /** @test */
-    public function StepLimitsBasedOnSearch()
+    public function step_limits_based_on_search()
     {
-        $steps = factory(Step::class, 3)->create();
+        $steps = Step::factory(3)->create();
 
         Livewire::test(Steps::class)
             ->emit('searchUpdated', $steps[1]->name)
@@ -58,8 +58,8 @@ class StepsTest extends TestCase
     /** @test */
     public function steps_limit_by_process()
     {
-        $step1 = factory(Step::class)->create();
-        $step2 = factory(Step::class)->create();
+        $step1 = Step::factory()->create();
+        $step2 = Step::factory()->create();
 
         Livewire::test(Steps::class)
             ->assertDontSee($step1->name)
@@ -69,7 +69,6 @@ class StepsTest extends TestCase
             ->assertDontSee($step2->name)
             ->set('process_id', $step2->process_id)
             ->assertSee($step2->name)
-            ->assertDontSee($step1->name)
-            ;
+            ->assertDontSee($step1->name);
     }
 }

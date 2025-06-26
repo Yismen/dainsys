@@ -5,9 +5,9 @@ namespace Tests\Feature\Attendances;
 use App\Models\Attendance;
 use App\Models\Employee;
 use Carbon\Carbon;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class FormValidationTest extends TestCase
 {

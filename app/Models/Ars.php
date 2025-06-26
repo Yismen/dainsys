@@ -7,6 +7,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Ars extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     use Sluggable;
 
     protected $table = 'arss';
@@ -25,11 +26,11 @@ class Ars extends Model
 
     public function employees()
     {
-        return $this->hasMany('App\Models\Employee');
+        return $this->hasMany(\App\Models\Employee::class);
     }
 
-    public function setNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['name'] = trim(ucwords($name));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn ($name) => ['name' => trim(ucwords((string) $name))]);
     }
 }

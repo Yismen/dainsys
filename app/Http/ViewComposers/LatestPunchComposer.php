@@ -9,28 +9,21 @@ use Illuminate\View\View;
 class LatestPunchComposer
 {
     /**
-     * The user repository implementation.
-     *
-     * @var Reports
-     */
-    protected PunchRepository $repo;
-
-    /**
      * Create a new profile composer.
      *
-     * @param  Reports $reports
-     *
+     * @param  Reports  $reports
      * @return void
      */
-    public function __construct(PunchRepository $repo)
-    {
-        $this->repo = $repo;
-    }
+    public function __construct(
+        /**
+         * The user repository implementation.
+         */
+        protected PunchRepository $repo
+    ) {}
 
     /**
      * Bind data to the view.
      *
-     * @param  View $view
      *
      * @return void
      */

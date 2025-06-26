@@ -11,14 +11,11 @@ class UserLoggedIn
      *
      * @return void
      */
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Handle the event.
      *
-     * @param  \Illuminate\Auth\Events\Login $event
      *
      * @return void
      */

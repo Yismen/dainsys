@@ -3,10 +3,10 @@
 namespace Tests\Feature\Profiles;
 
 use App\Models\Profile;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Arr;
+use Tests\TestCase;
 
 class ModuleActionsTest extends TestCase
 {
@@ -22,7 +22,7 @@ class ModuleActionsTest extends TestCase
 
         $this->get(route('admin.profiles.index'))
             ->assertOk()
-            ->assertViewIs('profiles.show', $profile->id);
+            ->assertViewIs('profiles.show');
     }
 
     /** @test */

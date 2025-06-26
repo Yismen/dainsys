@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class DropShiftsTableIfExists extends Migration
 {
@@ -19,7 +19,6 @@ class DropShiftsTableIfExists extends Migration
      */
     public function down()
     {
-        Schema::table('shifts', function (Blueprint $table) {
-        });
+        Schema::table('shifts', function (Blueprint $table): void {});
     }
 }

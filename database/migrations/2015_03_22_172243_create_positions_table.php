@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreatePositionsTable extends Migration
 {
@@ -12,7 +12,7 @@ class CreatePositionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('positions', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('positions', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name', 100);
             $table->integer('department_id')->unsigned()->index();
@@ -34,6 +34,6 @@ class CreatePositionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('positions');
+        \Illuminate\Support\Facades\Schema::dropIfExists('positions');
     }
 }

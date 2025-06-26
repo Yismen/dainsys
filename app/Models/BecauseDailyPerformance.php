@@ -7,6 +7,8 @@ use Carbon\Carbon;
 
 class BecauseDailyPerformance extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = [
         'date',
         'weekday',
@@ -46,10 +48,6 @@ class BecauseDailyPerformance extends Model
         'wrong_number',
     ];
 
-    protected $casts = [
-        'date' => 'datetime',
-    ];
-
     public function removeIfExists(array $options = [])
     {
         $options = array_merge([
@@ -84,5 +82,12 @@ class BecauseDailyPerformance extends Model
     public function scopePtd($query, Carbon $date)
     {
         return $query->where('date', '<=', $date);
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'date' => 'datetime',
+        ];
     }
 }

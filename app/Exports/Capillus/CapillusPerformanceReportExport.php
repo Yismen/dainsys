@@ -15,7 +15,7 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
-class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
+class CapillusPerformanceReportExport implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $repo;
 
@@ -42,7 +42,7 @@ class CapillusPerformanceReportExport implements FromView, WithTitle, WithEvents
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 

@@ -15,6 +15,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class SendPoliticalFlashReportCommand extends Command
 {
     use NotifyUsersOnFailedCommandsTrait;
+
     /**
      * The name and signature of the console command.
      *
@@ -84,7 +85,7 @@ class SendPoliticalFlashReportCommand extends Command
 
     protected function distroList()
     {
-        $service = new \App\Services\DainsysConfigService();
+        $service = new \App\Services\DainsysConfigService;
 
         return $service->getDistro($this->name);
     }

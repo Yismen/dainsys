@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Reports;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewReport()
+    public function test_unuthorized_users_cant_view_report()
     {
-        $report = create('App\Models\Report');
+        $report = create(\App\Models\Report::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.reports.index'))
@@ -23,27 +23,27 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetReport()
+    public function test_unuthorized_users_cant_createt_report()
     {
-        $report = create('App\Models\Report');
+        $report = create(\App\Models\Report::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.reports.store'))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditReport()
+    public function test_unuthorized_users_cant_edit_report()
     {
-        $report = create('App\Models\Report');
+        $report = create(\App\Models\Report::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.reports.update', $report->id))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyReport()
+    public function test_unuthorized_users_cant_destroy_report()
     {
-        $report = create('App\Models\Report');
+        $report = create(\App\Models\Report::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.reports.destroy', $report->id))

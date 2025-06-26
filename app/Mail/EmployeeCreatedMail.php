@@ -4,29 +4,24 @@ namespace App\Mail;
 
 use App\Models\Employee;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class EmployeeCreatedMail extends Mailable implements ShouldQueue
 {
     use Queueable;
     use SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public Employee $employee;
-
-    protected array $recipients;
-
-    public function __construct(Employee $employee, array $recipients)
-    {
-        $this->employee = $employee;
-        $this->recipients = $recipients;
-    }
+    public function __construct(
+        /**
+         * Create a new message instance.
+         *
+         * @return void
+         */
+        public Employee $employee,
+        protected array $recipients
+    ) {}
 
     /**
      * Build the message.
@@ -38,7 +33,6 @@ class EmployeeCreatedMail extends Mailable implements ShouldQueue
         return $this->markdown('mail.employee-created-mail', [
             'employee' => $this->employee,
         ])
-            ->to($this->recipients)
-        ;
+            ->to($this->recipients);
     }
 }

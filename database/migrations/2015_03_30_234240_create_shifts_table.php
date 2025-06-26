@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateShiftsTable extends Migration
 {
@@ -12,7 +12,7 @@ class CreateShiftsTable extends Migration
      */
     public function up()
     {
-        Schema::create('shifts', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('shifts', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name', 150);
             $table->time('start')->nullable();
@@ -28,6 +28,6 @@ class CreateShiftsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shifts');
+        \Illuminate\Support\Facades\Schema::dropIfExists('shifts');
     }
 }

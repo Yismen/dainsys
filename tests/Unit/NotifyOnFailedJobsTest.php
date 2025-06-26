@@ -2,15 +2,14 @@
 
 namespace Tests\Unit;
 
-use Exception;
-use Tests\TestCase;
-use App\Models\User;
-use App\Models\Performance;
-use Illuminate\Queue\Events\JobFailed;
 use App\Jobs\UpdateBillableHoursAndRevenue;
-use Illuminate\Support\Facades\Notification;
+use App\Models\Performance;
 use App\Notifications\QueueFailingNotification;
+use Exception;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Queue\Events\JobFailed;
+use Illuminate\Support\Facades\Notification;
+use Tests\TestCase;
 
 class NotifyOnFailedJobsTest extends TestCase
 {
@@ -21,12 +20,11 @@ class NotifyOnFailedJobsTest extends TestCase
     {
         Notification::fake();
 
-
         $regularUser = $this->user();
         $user = $this->userWithRole('admin');
         $job = new UpdateBillableHoursAndRevenue(Performance::all());
 
-        event(new JobFailed('test', $job, new Exception()));
+        event(new JobFailed('test', $job, new Exception));
 
         Notification::assertSentTo($user, QueueFailingNotification::class);
         Notification::assertNotSentTo($regularUser, QueueFailingNotification::class);

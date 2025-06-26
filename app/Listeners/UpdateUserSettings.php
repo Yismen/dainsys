@@ -7,22 +7,16 @@ use Illuminate\Http\Request;
 
 class UpdateUserSettings
 {
-    private $request;
-
     /**
      * Create the event listener.
      *
      * @return void
      */
-    public function __construct(Request $request)
-    {
-        $this->request = $request;
-    }
+    public function __construct(private readonly Request $request) {}
 
     /**
      * Handle the event.
      *
-     * @param  EditUserSettings  $event
      *
      * @return void
      */

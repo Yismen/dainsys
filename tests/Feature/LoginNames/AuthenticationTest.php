@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\LoginNames;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewLoginNames()
+    public function test_guest_cant_view_login_names()
     {
-        $login_name = create('App\Models\LoginName');
+        $login_name = create(\App\Models\LoginName::class);
 
         $this->get(route('admin.login_names.index'))
             ->assertStatus(302)
@@ -24,9 +24,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateLoginNames()
+    public function test_guest_cant_create_login_names()
     {
-        $login_name = create('App\Models\LoginName');
+        $login_name = create(\App\Models\LoginName::class);
 
         $this->get(route('admin.login_names.create'))
             ->assertStatus(302)
@@ -37,9 +37,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateLoginName()
+    public function test_guest_cant_update_login_name()
     {
-        $login_name = create('App\Models\LoginName');
+        $login_name = create(\App\Models\LoginName::class);
 
         $this->get(route('admin.login_names.edit', $login_name->id))
             ->assertStatus(302)
@@ -50,9 +50,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyLoginName()
+    public function test_guest_cant_destroy_login_name()
     {
-        $login_name = create('App\Models\LoginName');
+        $login_name = create(\App\Models\LoginName::class);
 
         $this->delete(route('admin.login_names.destroy', $login_name->id))
             ->assertStatus(302)

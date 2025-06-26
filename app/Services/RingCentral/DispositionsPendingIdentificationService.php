@@ -13,7 +13,6 @@ class DispositionsPendingIdentificationService
             ->where('sales', null)
             ->select(['agent_disposition', 'dial_group_prefix'])
             ->selectRaw('count(*) as records')
-            ->groupBy(['agent_disposition', 'dial_group_prefix'])
-        ;
+            ->groupBy(['agent_disposition', 'dial_group_prefix']);
     }
 }

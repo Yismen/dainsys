@@ -14,11 +14,11 @@ class OwnerRepository
 {
     public static function toArray()
     {
-        $static = new self();
+        $static = new self;
 
-        $data_repo = new DataRepository();
+        $data_repo = new DataRepository;
 
-        $performance_repo = new PerformanceRepository();
+        $performance_repo = new PerformanceRepository;
 
         $data = $performance_repo->monthlyManyMonths(11);
 
@@ -94,23 +94,17 @@ class OwnerRepository
 
     protected function sites()
     {
-        return Cache::remember('sites-performance', now()->addHours(4), function () {
-            return $this->list(new Site());
-        });
+        return Cache::remember('sites-performance', now()->addHours(4), fn () => $this->list(new Site));
     }
 
     protected function projects()
     {
-        return Cache::remember('projects-performance', now()->addHours(4), function () {
-            return $this->list(new Project());
-        });
+        return Cache::remember('projects-performance', now()->addHours(4), fn () => $this->list(new Project));
     }
 
     protected function departments()
     {
-        return Cache::remember('departments-performance', now()->addHours(4), function () {
-            return $this->list(new Department(), 'employees.performances');
-        });
+        return Cache::remember('departments-performance', now()->addHours(4), fn () => $this->list(new Department, 'employees.performances'));
     }
 
     protected function list(Model $model, $relationship = 'performances')

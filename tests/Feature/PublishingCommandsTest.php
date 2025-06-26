@@ -2,14 +2,14 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Support\Facades\Mail;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Console\Commands\RingCentralReports\Exports\Support\Mails\BaseRingCentralMails;
 use App\Console\Commands\RingCentralReports\Commands\Publishing\SendPublishingProductionReportCommand;
+use App\Console\Commands\RingCentralReports\Exports\Support\Mails\BaseRingCentralMails;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
+use Maatwebsite\Excel\Facades\Excel;
+use Tests\TestCase;
 
 class PublishingCommandsTest extends TestCase
 {
@@ -22,8 +22,8 @@ class PublishingCommandsTest extends TestCase
         Mail::fake();
         Excel::fake();
         Notification::fake();
-        $report = factory(\App\Models\Report::class)->create(['key' => 'publishing:send-production-report']);
-        $recipients = factory(\App\Models\Recipient::class, 2)->create();
+        $report = \App\Models\Report::factory()->create(['key' => 'publishing:send-production-report']);
+        $recipients = \App\Models\Recipient::factory(2)->create();
         $report->recipients()->sync($recipients->pluck('id')->toArray());
 
         $this->artisan(SendPublishingProductionReportCommand::class)

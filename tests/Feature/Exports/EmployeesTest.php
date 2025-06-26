@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Exports;
 
-use Tests\TestCase;
 use App\Models\Employee;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Maatwebsite\Excel\Facades\Excel;
+use Tests\TestCase;
 
 class EmployeesTest extends TestCase
 {
@@ -16,7 +16,7 @@ class EmployeesTest extends TestCase
     /** @test */
     public function guests_can_not_download_employees()
     {
-        factory(Employee::class)->create();
+        Employee::factory()->create();
 
         $this->get(route('admin.employees.export_to_excel', 'all'))
             ->assertRedirect('login');
@@ -27,7 +27,7 @@ class EmployeesTest extends TestCase
     /** @test */
     public function users_without_permission_can_not_download_employees()
     {
-        factory(Employee::class)->create();
+        Employee::factory()->create();
         $this->actingAs($this->user());
 
         $this->get(route('admin.employees.export_to_excel', 'all'))
@@ -41,7 +41,7 @@ class EmployeesTest extends TestCase
     {
         Excel::fake();
         $this->actingAs($this->userWithPermission('view-employees'));
-        factory(Employee::class)->create();
+        Employee::factory()->create();
 
         $this->get(route('admin.employees.export_to_excel', 'all'));
 
@@ -62,22 +62,22 @@ class EmployeesTest extends TestCase
         $this->actingAs($this->user());
         $update_data = [
             'first_name' => 'Updated Name',
-            'last_name' => 'Updated Surname'
+            'last_name' => 'Updated Surname',
         ];
-        $employee = factory(Employee::class)->create();
+        $employee = Employee::factory()->create();
         $old_first_name = $employee->first_name;
         $old_last_name = $employee->last_name;
 
         $employee->update($update_data);
 
         $this->assertEquals($employee->changes->first()->modifications, [
-            "first_name" => [
-                "old" => $old_first_name,
-                "new" => "Updated Name",
+            'first_name' => [
+                'old' => $old_first_name,
+                'new' => 'Updated Name',
             ],
-            "last_name" => [
-                "old" => $old_last_name,
-                "new" => "Updated Surname",
+            'last_name' => [
+                'old' => $old_last_name,
+                'new' => 'Updated Surname',
             ],
         ]);
     }

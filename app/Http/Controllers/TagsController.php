@@ -42,15 +42,12 @@ class TagsController extends Controller
      *
      * @return Response
      */
-    public function store()
-    {
-    }
+    public function store() {}
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function show(Tag $tag)
@@ -64,32 +61,23 @@ class TagsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
-    public function edit($id)
-    {
-    }
+    public function edit($id) {}
 
     /**
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
-    public function update($id)
-    {
-    }
+    public function update($id) {}
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
-    public function destroy($id)
-    {
-    }
+    public function destroy($id) {}
 }

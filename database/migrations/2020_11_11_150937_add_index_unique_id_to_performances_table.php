@@ -13,7 +13,7 @@ class AddIndexUniqueIdToPerformancesTable extends Migration
      */
     public function up()
     {
-        Schema::table('performances', function (Blueprint $table) {
+        Schema::table('performances', function (Blueprint $table): void {
             $table->index('unique_id');
         });
     }
@@ -25,7 +25,7 @@ class AddIndexUniqueIdToPerformancesTable extends Migration
      */
     public function down()
     {
-        Schema::table('performances', function (Blueprint $table) {
+        Schema::table('performances', function (Blueprint $table): void {
             $table->dropIndex(['unique_id']);
         });
     }

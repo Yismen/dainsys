@@ -14,7 +14,7 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
-class CapillusFlashReportExport implements FromView, WithColumnFormatting, WithTitle, WithEvents
+class CapillusFlashReportExport implements FromView, WithColumnFormatting, WithEvents, WithTitle
 {
     protected $data;
 
@@ -36,7 +36,7 @@ class CapillusFlashReportExport implements FromView, WithColumnFormatting, WithT
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 // format the whole tables
                 $event->sheet->getDelegate()->getStyle('A4:U13')->applyFromArray($this->tableStyle());
                 $event->sheet->getDelegate()->getStyle('A16:U25')->applyFromArray($this->tableStyle());
@@ -51,7 +51,7 @@ class CapillusFlashReportExport implements FromView, WithColumnFormatting, WithT
                 // format the window columns
                 $event->sheet->getDelegate()->getStyle('A5:A12')->applyFromArray($this->windowCellsStyle());
                 $event->sheet->getDelegate()->getStyle('A17:A24')->applyFromArray($this->windowCellsStyle());
-                //set Columns Width
+                // set Columns Width
                 $event->sheet->getDelegate()->getDefaultColumnDimension()->setWidth(10);
                 $event->sheet->getDelegate()->getColumnDimension('A')->setWidth(15);
                 $event->sheet->getDelegate()->getPageSetup()

@@ -1,13 +1,21 @@
 <?php
 
-use App\Models\Client;
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Models\Menu::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name(),
-        'display_name' => $faker->name(),
-        'description' => $faker->paragraph(),
-        'icon' => 'fa fa-star'
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Menu>
+ */
+class MenuFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\Menu::class;
+
+    public function definition()
+    {
+        return [
+            'name' => fake()->name(),
+            'display_name' => fake()->name(),
+            'description' => fake()->paragraph(),
+            'icon' => 'fa fa-star',
+        ];
+    }
+}

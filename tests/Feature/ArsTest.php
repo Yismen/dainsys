@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class ArsTest extends TestCase
 {
@@ -14,7 +14,7 @@ class ArsTest extends TestCase
     /** @test */
     public function guests_can_not_visit_any_arss_route()
     {
-        $ars = create('App\Models\Ars');
+        $ars = create(\App\Models\Ars::class);
         $this->get(route('admin.arss.index'))->assertRedirect('/login');
         $this->get(route('admin.arss.show', $ars->id))->assertRedirect('/login');
         $this->get(route('admin.arss.create'))->assertRedirect('/login');
@@ -27,7 +27,7 @@ class ArsTest extends TestCase
     /** @test */
     public function it_requires_view_arss_permissions_to_view_all_arss()
     {
-        $this->actingAs(create('App\Models\User'));
+        $this->actingAs(create(\App\Models\User::class));
 
         $response = $this->get('/admin/arss');
 
@@ -38,8 +38,8 @@ class ArsTest extends TestCase
     public function it_requires_view_arss_permissions_to_view_a_ars_details()
     {
         // given
-        $ars = create('App\Models\Ars');
-        $this->actingAs(create('App\Models\User'));
+        $ars = create(\App\Models\Ars::class);
+        $this->actingAs(create(\App\Models\User::class));
 
         // when
         $response = $this->get("/admin/arss/{$ars->id}");
@@ -53,7 +53,7 @@ class ArsTest extends TestCase
     {
         // given
         $user = $this->userWithPermission('view-arss');
-        $ars = create('App\Models\Ars');
+        $ars = create(\App\Models\Ars::class);
 
         // when
         $this->actingAs($user);
@@ -68,7 +68,7 @@ class ArsTest extends TestCase
     {
         // given
         $user = $this->userWithPermission('view-arss');
-        $ars = create('App\Models\Ars');
+        $ars = create(\App\Models\Ars::class);
 
         // when
         $this->actingAs($user);
@@ -82,7 +82,7 @@ class ArsTest extends TestCase
     public function it_requires_create_arss_permission_to_add_a_permission()
     {
         // Given
-        $user = create('App\Models\User');
+        $user = create(\App\Models\User::class);
         $this->actingAs($user);
 
         // When
@@ -110,8 +110,8 @@ class ArsTest extends TestCase
     public function it_requires_destroy_arss_permission_to_destroy_a_permission()
     {
         // Given
-        $this->actingAs(create('App\Models\User'));
-        $ars = create('App\Models\Ars');
+        $this->actingAs(create(\App\Models\User::class));
+        $ars = create(\App\Models\Ars::class);
 
         // When
         $response = $this->delete(route('admin.arss.destroy', $ars->id));
@@ -126,7 +126,7 @@ class ArsTest extends TestCase
     {
         // given
         $user = $this->userWithPermission('destroy-arss');
-        $ars = create('App\Models\Ars');
+        $ars = create(\App\Models\Ars::class);
 
         // when
         $this->actingAs($user);
@@ -148,14 +148,14 @@ class ArsTest extends TestCase
     /** @test */
     public function a_user_can_create_a_ars()
     {
-        $ars = make('App\Models\Ars');
+        $ars = make(\App\Models\Ars::class);
 
         $this->actingAs($this->userWithPermission('create-arss'))
             ->post(route('admin.arss.store', $ars->toArray()));
 
         $this->assertDatabaseHas('arss', ['name' => $ars->name]);
 
-        $employee = make('App\Models\Employee');
+        $employee = make(\App\Models\Employee::class);
         $employee->ars()->associate($ars);
         $employee->save();
         $this->get(route('admin.arss.index'))
@@ -166,20 +166,20 @@ class ArsTest extends TestCase
     public function a_user_can_see_a_form_to_update_a_ars()
     {
         $this->actingAs($this->userWithPermission('edit-arss'));
-        $ars = create('App\Models\Ars');
+        $ars = create(\App\Models\Ars::class);
 
-        $employee = create('App\Models\Employee');
+        $employee = create(\App\Models\Employee::class);
         $employee->ars()->associate($ars);
         $employee->save();
 
         $this->get(route('admin.arss.edit', $ars->id))
-            ->assertSee('Edit ARS - ' . $ars->name);
+            ->assertSee('Edit ARS - '.$ars->name);
     }
 
     /** @test */
     public function it_requires_a_name_to_update_a_ars()
     {
-        $ars = create('App\Models\Ars');
+        $ars = create(\App\Models\Ars::class);
 
         $this->actingAs($this->userWithPermission('edit-arss'))
             ->put(route('admin.arss.update', $ars->id), $this->formAttributes(['name' => '']))
@@ -189,7 +189,7 @@ class ArsTest extends TestCase
     /** @test */
     public function a_user_can_update_a_ars()
     {
-        $ars = create('App\Models\Ars');
+        $ars = create(\App\Models\Ars::class);
         $ars->name = 'New Name';
 
         $this->actingAs($this->userWithPermission('edit-arss'))

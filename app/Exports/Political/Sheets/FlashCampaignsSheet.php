@@ -13,29 +13,27 @@ use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
-class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
+class FlashCampaignsSheet implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $sheet;
 
     protected $rowsDispo;
+
     protected $rowsAnswers;
 
     protected $dispositions;
 
     protected $answers;
 
-    protected $campaign;
-
     protected $answersLastColumn;
 
-    public function __construct($dispositions, $answers, $campaign)
+    public function __construct($dispositions, $answers, protected $campaign)
     {
         $this->rowsDispo = count($dispositions) + 3;
         $this->rowsAnswers = count($answers);
 
         $this->dispositions = $dispositions;
         $this->answers = $answers;
-        $this->campaign = $campaign;
         $this->answersLastColumn = $this->answersLastColumn();
     }
 
@@ -51,13 +49,12 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
                 $this->configurePage()
-                    ->setColumnsWidth()
-                ;
+                    ->setColumnsWidth();
 
                 $this->sheet->freezePane('A2');
                 $this->sheet->getStyle("A3:B{$this->rowsDispo}")->applyFromArray([
@@ -91,7 +88,7 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
 
     public function title(): string
     {
-        return substr($this->campaign, -28);
+        return substr((string) $this->campaign, -28);
     }
 
     protected function answersStart()
@@ -116,7 +113,7 @@ class FlashCampaignsSheet implements FromView, WithTitle, WithEvents, WithPreCal
 
         try {
             return $range[count(array_keys($col)) - 6];
-        } catch (\Throwable $th) {
+        } catch (\Throwable) {
             return $range[count(array_keys($col)) - 7];
         }
     }

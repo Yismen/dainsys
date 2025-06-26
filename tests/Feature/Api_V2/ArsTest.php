@@ -3,9 +3,9 @@
 namespace Tests\Feature\Api_V2;
 
 use App\Models\Ars;
-use Tests\TestCase;
-use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class ArsTest extends TestCase
 {
@@ -27,7 +27,7 @@ class ArsTest extends TestCase
     /** @test */
     public function it_creates_a_ars_and_returns_json()
     {
-        $ars = factory(Ars::class)->make()->toArray();
+        $ars = Ars::factory()->make()->toArray();
         Passport::actingAs($this->user());
 
         $response = $this->post('/api/v2/arss', $ars);

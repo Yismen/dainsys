@@ -11,9 +11,9 @@ use Illuminate\Queue\SerializesModels;
 
 class UserAppNotificationSent implements ShouldBroadcast
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
-
-    public $notification;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
     protected $user;
 
@@ -22,10 +22,9 @@ class UserAppNotificationSent implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct(User $user, $notification)
+    public function __construct(User $user, public $notification)
     {
         $this->user = $user;
-        $this->notification = $notification;
     }
 
     /**

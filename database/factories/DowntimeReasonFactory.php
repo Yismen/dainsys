@@ -1,9 +1,18 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Models\DowntimeReason::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name(),
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\DowntimeReason>
+ */
+class DowntimeReasonFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\DowntimeReason::class;
+
+    public function definition()
+    {
+        return [
+            'name' => fake()->name(),
+        ];
+    }
+}

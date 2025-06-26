@@ -2,13 +2,13 @@
 
 namespace Tests\Feature;
 
-use Mockery;
-use Tests\TestCase;
+use App\Console\Commands\Common\HourlyProductionReport\HourlyProductionReportExport;
+use App\Console\Commands\Common\HourlyProductionReport\HourlyProductionReportRepository;
 use App\Mail\CommandsBaseMail;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Console\Commands\Common\HourlyProductionReport\HourlyProductionReportExport;
-use App\Console\Commands\Common\HourlyProductionReport\HourlyProductionReportRepository;
+use Mockery;
+use Tests\TestCase;
 
 class CommonHourlyProductionReportTest extends TestCase
 {
@@ -31,9 +31,7 @@ class CommonHourlyProductionReportTest extends TestCase
             $file_name
         );
 
-        Excel::assertStored($file_name, function (HourlyProductionReportExport $export) {
-            return true;
-        });
+        Excel::assertStored($file_name, fn (HourlyProductionReportExport $export) => true);
     }
 
     /** @test */

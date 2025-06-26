@@ -3,9 +3,9 @@
 namespace Tests\Feature\Api_V2;
 
 use App\Models\Campaign;
-use Tests\TestCase;
-use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class CampaignsControllerTest extends TestCase
 {
@@ -14,7 +14,7 @@ class CampaignsControllerTest extends TestCase
     /** @test */
     public function it_returns_a_campaigns_collection()
     {
-        factory(Campaign::class)->create();
+        Campaign::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/campaigns');

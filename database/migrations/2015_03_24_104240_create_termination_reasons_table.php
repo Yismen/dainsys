@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateTerminationReasonsTable extends Migration
 {
@@ -12,7 +12,7 @@ class CreateTerminationReasonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('termination_reasons', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('termination_reasons', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('reason');
             $table->string('description');
@@ -27,6 +27,6 @@ class CreateTerminationReasonsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('termination_reasons');
+        \Illuminate\Support\Facades\Schema::drop('termination_reasons');
     }
 }

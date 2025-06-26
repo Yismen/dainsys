@@ -1,14 +1,23 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Models\Termination::class, function (Faker $faker) {
-    return [
-        'employee_id' => factory(App\Models\Employee::class),
-        'termination_date' => $faker->date(),
-        'termination_type_id' => factory(App\Models\TerminationType::class),
-        'termination_reason_id' => factory(App\Models\TerminationReason::class),
-        'can_be_rehired' => $faker->randomElement([true, false]),
-        'comments' => $faker->realText(),
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Termination>
+ */
+class TerminationFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\Termination::class;
+
+    public function definition()
+    {
+        return [
+            'employee_id' => \App\Models\Employee::factory(),
+            'termination_date' => fake()->date(),
+            'termination_type_id' => \App\Models\TerminationType::factory(),
+            'termination_reason_id' => \App\Models\TerminationReason::factory(),
+            'can_be_rehired' => fake()->randomElement([true, false]),
+            'comments' => fake()->realText(),
+        ];
+    }
+}

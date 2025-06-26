@@ -28,10 +28,10 @@ class DispositionTable extends Component
     {
         return view('livewire.disposition-table', [
             'dispositions' => $service->query()
-                ->when($this->orderBy, function ($query) {
+                ->when($this->orderBy, function ($query): void {
                     $query->orderBy($this->orderBy, $this->orderDirection ? 'asc' : 'desc');
                 })
-                ->when($this->search, function ($query) {
+                ->when($this->search, function ($query): void {
                     $query->where('name', 'like', "%{$this->search}%");
                 })
                 ->paginate(10, ['*'], $this->pageName),

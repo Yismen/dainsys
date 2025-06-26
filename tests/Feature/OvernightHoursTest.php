@@ -5,9 +5,9 @@ namespace Tests\Feature;
 use App\Models\Employee;
 use App\Models\OvernightHour;
 use Carbon\Carbon;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class OvernightHoursTest extends TestCase
 {
@@ -15,9 +15,9 @@ class OvernightHoursTest extends TestCase
     use WithFaker;
 
     /** Authentication: Prevent access to unauthenticated users */
-    public function testGuestCantAccess()
+    public function test_guest_cant_access()
     {
-        $overnight = create('App\Models\OvernightHour');
+        $overnight = create(\App\Models\OvernightHour::class);
 
         $this->get(route('admin.overnight_hours.index'))->assertRedirect('/login');
         // $this->get(route('admin.overnight_hours.show', $overnight->id))->assertRedirect('/login');
@@ -29,9 +29,9 @@ class OvernightHoursTest extends TestCase
     }
 
     /** Authorization: Prevent access to unauthorizated users */
-    public function testUnuthorizedUsersCantAccess()
+    public function test_unuthorized_users_cant_access()
     {
-        $hour = create('App\Models\OvernightHour');
+        $hour = create(\App\Models\OvernightHour::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.overnight_hours.index'))
@@ -57,7 +57,7 @@ class OvernightHoursTest extends TestCase
     }
 
     /** Validations: Validate fields to reate */
-    public function testValidateStoringOvernightHour()
+    public function test_validate_storing_overnight_hour()
     {
         // $employee = create(Employee::class);
         $hour = create(OvernightHour::class)->toArray();
@@ -106,7 +106,7 @@ class OvernightHoursTest extends TestCase
     }
 
     /** Validations: Validate fields to update */
-    public function testValidateUpdatingOvernightHour()
+    public function test_validate_updating_overnight_hour()
     {
         // $employee = create(Employee::class);
         $hour = create(OvernightHour::class)->toArray();
@@ -130,9 +130,9 @@ class OvernightHoursTest extends TestCase
     }
 
     /** Authorization: Grant access to authorizated users to see */
-    public function testAuthorizedUsersCanSeeOvernightHours()
+    public function test_authorized_users_can_see_overnight_hours()
     {
-        $hour = create('App\Models\OvernightHour');
+        $hour = create(\App\Models\OvernightHour::class);
         $response = $this->actingAs($this->userWithPermission('view-overnight-hours'));
 
         $response->get(route('admin.overnight_hours.index'))
@@ -144,7 +144,7 @@ class OvernightHoursTest extends TestCase
     }
 
     /** Authorization: Grant access to authorizated users to create/store */
-    public function testAuthorizedUsersCanCreateOvernightHours()
+    public function test_authorized_users_can_create_overnight_hours()
     {
         $employee = create(Employee::class);
         $response = $this->actingAs($this->userWithPermission('create-overnight-hours'));
@@ -164,7 +164,7 @@ class OvernightHoursTest extends TestCase
     }
 
     /** Authorization: Grant access to authorizated users to edit/update */
-    public function testAuthorizedUsersCanEditOvernightHours()
+    public function test_authorized_users_can_edit_overnight_hours()
     {
         $hour = create(OvernightHour::class);
         $response = $this->actingAs($this->userWithPermission('edit-overnight-hours'));
@@ -193,7 +193,7 @@ class OvernightHoursTest extends TestCase
     }
 
     /** Authorization: Grant access to authorizated users to destroy */
-    public function testAuthorizedUsersCanDestroyOvernightHours()
+    public function test_authorized_users_can_destroy_overnight_hours()
     {
         $hour = create(OvernightHour::class);
         $response = $this->actingAs($this->userWithPermission('destroy-overnight-hours'));

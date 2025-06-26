@@ -10,16 +10,14 @@ class DainsysConfigService
 
     public function __construct()
     {
-        $this->repository = new DatabaseRepository();
+        $this->repository = new DatabaseRepository;
     }
 
     public function getDistro(string $key)
     {
         $distro = $this->get($key);
 
-        if ($distro === null || count($distro) === 0) {
-            throw new \Exception("Unable to find recipients for key {$key}. Did you add them?", 404);
-        }
+        throw_if($distro === null || count($distro) === 0, new \Exception("Unable to find recipients for key {$key}. Did you add them?", 404));
 
         return $distro;
     }

@@ -1,9 +1,18 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Models\Source::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name(),
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Source>
+ */
+class SourceFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\Source::class;
+
+    public function definition()
+    {
+        return [
+            'name' => fake()->name(),
+        ];
+    }
+}

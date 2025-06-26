@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use App\Models\DainsysModel as Model;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Cache;
 
 class Position extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     use SoftDeletes;
 
     protected $fillable = ['name', 'department_id', 'payment_type_id', 'payment_frequency_id', 'salary'];
@@ -22,7 +23,7 @@ class Position extends Model
 
     protected $with = [
         'department',
-        'payment_type'
+        'payment_type',
     ];
 
     public function department()
@@ -49,49 +50,48 @@ class Position extends Model
      * -----------------------------------------------------
      * Accessors
      */
-    public function getNameAndDepartmentAttribute()
+    protected function nameAndDepartment(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return ucwords(trim(
-            $this->department?->name . '-' . $this->name
-        ));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => ucwords(trim(
+            $this->department?->name.'-'.$this->name
+        )));
     }
 
-    public function getDepartmentsListAttribute()
+    protected function departmentsList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Department::select('id', 'name')->orderBy('name')->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => Department::select('id', 'name')->orderBy('name')->get());
     }
 
-    public function getPaymentTypesListAttribute()
+    protected function paymentTypesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Cache::rememberForever('payment_types_list', function () {
-            return PaymentType::select('id', 'name')->orderBy('name')->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => Cache::rememberForever('payment_types_list', fn () => PaymentType::select('id', 'name')->orderBy('name')->get()));
+    }
+
+    protected function payPerHours(): \Illuminate\Database\Eloquent\Casts\Attribute
+    {
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            $salary = $this->salary;
+            if ($this->payment_type) {
+                if (strtolower((string) $this->payment_type->name) === 'salary') {
+                    return $salary / 23.83 / 8;
+                }
+            }
+
+            return $salary;
         });
     }
 
-    public function getPayPerHoursAttribute()
+    protected function paymentFrequenciesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $salary = $this->salary;
-
-        if ($this->payment_type) {
-            if (strtolower($this->payment_type->name) === 'salary') {
-                return $salary / 23.83 / 8;
-            }
-        }
-
-        return $salary;
-    }
-
-    public function getPaymentFrequenciesListAttribute()
-    {
-        return PaymentFrequency::select('id', 'name')->orderBy('name')->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => PaymentFrequency::select('id', 'name')->orderBy('name')->get());
     }
 
     /**
      * ----------------------------------------------------------
      * Mutators
      */
-    public function setNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['name'] = ucwords(strtolower(trim($name)));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn ($name) => ['name' => ucwords(strtolower(trim((string) $name)))]);
     }
 }

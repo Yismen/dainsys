@@ -18,9 +18,7 @@ class ClientsController extends Controller
 
     public function index()
     {
-        $clients = Cache::remember('clients', now()->addHours(4), function () {
-            return Client::with('projects')->orderBy('name')->get();
-        });
+        $clients = Cache::remember('clients', now()->addHours(4), fn () => Client::with('projects')->orderBy('name')->get());
 
         return view('clients.index', compact('clients'));
     }
@@ -44,7 +42,7 @@ class ClientsController extends Controller
         Cache::forget('clients');
 
         return redirect()->route('admin.clients.index')
-            ->withSuccess('Client ' . $client->name . ' has been created!');
+            ->withSuccess('Client '.$client->name.' has been created!');
     }
 
     public function show(Client $client)
@@ -60,7 +58,7 @@ class ClientsController extends Controller
     public function update(Client $client, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:clients,name,' . $client->id,
+            'name' => 'required|unique:clients,name,'.$client->id,
             'contact_name' => 'required',
             'main_phone' => 'required',
             'email' => 'required|email',
@@ -71,6 +69,6 @@ class ClientsController extends Controller
         Cache::forget('clients');
 
         return redirect()->route('admin.clients.index')
-            ->withSuccess('Client ' . $client->name . ' has been updated!');
+            ->withSuccess('Client '.$client->name.' has been updated!');
     }
 }

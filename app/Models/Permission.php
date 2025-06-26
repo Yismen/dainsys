@@ -7,6 +7,8 @@ use Spatie\Permission\Models\Permission as EmpatiePermission;
 
 class Permission extends EmpatiePermission
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['name', 'guard_name', 'resource'];
 
     protected $actions = [
@@ -16,19 +18,19 @@ class Permission extends EmpatiePermission
         'destroy',
     ];
 
-    public function setNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['name'] = trim(Str::slug($name));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn ($name) => ['name' => trim(Str::slug($name))]);
     }
 
-    public function setResourceAttribute($resource)
+    protected function resource(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['resource'] = trim(Str::slug($resource));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn ($resource) => ['resource' => trim(Str::slug($resource))]);
     }
 
-    public function getRolesListAttribute()
+    protected function rolesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Role::orderBy('name')->pluck('name', 'id')->toArray();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => Role::orderBy('name')->pluck('name', 'id')->toArray());
     }
 
     public function createPermission($request)
@@ -64,7 +66,7 @@ class Permission extends EmpatiePermission
 
         $selected = [];
 
-        foreach ($actions as $key => $value) {
+        foreach ($actions as $value) {
             $selected[$value] = $value;
         }
 
@@ -73,7 +75,7 @@ class Permission extends EmpatiePermission
 
     protected function getParsedPermission($action, $resource)
     {
-        return $action . ' ' . $resource;
+        return $action.' '.$resource;
     }
 
     protected function createNonResourcePermission($request)
@@ -101,7 +103,7 @@ class Permission extends EmpatiePermission
                 $permission->delete();
             }
 
-            $permission = $this->create(['name' => $permission_name, 'resource' => trim($request->resource)]);
+            $permission = $this->create(['name' => $permission_name, 'resource' => trim((string) $request->resource)]);
 
             $permission->roles()->sync((array) $request->roles);
         }

@@ -6,9 +6,7 @@ use App\Models\DainsysModel as Model;
 
 class Vip extends Model
 {
-    protected $casts = [
-        'since' => 'datetime',
-    ];
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
 
     protected $fillable = ['employee_id', 'since'];
 
@@ -20,5 +18,12 @@ class Vip extends Model
     public function employee()
     {
         return $this->belongsTo(Employee::class);
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'since' => 'datetime',
+        ];
     }
 }

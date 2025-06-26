@@ -1,15 +1,25 @@
 <?php
 
-use App\Models\User;
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Models\Notification::class, function (Faker $faker) {
-    return [
-        'id' => $faker->uuid(),
-        'type' => App\Fake\Notification::class,
-        'notifiable_type' => User::class,
-        'notifiable_id' => factory(User::class),
-        'data' => json_encode(['foo' => $faker->text()]),
-        'read_at' => null,
-    ];
-});
+use App\Models\User;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Notification>
+ */
+class NotificationFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\Notification::class;
+
+    public function definition()
+    {
+        return [
+            'id' => fake()->uuid(),
+            'type' => App\Fake\Notification::class,
+            'notifiable_type' => User::class,
+            'notifiable_id' => User::factory(),
+            'data' => json_encode(['foo' => fake()->text()]),
+            'read_at' => null,
+        ];
+    }
+}

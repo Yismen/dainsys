@@ -7,16 +7,12 @@ use Illuminate\Http\Request;
 
 class DowntimeReasonsController extends Controller
 {
-    private $request;
-
-    public function __construct(Request $request)
+    public function __construct(private readonly Request $request)
     {
         $this->middleware('authorize:view-downtime-reasons|edit-downtime-reasons|create-downtime-reasons', ['only' => ['index', 'show']]);
         $this->middleware('authorize:edit-downtime-reasons', ['only' => ['edit', 'update']]);
         $this->middleware('authorize:create-downtime-reasons', ['only' => ['create', 'store']]);
         $this->middleware('authorize:destroy-downtime-reasons', ['only' => ['destroy']]);
-
-        $this->request = $request;
     }
 
     /**
@@ -62,7 +58,6 @@ class DowntimeReasonsController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function show(DowntimeReason $downtime_reason)
@@ -74,7 +69,6 @@ class DowntimeReasonsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function edit(DowntimeReason $downtime_reason)
@@ -86,13 +80,12 @@ class DowntimeReasonsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function update(DowntimeReason $downtime_reason, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:5|unique:downtime_reasons,name,' . $downtime_reason->id,
+            'name' => 'required|min:5|unique:downtime_reasons,name,'.$downtime_reason->id,
         ]);
 
         $downtime_reason->update($request->only(['name']));

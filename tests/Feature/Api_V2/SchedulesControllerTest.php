@@ -3,9 +3,9 @@
 namespace Tests\Feature\Api_V2;
 
 use App\Models\Schedule;
-use Tests\TestCase;
-use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class SchedulesControllerTest extends TestCase
 {
@@ -14,7 +14,7 @@ class SchedulesControllerTest extends TestCase
     /** @test */
     public function it_returns_a_schedules_collection()
     {
-        factory(Schedule::class, 3)->create(['date' => now()->subDay()]);
+        Schedule::factory(3)->create(['date' => now()->subDay()]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/schedules');

@@ -28,17 +28,13 @@ class AfpsController extends Controller
             ->actives()
             ->get();
 
-        $afps = Cache::rememberForever('afps', function () {
-            return Afp::with(['employees' => function ($query) {
-                return $query
-                    ->orderBy('first_name')
-                    ->orderBy('second_first_name')
-                    ->orderBy('last_name')
-                    ->orderBy('second_last_name')
-                    ->actives();
-            },
-            ])->orderBy('name')->get();
-        });
+        $afps = Cache::rememberForever('afps', fn () => Afp::with(['employees' => fn ($query) => $query
+            ->orderBy('first_name')
+            ->orderBy('second_first_name')
+            ->orderBy('last_name')
+            ->orderBy('second_last_name')
+            ->actives(),
+        ])->orderBy('name')->get());
 
         if ($request->ajax()) {
             return $afps;
@@ -60,7 +56,6 @@ class AfpsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -87,7 +82,6 @@ class AfpsController extends Controller
      * Display the specified resource.
      *
      * @param  int  Afp $afp
-     *
      * @return \Illuminate\Http\Response
      */
     public function show(Afp $afp)
@@ -99,7 +93,6 @@ class AfpsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  Afp $afp
-     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Afp $afp)
@@ -110,15 +103,13 @@ class AfpsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  Afp $afp
-     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Afp $afp)
     {
         $this->validate($request, [
-            'name' => 'required|min:3|unique:afps,name,' . $afp->id,
+            'name' => 'required|min:3|unique:afps,name,'.$afp->id,
         ]);
 
         Cache::forget('employees');
@@ -134,7 +125,6 @@ class AfpsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  Afp $afp
-     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Afp $afp, Request $request)
@@ -173,7 +163,7 @@ class AfpsController extends Controller
         Cache::forget('employees');
         Cache::forget('afps');
 
-        foreach ($request->employee as  $id) {
+        foreach ($request->employee as $id) {
             $employee = Employee::whereId($id)->first();
 
             $employee->update(['afp_id' => $request->afp]);

@@ -6,6 +6,8 @@ use App\Models\DainsysModel as Model;
 
 class Campaign extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['name', 'project_id', 'source_id', 'revenue_type_id', 'sph_goal', 'revenue_rate'];
 
     public function project()
@@ -28,18 +30,18 @@ class Campaign extends Model
         return $this->hasMany(Performance::class);
     }
 
-    public function getProjectListAttribute()
+    protected function projectList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Project::orderBy('name')->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => Project::orderBy('name')->get());
     }
 
-    public function getSourceListAttribute()
+    protected function sourceList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Source::orderBy('name')->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => Source::orderBy('name')->get());
     }
 
-    public function getRevenueTypeListAttribute()
+    protected function revenueTypeList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return RevenueType::orderBy('name')->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => RevenueType::orderBy('name')->get());
     }
 }

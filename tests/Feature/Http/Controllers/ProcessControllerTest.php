@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use Tests\TestCase;
 use App\Http\Livewire\Processes;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ProcessControllerTest extends TestCase
 {
@@ -19,7 +19,7 @@ class ProcessControllerTest extends TestCase
     /** @test */
     public function it_requires_view_processes_permissions_to_view_all_processes()
     {
-        $this->actingAs(create('App\Models\User'));
+        $this->actingAs(create(\App\Models\User::class));
 
         $response = $this->get('/admin/processes');
 
@@ -45,7 +45,7 @@ class ProcessControllerTest extends TestCase
     {
         // given
         $user = $this->userWithPermission('view-processes');
-        $process = create('App\Models\Process');
+        $process = create(\App\Models\Process::class);
 
         // when
         $this->actingAs($user);

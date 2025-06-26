@@ -31,9 +31,7 @@ class SupervisorsController extends Controller
             ->orderBy('last_name')
             ->orderBy('second_last_name')
             ->with('site', 'project', 'nationality')
-            ->with(['position' => function ($query) {
-                return $query->with(['department', 'payment_type']);
-            },
+            ->with(['position' => fn ($query) => $query->with(['department', 'payment_type']),
             ])
             ->actives()
             ->get();
@@ -47,18 +45,14 @@ class SupervisorsController extends Controller
             ->get();
 
         $supervisors = Supervisor::orderBy('name')
-            ->with(['employees' => function ($query) {
-                return $query->orderBy('first_name')
-                    ->orderBy('second_first_name')
-                    ->orderBy('last_name')
-                    ->orderBy('second_last_name')
-                    ->with('project', 'nationality', 'site')
-                    ->with(['position' => function ($query) {
-                        return $query->with(['department', 'payment_type']);
-                    },
-                    ])
-                    ->actives();
-            },
+            ->with(['employees' => fn ($query) => $query->orderBy('first_name')
+                ->orderBy('second_first_name')
+                ->orderBy('last_name')
+                ->orderBy('second_last_name')
+                ->with('project', 'nationality', 'site')
+                ->with(['position' => fn ($query) => $query->with(['department', 'payment_type']),
+                ])
+                ->actives(),
             ])
             ->get();
 
@@ -78,7 +72,6 @@ class SupervisorsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -105,7 +98,6 @@ class SupervisorsController extends Controller
      * Display the specified resource.
      *
      * @param int  Supervisor $supervisor
-     *
      * @return \Illuminate\Http\Response
      */
     public function show(Supervisor $supervisor)
@@ -117,7 +109,6 @@ class SupervisorsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int  Supervisor $supervisor
-     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Supervisor $supervisor)
@@ -128,9 +119,7 @@ class SupervisorsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
      * @param int  Supervisor          $supervisor
-     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Supervisor $supervisor)
@@ -142,7 +131,7 @@ class SupervisorsController extends Controller
         $this->validate(
             $request,
             [
-                'name' => 'required|min:5|unique:supervisors,name,' . $supervisor->id,
+                'name' => 'required|min:5|unique:supervisors,name,'.$supervisor->id,
                 'active' => 'boolean',
             ]
         );
@@ -160,7 +149,6 @@ class SupervisorsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int  Supervisor $supervisor
-     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Supervisor $supervisor, Request $request)
@@ -187,7 +175,7 @@ class SupervisorsController extends Controller
             'employee.required' => 'Select at least one employee!',
         ]);
 
-        foreach ($request->employee as  $id) {
+        foreach ($request->employee as $id) {
             $employee = Employee::whereId($id)->first();
 
             $employee->update(['supervisor_id' => $request->supervisor]);

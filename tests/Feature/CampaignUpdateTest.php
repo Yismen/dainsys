@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class CampaignUpdateTest extends TestCase
 {
@@ -14,7 +14,7 @@ class CampaignUpdateTest extends TestCase
     /** @test */
     public function guests_can_not_visit_any_campaigns_route()
     {
-        $campaign = create('App\Models\Campaign');
+        $campaign = create(\App\Models\Campaign::class);
 
         $this->get(route('admin.campaigns.edit', $campaign->id))->assertRedirect('/login');
         $this->put(route('admin.campaigns.update', $campaign->id))->assertRedirect('/login');
@@ -24,17 +24,17 @@ class CampaignUpdateTest extends TestCase
     /** @test */
     public function a_user_can_see_a_form_to_update_a_campaign()
     {
-        $campaign = create('App\Models\Campaign');
+        $campaign = create(\App\Models\Campaign::class);
 
         $this->actingAs($this->userWithPermission('edit-campaigns'))
             ->get(route('admin.campaigns.edit', $campaign->id))
-            ->assertSee('Edit Campaign ' . $campaign->name);
+            ->assertSee('Edit Campaign '.$campaign->name);
     }
 
     /** @test */
     public function it_requires_a_name_to_update_a_campaign()
     {
-        $campaign = create('App\Models\Campaign');
+        $campaign = create(\App\Models\Campaign::class);
 
         $this->actingAs($this->userWithPermission('edit-campaigns'))
             ->put(route('admin.campaigns.update', $campaign->id), $this->formAttributes(['name' => '']))
@@ -44,7 +44,7 @@ class CampaignUpdateTest extends TestCase
     /** @test */
     public function a_user_can_update_a_campaign()
     {
-        $campaign = create('App\Models\Campaign');
+        $campaign = create(\App\Models\Campaign::class);
         $campaign->name = 'New Name';
 
         $this->actingAs($this->userWithPermission('edit-campaigns'))

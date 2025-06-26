@@ -7,6 +7,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class PaymentType extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     use Sluggable;
 
     protected $fillable = ['name', 'slug'];

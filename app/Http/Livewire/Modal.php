@@ -7,6 +7,7 @@ use Livewire\Component;
 class Modal extends Component
 {
     public $component;
+
     public $params = [];
 
     public $title;

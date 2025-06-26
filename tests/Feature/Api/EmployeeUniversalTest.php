@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Api;
 
-use Tests\TestCase;
 use App\Models\Employee;
 use App\Models\Universal;
-use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class EmployeeUniversalTest extends TestCase
 {
@@ -15,7 +15,7 @@ class EmployeeUniversalTest extends TestCase
     /** @test */
     public function an_employee_can_be_assigned_to_universals_list()
     {
-        $employee = factory(Employee::class)->create();
+        $employee = Employee::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->post(route('api.employee.universal', $employee->id), ['is_universal' => true]);
@@ -28,7 +28,7 @@ class EmployeeUniversalTest extends TestCase
     /** @test */
     public function universal_employee_can_be_removed()
     {
-        $universal = factory(Universal::class)->create();
+        $universal = Universal::factory()->create();
         $employee = $universal->employee;
         Passport::actingAs($this->user());
 
@@ -42,7 +42,7 @@ class EmployeeUniversalTest extends TestCase
     /** @test */
     public function universals_request_is_validated()
     {
-        $universal = factory(Universal::class)->create();
+        $universal = Universal::factory()->create();
         $employee = $universal->employee;
         Passport::actingAs($this->user());
 

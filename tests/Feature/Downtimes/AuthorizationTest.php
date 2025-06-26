@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Downtimes;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewDowntime()
+    public function test_unuthorized_users_cant_view_downtime()
     {
         // $downtime = create('App\Models\Downtime');
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
@@ -23,27 +23,27 @@ class AuthorizationTest extends TestCase
         //     ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetDowntime()
+    public function test_unuthorized_users_cant_createt_downtime()
     {
-        $downtime = create('App\Models\Downtime');
+        $downtime = create(\App\Models\Downtime::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.downtimes.store'))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditDowntime()
+    public function test_unuthorized_users_cant_edit_downtime()
     {
-        $downtime = create('App\Models\Downtime');
+        $downtime = create(\App\Models\Downtime::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.downtimes.update', $downtime->id))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyDowntime()
+    public function test_unuthorized_users_cant_destroy_downtime()
     {
-        $downtime = create('App\Models\Downtime');
+        $downtime = create(\App\Models\Downtime::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.downtimes.destroy', $downtime->id))

@@ -11,29 +11,24 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class DispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
+class DispositionsSheet implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $data;
 
     protected $sheet;
 
     protected $rows;
+
     protected $last_column;
-
-    protected $sheetName;
-
-    protected $title;
 
     protected $view;
 
-    public function __construct(array $data, $sheetName, $title, string $view = 'exports.dispositions')
+    public function __construct(array $data, protected $sheetName, protected $title, string $view = 'exports.dispositions')
     {
         $this->data = $data;
 
         $this->rows = count($this->data) + 2;
         $this->last_column = 'F';
-        $this->sheetName = $sheetName;
-        $this->title = $title;
         $this->view = $view;
     }
 
@@ -48,7 +43,7 @@ class DispositionsSheet implements FromView, WithTitle, WithEvents, WithPreCalcu
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 

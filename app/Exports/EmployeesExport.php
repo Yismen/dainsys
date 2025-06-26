@@ -4,12 +4,7 @@ namespace App\Exports;
 
 class EmployeesExport extends AbstractEmployeesExport
 {
-    protected $scope;
-
-    public function __construct($scope)
-    {
-        $this->scope = $scope;
-    }
+    public function __construct(protected $scope) {}
 
     public function query()
     {
@@ -23,7 +18,7 @@ class EmployeesExport extends AbstractEmployeesExport
 
     public function title(): string
     {
-        return str(join(' ', [
+        return str(implode(' ', [
             'Employees',
             $this->scope,
         ]))->headline();

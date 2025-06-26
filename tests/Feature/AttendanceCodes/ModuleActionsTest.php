@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\AttendanceCodes;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ModuleActionsTest extends TestCase
 {
@@ -12,7 +12,7 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_see_attendance_codes_list()
     {
-        $attendance_code = create('App\Models\AttendanceCode')->toArray();
+        $attendance_code = create(\App\Models\AttendanceCode::class)->toArray();
         $this->actingAs($this->userWithPermission('view-attendance-codes'));
 
         $response = $this->get(route('admin.attendance_codes.index'));
@@ -25,7 +25,7 @@ class ModuleActionsTest extends TestCase
     public function authorized_users_can_create_a_attendance_code()
     {
         $this->actingAs($this->userWithPermission('create-attendance-codes'));
-        $attendance_code = make('App\Models\AttendanceCode')->toArray();
+        $attendance_code = make(\App\Models\AttendanceCode::class)->toArray();
 
         $this->post(route('admin.attendance_codes.store'), $attendance_code)
             ->assertRedirect(route('admin.attendance_codes.index'));
@@ -39,7 +39,7 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_see_edit_page()
     {
-        $attendance_code = create('App\Models\AttendanceCode');
+        $attendance_code = create(\App\Models\AttendanceCode::class);
         $this->actingAs($this->userWithPermission('edit-attendance-codes'));
 
         $this->get(route('admin.attendance_codes.edit', $attendance_code->id))
@@ -57,11 +57,11 @@ class ModuleActionsTest extends TestCase
     /** @test */
     public function authorized_users_can_update_attendance_code()
     {
-        $attendance_code = create('App\Models\AttendanceCode');
+        $attendance_code = create(\App\Models\AttendanceCode::class);
         $updated = [
             'name' => 'Updated Name',
             'color' => '#F4f4f4',
-            'absence' => !$attendance_code->absence,
+            'absence' => ! $attendance_code->absence,
         ];
 
         $response = $this->actingAs($this->userWithPermission('edit-attendance-codes'));

@@ -12,12 +12,7 @@ class DispositionsNeedingIdentificationMail extends Mailable implements ShouldQu
     use Queueable;
     use SerializesModels;
 
-    public int $records;
-
-    public function __construct(int $records)
-    {
-        $this->records = $records;
-    }
+    public function __construct(public int $records) {}
 
     /**
      * Build the message.

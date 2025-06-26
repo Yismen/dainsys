@@ -3,7 +3,6 @@
 namespace App\Console\Commands\RingCentralReports\Exports\Sheets\Traits;
 
 use App\Console\Commands\RingCentralReports\Exports\Support\Connections\ConnectionContract;
-use Illuminate\Support\Facades\DB;
 
 trait OomaRingCentralTrait
 {
@@ -37,6 +36,7 @@ trait OomaRingCentralTrait
                         agent_first_name,
                         agent_last_name
 
-                "            );
+                "
+            );
     }
 }

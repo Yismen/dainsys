@@ -13,8 +13,11 @@ use stdClass;
 class Manager extends Component
 {
     public $date_from;
+
     public $date_to;
+
     public $team;
+
     public $client;
     // public $campaign;
 
@@ -38,7 +41,7 @@ class Manager extends Component
     {
         $this->date_from = now()->format('Y-m-d');
         $this->date_to = now()->format('Y-m-d');
-        $this->team = 'ECC%'; //'ECC-SD'
+        $this->team = 'ECC%'; // 'ECC-SD'
         $this->client = '%';
     }
 
@@ -48,7 +51,7 @@ class Manager extends Component
             $production = $this->parseProduction()->groupBy('dial_group_prefix');
 
             return $production->map(function ($prod, $key) {
-                $parse = new stdClass();
+                $parse = new stdClass;
 
                 $parse->client = $key;
                 $parse->count = $prod->count();
@@ -79,13 +82,11 @@ class Manager extends Component
         $calls = $this->calls();
 
         $production->map(function ($prod) use ($calls) {
-            $parsedCalls = $calls->filter(function ($calls) use ($prod) {
-                return $prod->agent_name === $calls->agent_name
-                    && $prod->date === $calls->date
-                    && ($prod->dial_group_prefix === 'HTL'
-                            ? in_array($calls->dial_group_prefix, ['HTL', 'AKP', 'BCM'])
-                            : $prod->dial_group_prefix === $calls->dial_group_prefix);
-            });
+            $parsedCalls = $calls->filter(fn ($calls) => $prod->agent_name === $calls->agent_name
+                && $prod->date === $calls->date
+                && ($prod->dial_group_prefix === 'HTL'
+                        ? in_array($calls->dial_group_prefix, ['HTL', 'AKP', 'BCM'])
+                        : $prod->dial_group_prefix === $calls->dial_group_prefix));
 
             $prod->total_duration = $parsedCalls->sum('total_duration') ?? 0;
             $prod->total_sec_on_hold = $parsedCalls->sum('total_sec_on_hold') ?? 0;
@@ -103,7 +104,7 @@ class Manager extends Component
 
     protected function production(): Collection
     {
-        $service = new SessionRawService();
+        $service = new SessionRawService;
 
         $production = $service->datesBetween($this->date_from, $this->date_to)
             ->groupByDate()
@@ -112,15 +113,14 @@ class Manager extends Component
                 // 'agent_id' => '%',
                 'team' => $this->team,
                 'dial_group_prefix' => $this->client,
-            ])
-        ;
+            ]);
 
         return $production->get();
     }
 
     protected function calls(): Collection
     {
-        $service = new CallsService();
+        $service = new CallsService;
 
         $calls = $service->datesBetween($this->date_from, $this->date_to)
             ->groupByDate()
@@ -129,33 +129,28 @@ class Manager extends Component
                 // 'agent_id' => '%',
                 // 'team' => $this->team,
                 'dial_group_prefix' => $this->client,
-            ])
-        ;
+            ]);
 
         return $calls->get();
     }
 
     protected function teams(): Collection
     {
-        return Cache::remember('ring_central_teams', $this->cache_time, function () {
-            return SessionRaw::query()
-                ->groupBy('team')
-                ->whereDate('date', '>=', now()->subYear()->startOfYear())
-                ->where('team', 'like', 'Ecc%')
-                ->orderBy('team')
-                ->get(['team']);
-        });
+        return Cache::remember('ring_central_teams', $this->cache_time, fn () => SessionRaw::query()
+            ->groupBy('team')
+            ->whereDate('date', '>=', now()->subYear()->startOfYear())
+            ->where('team', 'like', 'Ecc%')
+            ->orderBy('team')
+            ->get(['team']));
     }
 
     protected function clients(): Collection
     {
-        return Cache::remember('ring_central_clients', $this->cache_time, function () {
-            return SessionRaw::query()
-                ->groupBy('dial_group_prefix')
-                ->whereDate('date', '>=', now()->subYear()->startOfYear())
-                ->where('team', 'like', 'Ecc%')
-                ->orderBy('dial_group_prefix')
-                ->get(['dial_group_prefix']);
-        });
+        return Cache::remember('ring_central_clients', $this->cache_time, fn () => SessionRaw::query()
+            ->groupBy('dial_group_prefix')
+            ->whereDate('date', '>=', now()->subYear()->startOfYear())
+            ->where('team', 'like', 'Ecc%')
+            ->orderBy('dial_group_prefix')
+            ->get(['dial_group_prefix']));
     }
 }

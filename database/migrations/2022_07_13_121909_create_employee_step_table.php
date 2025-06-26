@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateEmployeeStepTable extends Migration
 {
@@ -13,7 +13,7 @@ class CreateEmployeeStepTable extends Migration
      */
     public function up()
     {
-        Schema::create('employee_step', function (Blueprint $table) {
+        Schema::create('employee_step', function (Blueprint $table): void {
             $table->integer('employee_id')->unsigned()->index();
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
 

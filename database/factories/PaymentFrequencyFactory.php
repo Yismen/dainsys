@@ -1,9 +1,18 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Models\PaymentFrequency::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name(),
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\PaymentFrequency>
+ */
+class PaymentFrequencyFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\PaymentFrequency::class;
+
+    public function definition()
+    {
+        return [
+            'name' => fake()->name(),
+        ];
+    }
+}

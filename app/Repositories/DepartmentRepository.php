@@ -8,12 +8,11 @@ class DepartmentRepository
 {
     public static function actives()
     {
-        $instance = new self();
+        $instance = new self;
 
-        return $instance->query()->whereHas('employees', function ($query) {
-            return $query->actives();
-        })->get();
+        return $instance->query()->whereHas('employees', fn ($query) => $query->actives())->get();
     }
+
     protected function query()
     {
         return Department::orderBy('name');
@@ -21,7 +20,7 @@ class DepartmentRepository
 
     protected static function all()
     {
-        $instance = new self();
+        $instance = new self;
 
         return $instance->query()->get();
     }

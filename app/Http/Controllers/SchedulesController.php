@@ -32,9 +32,7 @@ class SchedulesController extends Controller
             $employees_missing_schedule = Employee::actives()
                 ->whereDoesntHave(
                     'schedules',
-                    function ($query) {
-                        return $query->whereDate('date', '>=', Carbon::now()->subDays(10));
-                    }
+                    fn ($query) => $query->whereDate('date', '>=', Carbon::now()->subDays(10))
                 )
                 ->orderBy('first_name')
                 ->orderBy('second_first_name')
@@ -44,9 +42,7 @@ class SchedulesController extends Controller
             return view('schedules.index', compact('employees_missing_schedule'));
         }
 
-        $schedules = Schedule::whereHas('employee', function ($query) {
-            return $query->actives();
-        })
+        $schedules = Schedule::whereHas('employee', fn ($query) => $query->actives())
             ->with('employee')
             ->whereDate('date', '>=', Carbon::now()->subDays(10))
             ->orderBy('slug');
@@ -69,7 +65,6 @@ class SchedulesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -81,7 +76,7 @@ class SchedulesController extends Controller
             'hours' => 'nullable|numeric|min:0|max:14',
         ]);
 
-        $schedule = (new Schedule())->createNew($validated);
+        $schedule = (new Schedule)->createNew($validated);
 
         return redirect()->route('admin.schedules.index')
             ->withSuccess('Schedules Created');
@@ -90,19 +85,15 @@ class SchedulesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Schedule $schedule
-     *
+     * @param  \App\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
-    public function show(Schedule $schedule)
-    {
-    }
+    public function show(Schedule $schedule) {}
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Schedule $schedule
-     *
+     * @param  \App\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
     public function edit(Schedule $schedule)
@@ -115,9 +106,7 @@ class SchedulesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Schedule            $schedule
-     *
+     * @param  \App\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Schedule $schedule)
@@ -137,8 +126,7 @@ class SchedulesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Schedule $schedule
-     *
+     * @param  \App\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
     public function destroy(Schedule $schedule)

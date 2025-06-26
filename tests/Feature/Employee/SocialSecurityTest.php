@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Employee;
 
-use App\Models\SocialSecurity;
 use App\Models\Employee;
+use App\Models\SocialSecurity;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

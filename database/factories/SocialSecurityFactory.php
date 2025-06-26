@@ -1,10 +1,19 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Models\SocialSecurity::class, function (Faker $faker) {
-    return [
-        'employee_id' => factory(App\Models\Employee::class),
-        'number' => random_int(1000000001, 9999999999),
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\SocialSecurity>
+ */
+class SocialSecurityFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\SocialSecurity::class;
+
+    public function definition()
+    {
+        return [
+            'employee_id' => \App\Models\Employee::factory(),
+            'number' => random_int(1000000001, 9999999999),
+        ];
+    }
+}

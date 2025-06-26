@@ -10,9 +10,8 @@ class SettingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\UserSetting         $setting
-     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\UserSetting  $setting
      * @return \Illuminate\Http\Response
      */
     public function update()

@@ -66,7 +66,6 @@ class ContactsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function edit(Contact $contact)
@@ -78,7 +77,6 @@ class ContactsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function update(Contact $contact, Request $request)
@@ -91,7 +89,7 @@ class ContactsController extends Controller
 
         $contact->update($request->only(['name', 'phone', 'works_at', 'position', 'secondary_phone', 'email']));
 
-        return \Redirect::route('admin.contacts.index')
+        return \Illuminate\Support\Facades\Redirect::route('admin.contacts.index')
             ->withSuccess("Your contact {$contact->name} has been updated succesffully!");
     }
 
@@ -99,7 +97,6 @@ class ContactsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function destroy(Contact $contact)

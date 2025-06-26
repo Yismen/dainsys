@@ -3,8 +3,8 @@
 namespace App\Listeners;
 
 use Illuminate\Mail\Events\MessageSent;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Mime\Part\DataPart;
 
 class RemoveTemporaryMailAttachments
@@ -16,15 +16,12 @@ class RemoveTemporaryMailAttachments
      *
      * @return void
      */
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Handle the event.
      *
-     * @param object $event
-     *
+     * @param  object  $event
      * @return void
      */
     public function handle(MessageSent $event)

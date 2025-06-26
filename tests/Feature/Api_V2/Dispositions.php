@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Api_V2;
 
-use Tests\TestCase;
-use Laravel\Passport\Passport;
 use App\Models\RingCentral\Disposition;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class Dispositions extends TestCase
 {
@@ -14,7 +14,7 @@ class Dispositions extends TestCase
     /** @test */
     public function it_returns_a_dispositions_collection()
     {
-        factory(Disposition::class)->create();
+        Disposition::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/dispositions');

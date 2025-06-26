@@ -10,18 +10,13 @@ class AdminMiddleware
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        if (! auth()->check()) {
-            abort(401, 'Unauthenticated');
-        }
+        abort_unless(auth()->check(), 401, 'Unauthenticated');
 
-        if ($request->user()->hasAnyRole(['admin', 'Admin']) === false) {
-            abort(403, 'Forbidden');
-        }
+        abort_if($request->user()->hasAnyRole(['admin', 'Admin']) === false, 403, 'Forbidden');
 
         return $next($request);
     }

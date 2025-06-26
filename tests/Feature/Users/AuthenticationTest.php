@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Users;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewUsers()
+    public function test_guest_cant_view_users()
     {
-        $user = create('App\Models\User');
+        $user = create(\App\Models\User::class);
 
         $this->get(route('admin.users.index'))
             ->assertStatus(302)
@@ -24,9 +24,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateUsers()
+    public function test_guest_cant_create_users()
     {
-        $user = create('App\Models\User');
+        $user = create(\App\Models\User::class);
 
         $this->get(route('admin.users.create'))
             ->assertStatus(302)
@@ -37,9 +37,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateUser()
+    public function test_guest_cant_update_user()
     {
-        $user = create('App\Models\User');
+        $user = create(\App\Models\User::class);
 
         $this->get(route('admin.users.edit', $user->id))
             ->assertStatus(302)
@@ -50,9 +50,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyUser()
+    public function test_guest_cant_destroy_user()
     {
-        $user = create('App\Models\User');
+        $user = create(\App\Models\User::class);
 
         $this->delete(route('admin.users.destroy', $user->id))
             ->assertStatus(302)

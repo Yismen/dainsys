@@ -12,7 +12,7 @@ class EmployeesTerminated extends AbstractEmployeesExport
     public function query()
     {
         return $this->baseQuery()
-            ->whereHas('termination', function ($query) {
+            ->whereHas('termination', function ($query): void {
                 $query
                     ->when($this->date_from, fn ($q) => $q->whereDate('termination_date', '>=', $this->date_from))
                     ->when($this->date_to, fn ($q) => $q->whereDate('termination_date', '<=', $this->date_to));
@@ -21,9 +21,7 @@ class EmployeesTerminated extends AbstractEmployeesExport
 
     public function prepareRows($rows)
     {
-        return $rows->sortBy(function ($query) {
-            return $query->termination->termination_date;
-        });
+        return $rows->sortBy(fn ($query) => $query->termination->termination_date);
     }
 
     public function title(): string

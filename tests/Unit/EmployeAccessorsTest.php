@@ -2,12 +2,12 @@
 
 namespace Tests\Unit;
 
-use App\Models\Vip;
 use App\Models\Employee;
-use App\Models\Universal;
 use App\Models\Termination;
-use Tests\TestCase as TestsTestCase;
+use App\Models\Universal;
+use App\Models\Vip;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase as TestsTestCase;
 
 class EmployeAccessorsTest extends TestsTestCase
 {

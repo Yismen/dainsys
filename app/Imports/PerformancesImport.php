@@ -2,33 +2,35 @@
 
 namespace App\Imports;
 
-use Carbon\Carbon;
-use App\Models\User;
-use App\Models\Performance;
-use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Events\AfterImport;
-use App\Notifications\UserAppNotification;
-use Maatwebsite\Excel\Concerns\Importable;
-use Maatwebsite\Excel\Concerns\WithEvents;
-use Maatwebsite\Excel\Events\ImportFailed;
 use App\Jobs\UpdateBillableHoursAndRevenue;
+use App\Models\Performance;
+use App\Models\User;
+use App\Notifications\UserAppNotification;
+use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Maatwebsite\Excel\Concerns\WithMapping;
 use Illuminate\Database\Eloquent\Collection;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Events\AfterImport;
+use Maatwebsite\Excel\Events\ImportFailed;
 
-class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, WithBatchInserts, WithChunkReading, ShouldQueue, WithMapping, WithEvents
+class PerformancesImport implements ShouldQueue, ToModel, WithBatchInserts, WithChunkReading, WithEvents, WithHeadingRow, WithMapping, WithValidation
 {
     use Importable;
+
     /**
      * The number of times the job may be attempted.
      *
      * @var int
      */
     public $tries = 5;
+
     /**
      * The number of seconds the job can run before timing out.
      *
@@ -36,12 +38,6 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
      */
     public $timeout = 120;
 
-    /**
-     * The name with the file will be saved.
-     *
-     * @var string
-     */
-    protected $file_name;
     /**
      * The user who imported the file.
      *
@@ -52,12 +48,13 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
     /**
      * class constructor
      *
-     * @param string $file_name
+     * @param  string  $file_name
      */
-    public function __construct($file_name)
-    {
-        $this->file_name = $file_name;
-
+    public function __construct(/**
+     * The name with the file will be saved.
+     */
+        protected $file_name
+    ) {
         $this->importedBy = auth()->user();
     }
 
@@ -96,7 +93,6 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
     /**
      * Use ToModel logic to save the data
      *
-     * @param  array            $row
      *
      * @return \App\Performance instance
      */
@@ -104,7 +100,7 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
     {
         Performance::query()
             ->where('unique_id', $row['unique_id'])
-            ->orWhere(function ($performance_query) use ($row) {
+            ->orWhere(function ($performance_query) use ($row): void {
                 $performance_query
                     ->where('employee_id', $row['employee_id'])
                     ->where('campaign_id', $row['campaign_id'])
@@ -117,8 +113,6 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
 
     /**
      * Validation rules
-     *
-     * @return array
      */
     public function rules(): array
     {
@@ -153,7 +147,7 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
     public function registerEvents(): array
     {
         return [
-            AfterImport::class => function (AfterImport $event) {
+            AfterImport::class => function (AfterImport $event): void {
                 $this->updateRevenueTypes();
 
                 $this->importedBy->notify(new UserAppNotification(
@@ -163,7 +157,7 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
                 ));
             },
 
-            ImportFailed::class => function (ImportFailed $event) {
+            ImportFailed::class => function (ImportFailed $event): void {
                 $this->importedBy->notify(new UserAppNotification(
                     'Import Failed!***',
                     $event->e->getMessage(),
@@ -180,8 +174,6 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
 
     /**
      * The size of batches to insert.
-     *
-     * @return int
      */
     public function batchSize(): int
     {
@@ -193,6 +185,6 @@ class PerformancesImport implements ToModel, WithHeadingRow, WithValidation, Wit
         Performance::query()
             ->with(['campaign.revenueType', 'employee', 'supervisor'])
             ->whereDate('updated_at', now())
-            ->chunk(100, fn(Collection $performances) => dispatch(new UpdateBillableHoursAndRevenue($performances)));
+            ->chunk(100, fn (Collection $performances) => dispatch(new UpdateBillableHoursAndRevenue($performances)));
     }
 }

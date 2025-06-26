@@ -1,10 +1,19 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Models\TerminationType::class, function (Faker $faker) {
-    return [
-        'name' => $faker->sentence,
-        'description' => $faker->sentence,
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TerminationType>
+ */
+class TerminationTypeFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\TerminationType::class;
+
+    public function definition()
+    {
+        return [
+            'name' => fake()->sentence,
+            'description' => fake()->sentence,
+        ];
+    }
+}

@@ -18,14 +18,18 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
-class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
+class CapillusAgentReportExport implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $repo;
+
     protected $options;
 
     protected $sheet;
+
     protected $sheet_name;
+
     protected $rows;
+
     protected $last_column;
 
     public function __construct(array $options)
@@ -52,7 +56,7 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
@@ -62,8 +66,7 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
                     ->formatSubHeaders()
                     ->mergeCells()
                     ->setVerticalBorders()
-                    ->applySpecialFormats()
-                ;
+                    ->applySpecialFormats();
 
                 (new ConditionalFontsColor([
                     'sheet' => $this->sheet,
@@ -118,7 +121,6 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
 
             default:
                 throw new Exception('Unknown Period passed!', 1);
-
                 break;
         }
     }
@@ -229,8 +231,7 @@ class CapillusAgentReportExport implements FromView, WithTitle, WithEvents, With
             ->mergeCells('K1:L1')
             ->mergeCells('M1:N1')
             ->mergeCells('O1:Q1')
-            ->mergeCells('R1:T1')
-        ;
+            ->mergeCells('R1:T1');
 
         return $this;
     }

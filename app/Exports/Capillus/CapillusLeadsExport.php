@@ -14,18 +14,14 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
-class CapillusLeadsExport implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas, WithCustomCsvSettings
+class CapillusLeadsExport implements FromView, WithCustomCsvSettings, WithEvents, WithPreCalculateFormulas, WithTitle
 {
-    protected $report_data;
-
     protected $sheet;
 
     protected $count;
 
-    public function __construct($report_data)
+    public function __construct(protected $report_data)
     {
-        $this->report_data = $report_data;
-
         $this->count = count($this->report_data);
         $this->count = $this->count > 0 ? $this->count : 1;
     }
@@ -46,7 +42,7 @@ class CapillusLeadsExport implements FromView, WithTitle, WithEvents, WithPreCal
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
@@ -54,8 +50,7 @@ class CapillusLeadsExport implements FromView, WithTitle, WithEvents, WithPreCal
                     ->formatHeaderRow()
                     // ->formatDateColumn()
                     ->formatTimecolumns()
-                    ->setColumnsWidth()
-                ;
+                    ->setColumnsWidth();
 
                 $this->sheet->setAutoFilter("A1:O{$this->count}");
                 $this->sheet->freezePane('E2');

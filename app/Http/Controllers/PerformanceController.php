@@ -40,8 +40,7 @@ class PerformanceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Performance $performance
-     *
+     * @param  \App\Performance  $performance
      * @return \Illuminate\Http\Response
      */
     public function show(Performance $performance)
@@ -52,8 +51,7 @@ class PerformanceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Performance $performances
-     *
+     * @param  \App\Performance  $performances
      * @return \Illuminate\Http\Response
      */
     public function edit(Performance $performance)
@@ -64,9 +62,8 @@ class PerformanceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Performance         $performance
-     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Performance  $performance
      * @return \Illuminate\Http\Response
      */
     public function update(UpdatePerformance $request, Performance $performance)
@@ -74,14 +71,13 @@ class PerformanceController extends Controller
         $performance->update($request->all());
 
         return redirect()->back()
-            ->withSuccess('Updated! ' . $performance->name);
+            ->withSuccess('Updated! '.$performance->name);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Performance $performance
-     *
+     * @param  \App\Performance  $performance
      * @return \Illuminate\Http\Response
      */
     public function destroy(Performance $performance)

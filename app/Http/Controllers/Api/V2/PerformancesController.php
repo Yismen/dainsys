@@ -86,25 +86,25 @@ class PerformancesController extends Controller
         // ini_set('max_execution_time', 240);
 
         $performances = Performance::with(['supervisor', 'downtimeReason'])
-            ->with(['campaign' => function ($query) {
+            ->with(['campaign' => function ($query): void {
                 $query->with(['source', 'project.client']);
             },
             ])
-            ->with(['employee' => function ($query) {
+            ->with(['employee' => function ($query): void {
                 $query
                     ->with(['supervisor', 'site', 'termination', 'position.department', 'project', 'punch']);
             },
             ])
             ->when(
                 request('months'),
-                function ($performance_query) {
+                function ($performance_query): void {
                     $performance_query->whereDate(
                         'date',
                         '>=',
                         Carbon::now()->subMonths((int) request('months'))->startOfMonth()
                     );
                 },
-                function ($performance_query) {
+                function ($performance_query): void {
                     $performance_query->whereDate(
                         'date',
                         '>=',

@@ -18,14 +18,14 @@ trait Trackable
     {
         parent::boot();
 
-        static::updating(function ($model) {
+        static::updating(function ($model): void {
             $model->recordChanges();
         });
     }
 
     protected function recordChanges()
     {
-        $diff  = $this->getDiff();
+        $diff = $this->getDiff();
 
         if (auth()->check() && empty($diff) === false) {
             $this->changes()->create($diff);

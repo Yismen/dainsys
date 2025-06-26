@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 
 class Menu extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['name', 'display_name', 'description', 'icon'];
 
     protected $guarded = [];
@@ -22,14 +24,18 @@ class Menu extends Model
         return $this->belongsToMany(Role::class);
     }
 
-    public function getRolesListAttribute()
+    protected function rolesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $roles = Role::pluck('name', 'id')->toArray();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => $roles = Role::pluck('name', 'id')->toArray());
     }
 
-    public function setDisplayNameAttribute($display_name)
+    protected function displayName(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return $this->attributes['display_name'] = ucwords($display_name);
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($display_name) {
+            return $this->attributes['display_name'] = ucwords($display_name);
+
+            return ['display_name' => ucwords($display_name)];
+        });
     }
 
     public function addMenu($request)
@@ -91,7 +97,7 @@ class Menu extends Model
         $request->merge(['name' => $name]);
 
         if ($request->is_admin) {
-            $request->merge(['name' => 'admin/' . $request->name]);
+            $request->merge(['name' => 'admin/'.$request->name]);
         }
 
         return $name;
@@ -99,13 +105,13 @@ class Menu extends Model
 
     private function prepareName($name)
     {
-        return strtolower(trim(preg_replace("/\.|\/\//", '/', $name)));
+        return strtolower(trim((string) preg_replace("/\.|\/\//", '/', (string) $name)));
     }
 
     private function stripAdmin($name)
     {
         if (Str::startsWith($name, 'admin/')) {
-            return explode('admin/', $name, 2)[1];
+            return explode('admin/', (string) $name, 2)[1];
         }
 
         return $name;
@@ -115,8 +121,8 @@ class Menu extends Model
     {
         $names = ['create', 'view', 'edit', 'destroy'];
 
-        foreach ($names as $key => $value) {
-            $new_name = $value . '-' . $name;
+        foreach ($names as $value) {
+            $new_name = $value.'-'.$name;
 
             if (! Permission::where('name', $new_name)->first()) {
                 Permission::create([

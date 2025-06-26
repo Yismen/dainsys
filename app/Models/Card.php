@@ -6,6 +6,8 @@ use App\Models\DainsysModel as Model;
 
 class Card extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $fillable = ['card', 'employee_id'];
 
     /**
@@ -14,20 +16,21 @@ class Card extends Model
      */
     public function employee()
     {
-        return $this->belongsTo('App\Models\Employee');
+        return $this->belongsTo(\App\Models\Employee::class);
     }
 
     /**
      * ---------------------------------------------------
      * Accessors
      */
-    public function getEmployeeListAttribute()
+    protected function employeeList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $employees = $this->employee()->pluck('id');
-
-        if ($employees->count() > 0) {
-            return $employees[0];
-        }
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            $employees = $this->employee()->pluck('id');
+            if ($employees->count() > 0) {
+                return $employees[0];
+            }
+        });
     }
 
     /**
@@ -35,12 +38,14 @@ class Card extends Model
      *
      * @return [type] [description]
      */
-    public function getEmployeesListAttribute()
+    protected function employeesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $employees = \App\Models\Employee::orderBy('first_name')
-            ->get();
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            $employees = \App\Models\Employee::orderBy('first_name')
+                ->get();
 
-        return $employees->pluck('fullName', 'id');
+            return $employees->pluck('fullName', 'id');
+        });
     }
 
     /**

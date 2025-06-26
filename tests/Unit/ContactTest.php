@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ContactTest extends TestCase
 {
@@ -19,8 +19,9 @@ class ContactTest extends TestCase
     /** @test */
     public function authenticated_users_can_create_contacts()
     {
-        $user = create('App\Models\User');
-        $contact = raw('App\Models\Contact');
+        $user = create(\App\Models\User::class);
+
+        $contact = raw(\App\Models\Contact::class);
 
         $contact = $user->contacts()->create($contact);
 

@@ -6,7 +6,6 @@ use App\Console\Commands\RingCentralReports\Exports\Support\Connections\Connecti
 use App\Console\Commands\RingCentralReports\Exports\Support\Connections\RingCentralConnection;
 use App\Exports\RangeFormarter;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Sheet;
@@ -14,13 +13,10 @@ use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
 class DispositionsSheet extends BaseRingCentralSheet
 {
-    /**
-     * @return View
-     */
     public function view(): View
     {
         $class_name = Str::snake(class_basename($this));
-        $this->data = $this->getData(new RingCentralConnection(), $this->exporter->dates_range['from_date'], $this->exporter->dates_range['to_date']);
+        $this->data = $this->getData(new RingCentralConnection, $this->exporter->dates_range['from_date'], $this->exporter->dates_range['to_date']);
 
         if (count($this->data) > 0) {
             $this->exporter->has_data = true;
@@ -35,9 +31,6 @@ class DispositionsSheet extends BaseRingCentralSheet
         );
     }
 
-    /**
-     * @return string
-     */
     public function title(): string
     {
         return 'Dispositions';
@@ -59,13 +52,10 @@ class DispositionsSheet extends BaseRingCentralSheet
             );
     }
 
-    /**
-     * @return array
-     */
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 $rows = count($this->data) + 2;
                 $totals_row = $rows + 1;
                 $sheet = $event->sheet->getDelegate();

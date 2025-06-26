@@ -13,7 +13,7 @@ class ConditionalFontsColor
         string $operator = 'equal',
         string $color = 'FFFFFFFF'
     ) {
-        $conditional1 = new Conditional();
+        $conditional1 = new Conditional;
         $conditional1->setConditionType(Conditional::CONDITION_CELLIS);
         $conditional1->setOperatorType($operator);
         $conditional1->addCondition($condition);

@@ -10,16 +10,13 @@ use Illuminate\Support\Facades\Cache;
 class UsersController extends Controller
 {
     protected $user;
-    private $request;
 
-    public function __construct(Request $request, Role $role)
+    public function __construct(private readonly Request $request, Role $role)
     {
         $this->middleware('authorize:view-users|edit-users|create-users', ['only' => ['index', 'show']]);
         $this->middleware('authorize:edit-users', ['only' => ['edit', 'update', 'force-reset', 'force-change']]);
         $this->middleware('authorize:create-users', ['only' => ['create', 'store']]);
         $this->middleware('authorize:destroy-users', ['only' => ['destroy']]);
-
-        $this->request = $request;
     }
 
     /**
@@ -30,7 +27,7 @@ class UsersController extends Controller
     public function index(User $users)
     {
         $users = $users
-            ->with(['roles' => function ($query) {
+            ->with(['roles' => function ($query): void {
                 $query->orderBy('name');
             },
             ])
@@ -83,7 +80,6 @@ class UsersController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function show(User $user)
@@ -95,7 +91,6 @@ class UsersController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function edit(User $user)
@@ -107,15 +102,14 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function update(User $user, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:3|unique:users,name,' . $user->id,
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'username' => 'required|unique:users,username,' . $user->id,
+            'name' => 'required|min:3|unique:users,name,'.$user->id,
+            'email' => 'required|email|unique:users,email,'.$user->id,
+            'username' => 'required|unique:users,username,'.$user->id,
         ]);
 
         Cache::flush();
@@ -130,7 +124,6 @@ class UsersController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function destroy(User $user)
@@ -167,7 +160,6 @@ class UsersController extends Controller
      * Activate the specified resource from storage.
      *
      * @param  int  $id
-     *
      * @return Response
      */
     public function restore($id)

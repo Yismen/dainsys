@@ -6,8 +6,6 @@ interface InboundSummaryInterface
 {
     /**
      * Get production data
-     *
-     * @return array
      */
     public function getInboundData(): array;
 

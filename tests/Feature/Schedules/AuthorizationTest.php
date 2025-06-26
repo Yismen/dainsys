@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Schedules;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewSchedule()
+    public function test_unuthorized_users_cant_view_schedule()
     {
-        $schedule = create('App\Models\Schedule');
+        $schedule = create(\App\Models\Schedule::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.schedules.index'))
@@ -23,27 +23,27 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetSchedule()
+    public function test_unuthorized_users_cant_createt_schedule()
     {
-        $schedule = create('App\Models\Schedule');
+        $schedule = create(\App\Models\Schedule::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.schedules.store'))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditSchedule()
+    public function test_unuthorized_users_cant_edit_schedule()
     {
-        $schedule = create('App\Models\Schedule');
+        $schedule = create(\App\Models\Schedule::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.schedules.update', $schedule->id))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroySchedule()
+    public function test_unuthorized_users_cant_destroy_schedule()
     {
-        $schedule = create('App\Models\Schedule');
+        $schedule = create(\App\Models\Schedule::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.schedules.destroy', $schedule->id))

@@ -1,9 +1,18 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Models\SupervisorUser::class, function (Faker $faker) {
-    return [
-        //
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\SupervisorUser>
+ */
+class SupervisorUserFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\SupervisorUser::class;
+
+    public function definition()
+    {
+        return [
+            //
+        ];
+    }
+}

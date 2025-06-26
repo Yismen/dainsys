@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateBanksTable extends Migration
 {
@@ -12,7 +12,7 @@ class CreateBanksTable extends Migration
      */
     public function up()
     {
-        Schema::create('banks', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('banks', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name', 300);
             $table->timestamps();
@@ -26,6 +26,6 @@ class CreateBanksTable extends Migration
      */
     public function down()
     {
-        Schema::drop('banks');
+        \Illuminate\Support\Facades\Schema::drop('banks');
     }
 }

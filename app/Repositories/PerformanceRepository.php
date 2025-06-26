@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Models\Performance;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 
 class PerformanceRepository
 {
@@ -12,7 +11,7 @@ class PerformanceRepository
 
     public function __construct()
     {
-        $this->performance = new Performance();
+        $this->performance = new Performance;
     }
 
     public function monthlyManyMonths(int $months = 12)
@@ -23,7 +22,7 @@ class PerformanceRepository
             'DATE_FORMAT(date, "%Y-%b")';
 
         return $this->baseQeury()
-            ->addSelect($dateClause . ' as month')
+            ->addSelect($dateClause.' as month')
             ->groupBy('month')
             ->whereDate('date', '>=', $start_of_month)
             ->whereDate('date', '<', now()->today())
@@ -38,7 +37,7 @@ class PerformanceRepository
             'DATE_FORMAT(date, "%Y-%w")';
 
         return $this->baseQeury()
-            ->addSelect($dateClause . ' as week')
+            ->addSelect($dateClause.' as week')
             ->groupBy('week')
             ->whereDate('date', '>=', $start_of_week)
             ->whereDate('date', '<', now()->today())
@@ -70,13 +69,9 @@ class PerformanceRepository
             ->whereHas('downtimeReason')
             ->whereHas(
                 'campaign',
-                function ($query) {
-                    return $query->with('project')
-                        ->where('name', 'like', '%downtime%')
-                        ->orWhereHas('project', function ($query) {
-                            return $query->where('name', 'like', '%downtime%');
-                        });
-                }
+                fn ($query) => $query->with('project')
+                    ->where('name', 'like', '%downtime%')
+                    ->orWhereHas('project', fn ($query) => $query->where('name', 'like', '%downtime%'))
             );
     }
 

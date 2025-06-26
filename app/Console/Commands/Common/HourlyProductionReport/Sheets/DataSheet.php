@@ -10,30 +10,22 @@ use Maatwebsite\Excel\Concerns\WithPreCalculateFormulas;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Events\AfterSheet;
 
-class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
+class DataSheet implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $data;
 
     protected $sheet;
 
     protected $rows;
+
     protected $last_column;
 
-    protected $sheetName;
-
-    protected $title;
-
-    protected string $view;
-
-    public function __construct(array $data, $sheetName, $title, string $view = 'exports.data')
+    public function __construct(array $data, protected $sheetName, protected $title, protected string $view = 'exports.data')
     {
         $this->data = $data;
 
         $this->rows = count($this->data) + 2;
         $this->last_column = 'P';
-        $this->sheetName = $sheetName;
-        $this->title = $title;
-        $this->view = $view;
     }
 
     public function view(): View
@@ -47,7 +39,7 @@ class DataSheet implements FromView, WithTitle, WithEvents, WithPreCalculateForm
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 $totalsRow = $this->rows + 1;
 
                 // auto

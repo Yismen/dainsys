@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Menus;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewMenus()
+    public function test_guest_cant_view_menus()
     {
-        $menu = create('App\Models\Menu');
+        $menu = create(\App\Models\Menu::class);
 
         $this->get(route('admin.menus.index'))
             ->assertStatus(302)
@@ -24,9 +24,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantCreateMenus()
+    public function test_guest_cant_create_menus()
     {
-        $menu = create('App\Models\Menu');
+        $menu = create(\App\Models\Menu::class);
 
         $this->get(route('admin.menus.create'))
             ->assertStatus(302)
@@ -37,9 +37,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantUpdateMenu()
+    public function test_guest_cant_update_menu()
     {
-        $menu = create('App\Models\Menu');
+        $menu = create(\App\Models\Menu::class);
 
         $this->get(route('admin.menus.edit', $menu->id))
             ->assertStatus(302)
@@ -50,9 +50,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyMenu()
+    public function test_guest_cant_destroy_menu()
     {
-        $menu = create('App\Models\Menu');
+        $menu = create(\App\Models\Menu::class);
 
         $this->delete(route('admin.menus.destroy', $menu->id))
             ->assertStatus(302)

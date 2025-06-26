@@ -8,14 +8,13 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Shift extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     use Sluggable;
 
     protected $fillable = ['employee_id', 'start_at', 'end_at', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
     /**
      * Return the sluggable configuration array for this model.
-     *
-     * @return array
      */
     public function sluggable(): array
     {
@@ -32,22 +31,22 @@ class Shift extends Model
         return $this->belongsTo(Employee::class);
     }
 
-    public function getStartAtAttribute($start_at)
+    protected function startAt(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Carbon::parse($start_at)->format('H:i');
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn ($start_at) => Carbon::parse($start_at)->format('H:i'));
     }
 
-    public function getEndAtAttribute($start_at)
+    protected function endAt(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Carbon::parse($start_at)->format('H:i');
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn ($start_at) => Carbon::parse($start_at)->format('H:i'));
     }
 
-    public function getEmployeesListAttribute()
+    protected function employeesList(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return Employee::actives()
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn () => Employee::actives()
             ->orderBy('first_name')
             ->orderBy('second_first_name')
             ->orderBy('last_name')
-            ->get();
+            ->get());
     }
 }

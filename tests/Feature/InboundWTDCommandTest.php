@@ -2,17 +2,17 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use App\Models\Report;
-use App\Models\Recipient;
+use App\Console\Commands\Inbound\SendWTDSummaryCommand;
+use App\Console\Commands\Inbound\Support\DataParsers\Periods\PeriodHoursParser;
+use App\Console\Commands\Inbound\Support\InboundDataRepository;
+use App\Console\Commands\Inbound\Support\InboundSummaryExport;
 use App\Mail\CommandsBaseMail;
+use App\Models\Recipient;
+use App\Models\Report;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Console\Commands\Inbound\SendWTDSummaryCommand;
-use App\Console\Commands\Inbound\Support\InboundSummaryExport;
-use App\Console\Commands\Inbound\Support\InboundDataRepository;
-use App\Console\Commands\Inbound\Support\DataParsers\Periods\PeriodHoursParser;
+use Tests\TestCase;
 
 class InboundWTDCommandTest extends TestCase
 {
@@ -23,8 +23,8 @@ class InboundWTDCommandTest extends TestCase
     {
         Excel::fake();
         Mail::fake();
-        $report = factory(Report::class)->create(['key' => 'inbound:send-wtd-summary']);
-        $recipients = factory(Recipient::class, 2)->create();
+        $report = Report::factory()->create(['key' => 'inbound:send-wtd-summary']);
+        $recipients = Recipient::factory(2)->create();
         $report->recipients()->sync($recipients->pluck('id')->toArray());
 
         $this->mockRepo(InboundDataRepository::class, []);
@@ -40,8 +40,8 @@ class InboundWTDCommandTest extends TestCase
         Mail::fake();
         $subject = 'Fake Name';
         $file_name = "{$subject}.xlsx";
-        $report = factory(Report::class)->create(['key' => 'inbound:send-wtd-summary']);
-        $recipients = factory(Recipient::class, 2)->create();
+        $report = Report::factory()->create(['key' => 'inbound:send-wtd-summary']);
+        $recipients = Recipient::factory(2)->create();
         $report->recipients()->sync($recipients->pluck('id')->toArray());
 
         $this->mockRepo(InboundDataRepository::class, []);
@@ -89,9 +89,7 @@ class InboundWTDCommandTest extends TestCase
             $file_name
         );
 
-        Excel::assertStored($file_name, function (InboundSummaryExport $export) {
-            return true;
-        });
+        Excel::assertStored($file_name, fn (InboundSummaryExport $export) => true);
     }
 
     /** @test */

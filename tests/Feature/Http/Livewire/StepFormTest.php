@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Http\Livewire;
 
-use Tests\TestCase;
-use App\Models\Step;
-use Livewire\Livewire;
-use App\Models\Process;
 use App\Http\Livewire\StepsForm;
+use App\Models\Process;
+use App\Models\Step;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
+use Tests\TestCase;
 
 class StepFormTest extends TestCase
 {
@@ -36,14 +36,13 @@ class StepFormTest extends TestCase
             ->assertSet('fields.order', null)
             ->assertSet('fields.description', null)
             ->assertSet('is_editing', false)
-            ->assertDispatchedBrowserEvent('showStepModal')
-            ;
+            ->assertDispatchedBrowserEvent('showStepModal');
     }
 
     /** @test */
     public function steps_form_prepares_for_editing_record()
     {
-        $step = factory(Step::class)->create();
+        $step = Step::factory()->create();
 
         Livewire::test(StepsForm::class)
             ->emit('wantsEditStep', $step)
@@ -53,14 +52,13 @@ class StepFormTest extends TestCase
             ->assertSet('fields.order', $step->order)
             ->assertSet('fields.process_id', $step->process_id)
             ->assertSet('fields.description', $step->description)
-            ->assertDispatchedBrowserEvent('showStepModal')
-            ;
+            ->assertDispatchedBrowserEvent('showStepModal');
     }
 
     /** @test */
     public function steps_form_create_new_record()
     {
-        $process = factory(Process::class)->create();
+        $process = Process::factory()->create();
 
         Livewire::test(StepsForm::class)
             ->emit('wantsCreateStep')
@@ -70,8 +68,7 @@ class StepFormTest extends TestCase
             ->set('fields.description', 'New description')
             ->call('store')
             ->assertEmitted('stepSaved')
-            ->assertDispatchedBrowserEvent('hideStepModal')
-            ;
+            ->assertDispatchedBrowserEvent('hideStepModal');
 
         $this->assertDatabaseHas('steps', [
             'name' => 'New name',
@@ -84,7 +81,7 @@ class StepFormTest extends TestCase
     /** @test */
     public function steps_form_updates_record()
     {
-        $step = factory(Step::class)->create();
+        $step = Step::factory()->create();
 
         Livewire::test(StepsForm::class)
             ->emit('wantsEditStep', $step)
@@ -92,8 +89,7 @@ class StepFormTest extends TestCase
             ->set('fields.description', 'New description')
             ->call('update')
             ->assertEmitted('stepSaved')
-            ->assertDispatchedBrowserEvent('hideStepModal')
-            ;
+            ->assertDispatchedBrowserEvent('hideStepModal');
 
         $this->assertDatabaseHas('steps', [
             'name' => 'New name',

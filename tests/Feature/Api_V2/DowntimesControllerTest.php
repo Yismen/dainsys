@@ -3,9 +3,9 @@
 namespace Tests\Feature\Api_V2;
 
 use App\Models\Downtime;
-use Tests\TestCase;
-use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class DowntimesControllerTest extends TestCase
 {
@@ -14,7 +14,7 @@ class DowntimesControllerTest extends TestCase
     /** @test */
     public function it_returns_a_downtimes_collection()
     {
-        $downtimes = factory(Downtime::class, 3)->create(['date' => now()]);
+        $downtimes = Downtime::factory(3)->create(['date' => now()]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/downtimes');
@@ -43,8 +43,8 @@ class DowntimesControllerTest extends TestCase
     /** @test */
     public function downtimes_collection_can_be_filtered_by_months()
     {
-        $recent_downtimes = factory(Downtime::class, 3)->create(['date' => now()]);
-        $old_downtimes = factory(Downtime::class, 3)->create(['date' => now()->subMonths(4)]);
+        $recent_downtimes = Downtime::factory(3)->create(['date' => now()]);
+        $old_downtimes = Downtime::factory(3)->create(['date' => now()->subMonths(4)]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/downtimes?months=2');
@@ -58,8 +58,8 @@ class DowntimesControllerTest extends TestCase
     /** @test */
     public function downtimes_collection_can_be_filtered_5_months_if_not_specified()
     {
-        $recent_downtimes = factory(Downtime::class, 3)->create(['date' => now()]);
-        $five_months_old_downtimes = factory(Downtime::class, 3)->create(['date' => now()->subMonths(5)]);
+        $recent_downtimes = Downtime::factory(3)->create(['date' => now()]);
+        $five_months_old_downtimes = Downtime::factory(3)->create(['date' => now()->subMonths(5)]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/v2/downtimes');
@@ -73,8 +73,8 @@ class DowntimesControllerTest extends TestCase
     /** @test */
     public function downtimes_are_filtered_by_campaign()
     {
-        $desired_campaign_downtime = factory(Downtime::class)->create(['date' => now()])->load('campaign');
-        $another_campaign_downtime = factory(Downtime::class)->create(['date' => now()])->load('campaign');
+        $desired_campaign_downtime = Downtime::factory()->create(['date' => now()])->load('campaign');
+        $another_campaign_downtime = Downtime::factory()->create(['date' => now()])->load('campaign');
         Passport::actingAs($this->user());
         $response = $this->get("/api/v2/downtimes?campaign={$desired_campaign_downtime->campaign->name}");
 
@@ -88,8 +88,8 @@ class DowntimesControllerTest extends TestCase
     public function downtimes_are_filtered_by_client()
     {
         Passport::actingAs($this->user());
-        $desired_client_downtime = factory(Downtime::class)->create(['date' => now()])->load('campaign.project.client');
-        $another_client_downtime = factory(Downtime::class)->create(['date' => now()])->load('campaign.project.client');
+        $desired_client_downtime = Downtime::factory()->create(['date' => now()])->load('campaign.project.client');
+        $another_client_downtime = Downtime::factory()->create(['date' => now()])->load('campaign.project.client');
 
         $response = $this->get("/api/v2/downtimes?client={$desired_client_downtime->campaign->project->client->name}");
 
@@ -103,8 +103,8 @@ class DowntimesControllerTest extends TestCase
     public function downtimes_are_filtered_by_employee()
     {
         Passport::actingAs($this->user());
-        $desired_employee_downtime = factory(Downtime::class)->create(['date' => now()])->load('employee');
-        $another_employee_downtime = factory(Downtime::class)->create(['date' => now()])->load('employee');
+        $desired_employee_downtime = Downtime::factory()->create(['date' => now()])->load('employee');
+        $another_employee_downtime = Downtime::factory()->create(['date' => now()])->load('employee');
 
         $response = $this->get("/api/v2/downtimes?employee={$desired_employee_downtime->employee->full_name}");
 
@@ -118,8 +118,8 @@ class DowntimesControllerTest extends TestCase
     public function downtimes_are_filtered_by_site()
     {
         Passport::actingAs($this->user());
-        $desired_site_downtime = factory(Downtime::class)->create(['date' => now()])->load('employee.site');
-        $another_site_downtime = factory(Downtime::class)->create(['date' => now()])->load('employee.site');
+        $desired_site_downtime = Downtime::factory()->create(['date' => now()])->load('employee.site');
+        $another_site_downtime = Downtime::factory()->create(['date' => now()])->load('employee.site');
 
         $response = $this->get("/api/v2/downtimes?site={$desired_site_downtime->employee->site->name}");
 
@@ -133,8 +133,8 @@ class DowntimesControllerTest extends TestCase
     public function downtimes_are_filtered_by_source()
     {
         Passport::actingAs($this->user());
-        $desired_source_downtime = factory(Downtime::class)->create(['date' => now()])->load('campaign.source');
-        $another_source_downtime = factory(Downtime::class)->create(['date' => now()])->load('campaign.source');
+        $desired_source_downtime = Downtime::factory()->create(['date' => now()])->load('campaign.source');
+        $another_source_downtime = Downtime::factory()->create(['date' => now()])->load('campaign.source');
 
         $response = $this->get("/api/v2/downtimes?source={$desired_source_downtime->campaign->source->name}");
 
@@ -148,8 +148,8 @@ class DowntimesControllerTest extends TestCase
     public function downtimes_are_filtered_by_supervisor()
     {
         Passport::actingAs($this->user());
-        $desired_supervisor_downtime = factory(Downtime::class)->create(['date' => now()])->load('employee');
-        $another_supervisor_downtime = factory(Downtime::class)->create(['date' => now()])->load('employee');
+        $desired_supervisor_downtime = Downtime::factory()->create(['date' => now()])->load('employee');
+        $another_supervisor_downtime = Downtime::factory()->create(['date' => now()])->load('employee');
 
         $response = $this->get("/api/v2/downtimes?supervisor={$desired_supervisor_downtime->supervisor->name}");
 
@@ -163,8 +163,8 @@ class DowntimesControllerTest extends TestCase
     public function downtimes_are_filtered_by_project_campaign()
     {
         Passport::actingAs($this->user());
-        $desired_project_downtime = factory(Downtime::class)->create(['date' => now()])->load('campaign.project');
-        $another_project_downtime = factory(Downtime::class)->create(['date' => now()])->load('campaign.project');
+        $desired_project_downtime = Downtime::factory()->create(['date' => now()])->load('campaign.project');
+        $another_project_downtime = Downtime::factory()->create(['date' => now()])->load('campaign.project');
 
         $response = $this->get("/api/v2/downtimes?project_campaign={$desired_project_downtime->campaign->project->name}");
 

@@ -2,13 +2,13 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Support\Facades\Mail;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Console\Commands\RingCentralReports\Commands\HotelPlanning\SendHotelPlanningProductionReportCommand;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
+use Maatwebsite\Excel\Facades\Excel;
+use Tests\TestCase;
 
 class HotelPlanningCommandsTest extends TestCase
 {
@@ -48,8 +48,8 @@ class HotelPlanningCommandsTest extends TestCase
         Excel::fake();
         Notification::fake();
         // $this->userWithRole('admin');
-        $report = factory(\App\Models\Report::class)->create(['key' => 'hpc:send-production-report']);
-        $recipients = factory(\App\Models\Recipient::class, 2)->create();
+        $report = \App\Models\Report::factory()->create(['key' => 'hpc:send-production-report']);
+        $recipients = \App\Models\Recipient::factory(2)->create();
         $report->recipients()->sync($recipients->pluck('id')->toArray());
 
         $this->mockRepo(\App\Console\Commands\RingCentralReports\Exports\Sheets\HotelPlanning\ProductionSheet::class, []);
@@ -68,14 +68,14 @@ class HotelPlanningCommandsTest extends TestCase
         Excel::fake();
         Notification::fake();
         // $this->userWithRole('admin');
-        $report = factory(\App\Models\Report::class)->create(['key' => 'hpc:send-production-report']);
-        $recipients = factory(\App\Models\Recipient::class, 2)->create();
+        $report = \App\Models\Report::factory()->create(['key' => 'hpc:send-production-report']);
+        $recipients = \App\Models\Recipient::factory(2)->create();
         $report->recipients()->sync($recipients->pluck('id')->toArray());
 
         $this->mockRepo(TextCampaignSheet::class, []);
 
         $this->artisan(SendHotelPlanningProductionReportCommand::class)
-        ->expectsOutput('Hotel Planning Production Report Sent!')
+            ->expectsOutput('Hotel Planning Production Report Sent!')
             ->assertExitCode(0);
 
         // Mail::assertSent(BaseRingCentralMails::class);

@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Projects;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewProject()
+    public function test_unuthorized_users_cant_view_project()
     {
-        $project = create('App\Models\Project');
+        $project = create(\App\Models\Project::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.projects.index'))
@@ -23,27 +23,27 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetProject()
+    public function test_unuthorized_users_cant_createt_project()
     {
-        $project = create('App\Models\Project');
+        $project = create(\App\Models\Project::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.projects.store'))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditProject()
+    public function test_unuthorized_users_cant_edit_project()
     {
-        $project = create('App\Models\Project');
+        $project = create(\App\Models\Project::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.projects.update', $project->id))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyProject()
+    public function test_unuthorized_users_cant_destroy_project()
     {
-        $project = create('App\Models\Project');
+        $project = create(\App\Models\Project::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.projects.destroy', $project->id))

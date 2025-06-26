@@ -1,13 +1,22 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Models\Position::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name(),
-        'department_id' => factory(App\Models\Department::class)->create()->id,
-        'payment_type_id' => factory(App\Models\PaymentType::class)->create()->id,
-        'payment_frequency_id' => factory(App\Models\PaymentFrequency::class)->create()->id,
-        'salary' => 125,
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Position>
+ */
+class PositionFactory extends \Illuminate\Database\Eloquent\Factories\Factory
+{
+    protected $model = \App\Models\Position::class;
+
+    public function definition()
+    {
+        return [
+            'name' => fake()->name(),
+            'department_id' => \App\Models\Department::factory()->create()->id,
+            'payment_type_id' => \App\Models\PaymentType::factory()->create()->id,
+            'payment_frequency_id' => \App\Models\PaymentFrequency::factory()->create()->id,
+            'salary' => 125,
+        ];
+    }
+}

@@ -15,8 +15,8 @@ class AttendanceDatesRepository
     /**
      * Return data and dates for all attendances for a given date
      *
-     * @param Carbon\date $date
-     * @param bool $current_user false to query data for all users
+     * @param  Carbon\date  $date
+     * @param  bool  $current_user  false to query data for all users
      */
     public function __construct(Carbon $date, bool $current_user = true)
     {
@@ -28,12 +28,10 @@ class AttendanceDatesRepository
     public function data()
     {
         return AttendanceCode::query()
-            ->withCount(['attendances' => function ($query) {
-                return $query->whereDate('date', $this->date)
-                    ->where('user_id', 'like', $this->current_user);
-            },
+            ->withCount(['attendances' => fn ($query) => $query->whereDate('date', $this->date)
+                ->where('user_id', 'like', $this->current_user),
             ])
-            ->whereHas('attendances', function ($query) {
+            ->whereHas('attendances', function ($query): void {
                 $query->whereDate('date', $this->date)
                     ->where('user_id', 'like', $this->current_user);
             })

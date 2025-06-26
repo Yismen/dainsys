@@ -11,6 +11,7 @@ class Processes extends Component
     use HasLivewirePagination;
 
     protected $listeners = ['searchUpdated', 'processSaved' => '$refresh'];
+
     protected $search = null;
 
     public function render()
@@ -19,10 +20,10 @@ class Processes extends Component
             'processes' => Process::query()
                 ->when(
                     $this->search,
-                    function ($query) {
+                    function ($query): void {
                         $this->resetPage();
 
-                        $query->where(function ($query) {
+                        $query->where(function ($query): void {
                             $query->where('name', 'like', "%{$this->search}%")
                                 ->orWhere('description', 'like', "%{$this->search}%");
                         });

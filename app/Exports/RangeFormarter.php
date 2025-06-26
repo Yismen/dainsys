@@ -67,14 +67,12 @@ class RangeFormarter
     /**
      * Set auto size columns
      *
-     * @param string $from_column
-     * @param $to_column, if null asumes $from_column
-     *
+     * @param  $to_column,  if null asumes $from_column
      * @return $this
      */
     public function setAutoSizeRange(string $from_column, $to_column = null)
     {
-        $to_column = $to_column ? $to_column : $from_column;
+        $to_column = $to_column ?: $from_column;
 
         foreach (range($from_column, $to_column) as $col) {
             $this->sheet->getColumnDimension($col)
@@ -196,9 +194,7 @@ class RangeFormarter
     /**
      * Set Height Row.
      *
-     * @param int $row
-     * @param int $height . -1 for Auto
-     *
+     * @param  int  $height  . -1 for Auto
      * @return object
      */
     public function setRowHeight(int $row, int $height = 12)
@@ -211,9 +207,8 @@ class RangeFormarter
     /**
      * Set Height Row.
      *
-     * @param int $row
-     * @param int $height . -1 for Auto
-     *
+     * @param  int  $row
+     * @param  int  $height  . -1 for Auto
      * @return object
      */
     public function setMultipleRowsHeight(int $from_row, int $to_row, int $height = 12)

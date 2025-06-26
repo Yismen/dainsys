@@ -13,14 +13,11 @@ class AppNotificationReceived
      *
      * @return void
      */
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Handle the event.
      *
-     * @param  NotificationSent  $event
      *
      * @return void
      */

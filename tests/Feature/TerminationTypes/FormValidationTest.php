@@ -3,9 +3,9 @@
 namespace Tests\Feature\TerminationTypes;
 
 use App\Models\TerminationType;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class FormValidationTest extends TestCase
 {

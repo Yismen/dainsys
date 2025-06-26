@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Employee;
 
-use App\Models\Punch;
 use App\Models\Employee;
+use App\Models\Punch;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

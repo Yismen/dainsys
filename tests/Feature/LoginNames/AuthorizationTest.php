@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\LoginNames;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewLoginName()
+    public function test_unuthorized_users_cant_view_login_name()
     {
-        $login_name = create('App\Models\LoginName');
+        $login_name = create(\App\Models\LoginName::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.login_names.index'))
@@ -23,27 +23,27 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantCreatetLoginName()
+    public function test_unuthorized_users_cant_createt_login_name()
     {
-        $login_name = create('App\Models\LoginName');
+        $login_name = create(\App\Models\LoginName::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->post(route('admin.login_names.store'))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditLoginName()
+    public function test_unuthorized_users_cant_edit_login_name()
     {
-        $login_name = create('App\Models\LoginName');
+        $login_name = create(\App\Models\LoginName::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.login_names.update', $login_name->id))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyLoginName()
+    public function test_unuthorized_users_cant_destroy_login_name()
     {
-        $login_name = create('App\Models\LoginName');
+        $login_name = create(\App\Models\LoginName::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.login_names.destroy', $login_name->id))

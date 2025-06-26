@@ -3,9 +3,9 @@
 namespace Tests\Feature\Sites;
 
 use App\Models\Site;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class FormValidationTest extends TestCase
 {

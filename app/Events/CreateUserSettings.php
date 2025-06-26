@@ -7,17 +7,13 @@ use Illuminate\Queue\SerializesModels;
 class CreateUserSettings extends Event
 {
     use SerializesModels;
-    public $user;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($user)
-    {
-        $this->user = $user;
-    }
+    public function __construct(public $user) {}
 
     /**
      * Get the channels the event should be broadcast on.

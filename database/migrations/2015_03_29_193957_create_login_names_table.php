@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateLoginNamesTable extends Migration
 {
@@ -12,7 +12,7 @@ class CreateLoginNamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('login_names', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('login_names', function (Blueprint $table): void {
             $table->increments('id');
             $table->integer('employee_id')->unsigned()->index();
             $table->string('login');
@@ -30,6 +30,6 @@ class CreateLoginNamesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('login_names');
+        \Illuminate\Support\Facades\Schema::dropIfExists('login_names');
     }
 }

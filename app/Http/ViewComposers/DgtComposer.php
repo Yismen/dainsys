@@ -17,7 +17,6 @@ class DgtComposer
     /**
      * Create a new profile composer.
      *
-     * @param  Reports  $reports
      *
      * @return void
      */
@@ -30,7 +29,6 @@ class DgtComposer
     /**
      * Bind data to the view.
      *
-     * @param  View  $view
      *
      * @return void
      */

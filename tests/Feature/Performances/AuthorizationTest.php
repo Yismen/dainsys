@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Performances;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testUnuthorizedUsersCantViewPerformance()
+    public function test_unuthorized_users_cant_view_performance()
     {
-        $performance = create('App\Models\Performance');
+        $performance = create(\App\Models\Performance::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->get(route('admin.performances.index'))
@@ -23,18 +23,18 @@ class AuthorizationTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantEditPerformance()
+    public function test_unuthorized_users_cant_edit_performance()
     {
-        $performance = create('App\Models\Performance');
+        $performance = create(\App\Models\Performance::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->put(route('admin.performances.update', $performance->id))
             ->assertForbidden();
     }
 
-    public function testUnuthorizedUsersCantDestroyPerformance()
+    public function test_unuthorized_users_cant_destroy_performance()
     {
-        $performance = create('App\Models\Performance');
+        $performance = create(\App\Models\Performance::class);
         $response = $this->actingAs($this->userWithPermission('wrong-permission'));
 
         $response->delete(route('admin.performances.destroy', $performance->id))

@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Api_V2;
 
-use App\Models\Vip;
 use App\Models\Employee;
-use Tests\TestCase;
-use Laravel\Passport\Passport;
+use App\Models\Vip;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class EmployeeVipTest extends TestCase
 {
@@ -15,7 +15,7 @@ class EmployeeVipTest extends TestCase
     /** @test */
     public function an_employee_can_be_assigned_to_vips_list()
     {
-        $employee = factory(Employee::class)->create();
+        $employee = Employee::factory()->create();
         Passport::actingAs($this->user());
 
         $response = $this->post(route('api.v2.employee.vip', $employee->id), ['is_vip' => true]);
@@ -28,7 +28,7 @@ class EmployeeVipTest extends TestCase
     /** @test */
     public function vip_employee_can_be_removed()
     {
-        $vip = factory(Vip::class)->create();
+        $vip = Vip::factory()->create();
         $employee = $vip->employee;
         Passport::actingAs($this->user());
 
@@ -42,7 +42,7 @@ class EmployeeVipTest extends TestCase
     /** @test */
     public function vips_request_is_validated()
     {
-        $vip = factory(Vip::class)->create();
+        $vip = Vip::factory()->create();
         $employee = $vip->employee;
         Passport::actingAs($this->user());
 

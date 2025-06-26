@@ -5,24 +5,24 @@ namespace Tests\Feature\SupervisorUser;
 use App\Models\Supervisor;
 use App\Models\SupervisorUser;
 use App\Models\User;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewSupervisorUsers()
+    public function test_guest_cant_view_supervisor_users()
     {
-        $user = create('App\Models\User');
-        $supervisor = create('App\Models\Supervisor');
+        $user = create(\App\Models\User::class);
+        $supervisor = create(\App\Models\Supervisor::class);
 
         $this->get(route('admin.supervisor_users.index'))->assertRedirect('/login');
     }
 
-    public function testGuestCantEditSupervisorUsers()
+    public function test_guest_cant_edit_supervisor_users()
     {
         $user = create(User::class);
         $supervisor = create(Supervisor::class);
@@ -33,7 +33,7 @@ class AuthenticationTest extends TestCase
         $this->put(route('admin.supervisor_users.update', $supervisor_user->id))->assertRedirect('/login');
     }
 
-    public function testGuestCantDestroySupervisorUser()
+    public function test_guest_cant_destroy_supervisor_user()
     {
         $user = create(User::class);
         $supervisor = create(Supervisor::class);

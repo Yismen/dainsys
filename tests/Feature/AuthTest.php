@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Notification;
+use Tests\TestCase;
 
 class AuthTest extends TestCase
 {
@@ -16,7 +16,7 @@ class AuthTest extends TestCase
     {
         $response = $this->get('/login');
 
-        $response->assertViewIs('auth.login');
+        $response->assertViewIs(\Illuminate\Auth\Events\Login::class);
     }
 
     /** @test */

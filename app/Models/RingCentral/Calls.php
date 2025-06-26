@@ -7,6 +7,7 @@ use App\Models\RingCentral\Traits\WithRingCentralConnection;
 
 class Calls extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
     use WithRingCentralConnection;
 
     public function getTable()

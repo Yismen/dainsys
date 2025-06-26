@@ -3,9 +3,9 @@
 namespace Tests\Feature\Api;
 
 use App\Models\Downtime;
-use Tests\TestCase;
-use Laravel\Passport\Passport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class DowntimesControllerTest extends TestCase
 {
@@ -14,7 +14,7 @@ class DowntimesControllerTest extends TestCase
     /** @test */
     public function it_returns_a_downtimes_collection()
     {
-        $downtimes = factory(Downtime::class, 3)->create(['date' => now()]);
+        $downtimes = Downtime::factory(3)->create(['date' => now()]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/performances/downtimes');
@@ -41,8 +41,8 @@ class DowntimesControllerTest extends TestCase
     /** @test */
     public function downtimes_collection_can_be_filtered_by_months()
     {
-        $recent_downtimes = factory(Downtime::class, 3)->create(['date' => now()]);
-        $old_downtimes = factory(Downtime::class, 3)->create(['date' => now()->subMonths(4)]);
+        $recent_downtimes = Downtime::factory(3)->create(['date' => now()]);
+        $old_downtimes = Downtime::factory(3)->create(['date' => now()->subMonths(4)]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/performances/downtimes?months=2');
@@ -56,8 +56,8 @@ class DowntimesControllerTest extends TestCase
     /** @test */
     public function downtimes_collection_can_be_filtered_5_months_if_not_specified()
     {
-        $recent_downtimes = factory(Downtime::class, 3)->create(['date' => now()]);
-        $five_months_old_downtimes = factory(Downtime::class, 3)->create(['date' => now()->subMonths(5)]);
+        $recent_downtimes = Downtime::factory(3)->create(['date' => now()]);
+        $five_months_old_downtimes = Downtime::factory(3)->create(['date' => now()->subMonths(5)]);
         Passport::actingAs($this->user());
 
         $response = $this->get('/api/performances/downtimes');
@@ -71,8 +71,8 @@ class DowntimesControllerTest extends TestCase
     /** @test */
     public function downtimes_are_filtered_by_campaign()
     {
-        $desired_campaign_downtime = factory(Downtime::class)->create(['date' => now()])->load('campaign');
-        $another_campaign_downtime = factory(Downtime::class)->create(['date' => now()])->load('campaign');
+        $desired_campaign_downtime = Downtime::factory()->create(['date' => now()])->load('campaign');
+        $another_campaign_downtime = Downtime::factory()->create(['date' => now()])->load('campaign');
         Passport::actingAs($this->user());
         $response = $this->get("/api/performances/downtimes?campaign={$desired_campaign_downtime->campaign->name}");
 

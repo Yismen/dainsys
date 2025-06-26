@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Employee;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EmployeesResource;
+use App\Models\Employee;
 
 class EmployeeController extends Controller
 {
@@ -196,10 +196,10 @@ class EmployeeController extends Controller
             'gender',
             'marital',
             'nationality',
-            'position' => function ($query) {
+            'position' => function ($query): void {
                 $query->with([
                     'department',
-                    'payment_type'
+                    'payment_type',
                 ]);
             },
             'project',

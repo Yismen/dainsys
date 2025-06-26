@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use Tests\TestCase;
 use App\Models\Employee;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class EmployeesControllerTest extends TestCase
 {
@@ -19,7 +19,7 @@ class EmployeesControllerTest extends TestCase
     /** @test */
     public function it_requires_view_employees_permissions_to_view_all_employees()
     {
-        $this->actingAs(create('App\Models\User'));
+        $this->actingAs(create(\App\Models\User::class));
 
         $response = $this->get('/admin/employees');
 
@@ -45,7 +45,7 @@ class EmployeesControllerTest extends TestCase
     {
         // given
         $user = $this->userWithPermission('view-employees');
-        $employee = create('App\Models\Employee');
+        $employee = create(\App\Models\Employee::class);
 
         // when
         $this->actingAs($user);

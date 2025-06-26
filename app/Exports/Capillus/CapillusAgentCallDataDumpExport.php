@@ -14,7 +14,7 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 
-class CapillusAgentCallDataDumpExport implements FromView, WithTitle, WithEvents, WithPreCalculateFormulas
+class CapillusAgentCallDataDumpExport implements FromView, WithEvents, WithPreCalculateFormulas, WithTitle
 {
     protected $repo;
 
@@ -48,7 +48,7 @@ class CapillusAgentCallDataDumpExport implements FromView, WithTitle, WithEvents
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function (AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event): void {
                 // auto
                 $this->sheet = $event->sheet->getDelegate();
 
@@ -56,8 +56,7 @@ class CapillusAgentCallDataDumpExport implements FromView, WithTitle, WithEvents
                     ->formatHeaderRow()
                     ->formatDateColumn()
                     ->formatTimecolumns()
-                    ->setColumnsWidth()
-                ;
+                    ->setColumnsWidth();
 
                 $this->sheet->setAutoFilter("A1:M{$this->count}");
                 $this->sheet->freezePane('A2');

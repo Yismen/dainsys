@@ -23,6 +23,7 @@ class MigrationStatus extends Command
     protected $description = 'Print the status of the migration table';
 
     protected $migration_array = [];
+
     protected $headers = [];
 
     /**
@@ -58,7 +59,7 @@ class MigrationStatus extends Command
     private function setMigrationsArray()
     {
         foreach ($this->getMigrationFiles($this->option('dirname')) as $partial) {
-            $partial = pathinfo($partial);
+            $partial = pathinfo((string) $partial);
             $name = $partial['filename'];
             $migrated = $this->getMigration($name);
 
@@ -82,8 +83,7 @@ class MigrationStatus extends Command
     /**
      * Retrieve a row from the migration table filtered by the name of the file.
      *
-     * @param string $name the name of the migration file
-     *
+     * @param  string  $name  the name of the migration file
      * @return Model An instance of the migration based on the name. Null
      *               if not found.
      */
@@ -95,12 +95,11 @@ class MigrationStatus extends Command
     /**
      * Retrieve all the migration files located in a given path.
      *
-     * @param string $dir the name of the folder withing the migration folder
-     *
+     * @param  string  $dir  the name of the folder withing the migration folder
      * @return [type] [description]
      */
     private function getMigrationFiles($dir)
     {
-        return File::files(database_path() . "/{$dir}");
+        return File::files(database_path()."/{$dir}");
     }
 }

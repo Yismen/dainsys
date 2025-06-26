@@ -18,8 +18,11 @@ class Performance extends Component
     use WithSorting;
 
     public $date;
+
     public $project;
+
     public $campaign;
+
     public $records = 10;
 
     public function updatingSearch()
@@ -40,30 +43,29 @@ class Performance extends Component
     protected function getPerformanceData()
     {
         return ModelsPerformance::query()
-            ->when($this->search, function ($query) {
-                $terms = preg_split("/[\s]+/", $this->search, -1, PREG_SPLIT_NO_EMPTY);
+            ->when($this->search, function ($query): void {
+                $terms = preg_split("/[\s]+/", (string) $this->search, -1, PREG_SPLIT_NO_EMPTY);
 
                 foreach ($terms as $value) {
                     // $query->whereDate('date', $value)
-                    $query->whereHas('employee', function ($query) use ($value) {
+                    $query->whereHas('employee', function ($query) use ($value): void {
                         $query->where('first_name', 'like', "{$value}%")
                             ->orWhere('second_first_name', 'like', "{$value}%")
                             ->orWhere('last_name', 'like', "{$value}%")
                             ->orWhere('second_last_name', 'like', "{$value}%");
-                    })
-                    ;
+                    });
                 }
             })
-            ->when($this->date, function ($query) {
+            ->when($this->date, function ($query): void {
                 $query->whereDate('date', $this->date);
             })
-            ->when($this->project, function ($query) {
-                $query->whereHas('campaign.project', function ($query) {
+            ->when($this->project, function ($query): void {
+                $query->whereHas('campaign.project', function ($query): void {
                     $query->where('id', $this->project);
                 });
             })
-            ->when($this->campaign, function ($query) {
-                $query->whereHas('campaign', function ($query) {
+            ->when($this->campaign, function ($query): void {
+                $query->whereHas('campaign', function ($query): void {
                     $query->where('id', $this->campaign);
                 });
             })
@@ -100,24 +102,20 @@ class Performance extends Component
 
     protected function getProjects()
     {
-        return Cache::rememberForever('performances_projects', function () {
-            return Project::query()
-                ->orderBy('name')
-                ->select(['name', 'id'])
-                ->get();
-        });
+        return Cache::rememberForever('performances_projects', fn () => Project::query()
+            ->orderBy('name')
+            ->select(['name', 'id'])
+            ->get());
     }
 
     protected function getCampaigns()
     {
-        return Cache::rememberForever('performances_campaigns', function () {
-            return Campaign::query()
-                ->orderBy('name')
-                ->select(['name', 'id'])
-                ->when($this->project, function ($query) {
-                    $query->where('project_id', $this->project);
-                })
-                ->get();
-        });
+        return Cache::rememberForever('performances_campaigns', fn () => Campaign::query()
+            ->orderBy('name')
+            ->select(['name', 'id'])
+            ->when($this->project, function ($query): void {
+                $query->where('project_id', $this->project);
+            })
+            ->get());
     }
 }

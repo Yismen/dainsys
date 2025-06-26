@@ -19,8 +19,7 @@ trait NotifyUsersOnFailedCommandsTrait
     /**
      * Notify all queried users;
      *
-     * @param  \Throwable $th
-     *
+     * @param  \Throwable  $th
      * @return object
      */
     protected function notifyUsers($th)
@@ -40,15 +39,14 @@ trait NotifyUsersOnFailedCommandsTrait
             }
 
             return $this;
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Throwable) {
+            // throw $th;
         }
     }
 
     /**
      * Save the exception to a log.
      *
-     * @param  \Throwable $th
      *
      * @return object
      */
@@ -60,7 +58,6 @@ trait NotifyUsersOnFailedCommandsTrait
     /**
      * Wrapper to Notify all desired users and log the errors
      *
-     * @param  \Throwable $th
      *
      * @return void
      */

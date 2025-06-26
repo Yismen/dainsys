@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Bank;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
-    public function testGuestCantViewBanks()
+    public function test_guest_cant_view_banks()
     {
-        $bank = create('App\Models\Bank');
+        $bank = create(\App\Models\Bank::class);
 
         $this->get(route('admin.banks.index'))
             ->assertStatus(302)
@@ -37,9 +37,9 @@ class AuthenticationTest extends TestCase
     //         ->assertRedirect(route('login'));
     // }
 
-    public function testGuestCantUpdateBank()
+    public function test_guest_cant_update_bank()
     {
-        $bank = create('App\Models\Bank');
+        $bank = create(\App\Models\Bank::class);
 
         $this->get(route('admin.banks.edit', $bank->id))
             ->assertStatus(302)
@@ -50,9 +50,9 @@ class AuthenticationTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
-    public function testGuestCantDestroyBank()
+    public function test_guest_cant_destroy_bank()
     {
-        $bank = create('App\Models\Bank');
+        $bank = create(\App\Models\Bank::class);
 
         $this->delete(route('admin.banks.destroy', $bank->id))
             ->assertStatus(302)

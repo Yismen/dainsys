@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateTerminationTypesTable extends Migration
 {
@@ -12,7 +12,7 @@ class CreateTerminationTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('termination_types', function (Blueprint $table) {
+        \Illuminate\Support\Facades\Schema::create('termination_types', function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name');
             $table->string('description');
@@ -27,6 +27,6 @@ class CreateTerminationTypesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('termination_types');
+        \Illuminate\Support\Facades\Schema::drop('termination_types');
     }
 }

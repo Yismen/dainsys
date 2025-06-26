@@ -2,9 +2,8 @@
 
 namespace App\Listeners;
 
-use App\Models\Report;
-use App\Events\EmployeesUpdates;
 use App\Mail\EmployeeCreatedMail;
+use App\Models\Report;
 use Illuminate\Support\Facades\Mail;
 
 class NotifyEmployeeCreated

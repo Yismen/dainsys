@@ -2,21 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\EmployeeCreated;
 use App\Models\Employee;
 use App\Models\Termination;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use App\Events\EmployeeCreated;
-use Yajra\DataTables\DataTables;
-use App\Services\ListsForEmployees\SiteWithEmployeesService;
-use App\Services\ListsForEmployees\ProjectWithEmployeesService;
 use App\Services\ListsForEmployees\PositionWithEmployeesService;
+use App\Services\ListsForEmployees\ProjectWithEmployeesService;
+use App\Services\ListsForEmployees\SiteWithEmployeesService;
 use App\Services\ListsForEmployees\SupervisorWithEmployeesService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Yajra\DataTables\DataTables;
 
 class EmployeesController extends Controller
 {
     protected $provider;
+
     private $request;
+
     private $carbon;
 
     public function __construct()
@@ -36,7 +38,7 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        if (!request()->ajax()) {
+        if (! request()->ajax()) {
             return view(
                 'employees.index',
                 [
@@ -100,7 +102,7 @@ class EmployeesController extends Controller
             'secondary_phone' => [
                 'required' => 'El campo email es requerido',
                 'email' => 'El campo email debe ser una dirección de correo válida',
-            ]
+            ],
         ]);
 
         $employee = $employee->create($request->all());
@@ -138,8 +140,7 @@ class EmployeesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function show(Employee $employee)
@@ -159,8 +160,7 @@ class EmployeesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function edit(Employee $employee)
@@ -190,8 +190,7 @@ class EmployeesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return Response
      */
     public function update(Employee $employee, Request $request)
@@ -200,10 +199,10 @@ class EmployeesController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'hire_date' => 'required|date',
-            'personal_id' => 'required_if:passport,null|nullable|digits:11|unique:employees,personal_id,' . $employee->id,
-            'passport' => 'required_if:personal_id,null|nullable|size:10|unique:employees,passport,' . $employee->id,
+            'personal_id' => 'required_if:passport,null|nullable|digits:11|unique:employees,personal_id,'.$employee->id,
+            'passport' => 'required_if:personal_id,null|nullable|size:10|unique:employees,passport,'.$employee->id,
             'date_of_birth' => 'required|date',
-            'cellphone_number' => 'required|digits:10|unique:employees,cellphone_number,' . $employee->id,
+            'cellphone_number' => 'required|digits:10|unique:employees,cellphone_number,'.$employee->id,
             // 'secondary_phone' => 'nullable|digits:10',
             'secondary_phone' => 'required|email',
             'gender_id' => 'required|exists:genders,id',
@@ -216,7 +215,7 @@ class EmployeesController extends Controller
             'secondary_phone' => [
                 'required' => 'El campo email es requerido',
                 'email' => 'El campo email debe ser una dirección de correo válida',
-            ]
+            ],
         ]);
 
         $employee->update($request->all());
@@ -252,7 +251,7 @@ class EmployeesController extends Controller
         return DataTables::of(
             Employee::query()
                 ->with([
-                    'position' => function ($query) {
+                    'position' => function ($query): void {
                         $query->with([
                             'department',
                             'payment_type',
@@ -265,42 +264,36 @@ class EmployeesController extends Controller
                     'site',
                 ])
         )
-            ->editColumn('hire_date', function ($query) {
-                return $query->hire_date->format('d-M-Y');
-            })
-            ->editColumn('status', function ($query) {
-                return $query->active ? 'Active' : 'Inactive';
-            })
-            ->addColumn('edit', function ($query) {
-                return route('admin.employees.edit', $query->id);
-            })
-            ->filterColumn('status', function ($query, $value) {
+            ->editColumn('hire_date', fn ($query) => $query->hire_date->format('d-M-Y'))
+            ->editColumn('status', fn ($query) => $query->active ? 'Active' : 'Inactive')
+            ->addColumn('edit', fn ($query) => route('admin.employees.edit', $query->id))
+            ->filterColumn('status', function ($query, $value): void {
                 if (in_array($value, ['all', 'actives', 'inactives'])) {
                     $query->$value();
                 }
             })
-            ->filterColumn('site.name', function ($query, $value) {
+            ->filterColumn('site.name', function ($query, $value): void {
                 $query->withWhereHas(
                     'site',
-                    fn($q) => $q->where('name', 'like', str($value)->lower())
+                    fn ($q) => $q->where('name', 'like', str($value)->lower())
                 );
             })
-            ->filterColumn('project.name', function ($query, $value) {
+            ->filterColumn('project.name', function ($query, $value): void {
                 $query->withWhereHas(
                     'project',
-                    fn($q) => $q->where('name', 'like', str($value)->lower())
+                    fn ($q) => $q->where('name', 'like', str($value)->lower())
                 );
             })
-            ->filterColumn('position.name', function ($query, $value) {
+            ->filterColumn('position.name', function ($query, $value): void {
                 $query->withWhereHas(
                     'position',
-                    fn($q) => $q->where('name', 'like', str($value)->lower())
+                    fn ($q) => $q->where('name', 'like', str($value)->lower())
                 );
             })
-            ->filterColumn('supervisor.name', function ($query, $value) {
+            ->filterColumn('supervisor.name', function ($query, $value): void {
                 $query->withWhereHas(
                     'supervisor',
-                    fn($q) => $q->where('name', 'like', str($value)->lower())
+                    fn ($q) => $q->where('name', 'like', str($value)->lower())
                 );
             })
             ->toJson(true);

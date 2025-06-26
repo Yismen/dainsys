@@ -9,7 +9,7 @@ class PerformancesImportService
 {
     public function import()
     {
-        foreach (request()->file('excel_file') as $key => $file) {
+        foreach (request()->file('excel_file') as $file) {
             $file_name = $file->getClientOriginalName();
 
             if (! \Illuminate\Support\Str::contains($file_name, '_performance_daily_data_')) {

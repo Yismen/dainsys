@@ -7,26 +7,20 @@ use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class GeneralDailyRawReportExport implements WithMultipleSheets
 {
-    // use CapillusCommandsTrait;
-
-    /**
-     * Array of hours
-     *
-     * @var object
-     */
-    protected $repo;
-
     protected string $view_name = 'exports.data-raw';
+
     protected string $report_name = 'Daily Raw Report';
 
-    public function __construct($repo)
-    {
-        $this->repo = $repo;
-    }
-
     /**
-     * @return array
+     * @param  object  $repo
      */
+    public function __construct(
+        /**
+         * Array of hours
+         */
+        protected $repo
+    ) {}
+
     public function sheets(): array
     {
         $sheets = [];

@@ -4,7 +4,6 @@ namespace App\Repositories\Political;
 
 use App\Connections\RingCentralConnection;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
 
 class PoliticalFlashRepository extends RingCentralConnection implements PoliticalFlashInterface
 {
@@ -32,7 +31,7 @@ class PoliticalFlashRepository extends RingCentralConnection implements Politica
     public function hasHours(): bool
     {
         $unique_count = collect($this->dispositions)->sum('num_leads') + collect($this->hours)->sum('TotalHours');
-        $cache_key = "political_flash_{$this->date_from->format('Y-m-d')}_{$this->date_to->format('Y-m-d')}_" . $unique_count;
+        $cache_key = "political_flash_{$this->date_from->format('Y-m-d')}_{$this->date_to->format('Y-m-d')}_".$unique_count;
 
         if (
             $unique_count === 0 ||
@@ -63,7 +62,7 @@ class PoliticalFlashRepository extends RingCentralConnection implements Politica
     public function getDispositions()
     {
         return $this->connection()->select(
-           "
+            "
                 declare @reportDate as date
                 set @reportDate = '{$this->date_to}'
 
@@ -88,7 +87,7 @@ class PoliticalFlashRepository extends RingCentralConnection implements Politica
     public function getAnswers()
     {
         return $this->connection()->select(
-           "
+            "
                 declare @reportDate as date
                 set @reportDate = '{$this->date_to}'
 

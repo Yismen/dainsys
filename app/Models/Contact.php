@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 class Contact extends Model
 {
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+
     protected $table = 'contacts';
 
     protected $fillable = ['user_id', 'name', 'phone', 'works_at', 'position', 'secondary_phone', 'email'];
@@ -24,37 +26,34 @@ class Contact extends Model
     /**
      * Accesor: morph the attribute before it is retrieved.
      *
-     * @param string $work
-     *
+     * @param  string  $work
      * @return mutated
      */
-    public function getWorksAtAttribute($work)
+    protected function worksAt(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return ucwords(trim($work));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn ($work) => ucwords(trim((string) $work)));
     }
 
     /**
      * mutate the position attribute after it is retrieved
      *
-     * @param string $position
-     *
+     * @param  string  $position
      * @return mutated
      */
-    public function getPositionAttribute($position)
+    protected function position(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        return ucwords(trim($position));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: fn ($position) => ucwords(trim((string) $position)));
     }
 
     /**
      * Mutate the name attribute before it is inserted.
      *
-     * @param string $name
-     *
+     * @param  string  $name
      * @return mutated attribute
      */
-    public function setNameAttribute($name)
+    protected function name(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['name'] = ucwords(trim($name));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: fn ($name) => ['name' => ucwords(trim((string) $name))]);
     }
 
     /**
@@ -68,7 +67,7 @@ class Contact extends Model
         /**
          * Hide contacts not owed by current user
          */
-        static::addGlobalScope('user', function (Builder $builder) {
+        static::addGlobalScope('user', function (Builder $builder): void {
             if (auth()->check()) {
                 $builder->whereUserId(auth()->user()->id);
             }

@@ -11,7 +11,7 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
-class OvernightHoutImport implements ToModel, WithHeadingRow, WithValidation, WithMapping
+class OvernightHoutImport implements ToModel, WithHeadingRow, WithMapping, WithValidation
 {
     use Importable;
 
@@ -19,7 +19,7 @@ class OvernightHoutImport implements ToModel, WithHeadingRow, WithValidation, Wi
 
     public function model(array $row)
     {
-        (new OvernightHour())
+        (new OvernightHour)
             ->removeDuplicated($row['unique_id']);
 
         return new OvernightHour([
@@ -32,15 +32,14 @@ class OvernightHoutImport implements ToModel, WithHeadingRow, WithValidation, Wi
 
     public function rules(): array
     {
-        return (new CreateOvernightHourRequest())->rules();
+        return (new CreateOvernightHourRequest)->rules();
     }
 
     /**
      * Convert an date in a carbon instance.
      *
-     * @param value  $value  the value to be parsed
-     * @param format $format the format from where the carbon instance is created
-     *
+     * @param  value  $value  the value to be parsed
+     * @param  format  $format  the format from where the carbon instance is created
      * @return Carbon instance
      */
     public function transformDate($value, $format = 'Y-m-d')
@@ -49,7 +48,7 @@ class OvernightHoutImport implements ToModel, WithHeadingRow, WithValidation, Wi
             return Carbon::instance(
                 \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value)
             );
-        } catch (\ErrorException $e) {
+        } catch (\ErrorException) {
             return Carbon::createFromFormat($format, $value);
         }
     }
