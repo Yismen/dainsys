@@ -23,7 +23,7 @@
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId"
-                                    placeholder="" wire:model='name'>
+                                    placeholder="" wire:model='name' disabled>
 
                                 @error('name')
                                 <span class="text-red text-sm">{{ $message }}</span>

@@ -35,10 +35,22 @@ class CheckForDispositionsPendingIdentification extends Command
 
     public function handle(DispositionsPendingIdentificationService $service)
     {
-        $records = $service->query()->count();
+        $records = $service->query()
+            ->get();
 
-        if ($records > 0) {
-            Mail::send(new DispositionsNeedingIdentificationMail($records));
+        $amount_of_records = $records->count();
+
+        if ($records->count() > 0) {
+            Mail::send(
+                new DispositionsNeedingIdentificationMail(
+                    $records,
+                    $amount_of_records
+                )
+            );
         }
+
+        $this->info(
+            "There are {$amount_of_records} dispositions pending identification. An email has been sent to the system admin."
+        );
     }
 }
