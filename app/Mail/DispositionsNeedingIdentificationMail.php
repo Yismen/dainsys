@@ -13,10 +13,14 @@ class DispositionsNeedingIdentificationMail extends Mailable
     use Queueable;
     use SerializesModels;
 
-    public function __construct(public Collection $records, public int $amount_of_records) {
-        // The records should be a collection of the dispositions needing identification.
-        // Example: $records = collect([['agent_disposition' => '123', 'dial_group_prefix' => '456', 'records' => 10]]);
-    }
+    /**
+     * Create a new message instance.
+     *
+     * @param Collection $records collection of records needing identification
+     * @param int $amount_of_records  total number of records needing identification
+     * @return void
+     */
+    public function __construct(public Collection $records, public int $amount_of_records) {}
 
     /**
      * Build the message.
