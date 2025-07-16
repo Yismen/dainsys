@@ -35,6 +35,6 @@ class DispositionsNeedingIdentificationMail extends Mailable
                 'records' => $this->records,
                 'amount_of_records' => $this->amount_of_records,
             ])
-            ->to('yjorge@eccocorpbpo.com', 'Yismen Jorge');
+            ->to(config('mail.from.address'), config('mail.from.name'));
     }
 }

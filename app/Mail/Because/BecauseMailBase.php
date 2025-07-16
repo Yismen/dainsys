@@ -28,7 +28,7 @@ abstract class BecauseMailBase extends Mailable
         $defaults = $this->mergeDefaults($defaults);
 
         return $this
-            ->from($defaults['from'], 'Yismen Jorge')
+            ->from($defaults['from'], config('mail.from.name'))
             ->bcc($defaults['bcc'])
             ->view($defaults['view'])
             ->attachFromStorage($this->temporary_mail_attachment)
@@ -38,8 +38,8 @@ abstract class BecauseMailBase extends Mailable
     protected function mergeDefaults(array $defaults)
     {
         return array_merge([
-            'from' => 'yjorge@eccocorpbpo.com',
-            'bcc' => 'yjorge@eccocorpbpo.com',
+            'from' => config('mail.from.address'),
+            'bcc' => config('mail.from.address'),
             'view' => 'emails.capillus',
         ], $defaults);
     }

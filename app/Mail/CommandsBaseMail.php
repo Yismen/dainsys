@@ -30,7 +30,7 @@ class CommandsBaseMail extends Mailable implements ShouldQueue
     public function build()
     {
         return $this
-            ->from($this->options['from'], 'Yismen Jorge')
+            ->from($this->options['from'], config('mail.from.name'))
             ->to($this->distro)
             ->bcc($this->options['bcc'])
             ->view($this->options['view'])
@@ -41,8 +41,8 @@ class CommandsBaseMail extends Mailable implements ShouldQueue
     protected function mergeDefaults(array $defaults)
     {
         return array_merge([
-            'from' => 'yjorge@eccocorpbpo.com',
-            'bcc' => 'yjorge@eccocorpbpo.com',
+            'from' => config('mail.from.address'),
+            'bcc' => config('mail.from.address'),
             'view' => 'emails.commands-email',
         ], $defaults);
     }
