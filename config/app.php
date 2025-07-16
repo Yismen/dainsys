@@ -87,6 +87,8 @@ return [
 
     'valid_email_domains' => env('VALID_EMAIL_DOMAINS', ['ecco.com.do', 'eccocorpbpo.com']),
 
+    'telescope_user_email' => env('TELESCOPE_USER_EMAIL', 'yismen.jorge@gmail.com'),
+
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
