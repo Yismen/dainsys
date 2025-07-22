@@ -16,10 +16,13 @@ class UserController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $users = User::where('name', 'like', '%'.request('q').'%')->with([
+        $users = User::with([
             'profile',
             'roles',
-        ])->get();
+        ])
+        ->where('name', 'like', '%'.request('q').'%')
+        ->orWhere('email', 'like', '%'.request('q').'%')
+        ->get();
 
         return view('partials._users', [
             'users' => $users,
