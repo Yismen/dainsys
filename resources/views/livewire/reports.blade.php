@@ -1,10 +1,7 @@
 <div class="container">
-    <x-loading></x-loading>
-
-
 
     <livewire:reports-form />
-    <div class="box box-primary">
+    <div class="box box-primary" >
         <div class="box-header with-border">
             <h5 class="row">
                 <div class="col-sm-8">
@@ -26,7 +23,7 @@
             </h5>
 
         </div>
-        <div class="box-body" wire:loading.class="hidden">
+        <div class="box-body" >
             <table class="table table-bordered table-condensed table-hover">
                 <thead>
                     <tr>
@@ -64,7 +61,11 @@
                                 $report->recipients_count }}</span>
                         </td>
                         <td class="col-sm-2">
-                            <button class="btn btn-warning btn-block btn-xs"
+                            <button class="btn btn-xs"
+                                wire:click="$emit('wantsShowReport', {{ $report->id }})">
+                                <i class="fa fa-pencil"></i> {{ __('Show') }}
+                            </button>
+                            <button class="btn btn-warning btn-xs"
                                 wire:click="$emit('wantsEditReport', {{ $report->id }})">
                                 <i class="fa fa-pencil"></i> {{ __('Edit') }}
                             </button>

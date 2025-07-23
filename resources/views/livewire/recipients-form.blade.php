@@ -23,7 +23,7 @@
                         <div class="form-group @error('fields.name') has-error @enderror">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" required
-                                placeholder="" wire:model.lazy="fields.name">
+                                placeholder="" wire:model.lazy="fields.name"  {{ $is_showing ? 'disabled readonly' : '' }}>
                             @error('fields.name')
                             <div class="help-block">
                                 {{ $message }}
@@ -35,7 +35,7 @@
                         <div class="form-group @error('fields.email') has-error @enderror">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" required name="email" id="email" aria-describedby="helpId"
-                                placeholder="" wire:model.lazy="fields.email">
+                                placeholder="" wire:model.lazy="fields.email" {{ $is_showing ? 'disabled readonly' : '' }}>
                             @error('fields.name')
                             <div class="help-block">
                                 {{ $message }}
@@ -47,7 +47,7 @@
                         <div class="form-group @error('fields.title') has-error @enderror">
                             <label for="title">Title</label>
                             <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId"
-                                placeholder="" wire:model.lazy="fields.title">
+                                placeholder="" wire:model.lazy="fields.title" {{ $is_showing ? 'disabled readonly' : '' }}>
                             @error('fields.title')
                             <div class="help-block">
                                 {{ $message }}
@@ -57,11 +57,13 @@
 
                     </div>
                     <div class="modal-footer">
-                        @if ($is_editing)
-                        <button type="submit" class="btn btn-warning">Update</button>
-                        @else
-                        <button type="submit" class="btn btn-primary">Create</button>
-                        @endif
+                        @unless ($is_showing)
+                             @if ($is_editing)
+                            <button type="submit" class="btn btn-warning">Update</button>
+                            @else
+                            <button type="submit" class="btn btn-primary">Create</button>
+                            @endif
+                        @endunless
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>

@@ -1,7 +1,4 @@
 <div class="container">
-    <x-loading></x-loading>
-
-
 
     <livewire:recipients-form />
     <div class="box box-primary">
@@ -26,7 +23,7 @@
             </h5>
 
         </div>
-        <div class="box-body" wire:loading.class="hidden">
+        <div class="box-body">
             <table class="table table-bordered table-condensed table-hover">
                 <thead>
                     <tr>
@@ -59,8 +56,12 @@
                                 class="badge {{ $recipient->reports_count > 0 ? 'bg-green' : 'bg-gray' }}">{{
                                 $recipient->reports_count }}</span>
                         </td>
-                        <td class="col-sm-2">
-                            <button class="btn btn-warning btn-block btn-xs"
+                        <td class="col-sm-2 d-block">
+                            <button class="btn btn-xs"
+                                wire:click="$emit('wantsShowRecipient', {{ $recipient->id }})">
+                                <i class="fa fa-pencil"></i> {{ __('Show') }}
+                            </button>
+                            <button class="btn btn-warning btn-xs"
                                 wire:click="$emit('wantsEditRecipient', {{ $recipient->id }})">
                                 <i class="fa fa-pencil"></i> {{ __('Edit') }}
                             </button>

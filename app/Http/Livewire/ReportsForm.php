@@ -18,10 +18,11 @@ class ReportsForm extends Component
     ];
 
     public bool $is_editing = false;
+    public bool $is_showing = false;
 
     public Report $report;
 
-    protected $listeners = ['wantsCreateReport', 'wantsEditReport'];
+    protected $listeners = ['wantsCreateReport', 'wantsEditReport', 'wantsShowReport'];
 
     protected $rules = [
         'fields.name' => 'required|min:3|unique:reports,name',
@@ -36,6 +37,7 @@ class ReportsForm extends Component
 
     public function wantsCreateReport()
     {
+        $this->dispatchBrowserEvent('hideReportModal');
         $this->reset(['fields', 'is_editing']);
         $this->resetValidation();
         $this->dispatchBrowserEvent('showReportModal');
@@ -43,8 +45,24 @@ class ReportsForm extends Component
 
     public function wantsEditReport(Report $report)
     {
+        $this->dispatchBrowserEvent('hideReportModal');
+        $this->reset(['fields', 'is_editing', 'is_showing']);
         $this->report = $report;
         $this->is_editing = true;
+        $this->fields['name'] = $report->name;
+        $this->fields['key'] = $report->key;
+        $this->fields['active'] = $report->active;
+        $this->fields['description'] = $report->description;
+        $this->resetValidation();
+        $this->dispatchBrowserEvent('showReportModal');
+    }
+
+    public function wantsShowReport(Report $report)
+    {
+        $this->dispatchBrowserEvent('hideReportModal');
+        $this->reset(['fields', 'is_editing', 'is_showing']);
+        $this->report = $report;
+        $this->is_showing = true;
         $this->fields['name'] = $report->name;
         $this->fields['key'] = $report->key;
         $this->fields['active'] = $report->active;
