@@ -2,13 +2,16 @@
 
 namespace App\Http\Livewire;
 
-use App\Http\Livewire\Traits\HasLivewirePagination;
-use App\Models\Recipient;
 use Livewire\Component;
+use App\Models\Recipient;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use App\Http\Livewire\Traits\HasLivewirePagination;
 
 class Recipients extends Component
 {
     use HasLivewirePagination;
+    use AuthorizesRequests;
 
     protected $listeners = ['searchUpdated', 'recipientSaved' => '$refresh'];
 
@@ -16,6 +19,8 @@ class Recipients extends Component
 
     public function render()
     {
+        $this->authorize('view-recipients');
+
         return view('livewire.recipients', [
             'recipients' => Recipient::query()
                 ->withCount('reports')
