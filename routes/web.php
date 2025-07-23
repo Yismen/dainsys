@@ -195,9 +195,15 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'e
 
     Route::resource('punches', \App\Http\Controllers\PunchesController::class);
 
-    Route::resource('recipients', \App\Http\Controllers\RecipientsController::class);
+    // Route::resource('recipients', \App\Http\Controllers\RecipientsController::class);
 
-    Route::resource('reports', \App\Http\Controllers\ReportsController::class);
+    Route::get('recipients', \App\Http\Livewire\Recipients::class)
+        ->name('recipients.index');
+
+    // Route::resource('reports', \App\Http\Controllers\ReportsController::class);
+
+    Route::get('reports', \App\Http\Livewire\Reports::class)
+        ->name('reports.index');
 
     Route::resource('revenue_types', \App\Http\Controllers\RevenueTypesController::class);
 

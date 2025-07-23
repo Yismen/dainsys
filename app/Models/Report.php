@@ -13,6 +13,10 @@ class Report extends Model
 
     protected $fillable = ['name', 'key', 'active', 'description'];
 
+    protected $casts = [
+        'active' => 'boolean',
+    ];
+
     /**
      * The recipients that belong to the Report
      */
