@@ -85,7 +85,7 @@
 
             <!-- Main content -->
             <section class="content" style="padding: 0">
-                {{ $slot }}
+                {{ $slot ?? '' }}
                 @yield('content')
             </section>
             <!-- /.content -->
