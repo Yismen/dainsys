@@ -47,7 +47,7 @@
                     <div class="col-sm-3">
                         <div>
                             @if ($steps)
-                            <livewire:search />
+                            <livewire:search debounce="800ms" />
                             @endif
                         </div>
                     </div>

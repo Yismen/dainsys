@@ -26,7 +26,7 @@
                 </div> --}}
 
                 <div class="col-sm-4">
-                    <livewire:search />
+                    <livewire:search debounce="800ms" />
                 </div>
             </h5>
 

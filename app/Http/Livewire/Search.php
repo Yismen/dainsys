@@ -15,6 +15,10 @@ class Search extends Component
     public function mount(string $debounce = 'lazy')
     {
         $this->debounce = $debounce;
+
+        $this->search = request()->query('search', $this->search);
+
+        $this->setCount();
     }
 
     public function render()
@@ -26,6 +30,11 @@ class Search extends Component
     {
         $this->emit('searchUpdated', $this->search);
 
-        return $this->count = strlen(trim((string) $this->search));
+        return $this->setCount();
+    }
+
+    protected function setCount(): void
+    {
+        $this->count = strlen(trim((string) $this->search));
     }
 }

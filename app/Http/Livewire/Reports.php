@@ -11,10 +11,9 @@ class Reports extends Component
 {
     use HasLivewirePagination;
     use AuthorizesRequests;
+    use \App\Traits\Livewire\HasLivewireSearch;
 
-    protected $listeners = ['searchUpdated', 'reportSaved' => '$refresh'];
-
-    protected $search = null;
+    protected $listeners = ['reportSaved' => '$refresh'];
 
     public function render()
     {
@@ -26,8 +25,6 @@ class Reports extends Component
                 ->when(
                     $this->search,
                     function ($query): void {
-                        $this->resetPage();
-
                         $query->where(function ($query): void {
                             $query->where('name', 'like', "%{$this->search}%")
                                 ->orWhere('key', 'like', "%{$this->search}%");
@@ -37,10 +34,5 @@ class Reports extends Component
                 ->orderBy('name')
                 ->paginate($this->amount),
         ]);
-    }
-
-    public function searchUpdated($search)
-    {
-        $this->search = $search;
     }
 }

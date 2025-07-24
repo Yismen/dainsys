@@ -11,12 +11,11 @@ use Livewire\Component;
 class Steps extends Component
 {
     use HasLivewirePagination;
+    use \App\Traits\Livewire\HasLivewireSearch;
 
     public int $process_id = 0;
 
-    protected $listeners = ['searchUpdated', 'stepSaved' => '$refresh'];
-
-    protected $search = null;
+    protected $listeners = ['stepSaved' => '$refresh'];
 
     public function render()
     {
@@ -24,11 +23,6 @@ class Steps extends Component
             'processes' => Cache::rememberForever('steps_processes', fn () => Process::orderBy('name')->get(['name', 'id'])),
             'steps' => $this->process_id === 0 ? null : $this->getSteps(),
         ]);
-    }
-
-    public function searchUpdated($search)
-    {
-        $this->search = $search;
     }
 
     protected function getSteps()
@@ -41,7 +35,6 @@ class Steps extends Component
             ->when(
                 $this->search,
                 function ($query): void {
-                    $this->resetPage();
 
                     $query->where(function ($query): void {
                         $query->where('name', 'like', "%{$this->search}%")

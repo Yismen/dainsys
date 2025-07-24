@@ -11,14 +11,8 @@
                     </h4>
                 </div>
 
-                {{-- <div class="col-sm-2">
-                    <button class="btn btn-primary" title="Create" wire:click="$emit('wantsCreateRecipient')">
-                        <i class="fa fa-plus"></i>
-                    </button>
-                </div> --}}
-
                 <div class="col-sm-4">
-                    <livewire:search debounce='800ms' />
+                    <livewire:search debounce='800ms'/>
                 </div>
             </h5>
 

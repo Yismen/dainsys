@@ -10,6 +10,8 @@ trait HasLivewirePagination
 
     protected $amount = 10;
 
+    protected $paginationTheme = 'bootstrap';
+
     public function paginationView()
     {
         return 'layouts.partials.pagination';

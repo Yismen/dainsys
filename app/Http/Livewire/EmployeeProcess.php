@@ -9,12 +9,14 @@ use App\Models\Position;
 use App\Models\Process;
 use App\Models\Project;
 use App\Models\Site;
+use App\Traits\Livewire\HasLivewireSearch;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 
 class EmployeeProcess extends Component
 {
     use HasLivewirePagination;
+    use HasLivewireSearch;
 
     public int $process_id = 0;
 
@@ -25,10 +27,6 @@ class EmployeeProcess extends Component
     public int $project_id = 0;
 
     public int $position_id = 0;
-
-    protected $listeners = ['searchUpdated'];
-
-    protected $search = null;
 
     public function render()
     {
@@ -65,15 +63,18 @@ class EmployeeProcess extends Component
                     $query->where('processes.id', $this->process_id);
                 });
             })
+            ->when($this->search, function ($query): void {
+                $query->where(function ($query): void {
+                    $query->where('first_name', 'like', "%{$this->search}%")
+                        ->orWhere('last_name', 'like', "%{$this->search}%")
+                        ->orWhere('second_first_name', 'like', "%{$this->search}%")
+                        ->orWhere('second_last_name', 'like', "%{$this->search}%");
+                });
+            })
             ->pluck('id');
 
         $process->employees()->attach($employees);
         Cache::flush();
-    }
-
-    public function searchUpdated($search)
-    {
-        $this->search = $search;
     }
 
     protected function getEmployees()

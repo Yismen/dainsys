@@ -9,10 +9,9 @@ use Livewire\Component;
 class Processes extends Component
 {
     use HasLivewirePagination;
+    use \App\Traits\Livewire\HasLivewireSearch;
 
-    protected $listeners = ['searchUpdated', 'processSaved' => '$refresh'];
-
-    protected $search = null;
+    protected $listeners = ['processSaved' => '$refresh'];
 
     public function render()
     {
@@ -21,7 +20,6 @@ class Processes extends Component
                 ->when(
                     $this->search,
                     function ($query): void {
-                        $this->resetPage();
 
                         $query->where(function ($query): void {
                             $query->where('name', 'like', "%{$this->search}%")
@@ -32,10 +30,5 @@ class Processes extends Component
                 ->orderBy('name')
                 ->paginate($this->amount),
         ]);
-    }
-
-    public function searchUpdated($search)
-    {
-        $this->search = $search;
     }
 }

@@ -5,17 +5,17 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Recipient;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use App\Traits\Livewire\HasLivewireSearch;
 use App\Http\Livewire\Traits\HasLivewirePagination;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Recipients extends Component
 {
     use HasLivewirePagination;
     use AuthorizesRequests;
+    use HasLivewireSearch;
 
-    protected $listeners = ['searchUpdated', 'recipientSaved' => '$refresh'];
-
-    protected $search = null;
+    protected $listeners = ['recipientSaved' => '$refresh'];
 
     public function render()
     {
@@ -27,7 +27,6 @@ class Recipients extends Component
                 ->when(
                     $this->search,
                     function ($query): void {
-                        $this->resetPage();
 
                         $query->where(function ($query): void {
                             $query->where('name', 'like', "%{$this->search}%")
@@ -38,10 +37,5 @@ class Recipients extends Component
                 ->orderBy('name')
                 ->paginate($this->amount),
         ]);
-    }
-
-    public function searchUpdated($search)
-    {
-        $this->search = $search;
     }
 }

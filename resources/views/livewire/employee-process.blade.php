@@ -114,8 +114,7 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        Search
-                        <livewire:search />
+                        <livewire:search debounce="800ms"/>
                     </div>
                 </div>
             </div>
