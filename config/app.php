@@ -85,7 +85,7 @@ return [
 
     'fallback_locale' => 'en',
 
-    'valid_email_domains' => env('VALID_EMAIL_DOMAINS', ['ecco.com.do', 'eccocorpbpo.com']),
+    'valid_email_domains' => env('VALID_EMAIL_DOMAINS', null),
 
     'telescope_user_email' => env('TELESCOPE_USER_EMAIL', 'yismen.jorge@gmail.com'),
 
