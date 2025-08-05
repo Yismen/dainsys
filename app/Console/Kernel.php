@@ -80,14 +80,22 @@ class Kernel extends ConsoleKernel
         $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalProductionReportCommand::class)->hourly();
         $schedule->command(\App\Console\Commands\RingCentralReports\Commands\Political\SendPoliticalTextCampaignReportCommand::class)->dailyAt('07:20');
 
+        // Hotel Planner Reports
         $schedule->command(\App\Console\Commands\RingCentralReports\Commands\HotelPlanning\SendHotelPlanningProductionReportCommand::class, ['--date' => now()
             ->format('Y-m-d')])
             ->everyThirtyMinutes();
+
         $schedule->command(\App\Console\Commands\RingCentralReports\Commands\HotelPlanning\SendHotelPlanningProductionReportCommand::class, [
             '--date' => now()->subDay()->format('Y-m-d'),
             '--from_date' => now()->subDay()->startOfWeek()->format('Y-m-d'),
-            '--subject' => 'WTD Hours Report',
+            '--subject' => 'WTD Hotel Planner Hours Report',
         ])->dailyAt('06:30');
+
+        $schedule->command(\App\Console\Commands\RingCentralReports\Commands\HotelPlanning\SendHotelPlanningProductionReportCommand::class, [
+            '--date' => now()->subDay()->format('Y-m-d'),
+            '--from_date' => now()->subDay()->startOfMonth()->format('Y-m-d'),
+            '--subject' => 'MTD Hotel Planner Hours Report',
+        ])->lastDayOfMonth('06:40');
 
         $schedule->command(\App\Console\Commands\Inbound\SendDailySummaryCommand::class)->dailyAt('06:20');
         $schedule->command(\App\Console\Commands\Inbound\SendWTDSummaryCommand::class)->dailyAt('06:30');
