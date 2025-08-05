@@ -21,7 +21,7 @@ class Reports extends Component
 
         return view('livewire.reports', [
             'reports' => Report::query()
-                ->withCount('recipients')
+                ->with('recipients')
                 ->when(
                     $this->search,
                     function ($query): void {

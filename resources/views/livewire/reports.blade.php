@@ -56,9 +56,9 @@
                             {{ str($report->description)->limit(20) }}
                         </td>
                         <td>
-                            <span
-                                class="badge {{ $report->recipients_count > 0 ? 'bg-green' : 'bg-gray' }}">{{
-                                $report->recipients_count }}</span>
+                            @foreach ($report->recipients as $recipient)
+                                <span class="badge bg-green" title="{{ $recipient->email }}">{{ $recipient->name }}</span>
+                            @endforeach
                         </td>
                         <td class="col-sm-2">
                             <button class="btn btn-xs"

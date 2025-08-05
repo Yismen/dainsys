@@ -23,7 +23,8 @@ class Recipients extends Component
 
         return view('livewire.recipients', [
             'recipients' => Recipient::query()
-                ->withCount('reports')
+                // ->withCount('reports')
+                ->with(['reports'])
                 ->when(
                     $this->search,
                     function ($query): void {

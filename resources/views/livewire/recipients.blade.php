@@ -46,9 +46,12 @@
                             {{ $recipient->title }}
                         </td>
                         <td>
-                            <span
+                            @foreach ($recipient->reports as $report)
+                                <span class="badge bg-green" title="{{ $report->key }}">{{ $report->name }}</span>
+                            @endforeach
+                            {{-- <span
                                 class="badge {{ $recipient->reports_count > 0 ? 'bg-green' : 'bg-gray' }}">{{
-                                $recipient->reports_count }}</span>
+                                $recipient->reports_count }}</span> --}}
                         </td>
                         <td class="col-sm-2 d-block">
                             <button class="btn btn-xs"
