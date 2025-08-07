@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Http\Livewire\Traits\HasLivewirePagination;
-use App\Models\Recipient;
+use App\Models\Report;
 use Livewire\Component;
+use App\Models\Recipient;
+use Illuminate\Support\Facades\Cache;
+use App\Http\Livewire\Traits\HasLivewirePagination;
 
 class RecipientsForm extends Component
 {
@@ -14,6 +16,9 @@ class RecipientsForm extends Component
         'name' => null,
         'email' => null,
         'title' => null,
+        'reports' => [],
+        'all_reports' => [],
+        'selected_reports' => [],
     ];
 
     public bool $is_editing = false;
@@ -37,6 +42,7 @@ class RecipientsForm extends Component
     public function wantsCreateRecipient()
     {
         $this->reset(['fields', 'is_editing', 'is_showing']);
+        $this->fields['all_reports'] = $this->getReports();
         $this->resetValidation();
         $this->dispatchBrowserEvent('showRecipientModal');
     }
@@ -45,6 +51,11 @@ class RecipientsForm extends Component
     {
         $this->reset(['fields', 'is_editing', 'is_showing']);
         $this->recipient = $recipient;
+        $this->recipient->load('reports');
+        $this->fields['reports'] = $recipient->reports->pluck('id')->toArray();
+        $this->fields['all_reports'] = $this->getReports();
+
+        $this->fields['name'] = $recipient->name;
         $this->is_editing = true;
         $this->fields['name'] = $recipient->name;
         $this->fields['email'] = $recipient->email;
@@ -55,8 +66,9 @@ class RecipientsForm extends Component
 
     public function wantsShowRecipient(Recipient $recipient)
     {
-        $this->reset(['fields', 'is_editing', 'is_showing']);
         $this->recipient = $recipient;
+        $this->recipient->load('reports'); // Eager load reports to avoid N+1 query issue
+        $this->reset(['fields', 'is_editing', 'is_showing']);
         $this->is_showing = true;
         $this->fields['name'] = $recipient->name;
         $this->fields['email'] = $recipient->email;
@@ -69,10 +81,12 @@ class RecipientsForm extends Component
     {
         $this->validate([
             'fields.name' => 'required|min:3|unique:recipients,name',
+            'fields.email' => 'required|email|unique:recipients,email'
             // 'fields.title' => 'min:3',
         ]);
 
-        $recipient->create($this->fields);
+        $recipient = $recipient->create($this->fields);
+        $recipient->reports()->sync($this->fields['reports']);
 
         $this->emit('recipientSaved');
         $this->dispatchBrowserEvent('hideRecipientModal');
@@ -87,7 +101,17 @@ class RecipientsForm extends Component
         $this->validate($rules);
         $this->recipient->update($this->fields);
 
+        $this->recipient->reports()->sync($this->fields['reports']);
+
         $this->emit('recipientSaved');
         $this->dispatchBrowserEvent('hideRecipientModal');
+    }
+
+    protected function getReports() {
+        return Cache::remember('reports_list', 60, function () {
+            return Report::orderBy('name')
+                ->pluck('name', 'id')
+                ->toArray();
+        });
     }
 }

@@ -4,7 +4,7 @@
         aria-hidden="true" wire:ignore.self>
         <div class="modal-dialog" role="document">
             <form wire:submit.prevent="{{ $is_editing ? 'update' : 'store' }}">
-                <div class="modal-content">
+                <div class="modal-content modal-lg modal-dialog-scrollable">
                     <div class="modal-header">
                         <h5 class="modal-title">
                             @if ($is_editing)
@@ -53,6 +53,33 @@
                                 {{ $message }}
                             </div>
                             @enderror
+                        </div>
+
+                        {{-- Reports --}}
+                        <div class="form-group @error('fields.title') has-error @enderror" style="max-height: 200px; overflow-y: auto;">
+                            <label for="title">Reports</label>
+                            <br>
+                            @if ($recipient && $recipient?->reports->isEmpty() == false)
+                                @if ($this->is_showing )
+                                    @foreach ($recipient->reports as $report)
+                                        <span class="badge badge-info">{{ $report->name }}</span>
+
+                                    @endforeach
+                                @else
+                                    @foreach ($this->fields['all_reports'] as $id => $name)
+                                        <label for="report_{{ $id }}">
+                                            <input type="checkbox" name="reports[]" value="{{ $id }}"
+                                            id="report_{{ $id }}"
+                                                wire:model.lazy="fields.reports" {{ in_array($id, $this->fields['reports']) ? 'checked' : '' }}
+                                                wire:key="{{ $id }}">
+                                            {{ $name }}
+                                        </label>
+                                        <br>
+                                    @endforeach
+
+                                @endif
+
+                            @endif
                         </div>
 
                     </div>
