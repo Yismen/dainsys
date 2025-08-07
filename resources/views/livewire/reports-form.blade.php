@@ -78,7 +78,37 @@
                             @enderror
                         </div>
 
+
+
+                        {{-- Recipients --}}
+                        <div class="form-group @error('fields.title') has-error @enderror" style="max-height: 200px; overflow-y: auto;">
+                            <label for="title">Recipients</label>
+                            <br>
+                            @if ($report && $report?->recipients->isEmpty() == false)
+                                @if ($this->is_showing )
+                                    @foreach ($report->recipients as $recipient)
+                                        <span class="badge badge-info">{{ $recipient->name }}</span>
+
+                                    @endforeach
+                                @else
+                                    @foreach ($this->fields['all_recipients'] as $id => $name)
+                                        <label for="report_{{ $id }}">
+                                            <input type="checkbox" name="recipients[]" value="{{ $id }}"
+                                            id="report_{{ $id }}"
+                                                wire:model.lazy="fields.recipients" {{ in_array($id, $this->fields['recipients']) ? 'checked' : '' }}
+                                                wire:key="{{ $id }}">
+                                            {{ $name }}
+                                        </label>
+                                        <br>
+                                    @endforeach
+
+                                @endif
+
+                            @endif
+                        </div>
+
                     </div>
+
                     <div class="modal-footer">
                         @unless ($is_showing)
                             @if ($is_editing)

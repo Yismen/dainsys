@@ -18,7 +18,6 @@ class RecipientsForm extends Component
         'title' => null,
         'reports' => [],
         'all_reports' => [],
-        'selected_reports' => [],
     ];
 
     public bool $is_editing = false;
@@ -41,6 +40,7 @@ class RecipientsForm extends Component
 
     public function wantsCreateRecipient()
     {
+        $this->dispatchBrowserEvent('hideRecipientModal');
         $this->reset(['fields', 'is_editing', 'is_showing']);
         $this->fields['all_reports'] = $this->getReports();
         $this->resetValidation();
@@ -49,6 +49,7 @@ class RecipientsForm extends Component
 
     public function wantsEditRecipient(Recipient $recipient)
     {
+        $this->dispatchBrowserEvent('hideRecipienttModal');
         $this->reset(['fields', 'is_editing', 'is_showing']);
         $this->recipient = $recipient;
         $this->recipient->load('reports');
@@ -66,9 +67,10 @@ class RecipientsForm extends Component
 
     public function wantsShowRecipient(Recipient $recipient)
     {
+        $this->dispatchBrowserEvent('hideRecipientModal');
+        $this->reset(['fields', 'is_editing', 'is_showing']);
         $this->recipient = $recipient;
         $this->recipient->load('reports'); // Eager load reports to avoid N+1 query issue
-        $this->reset(['fields', 'is_editing', 'is_showing']);
         $this->is_showing = true;
         $this->fields['name'] = $recipient->name;
         $this->fields['email'] = $recipient->email;
@@ -108,7 +110,7 @@ class RecipientsForm extends Component
     }
 
     protected function getReports() {
-        return Cache::remember('reports_list', 60, function () {
+        return Cache::rememberForever('reports_list', 60, function () {
             return Report::orderBy('name')
                 ->pluck('name', 'id')
                 ->toArray();

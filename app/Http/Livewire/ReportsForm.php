@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Http\Livewire\Traits\HasLivewirePagination;
 use App\Models\Report;
 use Livewire\Component;
+use App\Models\Recipient;
+use Illuminate\Support\Facades\Cache;
+use App\Http\Livewire\Traits\HasLivewirePagination;
 
 class ReportsForm extends Component
 {
@@ -15,6 +17,8 @@ class ReportsForm extends Component
         'key' => null,
         'active' => true,
         'description' => null,
+        'recipients' => [],
+        'all_recipients' => [],
     ];
 
     public bool $is_editing = false;
@@ -38,7 +42,8 @@ class ReportsForm extends Component
     public function wantsCreateReport()
     {
         $this->dispatchBrowserEvent('hideReportModal');
-        $this->reset(['fields', 'is_editing']);
+        $this->reset(['fields', 'is_editing', 'is_showing']);
+        $this->fields['all_recipients'] = $this->getRecipients();
         $this->resetValidation();
         $this->dispatchBrowserEvent('showReportModal');
     }
@@ -48,6 +53,8 @@ class ReportsForm extends Component
         $this->dispatchBrowserEvent('hideReportModal');
         $this->reset(['fields', 'is_editing', 'is_showing']);
         $this->report = $report;
+        $this->fields['recipients'] = $report->recipients->pluck('id')->toArray();
+        $this->fields['all_recipients'] = $this->getRecipients();
         $this->is_editing = true;
         $this->fields['name'] = $report->name;
         $this->fields['key'] = $report->key;
@@ -62,6 +69,7 @@ class ReportsForm extends Component
         $this->dispatchBrowserEvent('hideReportModal');
         $this->reset(['fields', 'is_editing', 'is_showing']);
         $this->report = $report;
+        $this->report->load('recipients');
         $this->is_showing = true;
         $this->fields['name'] = $report->name;
         $this->fields['key'] = $report->key;
@@ -79,7 +87,8 @@ class ReportsForm extends Component
             // 'fields.title' => 'min:3',
         ]);
 
-        $report->create($this->fields);
+        $report = $report->create($this->fields);
+        $report->recipients()->sync($this->fields['recipients']);
 
         $this->emit('reportSaved');
         $this->dispatchBrowserEvent('hideReportModal');
@@ -94,7 +103,17 @@ class ReportsForm extends Component
         $this->validate($rules);
         $this->report->update($this->fields);
 
+        $this->report->reports()->sync($this->fields['recipients']);
+
         $this->emit('reportSaved');
         $this->dispatchBrowserEvent('hideReportModal');
+    }
+
+    protected function getRecipients() {
+        return Cache::rememberForever('recipients_list', function () {
+            return Recipient::orderBy('name')
+                ->pluck('name', 'id')
+                ->toArray();
+        });
     }
 }
